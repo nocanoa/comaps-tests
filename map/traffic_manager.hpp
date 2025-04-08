@@ -68,9 +68,27 @@ public:
   void SetStateListener(TrafficStateChangedFn const & onStateChangedFn);
 
   void SetDrapeEngine(ref_ptr<df::DrapeEngine> engine);
+  /**
+   * @brief Sets the version of the MWM used locally.
+   */
   void SetCurrentDataVersion(int64_t dataVersion);
 
+  /**
+   * @brief Enables or disables the traffic manager.
+   *
+   * This sets the internal state and notifies the drape engine. Enabling the traffic manager will
+   * invalidate its data, disabling it will notify the observer that traffic data has been cleared.
+   *
+   * Calling this function with `enabled` identical to the current state is a no-op.
+   *
+   * @param enabled True to enable, false to disable
+   */
   void SetEnabled(bool enabled);
+  /**
+   * @brief Whether the traffic manager is enabled.
+   *
+   * @return True if enabled, false if not
+   */
   bool IsEnabled() const;
 
   void UpdateViewport(ScreenBase const & screen);
