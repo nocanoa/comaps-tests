@@ -10,6 +10,10 @@
 
 #include "geometry/mercator.hpp"
 
+#include "openlr/decoded_path.hpp"
+#include "openlr/openlr_decoder.hpp"
+#include "openlr/openlr_model.hpp"
+
 #include "platform/platform.hpp"
 
 using namespace std::chrono;
