@@ -383,6 +383,7 @@ add_subdirectory(shaders)
 add_subdirectory(storage)
 add_subdirectory(tracking)
 add_subdirectory(traffic)
+add_subdirectory(traffxml)
 add_subdirectory(transit)
 
 if (PLATFORM_DESKTOP)

@@ -71,6 +71,7 @@ target_link_libraries(${PROJECT_NAME}
   map
   gflags::gflags
   openlr
+  traffxml
 )
 
 if (BUILD_DESIGNER)
