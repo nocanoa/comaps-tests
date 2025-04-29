@@ -876,9 +876,8 @@ void MainWindow::SetLayerEnabled(LayerType type, bool enable)
   switch (type)
   {
   case LayerType::TRAFFIC:
-    /// @todo Uncomment when we will integrate a traffic provider.
-    // frm.GetTrafficManager().SetEnabled(enable);
-    // frm.SaveTrafficEnabled(enable);
+    frm.GetTrafficManager().SetEnabled(enable);
+    frm.SaveTrafficEnabled(enable);
     break;
   case LayerType::TRANSIT:
     frm.GetTransitManager().EnableTransitSchemeMode(enable);
