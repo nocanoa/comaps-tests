@@ -50,9 +50,8 @@ class MainWindow : public QMainWindow, location::LocationObserver
 
   enum LayerType : uint8_t
   {
-    /// @todo Uncomment when we will integrate a traffic provider.
-    // TRAFFIC = 0,
-    TRANSIT = 0,      // Metro scheme
+    TRAFFIC = 0,
+    TRANSIT,      // Metro scheme
     ISOLINES,
     OUTDOORS,
   };

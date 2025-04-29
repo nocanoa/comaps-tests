@@ -282,10 +282,9 @@ void MainWindow::CreateNavigationBar()
 
     m_layers = new PopupMenuHolder(this);
 
-    /// @todo Uncomment when we will integrate a traffic provider.
-    // m_layers->addAction(QIcon(":/navig64/traffic.png"), tr("Traffic"),
-    //                     std::bind(&MainWindow::OnLayerEnabled, this, LayerType::TRAFFIC), true);
-    // m_layers->setChecked(LayerType::TRAFFIC, m_pDrawWidget->GetFramework().LoadTrafficEnabled());
+    m_layers->addAction(QIcon(":/navig64/traffic.png"), tr("Traffic"),
+                        std::bind(&MainWindow::OnLayerEnabled, this, LayerType::TRAFFIC), true);
+    m_layers->setChecked(LayerType::TRAFFIC, m_pDrawWidget->GetFramework().LoadTrafficEnabled());
 
     m_layers->addAction(QIcon(":/navig64/subway.png"), tr("Public transport"),
                         std::bind(&MainWindow::OnLayerEnabled, this, LayerType::TRANSIT), true);
@@ -876,11 +875,11 @@ void MainWindow::SetLayerEnabled(LayerType type, bool enable)
   auto & frm = m_pDrawWidget->GetFramework();
   switch (type)
   {
-  // @todo Uncomment when we will integrate a traffic provider.
-  // case LayerType::TRAFFIC:
-  //   frm.GetTrafficManager().SetEnabled(enable);
-  //   frm.SaveTrafficEnabled(enable);
-  //   break;
+  case LayerType::TRAFFIC:
+    /// @todo Uncomment when we will integrate a traffic provider.
+    // frm.GetTrafficManager().SetEnabled(enable);
+    // frm.SaveTrafficEnabled(enable);
+    break;
   case LayerType::TRANSIT:
     frm.GetTransitManager().EnableTransitSchemeMode(enable);
     frm.SaveTransitSchemeEnabled(enable);
