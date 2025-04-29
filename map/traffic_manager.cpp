@@ -41,9 +41,11 @@ TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestT
   , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
 {}
 
-TrafficManager::TrafficManager(GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
+TrafficManager::TrafficManager(const CountryParentNameGetterFn &countryParentNameGetter,
+                               GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
                                traffic::TrafficObserver & observer)
-  : m_getMwmsByRectFn(getMwmsByRectFn)
+  : m_countryParentNameGetterFn(countryParentNameGetter)
+  , m_getMwmsByRectFn(getMwmsByRectFn)
   , m_observer(observer)
   , m_currentDataVersion(0)
   , m_state(TrafficState::Disabled)

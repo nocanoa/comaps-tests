@@ -9,6 +9,8 @@
 
 #include "indexer/mwm_set.hpp"
 
+#include "openlr/openlr_decoder.hpp"
+
 #include "geometry/point2d.hpp"
 #include "geometry/polyline2d.hpp"
 #include "geometry/screenbase.hpp"
@@ -31,6 +33,8 @@
 class TrafficManager final
 {
 public:
+  using CountryParentNameGetterFn = std::function<std::string(std::string const &)>;
+
   enum class TrafficState
   {
     Disabled,
@@ -58,7 +62,8 @@ public:
   using TrafficStateChangedFn = std::function<void(TrafficState)>;
   using GetMwmsByRectFn = std::function<std::vector<MwmSet::MwmId>(m2::RectD const &)>;
 
-  TrafficManager(GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
+  TrafficManager(CountryParentNameGetterFn const & countryParentNameGetter,
+                 GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
                  traffic::TrafficObserver & observer);
   ~TrafficManager();
 
@@ -165,6 +170,7 @@ private:
     std::for_each(activeMwms.begin(), activeMwms.end(), std::forward<F>(f));
   }
 
+  CountryParentNameGetterFn m_countryParentNameGetterFn;
   GetMwmsByRectFn m_getMwmsByRectFn;
   traffic::TrafficObserver & m_observer;
 
