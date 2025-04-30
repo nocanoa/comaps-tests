@@ -25,12 +25,26 @@ public:
   static uint8_t const kLatestKeysVersion;
   static uint8_t const kLatestValuesVersion;
 
+  /**
+   * @brief Whether traffic data is available in this `TrafficInfo` instance.
+   */
+  /*
+   * TODO A global traffic update would require some 2–3 states:
+   * * IsAvailable
+   * * Data available but not yet decoded
+   * * (possibly) No traffic reports for this MWM
+   */
   enum class Availability
   {
+    /** This `TrafficInfo` instance has data available. */
     IsAvailable,
+    /** No traffic data is available (file not found on the server, or server returned invalid data). */
     NoData,
+    /** Traffic data could not be retrieved because the map data is outdated. */
     ExpiredData,
+    /** Traffic data could not be retrieved because the app version is outdated. */
     ExpiredApp,
+    /** No traffic data is available because the server responded with an error (other than “not found”), or no request was made yet. */
     Unknown
   };
 
@@ -166,11 +180,18 @@ public:
   static void DeserializeTrafficValues(std::vector<uint8_t> const & data, std::vector<SpeedGroup> & result);
 
 private:
+  /**
+   * @brief Result of the last request to the server.
+   */
   enum class ServerDataStatus
   {
+    /** New data was returned. */
     New,
+    /** Data has not changed since the last request. */
     NotChanged,
+    /** The URL was not found on the server. */
     NotFound,
+    /** An error prevented data from being requested, or the server responded with an error. */
     Error,
   };
 
