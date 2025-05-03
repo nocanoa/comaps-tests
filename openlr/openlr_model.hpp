@@ -121,4 +121,5 @@ struct LinearSegment
 };
 
 std::string DebugPrint(LinearSegmentSource source);
+std::string DebugPrint(FunctionalRoadClass frc);
 }  // namespace openlr

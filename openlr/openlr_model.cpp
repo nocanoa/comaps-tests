@@ -38,4 +38,21 @@ string DebugPrint(LinearSegmentSource source)
   }
   UNREACHABLE();
 }
+
+string DebugPrint(FunctionalRoadClass frc)
+{
+  switch (frc)
+  {
+  case FunctionalRoadClass::FRC0: return "FRC0";
+  case FunctionalRoadClass::FRC1: return "FRC1";
+  case FunctionalRoadClass::FRC2: return "FRC2";
+  case FunctionalRoadClass::FRC3: return "FRC3";
+  case FunctionalRoadClass::FRC4: return "FRC4";
+  case FunctionalRoadClass::FRC5: return "FRC5";
+  case FunctionalRoadClass::FRC6: return "FRC6";
+  case FunctionalRoadClass::FRC7: return "FRC7";
+  case FunctionalRoadClass::NotAValue: return "NotAValue";
+  }
+  UNREACHABLE();
+}
 }  // namespace openlr
