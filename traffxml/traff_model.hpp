@@ -162,8 +162,8 @@ struct TraffLocation
 
 struct TraffEvent
 {
-  EventClass m_Class = EventClass::Invalid;
-  EventType m_Type = EventType::Invalid;
+  EventClass m_class = EventClass::Invalid;
+  EventType m_type = EventType::Invalid;
   std::optional<uint8_t> m_length;
   std::optional<uint8_t> m_probability;
   // TODO optional quantifier

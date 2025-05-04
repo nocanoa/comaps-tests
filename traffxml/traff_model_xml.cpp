@@ -503,7 +503,7 @@ bool EventFromXml(pugi::xml_node node, TraffEvent & event)
     LOG(LWARNING, ("No event class specified, ignoring"));
     return false;
   }
-  if (!EnumFromXml(node.attribute("class"), event.m_Class, kEventClassMap))
+  if (!EnumFromXml(node.attribute("class"), event.m_class, kEventClassMap))
     return false;
 
   std::string eventType;
@@ -517,7 +517,7 @@ bool EventFromXml(pugi::xml_node node, TraffEvent & event)
     LOG(LWARNING, ("Event type", eventType, "does not match event class", eventClass, "(ignoring)"));
     return false;
   }
-  if (!EnumFromXml(node.attribute("type"), event.m_Type, kEventTypeMap))
+  if (!EnumFromXml(node.attribute("type"), event.m_type, kEventTypeMap))
     return false;
 
   event.m_length = OptionalIntegerFromXml(node.attribute("length"));

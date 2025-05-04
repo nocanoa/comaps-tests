@@ -181,8 +181,8 @@ std::string DebugPrint(TraffEvent event)
 {
   std::ostringstream os;
   os << "TraffEvent { ";
-  os << "class: " << DebugPrint(event.m_Class) << ", ";
-  os << "type: " << DebugPrint(event.m_Type) << ", ";
+  os << "class: " << DebugPrint(event.m_class) << ", ";
+  os << "type: " << DebugPrint(event.m_type) << ", ";
   os << "length: " << (event.m_length ? std::to_string(event.m_length.value()) : "nullopt") << ", ";
   os << "probability: " << (event.m_probability ? std::to_string(event.m_probability.value()) : "nullopt") << ", ";
   // TODO optional quantifier
