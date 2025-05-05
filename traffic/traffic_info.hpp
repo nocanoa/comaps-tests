@@ -107,6 +107,7 @@ public:
 
   TrafficInfo(MwmSet::MwmId const & mwmId, int64_t currentDataVersion);
 
+  TrafficInfo(MwmSet::MwmId const & mwmId, Coloring && coloring);
   /**
    * @brief Returns a `TrafficInfo` instance with pre-populated traffic information.
    * @param coloring The traffic information (road segments and their speed group)
