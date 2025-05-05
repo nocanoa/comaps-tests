@@ -462,9 +462,14 @@ bool LocationFromXml(pugi::xml_node node, TraffLocation & location)
   location.m_via = OptionalPointFromXml(node.child("via"));
   location.m_notVia = OptionalPointFromXml(node.child("not_via"));
 
-  if (!location.m_from && !location.m_to && !location.m_at)
+  int numPoints = 0;
+  for (std::optional<Point> point : {location.m_from, location.m_to, location.m_at})
+    if (point)
+      numPoints++;
+  // single-point locations are not supported, locations without points are not valid
+  if (numPoints < 2)
   {
-    LOG(LWARNING, ("Neither from, to nor at point is specified, ignoring location"));
+    LOG(LWARNING, ("Only", numPoints, "points of from/to/at specified, ignoring location"));
     return false;
   }
 

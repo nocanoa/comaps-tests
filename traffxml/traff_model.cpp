@@ -1,9 +1,246 @@
 #include "traffxml/traff_model.hpp"
 
+#include "base/logging.hpp"
+
+#include "geometry/mercator.hpp"
+
 using namespace std;
 
 namespace traffxml
 {
+const std::map<EventType, traffic::SpeedGroup> kEventSpeedGroupMap{
+  // TODO Activity*, Authority*, Carpool* (not in enum yet)
+  {EventType::CongestionHeavyTraffic, traffic::SpeedGroup::G4},
+  {EventType::CongestionLongQueue, traffic::SpeedGroup::G0},
+  {EventType::CongestionNone, traffic::SpeedGroup::G5},
+  {EventType::CongestionNormalTraffic, traffic::SpeedGroup::G5},
+  {EventType::CongestionQueue, traffic::SpeedGroup::G2},
+  {EventType::CongestionQueueLikely, traffic::SpeedGroup::G3},
+  {EventType::CongestionSlowTraffic, traffic::SpeedGroup::G3},
+  {EventType::CongestionStationaryTraffic, traffic::SpeedGroup::G1},
+  {EventType::CongestionStationaryTrafficLikely, traffic::SpeedGroup::G2},
+  {EventType::CongestionTrafficBuildingUp, traffic::SpeedGroup::G4},
+  {EventType::CongestionTrafficCongestion, traffic::SpeedGroup::G3}, // TODO or G2? Unquantified, below normal
+  {EventType::CongestionTrafficFlowingFreely, traffic::SpeedGroup::G5},
+  {EventType::CongestionTrafficHeavierThanNormal, traffic::SpeedGroup::G4},
+  {EventType::CongestionTrafficLighterThanNormal, traffic::SpeedGroup::G5},
+  {EventType::CongestionTrafficMuchHeavierThanNormal, traffic::SpeedGroup::G3},
+  {EventType::CongestionTrafficProblem, traffic::SpeedGroup::G3},  // TODO or G2? Unquantified, below normal
+  // TODO Construction* (not in enum yet)
+  /*
+   * Some delay types have a duration which depends on the route. This is better expressed as a
+   * speed group, although the mapping may be somewhat arbitrary and may need to be corrected.
+   */
+  {EventType::DelayDelay, traffic::SpeedGroup::G2},
+  {EventType::DelayDelayPossible, traffic::SpeedGroup::G3},
+  {EventType::DelayLongDelay, traffic::SpeedGroup::G1},
+  {EventType::DelayVeryLongDelay, traffic::SpeedGroup::G0},
+  // TODO Environment*, EquipmentStatus*, Hazard*, Incident* (not in enum yet)
+  // TODO complete Restriction* (not in enum yet)
+  {EventType::RestrictionBlocked, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionBlockedAhead, traffic::SpeedGroup::TempBlock},
+  //{EventType::RestrictionCarriagewayBlocked, traffic::SpeedGroup::TempBlock}, // TODO FIXME other carriageways may still be open
+  //{EventType::RestrictionCarriagewayClosed, traffic::SpeedGroup::TempBlock},  // TODO FIXME other carriageways may still be open
+  {EventType::RestrictionClosed, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionClosedAhead, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionEntryBlocked, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionExitBlocked, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionRampBlocked, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionRampClosed, traffic::SpeedGroup::TempBlock},
+  {EventType::RestrictionSpeedLimit, traffic::SpeedGroup::G4},
+  // TODO Security*, Transport*, Weather* (not in enum yet)
+};
+
+// none of the currently define events imply an explicit maxspeed
+#if 0
+const std::map<EventType, uint8_t> kEventMaxspeedMap{
+  // TODO Activity*, Authority*, Carpool* (not in enum yet)
+  // TODO Construction* (not in enum yet)
+  // TODO Environment*, EquipmentStatus*, Hazard*, Incident* (not in enum yet)
+  // TODO complete Restriction* (not in enum yet)
+  // TODO Security*, Transport*, Weather* (not in enum yet)
+};
+#endif
+
+const std::map<EventType, uint16_t> kEventDelayMap{
+  // TODO Activity*, Authority*, Carpool* (not in enum yet)
+  // TODO Construction* (not in enum yet)
+  //{EventType::DelayDelay, },             // mapped to speed group
+  //{EventType::DelayDelayPossible, },     // mapped to speed group
+  //{EventType::DelayLongDelay, },         // mapped to speed group
+  {EventType::DelaySeveralHours, 150},     // assumption: 2.5 hours
+  {EventType::DelayUncertainDuration, 60}, // assumption: 1 hour
+  //{EventType::DelayVeryLongDelay, },     // mapped to speed group
+  // TODO Environment*, EquipmentStatus*, Hazard*, Incident* (not in enum yet)
+  // TODO complete Restriction* (not in enum yet)
+  // TODO Security*, Transport*, Weather* (not in enum yet)
+};
+
+openlr::LocationReferencePoint Point::ToLrp()
+{
+  openlr::LocationReferencePoint result;
+  result.m_latLon = ms::LatLon(this->m_coordinates.m_lat, this->m_coordinates.m_lon);
+  return result;
+}
+
+openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool backwards)
+{
+  openlr::LinearLocationReference locationReference;
+  locationReference.m_points.clear();
+  std::vector<Point> points;
+  if (m_from)
+    points.push_back(m_from.value());
+  if (m_at)
+    points.push_back(m_at.value());
+  else if (m_via)
+    points.push_back(m_via.value());
+  if (m_to)
+    points.push_back(m_to.value());
+  if (backwards)
+    std::reverse(points.begin(), points.end());
+  // m_notVia is ignored as OpenLR does not support this functionality.
+  // TODO do we ensure a minimum of two reference points (from/to/at) when building the location?
+  CHECK_GREATER(points.size(), 1, ("At least two reference points must be given"));
+  for (auto point : points)
+  {
+    openlr::LocationReferencePoint lrp = point.ToLrp();
+    if (!locationReference.m_points.empty())
+    {
+      locationReference.m_points.back().m_distanceToNextPoint
+          = GuessDnp(locationReference.m_points.back(), lrp);
+      locationReference.m_points.back().m_functionalRoadClass = GetFrc();
+    }
+    locationReference.m_points.push_back(lrp);
+  }
+  return locationReference;
+}
+
+// TODO make segment ID in OpenLR a string value, and store messageId
+std::vector<openlr::LinearSegment> TraffLocation::ToOpenLrSegments(std::string & messageId)
+{
+  // Convert the location to a format understood by the OpenLR decoder.
+  std::vector<openlr::LinearSegment> segments;
+  int dirs = (m_directionality == Directionality::BothDirections) ? 2 : 1;
+  for (int dir = 0; dir < dirs; dir++)
+  {
+    openlr::LinearSegment segment;
+    // TODO make this a reference to the TraFF message ID
+    segment.m_segmentId = 42;
+    /*
+     * Segments generated from coordinates can have any number of points. Each point, except for
+     * the last point, must indicate the distance to the next point. Line properties (functional
+     * road class (FRC), form of way, bearing) or path properties other than distance to next point
+     * (lowest FRC to next point, againstDrivingDirection) are ignored.
+     * Segment length is never evaluated.
+     * TODO update OpenLR decoder to make all line and path properties optional.
+     */
+    segment.m_source = openlr::LinearSegmentSource::FromCoordinatesTag;
+    segment.m_locationReference = this->ToLinearLocationReference(dir == 0 ? false : true);
+
+    segments.push_back(segment);
+  }
+  return segments;
+}
+
+openlr::FunctionalRoadClass TraffLocation::GetFrc()
+{
+  if (!m_roadClass)
+    return openlr::FunctionalRoadClass::NotAValue;
+  switch (m_roadClass.value())
+  {
+    case RoadClass::Motorway: return openlr::FunctionalRoadClass::FRC0;
+    case RoadClass::Trunk: return openlr::FunctionalRoadClass::FRC0;
+    case RoadClass::Primary: return openlr::FunctionalRoadClass::FRC1;
+    case RoadClass::Secondary: return openlr::FunctionalRoadClass::FRC2;
+    case RoadClass::Tertiary: return openlr::FunctionalRoadClass::FRC3;
+    /*
+     * TODO Revisit FRC for Other.
+     * Other corresponds to FRC4–7.
+     * FRC4 matches secondary/tertiary (zero score) and anything below (full score).
+     * FRC5–7 match anything below tertiary (full score); secondary/tertiary never match.
+     * Primary and above never matches any of these FRCs.
+     */
+    case RoadClass::Other: return openlr::FunctionalRoadClass::FRC4;
+  }
+  UNREACHABLE();
+}
+
+std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
+{
+  // no events, no impact
+  if (m_events.empty())
+    return std::nullopt;
+
+  // examine events
+  std::vector<TrafficImpact> impacts;
+  for (auto event : m_events)
+  {
+    TrafficImpact impact;
+
+    if (auto it = kEventSpeedGroupMap.find(event.m_type); it != kEventSpeedGroupMap.end())
+      impact.m_speedGroup = it->second;
+
+    if (event.m_speed)
+      impact.m_maxspeed = event.m_speed.value();
+    // TODO if no explicit speed given, look up in kEventMaxspeedMap (once we have entries)
+
+    // TODO if event is in delay class and has an explicit duration quantifier, use that and skip the map lookup.
+    if (auto it = kEventDelayMap.find(event.m_type); it != kEventDelayMap.end())
+      impact.m_delayMins = it->second;
+
+    // TempBlock overrules everything else, return immediately
+    if (impact.m_speedGroup == traffic::SpeedGroup::TempBlock)
+      return impact;
+    // if there is no actual impact, discard
+    if ((impact.m_maxspeed < kMaxspeedNone)
+        || (impact.m_delayMins > 0)
+        || (impact.m_speedGroup != traffic::SpeedGroup::Unknown))
+      impacts.push_back(impact);
+  }
+
+  if (impacts.empty())
+    return std::nullopt;
+
+  TrafficImpact result;
+  for (auto impact : impacts)
+  {
+    ASSERT(impact.m_speedGroup != traffic::SpeedGroup::TempBlock, ("Got SpeedGroup::TempBlock, which should not happen at this stage"));
+    if (result.m_speedGroup == traffic::SpeedGroup::Unknown)
+      result.m_speedGroup = impact.m_speedGroup;
+    // TempBlock cannot occur here, so we can do just a simple comparison
+    else if ((impact.m_speedGroup != traffic::SpeedGroup::Unknown) && (impact.m_speedGroup < result.m_speedGroup))
+      result.m_speedGroup = impact.m_speedGroup;
+
+    if (impact.m_maxspeed < result.m_maxspeed)
+      result.m_maxspeed = impact.m_maxspeed;
+
+    if (impact.m_delayMins > result.m_delayMins)
+      result.m_delayMins = impact.m_delayMins;
+  }
+  if ((result.m_maxspeed < kMaxspeedNone)
+      || (result.m_delayMins > 0)
+      || (result.m_speedGroup != traffic::SpeedGroup::Unknown))
+    return result;
+  else
+    // should never happen, unless we have a bug somewhere
+    return std::nullopt;
+}
+
+uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2)
+{
+  double doe = mercator::DistanceOnEarth(mercator::FromLatLon(p1.m_latLon),
+                                         mercator::FromLatLon(p2.m_latLon));
+  /*
+   * The tolerance factor is currently 1/0.6, or ~1.67, so that direct distance is just at the
+   * lower boundary for `openlr::LinearSegmentSource::FromLocationReferenceTag`. Since we use
+   * `openlr::LinearSegmentSource::FromCoordinatesTag`, different tolerance values apply,
+   * so direct distance is well within the lower boundary, where the upper boundary is ~6.67 times
+   * the direct distance. This should work even in mountain areas, where the shortest route from
+   * one valley to the next, using long-distance roads, can be up to ~3 times the direct distance.
+   */
+  return doe / 0.6f + 0.5f;
+}
+
 /*
 string DebugPrint(LinearSegmentSource source)
 {
@@ -138,6 +375,17 @@ std::string DebugPrint(EventType eventType)
     // TODO Security*, Transport*, Weather* (not in enum yet)
   }
   UNREACHABLE();
+}
+
+std::string DebugPrint(TrafficImpact impact)
+{
+  std::ostringstream os;
+  os << "TrafficImpact { ";
+  os << "speedGroup: " << DebugPrint(impact.m_speedGroup) << ", ";
+  os << "maxspeed: " << (impact.m_maxspeed == kMaxspeedNone ? "none" : std::to_string(impact.m_maxspeed)) << ", ";
+  os << "delayMins: " << impact.m_delayMins;
+  os << " }";
+  return os.str();
 }
 
 std::string DebugPrint(Point point)

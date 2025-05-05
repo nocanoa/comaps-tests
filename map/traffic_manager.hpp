@@ -11,6 +11,8 @@
 
 #include "openlr/openlr_decoder.hpp"
 
+#include "traffxml/traff_model.hpp"
+
 #include "geometry/point2d.hpp"
 #include "geometry/polyline2d.hpp"
 #include "geometry/screenbase.hpp"
@@ -180,6 +182,85 @@ private:
   };
 
   /**
+   * @brief Subscribes to a traffic service.
+   *
+   * @param mwms The MWMs for which data is needed.
+   * @return true on success, false on failure.
+   */
+  bool Subscribe(std::set<MwmSet::MwmId> & mwms);
+
+  /**
+   * @brief Changes an existing traffic subscription.
+   *
+   * @param mwms The new set of MWMs for which data is needed.
+   * @return true on success, false on failure.
+   */
+  bool ChangeSubscription(std::set<MwmSet::MwmId> & mwms);
+
+  /**
+   * @brief Ensures we have a subscription covering all currently active MWMs.
+   *
+   * This method subscribes to a traffic service if not already subscribed, or changes the existing
+   * subscription otherwise.
+   *
+   * @return true on success, false on failure.
+   */
+  bool SetSubscriptionArea();
+
+  /**
+   * @brief Unsubscribes from a traffic service we are subscribed to.
+   */
+  void Unsubscribe();
+
+  /**
+   * @brief Whether we are currently subscribed to a traffic service.
+   * @return
+   */
+  bool IsSubscribed();
+
+  /**
+   * @brief Polls the traffic service for updates.
+   *
+   * @return true on success, false on failure.
+   */
+  bool Poll();
+
+  /**
+   * @brief Processes a traffic feed received through a push operation.
+   *
+   * Push operations are not supported on all platforms.
+   *
+   * @param feed The traffic feed.
+   */
+  void Push(traffxml::TraffFeed feed);
+
+  /**
+   * @brief Merges new messages from `m_feeds` into a message cache.
+   *
+   * Existing messages in `cache` will be overwritten by newer messages with the same ID in `m_feeds`.
+   *
+   * @param cache The message cache.
+   */
+  void UpdateMessageCache(std::map<std::string, traffxml::TraffMessage> & cache);
+
+  /**
+   * @brief Initializes the data sources for an OpenLR decoder.
+   *
+   * @param dataSources Receives the data sources for the decoder (one per worker thread).
+   */
+  void InitializeDataSources(std::vector<FrozenDataSource> &dataSources);
+
+  /**
+   * @brief Decodes a single message to its segments and their speed groups.
+   *
+   * @param decoder The OpenLR decoder instance.
+   * @param message The message to decode.
+   * @param trafficCache The cache in which all decoded paths with their speed groups will be stored.
+   */
+  void DecodeMessage(openlr::OpenLRDecoder &decoder, traffxml::TraffMessage & message,
+                     std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache);
+
+  /**
    * @brief Event loop for the traffic worker thread.
    *
    * This method runs an event loop, which blocks until woken up or a timeout equivalent to the
@@ -199,8 +280,18 @@ private:
    * @param mwms Receives a list of MWMs for which to update traffic data.
    * @return `true` during normal operation, `false` during teardown (signaling the event loop to exit).
    */
+  // TODO mwms argument is no longer needed
   bool WaitForRequest(std::vector<MwmSet::MwmId> & mwms);
 
+  /**
+   * @brief Processes new traffic data.
+   *
+   * @param trafficCache The new per-MWM colorings (preprocessed traffic information).
+   */
+  void OnTrafficDataUpdate(std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache);
+
+// TODO no longer needed
+#ifdef traffic_dead_code
   void OnTrafficDataResponse(traffic::TrafficInfo && info);
   /**
    * @brief Processes a failed traffic request.
@@ -218,6 +309,7 @@ private:
    * @param info
    */
   void OnTrafficRequestFailed(traffic::TrafficInfo && info);
+#endif
 
   /**
    * @brief Updates `activeMwms` and requests traffic data.
@@ -275,7 +367,10 @@ private:
 
   void Clear();
   void ClearCache(MwmSet::MwmId const & mwmId);
+// TODO no longer needed
+#ifdef traffic_dead_code
   void ShrinkCacheToAllowableSize();
+#endif
 
   /**
    * @brief Updates the state of the traffic manager based on the state of all MWMs used by the renderer.
@@ -323,8 +418,11 @@ private:
 
   bool m_hasSimplifiedColorScheme = true;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
   size_t m_maxCacheSizeBytes;
   size_t m_currentCacheSizeBytes = 0;
+#endif
 
   std::map<MwmSet::MwmId, CacheEntry> m_mwmCache;
 
@@ -378,6 +476,41 @@ private:
    * @brief Worker thread which fetches traffic updates.
    */
   threads::SimpleThread m_thread;
+
+  /**
+   * @brief Whether active MWMs have changed since the last request.
+   */
+  bool m_activeMwmsChanged = false;
+
+  /**
+   * @brief The subscription ID received from the traffic server.
+   *
+   * An empty subscription ID means no subscription.
+   */
+  std::string m_subscriptionId;
+
+  /**
+   * @brief Whether a poll operation is needed.
+   *
+   * Used in the worker thread. A poll operation is needed unless a subscription (or subscription
+   * change) operation was performed before and a feed was received a part of it.
+   */
+  bool m_isPollNeeded;
+
+  /**
+   * @brief Queue of feeds waiting to be processed.
+   *
+   * Threads must lock `m_mutex` before accessing `m_feeds`, as some platforms may receive feeds
+   * on multiple threads.
+   */
+  std::vector<traffxml::TraffFeed> m_feeds;
+
+  /**
+   * @brief Cache of all currently active TraFF messages.
+   *
+   * Keys are message IDs, values are messages.
+   */
+  std::map<std::string, traffxml::TraffMessage> m_messageCache;
 };
 
 extern std::string DebugPrint(TrafficManager::TrafficState state);

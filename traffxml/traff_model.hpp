@@ -5,11 +5,17 @@
 #include "geometry/latlon.hpp"
 #include "geometry/point2d.hpp"
 
+#include "openlr/openlr_model.hpp"
+
+#include "traffic/speed_groups.hpp"
+
 #include <string>
 #include <vector>
 
 namespace traffxml
 {
+constexpr uint8_t kMaxspeedNone = 255;
+
 /**
  * @brief Date and time decoded from ISO 8601.
  *
@@ -55,6 +61,13 @@ enum class RoadClass
   Other
 };
 
+/*
+ * When adding a new event class to this enum, be sure to do the following:
+ *
+ * * in `traff_model_xml.cpp`, add the corresponding mapping to `kEventClassMap`
+ * * in `traff_model.cpp`, extend `DebugPrint(EventClass)` to correctly process the new event classes
+ * * in this file, add event types for this class to `EventType`
+ */
 enum class EventClass
 {
   Invalid,
@@ -74,6 +87,16 @@ enum class EventClass
   Weather
 };
 
+/*
+ * When adding a new event type to this enum, be sure to do the following:
+ *
+ * * in `traff_model_xml.cpp`, add the corresponding mapping to `kEventTypeMap`
+ * * in `traff_model.cpp`:
+ *   * add speed group mappings in `kEventSpeedGroupMap`, if any
+ *   * add maxspeed mappings in `kEventMaxspeedMap`, if any (uncomment if needed)
+ *   * add delay mappings in `kEventDelayMap`, if any
+ *   * extend `DebugPrint(TraffEvent)` to correctly process the new events
+ */
 enum class EventType
 {
   Invalid,
@@ -128,8 +151,57 @@ enum class EventType
   // TODO Security*, Transport*, Weather*
 };
 
+/**
+ * @brief Represents the impact of one or more traffic events.
+ *
+ * Impact can be expressed in three ways:
+ *
+ * Traffic may flow at a certain percentage of the posted limit, often divided in bins. This is
+ * used by some traffic services which report e.g. “slow traffic”, “stationary traffic” or
+ * “queues”, and maps to speed groups in a straightforward way.
+ *
+ * Traffic may flow at, or be restricted to, a given speed. This is common with traffic flow
+ * measurement data, or with temporary speed limits. Converting this to a speed group requires
+ * knowledge of the regular speed limit.
+ *
+ * There may be a fixed delay, expressed as a duration in time. This may happen at checkpoints,
+ * at sections where traffic flow is limited or where there is single alternate-lane traffic.
+ * As the routing data model does not provide for explicit delays, they have to be converted into
+ * speed groups. Again, this requires knowledge of the regular travel time along the route, as well
+ * as its length.
+ *
+ * Closures can be expressed by setting `m_speedGroup` to `traffic::SpeedGroup::TempBlock`. If that
+ * is the case, the other struct members are to be ignored.
+ */
+struct TrafficImpact
+{
+  /**
+   * @brief The speed group for the affected segments, or `traffic::SpeedGroup::Unknown` if unknown.
+   */
+  traffic::SpeedGroup m_speedGroup = traffic::SpeedGroup::Unknown;
+
+  /**
+   * @brief The speed limit, or speed of flowing traffic; `kMaxspeedNone` if none or unknown.
+   */
+  uint8_t m_maxspeed = kMaxspeedNone;
+
+  /**
+   * @brief The delay in minutes; 0 if none or unknown.
+   */
+  uint16_t m_delayMins = 0;
+};
+
 struct Point
 {
+  /**
+   * @brief Converts the point to an OpenLR location reference point.
+   *
+   * Only coordinates are populated.
+   *
+   * @return An OpenLR LRP with the coordinates of the point.
+   */
+  openlr::LocationReferencePoint ToLrp();
+
   // TODO role?
   ms::LatLon m_coordinates = ms::LatLon::Zero();
   // TODO optional float m_distance;
@@ -139,6 +211,34 @@ struct Point
 
 struct TraffLocation
 {
+  /**
+   * @brief Converts the location to an OpenLR linear location reference.
+   *
+   * @param backwards If true, gnerates a linear location reference for the backwards direction,
+   * with the order of points reversed.
+   * @return An OpenLR linear location reference which corresponds to the location.
+   */
+  openlr::LinearLocationReference ToLinearLocationReference(bool backwards);
+
+  /**
+   * @brief Converts the location to a vector of OpenLR segments.
+   *
+   * Depending on the directionality, the resulting vector will hold one or two elements: one for
+   * the forward direction, and for bidirectional locations, a second one for the backward
+   * direction.
+   *
+   * @param messageId The message ID
+   * @return A vector holding the resulting OpenLR segments.
+   */
+  std::vector<openlr::LinearSegment> ToOpenLrSegments(std::string & messageId);
+
+  /**
+   * @brief Returns the OpenLR functional road class (FRC) matching `m_roadClass`.
+   *
+   * @return The FRC.
+   */
+  openlr::FunctionalRoadClass GetFrc();
+
   std::optional<std::string> m_country;
   std::optional<std::string> m_destination;
   std::optional<std::string> m_direction;
@@ -173,6 +273,20 @@ struct TraffEvent
 
 struct TraffMessage
 {
+  /**
+   * @brief Retrieves the traffic impact of all events.
+   *
+   * If the message has multiple events, the traffic impact is determined separately for each
+   * event and then aggregated. Aggregation takes the most restrictive value in each category
+   * (speed group, maxspeed, delay).
+   *
+   * If the aggregated traffic impact includes `SpeedGroup::TempBlock`, its other members are to
+   * be considered invalid.
+   *
+   * @return The aggregated traffic impact, or `std::nullopt` if the message has no events with traffic impact.
+   */
+  std::optional<TrafficImpact> GetTrafficImpact();
+
   std::string m_id;
   IsoTime m_receiveTime = {};
   IsoTime m_updateTime = {};
@@ -189,12 +303,27 @@ struct TraffMessage
 
 using TraffFeed = std::vector<TraffMessage>;
 
+/**
+ * @brief Guess the distance to the next point.
+ *
+ * This is calculated as direct distance, multiplied with a tolerance factor to account for the
+ * fact that the road is not always a straight line.
+ *
+ * The result can be used to provide some semi-valid DNP values.
+ *
+ * @param p1 The first point.
+ * @param p2 The second point.
+ * @return The approximate distance on the ground, in meters.
+ */
+uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2);
+
 std::string DebugPrint(IsoTime time);
 std::string DebugPrint(Directionality directionality);
 std::string DebugPrint(Ramps ramps);
 std::string DebugPrint(RoadClass roadClass);
 std::string DebugPrint(EventClass eventClass);
 std::string DebugPrint(EventType eventType);
+std::string DebugPrint(TrafficImpact impact);
 std::string DebugPrint(Point point);
 std::string DebugPrint(TraffLocation location);
 std::string DebugPrint(TraffEvent event);

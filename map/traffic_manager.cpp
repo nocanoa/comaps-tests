@@ -16,6 +16,8 @@
 
 #include "platform/platform.hpp"
 
+#include "traffxml/traff_model_xml.hpp"
+
 using namespace std::chrono;
 
 namespace
@@ -25,6 +27,10 @@ auto constexpr kOutdatedDataTimeout = minutes(5) + kUpdateInterval;
 auto constexpr kNetworkErrorTimeout = minutes(20);
 
 auto constexpr kMaxRetriesCount = 5;
+
+// Number of identical data sources to create for the OpenLR decoder, one source per worker thread.
+// TODO how to determine the best number of worker threads?
+auto constexpr kNumDecoderThreads = 1;
 } // namespace
 
 TrafficManager::CacheEntry::CacheEntry()
@@ -53,7 +59,10 @@ TrafficManager::TrafficManager(const CountryParentNameGetterFn &countryParentNam
   , m_observer(observer)
   , m_currentDataVersion(0)
   , m_state(TrafficState::Disabled)
+// TODO no longer needed
+#ifdef traffic_dead_code
   , m_maxCacheSizeBytes(maxCacheSizeBytes)
+#endif
   , m_isRunning(true)
   , m_isPaused(false)
   , m_thread(&TrafficManager::ThreadRoutine, this)
@@ -113,7 +122,10 @@ void TrafficManager::SetEnabled(bool enabled)
 
 void TrafficManager::Clear()
 {
+// TODO no longer needed
+#ifdef traffic_dead_code
   m_currentCacheSizeBytes = 0;
+#endif
   m_mwmCache.clear();
   m_lastDrapeMwmsByRect.clear();
   m_lastRoutingMwmsByRect.clear();
@@ -190,6 +202,7 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect,
 
   {
     std::lock_guard<std::mutex> lock(m_mutex);
+    m_activeMwmsChanged = true;
     activeMwms.clear();
     for (auto const & mwm : mwms)
     {
@@ -232,11 +245,309 @@ void TrafficManager::UpdateViewport(ScreenBase const & screen)
   UpdateActiveMwms(screen.ClipRect(), m_lastDrapeMwmsByRect, m_activeDrapeMwms);
 }
 
+// TODO make this work with multiple sources (e.g. Android)
+bool TrafficManager::Subscribe(std::set<MwmSet::MwmId> & mwms)
+{
+  // TODO what if we’re subscribed already?
+  // TODO
+  LOG(LINFO, ("Would subscribe to", mwms));
+  m_subscriptionId = "placeholder_subscription_id";
+  m_isPollNeeded = true; // would be false if we got a feed here
+  return true;
+}
+
+// TODO make this work with multiple sources (e.g. Android)
+bool TrafficManager::ChangeSubscription(std::set<MwmSet::MwmId> & mwms)
+{
+  // TODO what if we’re not subscribed yet?
+  // TODO
+  LOG(LINFO, ("Would change subscription", m_subscriptionId, "to", mwms));
+  m_isPollNeeded = true; // would be false if we got a feed here
+  return true;
+}
+
+bool TrafficManager::SetSubscriptionArea()
+{
+  std::set<MwmSet::MwmId> activeMwms;
+  if (!IsSubscribed())
+  {
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      m_activeMwmsChanged = false;
+      UniteActiveMwms(activeMwms);
+    }
+    if (!Subscribe(activeMwms))
+      return false;
+  }
+  else if (m_activeMwmsChanged)
+  {
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      m_activeMwmsChanged = false;
+      UniteActiveMwms(activeMwms);
+    }
+    if (!ChangeSubscription(activeMwms))
+      return false;
+  }
+  return true;
+}
+
+// TODO make this work with multiple sources (e.g. Android)
+void TrafficManager::Unsubscribe()
+{
+  if (!IsSubscribed())
+    return;
+  // TODO
+  LOG(LINFO, ("Would unsubscribe from", m_subscriptionId));
+  m_subscriptionId.clear();
+}
+
+bool TrafficManager::IsSubscribed()
+{
+  return !m_subscriptionId.empty();
+}
+
+// TODO make this work with multiple sources (e.g. Android)
+// TODO deal with subscriptions rejected by the server (delete, resubscribe)
+bool TrafficManager::Poll()
+{
+  // TODO
+  //std::string path("/home/michael/src/organicmaps/data/test_data/traff/PL-A18-Krzyzowa-Lipiany.xml");
+  std::string path("/home/michael/src/organicmaps/data/test_data/traff/PL-A18-Krzyzowa-Lipiany-bidir.xml");
+  //std::string path("/home/michael/src/organicmaps/data/test_data/traff/LT-A1-Vezaiciai-Endriejavas.xml");
+  pugi::xml_document document;
+  auto const load_result = document.load_file(path.data());
+  if (!load_result)
+  {
+    LOG(LERROR, ("Can't load file", path, ":", load_result.description()));
+    return false;
+  }
+
+  std::setlocale(LC_ALL, "en_US.UTF-8");
+  traffxml::TraffFeed feed;
+  if (traffxml::ParseTraff(document, feed))
+  {
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      m_feeds.push_back(feed);
+    }
+    return true;
+  }
+  else
+  {
+    LOG(LWARNING, ("An error occurred parsing the TraFF feed"));
+    return false;
+  }
+}
+
+void TrafficManager::Push(traffxml::TraffFeed feed)
+{
+  std::lock_guard<std::mutex> lock(m_mutex);
+  m_feeds.push_back(feed);
+}
+
+void TrafficManager::UpdateMessageCache(std::map<std::string, traffxml::TraffMessage> & cache)
+{
+  traffxml::TraffFeed feed;
+  // Thread-safe iteration over m_feeds, releasing the mutex during the loop
+  while (true)
+  {
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      if (!m_feeds.empty())
+      {
+        feed = m_feeds.front();
+        m_feeds.erase(m_feeds.begin());
+      }
+      else
+        break;
+    }
+
+    for (auto message : feed)
+    {
+      LOG(LINFO, ("  message:", message));
+      auto it = cache.find(message.m_id);
+      bool process = (it == cache.end());
+      if (!process)
+        process = (timegm(&(it->second.m_updateTime)) < timegm(&(message.m_updateTime)));
+      if (process)
+        cache.insert_or_assign(message.m_id, message);
+    }
+  }
+}
+
+void TrafficManager::InitializeDataSources(std::vector<FrozenDataSource> & dataSources)
+{
+  /*
+   * TODO can we include all available MWMs in the list (including non-active ones)?
+   * Then we could initialize the decoder once and for all.
+   */
+  ForEachActiveMwm([this, &dataSources](MwmSet::MwmId const & mwmId) {
+    ASSERT(mwmId.IsAlive(), ());
+    // TODO do we need .SyncWithDisk() for the file?
+    for (size_t i = 0; i < dataSources.size(); i++)
+      dataSources[i].RegisterMap(mwmId.GetInfo()->GetLocalFile());
+  });
+}
+
+/*
+ * TODO the OpenLR decoder is designed to handle multiple segments (i.e. locations).
+ * Decoding message by message kind of defeats the purpose.
+ * But after decoding the location, we need to examine the map features we got in order to
+ * determine the speed groups, thus we may need to decode one by one (TBD).
+ * If we batch-decode segments, we need to fix the [partner] segment IDs in the segment and path
+ * structures to accept a TraFF message ID (string) rather than an integer.
+ */
+void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
+                                   traffxml::TraffMessage & message, std::map<std::string,
+                                   traffic::TrafficInfo::Coloring> & trafficCache)
+{
+  if (message.m_location)
+  {
+    // Decode events into consolidated traffic impact
+    std::optional<traffxml::TrafficImpact> impact = message.GetTrafficImpact();
+
+    LOG(LINFO, ("    Impact: ", impact));
+
+    // Skip further processing if there is no impact
+    if (!impact)
+      return;
+
+    // Convert the location to a format understood by the OpenLR decoder.
+    std::vector<openlr::LinearSegment> segments
+        = message.m_location.value().ToOpenLrSegments(message.m_id);
+
+    for (auto segment : segments)
+    {
+      LOG(LINFO, ("    Segment:", segment.m_segmentId));
+      for (int i = 0; i < segment.m_locationReference.m_points.size(); i++)
+      {
+        LOG(LINFO, ("     ", i, ":", segment.m_locationReference.m_points[i].m_latLon));
+        if (i < segment.m_locationReference.m_points.size() - 1)
+        {
+          LOG(LINFO, ("        FRC:", segment.m_locationReference.m_points[i].m_functionalRoadClass));
+          LOG(LINFO, ("        DNP:", segment.m_locationReference.m_points[i].m_distanceToNextPoint));
+        }
+      }
+    }
+
+    // Decode the location into a path on the map.
+    // One path per segment
+    std::vector<openlr::DecodedPath> paths(segments.size());
+    decoder.DecodeV3(segments, kNumDecoderThreads, paths);
+
+    for (size_t i = 0; i < paths.size(); i++)
+    {
+      LOG(LINFO, ("    Path", i));
+      LOG(LINFO, ("      Partner segment ID:", paths[i].m_segmentId));
+      LOG(LINFO, ("      Edges:", paths[i].m_path.size()));
+      for (size_t j = 0; j < paths[i].m_path.size(); j++)
+      {
+        LOG(LINFO, ("       ", paths[i].m_path[j]));
+      }
+    }
+
+    // TODO store maxspeed in edges
+    // store decoded paths and speed groups in trafficCache
+    if (impact)
+    {
+      /*
+       * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
+       * If no maxspeed or delay is set, just give out speed groups.
+       * Else, examine segments, length, normal travel time, travel time considering impact, and
+       * determine the closest matching speed group.
+       */
+      for (size_t i = 0; i < paths.size(); i++)
+        for (size_t j = 0; j < paths[i].m_path.size(); j++)
+        {
+          std::string countryName = paths[i].m_path[j].GetFeatureId().m_mwmId.GetInfo()->GetCountryName();
+          auto fid = paths[i].m_path[j].GetFeatureId().m_index;
+          auto segment = paths[i].m_path[j].GetSegId();
+          uint8_t direction = paths[i].m_path[j].IsForward() ?
+                              traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
+                              traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
+          // TODO process all TrafficImpact fields and determine the speed group based on that
+          trafficCache[countryName][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = impact.value().m_speedGroup;
+        }
+    }
+  }
+}
+
 void TrafficManager::ThreadRoutine()
 {
   std::vector<MwmSet::MwmId> mwms;
   while (WaitForRequest(mwms))
   {
+    // TODO clean out expired messages
+
+    // poll is always needed, unless a new subscription or a subscription change returns a feed
+    m_isPollNeeded = true;
+
+    if (!SetSubscriptionArea())
+    {
+      LOG(LWARNING, ("SetSubscriptionArea failed."));
+      if (!IsSubscribed())
+        // do not skip out of the loop, we may need to process pushed feeds
+        LOG(LWARNING, ("No subscription, no traffic data will be retrieved."));
+    }
+
+    // fetch traffic data if subscribed, unless this has already happened in the previous step
+    if (m_isPollNeeded && IsSubscribed())
+    {
+      if (!Poll())
+      {
+        LOG(LWARNING, ("Poll failed."));
+        // TODO set failed status somewhere and retry
+      }
+    }
+    LOG(LINFO, (m_feeds.size(), "feed(s) in queue"));
+
+    /*
+     * TODO call on a temp struct, then unite with m_messageCache, processing only messages with changes
+     * (adding segments for new messages, removing segments for deleted messages, replacing segments
+     * for updated messages) and leaving all other segments untouched
+     */
+    UpdateMessageCache(m_messageCache);
+    LOG(LINFO, (m_messageCache.size(), "message(s) in cache"));
+
+    // initialize the decoder
+    /*
+     * Access to `DataSource` is not thread-safe. The main app, which works with
+     * `EditableDataSource` (as the map can be edited), wraps map operations into a
+     * `FeaturesLoaderGuard`. The OpenLR decoder expects one `FrozenDataSource` (a read-only
+     * subclass) per worker thread – which works as long as the map is not modified.
+     * Edits are not relevant to the OpenLR decoder. However, if the edits modify MWM files (rather
+     * than being stored separately), this might confuse the `FrozenDataSource`. In this case, we
+     * would need to rewrite the OpenLR decoder to work with a `FeaturesLoaderGuard` (which is
+     * probably the more elegant way to do this anyway).
+     */
+    std::vector<FrozenDataSource> dataSources(kNumDecoderThreads);
+    // TODO test with data source from framework
+    InitializeDataSources(dataSources);
+    openlr::OpenLRDecoder decoder(dataSources, m_countryParentNameGetterFn);
+
+    /*
+     * Map between country names and their colorings.
+     * TODO use MwmId as map keys:
+     * As long as we don’t/can‘t use the framework’s `DataSource` instance for the OpenLR decoder,
+     * `MwmId` instances from the decoder will not match those from the framework because of the
+     * way the identity operator is currently implemented (comparing `MwmInfo` instances rather than
+     * their contents). The ultimate goal is to do matching based on `MwmId`s, but that requires
+     * either running the OpenLR decoder off the shared `DataSource` or changing the way `MwmInfo`
+     * comparison works, eitehr of which may come with regressions and needs to be tested.
+     */
+    std::map<std::string, traffic::TrafficInfo::Coloring> allMwmColoring;
+    for (auto [id, message] : m_messageCache)
+    {
+      LOG(LINFO, (" ", id, ":", message));
+      DecodeMessage(decoder, message, allMwmColoring);
+    }
+
+    // set new coloring for MWMs
+    OnTrafficDataUpdate(allMwmColoring);
+
+// TODO no longer needed
+#ifdef traffic_dead_code
     for (auto const & mwm : mwms)
     {
       if (!mwm.IsAlive())
@@ -265,8 +576,11 @@ void TrafficManager::ThreadRoutine()
         m_trafficETags[mwm] = tag;
       }
     }
+#endif
     mwms.clear();
   }
+  // Calling Unsubscribe() form the worker thread on exit makes thread synchronization easier
+  Unsubscribe();
 }
 
 bool TrafficManager::WaitForRequest(std::vector<MwmSet::MwmId> & mwms)
@@ -335,6 +649,8 @@ void TrafficManager::RequestTrafficData()
   UpdateState();
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 {
   std::lock_guard<std::mutex> lock(m_mutex);
@@ -364,7 +680,57 @@ void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 
   UpdateState();
 }
+#endif
 
+void TrafficManager::OnTrafficDataUpdate(std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache)
+{
+  /*
+   * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
+   *
+   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData().
+   * trafficCache lookup is original code.
+   * TrafficInfo construction is taken fron TheadRoutine(), with modifications (different constructor).
+   * Updating m_mwmCache is from RequestTrafficData(MwmSet::MwmId const &, bool), with modifications.
+   * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with minor modifications
+   */
+  ForEachActiveMwm([this, trafficCache](MwmSet::MwmId const & mwmId) {
+    ASSERT(mwmId.IsAlive(), ());
+    auto tcit = trafficCache.find(mwmId.GetInfo()->GetCountryName());
+    if (tcit != trafficCache.end())
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+
+      traffic::TrafficInfo::Coloring coloring = tcit->second;
+      LOG(LINFO, ("Setting new coloring for", mwmId, "with", coloring.size(), "entries"));
+      traffic::TrafficInfo info(mwmId, std::move(coloring));
+
+      m_mwmCache.try_emplace(mwmId, CacheEntry(steady_clock::now()));
+
+      auto it = m_mwmCache.find(mwmId);
+      if (it != m_mwmCache.end())
+      {
+        it->second.m_isLoaded = true;
+        it->second.m_lastResponseTime = steady_clock::now();
+        it->second.m_isWaitingForResponse = false;
+        it->second.m_lastAvailability = info.GetAvailability();
+
+        UpdateState();
+
+        if (!info.GetColoring().empty())
+        {
+          m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
+                                 static_cast<traffic::TrafficInfo const &>(info));
+
+          // Update traffic colors for routing.
+          m_observer.OnTrafficInfoAdded(std::move(info));
+        }
+      }
+    }
+  });
+}
+
+// TODO no longer needed
+#ifdef traffic_dead_code
 void TrafficManager::OnTrafficDataResponse(traffic::TrafficInfo && info)
 {
   {
@@ -401,6 +767,7 @@ void TrafficManager::OnTrafficDataResponse(traffic::TrafficInfo && info)
     m_observer.OnTrafficInfoAdded(std::move(info));
   }
 }
+#endif
 
 void TrafficManager::UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const
 {
@@ -408,6 +775,8 @@ void TrafficManager::UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const
   activeMwms.insert(m_activeRoutingMwms.cbegin(), m_activeRoutingMwms.cend());
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 void TrafficManager::ShrinkCacheToAllowableSize()
 {
   // Calculating number of different active mwms.
@@ -429,6 +798,7 @@ void TrafficManager::ShrinkCacheToAllowableSize()
     }
   }
 }
+#endif
 
 void TrafficManager::ClearCache(MwmSet::MwmId const & mwmId)
 {
@@ -438,8 +808,11 @@ void TrafficManager::ClearCache(MwmSet::MwmId const & mwmId)
 
   if (it->second.m_isLoaded)
   {
+// TODO no longer needed
+#ifdef traffic_dead_code
     ASSERT_GREATER_OR_EQUAL(m_currentCacheSizeBytes, it->second.m_dataSize, ());
     m_currentCacheSizeBytes -= it->second.m_dataSize;
+#endif
 
     m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache, mwmId);
 

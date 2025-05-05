@@ -61,6 +61,8 @@ bool ReadRemoteFile(string const & url, vector<uint8_t> & contents, int & errorC
   return true;
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 string MakeRemoteURL(string const & name, uint64_t version)
 {
   if (string(TRAFFIC_DATA_BASE_URL).empty())
@@ -73,6 +75,7 @@ string MakeRemoteURL(string const & name, uint64_t version)
   ss << url::UrlEncode(name) << TRAFFIC_FILE_EXTENSION;
   return ss.str();
 }
+#endif
 
 char const kETag[] = "etag";
 }  // namespace
@@ -91,6 +94,8 @@ TrafficInfo::RoadSegmentId::RoadSegmentId(uint32_t fid, uint16_t idx, uint8_t di
 uint8_t const TrafficInfo::kLatestKeysVersion = 0;
 uint8_t const TrafficInfo::kLatestValuesVersion = 0;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 TrafficInfo::TrafficInfo(MwmSet::MwmId const & mwmId, int64_t currentDataVersion)
   : m_mwmId(mwmId)
   , m_currentDataVersion(currentDataVersion)
@@ -132,6 +137,7 @@ TrafficInfo::TrafficInfo(MwmSet::MwmId const & mwmId, int64_t currentDataVersion
     LOG(LWARNING, ("Could not initialize traffic keys"));
   }
 }
+#endif
 
 TrafficInfo::TrafficInfo(MwmSet::MwmId const & mwmId, Coloring && coloring)
   : m_mwmId(mwmId)
@@ -154,6 +160,8 @@ void TrafficInfo::SetTrafficKeysForTesting(vector<RoadSegmentId> const & keys)
   m_availability = Availability::IsAvailable;
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 bool TrafficInfo::ReceiveTrafficData(string & etag)
 {
   vector<SpeedGroup> values;
@@ -169,6 +177,7 @@ bool TrafficInfo::ReceiveTrafficData(string & etag)
   }
   return false;
 }
+#endif
 
 SpeedGroup TrafficInfo::GetSpeedGroup(RoadSegmentId const & id) const
 {
@@ -399,6 +408,8 @@ void TrafficInfo::DeserializeTrafficValues(vector<uint8_t> const & data,
   ASSERT_EQUAL(src.Size(), 0, ());
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 // todo(@m) This is a temporary method. Do not refactor it.
 bool TrafficInfo::ReceiveTrafficKeys()
 {
@@ -437,7 +448,10 @@ bool TrafficInfo::ReceiveTrafficKeys()
   m_keys.swap(keys);
   return true;
 }
+#endif
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 TrafficInfo::ServerDataStatus TrafficInfo::ReceiveTrafficValues(string & etag, vector<SpeedGroup> & values)
 {
   if (!m_mwmId.IsAlive())
@@ -481,6 +495,7 @@ TrafficInfo::ServerDataStatus TrafficInfo::ReceiveTrafficValues(string & etag, v
   m_availability = Availability::IsAvailable;
   return ServerDataStatus::New;
 }
+#endif
 
 bool TrafficInfo::UpdateTrafficData(vector<SpeedGroup> const & values)
 {
@@ -504,6 +519,8 @@ bool TrafficInfo::UpdateTrafficData(vector<SpeedGroup> const & values)
   return true;
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 TrafficInfo::ServerDataStatus TrafficInfo::ProcessFailure(platform::HttpClient const & request, int64_t const mwmVersion)
 {
   switch (request.ErrorCode())
@@ -532,6 +549,7 @@ TrafficInfo::ServerDataStatus TrafficInfo::ProcessFailure(platform::HttpClient c
 
   return ServerDataStatus::Error;
 }
+#endif
 
 string DebugPrint(TrafficInfo::RoadSegmentId const & id)
 {
