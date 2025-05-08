@@ -41,7 +41,7 @@ optional<Score> GetFrcScore(Graph::Edge const & e, FunctionalRoadClass functiona
   Score constexpr kMaxScoreForFrc = 25;
 
   if (functionalRoadClass == FunctionalRoadClass::NotAValue)
-    return nullopt;
+    return optional<Score>(0);
 
   auto const hwClass = infoGetter.Get(e.GetFeatureId()).m_hwClass;
 

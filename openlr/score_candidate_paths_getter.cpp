@@ -147,8 +147,7 @@ void ScoreCandidatePathsGetter::GetAllSuitablePaths(ScoreEdgeVec const & startLi
   for (auto const & e : startLines)
   {
     Score roadScore = 0; // Score based on functional road class and form of way.
-    if (source == LinearSegmentSource::FromLocationReferenceTag &&
-        !PassesRestrictionV3(e.m_edge, functionalRoadClass, formOfWay, m_infoGetter, roadScore))
+    if (!PassesRestrictionV3(e.m_edge, functionalRoadClass, formOfWay, m_infoGetter, roadScore))
     {
       continue;
     }
@@ -203,8 +202,7 @@ void ScoreCandidatePathsGetter::GetAllSuitablePaths(ScoreEdgeVec const & startLi
       CHECK(currentEdge.HasRealPart(), ());
 
       Score roadScore = 0;
-      if (source == LinearSegmentSource::FromLocationReferenceTag &&
-          !PassesRestrictionV3(e, functionalRoadClass, formOfWay, m_infoGetter, roadScore))
+      if (!PassesRestrictionV3(e, functionalRoadClass, formOfWay, m_infoGetter, roadScore))
       {
         continue;
       }
