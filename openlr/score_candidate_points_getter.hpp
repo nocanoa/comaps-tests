@@ -37,7 +37,9 @@ private:
                                   ScoreEdgeVec & edgeCandidates);
   void EnrichWithProjectionPoints(m2::PointD const & p, ScoreEdgeVec & edgeCandidates);
 
-  /// \returns true if |p| is a junction and false otherwise.
+  /**
+   * @return true if `p` is a junction and false otherwise.
+   */
   bool IsJunction(m2::PointD const & p);
   Score GetScoreByDistance(m2::PointD const & point, m2::PointD const & candidate);
 
