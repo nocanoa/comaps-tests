@@ -105,6 +105,8 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
   {
     openlr::LocationReferencePoint lrp = point.ToLrp();
     lrp.m_functionalRoadClass = GetFrc();
+    if (m_ramps.value_or(traffxml::Ramps::None) != traffxml::Ramps::None)
+      lrp.m_formOfWay = openlr::FormOfWay::Sliproad;
     if (!locationReference.m_points.empty())
     {
       // TODO use `distance` from TraFF reference point, if available and consistent with direct distance
