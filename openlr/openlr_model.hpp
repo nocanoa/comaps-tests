@@ -151,6 +151,7 @@ struct LinearSegment
   LinearSegmentSource m_source = LinearSegmentSource::NotValid;
   // TODO(mgsergio): Think of using openlr::PartnerSegmentId
   uint32_t m_segmentId = kInvalidSegmentId;
+  std::string m_messageId = "";
   // TODO(mgsergio): Make sure that one segment cannot contain
   // more than one location reference.
   LinearLocationReference m_locationReference;

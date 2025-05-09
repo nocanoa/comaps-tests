@@ -440,6 +440,7 @@ void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
     {
       LOG(LINFO, ("    Path", i));
       LOG(LINFO, ("      Partner segment ID:", paths[i].m_segmentId));
+      LOG(LINFO, ("      Message ID:", paths[i].m_messageId));
       LOG(LINFO, ("      Edges:", paths[i].m_path.size()));
       for (size_t j = 0; j < paths[i].m_path.size(); j++)
       {

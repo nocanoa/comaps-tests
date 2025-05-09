@@ -28,6 +28,7 @@ DECLARE_EXCEPTION(DecodedPathSaveError, RootException);
 struct DecodedPath
 {
   PartnerSegmentId m_segmentId;
+  std::string m_messageId;
   Path m_path;
 };
 

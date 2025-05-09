@@ -234,6 +234,7 @@ public:
     m_graph.ResetFakes();
 
     path.m_segmentId.Set(segment.m_segmentId);
+    path.m_messageId = segment.m_messageId;
 
     auto const & points = segment.GetLRPs();
     CHECK_GREATER(points.size(), 1, ("A segment cannot consist of less than two points"));
@@ -322,6 +323,7 @@ public:
     uint32_t constexpr kMaxProjectionCandidates = 5;
 
     path.m_segmentId.Set(segment.m_segmentId);
+    path.m_messageId = segment.m_messageId;
 
     auto const & points = segment.GetLRPs();
     CHECK_GREATER(points.size(), 1, ("A segment cannot consist of less than two points"));

@@ -127,8 +127,14 @@ std::vector<openlr::LinearSegment> TraffLocation::ToOpenLrSegments(std::string &
   for (int dir = 0; dir < dirs; dir++)
   {
     openlr::LinearSegment segment;
-    // TODO make this a reference to the TraFF message ID
-    segment.m_segmentId = 42;
+    /*
+     * Segment IDs are used internally by the decoder but nowhere else.
+     * Since we decode TraFF locations one at a time, there are at most two segments in a single
+     * decoder instance (one segment per direction). Therefore, a segment ID derived from the
+     * direction is unique within the decoder instance.
+     */
+    segment.m_segmentId = dir;
+    segment.m_messageId = messageId;
     /*
      * Segments generated from coordinates can have any number of points. Each point, except for
      * the last point, must indicate the distance to the next point. Line properties (functional
