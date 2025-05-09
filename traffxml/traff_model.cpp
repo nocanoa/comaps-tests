@@ -104,11 +104,11 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
   for (auto point : points)
   {
     openlr::LocationReferencePoint lrp = point.ToLrp();
+    lrp.m_functionalRoadClass = GetFrc();
     if (!locationReference.m_points.empty())
     {
       locationReference.m_points.back().m_distanceToNextPoint
           = GuessDnp(locationReference.m_points.back(), lrp);
-      locationReference.m_points.back().m_functionalRoadClass = GetFrc();
     }
     locationReference.m_points.push_back(lrp);
   }
