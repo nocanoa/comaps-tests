@@ -107,6 +107,7 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
     lrp.m_functionalRoadClass = GetFrc();
     if (!locationReference.m_points.empty())
     {
+      // TODO use `distance` from TraFF reference point, if available and consistent with direct distance
       locationReference.m_points.back().m_distanceToNextPoint
           = GuessDnp(locationReference.m_points.back(), lrp);
     }
@@ -226,19 +227,37 @@ std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
     return std::nullopt;
 }
 
+// TODO tweak formula based on FRC, FOW and direct distance (lower FRC roads may have more and sharper turns)
 uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2)
 {
   double doe = mercator::DistanceOnEarth(mercator::FromLatLon(p1.m_latLon),
                                          mercator::FromLatLon(p2.m_latLon));
   /*
-   * The tolerance factor is currently 1/0.6, or ~1.67, so that direct distance is just at the
-   * lower boundary for `openlr::LinearSegmentSource::FromLocationReferenceTag`. Since we use
-   * `openlr::LinearSegmentSource::FromCoordinatesTag`, different tolerance values apply,
-   * so direct distance is well within the lower boundary, where the upper boundary is ~6.67 times
-   * the direct distance. This should work even in mountain areas, where the shortest route from
-   * one valley to the next, using long-distance roads, can be up to ~3 times the direct distance.
+   * Acceptance boundaries for candidate paths are currently:
+   *
+   * for `openlr::LinearSegmentSource::FromLocationReferenceTag`, 0.6 to ~1.67 (i.e. 1/0.6) times
+   * the direct distance,
+   *
+   * for `openlr::LinearSegmentSource::FromCoordinatesTag`, 0.25 to 4 times the direct distance.
+   *
+   * A tolerance factor of 1/0.6 is the maximum for which direct distance would be accepted in all
+   * cases, with an upper boundary of at least ~2.78 times the direct distance. However, this may
+   * cause the actual distance to be overestimated and an incorrect route chosen as a result, as
+   * path candidates are scored based on the match between DNP and their length.
+   * Also, since we use `openlr::LinearSegmentSource::FromCoordinatesTag`, acceptance limits are
+   * much wider than that.
+   * In practice, the shortest route from one valley to the next in a mountain area is seldom more
+   * than 3 times the direct distance, based on a brief examination. This would be even within the
+   * limits of direct distance, hence we do not need a large correction factor for this scenario.
+   *
+   * Candidate values:
+   * 1.66 (1/0.6) – upper boundary for direct distance to be just within the most stringent limits
+   * 1.41 (2^0.5) – ratio between two sides of a square and its diagonal
+   * 1.3 – close to the square root of 1.66 (halfway between 1 and 1.66)
+   * 1.19 – close to the square root of 1.41
+   * 1 – direct distance unmodified
    */
-  return doe / 0.6f + 0.5f;
+  return doe * 1.19f + 0.5f;
 }
 
 /*
