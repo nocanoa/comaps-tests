@@ -1,6 +1,9 @@
 #include "map/traffic_manager.hpp"
 
+#include "routing/maxspeeds.hpp"
 #include "routing/routing_helpers.hpp"
+
+#include "routing_common/maxspeed_conversion.hpp"
 
 #include "drape_frontend/drape_engine.hpp"
 #include "drape_frontend/visual_params.hpp"
@@ -454,12 +457,6 @@ void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
     // store decoded paths and speed groups in trafficCache
     if (impact)
     {
-      /*
-       * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
-       * If no maxspeed or delay is set, just give out speed groups.
-       * Else, examine segments, length, normal travel time, travel time considering impact, and
-       * determine the closest matching speed group.
-       */
       for (size_t i = 0; i < paths.size(); i++)
         for (size_t j = 0; j < paths[i].m_path.size(); j++)
         {
@@ -469,8 +466,45 @@ void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
           uint8_t direction = paths[i].m_path[j].IsForward() ?
                               traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
                               traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
+
+          /*
+           * Consolidate TrafficImpact into a single SpeedGroup per segment.
+           * Exception: if TrafficImpact already has SpeedGrup::TempBlock, no need to evaluate
+           * the rest.
+           */
+          traffic::SpeedGroup sg = impact.value().m_speedGroup;
+          /*
+           * TODO also process m_delayMins if greater than zero.
+           * This would require a separate pass over all edges, calculating length,
+           * total (normal) travel time (length / maxspeed), then a speed group based on
+           * (normal_travel_time / delayed_travel_time) – which is the same as the ratio between
+           * reduced and normal speed. That would give us a third potential speed group.
+           */
+          if ((sg != traffic::SpeedGroup::TempBlock) && (impact.value().m_maxspeed != traffxml::kMaxspeedNone))
+          {
+            auto const handle = m_dataSource.GetMwmHandleById(paths[i].m_path[j].GetFeatureId().m_mwmId);
+            auto const speeds = routing::LoadMaxspeeds(handle);
+            if (speeds)
+            {
+              traffic::SpeedGroup fromMaxspeed = traffic::SpeedGroup::Unknown;
+              auto const speed = speeds->GetMaxspeed(paths[i].m_path[j].GetFeatureId().m_index);
+              auto const speedKmPH = speed.GetSpeedKmPH(paths[i].m_path[j].IsForward());
+              if (speedKmPH != routing::kInvalidSpeed)
+              {
+                fromMaxspeed = traffic::GetSpeedGroupByPercentage(impact.value().m_maxspeed * 100.0f / speedKmPH);
+                if ((sg == traffic::SpeedGroup::Unknown) || (fromMaxspeed < sg))
+                  sg = fromMaxspeed;
+              }
+            }
+            /*
+             * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
+             * If no maxspeed or delay is set, just give out speed groups.
+             * Else, examine segments, length, normal travel time, travel time considering impact, and
+             * determine the closest matching speed group.
+             */
+          }
           // TODO process all TrafficImpact fields and determine the speed group based on that
-          trafficCache[countryName][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = impact.value().m_speedGroup;
+          trafficCache[countryName][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = sg;
         }
     }
   }
