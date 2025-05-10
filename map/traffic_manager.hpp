@@ -7,6 +7,7 @@
 
 #include "drape/pointers.hpp"
 
+#include "indexer/data_source.hpp"
 #include "indexer/mwm_set.hpp"
 
 #include "openlr/openlr_decoder.hpp"
@@ -75,7 +76,8 @@ public:
   using TrafficStateChangedFn = std::function<void(TrafficState)>;
   using GetMwmsByRectFn = std::function<std::vector<MwmSet::MwmId>(m2::RectD const &)>;
 
-  TrafficManager(CountryParentNameGetterFn const & countryParentNameGetter,
+  TrafficManager(DataSource & dataSource,
+                 CountryParentNameGetterFn const & countryParentNameGetter,
                  GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
                  traffic::TrafficObserver & observer);
   ~TrafficManager();
@@ -402,6 +404,7 @@ private:
     std::for_each(activeMwms.begin(), activeMwms.end(), std::forward<F>(f));
   }
 
+  DataSource & m_dataSource;
   CountryParentNameGetterFn m_countryParentNameGetterFn;
   GetMwmsByRectFn m_getMwmsByRectFn;
   traffic::TrafficObserver & m_observer;

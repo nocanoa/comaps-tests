@@ -295,7 +295,8 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
             [this]() -> StringsBundle const & { return m_stringsBundle; },
             [this]() -> power_management::PowerManager const & { return m_powerManager; }),
         static_cast<RoutingManager::Delegate &>(*this))
-  , m_trafficManager([this](string const & id) -> string { return m_storage.GetParentIdFor(id); },
+  , m_trafficManager(m_featuresFetcher.GetDataSource(),
+                     [this](string const & id) -> string { return m_storage.GetParentIdFor(id); },
                      bind(&Framework::GetMwmsByRect, this, _1, false /* rough */),
                      kMaxTrafficCacheSizeBytes, m_routingManager.RoutingSession())
   , m_lastReportedCountry(kInvalidCountryId)
