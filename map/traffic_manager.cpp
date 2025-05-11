@@ -60,6 +60,7 @@ TrafficManager::TrafficManager(DataSource & dataSource,
                                traffic::TrafficObserver & observer)
   : m_dataSource(dataSource)
   , m_countryParentNameGetterFn(countryParentNameGetter)
+  , m_openLrDecoder(m_dataSource, countryParentNameGetter)
   , m_getMwmsByRectFn(getMwmsByRectFn)
   , m_observer(observer)
   , m_currentDataVersion(0)
@@ -403,8 +404,7 @@ void TrafficManager::InitializeDataSources(std::vector<FrozenDataSource> & dataS
  * If we batch-decode segments, we need to fix the [partner] segment IDs in the segment and path
  * structures to accept a TraFF message ID (string) rather than an integer.
  */
-void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
-                                   traffxml::TraffMessage & message, std::map<std::string,
+void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<std::string,
                                    traffic::TrafficInfo::Coloring> & trafficCache)
 {
   if (message.m_location)
@@ -439,7 +439,7 @@ void TrafficManager::DecodeMessage(openlr::OpenLRDecoder & decoder,
     // Decode the location into a path on the map.
     // One path per segment
     std::vector<openlr::DecodedPath> paths(segments.size());
-    decoder.DecodeV3(segments, kNumDecoderThreads, paths);
+    m_openLrDecoder.DecodeV3(segments, kNumDecoderThreads, paths);
 
     for (size_t i = 0; i < paths.size(); i++)
     {
@@ -547,22 +547,6 @@ void TrafficManager::ThreadRoutine()
     UpdateMessageCache(m_messageCache);
     LOG(LINFO, (m_messageCache.size(), "message(s) in cache"));
 
-    // initialize the decoder
-    /*
-     * Access to `DataSource` is not thread-safe. The main app, which works with
-     * `EditableDataSource` (as the map can be edited), wraps map operations into a
-     * `FeaturesLoaderGuard`. The OpenLR decoder expects one `FrozenDataSource` (a read-only
-     * subclass) per worker thread – which works as long as the map is not modified.
-     * Edits are not relevant to the OpenLR decoder. However, if the edits modify MWM files (rather
-     * than being stored separately), this might confuse the `FrozenDataSource`. In this case, we
-     * would need to rewrite the OpenLR decoder to work with a `FeaturesLoaderGuard` (which is
-     * probably the more elegant way to do this anyway).
-     */
-    std::vector<FrozenDataSource> dataSources(kNumDecoderThreads);
-    // TODO test with data source from framework
-    InitializeDataSources(dataSources);
-    openlr::OpenLRDecoder decoder(dataSources, m_countryParentNameGetterFn);
-
     /*
      * Map between country names and their colorings.
      * TODO use MwmId as map keys:
@@ -577,7 +561,7 @@ void TrafficManager::ThreadRoutine()
     for (auto [id, message] : m_messageCache)
     {
       LOG(LINFO, (" ", id, ":", message));
-      DecodeMessage(decoder, message, allMwmColoring);
+      DecodeMessage(message, allMwmColoring);
     }
 
     // set new coloring for MWMs

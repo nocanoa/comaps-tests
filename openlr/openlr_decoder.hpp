@@ -40,7 +40,7 @@ public:
     bool const m_multipointsOnly;
   };
 
-  OpenLRDecoder(std::vector<FrozenDataSource> & dataSources,
+  OpenLRDecoder(DataSource & dataSource,
                 CountryParentNameGetter const & countryParentNameGetter);
 
   /**
@@ -62,7 +62,7 @@ private:
   void Decode(std::vector<LinearSegment> const & segments, uint32_t const numThreads,
               std::vector<DecodedPath> & paths);
 
-  std::vector<FrozenDataSource> & m_dataSources;
+  DataSource & m_dataSource;
   CountryParentNameGetter m_countryParentNameGetter;
 };
 }  // namespace openlr

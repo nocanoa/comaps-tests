@@ -259,7 +259,7 @@ private:
    * @param message The message to decode.
    * @param trafficCache The cache in which all decoded paths with their speed groups will be stored.
    */
-  void DecodeMessage(openlr::OpenLRDecoder &decoder, traffxml::TraffMessage & message,
+  void DecodeMessage(traffxml::TraffMessage & message,
                      std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache);
 
   /**
@@ -514,6 +514,13 @@ private:
    * Keys are message IDs, values are messages.
    */
   std::map<std::string, traffxml::TraffMessage> m_messageCache;
+
+  /**
+   * @brief The OpenLR decoder instance.
+   *
+   * Used to decode TraFF locations into road segments on the map.
+   */
+  openlr::OpenLRDecoder m_openLrDecoder;
 };
 
 extern std::string DebugPrint(TrafficManager::TrafficState state);
