@@ -404,7 +404,7 @@ void TrafficManager::InitializeDataSources(std::vector<FrozenDataSource> & dataS
  * If we batch-decode segments, we need to fix the [partner] segment IDs in the segment and path
  * structures to accept a TraFF message ID (string) rather than an integer.
  */
-void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<std::string,
+void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<MwmSet::MwmId,
                                    traffic::TrafficInfo::Coloring> & trafficCache)
 {
   if (message.m_location)
@@ -460,7 +460,6 @@ void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<st
       for (size_t i = 0; i < paths.size(); i++)
         for (size_t j = 0; j < paths[i].m_path.size(); j++)
         {
-          std::string countryName = paths[i].m_path[j].GetFeatureId().m_mwmId.GetInfo()->GetCountryName();
           auto fid = paths[i].m_path[j].GetFeatureId().m_index;
           auto segment = paths[i].m_path[j].GetSegId();
           uint8_t direction = paths[i].m_path[j].IsForward() ?
@@ -504,7 +503,7 @@ void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<st
              */
           }
           // TODO process all TrafficImpact fields and determine the speed group based on that
-          trafficCache[countryName][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = sg;
+          trafficCache[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = sg;
         }
     }
   }
@@ -548,16 +547,11 @@ void TrafficManager::ThreadRoutine()
     LOG(LINFO, (m_messageCache.size(), "message(s) in cache"));
 
     /*
-     * Map between country names and their colorings.
-     * TODO use MwmId as map keys:
-     * As long as we don’t/can‘t use the framework’s `DataSource` instance for the OpenLR decoder,
-     * `MwmId` instances from the decoder will not match those from the framework because of the
-     * way the identity operator is currently implemented (comparing `MwmInfo` instances rather than
-     * their contents). The ultimate goal is to do matching based on `MwmId`s, but that requires
-     * either running the OpenLR decoder off the shared `DataSource` or changing the way `MwmInfo`
-     * comparison works, eitehr of which may come with regressions and needs to be tested.
+     * Map between MWM IDs and their colorings.
      */
-    std::map<std::string, traffic::TrafficInfo::Coloring> allMwmColoring;
+    //TODO should we use std::map<MwmSet::MwmId, std::shared_ptr<const traffic::TrafficInfo::Coloring>> ?
+    // TODO store mwm/segment/speed group map with each message, build allMwmColoring on the fly
+    std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> allMwmColoring;
     for (auto [id, message] : m_messageCache)
     {
       LOG(LINFO, (" ", id, ":", message));
@@ -703,7 +697,7 @@ void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 }
 #endif
 
-void TrafficManager::OnTrafficDataUpdate(std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache)
+void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> & trafficCache)
 {
   /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
@@ -716,7 +710,7 @@ void TrafficManager::OnTrafficDataUpdate(std::map<std::string, traffic::TrafficI
    */
   ForEachActiveMwm([this, trafficCache](MwmSet::MwmId const & mwmId) {
     ASSERT(mwmId.IsAlive(), ());
-    auto tcit = trafficCache.find(mwmId.GetInfo()->GetCountryName());
+    auto tcit = trafficCache.find(mwmId);
     if (tcit != trafficCache.end())
     {
       std::lock_guard<std::mutex> lock(m_mutex);

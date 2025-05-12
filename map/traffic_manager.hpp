@@ -260,7 +260,7 @@ private:
    * @param trafficCache The cache in which all decoded paths with their speed groups will be stored.
    */
   void DecodeMessage(traffxml::TraffMessage & message,
-                     std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache);
+                     std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> &trafficCache);
 
   /**
    * @brief Event loop for the traffic worker thread.
@@ -290,7 +290,7 @@ private:
    *
    * @param trafficCache The new per-MWM colorings (preprocessed traffic information).
    */
-  void OnTrafficDataUpdate(std::map<std::string, traffic::TrafficInfo::Coloring> & trafficCache);
+  void OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> &trafficCache);
 
 // TODO no longer needed
 #ifdef traffic_dead_code
