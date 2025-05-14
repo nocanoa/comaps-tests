@@ -35,7 +35,11 @@ constexpr uint8_t kMaxspeedNone = 255;
  * Where no time zone is indicated, the timestamp shall always be interpreted as UTC.
  * `IsoTime` currently maps to `std::tm`, but this is not guaranteed.
  */
+// TODO make this a class with a private std::tm member
 using IsoTime = std::tm;
+
+bool operator< (IsoTime lhs, IsoTime rhs);
+bool operator> (IsoTime lhs, IsoTime rhs);
 
 // TODO enum urgency
 

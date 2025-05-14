@@ -237,7 +237,16 @@ private:
   void Push(traffxml::TraffFeed feed);
 
   /**
+   * @brief Consolidates the feed queue.
    *
+   * If multiple feeds in the queue have the same message ID, only the message with the newest
+   * update time is kept (if two messages have the same ID and update time, the one in the feed
+   * with the higher index is kept); other messages with the same ID are discarded. Empty feeds
+   * are discarded.
+   */
+  void ConsolidateFeedQueue();
+
+  /**
    * @brief Merges new messages from `m_feedQueue` into a message cache.
    *
    * Existing messages in `cache` will be overwritten by newer messages with the same ID in `m_feedQueue`.

@@ -76,6 +76,20 @@ const std::map<EventType, uint16_t> kEventDelayMap{
   // TODO Security*, Transport*, Weather* (not in enum yet)
 };
 
+bool operator< (IsoTime lhs, IsoTime rhs)
+{
+  std::time_t t_lhs = std::mktime(&lhs);
+  std::time_t t_rhs = std::mktime(&rhs);
+  return t_lhs < t_rhs;
+}
+
+bool operator> (IsoTime lhs, IsoTime rhs)
+{
+  std::time_t t_lhs = std::mktime(&lhs);
+  std::time_t t_rhs = std::mktime(&rhs);
+  return t_lhs > t_rhs;
+}
+
 openlr::LocationReferencePoint Point::ToLrp()
 {
   openlr::LocationReferencePoint result;
