@@ -268,6 +268,30 @@ uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReference
   return doe * 1.19f + 0.5f;
 }
 
+void MergeMultiMwmColoring(MultiMwmColoring & delta, MultiMwmColoring & target)
+{
+  // for each mwm in delta
+  for (auto [mwmId, coloring] : delta)
+    // if target contains mwm
+    if (auto target_it = target.find(mwmId); target_it != target.end())
+      // for each segment in delta[mwm] (coloring)
+      for (auto [rsid, sg] : coloring)
+        // if target[mwm] contains segment
+        if (auto c_it = target_it->second.find(rsid) ; c_it != target_it->second.end())
+        {
+          // if delta overrules target (target is Unknown, delta is TempBlock or delta is slower than target)
+          if ((sg == traffic::SpeedGroup::TempBlock)
+              || (c_it->second == traffic::SpeedGroup::Unknown) || (sg < c_it->second))
+            target_it->second[rsid] = sg;
+        }
+        else
+          // if target[mwm] does not contain segment, add speed group
+          target_it->second[rsid] = sg;
+    else
+      // if target does not contain mwm, add coloring
+      target[mwmId] = coloring;
+}
+
 /*
 string DebugPrint(LinearSegmentSource source)
 {

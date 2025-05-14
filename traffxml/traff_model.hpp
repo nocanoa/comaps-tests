@@ -5,10 +5,14 @@
 #include "geometry/latlon.hpp"
 #include "geometry/point2d.hpp"
 
+#include "indexer/mwm_set.hpp"
+
 #include "openlr/openlr_model.hpp"
 
 #include "traffic/speed_groups.hpp"
+#include "traffic/traffic_info.hpp"
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -271,6 +275,11 @@ struct TraffEvent
   // TODO supplementary information
 };
 
+/**
+ * @brief Global mapping from feature segments to speed groups, across all MWMs.
+ */
+using MultiMwmColoring = std::map<MwmSet::MwmId, std::map<traffic::TrafficInfo::RoadSegmentId, traffic::SpeedGroup>>;
+
 struct TraffMessage
 {
   /**
@@ -299,6 +308,7 @@ struct TraffMessage
   std::optional<TraffLocation> m_location;
   std::vector<TraffEvent> m_events;
   std::vector<std::string> m_replaces;
+  MultiMwmColoring m_decoded;
 };
 
 using TraffFeed = std::vector<TraffMessage>;
@@ -316,6 +326,21 @@ using TraffFeed = std::vector<TraffMessage>;
  * @return The approximate distance on the ground, in meters.
  */
 uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2);
+
+/**
+ * @brief Merges the contents of one `MultiMwmColoring` into another.
+ *
+ * After this function returns, `target` will hold the union of the entries it had prior to the
+ * function call and the entries from `delta`.
+ *
+ * In case of conflict, the more restrictive speed group wins. That is, `TempBlock` overrides
+ * everything else, `Unknown` never overrides anything else, and among `G0` to `G5`, the lowest
+ * group wins.
+ *
+ * @param delta Contains the entries to be added.
+ * @param target Receives the added entries.
+ */
+void MergeMultiMwmColoring(MultiMwmColoring &delta, MultiMwmColoring & target);
 
 std::string DebugPrint(IsoTime time);
 std::string DebugPrint(Directionality directionality);

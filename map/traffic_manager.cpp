@@ -404,8 +404,7 @@ void TrafficManager::InitializeDataSources(std::vector<FrozenDataSource> & dataS
  * If we batch-decode segments, we need to fix the [partner] segment IDs in the segment and path
  * structures to accept a TraFF message ID (string) rather than an integer.
  */
-void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<MwmSet::MwmId,
-                                   traffic::TrafficInfo::Coloring> & trafficCache)
+void TrafficManager::DecodeMessage(traffxml::TraffMessage & message)
 {
   if (message.m_location)
   {
@@ -503,7 +502,7 @@ void TrafficManager::DecodeMessage(traffxml::TraffMessage & message, std::map<Mw
              */
           }
           // TODO process all TrafficImpact fields and determine the speed group based on that
-          trafficCache[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = sg;
+          message.m_decoded[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = sg;
         }
     }
   }
@@ -555,7 +554,10 @@ void TrafficManager::ThreadRoutine()
     for (auto [id, message] : m_messageCache)
     {
       LOG(LINFO, (" ", id, ":", message));
-      DecodeMessage(message, allMwmColoring);
+      DecodeMessage(message);
+      // store message coloring in AllMwmColoring
+      // TODO do this in a later pass...?
+      traffxml::MergeMultiMwmColoring(message.m_decoded, allMwmColoring);
     }
 
     // set new coloring for MWMs
