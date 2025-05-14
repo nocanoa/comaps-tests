@@ -335,7 +335,7 @@ bool TrafficManager::Poll()
   {
     {
       std::lock_guard<std::mutex> lock(m_mutex);
-      m_feeds.push_back(feed);
+      m_feedQueue.push_back(feed);
     }
     return true;
   }
@@ -349,21 +349,21 @@ bool TrafficManager::Poll()
 void TrafficManager::Push(traffxml::TraffFeed feed)
 {
   std::lock_guard<std::mutex> lock(m_mutex);
-  m_feeds.push_back(feed);
+  m_feedQueue.push_back(feed);
 }
 
 void TrafficManager::UpdateMessageCache(std::map<std::string, traffxml::TraffMessage> & cache)
 {
   traffxml::TraffFeed feed;
-  // Thread-safe iteration over m_feeds, releasing the mutex during the loop
+  // Thread-safe iteration over m_feedQueue, releasing the mutex during the loop
   while (true)
   {
     {
       std::lock_guard<std::mutex> lock(m_mutex);
-      if (!m_feeds.empty())
+      if (!m_feedQueue.empty())
       {
-        feed = m_feeds.front();
-        m_feeds.erase(m_feeds.begin());
+        feed = m_feedQueue.front();
+        m_feedQueue.erase(m_feedQueue.begin());
       }
       else
         break;
@@ -535,7 +535,7 @@ void TrafficManager::ThreadRoutine()
         // TODO set failed status somewhere and retry
       }
     }
-    LOG(LINFO, (m_feeds.size(), "feed(s) in queue"));
+    LOG(LINFO, (m_feedQueue.size(), "feed(s) in queue"));
 
     /*
      * TODO call on a temp struct, then unite with m_messageCache, processing only messages with changes

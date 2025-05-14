@@ -237,10 +237,10 @@ private:
   void Push(traffxml::TraffFeed feed);
 
   /**
-   * @brief Merges new messages from `m_feeds` into a message cache.
    *
-   * Existing messages in `cache` will be overwritten by newer messages with the same ID in `m_feeds`.
+   * @brief Merges new messages from `m_feedQueue` into a message cache.
    *
+   * Existing messages in `cache` will be overwritten by newer messages with the same ID in `m_feedQueue`.
    * @param cache The message cache.
    */
   void UpdateMessageCache(std::map<std::string, traffxml::TraffMessage> & cache);
@@ -503,10 +503,10 @@ private:
   /**
    * @brief Queue of feeds waiting to be processed.
    *
-   * Threads must lock `m_mutex` before accessing `m_feeds`, as some platforms may receive feeds
+   * Threads must lock `m_mutex` before accessing `m_feedQueue`, as some platforms may receive feeds
    * on multiple threads.
    */
-  std::vector<traffxml::TraffFeed> m_feeds;
+  std::vector<traffxml::TraffFeed> m_feedQueue;
 
   /**
    * @brief Cache of all currently active TraFF messages.
