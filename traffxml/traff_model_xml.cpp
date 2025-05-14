@@ -196,49 +196,13 @@ bool TimeFromXml(pugi::xml_attribute attribute, IsoTime & tm)
   std::string timeString;
   if (!StringFromXml(attribute, timeString))
     return false;
-  /*
-   * Regex for ISO 8601 time, with some tolerance for time zone offset. If matched, the matcher
-   * will contain the following items:
-   *
-   *  0: 2019-11-01T11:55:42+01:00  (entire expression)
-   *  1: 2019                       (year)
-   *  2: 11                         (month)
-   *  3: 01                         (day)
-   *  4: 11                         (hour, local)
-   *  5: 55                         (minute, local)
-   *  6: 42.445                     (second, local, float)
-   *  7: .445                       (fractional seconds)
-   *  8: +01:00                     (complete UTC offset, or Z; blank if not specified)
-   *  9: +01:00                     (complete UTC offset, blank for Z or of not specified)
-   * 10: +01                        (UTC offset, hours with sign; blank for Z or if not specified)
-   * 11: :00                        (UTC offset, minutes, prefixed with separator)
-   * 12: 00                         (UTC offset, minutes, unsigned; blank for Z or if not specified)
-   */
-  std::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
 
-  std::smatch iso8601Matcher;
-  if (std::regex_search(timeString, iso8601Matcher, iso8601Regex))
-  {
-    int offset_h = iso8601Matcher[10].matched ? std::stoi(iso8601Matcher[10]) : 0;
-    int offset_m = iso8601Matcher[12].matched ? std::stoi(iso8601Matcher[12]) : 0;
-    if (offset_h < 0)
-      offset_m *= -1;
-
-    tm.tm_year = std::stoi(iso8601Matcher[1]) - 1900;
-    tm.tm_mon = std::stoi(iso8601Matcher[2]) - 1;
-    tm.tm_mday = std::stoi(iso8601Matcher[3]);
-    tm.tm_hour = std::stoi(iso8601Matcher[4]) - offset_h;
-    tm.tm_min = std::stoi(iso8601Matcher[5]) - offset_m;
-    tm.tm_sec = std::stof(iso8601Matcher[6]) + 0.5f;
-    // Call timegm once to normalize tm; return value can be discarded
-    timegm(&tm);
-    return true;
-  }
-  else
-  {
-    LOG(LINFO, ("Not a valid ISO 8601 timestamp:", timeString));
+  std::optional<IsoTime> result = IsoTime::ParseIsoTime(timeString);
+  if (!result)
     return false;
-  }
+
+  tm = result.value();
+  return true;
 }
 
 /**
@@ -261,7 +225,7 @@ bool TimeFromXml(pugi::xml_attribute attribute, IsoTime & tm)
  */
 std::optional<IsoTime> OptionalTimeFromXml(pugi::xml_attribute attribute)
 {
-  IsoTime result = {};
+  IsoTime result = IsoTime::Now();
   if (!TimeFromXml(attribute, result))
     return std::nullopt;
   return result;

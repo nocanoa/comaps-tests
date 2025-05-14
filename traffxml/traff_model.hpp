@@ -35,11 +35,45 @@ constexpr uint8_t kMaxspeedNone = 255;
  * Where no time zone is indicated, the timestamp shall always be interpreted as UTC.
  * `IsoTime` currently maps to `std::tm`, but this is not guaranteed.
  */
-// TODO make this a class with a private std::tm member
-using IsoTime = std::tm;
+class IsoTime
+{
+public:
+  /**
+   * @brief Parses time in ISO 8601 format from a string and stores it in an `IsoTime`.
+   *
+   * ISO 8601 timestamps have the format `yyyy-mm-ddThh:mm:ss[.sss]`, optionally followed by a UTC
+   * offset. For example, `2019-11-01T11:45:42+01:00` refers to 11:45:42 in the UTC+1 timezone, which
+   * is 10:45:42 UTC.
+   *
+   * A UTC offset of `Z` denotes UTC and is equivalent to `+00:00` or `-00:00`. UTC is also assumed
+   * if no UTC offset is specified.
+   *
+   * The UTC offset can be specified as `hh:mm`, `hhmm` or `hh`.
+   *
+   * Seconds can be specified as integer or float, but will be rounded to the nearest integer. For
+   * example, 42.645 seconds will be rounded to 43 seconds.
+   *
+   * @param timeString Time in ISO8601 format
+   * @return An `IsoTime` instance corresponding to `timeString`, or `std::nullopt` if `timeString` is not a valid ISO8601 time string.
+   */
+  static std::optional<IsoTime> ParseIsoTime(std::string timeString);
 
-bool operator< (IsoTime lhs, IsoTime rhs);
-bool operator> (IsoTime lhs, IsoTime rhs);
+  /**
+   * @brief Returns an `IsoTime` corresponding to current wall clock time.
+   *
+   * @return An `IsoTime` corresponding to current wall clock time.
+   */
+  static IsoTime Now();
+
+  friend bool operator< (IsoTime lhs, IsoTime rhs);
+  friend bool operator> (IsoTime lhs, IsoTime rhs);
+private:
+  friend std::string DebugPrint(IsoTime time);
+
+  IsoTime(std::tm tm);
+
+  std::tm m_tm;
+};
 
 // TODO enum urgency
 
@@ -301,9 +335,9 @@ struct TraffMessage
   std::optional<TrafficImpact> GetTrafficImpact();
 
   std::string m_id;
-  IsoTime m_receiveTime = {};
-  IsoTime m_updateTime = {};
-  IsoTime m_expirationTime = {};
+  IsoTime m_receiveTime = IsoTime::Now();
+  IsoTime m_updateTime = IsoTime::Now();
+  IsoTime m_expirationTime = IsoTime::Now();
   std::optional<IsoTime> m_startTime = {};
   std::optional<IsoTime> m_endTime = {};
   bool m_cancellation = false;

@@ -4,6 +4,8 @@
 
 #include "geometry/mercator.hpp"
 
+#include <regex>
+
 using namespace std;
 
 namespace traffxml
@@ -76,17 +78,78 @@ const std::map<EventType, uint16_t> kEventDelayMap{
   // TODO Security*, Transport*, Weather* (not in enum yet)
 };
 
+std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
+{
+  /*
+   * Regex for ISO 8601 time, with some tolerance for time zone offset. If matched, the matcher
+   * will contain the following items:
+   *
+   *  0: 2019-11-01T11:55:42+01:00  (entire expression)
+   *  1: 2019                       (year)
+   *  2: 11                         (month)
+   *  3: 01                         (day)
+   *  4: 11                         (hour, local)
+   *  5: 55                         (minute, local)
+   *  6: 42.445                     (second, local, float)
+   *  7: .445                       (fractional seconds)
+   *  8: +01:00                     (complete UTC offset, or Z; blank if not specified)
+   *  9: +01:00                     (complete UTC offset, blank for Z or of not specified)
+   * 10: +01                        (UTC offset, hours with sign; blank for Z or if not specified)
+   * 11: :00                        (UTC offset, minutes, prefixed with separator)
+   * 12: 00                         (UTC offset, minutes, unsigned; blank for Z or if not specified)
+   */
+  std::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
+
+  std::smatch iso8601Matcher;
+  if (std::regex_search(timeString, iso8601Matcher, iso8601Regex))
+  {
+    int offset_h = iso8601Matcher[10].matched ? std::stoi(iso8601Matcher[10]) : 0;
+    int offset_m = iso8601Matcher[12].matched ? std::stoi(iso8601Matcher[12]) : 0;
+    if (offset_h < 0)
+      offset_m *= -1;
+
+    std::tm tm = {};
+    tm.tm_year = std::stoi(iso8601Matcher[1]) - 1900;
+    tm.tm_mon = std::stoi(iso8601Matcher[2]) - 1;
+    tm.tm_mday = std::stoi(iso8601Matcher[3]);
+    tm.tm_hour = std::stoi(iso8601Matcher[4]) - offset_h;
+    tm.tm_min = std::stoi(iso8601Matcher[5]) - offset_m;
+    tm.tm_sec = std::stof(iso8601Matcher[6]) + 0.5f;
+    // Call timegm once to normalize tm; return value can be discarded
+    timegm(&tm);
+    IsoTime result(tm);
+    return result;
+  }
+  else
+  {
+    LOG(LINFO, ("Not a valid ISO 8601 timestamp:", timeString));
+    return std::nullopt;
+  }
+}
+
+IsoTime IsoTime::Now()
+{
+  std::time_t t = std::time(nullptr);
+  std::tm* tm = std::gmtime(&t);
+  return IsoTime(*tm);
+}
+
+IsoTime::IsoTime(std::tm tm)
+  : m_tm(tm)
+{}
+
+
 bool operator< (IsoTime lhs, IsoTime rhs)
 {
-  std::time_t t_lhs = std::mktime(&lhs);
-  std::time_t t_rhs = std::mktime(&rhs);
+  std::time_t t_lhs = std::mktime(&lhs.m_tm);
+  std::time_t t_rhs = std::mktime(&rhs.m_tm);
   return t_lhs < t_rhs;
 }
 
 bool operator> (IsoTime lhs, IsoTime rhs)
 {
-  std::time_t t_lhs = std::mktime(&lhs);
-  std::time_t t_rhs = std::mktime(&rhs);
+  std::time_t t_lhs = std::mktime(&lhs.m_tm);
+  std::time_t t_rhs = std::mktime(&rhs.m_tm);
   return t_lhs > t_rhs;
 }
 
@@ -321,7 +384,7 @@ string DebugPrint(LinearSegmentSource source)
 std::string DebugPrint(IsoTime time)
 {
   std::ostringstream os;
-  os << std::put_time(&time, "%Y-%m-%d %H:%M:%S %z");
+  os << std::put_time(&time.m_tm, "%Y-%m-%d %H:%M:%S %z");
   return os.str();
 }
 

@@ -367,13 +367,13 @@ void TrafficManager::ConsolidateFeedQueue()
           if (it_i->m_id == it_j->m_id)
           {
             // dupe, remove older
-            if (traffxml::operator<(it_i->m_updateTime, it_j->m_updateTime))
+            if (it_i->m_updateTime < it_j->m_updateTime)
             {
               // standard case: i has the newer one
               ++it_i;
               it_j = m_feedQueue[j].erase(it_j);
             }
-            else if (traffxml::operator<(it_i->m_updateTime, it_j->m_updateTime))
+            else if (it_i->m_updateTime < it_j->m_updateTime)
             {
               // j has the newer one
               it_i = m_feedQueue[i].erase(it_i);
@@ -425,7 +425,7 @@ void TrafficManager::UpdateMessageCache(std::map<std::string, traffxml::TraffMes
       auto it = cache.find(message.m_id);
       bool process = (it == cache.end());
       if (!process)
-        process = (timegm(&(it->second.m_updateTime)) < timegm(&(message.m_updateTime)));
+        process = (it->second.m_updateTime < message.m_updateTime);
       if (process)
         cache.insert_or_assign(message.m_id, message);
     }
