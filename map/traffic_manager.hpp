@@ -265,8 +265,7 @@ private:
    * @param message The message to decode.
    * @param trafficCache The cache in which all decoded paths with their speed groups will be stored.
    */
-  void DecodeMessage(traffxml::TraffMessage & message,
-                     std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> &trafficCache);
+  void DecodeMessage(traffxml::TraffMessage & message);
 
   /**
    * @brief Event loop for the traffic worker thread.
