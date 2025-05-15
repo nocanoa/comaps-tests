@@ -465,6 +465,11 @@ private:
   // which allows a client to make conditional requests.
   std::map<MwmSet::MwmId, std::string> m_trafficETags;
 
+  /**
+   * Whether the traffic manager should begin receiving information.
+   */
+  std::atomic<bool> m_isStarted;
+
   std::atomic<bool> m_isPaused;
 
   /**

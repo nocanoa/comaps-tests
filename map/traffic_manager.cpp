@@ -73,6 +73,7 @@ TrafficManager::TrafficManager(DataSource & dataSource,
   , m_maxCacheSizeBytes(maxCacheSizeBytes)
 #endif
   , m_isRunning(true)
+  , m_isStarted(false)
   , m_isPaused(false)
   , m_thread(&TrafficManager::ThreadRoutine, this)
 {
@@ -211,6 +212,7 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect,
 
   {
     std::lock_guard<std::mutex> lock(m_mutex);
+    m_isStarted = true;
     m_activeMwmsChanged = true;
     activeMwms.clear();
     for (auto const & mwm : mwms)
@@ -660,21 +662,24 @@ bool TrafficManager::WaitForRequest(std::vector<MwmSet::MwmId> & mwms)
   if (!m_isRunning)
     return false;
 
-  // if we have feeds in the queue, return immediately
-  if (!m_feedQueue.empty())
+  if (m_isStarted)
   {
-    LOG(LINFO, ("feed queue not empty, returning immediately"));
-    return true;
-  }
+    // if we have feeds in the queue, return immediately
+    if (!m_feedQueue.empty())
+    {
+      LOG(LINFO, ("feed queue not empty, returning immediately"));
+      return true;
+    }
 
-  // if update interval has elapsed, return immediately
-  auto const currentTime = steady_clock::now();
-  auto const passedSeconds = currentTime - m_lastResponseTime;
-  if (passedSeconds >= kUpdateInterval)
-  {
-    LOG(LINFO, ("last response was", passedSeconds, "ago, returning immediately"));
-    m_isPollNeeded = true;
-    return true;
+    // if update interval has elapsed, return immediately
+    auto const currentTime = steady_clock::now();
+    auto const passedSeconds = currentTime - m_lastResponseTime;
+    if (passedSeconds >= kUpdateInterval)
+    {
+      LOG(LINFO, ("last response was", passedSeconds, "ago, returning immediately"));
+      m_isPollNeeded = true;
+      return true;
+    }
   }
 
   LOG(LINFO, ("nothing to do for now, waiting for timeout or notification"));
@@ -688,7 +693,8 @@ bool TrafficManager::WaitForRequest(std::vector<MwmSet::MwmId> & mwms)
     return false;
 
   // this works as long as wait timeout is at least equal to the poll interval
-  m_isPollNeeded |= timeout;
+  if (m_isStarted)
+    m_isPollNeeded |= timeout;
 
   LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged));
   return true;
