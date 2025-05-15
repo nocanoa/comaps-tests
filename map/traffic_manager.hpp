@@ -247,19 +247,16 @@ private:
   void ConsolidateFeedQueue();
 
   /**
-   * @brief Merges new messages from `m_feedQueue` into a message cache.
-   *
-   * Existing messages in `cache` will be overwritten by newer messages with the same ID in `m_feedQueue`.
-   * @param cache The message cache.
-   */
-  void UpdateMessageCache(std::map<std::string, traffxml::TraffMessage> & cache);
-
-  /**
    * @brief Initializes the data sources for an OpenLR decoder.
    *
    * @param dataSources Receives the data sources for the decoder (one per worker thread).
    */
   void InitializeDataSources(std::vector<FrozenDataSource> &dataSources);
+
+  /**
+   * @brief Removes the first message from the first feed and decodes it.
+   */
+  void DecodeFirstMessage();
 
   /**
    * @brief Decodes a single message to its segments and their speed groups.
@@ -490,6 +487,11 @@ private:
   threads::SimpleThread m_thread;
 
   /**
+   * @brief When the last response was received.
+   */
+  std::chrono::time_point<std::chrono::steady_clock> m_lastResponseTime;
+
+  /**
    * @brief Whether active MWMs have changed since the last request.
    */
   bool m_activeMwmsChanged = false;
@@ -530,6 +532,11 @@ private:
    * Used to decode TraFF locations into road segments on the map.
    */
   openlr::OpenLRDecoder m_openLrDecoder;
+
+  /**
+   * @brief Map between MWM IDs and their colorings.
+   */
+  std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> m_allMwmColoring;
 };
 
 extern std::string DebugPrint(TrafficManager::TrafficState state);
