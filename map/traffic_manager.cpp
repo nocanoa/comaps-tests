@@ -542,6 +542,14 @@ void TrafficManager::DecodeFirstMessage()
       m_feedQueue.erase(m_feedQueue.begin());
   }
 
+/*
+ * TODO this breaks things in the current test setup.
+ * When TrafficManager starts up and processes the first feed, maps are not loaded yet and messages
+ * cannot be decoded, so they are added to the cache without segments.
+ * The next feed (being a static file) returns the same data, so this check causes the message to
+ * get ignored as it has not changed.
+ */
+#if 0
   // check if message is actually newer
   auto it = m_messageCache.find(message.m_id);
   bool process = (it == m_messageCache.end());
@@ -552,11 +560,12 @@ void TrafficManager::DecodeFirstMessage()
     LOG(LINFO, ("message", message.m_id, "is already in cache, skipping"));
     return;
   }
+#endif
 
   LOG(LINFO, (" ", message.m_id, ":", message));
   DecodeMessage(message);
   // store message in cache
-  //m_messageCache.insert_or_assign(message.m_id, message);
+  m_messageCache.insert_or_assign(message.m_id, message);
   // store message coloring in AllMwmColoring
   // TODO trigger full cache processing if segments were removed or traffic has eased
   traffxml::MergeMultiMwmColoring(message.m_decoded, m_allMwmColoring);
