@@ -410,20 +410,6 @@ void TrafficManager::ConsolidateFeedQueue()
       ++it;
 }
 
-void TrafficManager::InitializeDataSources(std::vector<FrozenDataSource> & dataSources)
-{
-  /*
-   * TODO can we include all available MWMs in the list (including non-active ones)?
-   * Then we could initialize the decoder once and for all.
-   */
-  ForEachActiveMwm([this, &dataSources](MwmSet::MwmId const & mwmId) {
-    ASSERT(mwmId.IsAlive(), ());
-    // TODO do we need .SyncWithDisk() for the file?
-    for (size_t i = 0; i < dataSources.size(); i++)
-      dataSources[i].RegisterMap(mwmId.GetInfo()->GetLocalFile());
-  });
-}
-
 /*
  * TODO the OpenLR decoder is designed to handle multiple segments (i.e. locations).
  * Decoding message by message kind of defeats the purpose.

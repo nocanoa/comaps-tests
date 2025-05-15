@@ -247,13 +247,6 @@ private:
   void ConsolidateFeedQueue();
 
   /**
-   * @brief Initializes the data sources for an OpenLR decoder.
-   *
-   * @param dataSources Receives the data sources for the decoder (one per worker thread).
-   */
-  void InitializeDataSources(std::vector<FrozenDataSource> &dataSources);
-
-  /**
    * @brief Removes the first message from the first feed and decodes it.
    */
   void DecodeFirstMessage();
