@@ -551,7 +551,6 @@ void TrafficManager::DecodeFirstMessage()
  * The next feed (being a static file) returns the same data, so this check causes the message to
  * get ignored as it has not changed.
  */
-#if 0
   // check if message is actually newer
   auto it = m_messageCache.find(message.m_id);
   bool process = (it == m_messageCache.end());
@@ -562,7 +561,6 @@ void TrafficManager::DecodeFirstMessage()
     LOG(LINFO, ("message", message.m_id, "is already in cache, skipping"));
     return;
   }
-#endif
 
   LOG(LINFO, (" ", message.m_id, ":", message));
   DecodeMessage(message);
