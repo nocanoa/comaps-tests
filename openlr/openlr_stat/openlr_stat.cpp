@@ -56,8 +56,8 @@ int32_t const kMinNumThreads = 1;
 int32_t const kMaxNumThreads = 128;
 int32_t const kHandleAllSegments = -1;
 
-void LoadDataSources(std::string const & pathToMWMFolder,
-                     std::vector<FrozenDataSource> & dataSources)
+void LoadDataSource(std::string const & pathToMWMFolder,
+                    FrozenDataSource & dataSource)
 {
   CHECK(Platform::IsDirectory(pathToMWMFolder), (pathToMWMFolder, "must be a directory."));
 
@@ -66,8 +66,7 @@ void LoadDataSources(std::string const & pathToMWMFolder,
 
   CHECK(!files.empty(), (pathToMWMFolder, "Contains no .mwm files."));
 
-  size_t const numDataSources = dataSources.size();
-  std::vector<uint64_t> numCountries(numDataSources);
+  uint64_t numCountries;
 
   for (auto const & fileName : files)
   {
@@ -81,15 +80,12 @@ void LoadDataSources(std::string const & pathToMWMFolder,
     try
     {
       localFile.SyncWithDisk();
-      for (size_t i = 0; i < numDataSources; ++i)
-      {
-        auto const result = dataSources[i].RegisterMap(localFile);
-        CHECK_EQUAL(result.second, MwmSet::RegResult::Success, ("Can't register mwm:", localFile));
+      auto const result = dataSource.RegisterMap(localFile);
+      CHECK_EQUAL(result.second, MwmSet::RegResult::Success, ("Can't register mwm:", localFile));
 
-        auto const & info = result.first.GetInfo();
-        if (info && info->GetType() == MwmInfo::COUNTRY)
-          ++numCountries[i];
-      }
+      auto const & info = result.first.GetInfo();
+      if (info && info->GetType() == MwmInfo::COUNTRY)
+        ++numCountries;
     }
     catch (RootException const & ex)
     {
@@ -97,11 +93,8 @@ void LoadDataSources(std::string const & pathToMWMFolder,
     }
   }
 
-  for (size_t i = 0; i < numDataSources; ++i)
-  {
-    if (numCountries[i] == 0)
-      LOG(LWARNING, ("No countries for thread", i));
-  }
+  if (numCountries == 0)
+    LOG(LWARNING, ("No countries"));
 }
 
 bool ValidateLimit(char const * flagname, int32_t value)
@@ -257,11 +250,11 @@ int main(int argc, char * argv[])
 
   auto const numThreads = static_cast<uint32_t>(FLAGS_num_threads);
 
-  std::vector<FrozenDataSource> dataSources(numThreads);
+  FrozenDataSource dataSource;
 
-  LoadDataSources(FLAGS_mwms_path, dataSources);
+  LoadDataSource(FLAGS_mwms_path, dataSource);
 
-  OpenLRDecoder decoder(dataSources, storage::CountryParentGetter(FLAGS_countries_filename,
+  OpenLRDecoder decoder(dataSource, storage::CountryParentGetter(FLAGS_countries_filename,
                                                               GetPlatform().ResourcesDir()));
 
   pugi::xml_document document;
