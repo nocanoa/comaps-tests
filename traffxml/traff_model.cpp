@@ -145,16 +145,16 @@ bool IsoTime::IsPast()
   return t_tm < t_now;
 }
 
-bool operator< (IsoTime lhs, IsoTime rhs)
+bool IsoTime::operator< (IsoTime & rhs)
 {
-  std::time_t t_lhs = std::mktime(&lhs.m_tm);
+  std::time_t t_lhs = std::mktime(&m_tm);
   std::time_t t_rhs = std::mktime(&rhs.m_tm);
   return t_lhs < t_rhs;
 }
 
-bool operator> (IsoTime lhs, IsoTime rhs)
+bool IsoTime::operator> (IsoTime & rhs)
 {
-  std::time_t t_lhs = std::mktime(&lhs.m_tm);
+  std::time_t t_lhs = std::mktime(&m_tm);
   std::time_t t_rhs = std::mktime(&rhs.m_tm);
   return t_lhs > t_rhs;
 }

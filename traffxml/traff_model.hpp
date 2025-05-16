@@ -74,8 +74,8 @@ public:
    */
   bool IsPast();
 
-  friend bool operator< (IsoTime lhs, IsoTime rhs);
-  friend bool operator> (IsoTime lhs, IsoTime rhs);
+  bool operator< (IsoTime & rhs);
+  bool operator> (IsoTime & rhs);
 private:
   friend std::string DebugPrint(IsoTime time);
 
