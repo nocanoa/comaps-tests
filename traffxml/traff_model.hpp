@@ -65,6 +65,15 @@ public:
    */
   static IsoTime Now();
 
+  /**
+   * @brief Whether the instance refers to a point of time in the past.
+   *
+   * Comparison is against system time.
+   *
+   * @return true if in the past, false of not.
+   */
+  bool IsPast();
+
   friend bool operator< (IsoTime lhs, IsoTime rhs);
   friend bool operator> (IsoTime lhs, IsoTime rhs);
 private:

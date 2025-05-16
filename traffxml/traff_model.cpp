@@ -138,6 +138,12 @@ IsoTime::IsoTime(std::tm tm)
   : m_tm(tm)
 {}
 
+bool IsoTime::IsPast()
+{
+  std::time_t t_now = std::time(nullptr);
+  std::time_t t_tm = timegm(&m_tm);
+  return t_tm < t_now;
+}
 
 bool operator< (IsoTime lhs, IsoTime rhs)
 {
