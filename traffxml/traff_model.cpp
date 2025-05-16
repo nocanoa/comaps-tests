@@ -159,11 +159,35 @@ bool IsoTime::operator> (IsoTime & rhs)
   return t_lhs > t_rhs;
 }
 
+bool operator==(TrafficImpact const & lhs, TrafficImpact const & rhs)
+{
+  if ((lhs.m_speedGroup == traffic::SpeedGroup::TempBlock)
+      && (rhs.m_speedGroup == traffic::SpeedGroup::TempBlock))
+    return true;
+  return (lhs.m_speedGroup == rhs.m_speedGroup)
+      && (lhs.m_maxspeed == rhs.m_maxspeed)
+      && (lhs.m_delayMins == rhs.m_delayMins);
+}
+
+bool operator==(Point const & lhs, Point const & rhs)
+{
+  return lhs.m_coordinates == rhs.m_coordinates;
+}
+
 openlr::LocationReferencePoint Point::ToLrp()
 {
   openlr::LocationReferencePoint result;
   result.m_latLon = ms::LatLon(this->m_coordinates.m_lat, this->m_coordinates.m_lon);
   return result;
+}
+
+bool operator==(TraffLocation const & lhs, TraffLocation const & rhs)
+{
+  return (lhs.m_from == rhs.m_from)
+      && (lhs.m_at == rhs.m_at)
+      && (lhs.m_via == rhs.m_via)
+      && (lhs.m_notVia == rhs.m_notVia)
+      && (lhs.m_to == rhs.m_to);
 }
 
 openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool backwards)

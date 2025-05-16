@@ -227,6 +227,17 @@ enum class EventType
 struct TrafficImpact
 {
   /**
+   * @brief Whether two `TrafficImpact` instances are equal.
+   *
+   * Instances are considered equal if both have a speed group of `TempBlock`, in which case other
+   * members are not compared. Otherwise, they are equal if, and only if, all three members hold
+   * identical values between both instances.
+   */
+  // Non-member friend as member operators do not work with std::optional
+  friend bool operator==(TrafficImpact const & lhs, TrafficImpact const & rhs);
+  friend bool operator!=(TrafficImpact const & lhs, TrafficImpact const & rhs) { return !(lhs == rhs); }
+
+  /**
    * @brief The speed group for the affected segments, or `traffic::SpeedGroup::Unknown` if unknown.
    */
   traffic::SpeedGroup m_speedGroup = traffic::SpeedGroup::Unknown;
@@ -245,6 +256,15 @@ struct TrafficImpact
 struct Point
 {
   /**
+   * @brief Whether two points are equal.
+   *
+   * Two points are equal if, and only if, their coordinates are. Other attributes are not compared.
+   */
+  // Non-member friend as member operators do not work with std::optional
+  friend bool operator==(Point const & lhs, Point const & rhs);
+  friend bool operator!=(Point const & lhs, Point const & rhs) { return !(lhs == rhs); }
+
+  /**
    * @brief Converts the point to an OpenLR location reference point.
    *
    * Only coordinates are populated.
@@ -262,6 +282,21 @@ struct Point
 
 struct TraffLocation
 {
+  /**
+   * @brief Whether two locations are equal.
+   *
+   * Two locations are equal if, and only if, they contain the same points in the same roles.
+   *
+   * @todo Road class and ramps are not compared, though these values are used by the decoder. Not
+   * comparing these values could lead to two seemingly equal locations resolving to a different
+   * path. However, given that comparison only takes place between messages with identical IDs
+   * (indicating both refer to the same event at the same location), such a situation is highly
+   * unlikely to occur in practice.
+   */
+  // Non-member friend as member operators do not work with std::optional
+  friend bool operator==(TraffLocation const & lhs, TraffLocation const & rhs);
+  friend bool operator!=(TraffLocation const & lhs, TraffLocation const & rhs) { return !(lhs == rhs); }
+
   /**
    * @brief Converts the location to an OpenLR linear location reference.
    *
