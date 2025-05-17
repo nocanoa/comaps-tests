@@ -262,10 +262,20 @@ private:
   /**
    * @brief Decodes a TraFF location.
    *
-   * @param message
-   * @param decoded
+   * @param message The message to decode.
+   * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
    */
   void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
+
+  /**
+   * @brief Applies traffic impact to a decoded TraFF location.
+   *
+   * Applying impact sets the corresponding speed groups of the decoded segments. Existing speed groups will be overwritten.
+   *
+   * @param impact The traffic impact to apply.
+   * @param decoded The decoded segments.
+   */
+  void ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml::MultiMwmColoring & decoded);
 
   /**
    * @brief Decodes a single message to its segments and their speed groups.

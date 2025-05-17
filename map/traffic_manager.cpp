@@ -439,6 +439,91 @@ void TrafficManager::ConsolidateFeedQueue()
       ++it;
 }
 
+void TrafficManager::DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded)
+{
+  decoded.clear();
+
+  // Convert the location to a format understood by the OpenLR decoder.
+  std::vector<openlr::LinearSegment> segments
+      = message.m_location.value().ToOpenLrSegments(message.m_id);
+
+  for (auto segment : segments)
+  {
+    LOG(LINFO, ("    Segment:", segment.m_segmentId));
+    for (int i = 0; i < segment.m_locationReference.m_points.size(); i++)
+    {
+      LOG(LINFO, ("     ", i, ":", segment.m_locationReference.m_points[i].m_latLon));
+      if (i < segment.m_locationReference.m_points.size() - 1)
+      {
+        LOG(LINFO, ("        FRC:", segment.m_locationReference.m_points[i].m_functionalRoadClass));
+        LOG(LINFO, ("        DNP:", segment.m_locationReference.m_points[i].m_distanceToNextPoint));
+      }
+    }
+  }
+
+  // Decode the location into a path on the map.
+  // One path per segment
+  std::vector<openlr::DecodedPath> paths(segments.size());
+  m_openLrDecoder.DecodeV3(segments, kNumDecoderThreads, paths);
+
+  for (size_t i = 0; i < paths.size(); i++)
+    for (size_t j = 0; j < paths[i].m_path.size(); j++)
+    {
+      auto fid = paths[i].m_path[j].GetFeatureId().m_index;
+      auto segment = paths[i].m_path[j].GetSegId();
+      uint8_t direction = paths[i].m_path[j].IsForward() ?
+                          traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
+                          traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
+      decoded[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = traffic::SpeedGroup::Unknown;
+    }
+}
+
+void TrafficManager::ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml::MultiMwmColoring & decoded)
+{
+  for (auto dit = decoded.begin(); dit != decoded.end(); dit++)
+    for (auto cit = dit->second.begin(); cit != dit->second.end(); cit++)
+    {
+      /*
+       * Consolidate TrafficImpact into a single SpeedGroup per segment.
+       * Exception: if TrafficImpact already has SpeedGrup::TempBlock, no need to evaluate
+       * the rest.
+       */
+      traffic::SpeedGroup sg = impact.m_speedGroup;
+      /*
+       * TODO also process m_delayMins if greater than zero.
+       * This would require a separate pass over all edges, calculating length,
+       * total (normal) travel time (length / maxspeed), then a speed group based on
+       * (normal_travel_time / delayed_travel_time) – which is the same as the ratio between
+       * reduced and normal speed. That would give us a third potential speed group.
+       */
+      if ((sg != traffic::SpeedGroup::TempBlock) && (impact.m_maxspeed != traffxml::kMaxspeedNone))
+      {
+        auto const handle = m_dataSource.GetMwmHandleById(dit->first);
+        auto const speeds = routing::LoadMaxspeeds(handle);
+        if (speeds)
+        {
+          traffic::SpeedGroup fromMaxspeed = traffic::SpeedGroup::Unknown;
+          auto const speed = speeds->GetMaxspeed(cit->first.GetFid());
+          auto const speedKmPH = speed.GetSpeedKmPH(cit->first.GetDir() == traffic::TrafficInfo::RoadSegmentId::kForwardDirection);
+          if (speedKmPH != routing::kInvalidSpeed)
+          {
+            fromMaxspeed = traffic::GetSpeedGroupByPercentage(impact.m_maxspeed * 100.0f / speedKmPH);
+            if ((sg == traffic::SpeedGroup::Unknown) || (fromMaxspeed < sg))
+              sg = fromMaxspeed;
+          }
+        }
+        /*
+         * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
+         * If no maxspeed or delay is set, just give out speed groups.
+         * Else, examine segments, length, normal travel time, travel time considering impact, and
+         * determine the closest matching speed group.
+         */
+      }
+      // TODO process all TrafficImpact fields and determine the speed group based on that
+      cit->second = sg;
+    }
+}
+
 /*
  * TODO the OpenLR decoder is designed to handle multiple segments (i.e. locations).
  * Decoding message by message kind of defeats the purpose.
@@ -485,99 +570,11 @@ void TrafficManager::DecodeMessage(traffxml::TraffMessage & message)
       decoded = it->second.m_decoded;
   }
   else
-  {
-    // Convert the location to a format understood by the OpenLR decoder.
-    std::vector<openlr::LinearSegment> segments
-        = message.m_location.value().ToOpenLrSegments(message.m_id);
+    DecodeLocation(message, decoded);
 
-    for (auto segment : segments)
-    {
-      LOG(LINFO, ("    Segment:", segment.m_segmentId));
-      for (int i = 0; i < segment.m_locationReference.m_points.size(); i++)
-      {
-        LOG(LINFO, ("     ", i, ":", segment.m_locationReference.m_points[i].m_latLon));
-        if (i < segment.m_locationReference.m_points.size() - 1)
-        {
-          LOG(LINFO, ("        FRC:", segment.m_locationReference.m_points[i].m_functionalRoadClass));
-          LOG(LINFO, ("        DNP:", segment.m_locationReference.m_points[i].m_distanceToNextPoint));
-        }
-      }
-    }
-
-    // Decode the location into a path on the map.
-    // One path per segment
-    std::vector<openlr::DecodedPath> paths(segments.size());
-    m_openLrDecoder.DecodeV3(segments, kNumDecoderThreads, paths);
-
-    for (size_t i = 0; i < paths.size(); i++)
-      for (size_t j = 0; j < paths[i].m_path.size(); j++)
-      {
-        auto fid = paths[i].m_path[j].GetFeatureId().m_index;
-        auto segment = paths[i].m_path[j].GetSegId();
-        uint8_t direction = paths[i].m_path[j].IsForward() ?
-                            traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
-                            traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
-        decoded[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = traffic::SpeedGroup::Unknown;
-      }
-
-    for (size_t i = 0; i < paths.size(); i++)
-    {
-      LOG(LINFO, ("    Path", i));
-      LOG(LINFO, ("      Partner segment ID:", paths[i].m_segmentId));
-      LOG(LINFO, ("      Message ID:", paths[i].m_messageId));
-      LOG(LINFO, ("      Edges:", paths[i].m_path.size()));
-      for (size_t j = 0; j < paths[i].m_path.size(); j++)
-      {
-        LOG(LINFO, ("       ", paths[i].m_path[j]));
-      }
-    }
-
-  // TODO store maxspeed in edges
-  // store decoded paths and speed groups in trafficCache
   if (impact)
   {
-    for (auto dit = decoded.begin(); dit != decoded.end(); dit++)
-      for (auto cit = dit->second.begin(); cit != dit->second.end(); cit++)
-      {
-        /*
-         * Consolidate TrafficImpact into a single SpeedGroup per segment.
-         * Exception: if TrafficImpact already has SpeedGrup::TempBlock, no need to evaluate
-         * the rest.
-         */
-        traffic::SpeedGroup sg = impact.value().m_speedGroup;
-        /*
-         * TODO also process m_delayMins if greater than zero.
-         * This would require a separate pass over all edges, calculating length,
-         * total (normal) travel time (length / maxspeed), then a speed group based on
-         * (normal_travel_time / delayed_travel_time) – which is the same as the ratio between
-         * reduced and normal speed. That would give us a third potential speed group.
-         */
-        if ((sg != traffic::SpeedGroup::TempBlock) && (impact.value().m_maxspeed != traffxml::kMaxspeedNone))
-        {
-          auto const handle = m_dataSource.GetMwmHandleById(dit->first);
-          auto const speeds = routing::LoadMaxspeeds(handle);
-          if (speeds)
-          {
-            traffic::SpeedGroup fromMaxspeed = traffic::SpeedGroup::Unknown;
-            auto const speed = speeds->GetMaxspeed(cit->first.GetFid());
-            auto const speedKmPH = speed.GetSpeedKmPH(cit->first.GetDir() == traffic::TrafficInfo::RoadSegmentId::kForwardDirection);
-            if (speedKmPH != routing::kInvalidSpeed)
-            {
-              fromMaxspeed = traffic::GetSpeedGroupByPercentage(impact.value().m_maxspeed * 100.0f / speedKmPH);
-              if ((sg == traffic::SpeedGroup::Unknown) || (fromMaxspeed < sg))
-                sg = fromMaxspeed;
-            }
-          }
-          /*
-           * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
-           * If no maxspeed or delay is set, just give out speed groups.
-           * Else, examine segments, length, normal travel time, travel time considering impact, and
-           * determine the closest matching speed group.
-           */
-        }
-        // TODO process all TrafficImpact fields and determine the speed group based on that
-        cit->second = sg;
-      }
+    ApplyTrafficImpact(impact.value(), decoded);
     std::swap(message.m_decoded, decoded);
   }
 }
