@@ -260,11 +260,17 @@ private:
   void DecodeFirstMessage();
 
   /**
+   * @brief Decodes a TraFF location.
+   *
+   * @param message
+   * @param decoded
+   */
+  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
+
+  /**
    * @brief Decodes a single message to its segments and their speed groups.
    *
-   * @param decoder The OpenLR decoder instance.
    * @param message The message to decode.
-   * @param trafficCache The cache in which all decoded paths with their speed groups will be stored.
    */
   void DecodeMessage(traffxml::TraffMessage & message);
 
