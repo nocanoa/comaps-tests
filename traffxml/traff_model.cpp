@@ -217,6 +217,12 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
     {
       lrp.m_distanceToNextPoint
           = GuessDnp(points[i], points[i + 1]);
+      /*
+       * Somewhat hackish. LFRCNP is evaluated by the same function as FRC and the candidate is
+       * used or discarded based on whether a score was returned or not (the score itself is not
+       * used for LFRCNP). However, this means we can use FRC as LFRCNP.
+       */
+      lrp.m_lfrcnp = GetFrc();
     }
     locationReference.m_points.push_back(lrp);
   }
