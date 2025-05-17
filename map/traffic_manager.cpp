@@ -44,8 +44,13 @@ auto constexpr kDrapeUpdateInterval = seconds(10);
  */
 auto constexpr kObserverUpdateInterval = minutes(1);
 
-// Number of identical data sources to create for the OpenLR decoder, one source per worker thread.
-// TODO how to determine the best number of worker threads?
+// Number of worker threads for the OpenLR decoder
+/*
+ * TODO how to determine the best number of worker threads?
+ * One per direction? Does not seem to help with bidirectional locations (two reference points).
+ * One per segment (from–via/from–at, via–to/at–to)? Not yet tested.
+ * Otherwise there is little to be gained, as we decode messages one at a time.
+ */
 auto constexpr kNumDecoderThreads = 1;
 } // namespace
 
@@ -440,7 +445,8 @@ void TrafficManager::ConsolidateFeedQueue()
  * But after decoding the location, we need to examine the map features we got in order to
  * determine the speed groups, thus we may need to decode one by one (TBD).
  * If we batch-decode segments, we need to fix the [partner] segment IDs in the segment and path
- * structures to accept a TraFF message ID (string) rather than an integer.
+ * structures to accept a TraFF message ID (string) rather than an integer, or derive
+ * [partner] segment IDs from TraFF message IDs.
  */
 void TrafficManager::DecodeMessage(traffxml::TraffMessage & message)
 {
@@ -886,7 +892,6 @@ void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::Traffi
 
         UpdateState();
 
-        // TODO we need to set empty coloring if the previous coloring was non-empty
         if (notifyDrape)
         {
           m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,

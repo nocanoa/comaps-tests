@@ -206,7 +206,6 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
   if (backwards)
     std::reverse(points.begin(), points.end());
   // m_notVia is ignored as OpenLR does not support this functionality.
-  // TODO do we ensure a minimum of two reference points (from/to/at) when building the location?
   CHECK_GREATER(points.size(), 1, ("At least two reference points must be given"));
   for (auto point : points)
   {
