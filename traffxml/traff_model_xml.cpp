@@ -129,6 +129,27 @@ std::optional<uint8_t> OptionalIntegerFromXml(pugi::xml_attribute attribute)
 }
 
 /**
+ * @brief Retrieves a float value from an attribute.
+ *
+ * @param attribute The XML attribute to retrieve.
+ * @return `true` on success, `false` if the attribute is not set or does not contain a float value.
+ */
+std::optional<float> OptionalFloatFromXml(pugi::xml_attribute attribute)
+{
+  if (attribute.empty())
+    return std::nullopt;
+  try
+  {
+    float result = std::stof(attribute.as_string());
+    return result;
+  }
+  catch (std::invalid_argument const& ex)
+  {
+    return std::nullopt;
+  }
+}
+
+/**
  * @brief Retrieves a string from an attribute.
  *
  * @param attribute The XML attribute to retrieve.
@@ -405,6 +426,7 @@ std::optional<Point> OptionalPointFromXml(pugi::xml_node node)
 
   result.m_junctionName = OptionalStringFromXml(node.attribute("junction_name"));
   result.m_junctionRef = OptionalStringFromXml(node.attribute("junction_ref"));
+  result.m_distance = OptionalFloatFromXml(node.attribute("distance"));
 
   return result;
 }

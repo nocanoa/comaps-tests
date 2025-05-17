@@ -550,7 +550,7 @@ std::string DebugPrint(Point point)
   std::ostringstream os;
   os << "Point { ";
   os << "coordinates: " << DebugPrint(point.m_coordinates) << ", ";
-  // TODO optional float m_distance; (not in struct yet)
+  os << "distance: " << (point.m_distance ? std::to_string(point.m_distance.value()) : "nullopt") << ", ";
   os << "junctionName: " << point.m_junctionName.value_or("nullopt") << ", ";
   os << "junctionRef: " << point.m_junctionRef.value_or("nullopt");
   os << " }";

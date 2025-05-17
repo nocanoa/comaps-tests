@@ -275,7 +275,7 @@ struct Point
 
   // TODO role?
   ms::LatLon m_coordinates = ms::LatLon::Zero();
-  // TODO optional float m_distance;
+  std::optional<float> m_distance;
   std::optional<std::string> m_junctionName;
   std::optional<std::string> m_junctionRef;
 };
