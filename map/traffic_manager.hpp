@@ -289,7 +289,7 @@ private:
    * @return `true` during normal operation, `false` during teardown (signaling the event loop to exit).
    */
   // TODO mwms argument is no longer needed
-  bool WaitForRequest(std::vector<MwmSet::MwmId> & mwms);
+  bool WaitForRequest();
 
   /**
    * @brief Processes new traffic data.

@@ -629,8 +629,7 @@ void TrafficManager::ThreadRoutine()
   m_lastDrapeUpdate = steady_clock::now();
   m_lastObserverUpdate = steady_clock::now();
 
-  std::vector<MwmSet::MwmId> mwms;
-  while (WaitForRequest(mwms))
+  while (WaitForRequest())
   {
     // TODO clean out expired messages
 
@@ -698,14 +697,14 @@ void TrafficManager::ThreadRoutine()
         m_trafficETags[mwm] = tag;
       }
     }
-#endif
     mwms.clear();
+#endif
   }
   // Calling Unsubscribe() form the worker thread on exit makes thread synchronization easier
   Unsubscribe();
 }
 
-bool TrafficManager::WaitForRequest(std::vector<MwmSet::MwmId> & mwms)
+bool TrafficManager::WaitForRequest()
 {
   std::unique_lock<std::mutex> lock(m_mutex);
 
