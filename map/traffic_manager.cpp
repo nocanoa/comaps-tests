@@ -34,6 +34,16 @@ auto constexpr kNetworkErrorTimeout = minutes(20);
 
 auto constexpr kMaxRetriesCount = 5;
 
+/**
+ * Interval at which the Drape engine gets traffic updates while messages are being processed.
+ */
+auto constexpr kDrapeUpdateInterval = seconds(10);
+
+/**
+ * Interval at which the traffic observer gets traffic updates while messages are being processed.
+ */
+auto constexpr kObserverUpdateInterval = minutes(1);
+
 // Number of identical data sources to create for the OpenLR decoder, one source per worker thread.
 // TODO how to determine the best number of worker threads?
 auto constexpr kNumDecoderThreads = 1;
@@ -603,6 +613,10 @@ void TrafficManager::DecodeFirstMessage()
 
 void TrafficManager::ThreadRoutine()
 {
+  // initially, treat drape and observer as having just been updated
+  m_lastDrapeUpdate = steady_clock::now();
+  m_lastObserverUpdate = steady_clock::now();
+
   std::vector<MwmSet::MwmId> mwms;
   while (WaitForRequest(mwms))
   {
@@ -808,14 +822,26 @@ void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 
 void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> & trafficCache)
 {
-  /*
-   * TODO do not update coloring on every single pass (i.e. after every single message).
-   * Coloring needs to be updated when the queue is empty (i.e. we have processed all messages for now)
-   * and should be updated periodically while larger numbers of messages are being processed.
-   * The interval is TBD and we may want to choose different intervals for the graphics engine
-   * and the routing engine: 10–20 seconds seems reasonable for graphics, for the routing engine the
-   * interval should not be shorter than the time needed for route recalculation.
-   */
+  // Whether to notify the Drape engine of the update.
+  bool notifyDrape = (m_feedQueue.empty());
+
+  // Whether to notify the observer of the update.
+  bool notifyObserver = (m_feedQueue.empty());
+
+  if (!m_feedQueue.empty())
+  {
+    auto const currentTime = steady_clock::now();
+    auto const drapeAge = currentTime - m_lastDrapeUpdate;
+    auto const observerAge = currentTime - m_lastObserverUpdate;
+    notifyDrape = (drapeAge >= kDrapeUpdateInterval);
+    notifyObserver = (observerAge >= kObserverUpdateInterval);
+  }
+
+  if (!notifyDrape && !notifyObserver)
+    return;
+
+  LOG(LINFO, ("Announcing traffic update, notifyDrape:", notifyDrape, "notifyObserver:", notifyObserver));
+
   /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
    *
@@ -823,9 +849,10 @@ void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::Traffi
    * trafficCache lookup is original code.
    * TrafficInfo construction is taken fron TheadRoutine(), with modifications (different constructor).
    * Updating m_mwmCache is from RequestTrafficData(MwmSet::MwmId const &, bool), with modifications.
-   * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with minor modifications
+   * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with some modifications
+   * (deciding whether to notify a component and managing timestamps is original code)
    */
-  ForEachActiveMwm([this, trafficCache](MwmSet::MwmId const & mwmId) {
+  ForEachActiveMwm([this, trafficCache, notifyDrape, notifyObserver](MwmSet::MwmId const & mwmId) {
     ASSERT(mwmId.IsAlive(), ());
     auto tcit = trafficCache.find(mwmId);
     if (tcit != trafficCache.end())
@@ -848,13 +875,19 @@ void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::Traffi
 
         UpdateState();
 
-        if (!info.GetColoring().empty())
+        // TODO we need to set empty coloring if the previous coloring was non-empty
+        if (notifyDrape)
         {
           m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
                                  static_cast<traffic::TrafficInfo const &>(info));
+          m_lastDrapeUpdate = steady_clock::now();
+        }
 
+        if (notifyObserver)
+        {
           // Update traffic colors for routing.
           m_observer.OnTrafficInfoAdded(std::move(info));
+          m_lastObserverUpdate = steady_clock::now();
         }
       }
     }

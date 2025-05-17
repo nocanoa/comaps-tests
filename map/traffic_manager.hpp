@@ -489,6 +489,16 @@ private:
   std::chrono::time_point<std::chrono::steady_clock> m_lastResponseTime;
 
   /**
+   * @brief When the last update notification to the Drape engine was posted.
+   */
+  std::chrono::time_point<std::chrono::steady_clock> m_lastDrapeUpdate;
+
+  /**
+   * @brief When the last update notification to the traffic observer was posted.
+   */
+  std::chrono::time_point<std::chrono::steady_clock> m_lastObserverUpdate;
+
+  /**
    * @brief Whether active MWMs have changed since the last request.
    */
   bool m_activeMwmsChanged = false;
