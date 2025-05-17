@@ -423,7 +423,7 @@ using TraffFeed = std::vector<TraffMessage>;
  * @param p2 The second point.
  * @return The approximate distance on the ground, in meters.
  */
-uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2);
+uint32_t GuessDnp(Point & p1, Point & p2);
 
 /**
  * @brief Merges the contents of one `MultiMwmColoring` into another.

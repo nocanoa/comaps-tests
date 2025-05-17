@@ -207,17 +207,16 @@ openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool ba
     std::reverse(points.begin(), points.end());
   // m_notVia is ignored as OpenLR does not support this functionality.
   CHECK_GREATER(points.size(), 1, ("At least two reference points must be given"));
-  for (auto point : points)
+  for (size_t i = 0; i < points.size(); i++)
   {
-    openlr::LocationReferencePoint lrp = point.ToLrp();
+    openlr::LocationReferencePoint lrp = points[i].ToLrp();
     lrp.m_functionalRoadClass = GetFrc();
     if (m_ramps.value_or(traffxml::Ramps::None) != traffxml::Ramps::None)
       lrp.m_formOfWay = openlr::FormOfWay::Sliproad;
-    if (!locationReference.m_points.empty())
+    if (i < points.size() - 1)
     {
-      // TODO use `distance` from TraFF reference point, if available and consistent with direct distance
-      locationReference.m_points.back().m_distanceToNextPoint
-          = GuessDnp(locationReference.m_points.back(), lrp);
+      lrp.m_distanceToNextPoint
+          = GuessDnp(points[i], points[i + 1]);
     }
     locationReference.m_points.push_back(lrp);
   }
@@ -342,10 +341,12 @@ std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
 }
 
 // TODO tweak formula based on FRC, FOW and direct distance (lower FRC roads may have more and sharper turns)
-uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReferencePoint & p2)
+uint32_t GuessDnp(Point & p1, Point & p2)
 {
-  double doe = mercator::DistanceOnEarth(mercator::FromLatLon(p1.m_latLon),
-                                         mercator::FromLatLon(p2.m_latLon));
+  // direct distance
+  double doe = mercator::DistanceOnEarth(mercator::FromLatLon(p1.m_coordinates),
+                                         mercator::FromLatLon(p2.m_coordinates));
+
   /*
    * Acceptance boundaries for candidate paths are currently:
    *
@@ -371,7 +372,30 @@ uint32_t GuessDnp(openlr::LocationReferencePoint & p1, openlr::LocationReference
    * 1.19 – close to the square root of 1.41
    * 1 – direct distance unmodified
    */
-  return doe * 1.19f + 0.5f;
+  double dist = doe * 1.19f;
+
+  // if we have kilometric points, calculate nominal distance as the difference between them
+  if (p1.m_distance && p2.m_distance)
+  {
+    LOG(LINFO, ("Both points have distance, calculating nominal difference"));
+    float nominalDist = (p1.m_distance.value() - p2.m_distance.value()) * 1000.0;
+    if (nominalDist < 0)
+      nominalDist *= -1;
+    /*
+     * Plausibility check for nominal distance, as kilometric points along the route may not be
+     * continuous: discard if shorter than direct distance (geometrically impossible) or if longer
+     * than 4 times direct distance (somewhat arbitrary, based on the OpenLR acceptance limit for
+     * `openlr::LinearSegmentSource::FromCoordinatesTag`, as well as real-world observations of
+     * distances between two adjacent mountain valleys, which are up to roughly 3 times the direct
+     * distance). If nominal distance is outside these boundaries, discard it and use `dist` (direct
+     * distance with a tolerance factor).
+     */
+    if ((nominalDist >= doe) && (nominalDist <= doe * 4))
+      dist = nominalDist;
+    else
+      LOG(LINFO, ("Nominal distance:", nominalDist, "direct distance:", doe, "– discarding"));
+  }
+  return dist + 0.5f;
 }
 
 void MergeMultiMwmColoring(MultiMwmColoring & delta, MultiMwmColoring & target)
