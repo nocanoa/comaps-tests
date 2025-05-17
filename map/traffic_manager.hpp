@@ -184,6 +184,14 @@ private:
   };
 
   /**
+   * @brief Returns a TraFF filter list for a set of MWMs.
+   *
+   * @param mwms The MWMs for which a filter list is to be created.
+   * @return A `filter_list` in XML format.
+   */
+  std::string GetMwmFilters(std::set<MwmSet::MwmId> & mwms);
+
+  /**
    * @brief Subscribes to a traffic service.
    *
    * @param mwms The MWMs for which data is needed.

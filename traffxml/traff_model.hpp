@@ -395,6 +395,22 @@ struct TraffMessage
 
 using TraffFeed = std::vector<TraffMessage>;
 
+// TODO Capabilities
+
+/*
+ * Filter: currently not implemented.
+ * We only use bbox, for which we have a suitable data type.
+ * min_road_class is not needed as we do not filter by road class.
+ */
+
+/*
+ * TraffSubscription: currently not implemented.
+ * We just store the ID as a string.
+ * Filters are only by bbox, not by min_road_class. The list is auto-generated from the list of
+ * active MWMs and changes exactly when the active MWM set changes, eliminating the need to store
+ * the full filter list.
+ */
+
 /**
  * @brief Guess the distance to the next point.
  *

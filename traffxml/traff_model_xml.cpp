@@ -643,4 +643,16 @@ bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed)
   }
   return result;
 }
+
+std::string FiltersToXml(std::vector<m2::RectD> & bboxRects)
+{
+  std::ostringstream os;
+  for (auto rect : bboxRects)
+    os << std::format("<filter bbox=\"{} {} {} {}\"/>\n",
+                      mercator::YToLat(rect.minY()),
+                      mercator::XToLon(rect.minX()),
+                      mercator::YToLat(rect.maxY()),
+                      mercator::XToLon(rect.maxX()));
+  return os.str();
+}
 }  // namespace openlr

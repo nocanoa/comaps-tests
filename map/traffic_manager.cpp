@@ -266,12 +266,21 @@ void TrafficManager::UpdateViewport(ScreenBase const & screen)
   UpdateActiveMwms(screen.ClipRect(), m_lastDrapeMwmsByRect, m_activeDrapeMwms);
 }
 
+std::string TrafficManager::GetMwmFilters(std::set<MwmSet::MwmId> & mwms)
+{
+  std::vector<m2::RectD> rects;
+  for (auto mwmId : mwms)
+    rects.push_back(mwmId.GetInfo()->m_bordersRect);
+  return traffxml::FiltersToXml(rects);
+}
+
 // TODO make this work with multiple sources (e.g. Android)
 bool TrafficManager::Subscribe(std::set<MwmSet::MwmId> & mwms)
 {
   // TODO what if we’re subscribed already?
+  std::string filterList = GetMwmFilters(mwms);
   // TODO
-  LOG(LINFO, ("Would subscribe to", mwms));
+  LOG(LINFO, ("Would subscribe to:\n", filterList));
   m_subscriptionId = "placeholder_subscription_id";
   m_isPollNeeded = true; // would be false if we got a feed here
   return true;
@@ -280,9 +289,11 @@ bool TrafficManager::Subscribe(std::set<MwmSet::MwmId> & mwms)
 // TODO make this work with multiple sources (e.g. Android)
 bool TrafficManager::ChangeSubscription(std::set<MwmSet::MwmId> & mwms)
 {
-  // TODO what if we’re not subscribed yet?
+  if (!IsSubscribed())
+    return false;
+  std::string filterList = GetMwmFilters(mwms);
   // TODO
-  LOG(LINFO, ("Would change subscription", m_subscriptionId, "to", mwms));
+  LOG(LINFO, ("Would change subscription", m_subscriptionId, "to:\n", filterList));
   m_isPollNeeded = true; // would be false if we got a feed here
   return true;
 }
@@ -290,6 +301,7 @@ bool TrafficManager::ChangeSubscription(std::set<MwmSet::MwmId> & mwms)
 bool TrafficManager::SetSubscriptionArea()
 {
   std::set<MwmSet::MwmId> activeMwms;
+
   if (!IsSubscribed())
   {
     {
