@@ -15,6 +15,31 @@ class xml_node;
 
 namespace traffxml
 {
+/**
+ * @brief Retrieves a TraFF feed from an XML document.
+ *
+ * The document must conform loosely to the TraFF specification (currently version 0.8).
+ *
+ * The name of the root element is not verified, but the `message` elements must be its immediate
+ * children.
+ *
+ * Custom elements and attributes which are not part of the TraFF specification are ignored.
+ *
+ * Values which cannot be parsed correctly are skipped.
+ *
+ * Events whose event type does not match their event class are skipped.
+ *
+ * Messages, events, locations or points which lack mandatory information are skipped.
+ *
+ * If children are skipped but the parent remains valid, parsing it will report success.
+ *
+ * Parsing the feed will report failure if all its messages fail to parse, but not if it has no
+ * messages.
+ *
+ * @param document The XML document from which to retrieve the messages.
+ * @param feed Receives the TraFF feed.
+ * @return `true` on success, `false` on failure.
+ */
 bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed);
 
 /**
