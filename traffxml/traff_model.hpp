@@ -3,11 +3,8 @@
 //#include "traffxml/traff_foo.hpp"
 
 #include "geometry/latlon.hpp"
-#include "geometry/point2d.hpp"
 
 #include "indexer/mwm_set.hpp"
-
-#include "openlr/openlr_model.hpp"
 
 #include "traffic/speed_groups.hpp"
 #include "traffic/traffic_info.hpp"
@@ -264,15 +261,6 @@ struct Point
   friend bool operator==(Point const & lhs, Point const & rhs);
   friend bool operator!=(Point const & lhs, Point const & rhs) { return !(lhs == rhs); }
 
-  /**
-   * @brief Converts the point to an OpenLR location reference point.
-   *
-   * Only coordinates are populated.
-   *
-   * @return An OpenLR LRP with the coordinates of the point.
-   */
-  openlr::LocationReferencePoint ToLrp();
-
   // TODO role?
   ms::LatLon m_coordinates = ms::LatLon::Zero();
   std::optional<float> m_distance;
@@ -296,34 +284,6 @@ struct TraffLocation
   // Non-member friend as member operators do not work with std::optional
   friend bool operator==(TraffLocation const & lhs, TraffLocation const & rhs);
   friend bool operator!=(TraffLocation const & lhs, TraffLocation const & rhs) { return !(lhs == rhs); }
-
-  /**
-   * @brief Converts the location to an OpenLR linear location reference.
-   *
-   * @param backwards If true, gnerates a linear location reference for the backwards direction,
-   * with the order of points reversed.
-   * @return An OpenLR linear location reference which corresponds to the location.
-   */
-  openlr::LinearLocationReference ToLinearLocationReference(bool backwards);
-
-  /**
-   * @brief Converts the location to a vector of OpenLR segments.
-   *
-   * Depending on the directionality, the resulting vector will hold one or two elements: one for
-   * the forward direction, and for bidirectional locations, a second one for the backward
-   * direction.
-   *
-   * @param messageId The message ID
-   * @return A vector holding the resulting OpenLR segments.
-   */
-  std::vector<openlr::LinearSegment> ToOpenLrSegments(std::string & messageId);
-
-  /**
-   * @brief Returns the OpenLR functional road class (FRC) matching `m_roadClass`.
-   *
-   * @return The FRC.
-   */
-  openlr::FunctionalRoadClass GetFrc();
 
   std::optional<std::string> m_country;
   std::optional<std::string> m_destination;
@@ -410,20 +370,6 @@ using TraffFeed = std::vector<TraffMessage>;
  * active MWMs and changes exactly when the active MWM set changes, eliminating the need to store
  * the full filter list.
  */
-
-/**
- * @brief Guess the distance to the next point.
- *
- * This is calculated as direct distance, multiplied with a tolerance factor to account for the
- * fact that the road is not always a straight line.
- *
- * The result can be used to provide some semi-valid DNP values.
- *
- * @param p1 The first point.
- * @param p2 The second point.
- * @return The approximate distance on the ground, in meters.
- */
-uint32_t GuessDnp(Point & p1, Point & p2);
 
 /**
  * @brief Merges the contents of one `MultiMwmColoring` into another.

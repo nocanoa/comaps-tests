@@ -2,8 +2,6 @@
 
 #include "base/logging.hpp"
 
-#include "geometry/mercator.hpp"
-
 #include <regex>
 
 using namespace std;
@@ -174,13 +172,6 @@ bool operator==(Point const & lhs, Point const & rhs)
   return lhs.m_coordinates == rhs.m_coordinates;
 }
 
-openlr::LocationReferencePoint Point::ToLrp()
-{
-  openlr::LocationReferencePoint result;
-  result.m_latLon = ms::LatLon(this->m_coordinates.m_lat, this->m_coordinates.m_lon);
-  return result;
-}
-
 bool operator==(TraffLocation const & lhs, TraffLocation const & rhs)
 {
   return (lhs.m_from == rhs.m_from)
@@ -188,101 +179,6 @@ bool operator==(TraffLocation const & lhs, TraffLocation const & rhs)
       && (lhs.m_via == rhs.m_via)
       && (lhs.m_notVia == rhs.m_notVia)
       && (lhs.m_to == rhs.m_to);
-}
-
-openlr::LinearLocationReference TraffLocation::ToLinearLocationReference(bool backwards)
-{
-  openlr::LinearLocationReference locationReference;
-  locationReference.m_points.clear();
-  std::vector<Point> points;
-  if (m_from)
-    points.push_back(m_from.value());
-  if (m_at)
-    points.push_back(m_at.value());
-  else if (m_via)
-    points.push_back(m_via.value());
-  if (m_to)
-    points.push_back(m_to.value());
-  if (backwards)
-    std::reverse(points.begin(), points.end());
-  // m_notVia is ignored as OpenLR does not support this functionality.
-  CHECK_GREATER(points.size(), 1, ("At least two reference points must be given"));
-  for (size_t i = 0; i < points.size(); i++)
-  {
-    openlr::LocationReferencePoint lrp = points[i].ToLrp();
-    lrp.m_functionalRoadClass = GetFrc();
-    if (m_ramps.value_or(traffxml::Ramps::None) != traffxml::Ramps::None)
-      lrp.m_formOfWay = openlr::FormOfWay::Sliproad;
-    if (i < points.size() - 1)
-    {
-      lrp.m_distanceToNextPoint
-          = GuessDnp(points[i], points[i + 1]);
-      /*
-       * Somewhat hackish. LFRCNP is evaluated by the same function as FRC and the candidate is
-       * used or discarded based on whether a score was returned or not (the score itself is not
-       * used for LFRCNP). However, this means we can use FRC as LFRCNP.
-       */
-      lrp.m_lfrcnp = GetFrc();
-    }
-    locationReference.m_points.push_back(lrp);
-  }
-  return locationReference;
-}
-
-// TODO make segment ID in OpenLR a string value, and store messageId
-std::vector<openlr::LinearSegment> TraffLocation::ToOpenLrSegments(std::string & messageId)
-{
-  // Convert the location to a format understood by the OpenLR decoder.
-  std::vector<openlr::LinearSegment> segments;
-  int dirs = (m_directionality == Directionality::BothDirections) ? 2 : 1;
-  for (int dir = 0; dir < dirs; dir++)
-  {
-    openlr::LinearSegment segment;
-    /*
-     * Segment IDs are used internally by the decoder but nowhere else.
-     * Since we decode TraFF locations one at a time, there are at most two segments in a single
-     * decoder instance (one segment per direction). Therefore, a segment ID derived from the
-     * direction is unique within the decoder instance.
-     */
-    segment.m_segmentId = dir;
-    segment.m_messageId = messageId;
-    /*
-     * Segments generated from coordinates can have any number of points. Each point, except for
-     * the last point, must indicate the distance to the next point. Line properties (functional
-     * road class (FRC), form of way, bearing) or path properties other than distance to next point
-     * (lowest FRC to next point, againstDrivingDirection) are ignored.
-     * Segment length is never evaluated.
-     * TODO update OpenLR decoder to make all line and path properties optional.
-     */
-    segment.m_source = openlr::LinearSegmentSource::FromCoordinatesTag;
-    segment.m_locationReference = this->ToLinearLocationReference(dir == 0 ? false : true);
-
-    segments.push_back(segment);
-  }
-  return segments;
-}
-
-openlr::FunctionalRoadClass TraffLocation::GetFrc()
-{
-  if (!m_roadClass)
-    return openlr::FunctionalRoadClass::NotAValue;
-  switch (m_roadClass.value())
-  {
-    case RoadClass::Motorway: return openlr::FunctionalRoadClass::FRC0;
-    case RoadClass::Trunk: return openlr::FunctionalRoadClass::FRC0;
-    case RoadClass::Primary: return openlr::FunctionalRoadClass::FRC1;
-    case RoadClass::Secondary: return openlr::FunctionalRoadClass::FRC2;
-    case RoadClass::Tertiary: return openlr::FunctionalRoadClass::FRC3;
-    /*
-     * TODO Revisit FRC for Other.
-     * Other corresponds to FRC4–7.
-     * FRC4 matches secondary/tertiary (zero score) and anything below (full score).
-     * FRC5–7 match anything below tertiary (full score); secondary/tertiary never match.
-     * Primary and above never matches any of these FRCs.
-     */
-    case RoadClass::Other: return openlr::FunctionalRoadClass::FRC4;
-  }
-  UNREACHABLE();
 }
 
 std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
@@ -344,64 +240,6 @@ std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
   else
     // should never happen, unless we have a bug somewhere
     return std::nullopt;
-}
-
-// TODO tweak formula based on FRC, FOW and direct distance (lower FRC roads may have more and sharper turns)
-uint32_t GuessDnp(Point & p1, Point & p2)
-{
-  // direct distance
-  double doe = mercator::DistanceOnEarth(mercator::FromLatLon(p1.m_coordinates),
-                                         mercator::FromLatLon(p2.m_coordinates));
-
-  /*
-   * Acceptance boundaries for candidate paths are currently:
-   *
-   * for `openlr::LinearSegmentSource::FromLocationReferenceTag`, 0.6 to ~1.67 (i.e. 1/0.6) times
-   * the direct distance,
-   *
-   * for `openlr::LinearSegmentSource::FromCoordinatesTag`, 0.25 to 4 times the direct distance.
-   *
-   * A tolerance factor of 1/0.6 is the maximum for which direct distance would be accepted in all
-   * cases, with an upper boundary of at least ~2.78 times the direct distance. However, this may
-   * cause the actual distance to be overestimated and an incorrect route chosen as a result, as
-   * path candidates are scored based on the match between DNP and their length.
-   * Also, since we use `openlr::LinearSegmentSource::FromCoordinatesTag`, acceptance limits are
-   * much wider than that.
-   * In practice, the shortest route from one valley to the next in a mountain area is seldom more
-   * than 3 times the direct distance, based on a brief examination. This would be even within the
-   * limits of direct distance, hence we do not need a large correction factor for this scenario.
-   *
-   * Candidate values:
-   * 1.66 (1/0.6) – upper boundary for direct distance to be just within the most stringent limits
-   * 1.41 (2^0.5) – ratio between two sides of a square and its diagonal
-   * 1.3 – close to the square root of 1.66 (halfway between 1 and 1.66)
-   * 1.19 – close to the square root of 1.41
-   * 1 – direct distance unmodified
-   */
-  double dist = doe * 1.19f;
-
-  // if we have kilometric points, calculate nominal distance as the difference between them
-  if (p1.m_distance && p2.m_distance)
-  {
-    LOG(LINFO, ("Both points have distance, calculating nominal difference"));
-    float nominalDist = (p1.m_distance.value() - p2.m_distance.value()) * 1000.0;
-    if (nominalDist < 0)
-      nominalDist *= -1;
-    /*
-     * Plausibility check for nominal distance, as kilometric points along the route may not be
-     * continuous: discard if shorter than direct distance (geometrically impossible) or if longer
-     * than 4 times direct distance (somewhat arbitrary, based on the OpenLR acceptance limit for
-     * `openlr::LinearSegmentSource::FromCoordinatesTag`, as well as real-world observations of
-     * distances between two adjacent mountain valleys, which are up to roughly 3 times the direct
-     * distance). If nominal distance is outside these boundaries, discard it and use `dist` (direct
-     * distance with a tolerance factor).
-     */
-    if ((nominalDist >= doe) && (nominalDist <= doe * 4))
-      dist = nominalDist;
-    else
-      LOG(LINFO, ("Nominal distance:", nominalDist, "direct distance:", doe, "– discarding"));
-  }
-  return dist + 0.5f;
 }
 
 void MergeMultiMwmColoring(MultiMwmColoring & delta, MultiMwmColoring & target)

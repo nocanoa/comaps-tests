@@ -7,11 +7,9 @@
 
 #include "drape/pointers.hpp"
 
-#include "indexer/data_source.hpp"
 #include "indexer/mwm_set.hpp"
 
-#include "openlr/openlr_decoder.hpp"
-
+#include "traffxml/traff_decoder.hpp"
 #include "traffxml/traff_model.hpp"
 
 #include "geometry/point2d.hpp"
@@ -258,31 +256,6 @@ private:
    * @brief Removes the first message from the first feed and decodes it.
    */
   void DecodeFirstMessage();
-
-  /**
-   * @brief Decodes a TraFF location.
-   *
-   * @param message The message to decode.
-   * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
-   */
-  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
-
-  /**
-   * @brief Applies traffic impact to a decoded TraFF location.
-   *
-   * Applying impact sets the corresponding speed groups of the decoded segments. Existing speed groups will be overwritten.
-   *
-   * @param impact The traffic impact to apply.
-   * @param decoded The decoded segments.
-   */
-  void ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml::MultiMwmColoring & decoded);
-
-  /**
-   * @brief Decodes a single message to its segments and their speed groups.
-   *
-   * @param message The message to decode.
-   */
-  void DecodeMessage(traffxml::TraffMessage & message);
 
   /**
    * @brief Event loop for the traffic worker thread.
@@ -558,11 +531,11 @@ private:
   std::map<std::string, traffxml::TraffMessage> m_messageCache;
 
   /**
-   * @brief The OpenLR decoder instance.
+   * @brief The TraFF decoder instance.
    *
    * Used to decode TraFF locations into road segments on the map.
    */
-  openlr::OpenLRDecoder m_openLrDecoder;
+  traffxml::DefaultTraffDecoder m_traffDecoder;
 
   /**
    * @brief Map between MWM IDs and their colorings.
