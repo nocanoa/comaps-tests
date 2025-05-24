@@ -56,13 +56,13 @@ TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestT
   , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
 {}
 
-TrafficManager::TrafficManager(DataSource & dataSource,
+TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                const CountryParentNameGetterFn &countryParentNameGetter,
                                GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
                                traffic::TrafficObserver & observer)
   : m_dataSource(dataSource)
+  , m_countryInfoGetterFn(countryInfoGetter)
   , m_countryParentNameGetterFn(countryParentNameGetter)
-  , m_traffDecoder(dataSource, countryParentNameGetter, m_messageCache)
   , m_getMwmsByRectFn(getMwmsByRectFn)
   , m_observer(observer)
   , m_currentDataVersion(0)
@@ -127,6 +127,13 @@ void TrafficManager::SetEnabled(bool enabled)
     Invalidate();
   else
     m_observer.OnTrafficInfoClear();
+}
+
+void TrafficManager::Start()
+{
+  m_traffDecoder = make_unique<traffxml::DefaultTraffDecoder>(m_dataSource, m_countryInfoGetterFn,
+                                                              m_countryParentNameGetterFn, m_messageCache);
+  m_isStarted = true;
 }
 
 void TrafficManager::Clear()
@@ -211,7 +218,6 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect,
 
   {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_isStarted = true;
     m_activeMwmsChanged = true;
     activeMwms.clear();
     for (auto const & mwm : mwms)
@@ -462,7 +468,7 @@ void TrafficManager::DecodeFirstMessage()
   }
 
   LOG(LINFO, (" ", message.m_id, ":", message));
-  m_traffDecoder.DecodeMessage(message);
+  m_traffDecoder->DecodeMessage(message);
   // store message in cache
   m_messageCache.insert_or_assign(message.m_id, message);
   // store message coloring in AllMwmColoring

@@ -7,6 +7,14 @@
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
 
+#include "routing/index_router.hpp"
+#include "routing/regions_decl.hpp"
+#include "routing/router.hpp"
+
+#include "routing_common/num_mwm_id.hpp"
+
+#include "storage/country_info_getter.hpp"
+
 namespace traffxml
 {
 /**
@@ -15,9 +23,10 @@ namespace traffxml
 class TraffDecoder
 {
 public:
+  using CountryInfoGetterFn = std::function<storage::CountryInfoGetter const &()>;
   using CountryParentNameGetterFn = std::function<std::string(std::string const &)>;
 
-  TraffDecoder(DataSource & dataSource,
+  TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                const CountryParentNameGetterFn & countryParentNameGetter,
                std::map<std::string, traffxml::TraffMessage> & messageCache);
 
@@ -53,6 +62,7 @@ protected:
   void ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml::MultiMwmColoring & decoded);
 
   DataSource & m_dataSource;
+  CountryInfoGetterFn m_countryInfoGetterFn;
   CountryParentNameGetterFn m_countryParentNameGetterFn;
 
   /**
@@ -71,7 +81,7 @@ private:
 class OpenLrV3TraffDecoder : public TraffDecoder
 {
 public:
-  OpenLrV3TraffDecoder(DataSource & dataSource,
+  OpenLrV3TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                        const CountryParentNameGetterFn & countryParentNameGetter,
                        std::map<std::string, traffxml::TraffMessage> & messageCache);
 
@@ -149,6 +159,80 @@ private:
    * Used to decode TraFF locations into road segments on the map.
    */
   openlr::OpenLRDecoder m_openLrDecoder;
+};
+
+/**
+ * @brief A `TraffDecoder` implementation which internally uses the routing engine.
+ */
+class RoutingTraffDecoder : public TraffDecoder
+{
+public:
+  class DecoderRouter : public routing::IndexRouter
+  {
+  public:
+    /**
+     * @brief Creates a new `DecoderRouter` instance.
+     *
+     * @param countryParentNameGetterFn Function which converts a country name into the name of its parent country)
+     * @param countryFileFn Function which converts a pointer to its country name
+     * @param countryRectFn Function which returns the rect for a country
+     * @param numMwmIds
+     * @param numMwmTree
+     * @param trafficCache Tre traffic cache (used only if `vehicleType` is `VehicleType::Car`)
+     * @param dataSource The MWM data source
+     */
+    DecoderRouter(CountryParentNameGetterFn const & countryParentNameGetterFn,
+                  routing::TCountryFileFn const & countryFileFn,
+                  routing::CountryRectFn const & countryRectFn,
+                  std::shared_ptr<routing::NumMwmIds> numMwmIds,
+                  std::unique_ptr<m4::Tree<routing::NumMwmId>> numMwmTree,
+                  DataSource & dataSource);
+  protected:
+  private:
+  };
+
+  RoutingTraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
+                      const CountryParentNameGetterFn & countryParentNameGetter,
+                      std::map<std::string, traffxml::TraffMessage> & messageCache);
+
+protected:
+  /**
+   * @brief Initializes the router.
+   *
+   * This is usually done in the constructor but fails if no maps are loaded (attempting to
+   * construct a router without maps results in a crash, hence we check for maps and exit with an
+   * error if we have none). It can be repeated any time.
+   *
+   * Attempting to initialize a router which has already been succesfully initialized is a no-op. It
+   * will be reported as success.
+   *
+   * @return true if successful, false if not.
+   */
+  bool InitRouter();
+
+  /**
+   * @brief Decodes one direction of a TraFF location.
+   *
+   * @param message The message to decode.
+   * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
+   * @param backwards If true, decode the backward direction, else the forward direction.
+   */
+  void DecodeLocationDirection(traffxml::TraffMessage & message,
+                               traffxml::MultiMwmColoring & decoded, bool backwards);
+
+  /**
+   * @brief Decodes a TraFF location.
+   *
+   * @param message The message to decode.
+   * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
+   */
+  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
+
+private:
+  static void LogCode(routing::RouterResultCode code, double const elapsedSec);
+
+  std::shared_ptr<routing::NumMwmIds> m_numMwmIds = std::make_shared<routing::NumMwmIds>();
+  std::unique_ptr<routing::IRouter> m_router;
 };
 
 /**

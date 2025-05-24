@@ -6,9 +6,17 @@
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
 
+#include "routing/async_router.hpp"
+#include "routing/checkpoints.hpp"
 #include "routing/maxspeeds.hpp"
+#include "routing/route.hpp"
+#include "routing/router_delegate.hpp"
 
 #include "routing_common/maxspeed_conversion.hpp"
+
+#include "storage/routing_helpers.hpp"
+
+#include "traffic/traffic_cache.hpp"
 
 namespace traffxml
 {
@@ -21,10 +29,15 @@ namespace traffxml
  */
 auto constexpr kNumDecoderThreads = 1;
 
-TraffDecoder::TraffDecoder(DataSource & dataSource,
+// Timeout for the router in seconds, used by RoutingTraffDecoder
+// TODO set to a sensible value
+auto constexpr kRouterTimeoutSec = 30;
+
+TraffDecoder::TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                            const CountryParentNameGetterFn & countryParentNameGetter,
                            std::map<std::string, TraffMessage> & messageCache)
   : m_dataSource(dataSource)
+  , m_countryInfoGetterFn(countryInfoGetter)
   , m_countryParentNameGetterFn(countryParentNameGetter)
   , m_messageCache(messageCache)
 {}
@@ -121,10 +134,10 @@ void TraffDecoder::DecodeMessage(traffxml::TraffMessage & message)
   }
 }
 
-OpenLrV3TraffDecoder::OpenLrV3TraffDecoder(DataSource & dataSource,
+OpenLrV3TraffDecoder::OpenLrV3TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                            const CountryParentNameGetterFn & countryParentNameGetter,
                                            std::map<std::string, TraffMessage> & messageCache)
-  : TraffDecoder(dataSource, countryParentNameGetter, messageCache)
+  : TraffDecoder(dataSource, countryInfoGetter, countryParentNameGetter, messageCache)
   , m_openLrDecoder(dataSource, countryParentNameGetter)
 {}
 
@@ -335,5 +348,264 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
                           traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
       decoded[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = traffic::SpeedGroup::Unknown;
     }
+}
+
+RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn const & countryParentNameGetterFn,
+                                                  routing::TCountryFileFn const & countryFileFn,
+                                                  routing::CountryRectFn const & countryRectFn,
+                                                  std::shared_ptr<routing::NumMwmIds> numMwmIds,
+                                                  std::unique_ptr<m4::Tree<routing::NumMwmId>> numMwmTree,
+                                                  DataSource & dataSource)
+  : routing::IndexRouter(routing::VehicleType::Car /* VehicleType vehicleType */,
+                         false /* bool loadAltitudes */,
+                         countryParentNameGetterFn,
+                         countryFileFn,
+                         countryRectFn,
+                         std::move(numMwmIds),
+                         std::move(numMwmTree),
+                         //std::nullopt /* std::optional<traffic::TrafficCache> const & trafficCache */,
+                         dataSource)
+  /* TODO build our own edge estimator for TraFF decoding purposes
+  , m_estimator(EdgeEstimator::Create(
+        VehicleType::Car, CalcMaxSpeed(*m_numMwmIds, *m_vehicleModelFactory, m_vehicleType),
+        CalcOffroadSpeed(*m_vehicleModelFactory), m_trafficStash,
+        &dataSource, m_numMwmIds))
+   */
+  //, m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource)) // TODO we don’t need directions, can we disable that?
+{}
+
+RoutingTraffDecoder::RoutingTraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
+                                         const CountryParentNameGetterFn & countryParentNameGetter,
+                                         std::map<std::string, TraffMessage> & messageCache)
+  : TraffDecoder(dataSource, countryInfoGetter, countryParentNameGetter, messageCache)
+{
+  InitRouter();
+}
+
+bool RoutingTraffDecoder::InitRouter()
+{
+  if (m_router)
+    return true;
+
+  // code mostly from RoutingManager::SetRouterImpl(RouterType)
+  /*
+   * RoutingManager::SetRouterImpl(RouterType) calls m_delegate.RegisterCountryFilesOnRoute(numMwmIds).
+   * m_delegate is the framework, and the routine cycles through the countries in storage.
+   * As we don’t have access to storage, we get our country files from the data source.
+   */
+  std::vector<std::shared_ptr<MwmInfo>> mwmsInfo;
+  m_dataSource.GetMwmsInfo(mwmsInfo);
+  for (auto mwmInfo : mwmsInfo)
+    m_numMwmIds->RegisterFile(mwmInfo->GetLocalFile().GetCountryFile());
+
+  if (m_numMwmIds->IsEmpty())
+    return false;
+
+  auto const countryFileGetter = [this](m2::PointD const & p) -> std::string {
+    // TODO (@gorshenin): fix CountryInfoGetter to return CountryFile
+    // instances instead of plain strings.
+    return m_countryInfoGetterFn().GetRegionCountryId(p);
+  };
+
+  auto const getMwmRectByName = [this](std::string const & countryId) -> m2::RectD {
+    return m_countryInfoGetterFn().GetLimitRectForLeaf(countryId);
+  };
+
+  m_router =
+      make_unique<RoutingTraffDecoder::DecoderRouter>(m_countryParentNameGetterFn,
+                                                      countryFileGetter, getMwmRectByName, m_numMwmIds,
+                                                      routing::MakeNumMwmTree(*m_numMwmIds, m_countryInfoGetterFn()),
+                                                      m_dataSource);
+
+  return true;
+}
+
+// Copied from AsyncRouter
+// static
+void RoutingTraffDecoder::LogCode(routing::RouterResultCode code, double const elapsedSec)
+{
+  switch (code)
+  {
+    case routing::RouterResultCode::StartPointNotFound:
+      LOG(LWARNING, ("Can't find start or end node"));
+      break;
+    case routing::RouterResultCode::EndPointNotFound:
+      LOG(LWARNING, ("Can't find end point node"));
+      break;
+    case routing::RouterResultCode::PointsInDifferentMWM:
+      LOG(LWARNING, ("Points are in different MWMs"));
+      break;
+    case routing::RouterResultCode::RouteNotFound:
+      LOG(LWARNING, ("Route not found"));
+      break;
+    case routing::RouterResultCode::RouteFileNotExist:
+      LOG(LWARNING, ("There is no routing file"));
+      break;
+    case routing::RouterResultCode::NeedMoreMaps:
+      LOG(LINFO,
+          ("Routing can find a better way with additional maps, elapsed seconds:", elapsedSec));
+      break;
+    case routing::RouterResultCode::Cancelled:
+      LOG(LINFO, ("Route calculation cancelled, elapsed seconds:", elapsedSec));
+      break;
+    case routing::RouterResultCode::NoError:
+      LOG(LINFO, ("Route found, elapsed seconds:", elapsedSec));
+      break;
+    case routing::RouterResultCode::NoCurrentPosition:
+      LOG(LINFO, ("No current position"));
+      break;
+    case routing::RouterResultCode::InconsistentMWMandRoute:
+      LOG(LINFO, ("Inconsistent mwm and route"));
+      break;
+    case routing::RouterResultCode::InternalError:
+      LOG(LINFO, ("Internal error"));
+      break;
+    case routing::RouterResultCode::FileTooOld:
+      LOG(LINFO, ("File too old"));
+      break;
+    case routing::RouterResultCode::IntermediatePointNotFound:
+      LOG(LWARNING, ("Can't find intermediate point node"));
+      break;
+    case routing::RouterResultCode::TransitRouteNotFoundNoNetwork:
+      LOG(LWARNING, ("No transit route is found because there's no transit network in the mwm of "
+                     "the route point"));
+      break;
+    case routing::RouterResultCode::TransitRouteNotFoundTooLongPedestrian:
+      LOG(LWARNING, ("No transit route is found because pedestrian way is too long"));
+      break;
+    case routing::RouterResultCode::RouteNotFoundRedressRouteError:
+      LOG(LWARNING, ("Route not found because of a redress route error"));
+      break;
+  case routing::RouterResultCode::HasWarnings:
+      LOG(LINFO, ("Route has warnings, elapsed seconds:", elapsedSec));
+      break;
+  }
+}
+
+void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & message,
+                                                  traffxml::MultiMwmColoring & decoded, bool backwards)
+{
+  bool adjustToPrevRoute = false; // calculate a fresh route, no adjustments to previous one
+  uint64_t routeId = 0; // used in callbacks to identify the route, we might not need it at all
+  std::string routerName; // set later
+
+  std::vector<m2::PointD> points;
+  if (message.m_location.value().m_from)
+    points.push_back(mercator::FromLatLon(message.m_location.value().m_from.value().m_coordinates));
+  if (message.m_location.value().m_at)
+    points.push_back(mercator::FromLatLon(message.m_location.value().m_at.value().m_coordinates));
+  else if (message.m_location.value().m_via)
+    points.push_back(mercator::FromLatLon(message.m_location.value().m_via.value().m_coordinates));
+  if (message.m_location.value().m_to)
+    points.push_back(mercator::FromLatLon(message.m_location.value().m_to.value().m_coordinates));
+  if (backwards)
+    std::reverse(points.begin(), points.end());
+  // m_notVia is ignored as OpenLR does not support this functionality.
+  CHECK_GREATER(points.size(), 1, ("At least two reference points must be given"));
+
+  /*
+   * startDirection is the direction of travel at start. Can be m2::PointD::Zero() to ignore
+   * direction, or PositionAccumulator::GetDirection(), which basically returns the difference
+   * between the last position and an earlier one (offset between two points from which the
+   * direction of travel can be inferred).
+   *
+   * For our purposes, points[1] - points[0] would be as close as we could get to a start direction.
+   * This would be accurate on very straight roads, less accurate on not-so-straight ones. However,
+   * even on a near-straight road, the standard router (with the default EdgeEstimator) seemed quite
+   * unimpressed by the direction and insisted on starting off on the carriageway closest to the
+   * start point and sending us on a huge detour, instead of taking the direct route on the opposite
+   * carriageway.
+   */
+  m2::PointD startDirection = m2::PointD::Zero();
+
+  routing::Checkpoints checkpoints(std::move(points));
+
+  /*
+   * This code is mostly lifted from:
+   *  - AsyncRouter::CalculateRoute(Checkpoints const &, m2::PointD const &, bool, ReadyCallbackOwnership const &,
+   *    NeedMoreMapsCallback const &, RemoveRouteCallback const &, ProgressCallback, uint32_t)
+   *  - AsyncRouter::CalculateRoute()
+   */
+
+  // AsyncRouter::CalculateRoute(with args)
+  /*
+   * AsyncRouter::CalculateRoute() has a `DelegateProxy`, which is private. We just need the return
+   * value of GetDelegate(), which is a `routing::RouterDelegate`, so use that instead. We don’t
+   * nedd any of the callbacks, therefore we don’t set them.
+   */
+  routing::RouterDelegate delegate;
+  delegate.SetTimeout(kRouterTimeoutSec);
+
+  // AsyncRouter::CalculateRoute()
+  if (!m_router && !InitRouter())
+    return;
+
+  routerName = m_router->GetName();
+  // TODO is that for following a track? If so, can we use that with just 2–3 reference points?
+  //router->SetGuides(std::move(m_guides));
+  //m_guides.clear();
+
+  auto route = std::make_shared<routing::Route>(m_router->GetName(), routeId);
+  routing::RouterResultCode code;
+
+  base::Timer timer;
+  double elapsedSec = 0.0;
+
+  try
+  {
+    LOG(LINFO, ("Calculating the route of direct length", checkpoints.GetSummaryLengthBetweenPointsMeters(),
+                "m. checkpoints:", checkpoints, "startDirection:", startDirection, "router name:", m_router->GetName()));
+
+    // Run basic request.
+    code = m_router->CalculateRoute(checkpoints, startDirection, adjustToPrevRoute,
+                                  delegate, *route);
+    m_router->SetGuides({});
+    elapsedSec = timer.ElapsedSeconds(); // routing time
+    LogCode(code, elapsedSec);
+    LOG(LINFO, ("ETA:", route->GetTotalTimeSec(), "sec."));
+  }
+  catch (RootException const & e)
+  {
+    code = routing::RouterResultCode::InternalError;
+    LOG(LERROR, ("Exception happened while calculating route:", e.Msg()));
+    return;
+  }
+
+  if (code == routing::RouterResultCode::NoError)
+  {
+    LOG(LINFO, ("Decoded route:"));
+    for (auto rsegment : route->GetRouteSegments())
+    {
+      routing::Segment segment = rsegment.GetSegment();
+      if (segment.GetMwmId() == routing::kFakeNumMwmId)
+      {
+        LOG(LINFO, ("  Fake segment:", segment));
+        continue;
+      }
+
+      LOG(LINFO, ("  segment:", segment));
+
+      auto const countryFile = m_numMwmIds->GetFile(segment.GetMwmId());
+      MwmSet::MwmId mwmId = m_dataSource.GetMwmIdByCountryFile(countryFile);
+
+      auto const fid = segment.GetFeatureId();
+      auto const sid = segment.GetSegmentIdx();
+      uint8_t direction = segment.IsForward() ?
+            traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
+            traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
+
+      decoded[mwmId][traffic::TrafficInfo::RoadSegmentId(fid, sid, direction)] = traffic::SpeedGroup::Unknown;
+    }
+  }
+}
+
+void RoutingTraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded)
+{
+  ASSERT(message.m_location, ("Message has no location"));
+  decoded.clear();
+
+  int dirs = (message.m_location.value().m_directionality == Directionality::BothDirections) ? 2 : 1;
+  for (int dir = 0; dir < dirs; dir++)
+    DecodeLocationDirection(message, decoded, dir == 0 ? false : true /* backwards */);
 }
 }  // namespace traffxml

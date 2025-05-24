@@ -9,6 +9,8 @@
 
 #include "indexer/mwm_set.hpp"
 
+#include "storage/country_info_getter.hpp"
+
 #include "traffxml/traff_decoder.hpp"
 #include "traffxml/traff_model.hpp"
 
@@ -34,6 +36,7 @@
 class TrafficManager final
 {
 public:
+  using CountryInfoGetterFn = std::function<storage::CountryInfoGetter const &()>;
   using CountryParentNameGetterFn = std::function<std::string(std::string const &)>;
 
   /**
@@ -75,6 +78,7 @@ public:
   using GetMwmsByRectFn = std::function<std::vector<MwmSet::MwmId>(m2::RectD const &)>;
 
   TrafficManager(DataSource & dataSource,
+                 CountryInfoGetterFn countryInfoGetter,
                  CountryParentNameGetterFn const & countryParentNameGetter,
                  GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
                  traffic::TrafficObserver & observer);
@@ -108,6 +112,26 @@ public:
    * @return True if enabled, false if not
    */
   bool IsEnabled() const;
+
+  /**
+   * @brief Starts the traffic manager.
+   *
+   * After creation, the traffic manager will not poll any sources or process any feeds until it is
+   * started. Feeds received through `Push()` will be added to the queue before the traffic manager
+   * is started, but will not be processed any further until the traffic manager is started.
+   *
+   * MWMs must be loaded before starting the traffic manager.
+   *
+   * @todo Currently, all MWMs must be loaded before calling `Start()`, as MWMs loaded after that
+   * will not get picked up. We need to extend `TrafficManager` to react to MWMs being added (and
+   * removed) – note that this affects the data source, not the set of active MWMs.
+   *
+   * @todo Start is currently not integrated with state or pause/resume logic (all of which might
+   * not be fully implemented ATM). If the traffic manager is not started, no message processing
+   * (other than filling the queue and deduplication) will take place, regardless of state. Starting
+   * the traffic manager will not change the state it reports.
+   */
+  void Start();
 
   void UpdateViewport(ScreenBase const & screen);
   void UpdateMyPosition(MyPosition const & myPosition);
@@ -400,6 +424,7 @@ private:
   }
 
   DataSource & m_dataSource;
+  CountryInfoGetterFn m_countryInfoGetterFn;
   CountryParentNameGetterFn m_countryParentNameGetterFn;
   GetMwmsByRectFn m_getMwmsByRectFn;
   traffic::TrafficObserver & m_observer;
@@ -535,7 +560,7 @@ private:
    *
    * Used to decode TraFF locations into road segments on the map.
    */
-  traffxml::DefaultTraffDecoder m_traffDecoder;
+  std::unique_ptr<traffxml::DefaultTraffDecoder> m_traffDecoder;
 
   /**
    * @brief Map between MWM IDs and their colorings.

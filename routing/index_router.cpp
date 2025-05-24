@@ -276,6 +276,40 @@ IndexRouter::IndexRouter(VehicleType vehicleType, bool loadAltitudes,
   CHECK(m_directionsEngine, ());
 }
 
+IndexRouter::IndexRouter(VehicleType vehicleType, bool loadAltitudes,
+                         CountryParentNameGetterFn const & countryParentNameGetterFn,
+                         TCountryFileFn const & countryFileFn, CountryRectFn const & countryRectFn,
+                         shared_ptr<NumMwmIds> numMwmIds, unique_ptr<m4::Tree<NumMwmId>> numMwmTree,
+                         DataSource & dataSource)
+  : m_vehicleType(vehicleType)
+  , m_loadAltitudes(loadAltitudes)
+  , m_name("astar-bidirectional-" + ToString(m_vehicleType))
+  , m_dataSource(dataSource, numMwmIds)
+  , m_vehicleModelFactory(CreateVehicleModelFactory(m_vehicleType, countryParentNameGetterFn))
+  , m_countryFileFn(countryFileFn)
+  , m_countryRectFn(countryRectFn)
+  , m_numMwmIds(std::move(numMwmIds))
+  , m_numMwmTree(std::move(numMwmTree))
+  , m_trafficStash(nullptr)
+  , m_roadGraph(m_dataSource,
+                vehicleType == VehicleType::Pedestrian || vehicleType == VehicleType::Transit
+                    ? IRoadGraph::Mode::IgnoreOnewayTag
+                    : IRoadGraph::Mode::ObeyOnewayTag,
+                m_vehicleModelFactory)
+  , m_estimator(EdgeEstimator::Create(
+        m_vehicleType, CalcMaxSpeed(*m_numMwmIds, *m_vehicleModelFactory, m_vehicleType),
+        CalcOffroadSpeed(*m_vehicleModelFactory), m_trafficStash,
+        &dataSource, m_numMwmIds))
+  , m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource))
+  , m_countryParentNameGetterFn(countryParentNameGetterFn)
+{
+  CHECK(!m_name.empty(), ());
+  CHECK(m_numMwmIds, ());
+  CHECK(m_numMwmTree, ());
+  CHECK(m_estimator, ());
+  CHECK(m_directionsEngine, ());
+}
+
 unique_ptr<WorldGraph> IndexRouter::MakeSingleMwmWorldGraph()
 {
   auto worldGraph = MakeWorldGraph();

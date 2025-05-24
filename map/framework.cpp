@@ -296,6 +296,7 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
             [this]() -> power_management::PowerManager const & { return m_powerManager; }),
         static_cast<RoutingManager::Delegate &>(*this))
   , m_trafficManager(m_featuresFetcher.GetDataSource(),
+                     [this]() -> storage::CountryInfoGetter const & { return GetCountryInfoGetter(); },
                      [this](string const & id) -> string { return m_storage.GetParentIdFor(id); },
                      bind(&Framework::GetMwmsByRect, this, _1, false /* rough */),
                      kMaxTrafficCacheSizeBytes, m_routingManager.RoutingSession())
@@ -388,6 +389,8 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
 
   if (loadMaps)
     LoadMapsSync();
+
+  m_trafficManager.Start();
 }
 
 Framework::~Framework()
