@@ -280,7 +280,7 @@ IndexRouter::IndexRouter(VehicleType vehicleType, bool loadAltitudes,
                          CountryParentNameGetterFn const & countryParentNameGetterFn,
                          TCountryFileFn const & countryFileFn, CountryRectFn const & countryRectFn,
                          shared_ptr<NumMwmIds> numMwmIds, unique_ptr<m4::Tree<NumMwmId>> numMwmTree,
-                         DataSource & dataSource)
+                         std::shared_ptr<EdgeEstimator> estimator, DataSource & dataSource)
   : m_vehicleType(vehicleType)
   , m_loadAltitudes(loadAltitudes)
   , m_name("astar-bidirectional-" + ToString(m_vehicleType))
@@ -296,10 +296,7 @@ IndexRouter::IndexRouter(VehicleType vehicleType, bool loadAltitudes,
                     ? IRoadGraph::Mode::IgnoreOnewayTag
                     : IRoadGraph::Mode::ObeyOnewayTag,
                 m_vehicleModelFactory)
-  , m_estimator(EdgeEstimator::Create(
-        m_vehicleType, CalcMaxSpeed(*m_numMwmIds, *m_vehicleModelFactory, m_vehicleType),
-        CalcOffroadSpeed(*m_vehicleModelFactory), m_trafficStash,
-        &dataSource, m_numMwmIds))
+  , m_estimator(estimator)
   , m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource))
   , m_countryParentNameGetterFn(countryParentNameGetterFn)
 {

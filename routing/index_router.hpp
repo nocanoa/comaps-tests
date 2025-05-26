@@ -110,9 +110,15 @@ protected:
   /**
    * @brief Creates a new `IndexRouter` instance.
    *
-   * This constructor is intended for use by the TraFF decoder, not for normal routing. It lacks the
-   * `TrafficCache` argument and never creates a traffic stash. This creates a router instance which
-   * ignores the traffic situation, regardless of the vehicle type.
+   * This constructor is intended for use by the TraFF decoder, not for normal routing. It differs
+   * from the general-purpose constructor in two ways.
+   *
+   * It takes an explicit `EdgeEstimator` argument, instance, which gives the caller fine-grained
+   * control over the cost calculations used for routing by supplying an `EdgeEstimator` of their
+   * choice.
+   *
+   * It also lacks the `TrafficCache` argument and never creates a traffic stash. This creates a
+   * router instance which ignores the traffic situation, regardless of the vehicle type.
    *
    * @param vehicleType The vehichle type
    * @param loadAltitudes Whether to load altitudes
@@ -121,13 +127,14 @@ protected:
    * @param countryRectFn Function which returns the rect for a country
    * @param numMwmIds
    * @param numMwmTree
+   * @param estimator An edge estimator
    * @param dataSource The MWM data source
    */
   IndexRouter(VehicleType vehicleType, bool loadAltitudes,
               CountryParentNameGetterFn const & countryParentNameGetterFn,
               TCountryFileFn const & countryFileFn, CountryRectFn const & countryRectFn,
               std::shared_ptr<NumMwmIds> numMwmIds, std::unique_ptr<m4::Tree<NumMwmId>> numMwmTree,
-              DataSource & dataSource);
+              std::shared_ptr<EdgeEstimator> estimator, DataSource & dataSource);
 
 private:
   RouterResultCode CalculateSubrouteJointsMode(IndexGraphStarter & starter,

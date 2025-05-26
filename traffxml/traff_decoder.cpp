@@ -8,6 +8,7 @@
 
 #include "routing/async_router.hpp"
 #include "routing/checkpoints.hpp"
+#include "routing/edge_estimator.hpp"
 #include "routing/maxspeeds.hpp"
 #include "routing/route.hpp"
 #include "routing/router_delegate.hpp"
@@ -350,6 +351,53 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
     }
 }
 
+class TraffEstimator final : public routing::EdgeEstimator
+{
+public:
+  TraffEstimator(DataSource * dataSourcePtr, std::shared_ptr<routing::NumMwmIds> numMwmIds,
+                 double maxWeightSpeedKMpH,
+                 routing::SpeedKMpH const & offroadSpeedKMpH)
+    : EdgeEstimator(maxWeightSpeedKMpH, offroadSpeedKMpH, dataSourcePtr, numMwmIds)
+  {
+  }
+
+  // EdgeEstimator overrides:
+  double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
+  double GetUTurnPenalty(Purpose /* purpose */) const override
+  {
+    // Adds 2 minutes penalty for U-turn. The value is quite arbitrary
+    // and needs to be properly selected after a number of real-world
+    // experiments.
+    return 2 * 60;  // seconds
+  }
+
+  double GetFerryLandingPenalty(Purpose purpose) const override
+  {
+    switch (purpose)
+    {
+    case Purpose::Weight: return 20 * 60;   // seconds
+    case Purpose::ETA: return 20 * 60;      // seconds
+    }
+    UNREACHABLE();
+  }
+};
+
+// TODO only needed temporarily
+double GetSpeedMpS(routing::EdgeEstimator::Purpose purpose, routing::Segment const & segment, routing::RoadGeometry const & road)
+{
+  routing::SpeedKMpH const & speed = road.GetSpeed(segment.IsForward());
+  double const speedMpS = measurement_utils::KmphToMps(purpose == routing::EdgeEstimator::Purpose::Weight ? speed.m_weight : speed.m_eta);
+  ASSERT_GREATER(speedMpS, 0.0, (segment));
+  return speedMpS;
+}
+
+double TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
+{
+  double result = road.GetDistance(segment.GetSegmentIdx()) / GetSpeedMpS(purpose, segment, road);
+
+  return result;
+}
+
 RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn const & countryParentNameGetterFn,
                                                   routing::TCountryFileFn const & countryFileFn,
                                                   routing::CountryRectFn const & countryRectFn,
@@ -361,16 +409,12 @@ RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn cons
                          countryParentNameGetterFn,
                          countryFileFn,
                          countryRectFn,
-                         std::move(numMwmIds),
+                         numMwmIds,
                          std::move(numMwmTree),
                          //std::nullopt /* std::optional<traffic::TrafficCache> const & trafficCache */,
+                         std::make_shared<TraffEstimator>(&dataSource, numMwmIds, 120.0f /* maxWeighSpeedKMpH */,
+                                                          routing::SpeedKMpH(0.01 /* weight */, routing::kNotUsed /* eta */) /* offroadSpeedKMpH */),
                          dataSource)
-  /* TODO build our own edge estimator for TraFF decoding purposes
-  , m_estimator(EdgeEstimator::Create(
-        VehicleType::Car, CalcMaxSpeed(*m_numMwmIds, *m_vehicleModelFactory, m_vehicleType),
-        CalcOffroadSpeed(*m_vehicleModelFactory), m_trafficStash,
-        &dataSource, m_numMwmIds))
-   */
   //, m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource)) // TODO we don’t need directions, can we disable that?
 {}
 
