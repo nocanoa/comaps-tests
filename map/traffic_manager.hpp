@@ -260,6 +260,8 @@ private:
   /**
    * @brief Processes a traffic feed received through a push operation.
    *
+   * Push is safe to call from any thread.
+   *
    * Push operations are not supported on all platforms.
    *
    * @param feed The traffic feed.

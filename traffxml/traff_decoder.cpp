@@ -596,7 +596,10 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
     return;
 
   routerName = m_router->GetName();
-  // TODO is that for following a track? If so, can we use that with just 2–3 reference points?
+  /*
+   * TODO is that for following a track? If so, can we use that with just 2–3 reference points?
+   * – Doesn’t look like it, m_guides only seems to get used in test functions
+   */
   //router->SetGuides(std::move(m_guides));
   //m_guides.clear();
 
