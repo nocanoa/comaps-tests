@@ -34,6 +34,23 @@ auto constexpr kNumDecoderThreads = 1;
 // TODO set to a sensible value
 auto constexpr kRouterTimeoutSec = 30;
 
+/*
+ * One meter per second. The TraffEstimator works on distance in meters, not travel time. For code
+ * which works with speeds and assumes cost to be time-based, a speed of 1 m/s means such
+ * calculations will effectively return distances in meters.
+ */
+auto constexpr kOneMpSInKmpH = 3.6;
+
+/*
+ * Penalty factor for using a fake segment to get to a nearby road.
+ */
+auto constexpr kOffroadPenalty = 8;
+
+/*
+ * Penalty factor for non-matching attributes
+ */
+auto constexpr kAttributePenalty = 4;
+
 TraffDecoder::TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                            const CountryParentNameGetterFn & countryParentNameGetter,
                            std::map<std::string, TraffMessage> & messageCache)
@@ -382,18 +399,11 @@ public:
   }
 };
 
-// TODO only needed temporarily
-double GetSpeedMpS(routing::EdgeEstimator::Purpose purpose, routing::Segment const & segment, routing::RoadGeometry const & road)
-{
-  routing::SpeedKMpH const & speed = road.GetSpeed(segment.IsForward());
-  double const speedMpS = measurement_utils::KmphToMps(purpose == routing::EdgeEstimator::Purpose::Weight ? speed.m_weight : speed.m_eta);
-  ASSERT_GREATER(speedMpS, 0.0, (segment));
-  return speedMpS;
-}
-
 double TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
 {
-  double result = road.GetDistance(segment.GetSegmentIdx()) / GetSpeedMpS(purpose, segment, road);
+  double result = road.GetDistance(segment.GetSegmentIdx());
+
+  // TODO evaluate attributes and penalize accordingly
 
   return result;
 }
@@ -412,8 +422,9 @@ RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn cons
                          numMwmIds,
                          std::move(numMwmTree),
                          //std::nullopt /* std::optional<traffic::TrafficCache> const & trafficCache */,
-                         std::make_shared<TraffEstimator>(&dataSource, numMwmIds, 120.0f /* maxWeighSpeedKMpH */,
-                                                          routing::SpeedKMpH(0.01 /* weight */, routing::kNotUsed /* eta */) /* offroadSpeedKMpH */),
+                         std::make_shared<TraffEstimator>(&dataSource, numMwmIds, kOneMpSInKmpH /* maxWeighSpeedKMpH */,
+                                                          routing::SpeedKMpH(kOneMpSInKmpH / kOffroadPenalty /* weight */,
+                                                                             routing::kNotUsed /* eta */) /* offroadSpeedKMpH */),
                          dataSource)
   //, m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource)) // TODO we don’t need directions, can we disable that?
 {}
