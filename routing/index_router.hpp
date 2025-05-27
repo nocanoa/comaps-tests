@@ -136,6 +136,24 @@ protected:
               std::shared_ptr<NumMwmIds> numMwmIds, std::unique_ptr<m4::Tree<NumMwmId>> numMwmTree,
               std::shared_ptr<EdgeEstimator> estimator, DataSource & dataSource);
 
+
+  /**
+   * @brief Whether the set of fake endings generated for the check points is restricted.
+   *
+   * The return value is used internally when snapping checkpoints to edges. If this function
+   * returns true, this instructs the `PointsOnEdgesSnapping` instance to consider only edges which
+   * are not fenced off, i.e. can be reached from the respective checkpoint without crossing any
+   * other edges. If it returns false, this restriction does not apply, and all nearby edges are
+   * considered.
+   *
+   * Restricting the set of fake endings in this manner decreases the options considered for routing
+   * and thus processing time, which is desirable for regular routing and has no side effects.
+   *
+   * The `IndexRouter` implementation always returns true; subclasses may override this method and
+   * return different values.
+   */
+  virtual bool IsFakeEndingSetSimplified() { return true; }
+
 private:
   RouterResultCode CalculateSubrouteJointsMode(IndexGraphStarter & starter,
                                                RouterDelegate const & delegate,

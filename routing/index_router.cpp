@@ -1406,7 +1406,7 @@ bool IndexRouter::PointsOnEdgesSnapping::FindBestEdges(
     }
 
     // Removing all candidates which are fenced off by the road graph (|closestRoads|) from |checkpoint|.
-    return !IsFencedOff(checkpoint, edgeProj, closestRoads);
+    return !m_router.IsFakeEndingSetSimplified() || !IsFencedOff(checkpoint, edgeProj, closestRoads);
   };
 
   // Getting closest edges from |closestRoads| if they are correct according to isGood() function.
