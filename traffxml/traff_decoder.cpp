@@ -542,7 +542,6 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
 {
   bool adjustToPrevRoute = false; // calculate a fresh route, no adjustments to previous one
   uint64_t routeId = 0; // used in callbacks to identify the route, we might not need it at all
-  std::string routerName; // set later
 
   std::vector<m2::PointD> points;
   if (message.m_location.value().m_from)
@@ -576,26 +575,20 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
   routing::Checkpoints checkpoints(std::move(points));
 
   /*
-   * This code is mostly lifted from:
-   *  - AsyncRouter::CalculateRoute(Checkpoints const &, m2::PointD const &, bool, ReadyCallbackOwnership const &,
-   *    NeedMoreMapsCallback const &, RemoveRouteCallback const &, ProgressCallback, uint32_t)
-   *  - AsyncRouter::CalculateRoute()
+   * This code is mostly lifted from AsyncRouter::CalculateRoute(), both with and without arguments.
    */
 
-  // AsyncRouter::CalculateRoute(with args)
   /*
    * AsyncRouter::CalculateRoute() has a `DelegateProxy`, which is private. We just need the return
    * value of GetDelegate(), which is a `routing::RouterDelegate`, so use that instead. We don’t
-   * nedd any of the callbacks, therefore we don’t set them.
+   * need any of the callbacks, therefore we don’t set them.
    */
   routing::RouterDelegate delegate;
   delegate.SetTimeout(kRouterTimeoutSec);
 
-  // AsyncRouter::CalculateRoute()
   if (!m_router && !InitRouter())
     return;
 
-  routerName = m_router->GetName();
   /*
    * TODO is that for following a track? If so, can we use that with just 2–3 reference points?
    * – Doesn’t look like it, m_guides only seems to get used in test functions
