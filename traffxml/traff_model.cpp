@@ -445,7 +445,7 @@ std::string DebugPrint(TraffLocation location)
   os << "destination: " << location.m_destination.value_or("nullopt") << ", ";
   os << "direction: " << location.m_direction.value_or("nullopt") << ", ";
   os << "directionality: " << DebugPrint(location.m_directionality) << ", ";
-  os << "ramps: " << (location.m_ramps ? DebugPrint(location.m_ramps.value()) : "nullopt");
+  os << "ramps: " << DebugPrint(location.m_ramps);
   os << " }";
   return os.str();
 }

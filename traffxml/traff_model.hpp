@@ -291,7 +291,7 @@ struct TraffLocation
   Directionality m_directionality = Directionality::BothDirections;
   // TODO std::optional<Fuzziness> m_fuzziness;
   std::optional<std::string> m_origin;
-  std::optional<Ramps> m_ramps;
+  Ramps m_ramps = Ramps::None;
   std::optional<RoadClass> m_roadClass;
   // disabled for now, optional<bool> behaves weird and we don't really need it
   //std::optional<bool> m_roadIsUrban;

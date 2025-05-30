@@ -15,10 +15,17 @@
 
 #include "storage/country_info_getter.hpp"
 
+#include <optional>
+
 namespace traffxml
 {
 /**
  * @brief Abstract base class for all TraFF decoder implementations.
+ *
+ * At this point, `TraffDecoder` is single-threaded and not guaranteed to be thread-safe. This means
+ * that all `TraffDecoder` operations should be limited to one thread or use appropriate thread
+ * synchronization mechanisms. In particular, calling `DecodeMessage()` concurrently from multiple
+ * threads is not supported.
  */
 class TraffDecoder
 {
@@ -33,10 +40,12 @@ public:
   /**
    * @brief Decodes a single message to its segments and their speed groups.
    *
-   * This method may access the message cache which was passed to the constructor. Access to the
-   * message cache is not thread-safe. Unless it is guaranteed that any operations on the message
-   * cache will happen on the same thread, calls to this method need to be synchronized with other
-   * operations on the message cache.
+   * This method is not guaranteed to be thread-safe. All calls to this method should either be
+   * strictly limited to one designated thread, or be synchronized using an appropriate mechanism.
+   *
+   * In addition to the above, this method may access the message cache which was passed to the
+   * constructor. This is not thread-safe and needs to be synchronized, unless all other operations
+   * on the message cache are guaranteed to happen on the same thread that called this method.
    *
    * @param message The message to decode.
    */
@@ -180,13 +189,14 @@ public:
      * @param numMwmTree
      * @param trafficCache Tre traffic cache (used only if `vehicleType` is `VehicleType::Car`)
      * @param dataSource The MWM data source
+     * @param decoder The `TraffDecoder` instance to which this router instance is coupled
      */
     DecoderRouter(CountryParentNameGetterFn const & countryParentNameGetterFn,
                   routing::TCountryFileFn const & countryFileFn,
                   routing::CountryRectFn const & countryRectFn,
                   std::shared_ptr<routing::NumMwmIds> numMwmIds,
                   std::unique_ptr<m4::Tree<routing::NumMwmId>> numMwmTree,
-                  DataSource & dataSource);
+                  DataSource & dataSource, RoutingTraffDecoder & decoder);
   protected:
     /**
      * @brief Whether the set of fake endings generated for the check points is restricted.
@@ -214,6 +224,27 @@ public:
     bool IsFakeEndingSetSimplified() override { return false; }
 
   private:
+  };
+
+  class TraffEstimator final : public routing::EdgeEstimator
+  {
+  public:
+    TraffEstimator(DataSource * dataSourcePtr, std::shared_ptr<routing::NumMwmIds> numMwmIds,
+                   double maxWeightSpeedKMpH,
+                   routing::SpeedKMpH const & offroadSpeedKMpH,
+                   RoutingTraffDecoder & decoder)
+      : EdgeEstimator(maxWeightSpeedKMpH, offroadSpeedKMpH, dataSourcePtr, numMwmIds)
+      , m_decoder(decoder)
+    {
+    }
+
+    // EdgeEstimator overrides:
+    double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
+    double GetUTurnPenalty(Purpose /* purpose */) const override;
+    double GetFerryLandingPenalty(Purpose purpose) const override;
+
+  private:
+    RoutingTraffDecoder & m_decoder;
   };
 
   RoutingTraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
@@ -258,10 +289,16 @@ private:
 
   std::shared_ptr<routing::NumMwmIds> m_numMwmIds = std::make_shared<routing::NumMwmIds>();
   std::unique_ptr<routing::IRouter> m_router;
+  std::optional<traffxml::TraffMessage> m_message = std::nullopt;
 };
 
 /**
  * @brief The default TraFF decoder implementation, recommended for production use.
  */
-using DefaultTraffDecoder = OpenLrV3TraffDecoder;
+//using DefaultTraffDecoder = OpenLrV3TraffDecoder;
+using DefaultTraffDecoder = RoutingTraffDecoder;
+
+traffxml::RoadClass GetRoadClass(routing::HighwayType highwayType);
+double GetRoadClassPenalty(traffxml::RoadClass lhs, traffxml::RoadClass rhs);
+bool IsRamp(routing::HighwayType highwayType);
 }  // namespace traffxml

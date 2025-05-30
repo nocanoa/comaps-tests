@@ -43,13 +43,23 @@ auto constexpr kOneMpSInKmpH = 3.6;
 
 /*
  * Penalty factor for using a fake segment to get to a nearby road.
+ * Maximum penalty for roads is currently 16 (4 for ramps * 4 for road type), offroad penalty is
+ * twice the maximum road penalty. We might need to increase that, since offroad penalty applies to
+ * direct distance whereas road penalty applies to roads, which can be up to around 3 times the
+ * direct distance (theoretically unlimited). That would imply multiplying maximum road penalty by
+ * more than 3 (e.g. 4).
  */
-auto constexpr kOffroadPenalty = 8;
+auto constexpr kOffroadPenalty = 32;
 
 /*
  * Penalty factor for non-matching attributes
  */
 auto constexpr kAttributePenalty = 4;
+
+/*
+ * Penalty factor for partially matching attributes
+ */
+auto constexpr kReducedAttributePenalty = 2;
 
 TraffDecoder::TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                            const CountryParentNameGetterFn & countryParentNameGetter,
@@ -268,7 +278,7 @@ openlr::LinearLocationReference OpenLrV3TraffDecoder::TraffLocationToLinearLocat
   {
     openlr::LocationReferencePoint lrp = PointToLrp(points[i]);
     lrp.m_functionalRoadClass = GetRoadClassFrc(location.m_roadClass);
-    if (location.m_ramps.value_or(traffxml::Ramps::None) != traffxml::Ramps::None)
+    if (location.m_ramps != traffxml::Ramps::None)
       lrp.m_formOfWay = openlr::FormOfWay::Sliproad;
     if (i < points.size() - 1)
     {
@@ -368,42 +378,51 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
     }
 }
 
-class TraffEstimator final : public routing::EdgeEstimator
+double RoutingTraffDecoder::TraffEstimator::GetUTurnPenalty(Purpose /* purpose */) const
 {
-public:
-  TraffEstimator(DataSource * dataSourcePtr, std::shared_ptr<routing::NumMwmIds> numMwmIds,
-                 double maxWeightSpeedKMpH,
-                 routing::SpeedKMpH const & offroadSpeedKMpH)
-    : EdgeEstimator(maxWeightSpeedKMpH, offroadSpeedKMpH, dataSourcePtr, numMwmIds)
-  {
-  }
+  // Adds 2 minutes penalty for U-turn. The value is quite arbitrary
+  // and needs to be properly selected after a number of real-world
+  // experiments.
+  return 2 * 60;  // seconds
+}
 
-  // EdgeEstimator overrides:
-  double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
-  double GetUTurnPenalty(Purpose /* purpose */) const override
+double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose purpose) const
+{
+  switch (purpose)
   {
-    // Adds 2 minutes penalty for U-turn. The value is quite arbitrary
-    // and needs to be properly selected after a number of real-world
-    // experiments.
-    return 2 * 60;  // seconds
+  case Purpose::Weight: return 20 * 60;   // seconds
+  case Purpose::ETA: return 20 * 60;      // seconds
   }
+  UNREACHABLE();
+}
 
-  double GetFerryLandingPenalty(Purpose purpose) const override
-  {
-    switch (purpose)
-    {
-    case Purpose::Weight: return 20 * 60;   // seconds
-    case Purpose::ETA: return 20 * 60;      // seconds
-    }
-    UNREACHABLE();
-  }
-};
-
-double TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
+double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
 {
   double result = road.GetDistance(segment.GetSegmentIdx());
 
-  // TODO evaluate attributes and penalize accordingly
+  if (!m_decoder.m_message || !m_decoder.m_message.value().m_location.value().m_roadClass)
+    return result;
+
+  std::optional<routing::HighwayType> highwayType = road.GetHighwayType();
+
+  if (highwayType)
+  {
+    if (IsRamp(highwayType.value()) != (m_decoder.m_message.value().m_location.value().m_ramps != Ramps::None))
+      // if one is a ramp and the other is not, treat it as a mismatch
+      result *= kAttributePenalty;
+    if (m_decoder.m_message.value().m_location.value().m_roadClass)
+      // if the message specifies a road class, penalize mismatches
+      result *= GetRoadClassPenalty(m_decoder.m_message.value().m_location.value().m_roadClass.value(),
+                                    GetRoadClass(highwayType.value()));
+  }
+  else // road has no highway class
+  {
+    // we can’t determine if it is a ramp, penalize for mismatch
+    result *= kAttributePenalty;
+    if (m_decoder.m_message.value().m_location.value().m_roadClass)
+      // we can’t determine if the road matches the required road class, treat it as mismatch
+      result *= kAttributePenalty;
+  }
 
   return result;
 }
@@ -413,7 +432,7 @@ RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn cons
                                                   routing::CountryRectFn const & countryRectFn,
                                                   std::shared_ptr<routing::NumMwmIds> numMwmIds,
                                                   std::unique_ptr<m4::Tree<routing::NumMwmId>> numMwmTree,
-                                                  DataSource & dataSource)
+                                                  DataSource & dataSource, RoutingTraffDecoder & decoder)
   : routing::IndexRouter(routing::VehicleType::Car /* VehicleType vehicleType */,
                          false /* bool loadAltitudes */,
                          countryParentNameGetterFn,
@@ -424,7 +443,8 @@ RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn cons
                          //std::nullopt /* std::optional<traffic::TrafficCache> const & trafficCache */,
                          std::make_shared<TraffEstimator>(&dataSource, numMwmIds, kOneMpSInKmpH /* maxWeighSpeedKMpH */,
                                                           routing::SpeedKMpH(kOneMpSInKmpH / kOffroadPenalty /* weight */,
-                                                                             routing::kNotUsed /* eta */) /* offroadSpeedKMpH */),
+                                                                             routing::kNotUsed /* eta */) /* offroadSpeedKMpH */,
+                                                          decoder),
                          dataSource)
   //, m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource)) // TODO we don’t need directions, can we disable that?
 {}
@@ -450,8 +470,17 @@ bool RoutingTraffDecoder::InitRouter()
    */
   std::vector<std::shared_ptr<MwmInfo>> mwmsInfo;
   m_dataSource.GetMwmsInfo(mwmsInfo);
+  /* TODO this should include all countries (whether we have the MWM or not), except World and WorldCoasts.
+   * Excluding World and WorldCoasts is important, else the router will return bogus routes.
+   * Storage uses a string comparison for filtering, we do the same here.
+  storage.ForEachCountry([&](storage::Country const & country)
+  {
+    numMwmIds->RegisterFile(country.GetFile());
+  });
+   */
   for (auto mwmInfo : mwmsInfo)
-    m_numMwmIds->RegisterFile(mwmInfo->GetLocalFile().GetCountryFile());
+    if (!mwmInfo->GetCountryName().starts_with(WORLD_FILE_NAME))
+      m_numMwmIds->RegisterFile(mwmInfo->GetLocalFile().GetCountryFile());
 
   if (m_numMwmIds->IsEmpty())
     return false;
@@ -470,7 +499,7 @@ bool RoutingTraffDecoder::InitRouter()
       make_unique<RoutingTraffDecoder::DecoderRouter>(m_countryParentNameGetterFn,
                                                       countryFileGetter, getMwmRectByName, m_numMwmIds,
                                                       routing::MakeNumMwmTree(*m_numMwmIds, m_countryInfoGetterFn()),
-                                                      m_dataSource);
+                                                      m_dataSource, *this);
 
   return true;
 }
@@ -655,8 +684,107 @@ void RoutingTraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traff
   ASSERT(message.m_location, ("Message has no location"));
   decoded.clear();
 
+  m_message = message;
+
   int dirs = (message.m_location.value().m_directionality == Directionality::BothDirections) ? 2 : 1;
   for (int dir = 0; dir < dirs; dir++)
     DecodeLocationDirection(message, decoded, dir == 0 ? false : true /* backwards */);
+
+  m_message = std::nullopt;
+}
+
+traffxml::RoadClass GetRoadClass(routing::HighwayType highwayType)
+{
+  switch(highwayType)
+  {
+  /*
+   * Parallel carriageways may be tagged as link, hence consider them equivalent to the underlying
+   * highway type.
+   */
+  case routing::HighwayType::HighwayMotorway:
+  case routing::HighwayType::HighwayMotorwayLink:
+    return traffxml::RoadClass::Motorway;
+  case routing::HighwayType::HighwayTrunk:
+  case routing::HighwayType::HighwayTrunkLink:
+    return traffxml::RoadClass::Trunk;
+  case routing::HighwayType::HighwayPrimary:
+  case routing::HighwayType::HighwayPrimaryLink:
+    return traffxml::RoadClass::Primary;
+  case routing::HighwayType::HighwaySecondary:
+  case routing::HighwayType::HighwaySecondaryLink:
+    return traffxml::RoadClass::Secondary;
+  case routing::HighwayType::HighwayTertiary:
+  case routing::HighwayType::HighwayTertiaryLink:
+    return traffxml::RoadClass::Tertiary;
+  default:
+    return traffxml::RoadClass::Other;
+  }
+}
+
+/**
+ * @brief Returns the penalty factor for road class match/mismatch.
+ *
+ * If `lhs` and `rhs` are identical, the penalty factor is 1 (no penalty). If they are adjacent road
+ * classes (e.g. trunk and primary), the penalty factor is `kReducedAttributePenalty`, in all other
+ * cases it is `kAttributePenalty`.
+ *
+ * @param lhs
+ * @param rhs
+ * @return The penalty factor, see above.
+ */
+double GetRoadClassPenalty(traffxml::RoadClass lhs, traffxml::RoadClass rhs)
+{
+  if (lhs == rhs)
+    return 1;
+  switch (lhs)
+  {
+  case traffxml::RoadClass::Motorway:
+    if (rhs == traffxml::RoadClass::Trunk)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  case traffxml::RoadClass::Trunk:
+    if (rhs == traffxml::RoadClass::Motorway || rhs == traffxml::RoadClass::Primary)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  case traffxml::RoadClass::Primary:
+    if (rhs == traffxml::RoadClass::Trunk || rhs == traffxml::RoadClass::Secondary)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  case traffxml::RoadClass::Secondary:
+    if (rhs == traffxml::RoadClass::Primary || rhs == traffxml::RoadClass::Tertiary)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  case traffxml::RoadClass::Tertiary:
+    if (rhs == traffxml::RoadClass::Secondary || rhs == traffxml::RoadClass::Other)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  case traffxml::RoadClass::Other:
+    if (rhs == traffxml::RoadClass::Tertiary)
+      return kReducedAttributePenalty;
+    else
+      return kAttributePenalty;
+  default:
+    UNREACHABLE();
+  }
+}
+
+bool IsRamp(routing::HighwayType highwayType)
+{
+  switch(highwayType)
+  {
+  case routing::HighwayType::HighwayMotorwayLink:
+  case routing::HighwayType::HighwayTrunkLink:
+  case routing::HighwayType::HighwayPrimaryLink:
+  case routing::HighwayType::HighwaySecondaryLink:
+  case routing::HighwayType::HighwayTertiaryLink:
+    return true;
+  default:
+    return false;
+  }
 }
 }  // namespace traffxml

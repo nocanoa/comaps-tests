@@ -468,7 +468,7 @@ bool LocationFromXml(pugi::xml_node node, TraffLocation & location)
   // TODO fuzziness (not yet implemented in struct)
 
   location.m_origin = OptionalStringFromXml(node.attribute("origin"));
-  location.m_ramps = OptionalEnumFromXml(node.attribute("ramps"), kRampsMap);
+  EnumFromXml(node.attribute("ramps"), location.m_ramps, kRampsMap);
   location.m_roadClass = OptionalEnumFromXml(node.attribute("road_class"), kRoadClassMap);
   // disabled for now
   //location.m_roadIsUrban = OptionalBoolFromXml(node.attribute(("road_is_urban")));
