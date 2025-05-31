@@ -106,6 +106,7 @@ public:
    * @param enabled True to enable, false to disable
    */
   void SetEnabled(bool enabled);
+
   /**
    * @brief Whether the traffic manager is enabled.
    *
@@ -124,7 +125,7 @@ public:
    *
    * @todo Currently, all MWMs must be loaded before calling `Start()`, as MWMs loaded after that
    * will not get picked up. We need to extend `TrafficManager` to react to MWMs being added (and
-   * removed) – note that this affects the data source, not the set of active MWMs.
+   * removed) – note that this affects the `DataSource`, not the set of active MWMs.
    *
    * @todo Start is currently not integrated with state or pause/resume logic (all of which might
    * not be fully implemented ATM). If the traffic manager is not started, no message processing
@@ -136,6 +137,16 @@ public:
   void UpdateViewport(ScreenBase const & screen);
   void UpdateMyPosition(MyPosition const & myPosition);
 
+  /**
+   * @brief Invalidates traffic information.
+   *
+   * Invalidating causes traffic data to be re-requested.
+   *
+   * This happens when a new MWM file is downloaded, the traffic manager is enabled after being
+   * disabled or resumed after being paused.
+   *
+   * @todo this goes for the old MWM arch, see if this makes sense for TraFF.
+   */
   void Invalidate();
 
   void OnDestroySurface();
@@ -388,7 +399,37 @@ private:
    */
   void RequestTrafficData(MwmSet::MwmId const & mwmId, bool force);
 
+  /**
+   * @brief Clears the entire traffic cache.
+   *
+   * This is currently called when the traffic manager is enabled or disabled.
+   *
+   * The old MWM traffic architecture was somewhat liberal in clearing its cache and re-fetching
+   * traffic data. This was possible because data was pre-processed and required no processing
+   * beyond deserialization, whereas TraFF data is more expensive to recreate. Also, the old
+   * architecture lacked any explicit notion of expiration; the app decided that data was to be
+   * considered stale after a certain period of time. TraFF, in contrast, has an explicit expiration
+   * time for each message, which can be anywhere from a few minutes to several weeks or months.
+   * Messages that have expired get deleted individually.
+   * For this reason, the TraFF message cache should not be cleared out under normal conditions
+   * (the main exception being tests).
+   *
+   * @todo Currently not implemented for TraFF; implement it for test purposes but do not call when
+   * the enabled state changes.
+   */
   void Clear();
+
+  /**
+   * @brief Removes traffic data for one specific MWM from the cache.
+   *
+   * This would be used when an MWM file gets deregistered and its traffic data is no longer needed.
+   * With the old MWM traffic architecture (pre-processed sets of segments), this method was also
+   * used to shrink the cache to stay below a certain size (no longer possible with TraFF, due to
+   * the data structures being more complex, and also due to re-fetching data being expensive in
+   * terms of computing time).
+   *
+   * @param mwmId The mwmId for which to remove traffic data.
+   */
   void ClearCache(MwmSet::MwmId const & mwmId);
 // TODO no longer needed
 #ifdef traffic_dead_code

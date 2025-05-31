@@ -449,13 +449,6 @@ void TrafficManager::DecodeFirstMessage()
       m_feedQueue.erase(m_feedQueue.begin());
   }
 
-/*
- * TODO this breaks things in the current test setup.
- * When TrafficManager starts up and processes the first feed, maps are not loaded yet and messages
- * cannot be decoded, so they are added to the cache without segments.
- * The next feed (being a static file) returns the same data, so this check causes the message to
- * get ignored as it has not changed.
- */
   // check if message is actually newer
   auto it = m_messageCache.find(message.m_id);
   bool process = (it == m_messageCache.end());
