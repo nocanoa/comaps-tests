@@ -2,6 +2,8 @@
 
 //#include "traffxml/traff_foo.hpp"
 
+#include "geometry/distance_on_sphere.hpp"
+
 #include "openlr/decoded_path.hpp"
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
@@ -566,6 +568,20 @@ void RoutingTraffDecoder::LogCode(routing::RouterResultCode code, double const e
   }
 }
 
+void RoutingTraffDecoder::AddDecodedSegment(traffxml::MultiMwmColoring & decoded, routing::Segment & segment)
+{
+  auto const countryFile = m_numMwmIds->GetFile(segment.GetMwmId());
+  MwmSet::MwmId mwmId = m_dataSource.GetMwmIdByCountryFile(countryFile);
+
+  auto const fid = segment.GetFeatureId();
+  auto const sid = segment.GetSegmentIdx();
+  uint8_t direction = segment.IsForward() ?
+        traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
+        traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
+
+  decoded[mwmId][traffic::TrafficInfo::RoadSegmentId(fid, sid, direction)] = traffic::SpeedGroup::Unknown;
+}
+
 void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & message,
                                                   traffxml::MultiMwmColoring & decoded, bool backwards)
 {
@@ -653,29 +669,60 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
 
   if (code == routing::RouterResultCode::NoError)
   {
-    LOG(LINFO, ("Decoded route:"));
-    for (auto rsegment : route->GetRouteSegments())
+    std::vector<routing::RouteSegment> rsegments(route->GetRouteSegments());
+
+    // erase leading and trailing fake segments
+    while(!rsegments.empty() && rsegments.front().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
+      rsegments.erase(rsegments.begin());
+    while(!rsegments.empty() && rsegments.back().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
+      rsegments.erase(rsegments.end());
+
+    if (!backwards && message.m_location.value().m_at && !message.m_location.value().m_to)
+      // from–at in forward direction, add last segment
+      AddDecodedSegment(decoded, rsegments.back().GetSegment());
+    else if (!backwards && message.m_location.value().m_at && !message.m_location.value().m_from)
+      // at–to in forward direction, add last segment
+      AddDecodedSegment(decoded, rsegments.front().GetSegment());
+    else if (backwards && message.m_location.value().m_at && !message.m_location.value().m_to)
+      // from–at in backward direction, add first segment
+      AddDecodedSegment(decoded, rsegments.front().GetSegment());
+    else if (backwards && message.m_location.value().m_at && !message.m_location.value().m_from)
+      // at–to in backward direction, add first segment
+      AddDecodedSegment(decoded, rsegments.back().GetSegment());
+    else if (message.m_location.value().m_at)
     {
-      routing::Segment segment = rsegment.GetSegment();
-      if (segment.GetMwmId() == routing::kFakeNumMwmId)
+      // from–at–to, find closest segment
+      ms::LatLon at = message.m_location.value().m_at.value().m_coordinates;
+      routing::RouteSegment & closestRSegment = rsegments.front();
+      double closestDist = ms::DistanceOnEarth(at, mercator::ToLatLon(closestRSegment.GetJunction().GetPoint()));
+
+      for (auto rsegment : rsegments)
       {
-        LOG(LINFO, ("  Fake segment:", segment));
-        continue;
+        // If we have more than two checkpoints, fake segments can occur in the middle, skip them.
+        if (rsegment.GetSegment().GetMwmId() == routing::kFakeNumMwmId)
+          continue;
+
+        double dist = ms::DistanceOnEarth(at, mercator::ToLatLon(rsegment.GetJunction().GetPoint()));
+        if (dist < closestDist)
+        {
+          closestRSegment = rsegment;
+          closestDist = dist;
+        }
       }
-
-      LOG(LINFO, ("  segment:", segment));
-
-      auto const countryFile = m_numMwmIds->GetFile(segment.GetMwmId());
-      MwmSet::MwmId mwmId = m_dataSource.GetMwmIdByCountryFile(countryFile);
-
-      auto const fid = segment.GetFeatureId();
-      auto const sid = segment.GetSegmentIdx();
-      uint8_t direction = segment.IsForward() ?
-            traffic::TrafficInfo::RoadSegmentId::kForwardDirection :
-            traffic::TrafficInfo::RoadSegmentId::kReverseDirection;
-
-      decoded[mwmId][traffic::TrafficInfo::RoadSegmentId(fid, sid, direction)] = traffic::SpeedGroup::Unknown;
+      AddDecodedSegment(decoded, closestRSegment.GetSegment());
     }
+    else
+      // from–[via]–to, add all real segments
+      for (auto rsegment : rsegments)
+      {
+        routing::Segment & segment = rsegment.GetSegment();
+
+        // If we have more than two checkpoints, fake segments can occur in the middle, skip them.
+        if (segment.GetMwmId() == routing::kFakeNumMwmId)
+          continue;
+
+        AddDecodedSegment(decoded, segment);
+      }
   }
 }
 

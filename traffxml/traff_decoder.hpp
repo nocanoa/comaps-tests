@@ -267,6 +267,14 @@ protected:
   bool InitRouter();
 
   /**
+   * @brief Adds a segment to the decoded segments.
+   *
+   * @param decoded The decoded segments.
+   * @param segment The segment to add.
+   */
+  void AddDecodedSegment(traffxml::MultiMwmColoring & decoded, routing::Segment & segment);
+
+  /**
    * @brief Decodes one direction of a TraFF location.
    *
    * @param message The message to decode.
