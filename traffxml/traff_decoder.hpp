@@ -221,7 +221,39 @@ public:
      *
      * To avoid this, the `DecoderRouter` implementation always returns false.
      */
-    bool IsFakeEndingSetSimplified() override { return false; }
+    /**
+     * @brief Returns the mode in which the router is operating.
+     *
+     * The `DecoderRouter` always returns `Mode::Decoding`.
+     *
+     * In navigation mode, the router may exit with `RouterResultCode::NeedMoreMaps` if it determines
+     * that a better route can be calculated with additional maps. When snapping endpoints to edges,
+     * it will consider only edges which are not “fenced off” by other edges, i.e. which can be
+     * reached from the endpoint without crossing other edges. This decreases the number of fake
+     * endings and thus speeds up routing, without any undesirable side effects for that use case.
+     *
+     * Asking the user to download extra maps is neither practical for a TraFF decoder which runs in
+     * the background and may decode many locations, one by one, nor is it needed (if maps are
+     * missing, we do not need to decode traffic reports for them).
+     *
+     * Eliminating fenced-off edges from the snapping candidates has an undesirable side effect for
+     * TraFF location decoding on dual-carriageway roads: if the reference points are outside the
+     * carriageways, only one direction gets considered for snapping, as the opposite direction is
+     * fenced off by it. This may lead to situations like these:
+     *
+     * ~~~
+     * --<--<-+<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<==<+-<--<--
+     * -->-->-+>==>==>==>==>==>==>-->-->-->-->-->-->-->-->-->-->-->==>==>==>==>==>==>==>==>+->-->--
+     *                          |<                               <|
+     *
+     * (-- carriageway, + junction, < > direction, |< end point, <| start point, == route)
+     * ~~~
+     *
+     * Therefore, in decoding mode, the router will never exit with `RouterResultCode::NeedMoreMaps`
+     * but tries to find a route with the existing maps, or exits without a route. When snapping
+     * endpoints to edges, it considers all edges within the given radius, fenced off or not.
+     */
+    IndexRouter::Mode GetMode() { return IndexRouter::Mode::Decoding; }
 
   private:
   };

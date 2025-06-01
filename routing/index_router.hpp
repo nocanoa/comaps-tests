@@ -41,6 +41,24 @@ class IndexGraphStarter;
 class IndexRouter : public IRouter
 {
 public:
+  /**
+   * @brief Indicates the mode in which the router is operating.
+   *
+   * The mode controls some aspects of router behavior, such as asking for additional maps or how
+   * checkpoints are matched to nearby segments.
+   */
+  enum Mode
+  {
+    /**
+     * Router mode for navigation, i.e. user-initiated route guidance.
+     */
+    Navigation,
+    /**
+     * Router mode for location decoding.
+     */
+    Decoding
+  };
+
   class BestEdgeComparator final
   {
   public:
@@ -138,21 +156,22 @@ protected:
 
 
   /**
-   * @brief Whether the set of fake endings generated for the check points is restricted.
+   * @brief Returns the mode in which the router is operating.
    *
-   * The return value is used internally when snapping checkpoints to edges. If this function
-   * returns true, this instructs the `PointsOnEdgesSnapping` instance to consider only edges which
-   * are not fenced off, i.e. can be reached from the respective checkpoint without crossing any
-   * other edges. If it returns false, this restriction does not apply, and all nearby edges are
-   * considered.
-   *
-   * Restricting the set of fake endings in this manner decreases the options considered for routing
-   * and thus processing time, which is desirable for regular routing and has no side effects.
-   *
-   * The `IndexRouter` implementation always returns true; subclasses may override this method and
+   * The `IndexRouter` always returns `Mode::Navigation`; subclasses may override this method and
    * return different values.
+   *
+   * In navigation mode, the router may exit with `RouterResultCode::NeedMoreMaps` if it determines
+   * that a better route can be calculated with additional maps. When snapping endpoints to edges,
+   * it will consider only edges which are not “fenced off” by other edges, i.e. which can be
+   * reached from the endpoint without crossing other edges. This decreases the number of fake
+   * endings and thus speeds up routing, without any undesirable side effects for that use case.
+   *
+   * In decoding mode, the router will never exit with `RouterResultCode::NeedMoreMaps`: it will try
+   * to find a route with the existing maps, or exit without finding a route. When snapping
+   * endpoints to edges, it considers all edges within the given radius, fenced off or not.
    */
-  virtual bool IsFakeEndingSetSimplified() { return true; }
+  virtual Mode GetMode() { return Mode::Navigation; }
 
 private:
   RouterResultCode CalculateSubrouteJointsMode(IndexGraphStarter & starter,

@@ -577,7 +577,7 @@ RouterResultCode IndexRouter::DoCalculateRoute(Checkpoints const & checkpoints,
     }
   }
 
-  if (!route.GetAbsentCountries().empty())
+  if ((GetMode() == Mode::Navigation) && !route.GetAbsentCountries().empty())
     return RouterResultCode::NeedMoreMaps;
 
   TrafficStash::Guard guard(m_trafficStash);
@@ -1406,7 +1406,7 @@ bool IndexRouter::PointsOnEdgesSnapping::FindBestEdges(
     }
 
     // Removing all candidates which are fenced off by the road graph (|closestRoads|) from |checkpoint|.
-    return !m_router.IsFakeEndingSetSimplified() || !IsFencedOff(checkpoint, edgeProj, closestRoads);
+    return (m_router.GetMode() == Mode::Decoding) || !IsFencedOff(checkpoint, edgeProj, closestRoads);
   };
 
   // Getting closest edges from |closestRoads| if they are correct according to isGood() function.
