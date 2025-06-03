@@ -3,6 +3,9 @@
 //#include "traffxml/traff_foo.hpp"
 
 #include "geometry/distance_on_sphere.hpp"
+#include "geometry/mercator.hpp"
+
+#include "indexer/feature.hpp"
 
 #include "openlr/decoded_path.hpp"
 #include "openlr/openlr_decoder.hpp"
@@ -63,6 +66,12 @@ auto constexpr kAttributePenalty = 4;
  */
 auto constexpr kReducedAttributePenalty = 2;
 
+/*
+ * Invalid feature ID.
+ * Borrowed from indexer/feature_decl.hpp.
+ */
+uint32_t constexpr kInvalidFeatureId = std::numeric_limits<uint32_t>::max();
+
 TraffDecoder::TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                            const CountryParentNameGetterFn & countryParentNameGetter,
                            std::map<std::string, TraffMessage> & messageCache)
@@ -74,7 +83,73 @@ TraffDecoder::TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryI
 
 void TraffDecoder::ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml::MultiMwmColoring & decoded)
 {
+  traffic::SpeedGroup fromDelay = traffic::SpeedGroup::Unknown;
+
+  /*
+   * Convert delay into speed group (skip if the location is blocked).
+   * TODO: mapping delay to speed group is not optimal, as a long delay on a short location can
+   * increase travel time by several orders of magnitude.
+   * Assume a stretch of road with a speed limit of 60 km/h, i.e. 1 km/min, and a delay of 30 min.
+   * The lowest speed group, G0, translates to 8% of the posted limit. Since travel time ratio is
+   * the inverse of speed ratio, in order to represent 30 seconds of delay, the location would have
+   * to be long enough to take ~8% of that time to traverse under normal conditions, i.e. 2.4 min.,
+   * or 2.4 km at 60 km/h. For shorter locations, the speed group will underestimate the delay.
+   * Higher speeds and longer delays would increase the required length. This is somewhat offset by
+   * the fact that the router adds a somewhat arbitrary extra penalty to segments for which traffic
+   * problems are reported.
+   */
+  if ((impact.m_delayMins > 0) && (impact.m_speedGroup != traffic::SpeedGroup::TempBlock))
+  {
+    double normalDurationS = 0;
+    for (auto dit = decoded.begin(); dit != decoded.end(); dit++)
+    {
+      /*
+       * We are initializing two structures for map access here: an MWM handle to get maxspeeds,
+       * and a FeaturesLoaderGuard to retrieve points. This may not be very elegant, but works.
+       * Since both involve somewhat complex structures, a rewrite might not be simple, although
+       * improvements are certainly welcome.
+       */
+      auto const handle = m_dataSource.GetMwmHandleById(dit->first);
+      auto const speeds = routing::LoadMaxspeeds(handle);
+
+      FeaturesLoaderGuard g(m_dataSource, dit->first);
+      uint32_t lastFid = kInvalidFeatureId;
+      std::vector<m2::PointD> points;
+      routing::MaxspeedType speedKmPH = routing::kInvalidSpeed;
+      for (auto cit = dit->second.begin(); cit != dit->second.end(); cit++)
+      {
+        // read points only once per feature ID, not once per segment
+        if (lastFid != cit->first.GetFid())
+        {
+          auto f = g.GetOriginalFeatureByIndex(cit->first.GetFid());
+          f->ResetGeometry();
+          assign_range(points, f->GetPoints(FeatureType::BEST_GEOMETRY));
+          lastFid = cit->first.GetFid();
+          auto const speed = speeds->GetMaxspeed(cit->first.GetFid());
+          speedKmPH = speed.GetSpeedKmPH(cit->first.GetDir() == traffic::TrafficInfo::RoadSegmentId::kForwardDirection);
+        }
+        auto const idx = cit->first.GetIdx();
+        // TODO sum of all lengths may differ from route length by up to ~6%, no idea why
+        auto const length = mercator::DistanceOnEarth(points[idx], points[idx + 1]);
+        if (speedKmPH != routing::kInvalidSpeed)
+          normalDurationS += length * kOneMpSInKmpH / speedKmPH;
+      }
+    }
+    auto const delayedDurationS = normalDurationS + impact.m_delayMins * 60;
+    fromDelay = traffic::GetSpeedGroupByPercentage(normalDurationS * 100.0f / delayedDurationS);
+
+    LOG(LINFO, ("Normal duration:", normalDurationS, "delayed duration:", delayedDurationS, "speed group:", DebugPrint(fromDelay)));
+  }
+
   for (auto dit = decoded.begin(); dit != decoded.end(); dit++)
+  {
+    std::unique_ptr<routing::Maxspeeds> speeds = nullptr;
+    if ((impact.m_speedGroup != traffic::SpeedGroup::TempBlock) && (impact.m_maxspeed != traffxml::kMaxspeedNone))
+    {
+      // load maxspeeds once per MWM and only if needed
+      auto const handle = m_dataSource.GetMwmHandleById(dit->first);
+      speeds = routing::LoadMaxspeeds(handle);
+    }
     for (auto cit = dit->second.begin(); cit != dit->second.end(); cit++)
     {
       /*
@@ -83,17 +158,15 @@ void TraffDecoder::ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml
        * the rest.
        */
       traffic::SpeedGroup sg = impact.m_speedGroup;
-      /*
-       * TODO also process m_delayMins if greater than zero.
-       * This would require a separate pass over all edges, calculating length,
-       * total (normal) travel time (length / maxspeed), then a speed group based on
-       * (normal_travel_time / delayed_travel_time) – which is the same as the ratio between
-       * reduced and normal speed. That would give us a third potential speed group.
-       */
+
+      if ((sg != traffic::SpeedGroup::TempBlock) && (fromDelay != traffic::SpeedGroup::Unknown))
+        // process delay
+        if ((sg == traffic::SpeedGroup::Unknown) || (fromDelay < sg))
+          sg = fromDelay;
+
       if ((sg != traffic::SpeedGroup::TempBlock) && (impact.m_maxspeed != traffxml::kMaxspeedNone))
       {
-        auto const handle = m_dataSource.GetMwmHandleById(dit->first);
-        auto const speeds = routing::LoadMaxspeeds(handle);
+        // process maxspeed
         if (speeds)
         {
           traffic::SpeedGroup fromMaxspeed = traffic::SpeedGroup::Unknown;
@@ -106,16 +179,10 @@ void TraffDecoder::ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml
               sg = fromMaxspeed;
           }
         }
-        /*
-         * TODO fully process TrafficImpact (unless m_speedGroup is TempBlock, which overrules everything else)
-         * If no maxspeed or delay is set, just give out speed groups.
-         * Else, examine segments, length, normal travel time, travel time considering impact, and
-         * determine the closest matching speed group.
-         */
       }
-      // TODO process all TrafficImpact fields and determine the speed group based on that
       cit->second = sg;
     }
+  }
 }
 
 void TraffDecoder::DecodeMessage(traffxml::TraffMessage & message)
