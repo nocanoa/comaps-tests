@@ -376,7 +376,6 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
 
   m_trafficManager.SetCurrentDataVersion(m_storage.GetCurrentDataVersion());
   m_trafficManager.SetSimplifiedColorScheme(LoadTrafficSimplifiedColors());
-  m_trafficManager.SetEnabled(LoadTrafficEnabled());
 
   m_isolinesManager.SetEnabled(LoadIsolinesEnabled());
 
@@ -390,7 +389,7 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
   if (loadMaps)
     LoadMapsSync();
 
-  m_trafficManager.Start();
+  m_trafficManager.SetEnabled(LoadTrafficEnabled());
 }
 
 Framework::~Framework()

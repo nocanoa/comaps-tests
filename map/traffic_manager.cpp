@@ -72,7 +72,6 @@ TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn coun
   , m_maxCacheSizeBytes(maxCacheSizeBytes)
 #endif
   , m_isRunning(true)
-  , m_isStarted(false)
   , m_isPaused(false)
   , m_thread(&TrafficManager::ThreadRoutine, this)
 {
@@ -117,7 +116,10 @@ void TrafficManager::SetEnabled(bool enabled)
     std::lock_guard<std::mutex> lock(m_mutex);
     if (enabled == IsEnabled())
        return;
-    Clear();
+    if (enabled && !m_traffDecoder)
+      // deferred decoder initialization (requires maps to be loaded)
+      m_traffDecoder = make_unique<traffxml::DefaultTraffDecoder>(m_dataSource, m_countryInfoGetterFn,
+                                                                  m_countryParentNameGetterFn, m_messageCache);
     ChangeState(enabled ? TrafficState::Enabled : TrafficState::Disabled);
   }
 
@@ -127,13 +129,6 @@ void TrafficManager::SetEnabled(bool enabled)
     Invalidate();
   else
     m_observer.OnTrafficInfoClear();
-}
-
-void TrafficManager::Start()
-{
-  m_traffDecoder = make_unique<traffxml::DefaultTraffDecoder>(m_dataSource, m_countryInfoGetterFn,
-                                                              m_countryParentNameGetterFn, m_messageCache);
-  m_isStarted = true;
 }
 
 void TrafficManager::Clear()
@@ -561,7 +556,7 @@ bool TrafficManager::WaitForRequest()
   if (!m_isRunning)
     return false;
 
-  if (m_isStarted)
+  if (IsEnabled())
   {
     // if we have feeds in the queue, return immediately
     if (!m_feedQueue.empty())
@@ -592,7 +587,7 @@ bool TrafficManager::WaitForRequest()
     return false;
 
   // this works as long as wait timeout is at least equal to the poll interval
-  if (m_isStarted)
+  if (IsEnabled())
     m_isPollNeeded |= timeout;
 
   LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged));

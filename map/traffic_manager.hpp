@@ -98,10 +98,25 @@ public:
   /**
    * @brief Enables or disables the traffic manager.
    *
-   * This sets the internal state and notifies the drape engine. Enabling the traffic manager will
-   * invalidate its data, disabling it will notify the observer that traffic data has been cleared.
+   * This sets the internal state and notifies the drape engine.
+   *
+   * Upon creation, the traffic manager is disabled and will not poll any sources or process any
+   * feeds until enabled. Feeds received through `Push()` will be added to the queue before the
+   * traffic manager is started, but will not be processed any further until the traffic manager is
+   * started.
+   *
+   * MWMs must be loaded before first enabling the traffic manager.
    *
    * Calling this function with `enabled` identical to the current state is a no-op.
+   *
+   * @todo Currently, all MWMs must be loaded before calling `SetEnabled()`, as MWMs loaded after
+   * that will not get picked up. We need to extend `TrafficManager` to react to MWMs being added
+   * (and removed) – note that this affects the `DataSource`, not the set of active MWMs.
+   *
+   * @todo Enabling the traffic manager will invalidate its data, disabling it will notify the
+   * observer that traffic data has been cleared. This is old logic, to be reviewed/removed.
+   *
+   * @todo State/pause/resume logic is not fully implemented ATM and needs to be revisited.
    *
    * @param enabled True to enable, false to disable
    */
@@ -117,20 +132,6 @@ public:
   /**
    * @brief Starts the traffic manager.
    *
-   * After creation, the traffic manager will not poll any sources or process any feeds until it is
-   * started. Feeds received through `Push()` will be added to the queue before the traffic manager
-   * is started, but will not be processed any further until the traffic manager is started.
-   *
-   * MWMs must be loaded before starting the traffic manager.
-   *
-   * @todo Currently, all MWMs must be loaded before calling `Start()`, as MWMs loaded after that
-   * will not get picked up. We need to extend `TrafficManager` to react to MWMs being added (and
-   * removed) – note that this affects the `DataSource`, not the set of active MWMs.
-   *
-   * @todo Start is currently not integrated with state or pause/resume logic (all of which might
-   * not be fully implemented ATM). If the traffic manager is not started, no message processing
-   * (other than filling the queue and deduplication) will take place, regardless of state. Starting
-   * the traffic manager will not change the state it reports.
    */
   void Start();
 
@@ -145,7 +146,8 @@ public:
    * This happens when a new MWM file is downloaded, the traffic manager is enabled after being
    * disabled or resumed after being paused.
    *
-   * @todo this goes for the old MWM arch, see if this makes sense for TraFF.
+   * @todo this goes for the old MWM arch. For TraFF we need to refresh the MWM set for the decoder
+   * and possibly decode locations again (MWMs might have changed, or new ones added).
    */
   void Invalidate();
 
@@ -529,11 +531,6 @@ private:
   // It is one of several mechanisms that HTTP provides for web cache validation,
   // which allows a client to make conditional requests.
   std::map<MwmSet::MwmId, std::string> m_trafficETags;
-
-  /**
-   * Whether the traffic manager should begin receiving information.
-   */
-  std::atomic<bool> m_isStarted;
 
   std::atomic<bool> m_isPaused;
 
