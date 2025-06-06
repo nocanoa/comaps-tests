@@ -129,7 +129,12 @@ void TraffDecoder::ApplyTrafficImpact(traffxml::TrafficImpact & impact, traffxml
           speedKmPH = speed.GetSpeedKmPH(cit->first.GetDir() == traffic::TrafficInfo::RoadSegmentId::kForwardDirection);
         }
         auto const idx = cit->first.GetIdx();
-        // TODO sum of all lengths may differ from route length by up to ~6%, no idea why
+        /*
+         * TODO sum of all lengths may differ from route length by up to ~6% in either direction.
+         * This is partly due to the fact that route length also includes fake endings, which we are
+         * not counting here. However, this only explains routes being longer than the sum of all
+         * lengths calculated here, yet in some cases the route is shorter.
+         */
         auto const length = mercator::DistanceOnEarth(points[idx], points[idx + 1]);
         if (speedKmPH != routing::kInvalidSpeed)
           normalDurationS += length * kOneMpSInKmpH / speedKmPH;
