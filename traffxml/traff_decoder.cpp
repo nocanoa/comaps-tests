@@ -419,7 +419,7 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
   for (auto segment : segments)
   {
     LOG(LINFO, ("    Segment:", segment.m_segmentId));
-    for (int i = 0; i < segment.m_locationReference.m_points.size(); i++)
+    for (size_t i = 0; i < segment.m_locationReference.m_points.size(); i++)
     {
       LOG(LINFO, ("     ", i, ":", segment.m_locationReference.m_points[i].m_latLon));
       if (i < segment.m_locationReference.m_points.size() - 1)
