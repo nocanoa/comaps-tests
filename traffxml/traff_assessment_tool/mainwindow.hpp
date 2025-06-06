@@ -36,6 +36,9 @@ private:
   void CreateTrafficPanel(std::string const & dataFilePath);
   void DestroyTrafficPanel();
 
+  /**
+   * Called when the user requests to open a sample file.
+   */
   void OnOpenTrafficSample();
   void OnCloseTrafficSample();
   void OnSaveTrafficSample();

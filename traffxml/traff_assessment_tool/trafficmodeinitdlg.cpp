@@ -9,7 +9,7 @@
 
 namespace
 {
-std::string const kDataFilePath = "LastOpenlrAssessmentDataFilePath";
+std::string const kDataFilePath = "LastTraffAssessmentDataFilePath";
 }  // namespace
 
 namespace traffxml

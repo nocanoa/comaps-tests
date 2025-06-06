@@ -18,6 +18,8 @@
 
 #include "storage/country_parent_getter.hpp"
 
+#include "traffxml/traff_model_xml.hpp"
+
 #include "geometry/mercator.hpp"
 #include "geometry/point2d.hpp"
 
@@ -350,21 +352,44 @@ void MainWindow::OnOpenTrafficSample()
   if (dlg.result() != QDialog::DialogCode::Accepted)
     return;
 
+  pugi::xml_document document;
+  LOG(LINFO, ("Attempting to load:", dlg.GetDataFilePath()));
+  auto const load_result = document.load_file(dlg.GetDataFilePath().data());
+  if (!load_result)
+  {
+    QMessageBox::critical(this, "Data loading error", QString::asprintf("Can't load file %s: %s", dlg.GetDataFilePath().data(), load_result.description()));
+    LOG(LERROR, ("Can't load file", dlg.GetDataFilePath(), ":", load_result.description()));
+    return;
+  }
+
+  std::setlocale(LC_ALL, "en_US.UTF-8");
+  traffxml::TraffFeed feed;
+  if (traffxml::ParseTraff(document, feed))
+  {
+    LOG(LINFO, ("TraFF data parsed successfully, pushing"));
+    m_framework.GetTrafficManager().Push(feed);
+    LOG(LINFO, ("Push completed"));
+  }
+  else
+  {
+    QMessageBox::critical(this, "Data loading error", QString("An error occurred parsing the TraFF feed"));
+    LOG(LWARNING, ("An error occurred parsing the TraFF feed"));
+    return;
+  }
+
+// TODO create traffic panel with TraFF messages
+#if 0
   try
   {
     CreateTrafficPanel(dlg.GetDataFilePath());
   }
-#ifdef openlr_obsolete
   catch (TrafficModeError const & e)
-#else
-  // TODO do we need to catch exceptions other than our own here?
-  catch (RootException const & e)
-#endif
   {
     QMessageBox::critical(this, "Data loading error", QString("Can't load data file."));
     LOG(LERROR, (e.Msg()));
     return;
   }
+#endif
 
 #ifdef openlr_obsolete
   m_goldifyMatchedPathAction->setEnabled(true /* enabled */);

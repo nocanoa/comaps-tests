@@ -594,6 +594,7 @@ bool TrafficManager::WaitForRequest()
   LOG(LINFO, ("nothing to do for now, waiting for timeout or notification"));
   bool const timeout = !m_condition.wait_for(lock, kUpdateInterval, [this]
   {
+    // return true for any condition we want to process immediately
     return !m_isRunning || (m_activeMwmsChanged && !IsTestMode()) || !m_feedQueue.empty();
   });
 
