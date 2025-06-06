@@ -472,6 +472,9 @@ void TrafficManager::ThreadRoutine()
 
   while (WaitForRequest())
   {
+    if (!IsEnabled())
+      continue;
+
     // TODO clean out expired messages
 
     LOG(LINFO, ("start loop, active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
