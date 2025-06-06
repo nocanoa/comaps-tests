@@ -32,6 +32,8 @@ int main(int argc, char * argv[])
 
   FrameworkParams params;
 
+  params.m_trafficTestMode = true;
+
   Framework framework(params);
   traffxml::MainWindow mainWindow(framework);
 

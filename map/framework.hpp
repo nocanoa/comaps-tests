@@ -98,10 +98,21 @@ class Loader;
 /// build version for screenshots.
 //#define FIXED_LOCATION
 
+/**
+ * @brief Initialization parameters for the framework.
+ *
+ * `FrameworkParams` is intended for parameters which are hardcoded rather than read from a
+ * configuration. It allows test cases to run on a tailored configuration.
+ */
 struct FrameworkParams
 {
   bool m_enableDiffs = true;
   size_t m_numSearchAPIThreads = 1;
+
+  /**
+   * @brief Whether the traffic manager should start in test mode.
+   */
+  bool m_trafficTestMode = false;
 
   FrameworkParams() = default;
   FrameworkParams(bool enableDiffs)

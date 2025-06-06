@@ -62,6 +62,31 @@ public:
     ExpiredApp
   };
 
+  /**
+   * @brief The mode for the traffic manager.
+   *
+   * Future versions may introduce further test modes. Therefore, always use `TrafficManager::IsTestMode()`
+   * to verify if the traffic manager is running in test mode.
+   */
+  enum class Mode
+  {
+    /**
+     * Traffic manager mode for normal operation.
+     *
+     * This is the default mode unless something else is explicitly set.
+     */
+    Normal,
+    /**
+     * Test mode.
+     *
+     * This mode will prevent the traffic manager from automatically subscribing to sources and
+     * polling them. It will still receive and process push feeds.
+     *
+     * Future versions may introduce further behavior changes, and/or introduce more test modes.
+     */
+    Test
+  };
+
   struct MyPosition
   {
     m2::PointD m_position = m2::PointD(0.0, 0.0);
@@ -160,6 +185,24 @@ public:
 
   void SetSimplifiedColorScheme(bool simplified);
   bool HasSimplifiedColorScheme() const { return m_hasSimplifiedColorScheme; }
+
+  /**
+   * @brief Whether the traffic manager is operating in test mode.
+   */
+  bool IsTestMode() { return m_mode != Mode::Normal; }
+
+  /**
+   * @brief Switches the traffic manager into test mode.
+   *
+   * The mode can only be set before the traffic manager is first enabled. After that, this method
+   * will log a warning but otherwise do nothing.
+   *
+   * In test mode, the traffic manager will not subscribe to sources or poll them automatically.
+   * It will still receive and process push feeds.
+   *
+   * Future versions may introduce further behavior changes.
+   */
+  void SetTestMode();
 
 private:
   /**
@@ -480,6 +523,18 @@ private:
   // These fields have a flag of their initialization.
   std::pair<MyPosition, bool> m_currentPosition = {MyPosition(), false};
   std::pair<ScreenBase, bool> m_currentModelView = {ScreenBase(), false};
+
+  /**
+   * The mode in which the traffic manager is running.
+   */
+  Mode m_mode = Mode::Normal;
+
+  /**
+   * Whether the traffic manager accepts mode changes.
+   *
+   * Mode cannt be set after the traffic manager has been enabled for the first time.
+   */
+  bool m_canSetMode = true;
 
   std::atomic<TrafficState> m_state;
   TrafficStateChangedFn m_onStateChangedFn;

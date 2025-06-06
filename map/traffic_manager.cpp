@@ -126,7 +126,10 @@ void TrafficManager::SetEnabled(bool enabled)
   m_drapeEngine.SafeCall(&df::DrapeEngine::EnableTraffic, enabled);
 
   if (enabled)
+  {
     Invalidate();
+    m_canSetMode = false;
+  }
   else
     m_observer.OnTrafficInfoClear();
 }
@@ -477,27 +480,30 @@ void TrafficManager::ThreadRoutine()
 
     // TODO clean out expired messages
 
-    LOG(LINFO, ("start loop, active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
-
-    // this is a no-op if active MWMs have not changed
-    if (!SetSubscriptionArea())
+    if (!IsTestMode())
     {
-      LOG(LWARNING, ("SetSubscriptionArea failed."));
-      if (!IsSubscribed())
-        // do not skip out of the loop, we may need to process pushed feeds
-        LOG(LWARNING, ("No subscription, no traffic data will be retrieved."));
-    }
+      LOG(LINFO, ("start loop, active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
 
-    /*
+      // this is a no-op if active MWMs have not changed
+      if (!SetSubscriptionArea())
+      {
+        LOG(LWARNING, ("SetSubscriptionArea failed."));
+        if (!IsSubscribed())
+          // do not skip out of the loop, we may need to process pushed feeds
+          LOG(LWARNING, ("No subscription, no traffic data will be retrieved."));
+      }
+
+      /*
      * Fetch traffic data if needed and we have a subscription.
      * m_isPollNeeded may be set by WaitForRequest() and set/unset by SetSubscriptionArea().
      */
-    if (m_isPollNeeded && IsSubscribed())
-    {
-      if (!Poll())
+      if (m_isPollNeeded && IsSubscribed())
       {
-        LOG(LWARNING, ("Poll failed."));
-        // TODO set failed status somewhere and retry
+        if (!Poll())
+        {
+          LOG(LWARNING, ("Poll failed."));
+          // TODO set failed status somewhere and retry
+        }
       }
     }
     LOG(LINFO, (m_feedQueue.size(), "feed(s) in queue"));
@@ -568,21 +574,24 @@ bool TrafficManager::WaitForRequest()
       return true;
     }
 
-    // if update interval has elapsed, return immediately
-    auto const currentTime = steady_clock::now();
-    auto const passedSeconds = currentTime - m_lastResponseTime;
-    if (passedSeconds >= kUpdateInterval)
+    if (!IsTestMode())
     {
-      LOG(LINFO, ("last response was", passedSeconds, "ago, returning immediately"));
-      m_isPollNeeded = true;
-      return true;
+      // if update interval has elapsed, return immediately
+      auto const currentTime = steady_clock::now();
+      auto const passedSeconds = currentTime - m_lastResponseTime;
+      if (passedSeconds >= kUpdateInterval)
+      {
+        LOG(LINFO, ("last response was", passedSeconds, "ago, returning immediately"));
+        m_isPollNeeded = true;
+        return true;
+      }
     }
   }
 
   LOG(LINFO, ("nothing to do for now, waiting for timeout or notification"));
   bool const timeout = !m_condition.wait_for(lock, kUpdateInterval, [this]
   {
-    return !m_isRunning || m_activeMwmsChanged;
+    return !m_isRunning || (m_activeMwmsChanged && !IsTestMode());
   });
 
   // check again if we got terminated while waiting (or woken up because we got terminated)
@@ -593,7 +602,7 @@ bool TrafficManager::WaitForRequest()
   if (IsEnabled())
     m_isPollNeeded |= timeout;
 
-  LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged));
+  LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged, "test mode:", IsTestMode()));
   return true;
 }
 
@@ -958,6 +967,16 @@ void TrafficManager::SetSimplifiedColorScheme(bool simplified)
 {
   m_hasSimplifiedColorScheme = simplified;
   m_drapeEngine.SafeCall(&df::DrapeEngine::SetSimplifiedTrafficColors, simplified);
+}
+
+void TrafficManager::SetTestMode()
+{
+  if (!m_canSetMode)
+  {
+    LOG(LWARNING, ("Mode cannot be set once the traffic manager has been enabled"));
+    return;
+  }
+  m_mode = Mode::Test;
 }
 
 std::string DebugPrint(TrafficManager::TrafficState state)

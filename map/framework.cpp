@@ -374,6 +374,8 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
   editor.SetDelegate(make_unique<search::EditorDelegate>(m_featuresFetcher.GetDataSource()));
   editor.SetInvalidateFn([this](){ InvalidateRect(GetCurrentViewport()); });
 
+  if (params.m_trafficTestMode)
+    m_trafficManager.SetTestMode();
   m_trafficManager.SetCurrentDataVersion(m_storage.GetCurrentDataVersion());
   m_trafficManager.SetSimplifiedColorScheme(LoadTrafficSimplifiedColors());
 
