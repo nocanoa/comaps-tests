@@ -204,6 +204,17 @@ public:
    */
   void SetTestMode();
 
+  /**
+   * @brief Processes a traffic feed received through a push operation.
+   *
+   * Push is safe to call from any thread.
+   *
+   * Push operations are not supported on all platforms.
+   *
+   * @param feed The traffic feed.
+   */
+  void Push(traffxml::TraffFeed feed);
+
 private:
   /**
    * @brief Holds information about pending or previous traffic requests pertaining to an MWM.
@@ -312,17 +323,6 @@ private:
    * @return true on success, false on failure.
    */
   bool Poll();
-
-  /**
-   * @brief Processes a traffic feed received through a push operation.
-   *
-   * Push is safe to call from any thread.
-   *
-   * Push operations are not supported on all platforms.
-   *
-   * @param feed The traffic feed.
-   */
-  void Push(traffxml::TraffFeed feed);
 
   /**
    * @brief Consolidates the feed queue.

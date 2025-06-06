@@ -372,9 +372,12 @@ bool TrafficManager::Poll()
 
 void TrafficManager::Push(traffxml::TraffFeed feed)
 {
-  std::lock_guard<std::mutex> lock(m_mutex);
-  m_feedQueue.push_back(feed);
-  // TODO should we update m_lastResponseTime?
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_feedQueue.push_back(feed);
+    // TODO should we update m_lastResponseTime?
+  }
+  m_condition.notify_one();
 }
 
 void TrafficManager::ConsolidateFeedQueue()
@@ -591,7 +594,7 @@ bool TrafficManager::WaitForRequest()
   LOG(LINFO, ("nothing to do for now, waiting for timeout or notification"));
   bool const timeout = !m_condition.wait_for(lock, kUpdateInterval, [this]
   {
-    return !m_isRunning || (m_activeMwmsChanged && !IsTestMode());
+    return !m_isRunning || (m_activeMwmsChanged && !IsTestMode()) || !m_feedQueue.empty();
   });
 
   // check again if we got terminated while waiting (or woken up because we got terminated)
