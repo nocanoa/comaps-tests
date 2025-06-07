@@ -584,7 +584,7 @@ void TrafficManager::ThreadRoutine()
     mwms.clear();
 #endif
   }
-  // Calling Unsubscribe() form the worker thread on exit makes thread synchronization easier
+  // Calling Unsubscribe() from the worker thread on exit makes thread synchronization easier
   Unsubscribe();
 }
 

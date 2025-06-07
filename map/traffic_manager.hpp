@@ -532,7 +532,7 @@ private:
   /**
    * Whether the traffic manager accepts mode changes.
    *
-   * Mode cannt be set after the traffic manager has been enabled for the first time.
+   * Mode cannot be set after the traffic manager has been enabled for the first time.
    */
   bool m_canSetMode = true;
 
@@ -631,7 +631,7 @@ private:
    * @brief Whether a poll operation is needed.
    *
    * Used in the worker thread. A poll operation is needed unless a subscription (or subscription
-   * change) operation was performed before and a feed was received a part of it.
+   * change) operation was performed before and a feed was received as part of it.
    */
   bool m_isPollNeeded;
 
