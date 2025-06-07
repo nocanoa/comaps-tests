@@ -40,6 +40,11 @@ private:
    * Called when the user requests to open a sample file.
    */
   void OnOpenTrafficSample();
+
+  /**
+   * Called when the user requests to clear the cache.
+   */
+  void OnClearCache();
   void OnCloseTrafficSample();
   void OnSaveTrafficSample();
   void OnPathEditingStop();

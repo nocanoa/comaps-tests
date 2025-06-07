@@ -265,6 +265,7 @@ MainWindow::MainWindow(Framework & framework)
   menuBar()->addMenu(fileMenu);
 
   fileMenu->addAction("Open sample", QKeySequence("Ctrl+O"), this, &MainWindow::OnOpenTrafficSample);
+  fileMenu->addAction("Clear TraFF cache", QKeySequence("Ctrl+D"), this, &MainWindow::OnClearCache);
 
   m_closeTrafficSampleAction = fileMenu->addAction("Close sample", QKeySequence("Ctrl+W"), this, &MainWindow::OnCloseTrafficSample);
   m_saveTrafficSampleAction = fileMenu->addAction("Save sample", QKeySequence("Ctrl+S"), this, &MainWindow::OnSaveTrafficSample);
@@ -398,6 +399,11 @@ void MainWindow::OnOpenTrafficSample()
   m_startEditingAction->setEnabled(true /* enabled */);
   m_ignorePathAction->setEnabled(true /* enabled */);
 #endif
+}
+
+void MainWindow::OnClearCache()
+{
+  m_framework.GetTrafficManager().Clear();
 }
 
 void MainWindow::OnCloseTrafficSample()
