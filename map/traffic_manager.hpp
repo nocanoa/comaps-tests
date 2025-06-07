@@ -600,6 +600,11 @@ private:
   std::vector<MwmSet::MwmId> m_requestedMwms;
 #endif
 
+  /**
+   * @brief Mutex for access to shared members.
+   *
+   * Threads which access shared members (see documentation) must lock this mutex while doing so.
+   */
   std::mutex m_mutex;
 
   /**

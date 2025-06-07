@@ -136,6 +136,7 @@ void TrafficManager::SetEnabled(bool enabled)
 
 void TrafficManager::Clear()
 {
+  // TODO what should we do about subscriptions?
   {
     std::lock_guard<std::mutex> lock(m_mutex);
 
