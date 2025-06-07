@@ -215,6 +215,26 @@ public:
    */
   void Push(traffxml::TraffFeed feed);
 
+  /**
+   * @brief Clears the entire traffic cache.
+   *
+   * This is currently called when the traffic manager is enabled or disabled.
+   *
+   * The old MWM traffic architecture was somewhat liberal in clearing its cache and re-fetching
+   * traffic data. This was possible because data was pre-processed and required no processing
+   * beyond deserialization, whereas TraFF data is more expensive to recreate. Also, the old
+   * architecture lacked any explicit notion of expiration; the app decided that data was to be
+   * considered stale after a certain period of time. TraFF, in contrast, has an explicit expiration
+   * time for each message, which can be anywhere from a few minutes to several weeks or months.
+   * Messages that have expired get deleted individually.
+   * For this reason, the TraFF message cache should not be cleared out under normal conditions
+   * (the main exception being tests).
+   *
+   * @todo Currently not implemented for TraFF; implement it for test purposes but do not call when
+   * the enabled state changes.
+   */
+  void Clear();
+
 private:
   /**
    * @brief Holds information about pending or previous traffic requests pertaining to an MWM.
@@ -365,9 +385,9 @@ private:
   /**
    * @brief Processes new traffic data.
    *
-   * @param trafficCache The new per-MWM colorings (preprocessed traffic information).
+   * The new per-MWM colorings (preprocessed traffic information) are taken from `m_allMmColoring`.
    */
-  void OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> &trafficCache);
+  void OnTrafficDataUpdate();
 
 // TODO no longer needed
 #ifdef traffic_dead_code
@@ -443,26 +463,6 @@ private:
    * @param force If true, a refresh is requested even if the update interval has not expired.
    */
   void RequestTrafficData(MwmSet::MwmId const & mwmId, bool force);
-
-  /**
-   * @brief Clears the entire traffic cache.
-   *
-   * This is currently called when the traffic manager is enabled or disabled.
-   *
-   * The old MWM traffic architecture was somewhat liberal in clearing its cache and re-fetching
-   * traffic data. This was possible because data was pre-processed and required no processing
-   * beyond deserialization, whereas TraFF data is more expensive to recreate. Also, the old
-   * architecture lacked any explicit notion of expiration; the app decided that data was to be
-   * considered stale after a certain period of time. TraFF, in contrast, has an explicit expiration
-   * time for each message, which can be anywhere from a few minutes to several weeks or months.
-   * Messages that have expired get deleted individually.
-   * For this reason, the TraFF message cache should not be cleared out under normal conditions
-   * (the main exception being tests).
-   *
-   * @todo Currently not implemented for TraFF; implement it for test purposes but do not call when
-   * the enabled state changes.
-   */
-  void Clear();
 
   /**
    * @brief Removes traffic data for one specific MWM from the cache.
@@ -575,7 +575,7 @@ private:
    * * Invalidate(), clears the vector but not the set.
    * * UpdateActiveMwms(), uses the vector to detect changes. If so, it updates both vector and set.
    *
-   * Clear() clears both the set and the vector.
+   * Clear() clears both the set and the vector. (Clearing the set is currently disabled as it breaks ForEachActiveMwm.)
    */
   std::vector<MwmSet::MwmId> m_lastDrapeMwmsByRect;
   std::set<MwmSet::MwmId> m_activeDrapeMwms;
@@ -647,6 +647,10 @@ private:
    * @brief Cache of all currently active TraFF messages.
    *
    * Keys are message IDs, values are messages.
+   *
+   * Threads must lock `m_mutex` before accessing `m_messageCache`, as access can happen from
+   * multiple threads (messages are added by the worker thread, `Clear()` can be called from the UI
+   * thread).
    */
   std::map<std::string, traffxml::TraffMessage> m_messageCache;
 
@@ -659,6 +663,10 @@ private:
 
   /**
    * @brief Map between MWM IDs and their colorings.
+   *
+   * Threads must lock `m_mutex` before accessing `m_allMwmColoring`, as access can happen from
+   * multiple threads (messages are added by the worker thread, `Clear()` can be called from the UI
+   * thread).
    */
   std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> m_allMwmColoring;
 };

@@ -136,17 +136,38 @@ void TrafficManager::SetEnabled(bool enabled)
 
 void TrafficManager::Clear()
 {
-// TODO no longer needed
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
+    LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
+    LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
+    LOG(LINFO, ("MWM cache size:", m_mwmCache.size()));
+    LOG(LINFO, ("Clearing..."));
+    // TODO no longer needed
 #ifdef traffic_dead_code
-  m_currentCacheSizeBytes = 0;
+    m_currentCacheSizeBytes = 0;
 #endif
-  m_mwmCache.clear();
-  m_lastDrapeMwmsByRect.clear();
-  m_lastRoutingMwmsByRect.clear();
-  m_activeDrapeMwms.clear();
-  m_activeRoutingMwms.clear();
-  m_requestedMwms.clear();
-  m_trafficETags.clear();
+    m_messageCache.clear();
+    m_feedQueue.clear();
+    m_allMwmColoring.clear();
+    m_mwmCache.clear();
+
+    // TODO figure out which of the ones below we still need
+    m_lastDrapeMwmsByRect.clear();
+    m_lastRoutingMwmsByRect.clear();
+    // TODO clearing these breaks ForEachActiveMwm, can we leave them?
+    //m_activeDrapeMwms.clear();
+    //m_activeRoutingMwms.clear();
+    m_requestedMwms.clear();
+    m_trafficETags.clear();
+
+    LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
+    LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
+    LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
+    LOG(LINFO, ("MWM cache size:", m_mwmCache.size()));
+  }
+  OnTrafficDataUpdate();
 }
 
 void TrafficManager::SetDrapeEngine(ref_ptr<df::DrapeEngine> engine)
@@ -450,21 +471,29 @@ void TrafficManager::DecodeFirstMessage()
       m_feedQueue.erase(m_feedQueue.begin());
   }
 
-  // check if message is actually newer
-  auto it = m_messageCache.find(message.m_id);
-  bool process = (it == m_messageCache.end());
-  if (!process)
-    process = (it->second.m_updateTime < message.m_updateTime);
-  if (!process)
   {
-    LOG(LINFO, ("message", message.m_id, "is already in cache, skipping"));
-    return;
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    // check if message is actually newer
+    auto it = m_messageCache.find(message.m_id);
+    bool process = (it == m_messageCache.end());
+    if (!process)
+      process = (it->second.m_updateTime < message.m_updateTime);
+    if (!process)
+    {
+      LOG(LINFO, ("message", message.m_id, "is already in cache, skipping"));
+      return;
+    }
   }
 
   LOG(LINFO, (" ", message.m_id, ":", message));
   m_traffDecoder->DecodeMessage(message);
-  // store message in cache
-  m_messageCache.insert_or_assign(message.m_id, message);
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    // store message in cache
+    m_messageCache.insert_or_assign(message.m_id, message);
+  }
   // store message coloring in AllMwmColoring
   // TODO trigger full cache processing if segments were removed or traffic has eased
   traffxml::MergeMultiMwmColoring(message.m_decoded, m_allMwmColoring);
@@ -518,7 +547,9 @@ void TrafficManager::ThreadRoutine()
     DecodeFirstMessage();
 
     // set new coloring for MWMs
-    OnTrafficDataUpdate(m_allMwmColoring);
+    // `m_mutex` is obtained inside the method, no need to do it here
+    // TODO drop the argument, use class member inside method
+    OnTrafficDataUpdate();
 
 // TODO no longer needed
 #ifdef traffic_dead_code
@@ -688,15 +719,21 @@ void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 }
 #endif
 
-void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> & trafficCache)
+void TrafficManager::OnTrafficDataUpdate()
 {
+  bool feedQueueEmpty = false;
+
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    feedQueueEmpty = m_feedQueue.empty();
+  }
   // Whether to notify the Drape engine of the update.
-  bool notifyDrape = (m_feedQueue.empty());
+  bool notifyDrape = (feedQueueEmpty);
 
   // Whether to notify the observer of the update.
-  bool notifyObserver = (m_feedQueue.empty());
+  bool notifyObserver = (feedQueueEmpty);
 
-  if (!m_feedQueue.empty())
+  if (!feedQueueEmpty)
   {
     auto const currentTime = steady_clock::now();
     auto const drapeAge = currentTime - m_lastDrapeUpdate;
@@ -720,13 +757,14 @@ void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::Traffi
    * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with some modifications
    * (deciding whether to notify a component and managing timestamps is original code)
    */
-  ForEachActiveMwm([this, trafficCache, notifyDrape, notifyObserver](MwmSet::MwmId const & mwmId) {
-    ASSERT(mwmId.IsAlive(), ());
-    auto tcit = trafficCache.find(mwmId);
-    if (tcit != trafficCache.end())
-    {
-      std::lock_guard<std::mutex> lock(m_mutex);
+  // TODO do this for each MWM, active or not
+  ForEachActiveMwm([this, notifyDrape, notifyObserver](MwmSet::MwmId const & mwmId) {
+    std::lock_guard<std::mutex> lock(m_mutex);
 
+    ASSERT(mwmId.IsAlive(), ());
+    auto tcit = m_allMwmColoring.find(mwmId);
+    if (tcit != m_allMwmColoring.end())
+    {
       traffic::TrafficInfo::Coloring coloring = tcit->second;
       LOG(LINFO, ("Setting new coloring for", mwmId, "with", coloring.size(), "entries"));
       traffic::TrafficInfo info(mwmId, std::move(coloring));
@@ -756,6 +794,24 @@ void TrafficManager::OnTrafficDataUpdate(std::map<MwmSet::MwmId, traffic::Traffi
           m_observer.OnTrafficInfoAdded(std::move(info));
           m_lastObserverUpdate = steady_clock::now();
         }
+      }
+    }
+    else
+    {
+      LOG(LINFO, ("Removing coloring for", mwmId));
+
+      if (notifyDrape)
+      {
+        m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache,
+                               static_cast<MwmSet::MwmId const &>(mwmId));
+        m_lastDrapeUpdate = steady_clock::now();
+      }
+
+      if (notifyObserver)
+      {
+        // Update traffic colors for routing.
+        m_observer.OnTrafficInfoRemoved(mwmId);
+        m_lastObserverUpdate = steady_clock::now();
       }
     }
   });
