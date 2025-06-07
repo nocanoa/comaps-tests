@@ -156,8 +156,10 @@ void TrafficManager::Clear()
     // TODO figure out which of the ones below we still need
     m_lastDrapeMwmsByRect.clear();
     m_lastRoutingMwmsByRect.clear();
+#ifdef traffic_dead_code
     m_requestedMwms.clear();
     m_trafficETags.clear();
+#endif
 
     LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
     LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
@@ -182,6 +184,8 @@ void TrafficManager::OnMwmDeregistered(platform::LocalCountryFile const & countr
   if (!IsEnabled())
     return;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
   {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -197,6 +201,7 @@ void TrafficManager::OnMwmDeregistered(platform::LocalCountryFile const & countr
 
     ClearCache(mwmId);
   }
+#endif
 }
 
 void TrafficManager::OnDestroySurface()
@@ -663,7 +668,10 @@ void TrafficManager::RequestTrafficData(MwmSet::MwmId const & mwmId, bool force)
 
   if (needRequesting)
   {
+// TODO no longer needed
+#ifdef traffic_dead_code
     m_requestedMwms.push_back(mwmId);
+#endif
     m_condition.notify_one();
   }
 }
@@ -883,7 +891,6 @@ void TrafficManager::ShrinkCacheToAllowableSize()
     }
   }
 }
-#endif
 
 void TrafficManager::ClearCache(MwmSet::MwmId const & mwmId)
 {
@@ -913,6 +920,7 @@ void TrafficManager::ClearCache(MwmSet::MwmId const & mwmId)
   m_lastDrapeMwmsByRect.clear();
   m_lastRoutingMwmsByRect.clear();
 }
+#endif
 
 bool TrafficManager::IsEnabled() const
 {

@@ -464,6 +464,8 @@ private:
    */
   void RequestTrafficData(MwmSet::MwmId const & mwmId, bool force);
 
+  // TODO no longer needed
+#ifdef traffic_dead_code
   /**
    * @brief Removes traffic data for one specific MWM from the cache.
    *
@@ -476,8 +478,6 @@ private:
    * @param mwmId The mwmId for which to remove traffic data.
    */
   void ClearCache(MwmSet::MwmId const & mwmId);
-// TODO no longer needed
-#ifdef traffic_dead_code
   void ShrinkCacheToAllowableSize();
 #endif
 
@@ -582,17 +582,24 @@ private:
   std::vector<MwmSet::MwmId> m_lastRoutingMwmsByRect;
   std::set<MwmSet::MwmId> m_activeRoutingMwms;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
   // The ETag or entity tag is part of HTTP, the protocol for the World Wide Web.
   // It is one of several mechanisms that HTTP provides for web cache validation,
   // which allows a client to make conditional requests.
   std::map<MwmSet::MwmId, std::string> m_trafficETags;
+#endif
 
   std::atomic<bool> m_isPaused;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
   /**
    * @brief MWMs for which to retrieve traffic data.
    */
   std::vector<MwmSet::MwmId> m_requestedMwms;
+#endif
+
   std::mutex m_mutex;
 
   /**
