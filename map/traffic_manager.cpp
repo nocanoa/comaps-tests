@@ -156,9 +156,6 @@ void TrafficManager::Clear()
     // TODO figure out which of the ones below we still need
     m_lastDrapeMwmsByRect.clear();
     m_lastRoutingMwmsByRect.clear();
-    // TODO clearing these breaks ForEachActiveMwm, can we leave them?
-    //m_activeDrapeMwms.clear();
-    //m_activeRoutingMwms.clear();
     m_requestedMwms.clear();
     m_trafficETags.clear();
 
