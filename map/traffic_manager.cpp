@@ -756,16 +756,22 @@ void TrafficManager::OnTrafficDataUpdate()
   /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
    *
-   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData().
+   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData();
+   * modification: cycle over all MWMs (active or not).
    * trafficCache lookup is original code.
-   * TrafficInfo construction is taken fron TheadRoutine(), with modifications (different constructor).
+   * TrafficInfo construction is taken fron ThreadRoutine(), with modifications (different constructor).
    * Updating m_mwmCache is from RequestTrafficData(MwmSet::MwmId const &, bool), with modifications.
    * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with some modifications
-   * (deciding whether to notify a component and managing timestamps is original code)
+   * (deciding whether to notify a component and managing timestamps is original code).
+   * Existing coloring deletion (if there is no new coloring) is original code.
    */
-  // TODO do this for each MWM, active or not
-  ForEachActiveMwm([this, notifyDrape, notifyObserver](MwmSet::MwmId const & mwmId) {
+  ForEachMwm([this, notifyDrape, notifyObserver](std::shared_ptr<MwmInfo> info) {
     std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (info->GetCountryName().starts_with(WORLD_FILE_NAME))
+      return;
+
+    MwmSet::MwmId const mwmId(info);
 
     ASSERT(mwmId.IsAlive(), ());
     auto tcit = m_allMwmColoring.find(mwmId);

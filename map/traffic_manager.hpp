@@ -504,6 +504,14 @@ private:
   void Resume();
 
   template <class F>
+  void ForEachMwm(F && f) const
+  {
+    std::vector<std::shared_ptr<MwmInfo>> allMwmInfo;
+    m_dataSource.GetMwmsInfo(allMwmInfo);
+    std::for_each(allMwmInfo.begin(), allMwmInfo.end(), std::forward<F>(f));
+  }
+
+  template <class F>
   void ForEachActiveMwm(F && f) const
   {
     std::set<MwmSet::MwmId> activeMwms;
