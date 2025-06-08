@@ -491,11 +491,18 @@ private:
   std::unique_ptr<descriptions::Loader> m_descriptionsLoader;
 
 public:
-  // Moves viewport to the search result and taps on it.
+  /**
+   * @brief Moves viewport to the search result and taps on it.
+   * @param res
+   * @param animation
+   */
   void SelectSearchResult(search::Result const & res, bool animation);
 
-  // Cancels all searches, stops location follow and then selects
-  // search result.
+  /**
+   * @brief Cancels all searches, stops location follow and then selects search result.
+   * @param res
+   * @param animation
+   */
   void ShowSearchResult(search::Result const & res, bool animation = true);
 
   size_t ShowSearchResults(search::Results const & results);
