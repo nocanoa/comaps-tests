@@ -3,6 +3,7 @@
 #include "traffxml/traff_model.hpp"
 
 #include "indexer/data_source.hpp"
+#include "indexer/mwm_set.hpp"
 
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
@@ -173,7 +174,8 @@ private:
 /**
  * @brief A `TraffDecoder` implementation which internally uses the routing engine.
  */
-class RoutingTraffDecoder : public TraffDecoder
+class RoutingTraffDecoder : public TraffDecoder,
+                            public MwmSet::Observer
 {
 public:
   class DecoderRouter : public routing::IndexRouter
@@ -283,6 +285,18 @@ public:
                       const CountryParentNameGetterFn & countryParentNameGetter,
                       std::map<std::string, traffxml::TraffMessage> & messageCache);
 
+  /**
+   * @brief Called when a map is registered for the first time and can be used.
+   */
+  void OnMapRegistered(platform::LocalCountryFile const & localFile) override;
+
+  /**
+   * @brief Called when a map is deregistered and can no longer be used.
+   *
+   * This implementation does nothing, as `NumMwmIds` does not support removal.
+   */
+  virtual void OnMapDeregistered(platform::LocalCountryFile const & /* localFile */) {}
+
 protected:
   /**
    * @brief Initializes the router.
@@ -326,6 +340,17 @@ protected:
 
 private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
+
+  /**
+   * @brief Mutex for access to shared members.
+   *
+   * This is to prevent adding newly-registered maps while the router is in use.
+   *
+   * @todo As per the `MwmSet::Observer` documentation, implementations should be quick and lean,
+   * as they may be called from any thread. Locking a mutex may be in conflict with this, as it may
+   * mean locking up the caller while a location is being decoded.
+   */
+  std::mutex m_mutex;
 
   std::shared_ptr<routing::NumMwmIds> m_numMwmIds = std::make_shared<routing::NumMwmIds>();
   std::unique_ptr<routing::IRouter> m_router;

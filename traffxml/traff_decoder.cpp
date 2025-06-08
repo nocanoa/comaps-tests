@@ -528,30 +528,38 @@ RoutingTraffDecoder::RoutingTraffDecoder(DataSource & dataSource, CountryInfoGet
                                          std::map<std::string, TraffMessage> & messageCache)
   : TraffDecoder(dataSource, countryInfoGetter, countryParentNameGetter, messageCache)
 {
+  m_dataSource.AddObserver(*this);
   InitRouter();
+}
+
+void RoutingTraffDecoder::OnMapRegistered(platform::LocalCountryFile const & localFile)
+{
+  std::lock_guard<std::mutex> lock(m_mutex);
+  // register with our router instance, unless it is World or WorldCoasts.
+  if (!localFile.GetCountryName().starts_with(WORLD_FILE_NAME))
+    m_numMwmIds->RegisterFile(localFile.GetCountryFile());
 }
 
 bool RoutingTraffDecoder::InitRouter()
 {
+  std::lock_guard<std::mutex> lock(m_mutex);
   if (m_router)
     return true;
 
-  // code mostly from RoutingManager::SetRouterImpl(RouterType)
   /*
-   * RoutingManager::SetRouterImpl(RouterType) calls m_delegate.RegisterCountryFilesOnRoute(numMwmIds).
-   * m_delegate is the framework, and the routine cycles through the countries in storage.
-   * As we don’t have access to storage, we get our country files from the data source.
+   * Code based on RoutingManager::SetRouterImpl(RouterType), which calls
+   * m_delegate.RegisterCountryFilesOnRoute(numMwmIds); m_delegate being the framework instance.
+   * RegisterCountryFilesOnRoute() is protected and uses a private `Storage` instance.
+   * We therefore have to resort to populating `m_numMwmIds` from `m_dataSource`. Unlike the
+   * “original”, this will only include MWMs loaded on startup, not those added later.
+   * For these, we register ourselves as an MwmSet::Observer and add maps to `m_numMwms` as they
+   * are registered.
+   * World and WorldCoasts must be excluded (as in the original routine), as they would cause the
+   * router to return bogus routes. Just like the original, we use a string comparison for this.
    */
   std::vector<std::shared_ptr<MwmInfo>> mwmsInfo;
   m_dataSource.GetMwmsInfo(mwmsInfo);
-  /* TODO this should include all countries (whether we have the MWM or not), except World and WorldCoasts.
-   * Excluding World and WorldCoasts is important, else the router will return bogus routes.
-   * Storage uses a string comparison for filtering, we do the same here.
-  storage.ForEachCountry([&](storage::Country const & country)
-  {
-    numMwmIds->RegisterFile(country.GetFile());
-  });
-   */
+
   for (auto mwmInfo : mwmsInfo)
     if (!mwmInfo->GetCountryName().starts_with(WORLD_FILE_NAME))
       m_numMwmIds->RegisterFile(mwmInfo->GetLocalFile().GetCountryFile());
@@ -702,41 +710,46 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
    */
   routing::RouterDelegate delegate;
   delegate.SetTimeout(kRouterTimeoutSec);
+  routing::RouterResultCode code;
+  std::shared_ptr<routing::Route> route;
 
-  if (!m_router && !InitRouter())
-    return;
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
 
-  /*
+    if (!m_router && !InitRouter())
+      return;
+
+    /*
    * TODO is that for following a track? If so, can we use that with just 2–3 reference points?
    * – Doesn’t look like it, m_guides only seems to get used in test functions
    */
-  //router->SetGuides(std::move(m_guides));
-  //m_guides.clear();
+    //router->SetGuides(std::move(m_guides));
+    //m_guides.clear();
 
-  auto route = std::make_shared<routing::Route>(m_router->GetName(), routeId);
-  routing::RouterResultCode code;
+    route = std::make_shared<routing::Route>(m_router->GetName(), routeId);
 
-  base::Timer timer;
-  double elapsedSec = 0.0;
+    base::Timer timer;
+    double elapsedSec = 0.0;
 
-  try
-  {
-    LOG(LINFO, ("Calculating the route of direct length", checkpoints.GetSummaryLengthBetweenPointsMeters(),
-                "m. checkpoints:", checkpoints, "startDirection:", startDirection, "router name:", m_router->GetName()));
+    try
+    {
+      LOG(LINFO, ("Calculating the route of direct length", checkpoints.GetSummaryLengthBetweenPointsMeters(),
+                  "m. checkpoints:", checkpoints, "startDirection:", startDirection, "router name:", m_router->GetName()));
 
-    // Run basic request.
-    code = m_router->CalculateRoute(checkpoints, startDirection, adjustToPrevRoute,
-                                  delegate, *route);
-    m_router->SetGuides({});
-    elapsedSec = timer.ElapsedSeconds(); // routing time
-    LogCode(code, elapsedSec);
-    LOG(LINFO, ("ETA:", route->GetTotalTimeSec(), "sec."));
-  }
-  catch (RootException const & e)
-  {
-    code = routing::RouterResultCode::InternalError;
-    LOG(LERROR, ("Exception happened while calculating route:", e.Msg()));
-    return;
+      // Run basic request.
+      code = m_router->CalculateRoute(checkpoints, startDirection, adjustToPrevRoute,
+                                      delegate, *route);
+      m_router->SetGuides({});
+      elapsedSec = timer.ElapsedSeconds(); // routing time
+      LogCode(code, elapsedSec);
+      LOG(LINFO, ("ETA:", route->GetTotalTimeSec(), "sec."));
+    }
+    catch (RootException const & e)
+    {
+      code = routing::RouterResultCode::InternalError;
+      LOG(LERROR, ("Exception happened while calculating route:", e.Msg()));
+      return;
+    }
   }
 
   if (code == routing::RouterResultCode::NoError)
