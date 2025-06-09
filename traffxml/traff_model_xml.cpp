@@ -481,6 +481,53 @@ bool LocationFromXml(pugi::xml_node node, TraffLocation & location)
 }
 
 /**
+ * @brief Retrieves a `TraffQuantifier` from an XML element.
+ *
+ * The TraFF specification allows only one quantifier per event. The quantifier type depends on the
+ * event type, and not all events allow quantifiers.
+ *
+ * Quantifiers which violate these constraints are not filtered out, i.e. this function may return a
+ * quantifier for event types that do not allow quantifiers, or of a type illegal for the event type.
+ * If an event contains multiple quantifiers of different types, any one of these quantifiers may be
+ * returned, with no preference for legal quantifiers over illegal ones.
+ *
+ * @param node The node from which to retrieve the quantifier (`event`).
+ * @return The quantifier, or `std::nullopt`
+ */
+std::optional<uint16_t> OptionalDurationFromXml(pugi::xml_attribute attribute)
+{
+  std::string durationString;
+  if (!StringFromXml(attribute, durationString))
+    return std::nullopt;
+
+  /*
+   * Valid time formats:
+   * 01:30 (hh:mm)
+   * 1 h
+   * 30 min
+   */
+  std::regex durationRegex("(([0-9]+):([0-9]{2}))|(([0-9]+) *h)|(([0-9]+) *min)");
+  std::smatch durationMatcher;
+
+  if (std::regex_search(durationString, durationMatcher, durationRegex))
+  {
+    if (!durationMatcher.str(2).empty() && !durationMatcher.str(3).empty())
+      return std::stoi(durationMatcher[2]) * 60 + std::stoi(durationMatcher[3]);
+    else if (!durationMatcher.str(5).empty())
+      return std::stoi(durationMatcher[5]) * 60;
+    else if (!durationMatcher.str(7).empty())
+      return std::stoi(durationMatcher[7]);
+    UNREACHABLE();
+    return std::nullopt;
+  }
+  else
+  {
+    LOG(LINFO, ("Not a valid duration:", durationString));
+    return std::nullopt;
+  }
+}
+
+/**
  * @brief Retrieves a `TraffEvent` from an XML element.
  * @param node The XML element to retrieve (`event`).
  * @param event Receives the event.
@@ -514,7 +561,9 @@ bool EventFromXml(pugi::xml_node node, TraffEvent & event)
   event.m_length = OptionalIntegerFromXml(node.attribute("length"));
   event.m_probability = OptionalIntegerFromXml(node.attribute("probability"));
 
-  // TODO optional quantifier (not yet implemented in struct)
+  event.m_qDurationMins = OptionalDurationFromXml(node.attribute("q_duration"));
+
+  // TODO other quantifiers (not yet implemented in struct)
 
   event.m_speed = OptionalIntegerFromXml(node.attribute("speed"));
 

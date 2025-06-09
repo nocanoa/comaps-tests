@@ -109,6 +109,19 @@ enum class RoadClass
   Other
 };
 
+enum class QuantifierType
+{
+  Dimension,
+  Duration,
+  Int,
+  Ints,
+  Speed,
+  Temperature,
+  Time,
+  Weight,
+  Invalid
+};
+
 /*
  * When adding a new event class to this enum, be sure to do the following:
  *
@@ -312,7 +325,17 @@ struct TraffEvent
   EventType m_type = EventType::Invalid;
   std::optional<uint8_t> m_length;
   std::optional<uint8_t> m_probability;
-  // TODO optional quantifier
+  std::optional<uint16_t> m_qDurationMins;
+  /*
+   * TODO remaining quantifiers
+   * q_dimension
+   * q_int
+   * q_ints
+   * q_speed
+   * q_temperature
+   * q_time
+   * q_weight
+   */
   std::optional<uint8_t> m_speed;
   // TODO supplementary information
 };

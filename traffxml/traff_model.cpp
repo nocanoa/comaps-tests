@@ -200,8 +200,14 @@ std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
       impact.m_maxspeed = event.m_speed.value();
     // TODO if no explicit speed given, look up in kEventMaxspeedMap (once we have entries)
 
-    // TODO if event is in delay class and has an explicit duration quantifier, use that and skip the map lookup.
-    if (auto it = kEventDelayMap.find(event.m_type); it != kEventDelayMap.end())
+    if (event.m_class == EventClass::Delay
+        && event.m_type != EventType::DelayClearance
+        && event.m_type != EventType::DelayForecastWithdrawn
+        && event.m_type != EventType::DelaySeveralHours
+        && event.m_type != EventType::DelayUncertainDuration
+        && event.m_qDurationMins)
+      impact.m_delayMins = event.m_qDurationMins.value();
+    else if (auto it = kEventDelayMap.find(event.m_type); it != kEventDelayMap.end())
       impact.m_delayMins = it->second;
 
     // TempBlock overrules everything else, return immediately
@@ -458,7 +464,12 @@ std::string DebugPrint(TraffEvent event)
   os << "type: " << DebugPrint(event.m_type) << ", ";
   os << "length: " << (event.m_length ? std::to_string(event.m_length.value()) : "nullopt") << ", ";
   os << "probability: " << (event.m_probability ? std::to_string(event.m_probability.value()) : "nullopt") << ", ";
-  // TODO optional quantifier
+  os << "q_duration: "
+     << (event.m_qDurationMins
+         ? std::format("{:1d}:{:02d}", event.m_qDurationMins.value() / 60, event.m_qDurationMins.value() % 60)
+         : "nullopt")
+     << ", ";
+  // TODO other quantifiers
   os << "speed: " << (event.m_speed ? std::to_string(event.m_speed.value()) : "nullopt");
   // TODO supplementary information
   os << " }";
