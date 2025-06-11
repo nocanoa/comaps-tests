@@ -470,6 +470,21 @@ double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose purpo
   UNREACHABLE();
 }
 
+double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from, ms::LatLon const & to,
+                                  Purpose purpose) const
+{
+  if (purpose == Purpose::ETA)
+    return 0.0;
+
+  double result = ms::DistanceOnEarth(from, to);
+
+  LOG(LINFO, ("Distance:", result, "weighted:", result * kOffroadPenalty));
+
+  result *= kOffroadPenalty;
+
+  return result;
+}
+
 double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
 {
   double result = road.GetDistance(segment.GetSegmentIdx());

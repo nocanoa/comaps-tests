@@ -106,7 +106,7 @@ public:
    * @param purpose The purpose for which the result is to be used.
    * @return Travel time in seconds.
    */
-  double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const;
+  virtual double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const;
 
   /**
    * @brief Returns the travel time along a segment.

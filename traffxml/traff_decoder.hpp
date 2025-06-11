@@ -273,6 +273,18 @@ public:
     }
 
     // EdgeEstimator overrides:
+
+    /**
+     * @brief Estimates travel time between two points along a direct fake edge.
+     *
+     * Estimates time in seconds it takes to go from point `from` to point `to` along direct fake edge.
+     *
+     * @param from The start point.
+     * @param to The destination point.
+     * @param purpose The purpose for which the result is to be used.
+     * @return Travel time in seconds.
+     */
+    double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const override;
     double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
     double GetUTurnPenalty(Purpose /* purpose */) const override;
     double GetFerryLandingPenalty(Purpose purpose) const override;
