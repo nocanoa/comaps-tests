@@ -10,7 +10,7 @@
 namespace routing
 {
 /**
- * @brief A unique identifier for any road point in an mwm file.
+ * @brief A unique identifier for any point on a road in an mwm file.
  *
  * It contains a feature id and point id. The point id is the ordinal number of the point in the road.
  */
