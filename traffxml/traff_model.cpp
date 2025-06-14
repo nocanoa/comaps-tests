@@ -96,7 +96,7 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
    * 11: :00                        (UTC offset, minutes, prefixed with separator)
    * 12: 00                         (UTC offset, minutes, unsigned; blank for Z or if not specified)
    */
-  std::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
+  std::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(\\.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
 
   std::smatch iso8601Matcher;
   if (std::regex_search(timeString, iso8601Matcher, iso8601Regex))
