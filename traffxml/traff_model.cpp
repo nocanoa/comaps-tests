@@ -153,6 +153,12 @@ IsoTime::IsoTime(std::chrono::time_point<std::chrono::utc_clock> tp)
 bool IsoTime::IsPast()
 {
   return m_tp < std::chrono::utc_clock::now();
+}\
+
+void IsoTime::Shift(IsoTime nowRef)
+{
+  auto const offset = std::chrono::utc_clock::now() - nowRef.m_tp;
+  m_tp += offset;
 }
 
 bool IsoTime::operator< (IsoTime & rhs)
@@ -254,6 +260,18 @@ std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
   else
     // should never happen, unless we have a bug somewhere
     return std::nullopt;
+}
+
+void TraffMessage::ShiftTimestamps()
+{
+  IsoTime nowRef = m_updateTime;
+  m_receiveTime.Shift(nowRef);
+  m_updateTime.Shift(nowRef);
+  m_expirationTime.Shift(nowRef);
+  if (m_startTime)
+    m_startTime.value().Shift(nowRef);
+  if (m_endTime)
+    m_endTime.value().Shift(nowRef);
 }
 
 void MergeMultiMwmColoring(MultiMwmColoring & delta, MultiMwmColoring & target)

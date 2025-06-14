@@ -72,6 +72,17 @@ public:
    */
   bool IsPast();
 
+  /**
+   * @brief Shifts time to the present.
+   *
+   * This method is intended for testing. It shifts the timestamp by a fixed amount, so that
+   * `nowRef` corresponds to current time. After this method returns, the timestamp will have the
+   * same offset from current time that it had from `nowRef` at the time the call was made.
+   *
+   * @param nowRef
+   */
+  void Shift(IsoTime nowRef);
+
   bool operator< (IsoTime & rhs);
   bool operator> (IsoTime & rhs);
 private:
@@ -361,6 +372,16 @@ struct TraffMessage
    * @return The aggregated traffic impact, or `std::nullopt` if the message has no events with traffic impact.
    */
   std::optional<TrafficImpact> GetTrafficImpact();
+
+  /**
+   * @brief Shifts timestamps to the present.
+   *
+   * This method is intended for testing. It shifts the timestamps of the message by a fixed amount,
+   * so that `m_updateTime` corresponds to current time, and all other timestamps maintain their
+   * offset to `m_updateTime`. If `m_startTime` and/or `m_endTime` are set, they may be adjusted
+   * further to maintain their offset from midnight or the full hour (currently not implemented).
+   */
+  void ShiftTimestamps();
 
   std::string m_id;
   IsoTime m_receiveTime = IsoTime::Now();
