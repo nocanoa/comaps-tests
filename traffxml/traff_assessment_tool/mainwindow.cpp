@@ -365,10 +365,17 @@ void MainWindow::OnOpenTrafficSample()
 
   std::setlocale(LC_ALL, "en_US.UTF-8");
   traffxml::TraffFeed feed;
+  traffxml::TraffFeed shiftedFeed;
   if (traffxml::ParseTraff(document, feed))
   {
+    for (auto message : feed)
+    {
+      // `ShiftTimestamps()` will not change the message in `feed`, therefore construct a new feed
+      message.ShiftTimestamps();
+      shiftedFeed.push_back(message);
+    }
     LOG(LINFO, ("TraFF data parsed successfully, pushing"));
-    m_framework.GetTrafficManager().Push(feed);
+    m_framework.GetTrafficManager().Push(shiftedFeed);
     LOG(LINFO, ("Push completed"));
   }
   else
