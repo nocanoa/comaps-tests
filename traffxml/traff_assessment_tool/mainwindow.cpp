@@ -258,7 +258,7 @@ MainWindow::MainWindow(Framework & framework)
 
   setCentralWidget(window);
 
-  setWindowTitle(tr("Organic Maps"));
+  setWindowTitle(tr("TraFF Assessment Tool"));
   setWindowIcon(QIcon(":/ui/logo.png"));
 
   QMenu * fileMenu = new QMenu("File", this);
