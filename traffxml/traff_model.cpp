@@ -79,6 +79,21 @@ const std::map<EventType, uint16_t> kEventDelayMap{
 std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
 {
   /*
+   * TODO this is ugly because we need to work around some compiler deficiencies.
+   *
+   * Ideally, we would be using `std::chrono::time_point<std::chrono::utc_clock>` and parse the
+   * string using `std::chrono::from_stream`, using `%FT%T%z` for the format string.
+   * This works in GCC 14+ and is pleasantly liberal about the time zone format (all of +01, +0100
+   * and +01:00 are parsed correctly). Alas, Ubuntu 24.04 (currently the default dev platform) comes
+   * with GCC 13.2, which lacks this support. Clang, as of mid-2025, doesn’t support it at all.
+   *
+   * The workaround is therefore to use `std::chrono::time_point<std::chrono::system_clock>`, which
+   * exposes the same API as its `utc_clock` counterpart, making transition at a later point easy.
+   * In addition, however, it can be constructed from `std::time_t`, which we can generate from
+   * `std::tm`. Still not the prettiest way (as it relies on legacy C functions which are not
+   * thread-safe), but the best we can get until we have proper compiler support for `from_stream`.
+   */
+  /*
    * Regex for ISO 8601 time, with some tolerance for time zone offset. If matched, the matcher
    * will contain the following items:
    *
@@ -113,9 +128,12 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
     tm.tm_hour = std::stoi(iso8601Matcher[4]) - offset_h;
     tm.tm_min = std::stoi(iso8601Matcher[5]) - offset_m;
     tm.tm_sec = std::stof(iso8601Matcher[6]) + 0.5f;
-    // Call timegm once to normalize tm; return value can be discarded
-    timegm(&tm);
-    IsoTime result(tm);
+
+    std::time_t tt = timegm(&tm);
+
+    std::chrono::time_point<std::chrono::system_clock> tp = std::chrono::system_clock::from_time_t(tt);
+
+    IsoTime result(tp);
     return result;
   }
   else
@@ -127,34 +145,26 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
 
 IsoTime IsoTime::Now()
 {
-  std::time_t t = std::time(nullptr);
-  std::tm* tm = std::gmtime(&t);
-  return IsoTime(*tm);
+  return IsoTime(std::chrono::system_clock::now());
 }
 
-IsoTime::IsoTime(std::tm tm)
-  : m_tm(tm)
+IsoTime::IsoTime(std::chrono::time_point<std::chrono::system_clock> tp)
+  : m_tp(tp)
 {}
 
 bool IsoTime::IsPast()
 {
-  std::time_t t_now = std::time(nullptr);
-  std::time_t t_tm = timegm(&m_tm);
-  return t_tm < t_now;
+  return m_tp < std::chrono::system_clock::now();
 }
 
 bool IsoTime::operator< (IsoTime & rhs)
 {
-  std::time_t t_lhs = std::mktime(&m_tm);
-  std::time_t t_rhs = std::mktime(&rhs.m_tm);
-  return t_lhs < t_rhs;
+  return m_tp < rhs.m_tp;
 }
 
 bool IsoTime::operator> (IsoTime & rhs)
 {
-  std::time_t t_lhs = std::mktime(&m_tm);
-  std::time_t t_rhs = std::mktime(&rhs.m_tm);
-  return t_lhs > t_rhs;
+  return m_tp > rhs.m_tp;
 }
 
 bool operator==(TrafficImpact const & lhs, TrafficImpact const & rhs)
@@ -287,7 +297,9 @@ string DebugPrint(LinearSegmentSource source)
 std::string DebugPrint(IsoTime time)
 {
   std::ostringstream os;
-  os << std::put_time(&time.m_tm, "%Y-%m-%d %H:%M:%S %z");
+  //os << std::put_time(&time.m_tm, "%Y-%m-%d %H:%M:%S %z");
+  // %FT%T%z
+  os << std::format("{0:%F} {0:%T} {0:%z}", time.m_tp);
   return os.str();
 }
 

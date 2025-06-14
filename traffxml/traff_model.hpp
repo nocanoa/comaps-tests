@@ -9,6 +9,7 @@
 #include "traffic/speed_groups.hpp"
 #include "traffic/traffic_info.hpp"
 
+#include <chrono>
 #include <map>
 #include <string>
 #include <vector>
@@ -76,9 +77,9 @@ public:
 private:
   friend std::string DebugPrint(IsoTime time);
 
-  IsoTime(std::tm tm);
+  IsoTime(std::chrono::time_point<std::chrono::system_clock> tp);
 
-  std::tm m_tm;
+  std::chrono::time_point<std::chrono::system_clock> m_tp;
 };
 
 // TODO enum urgency
