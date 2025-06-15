@@ -219,7 +219,7 @@ public:
   /**
    * @brief Purges expired messages from the cache.
    *
-   * This method is safe to call from any thread.
+   * This method is safe to call from any thread, except for the traffic worker thread.
    */
   void PurgeExpiredMessages();
 
@@ -351,6 +351,15 @@ private:
    * @return true on success, false on failure.
    */
   bool Poll();
+
+  /**
+   * @brief Purges expired messages from the cache.
+   *
+   * This is the internal conterpart of `PurgeExpiredMessages()`. It is safe to call from any
+   * thread. Unlike `PurgeExpiredMessages()`, it does not wake the worker thread, making it suitable
+   * for use on the worker thread.
+   */
+  void PurgeExpiredMessagesImpl();
 
   /**
    * @brief Consolidates the feed queue.

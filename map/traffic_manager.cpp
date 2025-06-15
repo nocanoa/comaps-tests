@@ -157,7 +157,6 @@ void TrafficManager::Clear()
 #endif
     m_messageCache.clear();
     m_feedQueue.clear();
-    m_allMwmColoring.clear();
     m_mwmCache.clear();
 
     // TODO figure out which of the ones below we still need
@@ -412,6 +411,12 @@ void TrafficManager::Push(traffxml::TraffFeed feed)
 
 void TrafficManager::PurgeExpiredMessages()
 {
+  PurgeExpiredMessagesImpl();
+  OnTrafficDataUpdate();
+}
+
+void TrafficManager::PurgeExpiredMessagesImpl()
+{
   std::lock_guard<std::mutex> lock(m_mutex);
   LOG(LINFO, ("before:", m_messageCache.size(), "message(s)"));
   traffxml::IsoTime now = traffxml::IsoTime::Now();
@@ -549,7 +554,7 @@ void TrafficManager::ThreadRoutine()
       if (steady_clock::now() - lastPurged >= kPurgeInterval)
       {
         lastPurged == steady_clock::now();
-        PurgeExpiredMessages();
+        PurgeExpiredMessagesImpl();
       }
 
       LOG(LINFO, ("active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
