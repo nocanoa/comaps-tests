@@ -289,7 +289,7 @@ void TraffMessage::ShiftTimestamps()
     m_endTime.value().Shift(nowRef);
 }
 
-void MergeMultiMwmColoring(MultiMwmColoring & delta, MultiMwmColoring & target)
+void MergeMultiMwmColoring(const MultiMwmColoring & delta, MultiMwmColoring & target)
 {
   // for each mwm in delta
   for (auto [mwmId, coloring] : delta)

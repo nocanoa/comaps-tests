@@ -518,9 +518,18 @@ void TrafficManager::DecodeFirstMessage()
     // store message in cache
     m_messageCache.insert_or_assign(message.m_id, message);
   }
-  // store message coloring in AllMwmColoring
-  // TODO trigger full cache processing if segments were removed or traffic has eased
-  traffxml::MergeMultiMwmColoring(message.m_decoded, m_allMwmColoring);
+  /*
+   * TODO detect if we can do a quick update:
+   *  - new message which does not replace any existing message
+   *  - coloring “wins” over replaced message:
+   *    - contains all the segments of the previous message (always true when location is the same)
+   *    - speed groups are the same or lower as in previous message (always true when all members of
+   *      traffic impact are unchanged or have worsened) – for this purpose, closure is considered
+   *      lower than any other speed group
+   *  In this case, run:
+   *      traffxml::MergeMultiMwmColoring(message.m_decoded, m_allMwmColoring);
+   *  Otherwise, set a flag indicating we need to process coloring in full.
+   */
 }
 
 void TrafficManager::ThreadRoutine()
@@ -780,6 +789,20 @@ void TrafficManager::OnTrafficDataUpdate()
   LOG(LINFO, ("Announcing traffic update, notifyDrape:", notifyDrape, "notifyObserver:", notifyObserver));
 
   /*
+   * TODO introduce a flag to indicate we need to fully reprocess coloring, skip if it is false.
+   * The flag would get set when messages get deleted (including any clear/purge operations),
+   * or when a new message is added without indicating a simplified update in `DecodeFirstMessage()`.
+   * When we reprocess coloring in full (the block below), reset this flag.
+   */
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    m_allMwmColoring.clear();
+    for (const auto & [id, message] : m_messageCache)
+      traffxml::MergeMultiMwmColoring(message.m_decoded, m_allMwmColoring);
+  }
+
+  /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
    *
    * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData();
@@ -819,6 +842,15 @@ void TrafficManager::OnTrafficDataUpdate()
 
         UpdateState();
 
+        /*
+         * TODO BUG: this leaves behind deleted segments
+         * If an update removes segments (but the MWM still has segments), some (the first added?)
+         * may be left behind but will disappear on the next update. This has been observed with
+         * TraFF Assessment Tool when updating a message with another one resulting in fewer
+         * segments. Unclear if routing is also affected. The number of segments in the affected
+         * MWM does not change between the botched and the working update, indicating the correct
+         * coloring was passed and the problem is on the receiving end.
+         */
         if (notifyDrape)
         {
           m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,

@@ -394,6 +394,10 @@ private:
    * @brief Processes new traffic data.
    *
    * The new per-MWM colorings (preprocessed traffic information) are taken from `m_allMmColoring`.
+   * `m_allMwmColoring` is rebuilt from per-message colorings in `m_messageCache` as needed.
+   *
+   * This method is normally called from the traffic worker thread. Test tools may also call it from
+   * other threads.
    */
   void OnTrafficDataUpdate();
 

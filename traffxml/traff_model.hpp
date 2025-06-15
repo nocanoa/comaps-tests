@@ -450,7 +450,7 @@ using TraffFeed = std::vector<TraffMessage>;
  * @param delta Contains the entries to be added.
  * @param target Receives the added entries.
  */
-void MergeMultiMwmColoring(MultiMwmColoring &delta, MultiMwmColoring & target);
+void MergeMultiMwmColoring(const MultiMwmColoring & delta, MultiMwmColoring & target);
 
 std::string DebugPrint(IsoTime time);
 std::string DebugPrint(Directionality directionality);
