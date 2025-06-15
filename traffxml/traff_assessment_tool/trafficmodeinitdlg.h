@@ -23,7 +23,7 @@ public:
   std::string GetDataFilePath() const { return m_dataFileName; }
 
 private:
-  void SetFilePathViaDialog(QLineEdit & dest, QString const & title,
+  void SetFilePathViaDialog(QLineEdit & dest, QString const & title, const QString & directory,
                             QString const & filter = {});
 public slots:
   void accept() override;

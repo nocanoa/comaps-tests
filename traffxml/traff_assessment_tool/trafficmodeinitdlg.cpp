@@ -4,6 +4,7 @@
 #include "platform/settings.hpp"
 
 #include <QtWidgets/QFileDialog>
+#include <QFileInfo>
 
 #include <string>
 
@@ -20,12 +21,16 @@ TrafficModeInitDlg::TrafficModeInitDlg(QWidget * parent) :
 {
   m_ui->setupUi(this);
 
+  QString directory = {};
   std::string lastDataFilePath;
   if (settings::Get(kDataFilePath, lastDataFilePath))
+  {
     m_ui->dataFileName->setText(QString::fromStdString(lastDataFilePath));
+    directory = QFileInfo(QString::fromStdString(lastDataFilePath)).absolutePath();
+  }
 
-  connect(m_ui->chooseDataFileButton, &QPushButton::clicked, [this](bool) {
-      SetFilePathViaDialog(*m_ui->dataFileName, tr("Choose data file"), "*.xml");
+  connect(m_ui->chooseDataFileButton, &QPushButton::clicked, [this, directory](bool) {
+      SetFilePathViaDialog(*m_ui->dataFileName, tr("Choose data file"), directory, "*.xml");
   });
 }
 
@@ -42,9 +47,9 @@ void TrafficModeInitDlg::accept()
 }
 
 void TrafficModeInitDlg::SetFilePathViaDialog(QLineEdit & dest, QString const & title,
-                                              QString const & filter)
+                                              QString const & directory, QString const & filter)
 {
-  QFileDialog openFileDlg(nullptr, title, {} /* directory */, filter);
+  QFileDialog openFileDlg(nullptr, title, directory, filter);
   openFileDlg.exec();
   if (openFileDlg.result() != QDialog::DialogCode::Accepted)
     return;
