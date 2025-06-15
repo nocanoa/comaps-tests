@@ -847,17 +847,19 @@ void TrafficManager::OnTrafficDataUpdate()
 
         UpdateState();
 
-        /*
-         * TODO BUG: this leaves behind deleted segments
-         * If an update removes segments (but the MWM still has segments), some (the first added?)
-         * may be left behind but will disappear on the next update. This has been observed with
-         * TraFF Assessment Tool when updating a message with another one resulting in fewer
-         * segments. Unclear if routing is also affected. The number of segments in the affected
-         * MWM does not change between the botched and the working update, indicating the correct
-         * coloring was passed and the problem is on the receiving end.
-         */
         if (notifyDrape)
         {
+          /*
+           * TODO calling ClearTrafficCache before UpdateTraffic is a workaround for a bug in the
+           * Drape engine: some segments found in the old coloring but not in the new one may get
+           * left behind. This was not a problem for MapsWithMe as the set of segments never
+           * changed, but is an issue wherever the segment set is dynamic. Workaround is to clear
+           * before sending an update. Ultimately, the processing logic for UpdateTraffic needs to
+           * be fixed, but the code is hard to read (involves multiple messages getting thrown back
+           * and forth between threads).
+           */
+          m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache,
+                                 static_cast<MwmSet::MwmId const &>(mwmId));
           m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
                                  static_cast<traffic::TrafficInfo const &>(info));
           m_lastDrapeUpdate = steady_clock::now();
