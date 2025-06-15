@@ -873,8 +873,6 @@ void TrafficManager::OnTrafficDataUpdate()
     }
     else
     {
-      LOG(LINFO, ("Removing coloring for", mwmId));
-
       if (notifyDrape)
       {
         m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache,

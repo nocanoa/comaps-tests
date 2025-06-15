@@ -478,8 +478,6 @@ double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from,
 
   double result = ms::DistanceOnEarth(from, to);
 
-  LOG(LINFO, ("Distance:", result, "weighted:", result * kOffroadPenalty));
-
   result *= kOffroadPenalty;
 
   return result;
