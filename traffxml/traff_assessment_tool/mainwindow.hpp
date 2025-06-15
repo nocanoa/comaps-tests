@@ -42,6 +42,11 @@ private:
   void OnOpenTrafficSample();
 
   /**
+   * Called when the user requests to purge expired messages.
+   */
+  void OnPurgeExpiredMessages();
+
+  /**
    * Called when the user requests to clear the cache.
    */
   void OnClearCache();

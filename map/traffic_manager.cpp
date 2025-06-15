@@ -22,6 +22,12 @@ namespace
  * Poll interval for traffic data
  */
 auto constexpr kUpdateInterval = minutes(1);
+
+/**
+ * Purge interval for expired traffic messages
+ */
+auto constexpr kPurgeInterval = minutes(1);
+
 auto constexpr kOutdatedDataTimeout = minutes(5) + kUpdateInterval;
 auto constexpr kNetworkErrorTimeout = minutes(20);
 
@@ -404,6 +410,21 @@ void TrafficManager::Push(traffxml::TraffFeed feed)
   m_condition.notify_one();
 }
 
+void TrafficManager::PurgeExpiredMessages()
+{
+  std::lock_guard<std::mutex> lock(m_mutex);
+  LOG(LINFO, ("before:", m_messageCache.size(), "message(s)"));
+  traffxml::IsoTime now = traffxml::IsoTime::Now();
+  for (auto it = m_messageCache.begin(); it != m_messageCache.end(); )
+  {
+    if (it->second.IsExpired(now))
+      it = m_messageCache.erase(it);
+    else
+      ++it;
+  }
+  LOG(LINFO, ("after:", m_messageCache.size(), "message(s)"));
+}
+
 void TrafficManager::ConsolidateFeedQueue()
 {
   std::lock_guard<std::mutex> lock(m_mutex);
@@ -504,7 +525,8 @@ void TrafficManager::DecodeFirstMessage()
 
 void TrafficManager::ThreadRoutine()
 {
-  // initially, treat drape and observer as having just been updated
+  // initially, treat last purge and drape/observer update as having just happened
+  auto lastPurged = steady_clock::now();
   m_lastDrapeUpdate = steady_clock::now();
   m_lastObserverUpdate = steady_clock::now();
 
@@ -513,11 +535,15 @@ void TrafficManager::ThreadRoutine()
     if (!IsEnabled())
       continue;
 
-    // TODO clean out expired messages
-
     if (!IsTestMode())
     {
-      LOG(LINFO, ("start loop, active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
+      if (steady_clock::now() - lastPurged >= kPurgeInterval)
+      {
+        lastPurged == steady_clock::now();
+        PurgeExpiredMessages();
+      }
+
+      LOG(LINFO, ("active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
 
       // this is a no-op if active MWMs have not changed
       if (!SetSubscriptionArea())

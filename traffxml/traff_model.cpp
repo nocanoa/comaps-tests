@@ -195,6 +195,21 @@ bool operator==(TraffLocation const & lhs, TraffLocation const & rhs)
       && (lhs.m_to == rhs.m_to);
 }
 
+IsoTime TraffMessage::GetEffectiveExpirationTime()
+{
+  IsoTime result = m_expirationTime;
+  if (m_startTime && m_startTime.value() > result)
+    result = m_startTime.value();
+  if (m_endTime && m_endTime.value() > result)
+    result = m_endTime.value();
+  return result;
+}
+
+bool TraffMessage::IsExpired(IsoTime now)
+{
+  return GetEffectiveExpirationTime() < now;
+}
+
 std::optional<TrafficImpact> TraffMessage::GetTrafficImpact()
 {
   // no events, no impact

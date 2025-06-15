@@ -198,7 +198,8 @@ public:
    * will log a warning but otherwise do nothing.
    *
    * In test mode, the traffic manager will not subscribe to sources or poll them automatically.
-   * It will still receive and process push feeds.
+   * Expired messages will not get purged automatically, but `PurgeExpiredMessages()` can be called
+   * to purge expired messages once. The traffic manager will still receive and process push feeds.
    *
    * Future versions may introduce further behavior changes.
    */
@@ -214,6 +215,13 @@ public:
    * @param feed The traffic feed.
    */
   void Push(traffxml::TraffFeed feed);
+
+  /**
+   * @brief Purges expired messages from the cache.
+   *
+   * This method is safe to call from any thread.
+   */
+  void PurgeExpiredMessages();
 
   /**
    * @brief Clears the entire traffic cache.

@@ -265,6 +265,7 @@ MainWindow::MainWindow(Framework & framework)
   menuBar()->addMenu(fileMenu);
 
   fileMenu->addAction("Open sample", QKeySequence("Ctrl+O"), this, &MainWindow::OnOpenTrafficSample);
+  fileMenu->addAction("Purge expired messages", QKeySequence("Ctrl+P"), this, &MainWindow::OnPurgeExpiredMessages);
   fileMenu->addAction("Clear TraFF cache", QKeySequence("Ctrl+D"), this, &MainWindow::OnClearCache);
 
   m_closeTrafficSampleAction = fileMenu->addAction("Close sample", QKeySequence("Ctrl+W"), this, &MainWindow::OnCloseTrafficSample);
@@ -406,6 +407,11 @@ void MainWindow::OnOpenTrafficSample()
   m_startEditingAction->setEnabled(true /* enabled */);
   m_ignorePathAction->setEnabled(true /* enabled */);
 #endif
+}
+
+void MainWindow::OnPurgeExpiredMessages()
+{
+  m_framework.GetTrafficManager().PurgeExpiredMessages();
 }
 
 void MainWindow::OnClearCache()

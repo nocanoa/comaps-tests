@@ -360,6 +360,27 @@ using MultiMwmColoring = std::map<MwmSet::MwmId, std::map<traffic::TrafficInfo::
 struct TraffMessage
 {
   /**
+   * @brief Gets the time after which this message effectively expires.
+   *
+   * The effective expiration time is the latest of `m_expirationTime`, `m_startTime` and
+   * `m_endTime`. `nullopt` values are ignored.
+   *
+   * @return The effective expiration time for the message.
+   */
+  IsoTime GetEffectiveExpirationTime();
+
+  /**
+   * @brief Whether the message has expired.
+   *
+   * A message is considered to have expired if its effective expiration time (as returned by
+   * `GetEffectiveExpirationTime()` refers to a point in time before `now`.
+   *
+   * @param now The reference time to compare to (usually current time)
+   * @return True if the message has expired, false if not.
+   */
+  bool IsExpired(IsoTime now);
+
+  /**
    * @brief Retrieves the traffic impact of all events.
    *
    * If the message has multiple events, the traffic impact is determined separately for each
