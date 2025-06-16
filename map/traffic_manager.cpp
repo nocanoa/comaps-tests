@@ -13,6 +13,7 @@
 #include "platform/platform.hpp"
 
 #include "traffxml/traff_model_xml.hpp"
+#include "traffxml/traff_storage.hpp"
 
 using namespace std::chrono;
 
@@ -367,16 +368,14 @@ bool TrafficManager::IsSubscribed()
 bool TrafficManager::Poll()
 {
   // TODO
-  //std::string path("/home/michael/src/organicmaps/data/test_data/traff/PL-A18-Krzyzowa-Lipiany.xml");
-  std::string path("/home/michael/src/organicmaps/data/test_data/traff/PL-A18-Krzyzowa-Lipiany-bidir.xml");
-  //std::string path("/home/michael/src/organicmaps/data/test_data/traff/LT-A1-Vezaiciai-Endriejavas.xml");
+  //std::string fileName("test_data/traff/PL-A18-Krzyzowa-Lipiany.xml");
+  std::string fileName("test_data/traff/PL-A18-Krzyzowa-Lipiany-bidir.xml");
+  //std::string fileName("test_data/traff/LT-A1-Vezaiciai-Endriejavas.xml");
+  traffxml::LocalStorage storage(fileName);
   pugi::xml_document document;
-  auto const load_result = document.load_file(path.data());
+  auto const load_result = storage.Load(document);
   if (!load_result)
-  {
-    LOG(LERROR, ("Can't load file", path, ":", load_result.description()));
     return false;
-  }
 
   std::setlocale(LC_ALL, "en_US.UTF-8");
   traffxml::TraffFeed feed;
