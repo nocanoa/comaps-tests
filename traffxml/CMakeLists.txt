@@ -7,6 +7,8 @@ set(SRC
   traff_model.hpp
   traff_model_xml.cpp
   traff_model_xml.hpp
+  traff_storage.cpp
+  traff_storage.hpp
 )
 
 omim_add_library(${PROJECT_NAME} ${SRC})
