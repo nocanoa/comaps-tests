@@ -4,6 +4,9 @@
 
 #include "geometry/rect2d.hpp"
 
+#include "indexer/data_source.hpp"
+
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -34,14 +37,25 @@ namespace traffxml
  * Parsing the feed will report failure if all its messages fail to parse, but not if it has no
  * messages.
  *
- * @note Custom elements and attributes which are not part of the TraFF specification are currently
- * ignored. Future versions may process certain custom elements.
+ * In addition to the TraFF specification, we also use a custom extension, `mwm_coloring`, which is
+ * a child of `message` and holds decoded traffic coloring. In order to parse it, `dataSource` must
+ * be specified. If `dataSource` is `nullopt`, coloring will be ignored. It is recommended to pass
+ * `dataSource` if, and only if, parsing an XML stream that is expected to contain traffic coloring.
+ *
+ * @note To pass a reference to the framework data source (assuming the `framework` is the framework
+ * instance), use `std::cref(framework.GetDataSource())`.
+ *
+ * @note Custom elements and attributes which are not part of the TraFF specification, other than
+ * `mwm_coloring`, are ignored.
  *
  * @param document The XML document from which to retrieve the messages.
+ * @param dataSource The data source for coloring, see description.
  * @param feed Receives the TraFF feed.
  * @return `true` on success, `false` on failure.
  */
-bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed);
+bool ParseTraff(pugi::xml_document const & document,
+                std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                TraffFeed & feed);
 
 /**
  * @brief Generates XML from a TraFF feed.

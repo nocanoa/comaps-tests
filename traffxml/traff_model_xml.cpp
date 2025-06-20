@@ -122,6 +122,42 @@ const boost::bimap<std::string, EventType> kEventTypeMap = MakeBimap<std::string
   // TODO Security*, Transport*, Weather* (not in enum yet)
 });
 
+const boost::bimap<std::string, traffic::SpeedGroup> kSpeedGroupMap = MakeBimap<std::string, traffic::SpeedGroup>({
+  {"G0", traffic::SpeedGroup::G0},
+  {"G1", traffic::SpeedGroup::G1},
+  {"G2", traffic::SpeedGroup::G2},
+  {"G3", traffic::SpeedGroup::G3},
+  {"G4", traffic::SpeedGroup::G4},
+  {"G5", traffic::SpeedGroup::G5},
+  {"TEMP_BLOCK", traffic::SpeedGroup::TempBlock},
+  {"UNKNOWN", traffic::SpeedGroup::Unknown}
+});
+
+/**
+ * @brief Retrieves an integer value from an attribute.
+ *
+ * @param attribute The XML attribute to retrieve.
+ * @param value The variable which will receive the value, must be of an integer type
+ * @return `true` on success, `false` if the attribute is not set or does not contain an integer value.
+ */
+template <typename Value>
+bool IntegerFromXml(pugi::xml_attribute const & attribute, Value & value)
+{
+  if (attribute.empty())
+    return false;
+  try
+  {
+    value = static_cast<Value>(is_signed<Value>::value
+                               ? std::stoll(attribute.as_string())
+                               : std::stoull(attribute.as_string()));
+    return true;
+  }
+  catch (std::invalid_argument const& ex)
+  {
+    return false;
+  }
+}
+
 /**
  * @brief Retrieves an integer value from an attribute.
  *
@@ -581,8 +617,6 @@ void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
     PointToXml(location.m_notVia.value(), "not_via", node);
   if (location.m_to)
     PointToXml(location.m_to.value(), "to", node);
-
-  // TODO decoded segments
 }
 
 /**
@@ -735,12 +769,179 @@ bool EventsFromXml(pugi::xml_node const & node, std::vector<TraffEvent> & events
 }
 
 /**
+ * @brief Retrieves a coloring segment (segment with speed group) from XML
+ * @param node The `segment` node
+ * @param coloring The coloring to which the segment will be added.
+ * @return true if each segment was parsed successfully, false if errors occurred (in this case,
+ * the decoded coloring for this message should be discarded and regenerated from scratch)
+ */
+bool SegmentFromXml(pugi::xml_node const & node,
+               std::map<traffic::TrafficInfo::RoadSegmentId, traffic::SpeedGroup> & coloring)
+{
+  uint32_t fid;
+  uint16_t idx;
+  uint8_t dir;
+  if (IntegerFromXml(node.attribute("fid"), fid)
+      && IntegerFromXml(node.attribute("idx"), idx)
+      && IntegerFromXml(node.attribute("dir"), dir))
+  {
+    traffic::TrafficInfo::RoadSegmentId segment(fid, idx, dir);
+    traffic::SpeedGroup sg = traffic::SpeedGroup::Unknown;
+    if (EnumFromXml(node.attribute("speed_group"), sg, kSpeedGroupMap))
+      coloring[segment] = sg;
+    else
+    {
+      LOG(LWARNING, ("missing or invalid speed group for", segment, "(aborting)"));
+      return false;
+    }
+  }
+  else
+  {
+    LOG(LWARNING, ("segment with incomplete information (fid, idx, dir), aborting"));
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @brief Retrieves coloring for a single MWM from XML.
+ *
+ * This function returns false if errors occurred during decoding (due to invalid data), or if the
+ * data version to which the segments refer does not coincide with the currently used version of the
+ * corresponding MWM. In this case, the entire coloring for this message should be discarded and the
+ * message should be decoded from scratch.
+ *
+ * @todo Errors in segments are currently not considered, i.e. this function may return true even if
+ * one or more segments have errors.
+ *
+ * @param node The `coloring` node.
+ * @param dataSource The data source for coloring.
+ * @param decoded Receives the decoded global coloring.
+ * @return whether the decoded segments can be used, see description
+ */
+bool ColoringFromXml(pugi::xml_node const & node, DataSource const & dataSource,
+                     MultiMwmColoring & decoded)
+{
+  std::string countryName;
+  if (!StringFromXml(node.attribute("country_name"), countryName))
+  {
+    LOG(LWARNING, ("coloring element without coutry_name attribute, skipping"));
+    return false;
+  }
+  auto const & mwmId = dataSource.GetMwmIdByCountryFile(platform::CountryFile(countryName));
+  if (!mwmId.IsAlive())
+  {
+    LOG(LWARNING, ("Can’t get MWM ID for country", countryName, "(skipping)"));
+    return false;
+  }
+
+  uint64_t version = 0;
+  if (!IntegerFromXml(node.attribute("version"), version))
+  {
+    LOG(LWARNING, ("Can’t get version for country", countryName, "(skipping)"));
+    return false;
+  }
+  else if (version != mwmId.GetInfo()->GetVersion())
+  {
+    LOG(LINFO, ("XML data for country", countryName, "has version", version, "while MWM has", mwmId.GetInfo()->GetVersion(), "(skipping)"));
+    return false;
+  }
+
+  auto const segmentNodes = node.select_nodes("./segment");
+
+  if (segmentNodes.empty())
+    return true;
+
+  std::map<traffic::TrafficInfo::RoadSegmentId, traffic::SpeedGroup> coloring;
+
+  for (auto const & segmentXpathNode : segmentNodes)
+  {
+    auto const & segmentNode = segmentXpathNode.node();
+    if (!SegmentFromXml(segmentNode, coloring))
+      return false;
+  }
+
+  if (!coloring.empty())
+    decoded[mwmId] = coloring;
+
+  return true;
+}
+
+/**
+ * @brief Stores coloring for an indidual MWM in an XML node.
+ *
+ * The vaues of `mwmId` will be added to `node` as attributes. The segments and their traffic group
+ * will be added to `node` as child nodes.
+ *
+ * @param mwmId
+ * @param coloring
+ * @param node The `coloring` node to store the coloring in.
+ */
+void ColoringToXml(MwmSet::MwmId const & mwmId,
+                   std::map<traffic::TrafficInfo::RoadSegmentId, traffic::SpeedGroup> const & coloring,
+                   pugi::xml_node node)
+{
+  node.append_attribute("country_name").set_value(mwmId.GetInfo()->GetCountryName());
+  node.append_attribute("version").set_value(mwmId.GetInfo()->GetVersion());
+  for (auto & [segId, sg] : coloring)
+  {
+    auto segNode = node.append_child("segment");
+    segNode.append_attribute("fid").set_value(segId.GetFid());
+    segNode.append_attribute("idx").set_value(segId.GetIdx());
+    segNode.append_attribute("dir").set_value(segId.GetDir());
+    EnumToXml(sg, "speed_group", segNode, kSpeedGroupMap);
+  }
+}
+
+/**
+ * @brief Retrieves global coloring from XML.
+ *
+ * If the MWM version does not match for at least one MWM, no coloring is decoded (`decoded` is
+ * empty after this function returns) and the message needs to be decoded from scratch.
+ *
+ * @param node The `mwm_coloring` node.
+ * @param dataSource The data source for coloring, see `ParseTraff()`.
+ * @param decoded Receives the decoded global coloring.
+ */
+void AllMwmColoringFromXml(pugi::xml_node const & node,
+                           std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                           MultiMwmColoring & decoded)
+{
+  if (!node)
+    return;
+
+  if (!dataSource)
+  {
+    LOG(LWARNING, ("Message has mwm_coloring but it cannot be parsed as no data source was specified"));
+    return;
+  }
+
+  auto const coloringNodes = node.select_nodes("./coloring");
+
+  if (coloringNodes.empty())
+    return;
+
+  for (auto const & coloringXpathNode : coloringNodes)
+  {
+    auto const & coloringNode = coloringXpathNode.node();
+    if (!ColoringFromXml(coloringNode, dataSource->get(), decoded))
+    {
+      decoded.clear();
+      return;
+    }
+  }
+}
+
+/**
  * @brief Retrieves a TraFF message from an XML element.
  * @param node The XML element to retrieve (`message`).
+ * @param dataSource The data source for coloring, see `ParseTraff()`.
  * @param message Receives the message.
  * @return `true` on success, `false` if the node does not exist or does not contain valid message data.
  */
-bool MessageFromXml(pugi::xml_node const & node, TraffMessage & message)
+bool MessageFromXml(pugi::xml_node const & node,
+                    std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                    TraffMessage & message)
 {
   if (!StringFromXml(node.attribute("id"), message.m_id))
   {
@@ -779,7 +980,9 @@ bool MessageFromXml(pugi::xml_node const & node, TraffMessage & message)
   if (!message.m_cancellation)
   {
     message.m_location.emplace();
-    if (!LocationFromXml(node.child("location"), message.m_location.value()))
+    if (LocationFromXml(node.child("location"), message.m_location.value()))
+      AllMwmColoringFromXml(node.child("mwm_coloring"), dataSource, message.m_decoded);
+    else
     {
       message.m_location.reset();
       LOG(LWARNING, ("Message", message.m_id, "has no location but is not a cancellation message"));
@@ -842,9 +1045,21 @@ void MessageToXml(TraffMessage const & message, pugi::xml_node node)
       EventToXml(event, eventNode);
     }
   }
+
+  if (!message.m_decoded.empty())
+  {
+    auto allMwmColoringNode = node.append_child("mwm_coloring");
+    for (auto & [mwmId, coloring] : message.m_decoded)
+    {
+      auto coloringNode = allMwmColoringNode.append_child("coloring");
+      ColoringToXml(mwmId, coloring, coloringNode);
+    }
+  }
 }
 
-bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed)
+bool ParseTraff(pugi::xml_document const & document,
+                std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                TraffFeed & feed)
 {
   bool result = false;
 
@@ -859,7 +1074,7 @@ bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed)
   {
     auto const messageNode = xpathNode.node();
     TraffMessage message;
-    if (MessageFromXml(messageNode, message))
+    if (MessageFromXml(messageNode, dataSource, message))
     {
       feed.push_back(message);
       result = true;

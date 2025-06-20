@@ -13,7 +13,6 @@
 #include "platform/platform.hpp"
 
 #include "traffxml/traff_model_xml.hpp"
-#include "traffxml/traff_storage.hpp"
 
 using namespace std::chrono;
 
@@ -43,6 +42,16 @@ auto constexpr kDrapeUpdateInterval = seconds(10);
  * Interval at which the traffic observer gets traffic updates while messages are being processed.
  */
 auto constexpr kObserverUpdateInterval = minutes(1);
+
+/**
+ * Interval at which the message cache file is updated while messages are being processed.
+ */
+auto constexpr kStorageUpdateInterval = minutes(1);
+
+/**
+ * File name at which traffic data is persisted.
+ */
+auto constexpr kTrafficXMLFileName = "traffic.xml";
 } // namespace
 
 TrafficManager::CacheEntry::CacheEntry()
@@ -125,14 +134,28 @@ void TrafficManager::SetStateListener(TrafficStateChangedFn const & onStateChang
 
 void TrafficManager::SetEnabled(bool enabled)
 {
+  /*
+   * Whether to notify interested parties that traffic data has been updated.
+   * This is based on the return value of RestoreCache().
+   */
+  bool notifyUpdate = false;
   {
     std::lock_guard<std::mutex> lock(m_mutex);
     if (enabled == IsEnabled())
        return;
-    if (enabled && !m_traffDecoder)
-      // deferred decoder initialization (requires maps to be loaded)
-      m_traffDecoder = make_unique<traffxml::DefaultTraffDecoder>(m_dataSource, m_countryInfoGetterFn,
-                                                                  m_countryParentNameGetterFn, m_messageCache);
+    if (enabled)
+    {
+      if (!m_traffDecoder)
+        // deferred decoder initialization (requires maps to be loaded)
+        m_traffDecoder = make_unique<traffxml::DefaultTraffDecoder>(m_dataSource, m_countryInfoGetterFn,
+                                                                    m_countryParentNameGetterFn, m_messageCache);
+      if (!m_storage && !IsTestMode())
+      {
+        m_storage = make_unique<traffxml::LocalStorage>(kTrafficXMLFileName);
+        notifyUpdate = RestoreCache();
+        m_lastStorageUpdate = steady_clock::now();
+      }
+    }
     ChangeState(enabled ? TrafficState::Enabled : TrafficState::Disabled);
   }
 
@@ -140,7 +163,11 @@ void TrafficManager::SetEnabled(bool enabled)
 
   if (enabled)
   {
-    Invalidate();
+    if (notifyUpdate)
+      OnTrafficDataUpdate();
+    else
+      // TODO After sorting out invalidation, figure out if we need that here.
+      Invalidate();
     m_canSetMode = false;
   }
   else
@@ -227,6 +254,28 @@ void TrafficManager::OnRecoverSurface()
   Resume();
 }
 
+/*
+ * TODO Revisit invalidation logic.
+ * We currently invalidate when enabling and resuming, and when a new MWM file is downloaded
+ * (behavior inherited from MapsWithMe).
+ * Traffic data in MapsWithMe was a set of pre-decoded messages per MWM; the whole set would get
+ * re-fetched periodically. Invalidation meant discarding and re-fetching all traffic data.
+ * This logic is different for TraFF:
+ * - Messages expire individually or get replaced by updates, thus there is hardly ever a reason
+ *   to discard messages.
+ * - Messages are decoded into segments in the app. Discarding decoded segments may be needed on
+ *   a per-message basis for the following reasons:
+ *   - the message is replaced by a new one and the location or traffic situation has changed
+ *     (this is dealt with as part of the message update process)
+ *   - one of the underlying MWMs has been updated to a new version
+ *   - a new MWM has been added, and a message location that previously could not be decoded
+ *     completely now can
+ * The sensible equivalent in TraFF would be to discard and re-generate decoded locations, and
+ * possibly poll for updates. Discarding and re-generating decoded locations could be done
+ * selectively:
+ * - compare map versions of decoded segments to current map version
+ * - figure out when a new map has been added, and which segments are affected by it
+ */
 void TrafficManager::Invalidate()
 {
   if (!IsEnabled())
@@ -369,6 +418,56 @@ bool TrafficManager::IsSubscribed()
   return !m_subscriptionId.empty();
 }
 
+bool TrafficManager::RestoreCache()
+{
+  ASSERT(m_storage, ("m_storage cannot be null"));
+  pugi::xml_document document;
+  if (!m_storage->Load(document))
+  {
+    LOG(LWARNING, ("Failed to reload cache from storage"));
+    return false;
+  }
+
+  traffxml::TraffFeed feedIn;
+  traffxml::TraffFeed feedOut;
+  bool hasDecoded = false;
+  bool hasUndecoded = false;
+  if (traffxml::ParseTraff(document, std::nullopt /* dataSource */, feedIn))
+  {
+    while (!feedIn.empty())
+    {
+      traffxml::TraffMessage message;
+      std::swap(message, feedIn.front());
+      feedIn.erase(feedIn.begin());
+
+      if (!message.IsExpired(traffxml::IsoTime::Now()))
+      {
+        if (!message.m_decoded.empty())
+        {
+          hasDecoded = true;
+          // store message in cache
+          m_messageCache.insert_or_assign(message.m_id, message);
+        }
+        else
+        {
+          hasUndecoded = true;
+          // message needs decoding, prepare to enqueue
+          feedOut.push_back(message);
+        }
+      }
+    }
+    if (!feedOut.empty())
+      m_feedQueue.insert(m_feedQueue.begin(), feedOut);
+    // update notification is caller’s responsibility
+    return hasDecoded && !hasUndecoded;
+  }
+  else
+  {
+    LOG(LWARNING, ("An error occurred parsing the cache file"));
+  }
+  return false;
+}
+
 // TODO make this work with multiple sources (e.g. Android)
 // TODO deal with subscriptions rejected by the server (delete, resubscribe)
 bool TrafficManager::Poll()
@@ -385,7 +484,7 @@ bool TrafficManager::Poll()
 
   std::setlocale(LC_ALL, "en_US.UTF-8");
   traffxml::TraffFeed feed;
-  if (traffxml::ParseTraff(document, feed))
+  if (traffxml::ParseTraff(document, std::nullopt /* dataSource */, feed))
   {
     {
       std::lock_guard<std::mutex> lock(m_mutex);
@@ -784,13 +883,34 @@ void TrafficManager::OnTrafficDataUpdate()
   // Whether to notify the observer of the update.
   bool notifyObserver = (feedQueueEmpty);
 
+  // Whether to update the cache file.
+  bool updateStorage = (feedQueueEmpty);
+
   if (!feedQueueEmpty)
   {
     auto const currentTime = steady_clock::now();
     auto const drapeAge = currentTime - m_lastDrapeUpdate;
     auto const observerAge = currentTime - m_lastObserverUpdate;
+    auto const storageAge = currentTime - m_lastStorageUpdate;
     notifyDrape = (drapeAge >= kDrapeUpdateInterval);
     notifyObserver = (observerAge >= kObserverUpdateInterval);
+    updateStorage = (storageAge >= kStorageUpdateInterval);
+  }
+
+  if (!m_storage || IsTestMode())
+    updateStorage = false;
+
+  if (updateStorage)
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    pugi::xml_document document;
+
+    traffxml::GenerateTraff(m_messageCache, document);
+    if (!m_storage->Save(document))
+      LOG(LWARNING, ("Storing message cache to file failed."));
+
+    m_lastStorageUpdate = steady_clock::now();
   }
 
   if (!notifyDrape && !notifyObserver)

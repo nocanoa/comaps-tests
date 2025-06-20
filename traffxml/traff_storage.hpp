@@ -45,7 +45,7 @@ public:
    * interpreted relative to the platform-specific path; absolute paths are not supported as some
    * platforms restrict applications’ access to files outside their designated path.
    */
-  LocalStorage(std::string & fileName)
+  LocalStorage(std::string const & fileName)
     : m_fileName(fileName)
   {}
 

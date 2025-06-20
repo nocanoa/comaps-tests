@@ -13,6 +13,7 @@
 
 #include "traffxml/traff_decoder.hpp"
 #include "traffxml/traff_model.hpp"
+#include "traffxml/traff_storage.hpp"
 
 #include "geometry/point2d.hpp"
 #include "geometry/polyline2d.hpp"
@@ -357,6 +358,22 @@ private:
   bool IsSubscribed();
 
   /**
+   * @brief Restores the message cache from file storage.
+   *
+   * @note The caller must lock `m_mutex` prior to calling this function, as it makes unprotected
+   * changes to shared data structures.
+   *
+   * @note The return value indicates whether actions related to a traffic update should be taken,
+   * such as notifying the routing and drape engine. It is true if at least one message with a
+   * decoded location was read, and no messages without decoded locations. If messages without a
+   * decoded location were read, the return value is false, as the location decoding will trigger
+   * updates by itself. If errors occurred and no messages are read, the return value is also false.
+   *
+   * @return True if a traffic update needs to be sent, false if not
+   */
+  bool RestoreCache();
+
+  /**
    * @brief Polls the traffic service for updates.
    *
    * @return true on success, false on failure.
@@ -668,6 +685,11 @@ private:
   std::chrono::time_point<std::chrono::steady_clock> m_lastObserverUpdate;
 
   /**
+   * @brief When the cache file was last updated.
+   */
+  std::chrono::time_point<std::chrono::steady_clock> m_lastStorageUpdate;
+
+  /**
    * @brief Whether active MWMs have changed since the last request.
    */
   bool m_activeMwmsChanged = false;
@@ -705,6 +727,13 @@ private:
    * thread).
    */
   std::map<std::string, traffxml::TraffMessage> m_messageCache;
+
+  /**
+   * @brief The storage instance.
+   *
+   * Used to persist the TraFF message cache between sessions.
+   */
+  std::unique_ptr<traffxml::LocalStorage> m_storage;
 
   /**
    * @brief The TraFF decoder instance.

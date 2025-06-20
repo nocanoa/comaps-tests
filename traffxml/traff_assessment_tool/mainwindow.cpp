@@ -367,7 +367,7 @@ void MainWindow::OnOpenTrafficSample()
   std::setlocale(LC_ALL, "en_US.UTF-8");
   traffxml::TraffFeed feed;
   traffxml::TraffFeed shiftedFeed;
-  if (traffxml::ParseTraff(document, feed))
+  if (traffxml::ParseTraff(document, std::nullopt /* dataSource */, feed))
   {
     for (auto message : feed)
     {
