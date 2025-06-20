@@ -111,6 +111,17 @@ public:
 
   void Teardown();
 
+  /**
+   * @brief Returns a copy of the cache of all currently active TraFF messages.
+   *
+   * For testing purposes.
+   *
+   * Keys are message IDs, values are messages.
+   *
+   * This method is safe to call from any thread.
+   */
+  std::map<std::string, traffxml::TraffMessage> GetMessageCache();
+
   TrafficState GetState() const;
   void SetStateListener(TrafficStateChangedFn const & onStateChangedFn);
 

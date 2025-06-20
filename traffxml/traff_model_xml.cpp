@@ -9,34 +9,43 @@
 #include <type_traits>
 #include <utility>
 
+#include <boost/bimap.hpp>
+
 #include <pugixml.hpp>
 
 using namespace std;
 
 namespace traffxml
 {
-const std::map<std::string, Directionality> kDirectionalityMap{
+template <typename L, typename R>
+boost::bimap<L, R>
+MakeBimap(std::initializer_list<typename boost::bimap<L, R>::value_type> list)
+{
+  return boost::bimap<L, R>(list.begin(), list.end());
+}
+
+const boost::bimap<std::string, Directionality> kDirectionalityMap = MakeBimap<std::string, Directionality>({
   {"ONE_DIRECTION", Directionality::OneDirection},
   {"BOTH_DIRECTIONS", Directionality::BothDirections}
-};
+});
 
-const std::map<std::string, Ramps> kRampsMap{
+const boost::bimap<std::string, Ramps> kRampsMap = MakeBimap<std::string, Ramps>({
   {"ALL_RAMPS", Ramps::All},
   {"ENTRY_RAMP", Ramps::Entry},
   {"EXIT_RAMP", Ramps::Exit},
   {"NONE", Ramps::None}
-};
+});
 
-const std::map<std::string, RoadClass> kRoadClassMap{
+const boost::bimap<std::string, traffxml::RoadClass> kRoadClassMap = MakeBimap<std::string, RoadClass>({
   {"MOTORWAY", RoadClass::Motorway},
   {"TRUNK", RoadClass::Trunk},
   {"PRIMARY", RoadClass::Primary},
   {"SECONDARY", RoadClass::Secondary},
   {"TERTIARY", RoadClass::Tertiary},
   {"OTHER", RoadClass::Other}
-};
+});
 
-const std::map<std::string, EventClass> kEventClassMap{
+const boost::bimap<std::string, EventClass> kEventClassMap = MakeBimap<std::string, EventClass>({
   {"INVALID", EventClass::Invalid},
   {"ACTIVITY", EventClass::Activity},
   {"AUTHORITY", EventClass::Authority},
@@ -52,9 +61,9 @@ const std::map<std::string, EventClass> kEventClassMap{
   {"SECURITY", EventClass::Security},
   {"TRANSPORT", EventClass::Transport},
   {"WEATHER", EventClass::Weather}
-};
+});
 
-const std::map<std::string, EventType> kEventTypeMap{
+const boost::bimap<std::string, EventType> kEventTypeMap = MakeBimap<std::string, EventType>({
   {"INVALID", EventType::Invalid},
   // TODO Activity*, Authority*, Carpool* (not in enum yet)
   {"CONGESTION_CLEARED", EventType::CongestionCleared},
@@ -105,7 +114,7 @@ const std::map<std::string, EventType> kEventTypeMap{
   {"RESTRICTION_SPEED_LIMIT", EventType::RestrictionSpeedLimit},
   {"RESTRICTION_SPEED_LIMIT_LIFTED", EventType::RestrictionSpeedLimitLifted},
   // TODO Security*, Transport*, Weather* (not in enum yet)
-};
+});
 
 /**
  * @brief Retrieves an integer value from an attribute.
@@ -291,13 +300,13 @@ std::optional<bool> OptionalBoolFromXml(pugi::xml_attribute attribute)
  * @return `true` on success, `false` if the attribute is not set or its value is not found in `map`.
  */
 template <typename Value>
-bool EnumFromXml(pugi::xml_attribute attribute, Value & value, std::map<std::string, Value> map)
+bool EnumFromXml(pugi::xml_attribute attribute, Value & value, boost::bimap<std::string, Value> map)
 {
   std::string string;
   if (StringFromXml(attribute, string))
   {
-    auto it = map.find(string);
-    if (it != map.end())
+    auto it = map.left.find(string);
+    if (it != map.left.end())
     {
       value = it->second;
       return true;
@@ -320,18 +329,30 @@ bool EnumFromXml(pugi::xml_attribute attribute, Value & value, std::map<std::str
  * @return The enum value, or `std::nullopt` if the attribute is not set or its value is not found in `map`.
  */
 template <typename Value>
-std::optional<Value> OptionalEnumFromXml(pugi::xml_attribute attribute, std::map<std::string, Value> map)
+std::optional<Value> OptionalEnumFromXml(pugi::xml_attribute attribute, boost::bimap<std::string, Value> map)
 {
   std::string string;
   if (StringFromXml(attribute, string))
   {
-    auto it = map.find(string);
-    if (it != map.end())
+    auto it = map.left.find(string);
+    if (it != map.left.end())
       return it->second;
     else
       LOG(LWARNING, ("Unknown value for", attribute.name(), ":", string, "(ignoring)"));
   }
   return std::nullopt;
+}
+
+template <typename Value>
+void EnumToXml(Value const & value, std::string name, pugi::xml_node & node, boost::bimap<std::string, Value> const & map)
+{
+  auto it = map.right.find(value);
+  if (it != map.right.end())
+    node.append_attribute(name).set_value(it->second);
+  else
+  {
+    ASSERT(false, ("Enum value not found in map for", name));
+  }
 }
 
 /**
@@ -431,6 +452,19 @@ std::optional<Point> OptionalPointFromXml(pugi::xml_node node)
   return result;
 }
 
+void PointToXml(Point const & point, std::string name, pugi::xml_node & parentNode)
+{
+  auto node = parentNode.append_child(name);
+  if (point.m_distance)
+    node.append_attribute("distance").set_value(point.m_junctionName.value());
+  if (point.m_junctionName)
+    node.append_attribute("junction_name").set_value(point.m_junctionName.value());
+  if (point.m_junctionRef)
+    node.append_attribute("junction_ref").set_value(point.m_junctionRef.value());
+
+  node.text() = std::format("{0:+.5f} {1:+.5f}", point.m_coordinates.m_lat, point.m_coordinates.m_lon);
+}
+
 /**
  * @brief Retrieves a `TraffLocation` from an XML element.
  * @param node The XML element to retrieve (`location`).
@@ -478,6 +512,47 @@ bool LocationFromXml(pugi::xml_node node, TraffLocation & location)
   location.m_town = OptionalStringFromXml(node.attribute("town"));
 
   return true;
+}
+
+void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
+{
+  if (location.m_country)
+    node.append_attribute("country").set_value(location.m_country.value());
+  if (location.m_destination)
+    node.append_attribute("destination").set_value(location.m_destination.value());
+  if (location.m_direction)
+    node.append_attribute("direction").set_value(location.m_direction.value());
+  EnumToXml(location.m_directionality, "directionality", node, kDirectionalityMap);
+
+  // TODO fuzziness (not yet implemented in struct)
+
+  if (location.m_origin)
+    node.append_attribute("origin").set_value(location.m_origin.value());
+  EnumToXml(location.m_ramps, "ramps", node, kRampsMap);
+  if (location.m_roadClass)
+    EnumToXml(location.m_roadClass.value(), "roadClass", node, kRoadClassMap);
+  // TODO roadIsUrban (disabled for now)
+  if (location.m_roadRef)
+    node.append_attribute("roadRef").set_value(location.m_roadRef.value());
+  if (location.m_roadName)
+    node.append_attribute("roadName").set_value(location.m_roadName.value());
+  if (location.m_territory)
+    node.append_attribute("territory").set_value(location.m_territory.value());
+  if (location.m_town)
+    node.append_attribute("town").set_value(location.m_town.value());
+
+  if (location.m_from)
+    PointToXml(location.m_from.value(), "from", node);
+  if (location.m_at)
+    PointToXml(location.m_at.value(), "at", node);
+  if (location.m_via)
+    PointToXml(location.m_via.value(), "via", node);
+  if (location.m_notVia)
+    PointToXml(location.m_notVia.value(), "not_via", node);
+  if (location.m_to)
+    PointToXml(location.m_to.value(), "to", node);
+
+  // TODO decoded segments
 }
 
 /**
@@ -569,6 +644,26 @@ bool EventFromXml(pugi::xml_node node, TraffEvent & event)
 
   // TODO supplementary information (not yet implemented in struct)
   return true;
+}
+
+void EventToXml(TraffEvent const & event, pugi::xml_node & node)
+{
+  EnumToXml(event.m_class, "class", node, kEventClassMap);
+  EnumToXml(event.m_type, "type", node, kEventTypeMap);
+  if (event.m_length)
+    node.append_attribute("length").set_value(event.m_length.value());
+  if (event.m_probability)
+    node.append_attribute("probability").set_value(event.m_probability.value());
+
+  if (event.m_qDurationMins)
+    node.append_attribute("q_duration").set_value(std::format("{:%H:%M}", std::chrono::minutes(event.m_qDurationMins.value())));
+
+  // TODO other quantifiers (not yet implemented in struct)
+
+  if (event.m_speed)
+    node.append_attribute("speed").set_value(event.m_speed.value());
+
+  // TODO supplementary information (not yet implemented in struct)
 }
 
 /**
@@ -664,6 +759,49 @@ bool MessageFromXml(pugi::xml_node node, TraffMessage & message)
   return true;
 }
 
+void MessageToXml(TraffMessage const & message, pugi::xml_node node)
+{
+  node.append_attribute("id").set_value(message.m_id);
+  node.append_attribute("receive_time").set_value(message.m_receiveTime.ToString());
+  node.append_attribute("update_time").set_value(message.m_updateTime.ToString());
+  node.append_attribute("expiration_time").set_value(message.m_expirationTime.ToString());
+  if (message.m_startTime)
+    node.append_attribute("start_time").set_value(message.m_startTime.value().ToString());
+  if (message.m_endTime)
+    node.append_attribute("end_time").set_value(message.m_endTime.value().ToString());
+
+  node.append_attribute("cancellation").set_value(message.m_cancellation);
+  node.append_attribute("forecast").set_value(message.m_forecast);
+
+  // TODO urgency (not yet implemented in struct)
+
+  if (!message.m_replaces.empty())
+  {
+    auto mergeNode = node.append_child("merge");
+    for (auto const & id : message.m_replaces)
+    {
+      auto replacesNode = mergeNode.append_child("replaces");
+      replacesNode.append_attribute("id").set_value(id);
+    }
+  }
+
+  if (message.m_location)
+  {
+    auto locationNode = node.append_child("location");
+    LocationToXml(message.m_location.value(), locationNode);
+  }
+
+  if (!message.m_events.empty())
+  {
+    auto eventsNode = node.append_child("events");
+    for (auto const event : message.m_events)
+    {
+      auto eventNode = eventsNode.append_child("event");
+      EventToXml(event, eventNode);
+    }
+  }
+}
+
 bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed)
 {
   bool result = false;
@@ -688,6 +826,27 @@ bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed)
       LOG(LWARNING, ("Could not parse message, skipping"));
   }
   return result;
+}
+
+void GenerateTraff(TraffFeed const & feed, pugi::xml_document & document)
+{
+  auto root = document.append_child("feed");
+  for (auto const & message : feed)
+  {
+    auto child = root.append_child("message");
+    MessageToXml(message, child);
+  }
+}
+
+void GenerateTraff(std::map<std::string, traffxml::TraffMessage> const & messages,
+                   pugi::xml_document & document)
+{
+  auto root = document.append_child("feed");
+  for (auto const & [id, message] : messages)
+  {
+    auto child = root.append_child("message");
+    MessageToXml(message, child);
+  }
 }
 
 std::string FiltersToXml(std::vector<m2::RectD> & bboxRects)

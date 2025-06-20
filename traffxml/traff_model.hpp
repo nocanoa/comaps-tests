@@ -83,6 +83,12 @@ public:
    */
   void Shift(IsoTime nowRef);
 
+  /**
+   * @brief Returns a string representation of the instance.
+   * @return The timestamp in ISO 8601 format.
+   */
+  std::string ToString() const;
+
   bool operator< (IsoTime & rhs);
   bool operator> (IsoTime & rhs);
 private:

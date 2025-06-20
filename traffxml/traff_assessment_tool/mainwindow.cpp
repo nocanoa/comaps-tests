@@ -445,6 +445,13 @@ void MainWindow::OnSaveTrafficSample()
   if (fileName.isEmpty())
     return;
 
+  pugi::xml_document document;
+
+  auto const messageCache = m_framework.GetTrafficManager().GetMessageCache();
+
+  traffxml::GenerateTraff(messageCache, document);
+  document.save_file(fileName.toStdString().data(), "  " /* indent */);
+
 #ifdef openlr_obsolete
   if (!m_trafficMode->SaveSampleAs(fileName.toStdString()))
   {

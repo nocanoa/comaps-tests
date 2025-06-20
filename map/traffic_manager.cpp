@@ -107,6 +107,12 @@ void TrafficManager::Teardown()
   m_thread.join();
 }
 
+std::map<std::string, traffxml::TraffMessage> TrafficManager::GetMessageCache()
+{
+  std::lock_guard<std::mutex> lock(m_mutex);
+  return m_messageCache;
+}
+
 TrafficManager::TrafficState TrafficManager::GetState() const
 {
   return m_state;

@@ -161,6 +161,11 @@ void IsoTime::Shift(IsoTime nowRef)
   m_tp += offset;
 }
 
+std::string IsoTime::ToString() const
+{
+  return std::format("{0:%F}T{0:%T}{0:%Ez}", time_point_cast<std::chrono::seconds>(m_tp));
+}
+
 bool IsoTime::operator< (IsoTime & rhs)
 {
   return m_tp < rhs.m_tp;

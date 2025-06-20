@@ -23,8 +23,6 @@ namespace traffxml
  * The name of the root element is not verified, but the `message` elements must be its immediate
  * children.
  *
- * Custom elements and attributes which are not part of the TraFF specification are ignored.
- *
  * Values which cannot be parsed correctly are skipped.
  *
  * Events whose event type does not match their event class are skipped.
@@ -36,11 +34,47 @@ namespace traffxml
  * Parsing the feed will report failure if all its messages fail to parse, but not if it has no
  * messages.
  *
+ * @note Custom elements and attributes which are not part of the TraFF specification are currently
+ * ignored. Future versions may process certain custom elements.
+ *
  * @param document The XML document from which to retrieve the messages.
  * @param feed Receives the TraFF feed.
  * @return `true` on success, `false` on failure.
  */
 bool ParseTraff(pugi::xml_document const & document, TraffFeed & feed);
+
+/**
+ * @brief Generates XML from a TraFF feed.
+ *
+ * The resulting document largely conforms to the TraFF specification (currently version 0.8), but
+ * may contain custom elements.
+ *
+ * The root element of the generated XML document is `feed`.
+ *
+ * @note Currently no custom elements are generated. Future versions may add the location decoded
+ * into MWM IDs, feature IDs, directions and segments, along with their speed groups.
+ *
+ * @param feed The TraFF feed to encode.
+ * @param document The XML document in which to store the messages.
+ */
+void GenerateTraff(TraffFeed const & feed, pugi::xml_document & document);
+
+/**
+ * @brief Generates XML from a map of TraFF messages.
+ *
+ * The resulting document largely conforms to the TraFF specification (currently version 0.8), but
+ * may contain custom elements.
+ *
+ * The root element of the generated XML document is `feed`.
+ *
+ * @note Currently no custom elements are generated. Future versions may add the location decoded
+ * into MWM IDs, feature IDs, directions and segments, along with their speed groups.
+ *
+ * @param messages A map whose values contain the TraFF messages to encode.
+ * @param document The XML document in which to store the messages.
+ */
+void GenerateTraff(std::map<std::string, traffxml::TraffMessage> const & messages,
+                   pugi::xml_document & document);
 
 /**
  * @brief Generates a list of XML `filter` elements from a vector of rects representing bboxes.
