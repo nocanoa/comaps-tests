@@ -122,7 +122,7 @@ const boost::bimap<std::string, EventType> kEventTypeMap = MakeBimap<std::string
  * @param attribute The XML attribute to retrieve.
  * @return `true` on success, `false` if the attribute is not set or does not contain an integer value.
  */
-std::optional<uint8_t> OptionalIntegerFromXml(pugi::xml_attribute attribute)
+std::optional<uint8_t> OptionalIntegerFromXml(pugi::xml_attribute const & attribute)
 {
   if (attribute.empty())
     return std::nullopt;
@@ -143,7 +143,7 @@ std::optional<uint8_t> OptionalIntegerFromXml(pugi::xml_attribute attribute)
  * @param attribute The XML attribute to retrieve.
  * @return `true` on success, `false` if the attribute is not set or does not contain a float value.
  */
-std::optional<float> OptionalFloatFromXml(pugi::xml_attribute attribute)
+std::optional<float> OptionalFloatFromXml(pugi::xml_attribute const & attribute)
 {
   if (attribute.empty())
     return std::nullopt;
@@ -165,7 +165,7 @@ std::optional<float> OptionalFloatFromXml(pugi::xml_attribute attribute)
  * @param string Receives the string retrieved.
  * @return `true` on success, `false` if the attribute is not set or set to an empty string.
  */
-bool StringFromXml(pugi::xml_attribute attribute, std::string & string)
+bool StringFromXml(pugi::xml_attribute const & attribute, std::string & string)
 {
   if (attribute.empty())
     return false;
@@ -180,7 +180,7 @@ bool StringFromXml(pugi::xml_attribute attribute, std::string & string)
  * @param string Receives the string retrieved.
  * @return `true` on success, `false` if the node does not exist.
  */
-bool StringFromXml(pugi::xml_node node, std::string & string)
+bool StringFromXml(pugi::xml_node const & node, std::string & string)
 {
   if (!node)
     return false;
@@ -194,7 +194,7 @@ bool StringFromXml(pugi::xml_node node, std::string & string)
  * @param attribute The XML attribute to retrieve.
  * @return The string, or `std::nullopt` if the attribute is not set or set to an empty string.
  */
-std::optional<std::string> OptionalStringFromXml(pugi::xml_attribute attribute)
+std::optional<std::string> OptionalStringFromXml(pugi::xml_attribute const & attribute)
 {
   std::string result;
   if (!StringFromXml(attribute, result))
@@ -221,7 +221,7 @@ std::optional<std::string> OptionalStringFromXml(pugi::xml_attribute attribute)
  * @param tm Receives the parsed time.
  * @return `true` on success, `false` if the attribute is not set or does not contain a timestamp.
  */
-bool TimeFromXml(pugi::xml_attribute attribute, IsoTime & tm)
+bool TimeFromXml(pugi::xml_attribute const & attribute, IsoTime & tm)
 {
   std::string timeString;
   if (!StringFromXml(attribute, timeString))
@@ -253,7 +253,7 @@ bool TimeFromXml(pugi::xml_attribute attribute, IsoTime & tm)
  * @param attribute The XML attribute from which to receive time.
  * @return The parsed time, or `std::nullopt` if the attribute is not set or does not contain a timestamp.
  */
-std::optional<IsoTime> OptionalTimeFromXml(pugi::xml_attribute attribute)
+std::optional<IsoTime> OptionalTimeFromXml(pugi::xml_attribute const & attribute)
 {
   IsoTime result = IsoTime::Now();
   if (!TimeFromXml(attribute, result))
@@ -267,7 +267,7 @@ std::optional<IsoTime> OptionalTimeFromXml(pugi::xml_attribute attribute)
  * @param defaultValue The default value to return.
  * @return The value of the attribute, or `defaultValue` if the attribute is not set.
  */
-bool BoolFromXml(pugi::xml_attribute attribute, bool defaultValue)
+bool BoolFromXml(pugi::xml_attribute const & attribute, bool defaultValue)
 {
   if (attribute.empty())
     return defaultValue;
@@ -279,7 +279,7 @@ bool BoolFromXml(pugi::xml_attribute attribute, bool defaultValue)
  * @param attribute The XML attribute to retrieve.
  * @return The value of the attribute, or `std::nullopt` if the attribute is not set.
  */
-std::optional<bool> OptionalBoolFromXml(pugi::xml_attribute attribute)
+std::optional<bool> OptionalBoolFromXml(pugi::xml_attribute const & attribute)
 {
   if (attribute.empty())
     return std::nullopt;
@@ -300,7 +300,8 @@ std::optional<bool> OptionalBoolFromXml(pugi::xml_attribute attribute)
  * @return `true` on success, `false` if the attribute is not set or its value is not found in `map`.
  */
 template <typename Value>
-bool EnumFromXml(pugi::xml_attribute attribute, Value & value, boost::bimap<std::string, Value> map)
+bool EnumFromXml(pugi::xml_attribute const & attribute, Value & value,
+                 boost::bimap<std::string, Value> const & map)
 {
   std::string string;
   if (StringFromXml(attribute, string))
@@ -329,7 +330,8 @@ bool EnumFromXml(pugi::xml_attribute attribute, Value & value, boost::bimap<std:
  * @return The enum value, or `std::nullopt` if the attribute is not set or its value is not found in `map`.
  */
 template <typename Value>
-std::optional<Value> OptionalEnumFromXml(pugi::xml_attribute attribute, boost::bimap<std::string, Value> map)
+std::optional<Value> OptionalEnumFromXml(pugi::xml_attribute const & attribute,
+                                         boost::bimap<std::string, Value> const & map)
 {
   std::string string;
   if (StringFromXml(attribute, string))
@@ -361,7 +363,7 @@ void EnumToXml(Value const & value, std::string name, pugi::xml_node & node, boo
  * @param replacedIds Receives the replaced IDs.
  * @return `true` on success (including if the node contains no replaced IDs), `false` if the node does not exist or does not contain valid data.
  */
-bool ReplacedMessageIdsFromXml(pugi::xml_node node, std::vector<std::string> & replacedIds)
+bool ReplacedMessageIdsFromXml(pugi::xml_node const & node, std::vector<std::string> & replacedIds)
 {
   if (!node)
     return false;
@@ -398,7 +400,7 @@ bool ReplacedMessageIdsFromXml(pugi::xml_node node, std::vector<std::string> & r
  * @param latLon Receives the latitude/longitude pair.
  * @return `true` on success, `false` if the node does not exist or does not contain valid coordinates.
  */
-bool LatLonFromXml(pugi::xml_node node, ms::LatLon & latLon)
+bool LatLonFromXml(pugi::xml_node const & node, ms::LatLon & latLon)
 {
   if (!node)
     return false;
@@ -431,7 +433,7 @@ bool LatLonFromXml(pugi::xml_node node, ms::LatLon & latLon)
  * @param node The XML element to retrieve (any child of `location`).
  * @return The point, or `std::nullopt` if the node does not exist or does not contain valid point data,
  */
-std::optional<Point> OptionalPointFromXml(pugi::xml_node node)
+std::optional<Point> OptionalPointFromXml(pugi::xml_node const & node)
 {
   if (!node)
     return std::nullopt;
@@ -471,7 +473,7 @@ void PointToXml(Point const & point, std::string name, pugi::xml_node & parentNo
  * @param location Receives the location.
  * @return `true` on success, `false` if the node does not exist or does not contain valid location data.
  */
-bool LocationFromXml(pugi::xml_node node, TraffLocation & location)
+bool LocationFromXml(pugi::xml_node const & node, TraffLocation & location)
 {
   if (!node)
     return false;
@@ -569,7 +571,7 @@ void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
  * @param node The node from which to retrieve the quantifier (`event`).
  * @return The quantifier, or `std::nullopt`
  */
-std::optional<uint16_t> OptionalDurationFromXml(pugi::xml_attribute attribute)
+std::optional<uint16_t> OptionalDurationFromXml(pugi::xml_attribute const & attribute)
 {
   std::string durationString;
   if (!StringFromXml(attribute, durationString))
@@ -608,7 +610,7 @@ std::optional<uint16_t> OptionalDurationFromXml(pugi::xml_attribute attribute)
  * @param event Receives the event.
  * @return `true` on success, `false` if the node does not exist or does not contain valid event data.
  */
-bool EventFromXml(pugi::xml_node node, TraffEvent & event)
+bool EventFromXml(pugi::xml_node const & node, TraffEvent & event)
 {
   std::string eventClass;
   if (!StringFromXml(node.attribute("class"), eventClass))
@@ -672,7 +674,7 @@ void EventToXml(TraffEvent const & event, pugi::xml_node & node)
  * @param events Receives the events.
  * @return `true` on success, `false` if the node does not exist or does not contain valid event data (including if the node contains no events).
  */
-bool EventsFromXml(pugi::xml_node node, std::vector<TraffEvent> & events)
+bool EventsFromXml(pugi::xml_node const & node, std::vector<TraffEvent> & events)
 {
   if (!node)
     return false;
@@ -704,7 +706,7 @@ bool EventsFromXml(pugi::xml_node node, std::vector<TraffEvent> & events)
  * @param message Receives the message.
  * @return `true` on success, `false` if the node does not exist or does not contain valid message data.
  */
-bool MessageFromXml(pugi::xml_node node, TraffMessage & message)
+bool MessageFromXml(pugi::xml_node const & node, TraffMessage & message)
 {
   if (!StringFromXml(node.attribute("id"), message.m_id))
   {
