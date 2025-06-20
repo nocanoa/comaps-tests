@@ -445,8 +445,6 @@ std::optional<Point> OptionalPointFromXml(pugi::xml_node const & node)
     return std::nullopt;
   }
 
-  // TODO optional float m_distance (not yet implemented in struct)
-
   result.m_junctionName = OptionalStringFromXml(node.attribute("junction_name"));
   result.m_junctionRef = OptionalStringFromXml(node.attribute("junction_ref"));
   result.m_distance = OptionalFloatFromXml(node.attribute("distance"));
@@ -669,7 +667,7 @@ void EventToXml(TraffEvent const & event, pugi::xml_node & node)
 }
 
 /**
- * @brief Retrieves the TraFF events associsted with a message from an XML element.
+ * @brief Retrieves the TraFF events associated with a message from an XML element.
  * @param node The XML element to retrieve (`events`).
  * @param events Receives the events.
  * @return `true` on success, `false` if the node does not exist or does not contain valid event data (including if the node contains no events).
