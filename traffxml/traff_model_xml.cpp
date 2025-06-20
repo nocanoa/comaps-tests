@@ -17,6 +17,12 @@ using namespace std;
 
 namespace traffxml
 {
+/**
+ * @brief Creates and initializes a `boost::bimap`.
+ *
+ * @param list A braced initializer list of left-right tuples.
+ * @return A new bimap instance of the tuples in `list`.
+ */
 template <typename L, typename R>
 boost::bimap<L, R>
 MakeBimap(std::initializer_list<typename boost::bimap<L, R>::value_type> list)
@@ -345,6 +351,17 @@ std::optional<Value> OptionalEnumFromXml(pugi::xml_attribute const & attribute,
   return std::nullopt;
 }
 
+/**
+ * @brief Stores an enum value in an attribute.
+ *
+ * The enum value is translated into a string using `map`. An attribute named `name` is then added
+ * to `node`, with the translated value.
+ *
+ * @param value The enum value.
+ * @param name The name of the attribute to store the value in.
+ * @param node The node to which the attribute will be added.
+ * @param map A map between strings and their respective enum values.
+ */
 template <typename Value>
 void EnumToXml(Value const & value, std::string name, pugi::xml_node & node, boost::bimap<std::string, Value> const & map)
 {
@@ -452,6 +469,13 @@ std::optional<Point> OptionalPointFromXml(pugi::xml_node const & node)
   return result;
 }
 
+/**
+ * @brief Adds a TraFF point to a node.
+ *
+ * @param point The TraFF point.
+ * @param name The name of the node to store the TraFF point in.
+ * @param parentNode The parent node to which the new node will be added (`location`).
+ */
 void PointToXml(Point const & point, std::string name, pugi::xml_node & parentNode)
 {
   auto node = parentNode.append_child(name);
@@ -514,6 +538,12 @@ bool LocationFromXml(pugi::xml_node const & node, TraffLocation & location)
   return true;
 }
 
+/**
+ * @brief Stores a TraFF location in a node.
+ *
+ * @param location The TraFF location.
+ * @param node The `location` node to store the location in.
+ */
 void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
 {
   if (location.m_country)
@@ -646,6 +676,12 @@ bool EventFromXml(pugi::xml_node const & node, TraffEvent & event)
   return true;
 }
 
+/**
+ * @brief Stores a TraFF event in a node.
+ *
+ * @param event The TraFF event.
+ * @param node The `event` node to store the event in.
+ */
 void EventToXml(TraffEvent const & event, pugi::xml_node & node)
 {
   EnumToXml(event.m_class, "class", node, kEventClassMap);
@@ -759,6 +795,12 @@ bool MessageFromXml(pugi::xml_node const & node, TraffMessage & message)
   return true;
 }
 
+/**
+ * @brief Stores a TraFF message in a node.
+ *
+ * @param message The TraFF message.
+ * @param node The `message` node to store the message in.
+ */
 void MessageToXml(TraffMessage const & message, pugi::xml_node node)
 {
   node.append_attribute("id").set_value(message.m_id);
