@@ -341,7 +341,7 @@ struct TraffEvent
 {
   EventClass m_class = EventClass::Invalid;
   EventType m_type = EventType::Invalid;
-  std::optional<uint8_t> m_length;
+  std::optional<uint16_t> m_length;
   std::optional<uint8_t> m_probability;
   std::optional<uint16_t> m_qDurationMins;
   /*

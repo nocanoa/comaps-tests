@@ -122,13 +122,13 @@ const boost::bimap<std::string, EventType> kEventTypeMap = MakeBimap<std::string
  * @param attribute The XML attribute to retrieve.
  * @return `true` on success, `false` if the attribute is not set or does not contain an integer value.
  */
-std::optional<uint8_t> OptionalIntegerFromXml(pugi::xml_attribute const & attribute)
+std::optional<int> OptionalIntegerFromXml(pugi::xml_attribute const & attribute)
 {
   if (attribute.empty())
     return std::nullopt;
   try
   {
-    uint8_t result = std::stoi(attribute.as_string());
+    int result = std::stoi(attribute.as_string());
     return result;
   }
   catch (std::invalid_argument const& ex)
