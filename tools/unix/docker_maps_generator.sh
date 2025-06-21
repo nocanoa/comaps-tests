@@ -27,7 +27,7 @@ echo "<$(date +%T)> Starting..."
 #   /root/OM/maps_build
 #   /home/planet
 #
-mkdir -p /root/.config/OMaps # Odd mkdir permission errors in generator_tool in Docker without these
+mkdir -p /root/.config/CoMaps # Odd mkdir permission errors in generator_tool in Docker without these
 chmod -R 777 /root/.config
 mkdir -p ~/.config/rclone
 mkdir -p ~/OM/maps_build
