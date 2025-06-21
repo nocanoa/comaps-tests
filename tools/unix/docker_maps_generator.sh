@@ -53,7 +53,7 @@ echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
 
 echo "<$(date +%T)> Running ./configure.sh ..."
 cd ~/OM/organicmaps
-./configure.sh
+./configure.sh --skip-map-download --skip-generate-symbols
 
 echo "<$(date +%T)> Compiling tools..."
 cd ~/OM/organicmaps
