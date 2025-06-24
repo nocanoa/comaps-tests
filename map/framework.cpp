@@ -432,9 +432,9 @@ void Framework::OnCountryFileDownloaded(storage::CountryId const &,
     MwmSet::MwmId const & id = res.first;
     if (id.IsAlive())
       rect = id.GetInfo()->m_bordersRect;
+    m_trafficManager.Invalidate(id);
   }
 
-  m_trafficManager.Invalidate();
   m_transitManager.Invalidate();
   m_isolinesManager.Invalidate();
 

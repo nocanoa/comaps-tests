@@ -188,6 +188,18 @@ public:
    */
   void Invalidate();
 
+  /**
+   * @brief Invalidates traffic information.
+   *
+   * Invalidation happens when a new MWM file is downloaded (it may or may not replace an older
+   * version), and pertains to that MWM. Locations which refer to any version of this MWM, or whose
+   * enclosing rectangle overlaps with that of the MWM, are discarded and recreated to ensure the
+   * new MWM is considered.
+   *
+   * @param mwmId The newly addded MWM.
+   */
+  void Invalidate(MwmSet::MwmId const & mwmId);
+
   void OnDestroySurface();
   void OnRecoverSurface();
   void OnMwmDeregistered(platform::LocalCountryFile const & countryFile);
