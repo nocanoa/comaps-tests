@@ -150,9 +150,6 @@ public:
    * that will not get picked up. We need to extend `TrafficManager` to react to MWMs being added
    * (and removed) – note that this affects the `DataSource`, not the set of active MWMs.
    *
-   * @todo Enabling the traffic manager will invalidate its data, disabling it will notify the
-   * observer that traffic data has been cleared. This is old logic, to be reviewed/removed.
-   *
    * @todo State/pause/resume logic is not fully implemented ATM and needs to be revisited.
    *
    * @param enabled True to enable, false to disable
@@ -176,25 +173,30 @@ public:
   void UpdateMyPosition(MyPosition const & myPosition);
 
   /**
-   * @brief Invalidates traffic information.
+   * @brief Recalculates the TraFF subscription area.
    *
-   * Invalidating causes traffic data to be re-requested.
+   * The subscription area needs to be recalculated when the traffic manager goes from disabled to
+   * enabled, or when it is resumed after being paused, as the subscription area is not updated
+   * while the traffic manager is disabled or paused.
    *
-   * This happens when a new MWM file is downloaded, the traffic manager is enabled after being
-   * disabled or resumed after being paused.
+   * If the subscription are has changed, this triggers a change of the active TraFF subscription.
    *
-   * @todo this goes for the old MWM arch. For TraFF we need to refresh the MWM set for the decoder
-   * and possibly decode locations again (MWMs might have changed, or new ones added).
+   * No traffic data is discarded, but sources will be polled for an update, which may turn out
+   * larger than usual if the traffic manager was in disabled/paused state for an extended period of
+   * time or the subscription area has changed.
+   *
+   * @todo Routing is currently not considered (active MWMs are based on viewport and current
+   * position).
    */
-  void Invalidate();
+  void RecalculateSubscription();
 
   /**
-   * @brief Invalidates traffic information.
+   * @brief Invalidates traffic information for the specified MWM.
    *
-   * Invalidation happens when a new MWM file is downloaded (it may or may not replace an older
-   * version), and pertains to that MWM. Locations which refer to any version of this MWM, or whose
-   * enclosing rectangle overlaps with that of the MWM, are discarded and recreated to ensure the
-   * new MWM is considered.
+   * Invalidation of traffic data is always per MWM and affects locations which refer to any version
+   * of this MWM, or whose enclosing rectangle overlaps with that of the MWM. The decoded segments
+   * for these locations are discarded and decoded again, ensuring they are based on the new MWM.
+   * The TraFF messages themselves remain unchanged.
    *
    * @param mwmId The newly addded MWM.
    */
@@ -641,7 +643,6 @@ private:
    * Methods which use both, but in a different way:
    *
    * * ClearCache(), removes the requested MWM from the set but clears the vector completely.
-   * * Invalidate(), clears the vector but not the set.
    * * UpdateActiveMwms(), uses the vector to detect changes. If so, it updates both vector and set.
    *
    * Clear() clears both the set and the vector. (Clearing the set is currently disabled as it breaks ForEachActiveMwm.)

@@ -166,8 +166,7 @@ void TrafficManager::SetEnabled(bool enabled)
     if (notifyUpdate)
       OnTrafficDataUpdate();
     else
-      // TODO After sorting out invalidation, figure out if we need that here.
-      Invalidate();
+      RecalculateSubscription();
     m_canSetMode = false;
   }
   else
@@ -254,35 +253,10 @@ void TrafficManager::OnRecoverSurface()
   Resume();
 }
 
-/*
- * TODO Revisit invalidation logic.
- * We currently invalidate when enabling and resuming, and when a new MWM file is downloaded
- * (behavior inherited from MapsWithMe).
- * Traffic data in MapsWithMe was a set of pre-decoded messages per MWM; the whole set would get
- * re-fetched periodically. Invalidation meant discarding and re-fetching all traffic data.
- * This logic is different for TraFF:
- * - Messages expire individually or get replaced by updates, thus there is hardly ever a reason
- *   to discard messages.
- * - Messages are decoded into segments in the app. Discarding decoded segments may be needed on
- *   a per-message basis for the following reasons:
- *   - the message is replaced by a new one and the location or traffic situation has changed
- *     (this is dealt with as part of the message update process)
- *   - one of the underlying MWMs has been updated to a new version
- *   - a new MWM has been added, and a message location that previously could not be decoded
- *     completely now can
- * The sensible equivalent in TraFF would be to discard and re-generate decoded locations, and
- * possibly poll for updates. Discarding and re-generating decoded locations could be done
- * selectively:
- * - compare map versions of decoded segments to current map version
- * - figure out when a new map has been added, and which segments are affected by it
- */
-void TrafficManager::Invalidate()
+void TrafficManager::RecalculateSubscription()
 {
   if (!IsEnabled())
     return;
-
-  m_lastDrapeMwmsByRect.clear();
-  m_lastRoutingMwmsByRect.clear();
 
   if (m_currentModelView.second)
     UpdateViewport(m_currentModelView.first);
@@ -1272,7 +1246,7 @@ void TrafficManager::Resume()
     return;
 
   m_isPaused = false;
-  Invalidate();
+  RecalculateSubscription();
 }
 
 void TrafficManager::SetSimplifiedColorScheme(bool simplified)
