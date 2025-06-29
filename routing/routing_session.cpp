@@ -470,6 +470,13 @@ double RoutingSession::GetCompletionPercent() const
   return percent;
 }
 
+void RoutingSession::GetAllRegions(std::set<std::string> & countries)
+{
+  if (!m_router)
+    return;
+  m_router->GetAllRegions(countries);
+}
+
 void RoutingSession::PassCheckpoints()
 {
   CHECK_THREAD_CHECKER(m_threadChecker, ());

@@ -9,6 +9,8 @@
 
 #include "indexer/mwm_set.hpp"
 
+#include "routing/routing_session.hpp"
+
 #include "storage/country_info_getter.hpp"
 
 #include "traffxml/traff_decoder.hpp"
@@ -107,7 +109,7 @@ public:
                  CountryInfoGetterFn countryInfoGetter,
                  CountryParentNameGetterFn const & countryParentNameGetter,
                  GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
-                 traffic::TrafficObserver & observer);
+                 routing::RoutingSession & routingSession);
   ~TrafficManager();
 
   void Teardown();
@@ -477,8 +479,8 @@ private:
    * @brief Updates `activeMwms` and requests traffic data.
    *
    * The old and new list of active MWMs may refer either to those used by the rendering engine
-   * (`m_lastDrapeMwmsByRect`/`m_activeDrapeMwms`) or to those used by the routing engine
-   * (`m_lastRoutingMwmsByRect`/`m_activeRoutingMwms`).
+   * (`m_lastDrapeMwmsByRect`/`m_activeDrapeMwms`) or to those around the current position.
+   * (`m_lastPositionMwmsByRect`/`m_activePositionMwms`).
    *
    * The method first determines the list of MWMs overlapping with `rect`. If it is identical to
    * `lastMwmsByRect`, the method returns immediately. Otherwise, it stores the new set in
@@ -561,6 +563,8 @@ private:
 
   bool IsInvalidState() const;
 
+  void OnChangeRoutingSessionState(routing::SessionState previous, routing::SessionState current);
+
   void UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const;
 
   void Pause();
@@ -586,7 +590,14 @@ private:
   CountryInfoGetterFn m_countryInfoGetterFn;
   CountryParentNameGetterFn m_countryParentNameGetterFn;
   GetMwmsByRectFn m_getMwmsByRectFn;
-  traffic::TrafficObserver & m_observer;
+
+  /*
+   * Originally this was m_observer, of type traffic::TrafficObserver. Since routing::RoutingSession
+   * inherits from that class, and an interface to the routing session is needed in order to
+   * determine the MWMs for which we need traffic information, the type was changed and the member
+   * renamed to reflect that.
+   */
+  routing::RoutingSession & m_routingSession;
 
   df::DrapeEngineSafePtr m_drapeEngine;
   std::atomic<int64_t> m_currentDataVersion;
@@ -624,14 +635,16 @@ private:
   std::condition_variable m_condition;
 
   /*
-   * To determine for which MWMs we need traffic data, we need to keep track of two groups of MWMs:
-   * those used by the renderer (i.e. in or just around the viewport) and those used by the routing
-   * engine (i.e. those within a certain area around the route endpoints).
+   * To determine for which MWMs we need traffic data, we need to keep track of 3 groups of MWMs:
+   * those used by the renderer (i.e. in or just around the viewport), those within a certain area
+   * around the current position, and those used by the routing engine (only if currently routing).
    *
-   * Each group is stored twice: as a set and as a vector. The set always holds the MWMs which were
-   * last seen in use. Both get updated together when active MWMs are added or removed. However,
-   * the vector is used as a reference to detect changes. It may get cleared when the set is not,
-   * which is used to invalidate the set without destroying its contents.
+   * Routing MWMs are stored as a set.
+   *
+   * The other groups arestored twice: as a set and as a vector. The set always holds the MWMs which
+   * were last seen in use. Both get updated together when active MWMs are added or removed.
+   * However, the vector is used as a reference to detect changes. It may get cleared when the set
+   * is not, which is used to invalidate the set without destroying its contents.
    *
    * Methods which use only the set:
    *
@@ -642,14 +655,15 @@ private:
    *
    * Methods which use both, but in a different way:
    *
-   * * ClearCache(), removes the requested MWM from the set but clears the vector completely.
-   * * UpdateActiveMwms(), uses the vector to detect changes. If so, it updates both vector and set.
+   * * (dead code) ClearCache(), removes the requested MWM from the set but clears the vector completely.
+   * * UpdateActiveMwms(), uses the vector to detect changes (not for routing MWMs). If so, it updates both vector and set.
    *
    * Clear() clears both the set and the vector. (Clearing the set is currently disabled as it breaks ForEachActiveMwm.)
    */
   std::vector<MwmSet::MwmId> m_lastDrapeMwmsByRect;
   std::set<MwmSet::MwmId> m_activeDrapeMwms;
-  std::vector<MwmSet::MwmId> m_lastRoutingMwmsByRect;
+  std::vector<MwmSet::MwmId> m_lastPositionMwmsByRect;
+  std::set<MwmSet::MwmId> m_activePositionMwms;
   std::set<MwmSet::MwmId> m_activeRoutingMwms;
 
 // TODO no longer needed

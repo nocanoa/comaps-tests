@@ -83,6 +83,13 @@ bool AsyncRouter::FindClosestProjectionToRoad(m2::PointD const & point,
   return m_router->FindClosestProjectionToRoad(point, direction, radius, proj);
 }
 
+void AsyncRouter::GetAllRegions(std::set<std::string> & countries)
+{
+  if (!m_absentRegionsFinder)
+    return;
+  m_absentRegionsFinder->GetAllRegions(countries);
+}
+
 void AsyncRouter::RouterDelegateProxy::OnProgress(float progress)
 {
   ProgressCallback onProgress = nullptr;

@@ -62,6 +62,15 @@ public:
   bool FindClosestProjectionToRoad(m2::PointD const & point, m2::PointD const & direction,
                                    double radius, EdgeProj & proj);
 
+  /**
+   * @brief Retrieves the MWMs needed to build the route.
+   *
+   * Waits for the routing thread to finish and returns the list of MWM names from it.
+   *
+   * @param countries Receives the list of MWM names.
+   */
+  void GetAllRegions(std::set<std::string> & countries);
+
 private:
   /// Worker thread function
   void ThreadFunc();

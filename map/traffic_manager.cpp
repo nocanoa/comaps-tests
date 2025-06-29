@@ -75,12 +75,12 @@ TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestT
 TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                const CountryParentNameGetterFn &countryParentNameGetter,
                                GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
-                               traffic::TrafficObserver & observer)
+                               routing::RoutingSession & routingSession)
   : m_dataSource(dataSource)
   , m_countryInfoGetterFn(countryInfoGetter)
   , m_countryParentNameGetterFn(countryParentNameGetter)
   , m_getMwmsByRectFn(getMwmsByRectFn)
-  , m_observer(observer)
+  , m_routingSession(routingSession)
   , m_currentDataVersion(0)
   , m_state(TrafficState::Disabled)
 // TODO no longer needed
@@ -92,6 +92,11 @@ TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn coun
   , m_thread(&TrafficManager::ThreadRoutine, this)
 {
   CHECK(m_getMwmsByRectFn != nullptr, ());
+  GetPlatform().RunTask(Platform::Thread::Gui, [this]() {
+    m_routingSession.SetChangeSessionStateCallback([this](routing::SessionState previous, routing::SessionState current) {
+      OnChangeRoutingSessionState(previous, current);
+    });
+  });
 }
 
 TrafficManager::~TrafficManager()
@@ -170,7 +175,7 @@ void TrafficManager::SetEnabled(bool enabled)
     m_canSetMode = false;
   }
   else
-    m_observer.OnTrafficInfoClear();
+    m_routingSession.OnTrafficInfoClear();
 }
 
 void TrafficManager::Clear()
@@ -194,7 +199,7 @@ void TrafficManager::Clear()
 
     // TODO figure out which of the ones below we still need
     m_lastDrapeMwmsByRect.clear();
-    m_lastRoutingMwmsByRect.clear();
+    m_lastPositionMwmsByRect.clear();
 #ifdef traffic_dead_code
     m_requestedMwms.clear();
     m_trafficETags.clear();
@@ -253,6 +258,65 @@ void TrafficManager::OnRecoverSurface()
   Resume();
 }
 
+void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous, routing::SessionState current)
+{
+  // TODO assert we’re running on the UI thread
+  LOG(LINFO, ("Routing session state changed from", previous, "to", current));
+  LOG(LINFO, ("Running on thread", std::this_thread::get_id()));
+  /*
+   * Filter based on session state (see routing_callbacks.hpp for states and transitions).
+   *
+   * GetAllRegions() seems to get fresh data during build (presumably also rebuild), which will be
+   * available on the next state transition (to RouteNotStarted or OnRoute) and remain unchanged
+   * until the next route (re)build. Therefore, calling GetAllRegions() when new state is one of
+   * RouteNotStarted, OnRoute or RouteNoFollowing, and clearing MWMs when the new state is
+   * NoValidRoute, and ignoring all other transitions, should work for our purposes.
+   * There may be cases where we first calculate the route, then subscribe to the regions and only
+   * then get notified about a traffic problem on the route, requiring us to recalculate.
+   */
+  std::set<std::string> mwmNames;
+  if (current == routing::SessionState::RouteNotStarted
+      || current == routing::SessionState::OnRoute
+      || current == routing::SessionState::RouteNoFollowing)
+    /*
+     * GetAllRegions() may block when run for the first time. This should happen during routing, so
+     * the call here would always return cached results without blocking, causing no problems on the
+     * UI thread.
+     *
+     * Note that this method is called before the state is updated internally, thus `GetAllRegions()`
+     * and any other functions would still have `previous` as their state.
+     */
+    m_routingSession.GetAllRegions(mwmNames);
+  else if (current == routing::SessionState::NoValidRoute)
+    mwmNames.clear();
+  else
+    // for all other states, keep current set
+    return;
+
+  LOG(LINFO, ("Router MWMs:", mwmNames));
+
+  std::set<MwmSet::MwmId> mwms;
+  for (auto const & mwmName : mwmNames)
+  {
+    MwmSet::MwmId mwmId = m_dataSource.GetMwmIdByCountryFile(platform::CountryFile(mwmName));
+    if (mwmId.IsAlive())
+      mwms.insert(mwmId);
+  }
+
+  LOG(LINFO, ("MWM set:", mwms));
+
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (mwms != m_activeRoutingMwms)
+    {
+      m_activeMwmsChanged = true;
+      std::swap(mwms, m_activeRoutingMwms);
+      RequestTrafficData();
+    }
+  }
+}
+
 void TrafficManager::RecalculateSubscription()
 {
   if (!IsEnabled())
@@ -262,6 +326,7 @@ void TrafficManager::RecalculateSubscription()
     UpdateViewport(m_currentModelView.first);
   if (m_currentPosition.second)
     UpdateMyPosition(m_currentPosition.first);
+  // TODO update routing – if needed
 }
 
 void TrafficManager::Invalidate(MwmSet::MwmId const & mwmId)
@@ -351,9 +416,7 @@ void TrafficManager::UpdateMyPosition(MyPosition const & myPosition)
   m2::RectD const rect =
       mercator::RectByCenterXYAndSizeInMeters(myPosition.m_position, kSquareSideM / 2.0);
   // Request traffic.
-  UpdateActiveMwms(rect, m_lastRoutingMwmsByRect, m_activeRoutingMwms);
-
-  // @TODO Do all routing stuff.
+  UpdateActiveMwms(rect, m_lastPositionMwmsByRect, m_activePositionMwms);
 }
 
 void TrafficManager::UpdateViewport(ScreenBase const & screen)
@@ -849,8 +912,8 @@ void TrafficManager::RequestTrafficData(MwmSet::MwmId const & mwmId, bool force)
 
 void TrafficManager::RequestTrafficData()
 {
-  if ((m_activeDrapeMwms.empty() && m_activeRoutingMwms.empty()) || !IsEnabled() ||
-      IsInvalidState() || m_isPaused)
+  if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
+      || !IsEnabled() || IsInvalidState() || m_isPaused)
   {
     return;
   }
@@ -1019,7 +1082,7 @@ void TrafficManager::OnTrafficDataUpdate()
         if (notifyObserver)
         {
           // Update traffic colors for routing.
-          m_observer.OnTrafficInfoAdded(std::move(info));
+          m_routingSession.OnTrafficInfoAdded(std::move(info));
           m_lastObserverUpdate = steady_clock::now();
         }
       }
@@ -1036,7 +1099,7 @@ void TrafficManager::OnTrafficDataUpdate()
       if (notifyObserver)
       {
         // Update traffic colors for routing.
-        m_observer.OnTrafficInfoRemoved(mwmId);
+        m_routingSession.OnTrafficInfoRemoved(mwmId);
         m_lastObserverUpdate = steady_clock::now();
       }
     }
@@ -1086,6 +1149,7 @@ void TrafficManager::OnTrafficDataResponse(traffic::TrafficInfo && info)
 void TrafficManager::UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const
 {
   activeMwms.insert(m_activeDrapeMwms.cbegin(), m_activeDrapeMwms.cend());
+  activeMwms.insert(m_activePositionMwms.cbegin(), m_activePositionMwms.cend());
   activeMwms.insert(m_activeRoutingMwms.cbegin(), m_activeRoutingMwms.cend());
 }
 

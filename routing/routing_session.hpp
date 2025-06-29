@@ -258,6 +258,15 @@ public:
 
   double GetCompletionPercent() const;
 
+  /**
+   * @brief Retrieves the MWMs needed to build the route.
+   *
+   * Waits for the `RegionsRouter` thread to finish and returns the list of MWM names from it.
+   *
+   * @param countries Receives the list of MWM names.
+   */
+  void GetAllRegions(std::set<std::string> & countries);
+
 private:
   struct DoReadyCallback
   {
