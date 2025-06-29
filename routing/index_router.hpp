@@ -95,7 +95,8 @@ public:
    * @param countryParentNameGetterFn Function which converts a country name into the name of its parent country)
    * @param countryFileFn Function which converts a pointer to its country name
    * @param countryRectFn Function which returns the rect for a country
-   * @param numMwmIds
+   * @param numMwmIds MWMs to use for route calculation (this should include all MWMs, whether or
+   * not we have the file locally, but not World or WorldCoasts)
    * @param numMwmTree
    * @param trafficCache The traffic cache (used only if `vehicleType` is `VehicleType::Car`)
    * @param dataSource The MWM data source
