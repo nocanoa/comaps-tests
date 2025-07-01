@@ -14,8 +14,12 @@ namespace routing
 {
 using LocalFileCheckerFn = std::function<bool(std::string const &)>;
 
-// Encapsulates generation of mwm names of absent regions needed for building the route between
-// |checkpoints|. For this purpose the new thread is used.
+/**
+ * @brief Generates a list of MWMs needed to build a route.
+ *
+ * The `AbsentRegionsFinder` class encapsulates generation of MWM names of absent regions needed
+ * for building the route between `checkpoints`. For this purpose a separate worker thread is used.
+ */
 class AbsentRegionsFinder
 {
 public:
@@ -23,7 +27,11 @@ public:
                       LocalFileCheckerFn const & localFileChecker,
                       std::shared_ptr<NumMwmIds> numMwmIds, DataSource & dataSource);
 
-  // Creates new thread |m_routerThread| and starts routing in it.
+  /**
+   * @brief Creates new thread `m_routerThread` and starts routing in it.
+   * @param checkpoints The checkpoints of the route (start, optional intermediate points, destination)
+   * @param delegate
+   */
   void GenerateAbsentRegions(Checkpoints const & checkpoints, RouterDelegate const & delegate);
 
   /**
