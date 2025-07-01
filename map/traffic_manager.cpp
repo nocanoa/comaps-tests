@@ -56,7 +56,10 @@ auto constexpr kTrafficXMLFileName = "traffic.xml";
 
 TrafficManager::CacheEntry::CacheEntry()
   : m_isLoaded(false)
+// TODO no longer needed
+#ifdef traffic_dead_code
   , m_dataSize(0)
+#endif
   , m_retriesCount(0)
   , m_isWaitingForResponse(false)
   , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
@@ -64,7 +67,10 @@ TrafficManager::CacheEntry::CacheEntry()
 
 TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestTime)
   : m_isLoaded(false)
+// TODO no longer needed
+#ifdef traffic_dead_code
   , m_dataSize(0)
+#endif
   , m_lastActiveTime(requestTime)
   , m_lastRequestTime(requestTime)
   , m_retriesCount(0)

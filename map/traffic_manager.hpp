@@ -285,10 +285,13 @@ private:
      */
     bool m_isLoaded;
 
+// TODO no longer needed
+#ifdef traffic_dead_code
     /**
      * @brief The amount of memory occupied by the coloring for this MWM.
      */
     size_t m_dataSize;
+#endif
 
     /**
      * @brief When the last update request occurred, not including forced updates.
