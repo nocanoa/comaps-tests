@@ -25,13 +25,6 @@ constexpr uint8_t kMaxspeedNone = 255;
  * converted from ISO 8601 which refers to the same UTC time as its ISO 8601 representation.
  * Time zone information is not guaranteed to be preserved: `13:37+01:00` may be returned e.g. as
  * `12:37Z` or `06:37-06:00`.
- *
- * Code using `IsoTime` must not rely on it being identical to any other type, as this is not
- * guaranteed to be stable.
- */
-/*
- * Where no time zone is indicated, the timestamp shall always be interpreted as UTC.
- * `IsoTime` currently maps to `std::tm`, but this is not guaranteed.
  */
 class IsoTime
 {
