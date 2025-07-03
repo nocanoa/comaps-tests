@@ -7,6 +7,8 @@ set(SRC
   traff_model.hpp
   traff_model_xml.cpp
   traff_model_xml.hpp
+  traff_source.cpp
+  traff_source.hpp
   traff_storage.cpp
   traff_storage.hpp
 )

@@ -23,6 +23,8 @@
 #include "storage/routing_helpers.hpp"
 #include "storage/storage_helpers.hpp"
 
+#include "traffxml/traff_source.hpp"
+
 #include "drape_frontend/color_constants.hpp"
 #include "drape_frontend/gps_track_point.hpp"
 #include "drape_frontend/visual_params.hpp"
@@ -392,6 +394,12 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
     LoadMapsSync();
 
   m_trafficManager.SetEnabled(LoadTrafficEnabled());
+
+  /*
+   * MockTraffSource for debugging purposes.
+   * TODO Replace with a real source, parametrized and conditionally loaded, once we have one.
+   */
+  traffxml::MockTraffSource::Create(m_trafficManager);
 }
 
 Framework::~Framework()

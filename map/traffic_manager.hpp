@@ -15,6 +15,7 @@
 
 #include "traffxml/traff_decoder.hpp"
 #include "traffxml/traff_model.hpp"
+#include "traffxml/traff_source.hpp"
 #include "traffxml/traff_storage.hpp"
 
 #include "geometry/point2d.hpp"
@@ -36,7 +37,7 @@
 #include <utility>
 #include <vector>
 
-class TrafficManager final
+class TrafficManager final : public traffxml::TraffSourceManager
 {
 public:
   using CountryInfoGetterFn = std::function<storage::CountryInfoGetter const &()>;
@@ -234,15 +235,36 @@ public:
   void SetTestMode();
 
   /**
-   * @brief Processes a traffic feed received through a push operation.
+   * @brief Processes a traffic feed.
    *
-   * Push is safe to call from any thread.
+   * The feed may be a result of a pull operation, or received through a push operation.
+   * (Push operations are not supported by all sources.)
    *
-   * Push operations are not supported on all platforms.
+   * This method is safe to call from any thread.
    *
    * @param feed The traffic feed.
    */
-  void Push(traffxml::TraffFeed feed);
+  virtual void ReceiveFeed(traffxml::TraffFeed feed) override;
+
+  /**
+   * @brief Registers a `TraffSource`.
+   * @param source The source.
+   */
+  virtual void RegisterSource(std::unique_ptr<traffxml::TraffSource> source) override;
+
+  /**
+   * @brief Retrieves all currently active MWMs.
+   *
+   * This method retrieves all MWMs in the viewport, within a certain distance of the current
+   * position (if there is a valid position) or part of the route (if any), and stores them in
+   * `activeMwms`.
+   *
+   * This method locks `m_mutex` and is therefore safe to call from any thread. Callers which
+   * already hold `m_mutex` can use the private `UniteActiveMwms()` method instead.
+   *
+   * @param activeMwms Retrieves the list of active MWMs.
+   */
+  virtual void GetActiveMwms(std::set<MwmSet::MwmId> & activeMwms) override;
 
   /**
    * @brief Purges expired messages from the cache.
@@ -332,49 +354,20 @@ private:
   };
 
   /**
-   * @brief Returns a TraFF filter list for a set of MWMs.
+   * @brief Ensures every TraFF source has a subscription covering all currently active MWMs.
    *
-   * @param mwms The MWMs for which a filter list is to be created.
-   * @return A `filter_list` in XML format.
+   * This method cycles through all TraFF sources in `m_trafficSources` and calls
+   * `SubscribeOrChangeSubscription()` on each of them.
    */
-  std::string GetMwmFilters(std::set<MwmSet::MwmId> & mwms);
+  void SubscribeOrChangeSubscription();
 
   /**
-   * @brief Subscribes to a traffic service.
+   * @brief Unsubscribes from all traffic services we are subscribed to.
    *
-   * @param mwms The MWMs for which data is needed.
-   * @return true on success, false on failure.
-   */
-  bool Subscribe(std::set<MwmSet::MwmId> & mwms);
-
-  /**
-   * @brief Changes an existing traffic subscription.
-   *
-   * @param mwms The new set of MWMs for which data is needed.
-   * @return true on success, false on failure.
-   */
-  bool ChangeSubscription(std::set<MwmSet::MwmId> & mwms);
-
-  /**
-   * @brief Ensures we have a subscription covering all currently active MWMs.
-   *
-   * This method subscribes to a traffic service if not already subscribed, or changes the existing
-   * subscription otherwise.
-   *
-   * @return true on success, false on failure.
-   */
-  bool SetSubscriptionArea();
-
-  /**
-   * @brief Unsubscribes from a traffic service we are subscribed to.
+   * This method cycles through all TraFF sources in `m_trafficSources` and calls `Unsubscribe()`
+   * on each of them.
    */
   void Unsubscribe();
-
-  /**
-   * @brief Whether we are currently subscribed to a traffic service.
-   * @return
-   */
-  bool IsSubscribed();
 
   /**
    * @brief Restores the message cache from file storage.
@@ -393,11 +386,12 @@ private:
   bool RestoreCache();
 
   /**
-   * @brief Polls the traffic service for updates.
+   * @brief Polls all traffic services for updates.
    *
-   * @return true on success, false on failure.
+   * This method cycles through all TraFF sources in `m_trafficSources` and calls `IsPollNeeded()`
+   * on each of them. If this method returns true, it then calls `Poll()` on the source.
    */
-  bool Poll();
+  void Poll();
 
   /**
    * @brief Purges expired messages from the cache.
@@ -568,6 +562,18 @@ private:
 
   void OnChangeRoutingSessionState(routing::SessionState previous, routing::SessionState current);
 
+  /**
+   * @brief Retrieves all currently active MWMs.
+   *
+   * This method retrieves all MWMs in the viewport, within a certain distance of the current
+   * position (if there is a valid position) or part of the route (if any), and stores them in
+   * `activeMwms`.
+   *
+   * The caller must hold `m_mutex` prior to calling this method. `GetActiveMwms()` is available
+   * as a convenience wrapper which locks `m_mutex`, calls this method and releases it.
+   *
+   * @param activeMwms Retrieves the list of active MWMs.
+   */
   void UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const;
 
   void Pause();
@@ -634,6 +640,13 @@ private:
 
   std::map<MwmSet::MwmId, CacheEntry> m_mwmCache;
 
+  /**
+   * @brief The TraFF sources from which we get traffic information.
+   *
+   * Threads must lock `m_trafficSourceMutex` prior to accessing this member.
+   */
+  std::vector<std::unique_ptr<traffxml::TraffSource>> m_trafficSources;
+
   bool m_isRunning;
   std::condition_variable m_condition;
 
@@ -691,8 +704,17 @@ private:
    * @brief Mutex for access to shared members.
    *
    * Threads which access shared members (see documentation) must lock this mutex while doing so.
+   *
+   * @note To access `m_trafficSource`, lock `m_trafficSourceMutex`, not this mutex.
    */
   std::mutex m_mutex;
+
+  /**
+   * @brief Mutex for access to `m_trafficSources`.
+   *
+   * Threads which access `m_trafficSources` must lock this mutex while doing so.
+   */
+  std::mutex m_trafficSourceMutex;
 
   /**
    * @brief Worker thread which fetches traffic updates.
@@ -725,17 +747,10 @@ private:
   bool m_activeMwmsChanged = false;
 
   /**
-   * @brief The subscription ID received from the traffic server.
-   *
-   * An empty subscription ID means no subscription.
-   */
-  std::string m_subscriptionId;
-
-  /**
    * @brief Whether a poll operation is needed.
    *
-   * Used in the worker thread. A poll operation is needed unless a subscription (or subscription
-   * change) operation was performed before and a feed was received as part of it.
+   * Used in the worker thread to indicate we need to poll all sources. The poll operation may still
+   * be inhibited for individual sources.
    */
   bool m_isPollNeeded;
 

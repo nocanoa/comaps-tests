@@ -376,7 +376,7 @@ void MainWindow::OnOpenTrafficSample()
       shiftedFeed.push_back(message);
     }
     LOG(LINFO, ("TraFF data parsed successfully, pushing"));
-    m_framework.GetTrafficManager().Push(shiftedFeed);
+    m_framework.GetTrafficManager().ReceiveFeed(shiftedFeed);
     LOG(LINFO, ("Push completed"));
   }
   else
