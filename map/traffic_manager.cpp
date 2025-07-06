@@ -558,19 +558,24 @@ void TrafficManager::PurgeExpiredMessages()
   OnTrafficDataUpdate();
 }
 
-void TrafficManager::PurgeExpiredMessagesImpl()
+bool TrafficManager::PurgeExpiredMessagesImpl()
 {
   std::lock_guard<std::mutex> lock(m_mutex);
+  bool result = false;
   LOG(LINFO, ("before:", m_messageCache.size(), "message(s)"));
   traffxml::IsoTime now = traffxml::IsoTime::Now();
   for (auto it = m_messageCache.begin(); it != m_messageCache.end(); )
   {
     if (it->second.IsExpired(now))
+    {
       it = m_messageCache.erase(it);
+      result = true;
+    }
     else
       ++it;
   }
   LOG(LINFO, ("after:", m_messageCache.size(), "message(s)"));
+  return result;
 }
 
 void TrafficManager::ConsolidateFeedQueue()
@@ -692,12 +697,21 @@ void TrafficManager::ThreadRoutine()
     if (!IsEnabled())
       continue;
 
+    /*
+     * Whether to call OnTrafficDataUpdate() at the end of the current round.
+     * The logic may fail to catch cases in which the first message in queue replaces another
+     * message without changing coloring. This would usually occur in a larger feed, where other
+     * messages would likely require an announcement, making this a minor issue. A single round
+     * (after a timeout) with no messages expired and an empty queue would not trigger an update.
+     */
+    bool hasUpdates = false;
+
     if (!IsTestMode())
     {
       if (steady_clock::now() - lastPurged >= kPurgeInterval)
       {
         lastPurged == steady_clock::now();
-        PurgeExpiredMessagesImpl();
+        hasUpdates |= PurgeExpiredMessagesImpl();
       }
 
       LOG(LINFO, ("active MWMs changed:", m_activeMwmsChanged, ", poll needed:", m_isPollNeeded));
@@ -720,6 +734,7 @@ void TrafficManager::ThreadRoutine()
 
     // consolidate feed queue (remove older messages in favor of newer ones)
     ConsolidateFeedQueue();
+    hasUpdates |= !m_feedQueue.empty();
 
     // decode one message and add it to the cache
     DecodeFirstMessage();
@@ -727,7 +742,8 @@ void TrafficManager::ThreadRoutine()
     // set new coloring for MWMs
     // `m_mutex` is obtained inside the method, no need to do it here
     // TODO drop the argument, use class member inside method
-    OnTrafficDataUpdate();
+    if (hasUpdates)
+      OnTrafficDataUpdate();
 
 // TODO no longer needed
 #ifdef traffic_dead_code

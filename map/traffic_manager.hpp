@@ -399,8 +399,10 @@ private:
    * This is the internal conterpart of `PurgeExpiredMessages()`. It is safe to call from any
    * thread. Unlike `PurgeExpiredMessages()`, it does not wake the worker thread, making it suitable
    * for use on the worker thread.
+   *
+   * @return true if messages were purged, false if not
    */
-  void PurgeExpiredMessagesImpl();
+  bool PurgeExpiredMessagesImpl();
 
   /**
    * @brief Consolidates the feed queue.
