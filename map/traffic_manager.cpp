@@ -54,6 +54,8 @@ auto constexpr kStorageUpdateInterval = minutes(1);
 auto constexpr kTrafficXMLFileName = "traffic.xml";
 } // namespace
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 TrafficManager::CacheEntry::CacheEntry()
   : m_isLoaded(false)
 // TODO no longer needed
@@ -77,6 +79,7 @@ TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestT
   , m_isWaitingForResponse(true)
   , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
 {}
+#endif
 
 TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                const CountryParentNameGetterFn &countryParentNameGetter,
@@ -193,7 +196,6 @@ void TrafficManager::Clear()
     LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
     LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
     LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
-    LOG(LINFO, ("MWM cache size:", m_mwmCache.size()));
     LOG(LINFO, ("Clearing..."));
     // TODO no longer needed
 #ifdef traffic_dead_code
@@ -201,7 +203,10 @@ void TrafficManager::Clear()
 #endif
     m_messageCache.clear();
     m_feedQueue.clear();
+// TODO no longer needed
+#ifdef traffic_dead_code
     m_mwmCache.clear();
+#endif
 
     // TODO figure out which of the ones below we still need
     m_lastDrapeMwmsByRect.clear();
@@ -214,7 +219,6 @@ void TrafficManager::Clear()
     LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
     LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
     LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
-    LOG(LINFO, ("MWM cache size:", m_mwmCache.size()));
   }
   OnTrafficDataUpdate();
 }
@@ -318,7 +322,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
     {
       m_activeMwmsChanged = true;
       std::swap(mwms, m_activeRoutingMwms);
-      RequestTrafficData();
+      RequestTrafficSubscription();
     }
   }
 }
@@ -405,7 +409,7 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect,
       if (mwm.IsAlive())
         activeMwms.insert(mwm);
     }
-    RequestTrafficData();
+    RequestTrafficSubscription();
   }
 }
 
@@ -835,40 +839,7 @@ bool TrafficManager::WaitForRequest()
   return true;
 }
 
-void TrafficManager::RequestTrafficData(MwmSet::MwmId const & mwmId, bool force)
-{
-  bool needRequesting = false;
-  auto const currentTime = steady_clock::now();
-  auto const it = m_mwmCache.find(mwmId);
-  if (it == m_mwmCache.end())
-  {
-    needRequesting = true;
-    m_mwmCache.insert(std::make_pair(mwmId, CacheEntry(currentTime)));
-  }
-  else
-  {
-    auto const passedSeconds = currentTime - it->second.m_lastRequestTime;
-    if (passedSeconds >= kUpdateInterval || force)
-    {
-      needRequesting = true;
-      it->second.m_isWaitingForResponse = true;
-      it->second.m_lastRequestTime = currentTime;
-    }
-    if (!force)
-      it->second.m_lastActiveTime = currentTime;
-  }
-
-  if (needRequesting)
-  {
-// TODO no longer needed
-#ifdef traffic_dead_code
-    m_requestedMwms.push_back(mwmId);
-#endif
-    m_condition.notify_one();
-  }
-}
-
-void TrafficManager::RequestTrafficData()
+void TrafficManager::RequestTrafficSubscription()
 {
   if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
       || !IsEnabled() || IsInvalidState() || m_isPaused)
@@ -878,9 +849,17 @@ void TrafficManager::RequestTrafficData()
 
   ForEachActiveMwm([this](MwmSet::MwmId const & mwmId) {
     ASSERT(mwmId.IsAlive(), ());
-    RequestTrafficData(mwmId, false /* force */);
+// TODO no longer needed
+#ifdef traffic_dead_code
+    m_mwmCache.insert(mwmId);
+#endif
   });
+  m_condition.notify_one();
+
+// TODO no longer needed
+#ifdef traffic_dead_code
   UpdateState();
+#endif
 }
 
 // TODO no longer needed
@@ -982,13 +961,12 @@ void TrafficManager::OnTrafficDataUpdate()
   /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
    *
-   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData();
-   * modification: cycle over all MWMs (active or not).
+   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData()
+   * (now RequestTrafficSubscription()), modification: cycle over all MWMs (active or not).
    * trafficCache lookup is original code.
    * TrafficInfo construction is taken fron ThreadRoutine(), with modifications (different constructor).
-   * Updating m_mwmCache is from RequestTrafficData(MwmSet::MwmId const &, bool), with modifications.
    * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with some modifications
-   * (deciding whether to notify a component and managing timestamps is original code).
+   * (removed CacheEntry logic; deciding whether to notify a component and managing timestamps is original code).
    * Existing coloring deletion (if there is no new coloring) is original code.
    */
   ForEachMwm([this, notifyDrape, notifyObserver](std::shared_ptr<MwmInfo> info) {
@@ -1007,42 +985,34 @@ void TrafficManager::OnTrafficDataUpdate()
       LOG(LINFO, ("Setting new coloring for", mwmId, "with", coloring.size(), "entries"));
       traffic::TrafficInfo info(mwmId, std::move(coloring));
 
-      m_mwmCache.try_emplace(mwmId, CacheEntry(steady_clock::now()));
+// TODO no longer needed
+#ifdef traffic_dead_code
+      UpdateState();
+#endif
 
-      auto it = m_mwmCache.find(mwmId);
-      if (it != m_mwmCache.end())
+      if (notifyDrape)
       {
-        it->second.m_isLoaded = true;
-        it->second.m_lastResponseTime = steady_clock::now();
-        it->second.m_isWaitingForResponse = false;
-        it->second.m_lastAvailability = info.GetAvailability();
+        /*
+         * TODO calling ClearTrafficCache before UpdateTraffic is a workaround for a bug in the
+         * Drape engine: some segments found in the old coloring but not in the new one may get
+         * left behind. This was not a problem for MapsWithMe as the set of segments never
+         * changed, but is an issue wherever the segment set is dynamic. Workaround is to clear
+         * before sending an update. Ultimately, the processing logic for UpdateTraffic needs to
+         * be fixed, but the code is hard to read (involves multiple messages getting thrown back
+         * and forth between threads).
+         */
+        m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache,
+                               static_cast<MwmSet::MwmId const &>(mwmId));
+        m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
+                               static_cast<traffic::TrafficInfo const &>(info));
+        m_lastDrapeUpdate = steady_clock::now();
+      }
 
-        UpdateState();
-
-        if (notifyDrape)
-        {
-          /*
-           * TODO calling ClearTrafficCache before UpdateTraffic is a workaround for a bug in the
-           * Drape engine: some segments found in the old coloring but not in the new one may get
-           * left behind. This was not a problem for MapsWithMe as the set of segments never
-           * changed, but is an issue wherever the segment set is dynamic. Workaround is to clear
-           * before sending an update. Ultimately, the processing logic for UpdateTraffic needs to
-           * be fixed, but the code is hard to read (involves multiple messages getting thrown back
-           * and forth between threads).
-           */
-          m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache,
-                                 static_cast<MwmSet::MwmId const &>(mwmId));
-          m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
-                                 static_cast<traffic::TrafficInfo const &>(info));
-          m_lastDrapeUpdate = steady_clock::now();
-        }
-
-        if (notifyObserver)
-        {
-          // Update traffic colors for routing.
-          m_routingSession.OnTrafficInfoAdded(std::move(info));
-          m_lastObserverUpdate = steady_clock::now();
-        }
+      if (notifyObserver)
+      {
+        // Update traffic colors for routing.
+        m_routingSession.OnTrafficInfoAdded(std::move(info));
+        m_lastObserverUpdate = steady_clock::now();
       }
     }
     else
@@ -1181,6 +1151,8 @@ bool TrafficManager::IsInvalidState() const
   return m_state == TrafficState::NetworkError;
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 void TrafficManager::UpdateState()
 {
   if (!IsEnabled() || IsInvalidState())
@@ -1238,6 +1210,7 @@ void TrafficManager::UpdateState()
   else
     ChangeState(TrafficState::Enabled);
 }
+#endif
 
 void TrafficManager::ChangeState(TrafficState newState)
 {

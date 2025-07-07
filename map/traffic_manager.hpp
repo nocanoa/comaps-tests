@@ -46,6 +46,7 @@ public:
   /**
    * @brief Global state of traffic information.
    */
+  // TODO apart from `Disabled` and `Enabled`, all states are obsolete
   enum class TrafficState
   {
     /** Traffic is disabled, no traffic data will be retrieved or considered for routing. */
@@ -294,6 +295,8 @@ public:
   void Clear();
 
 private:
+// TODO no longer needed
+#ifdef traffic_dead_code
   /**
    * @brief Holds information about pending or previous traffic requests pertaining to an MWM.
    */
@@ -307,13 +310,10 @@ private:
      */
     bool m_isLoaded;
 
-// TODO no longer needed
-#ifdef traffic_dead_code
     /**
      * @brief The amount of memory occupied by the coloring for this MWM.
      */
     size_t m_dataSize;
-#endif
 
     /**
      * @brief When the last update request occurred, not including forced updates.
@@ -352,6 +352,7 @@ private:
 
     traffic::TrafficInfo::Availability m_lastAvailability;
   };
+#endif
 
   /**
    * @brief Ensures every TraFF source has a subscription covering all currently active MWMs.
@@ -466,7 +467,7 @@ private:
    * If the MWM is no longer active, this method returns immediately after that.
    *
    * If the retry limit has not been reached, the MWM is re-inserted into the list by calling
-   * `RequestTrafficData(MwmSet::MwmId, bool)` with `force` set to true. Otherwise, the retry count
+   * `RequestTrafficSubscription(MwmSet::MwmId, bool)` with `force` set to true. Otherwise, the retry count
    * is reset and the state updated accordingly.
    *
    * @param info
@@ -498,12 +499,9 @@ private:
   // This is a group of methods that haven't their own synchronization inside.
 
   /**
-   * @brief Requests a refresh of traffic data for all currently active MWMs.
+   * @brief Requests a refresh of traffic subscriptions to match all currently active MWMs.
    *
-   * This method is the entry point for periodic traffic data refresh operations. It cycles through
-   * all active MWMs and calls `RequestTrafficData(MwmSet::MwmId, bool)` on each `MwmId`,
-   * scheduling a refresh if needed. The actual network operation is performed asynchronously on a
-   * separate thread.
+   * The actual call to the TraFF sources is performed asynchronously on a separate thread.
    *
    * The method does nothing if the `TrafficManager` instance is disabled, paused, in an invalid
    * state (`NetworkError`) or if neither the rendering engine nor the routing engine have any
@@ -511,24 +509,9 @@ private:
    *
    * This method is unsynchronized; the caller must lock `m_mutex` prior to calling it.
    */
-  void RequestTrafficData();
+  void RequestTrafficSubscription();
 
-  /**
-   * @brief Requests a refresh of traffic data for a single MWM.
-   *
-   * This method first checks if traffic data for the given MWM needs to be refreshed, which is the
-   * case if no traffic data has ever been fetched for the given MWM, the update interval has
-   * expired or `force` is true. In that case, the method inserts the `mwmId` into the list of MWMs
-   * for which to update traffic and wakes up the worker thread.
-   *
-   * This method is unsynchronized; the caller must lock `m_mutex` prior to calling it.
-   *
-   * @param mwmId Describes the MWM for which traffic data is to be refreshed.
-   * @param force If true, a refresh is requested even if the update interval has not expired.
-   */
-  void RequestTrafficData(MwmSet::MwmId const & mwmId, bool force);
-
-  // TODO no longer needed
+// TODO no longer needed
 #ifdef traffic_dead_code
   /**
    * @brief Removes traffic data for one specific MWM from the cache.
@@ -543,7 +526,6 @@ private:
    */
   void ClearCache(MwmSet::MwmId const & mwmId);
   void ShrinkCacheToAllowableSize();
-#endif
 
   /**
    * @brief Updates the state of the traffic manager based on the state of all MWMs used by the renderer.
@@ -558,6 +540,7 @@ private:
    * `TrafficState::NoData`, `TrafficState::Outdated`, `TrafficState::Enabled`.
    */
   void UpdateState();
+#endif
   void ChangeState(TrafficState newState);
 
   bool IsInvalidState() const;
@@ -638,9 +621,9 @@ private:
 #ifdef traffic_dead_code
   size_t m_maxCacheSizeBytes;
   size_t m_currentCacheSizeBytes = 0;
-#endif
 
   std::map<MwmSet::MwmId, CacheEntry> m_mwmCache;
+#endif
 
   /**
    * @brief The TraFF sources from which we get traffic information.
@@ -666,9 +649,9 @@ private:
    *
    * Methods which use only the set:
    *
-   * * RequestTrafficData(), exits if empty, otherwise cycles through the set.
+   * * RequestTrafficSubscription(), exits if empty, otherwise cycles through the set.
    * * OnTrafficRequestFailed(), determines if an MWM is still active and the request should be retried.
-   * * UniteActiveMwms(), build the list of active MWMs (used by RequestTrafficData() or to shrink the cache).
+   * * UniteActiveMwms(), build the list of active MWMs (used by RequestTrafficSubscription() or to shrink the cache).
    * * UpdateState(), cycles through the set to determine the state of traffic requests (renderer only).
    *
    * Methods which use both, but in a different way:
