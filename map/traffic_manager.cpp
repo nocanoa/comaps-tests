@@ -341,7 +341,24 @@ void TrafficManager::RecalculateSubscription()
     UpdateViewport(m_currentModelView.first);
   if (m_currentPosition.second)
     UpdateMyPosition(m_currentPosition.first);
-  // TODO update routing – if needed
+
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    /*
+     * If UpdateViewport() or UpdateMyPosition() had changes, they would also have updated the
+     * routing MWMs and reset m_activeMwmsChanged. If neither of them had changes and
+     * m_activeMwmsChanged is true, it indicates changes in route MWMs which we need to process.
+     */
+    if (m_activeMwmsChanged)
+    {
+      if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
+          || IsInvalidState() || m_isPaused)
+        return;
+
+      m_condition.notify_one();
+    }
+  }
 }
 
 void TrafficManager::Invalidate(MwmSet::MwmId const & mwmId)
