@@ -498,6 +498,8 @@ private:
 
   // This is a group of methods that haven't their own synchronization inside.
 
+// TODO no longer needed
+#ifdef traffic_dead_code
   /**
    * @brief Requests a refresh of traffic subscriptions to match all currently active MWMs.
    *
@@ -511,8 +513,6 @@ private:
    */
   void RequestTrafficSubscription();
 
-// TODO no longer needed
-#ifdef traffic_dead_code
   /**
    * @brief Removes traffic data for one specific MWM from the cache.
    *
@@ -642,30 +642,31 @@ private:
    *
    * Routing MWMs are stored as a set.
    *
-   * The other groups arestored twice: as a set and as a vector. The set always holds the MWMs which
+   * The other groups are stored twice: as a set and as a vector. The set always holds the MWMs which
    * were last seen in use. Both get updated together when active MWMs are added or removed.
-   * However, the vector is used as a reference to detect changes. It may get cleared when the set
-   * is not, which is used to invalidate the set without destroying its contents.
+   * However, the vector is used as a reference to detect changes. Clear() clears the vector but not
+   * the set, invalidating the set without destroying its contents.
    *
    * Methods which use only the set:
    *
    * * RequestTrafficSubscription(), exits if empty, otherwise cycles through the set.
-   * * OnTrafficRequestFailed(), determines if an MWM is still active and the request should be retried.
-   * * UniteActiveMwms(), build the list of active MWMs (used by RequestTrafficSubscription() or to shrink the cache).
-   * * UpdateState(), cycles through the set to determine the state of traffic requests (renderer only).
+   * * UniteActiveMwms(), build the list of active MWMs (used by RequestTrafficSubscription()).
    *
    * Methods which use both, but in a different way:
    *
-   * * (dead code) ClearCache(), removes the requested MWM from the set but clears the vector completely.
-   * * UpdateActiveMwms(), uses the vector to detect changes (not for routing MWMs). If so, it updates both vector and set.
-   *
-   * Clear() clears both the set and the vector. (Clearing the set is currently disabled as it breaks ForEachActiveMwm.)
+   * * UpdateActiveMwms(), uses the vector to detect changes (not for routing MWMs). If so, it
+   *   updates both vector and set, but adds MWMs to the set only if they are alive.
    */
   std::vector<MwmSet::MwmId> m_lastDrapeMwmsByRect;
   std::set<MwmSet::MwmId> m_activeDrapeMwms;
   std::vector<MwmSet::MwmId> m_lastPositionMwmsByRect;
   std::set<MwmSet::MwmId> m_activePositionMwms;
   std::set<MwmSet::MwmId> m_activeRoutingMwms;
+
+  /**
+   * @brief Whether active MWMs have changed since the last request.
+   */
+  bool m_activeMwmsChanged = false;
 
 // TODO no longer needed
 #ifdef traffic_dead_code
@@ -725,11 +726,6 @@ private:
    * @brief When the cache file was last updated.
    */
   std::chrono::time_point<std::chrono::steady_clock> m_lastStorageUpdate;
-
-  /**
-   * @brief Whether active MWMs have changed since the last request.
-   */
-  bool m_activeMwmsChanged = false;
 
   /**
    * @brief Whether a poll operation is needed.

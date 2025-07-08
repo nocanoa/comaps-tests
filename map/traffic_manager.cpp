@@ -322,7 +322,12 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
     {
       m_activeMwmsChanged = true;
       std::swap(mwms, m_activeRoutingMwms);
-      RequestTrafficSubscription();
+
+      if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
+          || !IsEnabled() || IsInvalidState() || m_isPaused)
+        return;
+
+      m_condition.notify_one();
     }
   }
 }
@@ -409,7 +414,12 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect,
       if (mwm.IsAlive())
         activeMwms.insert(mwm);
     }
-    RequestTrafficSubscription();
+
+    if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
+        || !IsEnabled() || IsInvalidState() || m_isPaused)
+      return;
+
+    m_condition.notify_one();
   }
 }
 
@@ -839,6 +849,8 @@ bool TrafficManager::WaitForRequest()
   return true;
 }
 
+// TODO no longer needed
+#ifdef traffic_dead_code
 void TrafficManager::RequestTrafficSubscription()
 {
   if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
@@ -862,8 +874,6 @@ void TrafficManager::RequestTrafficSubscription()
 #endif
 }
 
-// TODO no longer needed
-#ifdef traffic_dead_code
 void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
 {
   std::lock_guard<std::mutex> lock(m_mutex);
