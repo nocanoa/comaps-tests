@@ -160,6 +160,7 @@ public:
    * @todo Currently, all MWMs must be loaded before calling `SetEnabled()`, as MWMs loaded after
    * that will not get picked up. We need to extend `TrafficManager` to react to MWMs being added
    * (and removed) – note that this affects the `DataSource`, not the set of active MWMs.
+   * See `Framework::OnMapDeregistered()` implementation for the opposite case (MWM deregistered).
    *
    * @param enabled True to enable, false to disable
    */
@@ -188,14 +189,11 @@ public:
    * enabled, or when it is resumed after being paused, as the subscription area is not updated
    * while the traffic manager is disabled or paused.
    *
-   * If the subscription are has changed, this triggers a change of the active TraFF subscription.
+   * If the subscription area has changed, this triggers a change of the active TraFF subscription.
    *
    * No traffic data is discarded, but sources will be polled for an update, which may turn out
    * larger than usual if the traffic manager was in disabled/paused state for an extended period of
    * time or the subscription area has changed.
-   *
-   * @todo Routing is currently not considered (active MWMs are based on viewport and current
-   * position).
    */
   void RecalculateSubscription();
 
@@ -280,22 +278,10 @@ public:
   void PurgeExpiredMessages();
 
   /**
-   * @brief Clears the entire traffic cache.
+   * @brief Clears the traffic message cache and feed queue.
    *
-   * This is currently called when the traffic manager is enabled or disabled.
-   *
-   * The old MWM traffic architecture was somewhat liberal in clearing its cache and re-fetching
-   * traffic data. This was possible because data was pre-processed and required no processing
-   * beyond deserialization, whereas TraFF data is more expensive to recreate. Also, the old
-   * architecture lacked any explicit notion of expiration; the app decided that data was to be
-   * considered stale after a certain period of time. TraFF, in contrast, has an explicit expiration
-   * time for each message, which can be anywhere from a few minutes to several weeks or months.
-   * Messages that have expired get deleted individually.
-   * For this reason, the TraFF message cache should not be cleared out under normal conditions
-   * (the main exception being tests).
-   *
-   * @todo Currently not implemented for TraFF; implement it for test purposes but do not call when
-   * the enabled state changes.
+   * This is intended for testing purposes and clears the message cache, as well as the feed queue.
+   * Subscriptions are not changed.
    */
   void Clear();
 
@@ -384,10 +370,8 @@ private:
    * currently active MWMs into the list of MWMs to update; otherwise, it leaves the list as it is.
    * In either case, it populates `mwms` with the list and returns.
    *
-   * @param mwms Receives a list of MWMs for which to update traffic data.
    * @return `true` during normal operation, `false` during teardown (signaling the event loop to exit).
    */
-  // TODO mwms argument is no longer needed
   bool WaitForRequest();
 
   /**

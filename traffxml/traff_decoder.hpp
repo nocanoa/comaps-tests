@@ -189,7 +189,7 @@ public:
      * @param countryRectFn Function which returns the rect for a country
      * @param numMwmIds
      * @param numMwmTree
-     * @param trafficCache Tre traffic cache (used only if `vehicleType` is `VehicleType::Car`)
+     * @param trafficCache The traffic cache (used only if `vehicleType` is `VehicleType::Car`)
      * @param dataSource The MWM data source
      * @param decoder The `TraffDecoder` instance to which this router instance is coupled
      */
