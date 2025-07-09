@@ -141,20 +141,19 @@ public:
    *
    * This sets the internal state and notifies the drape engine.
    *
-   * Upon creation, the traffic manager is disabled and will not poll any sources or process any
-   * feeds until enabled. Feeds received through `Push()` will be added to the queue before the
-   * traffic manager is started, but will not be processed any further until the traffic manager is
-   * started.
+   * Upon creation, the traffic manager is disabled. MWMs must be loaded before first enabling the
+   * traffic manager.
    *
-   * MWMs must be loaded before first enabling the traffic manager.
+   * While disabled, the traffic manager will not update its subscription area (upon being enabled
+   * again, it will do so if necessary). It will not poll any sources or process any messages. Feeds
+   * added via `ReceiveFeed()` will be added to the queue but will not be processed until the
+   * traffic manager is re-enabled.
    *
    * Calling this function with `enabled` identical to the current state is a no-op.
    *
    * @todo Currently, all MWMs must be loaded before calling `SetEnabled()`, as MWMs loaded after
    * that will not get picked up. We need to extend `TrafficManager` to react to MWMs being added
    * (and removed) – note that this affects the `DataSource`, not the set of active MWMs.
-   *
-   * @todo State/pause/resume logic is not fully implemented ATM and needs to be revisited.
    *
    * @param enabled True to enable, false to disable
    */
@@ -561,7 +560,34 @@ private:
    */
   void UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const;
 
+  /**
+   * @brief Pauses the traffic manager.
+   *
+   * Upon creation, the traffic manager is not paused.
+   *
+   * While paused, the traffic manager will not update its subscription area (upon being enabled
+   * again, it will do so if necessary). It will not poll any sources or process any messages. Feeds
+   * added via `ReceiveFeed()` will be added to the queue but will not be processed until the
+   * traffic manager is resumed.
+   *
+   * Pausing and resuming is similar in effect to disabling and enabling the traffic manager, except
+   * it does not change the external state. It is intended for internal use by the framework.
+   */
   void Pause();
+
+  /**
+   * @brief Resumes the traffic manager.
+   *
+   * Upon creation, the traffic manager is not paused. Resuming a traffic manager that is not paused
+   * is a no-op.
+   *
+   * Upon resume, the traffic manager will recalculate its subscription area and change its
+   * subscription if necessary. It will continue processing feeds in the queue, including those
+   * received before or while the traffic manager was paused.
+   *
+   * Pausing and resuming is similar in effect to disabling and enabling the traffic manager, except
+   * it does not change the external state. It is intended for internal use by the framework.
+   */
   void Resume();
 
   template <class F>

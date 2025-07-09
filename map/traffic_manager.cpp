@@ -334,7 +334,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
 
 void TrafficManager::RecalculateSubscription()
 {
-  if (!IsEnabled())
+  if (!IsEnabled() || m_isPaused)
     return;
 
   if (m_currentModelView.second)
@@ -353,7 +353,7 @@ void TrafficManager::RecalculateSubscription()
     if (m_activeMwmsChanged)
     {
       if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
-          || IsInvalidState() || m_isPaused)
+          || IsInvalidState())
         return;
 
       m_condition.notify_one();
@@ -725,7 +725,7 @@ void TrafficManager::ThreadRoutine()
 
   while (WaitForRequest())
   {
-    if (!IsEnabled())
+    if (!IsEnabled() || m_isPaused)
       continue;
 
     /*
@@ -824,7 +824,7 @@ bool TrafficManager::WaitForRequest()
   if (!m_isRunning)
     return false;
 
-  if (IsEnabled())
+  if (IsEnabled() && !m_isPaused)
   {
     // if we have feeds in the queue, return immediately
     if (!m_feedQueue.empty())
@@ -859,7 +859,7 @@ bool TrafficManager::WaitForRequest()
     return false;
 
   // this works as long as wait timeout is at least equal to the poll interval
-  if (IsEnabled())
+  if (IsEnabled() && !m_isPaused)
     m_isPollNeeded |= timeout;
 
   LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged, "test mode:", IsTestMode()));
