@@ -46,7 +46,13 @@ public:
   /**
    * @brief Global state of traffic information.
    */
-  // TODO apart from `Disabled` and `Enabled`, all states are obsolete
+  /*
+   * TODO clean out obsolete states.
+   * Only `Disabled` and `Enabled` are currently used, but some might be reactivated in the future
+   * and platforms (android/iphone) still evaluate all states.
+   * `ExpiredData` is definitely obsolete, as traffic data is no longer dependent on a particular
+   * map version, but still evaluated by android/iphone code.
+   */
   enum class TrafficState
   {
     /** Traffic is disabled, no traffic data will be retrieved or considered for routing. */
@@ -294,64 +300,6 @@ public:
   void Clear();
 
 private:
-// TODO no longer needed
-#ifdef traffic_dead_code
-  /**
-   * @brief Holds information about pending or previous traffic requests pertaining to an MWM.
-   */
-  struct CacheEntry
-  {
-    CacheEntry();
-    explicit CacheEntry(std::chrono::time_point<std::chrono::steady_clock> const & requestTime);
-
-    /**
-     * @brief Whether we have traffic data for this MWM.
-     */
-    bool m_isLoaded;
-
-    /**
-     * @brief The amount of memory occupied by the coloring for this MWM.
-     */
-    size_t m_dataSize;
-
-    /**
-     * @brief When the last update request occurred, not including forced updates.
-     *
-     * This timestamp is the basis for eliminating the oldest entries from the cache.
-     */
-    std::chrono::time_point<std::chrono::steady_clock> m_lastActiveTime;
-
-    /**
-     * @brief When the last update request occurred, including forced updates.
-     *
-     * This timestamp is the basis for determining whether an update is needed.
-     */
-    std::chrono::time_point<std::chrono::steady_clock> m_lastRequestTime;
-
-    /**
-     * @brief When the last response was received.
-     *
-     * This timestamp is the basis for determining whether a network request timed out, or if data is outdated.
-     */
-    std::chrono::time_point<std::chrono::steady_clock> m_lastResponseTime;
-
-    /**
-     * @brief The number of failed traffic requests for this MWM.
-     *
-     * Reset when the MWM becomes inactive.
-     */
-    int m_retriesCount;
-
-    /**
-     * @brief Whether a request is currently pending for this MWM.
-     *
-     * Set to `true` when a request is scheduled, reverted to `false` when a response is received or the request fails.
-     */
-    bool m_isWaitingForResponse;
-
-    traffic::TrafficInfo::Availability m_lastAvailability;
-  };
-#endif
 
   /**
    * @brief Ensures every TraFF source has a subscription covering all currently active MWMs.
@@ -453,27 +401,6 @@ private:
    */
   void OnTrafficDataUpdate();
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  void OnTrafficDataResponse(traffic::TrafficInfo && info);
-  /**
-   * @brief Processes a failed traffic request.
-   *
-   * This method gets called when a traffic request has failed.
-   *
-   * It updates the `m_isWaitingForResponse` and `m_lastAvailability` of `info.
-   *
-   * If the MWM is no longer active, this method returns immediately after that.
-   *
-   * If the retry limit has not been reached, the MWM is re-inserted into the list by calling
-   * `RequestTrafficSubscription(MwmSet::MwmId, bool)` with `force` set to true. Otherwise, the retry count
-   * is reset and the state updated accordingly.
-   *
-   * @param info
-   */
-  void OnTrafficRequestFailed(traffic::TrafficInfo && info);
-#endif
-
   /**
    * @brief Updates `activeMwms` and requests traffic data.
    *
@@ -497,49 +424,6 @@ private:
 
   // This is a group of methods that haven't their own synchronization inside.
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  /**
-   * @brief Requests a refresh of traffic subscriptions to match all currently active MWMs.
-   *
-   * The actual call to the TraFF sources is performed asynchronously on a separate thread.
-   *
-   * The method does nothing if the `TrafficManager` instance is disabled, paused, in an invalid
-   * state (`NetworkError`) or if neither the rendering engine nor the routing engine have any
-   * active MWMs.
-   *
-   * This method is unsynchronized; the caller must lock `m_mutex` prior to calling it.
-   */
-  void RequestTrafficSubscription();
-
-  /**
-   * @brief Removes traffic data for one specific MWM from the cache.
-   *
-   * This would be used when an MWM file gets deregistered and its traffic data is no longer needed.
-   * With the old MWM traffic architecture (pre-processed sets of segments), this method was also
-   * used to shrink the cache to stay below a certain size (no longer possible with TraFF, due to
-   * the data structures being more complex, and also due to re-fetching data being expensive in
-   * terms of computing time).
-   *
-   * @param mwmId The mwmId for which to remove traffic data.
-   */
-  void ClearCache(MwmSet::MwmId const & mwmId);
-  void ShrinkCacheToAllowableSize();
-
-  /**
-   * @brief Updates the state of the traffic manager based on the state of all MWMs used by the renderer.
-   *
-   * This method cycles through the state of all MWMs used by the renderer (MWMs used by the
-   * routing engine but not by the rendering engine are not considered), examines their traffic
-   * state and sets the global state accordingly.
-   *
-   * For a description of states, see `TrafficState`. The order of states is as follows, the first
-   * state whose conditions are fulfilled becomes the new state: `TrafficState::NetworkError`,
-   * `TrafficState::WaitingData`, `TrafficState::ExpiredApp`, `TrafficState::ExpiredData`,
-   * `TrafficState::NoData`, `TrafficState::Outdated`, `TrafficState::Enabled`.
-   */
-  void UpdateState();
-#endif
   void ChangeState(TrafficState newState);
 
   bool IsInvalidState() const;
@@ -643,14 +527,6 @@ private:
 
   bool m_hasSimplifiedColorScheme = true;
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  size_t m_maxCacheSizeBytes;
-  size_t m_currentCacheSizeBytes = 0;
-
-  std::map<MwmSet::MwmId, CacheEntry> m_mwmCache;
-#endif
-
   /**
    * @brief The TraFF sources from which we get traffic information.
    *
@@ -694,23 +570,7 @@ private:
    */
   bool m_activeMwmsChanged = false;
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  // The ETag or entity tag is part of HTTP, the protocol for the World Wide Web.
-  // It is one of several mechanisms that HTTP provides for web cache validation,
-  // which allows a client to make conditional requests.
-  std::map<MwmSet::MwmId, std::string> m_trafficETags;
-#endif
-
   std::atomic<bool> m_isPaused;
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  /**
-   * @brief MWMs for which to retrieve traffic data.
-   */
-  std::vector<MwmSet::MwmId> m_requestedMwms;
-#endif
 
   /**
    * @brief Mutex for access to shared members.

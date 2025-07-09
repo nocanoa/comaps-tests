@@ -54,33 +54,6 @@ auto constexpr kStorageUpdateInterval = minutes(1);
 auto constexpr kTrafficXMLFileName = "traffic.xml";
 } // namespace
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-TrafficManager::CacheEntry::CacheEntry()
-  : m_isLoaded(false)
-// TODO no longer needed
-#ifdef traffic_dead_code
-  , m_dataSize(0)
-#endif
-  , m_retriesCount(0)
-  , m_isWaitingForResponse(false)
-  , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
-{}
-
-TrafficManager::CacheEntry::CacheEntry(time_point<steady_clock> const & requestTime)
-  : m_isLoaded(false)
-// TODO no longer needed
-#ifdef traffic_dead_code
-  , m_dataSize(0)
-#endif
-  , m_lastActiveTime(requestTime)
-  , m_lastRequestTime(requestTime)
-  , m_retriesCount(0)
-  , m_isWaitingForResponse(true)
-  , m_lastAvailability(traffic::TrafficInfo::Availability::Unknown)
-{}
-#endif
-
 TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                const CountryParentNameGetterFn &countryParentNameGetter,
                                GetMwmsByRectFn const & getMwmsByRectFn, size_t maxCacheSizeBytes,
@@ -92,10 +65,6 @@ TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn coun
   , m_routingSession(routingSession)
   , m_currentDataVersion(0)
   , m_state(TrafficState::Disabled)
-// TODO no longer needed
-#ifdef traffic_dead_code
-  , m_maxCacheSizeBytes(maxCacheSizeBytes)
-#endif
   , m_isRunning(true)
   , m_isPaused(false)
   , m_thread(&TrafficManager::ThreadRoutine, this)
@@ -189,36 +158,11 @@ void TrafficManager::SetEnabled(bool enabled)
 
 void TrafficManager::Clear()
 {
-  // TODO what should we do about subscriptions?
   {
     std::lock_guard<std::mutex> lock(m_mutex);
 
-    LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
-    LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
-    LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
-    LOG(LINFO, ("Clearing..."));
-    // TODO no longer needed
-#ifdef traffic_dead_code
-    m_currentCacheSizeBytes = 0;
-#endif
     m_messageCache.clear();
     m_feedQueue.clear();
-// TODO no longer needed
-#ifdef traffic_dead_code
-    m_mwmCache.clear();
-#endif
-
-    // TODO figure out which of the ones below we still need
-    m_lastDrapeMwmsByRect.clear();
-    m_lastPositionMwmsByRect.clear();
-#ifdef traffic_dead_code
-    m_requestedMwms.clear();
-    m_trafficETags.clear();
-#endif
-
-    LOG(LINFO, ("Messages in cache:", m_messageCache.size()));
-    LOG(LINFO, ("Feeds in queue:", m_feedQueue.size()));
-    LOG(LINFO, ("MWMs with coloring:", m_allMwmColoring.size()));
   }
   OnTrafficDataUpdate();
 }
@@ -235,27 +179,7 @@ void TrafficManager::SetCurrentDataVersion(int64_t dataVersion)
 
 void TrafficManager::OnMwmDeregistered(platform::LocalCountryFile const & countryFile)
 {
-  if (!IsEnabled())
-    return;
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  {
-    std::lock_guard<std::mutex> lock(m_mutex);
-
-    MwmSet::MwmId mwmId;
-    for (auto const & cacheEntry : m_mwmCache)
-    {
-      if (cacheEntry.first.IsDeregistered(countryFile))
-      {
-        mwmId = cacheEntry.first;
-        break;
-      }
-    }
-
-    ClearCache(mwmId);
-  }
-#endif
+  // TODO we don’t need this any more (called by Framework::OnMapDeregistered())
 }
 
 void TrafficManager::OnDestroySurface()
@@ -772,42 +696,8 @@ void TrafficManager::ThreadRoutine()
 
     // set new coloring for MWMs
     // `m_mutex` is obtained inside the method, no need to do it here
-    // TODO drop the argument, use class member inside method
     if (hasUpdates)
       OnTrafficDataUpdate();
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-    for (auto const & mwm : mwms)
-    {
-      if (!mwm.IsAlive())
-        continue;
-
-      traffic::TrafficInfo info(mwm, m_currentDataVersion);
-
-      std::string tag;
-      {
-        std::lock_guard<std::mutex> lock(m_mutex);
-        tag = m_trafficETags[mwm];
-      }
-
-      if (info.ReceiveTrafficData(tag))
-      {
-        OnTrafficDataResponse(std::move(info));
-      }
-      else
-      {
-        LOG(LWARNING, ("Traffic request failed. Mwm =", mwm));
-        OnTrafficRequestFailed(std::move(info));
-      }
-
-      {
-        std::lock_guard<std::mutex> lock(m_mutex);
-        m_trafficETags[mwm] = tag;
-      }
-    }
-    mwms.clear();
-#endif
   }
   // Calling Unsubscribe() from the worker thread on exit makes thread synchronization easier
   Unsubscribe();
@@ -865,62 +755,6 @@ bool TrafficManager::WaitForRequest()
   LOG(LINFO, ("timeout:", timeout, "active MWMs changed:", m_activeMwmsChanged, "test mode:", IsTestMode()));
   return true;
 }
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-void TrafficManager::RequestTrafficSubscription()
-{
-  if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
-      || !IsEnabled() || IsInvalidState() || m_isPaused)
-  {
-    return;
-  }
-
-  ForEachActiveMwm([this](MwmSet::MwmId const & mwmId) {
-    ASSERT(mwmId.IsAlive(), ());
-// TODO no longer needed
-#ifdef traffic_dead_code
-    m_mwmCache.insert(mwmId);
-#endif
-  });
-  m_condition.notify_one();
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  UpdateState();
-#endif
-}
-
-void TrafficManager::OnTrafficRequestFailed(traffic::TrafficInfo && info)
-{
-  std::lock_guard<std::mutex> lock(m_mutex);
-
-  auto it = m_mwmCache.find(info.GetMwmId());
-  if (it == m_mwmCache.end())
-    return;
-
-  it->second.m_isWaitingForResponse = false;
-  it->second.m_lastAvailability = info.GetAvailability();
-
-  if (info.GetAvailability() == traffic::TrafficInfo::Availability::Unknown &&
-      !it->second.m_isLoaded)
-  {
-    if (m_activeDrapeMwms.find(info.GetMwmId()) != m_activeDrapeMwms.cend() ||
-        m_activeRoutingMwms.find(info.GetMwmId()) != m_activeRoutingMwms.cend())
-    {
-      if (it->second.m_retriesCount < kMaxRetriesCount)
-        RequestTrafficData(info.GetMwmId(), true /* force */);
-      ++it->second.m_retriesCount;
-    }
-    else
-    {
-      it->second.m_retriesCount = 0;
-    }
-  }
-
-  UpdateState();
-}
-#endif
 
 void TrafficManager::OnTrafficDataUpdate()
 {
@@ -1012,11 +846,6 @@ void TrafficManager::OnTrafficDataUpdate()
       LOG(LINFO, ("Setting new coloring for", mwmId, "with", coloring.size(), "entries"));
       traffic::TrafficInfo info(mwmId, std::move(coloring));
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-      UpdateState();
-#endif
-
       if (notifyDrape)
       {
         /*
@@ -1061,46 +890,6 @@ void TrafficManager::OnTrafficDataUpdate()
   });
 }
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-void TrafficManager::OnTrafficDataResponse(traffic::TrafficInfo && info)
-{
-  {
-    std::lock_guard<std::mutex> lock(m_mutex);
-
-    auto it = m_mwmCache.find(info.GetMwmId());
-    if (it == m_mwmCache.end())
-      return;
-
-    it->second.m_isLoaded = true;
-    it->second.m_lastResponseTime = steady_clock::now();
-    it->second.m_isWaitingForResponse = false;
-    it->second.m_lastAvailability = info.GetAvailability();
-
-    if (!info.GetColoring().empty())
-    {
-      // Update cache.
-      size_t constexpr kElementSize = sizeof(traffic::TrafficInfo::RoadSegmentId) + sizeof(traffic::SpeedGroup);
-      size_t const dataSize = info.GetColoring().size() * kElementSize;
-      m_currentCacheSizeBytes += (dataSize - it->second.m_dataSize);
-      it->second.m_dataSize = dataSize;
-      ShrinkCacheToAllowableSize();
-    }
-
-    UpdateState();
-  }
-
-  if (!info.GetColoring().empty())
-  {
-    m_drapeEngine.SafeCall(&df::DrapeEngine::UpdateTraffic,
-                           static_cast<traffic::TrafficInfo const &>(info));
-
-    // Update traffic colors for routing.
-    m_observer.OnTrafficInfoAdded(std::move(info));
-  }
-}
-#endif
-
 void TrafficManager::GetActiveMwms(std::set<MwmSet::MwmId> & activeMwms)
 {
   std::lock_guard<std::mutex> lock(m_mutex);
@@ -1114,60 +903,6 @@ void TrafficManager::UniteActiveMwms(std::set<MwmSet::MwmId> & activeMwms) const
   activeMwms.insert(m_activeRoutingMwms.cbegin(), m_activeRoutingMwms.cend());
 }
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-void TrafficManager::ShrinkCacheToAllowableSize()
-{
-  // Calculating number of different active mwms.
-  std::set<MwmSet::MwmId> activeMwms;
-  UniteActiveMwms(activeMwms);
-  size_t const numActiveMwms = activeMwms.size();
-
-  if (m_currentCacheSizeBytes > m_maxCacheSizeBytes && m_mwmCache.size() > numActiveMwms)
-  {
-    std::multimap<time_point<steady_clock>, MwmSet::MwmId> seenTimings;
-    for (auto const & mwmInfo : m_mwmCache)
-      seenTimings.insert(std::make_pair(mwmInfo.second.m_lastActiveTime, mwmInfo.first));
-
-    auto itSeen = seenTimings.begin();
-    while (m_currentCacheSizeBytes > m_maxCacheSizeBytes && m_mwmCache.size() > numActiveMwms)
-    {
-      ClearCache(itSeen->second);
-      ++itSeen;
-    }
-  }
-}
-
-void TrafficManager::ClearCache(MwmSet::MwmId const & mwmId)
-{
-  auto const it = m_mwmCache.find(mwmId);
-  if (it == m_mwmCache.end())
-    return;
-
-  if (it->second.m_isLoaded)
-  {
-// TODO no longer needed
-#ifdef traffic_dead_code
-    ASSERT_GREATER_OR_EQUAL(m_currentCacheSizeBytes, it->second.m_dataSize, ());
-    m_currentCacheSizeBytes -= it->second.m_dataSize;
-#endif
-
-    m_drapeEngine.SafeCall(&df::DrapeEngine::ClearTrafficCache, mwmId);
-
-    GetPlatform().RunTask(Platform::Thread::Gui, [this, mwmId]()
-    {
-      m_observer.OnTrafficInfoRemoved(mwmId);
-    });
-  }
-  m_mwmCache.erase(it);
-  m_trafficETags.erase(mwmId);
-  m_activeDrapeMwms.erase(mwmId);
-  m_activeRoutingMwms.erase(mwmId);
-  m_lastDrapeMwmsByRect.clear();
-  m_lastRoutingMwmsByRect.clear();
-}
-#endif
-
 bool TrafficManager::IsEnabled() const
 {
   return m_state != TrafficState::Disabled;
@@ -1177,67 +912,6 @@ bool TrafficManager::IsInvalidState() const
 {
   return m_state == TrafficState::NetworkError;
 }
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-void TrafficManager::UpdateState()
-{
-  if (!IsEnabled() || IsInvalidState())
-    return;
-
-  auto const currentTime = steady_clock::now();
-  auto maxPassedTime = steady_clock::duration::zero();
-
-  bool waiting = false;
-  bool networkError = false;
-  bool expiredApp = false;
-  bool expiredData = false;
-  bool noData = false;
-
-  for (MwmSet::MwmId const & mwmId : m_activeDrapeMwms)
-  {
-    auto it = m_mwmCache.find(mwmId);
-    ASSERT(it != m_mwmCache.end(), ());
-
-    if (it->second.m_isWaitingForResponse)
-    {
-      waiting = true;
-    }
-    else
-    {
-      expiredApp |= it->second.m_lastAvailability == traffic::TrafficInfo::Availability::ExpiredApp;
-      expiredData |= it->second.m_lastAvailability == traffic::TrafficInfo::Availability::ExpiredData;
-      noData |= it->second.m_lastAvailability == traffic::TrafficInfo::Availability::NoData;
-
-      if (it->second.m_isLoaded)
-      {
-        auto const timeSinceLastResponse = currentTime - it->second.m_lastResponseTime;
-        if (timeSinceLastResponse > maxPassedTime)
-          maxPassedTime = timeSinceLastResponse;
-      }
-      else if (it->second.m_retriesCount >= kMaxRetriesCount)
-      {
-        networkError = true;
-      }
-    }
-  }
-
-  if (networkError || maxPassedTime >= kNetworkErrorTimeout)
-    ChangeState(TrafficState::NetworkError);
-  else if (waiting)
-    ChangeState(TrafficState::WaitingData);
-  else if (expiredApp)
-    ChangeState(TrafficState::ExpiredApp);
-  else if (expiredData)
-    ChangeState(TrafficState::ExpiredData);
-  else if (noData)
-    ChangeState(TrafficState::NoData);
-  else if (maxPassedTime >= kOutdatedDataTimeout)
-    ChangeState(TrafficState::Outdated);
-  else
-    ChangeState(TrafficState::Enabled);
-}
-#endif
 
 void TrafficManager::ChangeState(TrafficState newState)
 {
