@@ -1,10 +1,12 @@
 #include "jni_helper.hpp"
-#include "logging.hpp"
 #include "ScopedLocalRef.hpp"
+#include "logging.hpp"
 
 #include "base/assert.hpp"
 #include "base/exception.hpp"
 #include "base/string_utils.hpp"
+
+#include "app/organicmaps/sdk/bookmarks/data/PredefinedColors.hpp"
 
 #include <vector>
 
@@ -31,21 +33,21 @@ extern "C"
 {
 int __system_property_get(char const * name, char * value);
 
-static bool IsAndroidLowerThan7()
+static bool IsAndroidApiLowerThan(int apiLevel)
 {
   char value[92] = { 0 };
   if (__system_property_get("ro.build.version.sdk", value) < 1)
     return false;
-  const int apiLevel = atoi(value);
-  if (apiLevel > 0 && apiLevel < 24)
+  int const deviceApiLevel = atoi(value);
+  if (deviceApiLevel > 0 && deviceApiLevel < apiLevel)
     return true;
   return false;
 }
 
-static bool const g_isAndroidLowerThan7 = IsAndroidLowerThan7();
+static bool const g_isAndroidLowerThan12 = IsAndroidApiLowerThan(30);
+static bool const g_isAndroidLowerThan7 = g_isAndroidLowerThan12 && IsAndroidApiLowerThan(24);
 
-JNIEXPORT jint JNICALL
-JNI_OnLoad(JavaVM * jvm, void *)
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM * jvm, void *)
 {
   g_jvm = jvm;
   jni::InitSystemLog();
@@ -63,6 +65,12 @@ JNI_OnLoad(JavaVM * jvm, void *)
   g_keyValueClazz = jni::GetGlobalClassRef(env, "app/organicmaps/sdk/util/KeyValue");
   g_networkPolicyClazz = jni::GetGlobalClassRef(env, "app/organicmaps/sdk/util/NetworkPolicy");
   g_elevationInfoClazz = jni::GetGlobalClassRef(env, "app/organicmaps/sdk/bookmarks/data/ElevationInfo");
+
+  if (g_isAndroidLowerThan12)
+  {
+    if (predefined_colors::registerNativeMethods(env) != JNI_OK)
+      return JNI_ERR;
+  }
 
   return JNI_VERSION_1_6;
 }
@@ -84,7 +92,7 @@ JNI_OnUnload(JavaVM *, void *)
   env->DeleteGlobalRef(g_networkPolicyClazz);
   env->DeleteGlobalRef(g_elevationInfoClazz);
 }
-} // extern "C"
+}  // extern "C"
 
 namespace jni
 {
