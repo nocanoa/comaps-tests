@@ -497,7 +497,8 @@ void TrafficManager::RegisterSource(std::unique_ptr<traffxml::TraffSource> sourc
     UniteActiveMwms(activeMwms);
   }
 
-  source->SubscribeOrChangeSubscription(activeMwms);
+  if (!activeMwms.empty())
+    source->SubscribeOrChangeSubscription(activeMwms);
 
   {
     std::lock_guard<std::mutex> lock(m_trafficSourceMutex);
@@ -699,7 +700,6 @@ void TrafficManager::ThreadRoutine()
     if (hasUpdates)
       OnTrafficDataUpdate();
   }
-  // Calling Unsubscribe() from the worker thread on exit makes thread synchronization easier
   Unsubscribe();
 }
 

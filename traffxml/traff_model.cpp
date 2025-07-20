@@ -456,6 +456,23 @@ std::string DebugPrint(EventType eventType)
   UNREACHABLE();
 }
 
+std::string DebugPrint(ResponseStatus status)
+{
+  switch (status)
+  {
+    case ResponseStatus::Ok: return "Ok";
+    case ResponseStatus::InvalidOperation: return "InvalidOperation";
+    case ResponseStatus::SubscriptionRejected: return "SubscriptionRejected";
+    case ResponseStatus::NotCovered: return "NotCovered";
+    case ResponseStatus::PartiallyCovered: return "PartiallyCovered";
+    case ResponseStatus::SubscriptionUnknown: return "SubscriptionUnknown";
+    case ResponseStatus::PushRejected: return "PushRejected";
+    case ResponseStatus::InternalError: return "InternalError";
+    case ResponseStatus::Invalid: return "Invalid";
+  }
+  UNREACHABLE();
+}
+
 std::string DebugPrint(TrafficImpact impact)
 {
   std::ostringstream os;

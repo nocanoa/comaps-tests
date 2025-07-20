@@ -223,6 +223,76 @@ enum class EventType
   // TODO Security*, Transport*, Weather*
 };
 
+enum class ResponseStatus
+{
+  /**
+   * The operation was successful.
+   */
+  Ok,
+
+  /**
+   * The source rejected the operation as invalid
+   *
+   * This may happen when a nonexistent operation is attempted, or an operation is attempted with
+   * incomplete or otherwise invalid data.
+   *
+   * @note This corresponds to TraFF status `INVALID` but was renamed here.
+   * `ResponseStatus::Invalid` refers to a different kind of error.
+   */
+  InvalidOperation,
+
+  /**
+   * The source rejected the subscription, e.g. because the filtered region is too large.
+   */
+  SubscriptionRejected,
+
+  /**
+   * The source does not supply data for the requested area; the request has failed.
+   */
+  NotCovered,
+
+  /**
+   * The source supplies data only for a subset of the requested area; the request was successful
+   * (i.e. the subscription was created or changed as requested) but the consumer should be prepared
+   * to receive incomplete data.
+   */
+  PartiallyCovered,
+
+  /**
+   * An operation (change, push, pull) was attempted on a subscription which the recipient did not
+   * recognize. On transport channels which support stable identifiers for both communication
+   * parties, this is also used if a consumer attempts an operation on a subscription created by
+   * another consumer.
+   */
+  SubscriptionUnknown,
+
+  /**
+   * The aggregator does not accept unsolicited push requests from the sensor. Reserved for future
+   * versions and not used as of TraFF 0.8.
+   */
+  PushRejected,
+
+  /**
+   * An internal error prevented the recipient of the request from fulfilling it.
+   *
+   * This is either translated directly from `INTERNAL_ERROR` returned from the source, or may be
+   * inferred from errors on the transport channel (e.g. HTTP errors).
+   */
+  InternalError,
+
+  /**
+   * An unrecognized status code.
+   *
+   * This is used for all situations where we got a response from the source, with no indication of
+   * an error, but could not obtain a known status code from it (e.g. XML failed to parse, did not
+   * contain a status code, or contained an unknown status code).
+   *
+   * @note Not to be confused with TraFF status `INVALID`, which maps to
+   * `ResponseStatus::InvalidOperation`.
+   */
+  Invalid
+};
+
 /**
  * @brief Represents the impact of one or more traffic events.
  *
@@ -437,6 +507,42 @@ using TraffFeed = std::vector<TraffMessage>;
  */
 
 /**
+ * @brief Encapsulates the response to a TraFF request.
+ */
+struct TraffResponse
+{
+  /**
+   * @brief The response status for the request which triggered the response.
+   */
+  ResponseStatus m_status = ResponseStatus::Invalid;
+
+  /**
+   * @brief The subscription ID which the source has assigned to the subscriber.
+   *
+   * This attribute is how the source communicates the subscription ID to a subscriber. Required for
+   * responses to a subscription request; some transport channels may require it for every
+   * subscription-related operation; forbidden otherwise.
+   */
+  std::string m_subscriptionId;
+
+  /**
+   * @brief The time in seconds after which the source will consider the subscription invalid if no
+   * activity occurs.
+   *
+   * Required for responses to a subscription request on some transport channels, optional on other
+   * channels, forbidden for other requests.
+   *
+   * If not used, the value is zero.
+   */
+  uint32_t m_timeout = 0;
+
+  /**
+   * @brief A feed of traffic messages sent as part of the response.
+   */
+  std::optional<TraffFeed> m_feed;
+};
+
+/**
  * @brief Merges the contents of one `MultiMwmColoring` into another.
  *
  * After this function returns, `target` will hold the union of the entries it had prior to the
@@ -457,6 +563,7 @@ std::string DebugPrint(Ramps ramps);
 std::string DebugPrint(RoadClass roadClass);
 std::string DebugPrint(EventClass eventClass);
 std::string DebugPrint(EventType eventType);
+std::string DebugPrint(ResponseStatus status);
 std::string DebugPrint(TrafficImpact impact);
 std::string DebugPrint(Point point);
 std::string DebugPrint(TraffLocation location);

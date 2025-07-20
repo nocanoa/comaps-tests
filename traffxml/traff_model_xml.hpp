@@ -105,4 +105,17 @@ void GenerateTraff(std::map<std::string, traffxml::TraffMessage> const & message
  * @return A string of XML `filter` elements.
  */
 std::string FiltersToXml(std::vector<m2::RectD> & bboxRects);
+
+/**
+ * @brief Parses the response to a TraFF request.
+ *
+ * The response must comply with TraFF 0.8. The root element must be `response`.
+ *
+ * If a parsing error occurs, the response returned will have its `m_status` member set to
+ * `ResponseStatus::Invalid`.
+ *
+ * @param responseXml The response, as a string in XML format.
+ * @return The parsed response.
+ */
+TraffResponse ParseResponse(std::string const & responseXml);
 }  // namespace traffxml

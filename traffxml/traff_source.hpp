@@ -2,7 +2,11 @@
 
 #include "traffxml/traff_model.hpp"
 
+#include "base/thread.hpp"
+
 #include "indexer/mwm_set.hpp"
+
+#include "platform/http_client.hpp"
 
 #include <chrono>
 #include <set>
@@ -422,5 +426,116 @@ private:
    * @brief The update interval, 5 minutes.
    */
   static auto constexpr m_updateInterval = std::chrono::minutes(5);
+};
+
+/**
+ * @brief A TraFF source backed by a HTTP[S] server.
+ */
+class HttpTraffSource : public TraffSource
+{
+public:
+  /**
+   * @brief Creates a new `HttpTraffSource` instance and registers it with the traffic manager.
+   *
+   * @param manager The traffic manager to register the new instance with
+   */
+  static void Create(TraffSourceManager & manager, std::string const & url);
+
+  /**
+   * @brief Subscribes to a traffic service.
+   *
+   * @param mwms The MWMs for which data is needed.
+   */
+  virtual void Subscribe(std::set<MwmSet::MwmId> & mwms) override;
+
+  /**
+   * @brief Changes an existing traffic subscription.
+   *
+   * @param mwms The new set of MWMs for which data is needed.
+   */
+  virtual void ChangeSubscription(std::set<MwmSet::MwmId> & mwms) override;
+
+  /**
+   * @brief Unsubscribes from a traffic service we are subscribed to.
+   */
+  virtual void Unsubscribe() override;
+
+  /**
+   * @brief Whether this source should be polled.
+   *
+   * Prior to calling `Poll()` on a source, the caller should always first call `IsPollNeeded()` and
+   * poll the source only if the result is true.
+   *
+   * @todo Document how the result is calculated. For example:
+   * This implementation uses `m_nextRequestTime` to determine when the next poll is due. When a
+   * feed is received, `m_nextRequestTime` is set to a point in time 5 minutes in the future. As
+   * long as `m_nextRequestTime` is in the future, this method returns false.
+   *
+   * @return true if the source should be polled, false if not.
+   */
+  virtual bool IsPollNeeded() override;
+
+  /**
+   * @brief Polls the traffic service for updates.
+   */
+  virtual void Poll() override;
+
+protected:
+  /**
+   * @brief Constructs a new `HttpTraffSource`.
+   * @param manager The `TrafficSourceManager` instance to register the source with.
+   * @param url The URL for the TraFF service API.
+   */
+  HttpTraffSource(TraffSourceManager & manager, std::string const & url);
+
+private:
+  /**
+   * @brief Processes a TraFF feed.
+   * @param feed The feed.
+   */
+  void OnFeedReceived(TraffFeed & feed);
+
+  /**
+   * @brief Processes the response to a subscribe request.
+   * @param response The response to the subscribe operation.
+   */
+  void OnSubscribeResponse(TraffResponse & response);
+
+  /**
+   * @brief Processes the response to a change subscription request.
+   * @param response The response to the change subscription operation.
+   */
+  void OnChangeSubscriptionResponse(TraffResponse & response);
+
+  /**
+   * @brief Processes the response to an unsubscribe request.
+   * @param response The response to the unsubscribe operation.
+   */
+  void OnUnsubscribeResponse(TraffResponse & response);
+
+  /**
+   * @brief Processes the response to a poll request.
+   * @param response The response to the poll operation.
+   */
+  void OnPollResponse(TraffResponse & response);
+
+  /**
+   * @brief Event loop for the worker thread.
+   *
+   * This method runs an event loop, which blocks until woken up. When woken up, it processes the
+   * request (subscribe, change subscription, poll or unsubscribe) and its result, then blocks
+   * again until woken up for the next request.
+   */
+  void ThreadRoutine();
+
+  /**
+   * @brief The update interval, 5 minutes.
+   */
+  static auto constexpr m_updateInterval = std::chrono::minutes(5);
+
+  /**
+   * @brief The URL for the TraFF service.
+   */
+  const std::string m_url;
 };
 }  // namespace traffxml

@@ -304,6 +304,41 @@ std::optional<IsoTime> OptionalTimeFromXml(pugi::xml_attribute const & attribute
 }
 
 /**
+ * @brief Retrieves a response status from an attribute.
+ *
+ * @param attribute The XML attribute to retrieve.
+ * @param status Receives the status retrieved.
+ * @return `true` on success, `false` if the attribute is not set or set to an empty string.
+ */
+bool ResponseStatusFromXml(pugi::xml_attribute const & attribute, ResponseStatus & status)
+{
+  std::string statusString;
+  if (!StringFromXml(attribute, statusString))
+    return false;
+
+  if (statusString == "OK")
+    status = ResponseStatus::Ok;
+  else if (statusString == "INVALID")
+    status = ResponseStatus::InvalidOperation;
+  else if (statusString == "SUBSCRIPTION_REJECTED")
+    status = ResponseStatus::SubscriptionRejected;
+  else if (statusString == "NOT_COVERED")
+    status = ResponseStatus::NotCovered;
+  else if (statusString == "PARTIALLY_COVERED")
+    status = ResponseStatus::PartiallyCovered;
+  else if (statusString == "SUBSCRIPTION_UNKNOWN")
+    status = ResponseStatus::SubscriptionUnknown;
+  else if (statusString == "PUSH_REJECTED")
+    status = ResponseStatus::PushRejected;
+  else if (statusString == "INTERNAL_ERROR")
+    status = ResponseStatus::InternalError;
+  else
+    status = ResponseStatus::Invalid;
+
+  return true;
+}
+
+/**
  * @brief Retrieves a boolean value from an attribute.
  * @param attribute The XML attribute to retrieve.
  * @param defaultValue The default value to return.
@@ -1057,14 +1092,21 @@ void MessageToXml(TraffMessage const & message, pugi::xml_node node)
   }
 }
 
-bool ParseTraff(pugi::xml_document const & document,
-                std::optional<std::reference_wrapper<const DataSource>> dataSource,
-                TraffFeed & feed)
+/**
+ * @brief Retrieves a TraFF feed from an XML element.
+ * @param node The XML element to retrieve (`feed`).
+ * @param dataSource The data source for coloring, see `ParseTraff()`.
+ * @param feed Receives the feed.
+ * @return `true` on success, `false` if the node does not exist or does not contain valid message data.
+ */
+bool FeedFromXml(pugi::xml_node const & node,
+                    std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                    TraffFeed & feed)
 {
   bool result = false;
 
-  // Select all messages elements that are direct children of the root.
-  auto const messages = document.document_element().select_nodes("./message");
+  // Select all messages elements that are direct children of the node.
+  auto const messages = node.select_nodes("./message");
 
   if (messages.empty())
     return true;
@@ -1083,6 +1125,13 @@ bool ParseTraff(pugi::xml_document const & document,
       LOG(LWARNING, ("Could not parse message, skipping"));
   }
   return result;
+}
+
+bool ParseTraff(pugi::xml_document const & document,
+                std::optional<std::reference_wrapper<const DataSource>> dataSource,
+                TraffFeed & feed)
+{
+  return FeedFromXml(document.document_element(), dataSource, feed);
 }
 
 void GenerateTraff(TraffFeed const & feed, pugi::xml_document & document)
@@ -1116,5 +1165,40 @@ std::string FiltersToXml(std::vector<m2::RectD> & bboxRects)
                       mercator::YToLat(rect.maxY()),
                       mercator::XToLon(rect.maxX()));
   return os.str();
+}
+
+TraffResponse ParseResponse(std::string const & responseXml)
+{
+  TraffResponse result;
+  pugi::xml_document responseDocument;
+  if (!responseDocument.load_string(responseXml.c_str()))
+    return result;
+
+  auto const responseElement = responseDocument.document_element();
+  std::string responseElementName(responseElement.name());
+
+  if (responseElementName != "response")
+    return result;
+
+  if (!ResponseStatusFromXml(responseElement.attribute("status"), result.m_status))
+    return result;
+
+  StringFromXml(responseElement.attribute("subscription_id"), result.m_subscriptionId);
+
+  IntegerFromXml(responseElement.attribute("timeout"), result.m_timeout);
+
+  LOG(LDEBUG, ("Response, status:", result.m_status, "subscription ID:", result.m_subscriptionId, "timeout:", result.m_timeout));
+
+  if (responseElement.child("feed"))
+  {
+    TraffFeed feed;
+    FeedFromXml(responseElement.child("feed"), std::nullopt /* dataSource */, feed);
+    LOG(LDEBUG, ("Feed received, number of messages:", feed.size()));
+    result.m_feed = std::move(feed);
+  }
+  else
+    LOG(LDEBUG, ("No feed in response"));
+
+  return result;
 }
 }  // namespace openlr

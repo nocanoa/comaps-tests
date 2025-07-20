@@ -399,7 +399,10 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
    * MockTraffSource for debugging purposes.
    * TODO Replace with a real source, parametrized and conditionally loaded, once we have one.
    */
-  traffxml::MockTraffSource::Create(m_trafficManager);
+  //traffxml::MockTraffSource::Create(m_trafficManager);
+
+  // For testing purposes, HttpTraffSource pointing to a hardcoded local instance
+  traffxml::HttpTraffSource::Create(m_trafficManager, "http://traff:8080/subscription-manager");
 }
 
 Framework::~Framework()
