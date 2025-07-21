@@ -551,7 +551,7 @@ void PointToXml(Point const & point, std::string name, pugi::xml_node & parentNo
 {
   auto node = parentNode.append_child(name);
   if (point.m_distance)
-    node.append_attribute("distance").set_value(point.m_junctionName.value());
+    node.append_attribute("distance").set_value(point.m_distance.value());
   if (point.m_junctionName)
     node.append_attribute("junction_name").set_value(point.m_junctionName.value());
   if (point.m_junctionRef)
