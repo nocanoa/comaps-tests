@@ -41,6 +41,8 @@ namespace traffxml
  * a child of `message` and holds decoded traffic coloring. In order to parse it, `dataSource` must
  * be specified. If `dataSource` is `nullopt`, coloring will be ignored. It is recommended to pass
  * `dataSource` if, and only if, parsing an XML stream that is expected to contain traffic coloring.
+ * This is only expected to occur in cached data. TraFF from external sources is not expected to
+ * contain `mwm_coloring` elements and souch information should be ignored in feeds from outside.
  *
  * @note To pass a reference to the framework data source (assuming the `framework` is the framework
  * instance), use `std::cref(framework.GetDataSource())`.
