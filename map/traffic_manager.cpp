@@ -435,7 +435,7 @@ bool TrafficManager::RestoreCache()
   traffxml::TraffFeed feedOut;
   bool hasDecoded = false;
   bool hasUndecoded = false;
-  if (traffxml::ParseTraff(document, std::nullopt /* dataSource */, feedIn))
+  if (traffxml::ParseTraff(document, m_dataSource, feedIn))
   {
     while (!feedIn.empty())
     {
