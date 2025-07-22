@@ -103,6 +103,8 @@ std::string_view constexpr kAllow3dKey = "Allow3d";
 std::string_view constexpr kAllow3dBuildingsKey = "Buildings3d";
 std::string_view constexpr kAllowAutoZoom = "AutoZoom";
 std::string_view constexpr kTrafficEnabledKey = "TrafficEnabled";
+std::string_view constexpr kTrafficHttpEnabledKey = "TrafficHttpEnabled";
+std::string_view constexpr kTrafficHttpUrlKey = "TrafficHttpUrl";
 std::string_view constexpr kTransitSchemeEnabledKey = "TransitSchemeEnabled";
 std::string_view constexpr kIsolinesEnabledKey = "IsolinesEnabled";
 std::string_view constexpr kOutdoorsEnabledKey = "OutdoorsEnabled";
@@ -394,15 +396,14 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
     LoadMapsSync();
 
   m_trafficManager.SetEnabled(LoadTrafficEnabled());
+  if (!params.m_trafficTestMode && LoadTrafficHttpEnabled())
+    // TODO handle invalid URLs
+    traffxml::HttpTraffSource::Create(m_trafficManager, LoadTrafficHttpUrl());
 
   /*
    * MockTraffSource for debugging purposes.
-   * TODO Replace with a real source, parametrized and conditionally loaded, once we have one.
    */
   //traffxml::MockTraffSource::Create(m_trafficManager);
-
-  // For testing purposes, HttpTraffSource pointing to a hardcoded local instance
-  traffxml::HttpTraffSource::Create(m_trafficManager, "http://traff:8080/subscription-manager");
 }
 
 Framework::~Framework()
@@ -2586,6 +2587,32 @@ bool Framework::LoadTrafficEnabled()
 void Framework::SaveTrafficEnabled(bool trafficEnabled)
 {
   settings::Set(kTrafficEnabledKey, trafficEnabled);
+}
+
+bool Framework::LoadTrafficHttpEnabled()
+{
+  bool enabled;
+  if (!settings::Get(kTrafficHttpEnabledKey, enabled))
+    enabled = false;
+  return enabled;
+}
+
+void Framework::SaveTrafficHttpEnabled(bool trafficHttpEnabled)
+{
+  settings::Set(kTrafficHttpEnabledKey, trafficHttpEnabled);
+}
+
+std::string Framework::LoadTrafficHttpUrl()
+{
+  std::string url;
+  if (!settings::Get(kTrafficHttpUrlKey, url))
+    url = "";
+  return url;
+}
+
+void Framework::SaveTrafficHttpUrl(std::string trafficHttpUrl)
+{
+  settings::Set(kTrafficHttpUrlKey, trafficHttpUrl);
 }
 
 bool Framework::LoadTrafficSimplifiedColors()
