@@ -105,11 +105,6 @@ public:
 
   TrafficInfo() = default;
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  TrafficInfo(MwmSet::MwmId const & mwmId, int64_t currentDataVersion);
-#endif
-
   TrafficInfo(MwmSet::MwmId const & mwmId, Coloring && coloring);
 
   /**
@@ -119,25 +114,6 @@ public:
    */
   static TrafficInfo BuildForTesting(Coloring && coloring);
   void SetTrafficKeysForTesting(std::vector<RoadSegmentId> const & keys);
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  /**
-   * @brief Fetches the latest traffic data from the server and updates the coloring and ETag.
-   *
-   * The url is constructed using the `mwmId` specified in the constructor.
-   *
-   * The ETag or entity tag is part of HTTP, the protocol for the World Wide Web.
-   * It is one of several mechanisms that HTTP provides for web cache validation,
-   * which allows a client to make conditional requests.
-   *
-   * NOTE: This method must not be called on the UI thread.
-   *
-   * @param etag The entity tag
-   * @return True on success, false on failure.
-   */
-  bool ReceiveTrafficData(std::string & etag);
-#endif
 
   /**
    * @brief Returns the latest known speed group by a feature segment's ID.
@@ -205,28 +181,8 @@ private:
 
   friend void UnitTest_TrafficInfo_UpdateTrafficData();
 
-// TODO no longer needed
-#ifdef traffic_dead_code
-  // todo(@m) A temporary method. Remove it once the keys are added
-  // to the generator and the data is regenerated.
-  bool ReceiveTrafficKeys();
-#endif
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  // Tries to read the values of the Coloring map from server into |values|.
-  // Returns result of communicating with server as ServerDataStatus.
-  // Otherwise, returns false and does not change m_coloring.
-  ServerDataStatus ReceiveTrafficValues(std::string & etag, std::vector<SpeedGroup> & values);
-#endif
-
   // Updates the coloring and changes the availability status if needed.
   bool UpdateTrafficData(std::vector<SpeedGroup> const & values);
-
-// TODO no longer needed
-#ifdef traffic_dead_code
-  ServerDataStatus ProcessFailure(platform::HttpClient const & request, int64_t const mwmVersion);
-#endif
 
   /**
    * @brief The mapping from feature segments to speed groups (see speed_groups.hpp).
