@@ -149,11 +149,14 @@ void TrafficManager::SetEnabled(bool enabled)
     if (notifyUpdate)
       OnTrafficDataUpdate();
     else
-      RecalculateSubscription();
+      RecalculateSubscription(true);
     m_canSetMode = false;
   }
   else
+  {
+    Unsubscribe();
     m_routingSession.OnTrafficInfoClear();
+  }
 }
 
 void TrafficManager::Clear()
@@ -256,7 +259,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
   }
 }
 
-void TrafficManager::RecalculateSubscription()
+void TrafficManager::RecalculateSubscription(bool forceRenewal)
 {
   if (!IsEnabled() || m_isPaused)
     return;
@@ -273,7 +276,10 @@ void TrafficManager::RecalculateSubscription()
      * If UpdateViewport() or UpdateMyPosition() had changes, they would also have updated the
      * routing MWMs and reset m_activeMwmsChanged. If neither of them had changes and
      * m_activeMwmsChanged is true, it indicates changes in route MWMs which we need to process.
+     * If `forceRenewal` is true, we set `m_activeMwmsChanged` to true in order to force renewal of
+     * all subscriptions.
      */
+    m_activeMwmsChanged |= forceRenewal;
     if (m_activeMwmsChanged)
     {
       if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
@@ -490,22 +496,25 @@ void TrafficManager::ReceiveFeed(traffxml::TraffFeed feed)
 
 void TrafficManager::RegisterSource(std::unique_ptr<traffxml::TraffSource> source)
 {
-  std::set<MwmSet::MwmId> activeMwms;
-
+  if (IsEnabled())
   {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    UniteActiveMwms(activeMwms);
-  }
+    std::set<MwmSet::MwmId> activeMwms;
 
-  if (!activeMwms.empty())
-    source->SubscribeOrChangeSubscription(activeMwms);
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      UniteActiveMwms(activeMwms);
+    }
+
+    if (!activeMwms.empty())
+      source->SubscribeOrChangeSubscription(activeMwms);
+  }
 
   {
     std::lock_guard<std::mutex> lock(m_trafficSourceMutex);
     m_trafficSources.push_back(std::move(source));
   }
 
-  m_isPollNeeded = true;
+  m_isPollNeeded = IsEnabled();
 }
 
 void TrafficManager::PurgeExpiredMessages()
@@ -740,8 +749,14 @@ bool TrafficManager::WaitForRequest()
   LOG(LINFO, ("nothing to do for now, waiting for timeout or notification"));
   bool const timeout = !m_condition.wait_for(lock, kUpdateInterval, [this]
   {
-    // return true for any condition we want to process immediately
-    return !m_isRunning || (m_activeMwmsChanged && !IsTestMode()) || !m_feedQueue.empty();
+    // return false to continue waiting, true for any condition we want to process immediately
+    // return immediately if we got terminated
+    if (!m_isRunning)
+      return true;
+    // otherwise continue waiting if we are paused or disabled
+    if (!IsEnabled() || m_isPaused)
+      return false;
+    return (m_activeMwmsChanged && !IsTestMode()) || !m_feedQueue.empty();
   });
 
   // check again if we got terminated while waiting (or woken up because we got terminated)
@@ -948,7 +963,7 @@ void TrafficManager::Resume()
     return;
 
   m_isPaused = false;
-  RecalculateSubscription();
+  RecalculateSubscription(false);
 }
 
 void TrafficManager::SetSimplifiedColorScheme(bool simplified)

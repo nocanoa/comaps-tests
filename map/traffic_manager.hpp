@@ -183,21 +183,6 @@ public:
   void UpdateMyPosition(MyPosition const & myPosition);
 
   /**
-   * @brief Recalculates the TraFF subscription area.
-   *
-   * The subscription area needs to be recalculated when the traffic manager goes from disabled to
-   * enabled, or when it is resumed after being paused, as the subscription area is not updated
-   * while the traffic manager is disabled or paused.
-   *
-   * If the subscription area has changed, this triggers a change of the active TraFF subscription.
-   *
-   * No traffic data is discarded, but sources will be polled for an update, which may turn out
-   * larger than usual if the traffic manager was in disabled/paused state for an extended period of
-   * time or the subscription area has changed.
-   */
-  void RecalculateSubscription();
-
-  /**
    * @brief Invalidates traffic information for the specified MWM.
    *
    * Invalidation of traffic data is always per MWM and affects locations which refer to any version
@@ -286,6 +271,24 @@ public:
   void Clear();
 
 private:
+
+  /**
+   * @brief Recalculates the TraFF subscription area.
+   *
+   * The subscription area needs to be recalculated when the traffic manager goes from disabled to
+   * enabled, or when it is resumed after being paused, as the subscription area is not updated
+   * while the traffic manager is disabled or paused.
+   *
+   * If the subscription area has changed, or if `forceRenewal` is true, TraFF subscriptions are
+   * renewed by calling `SubscribeOrChangeSubscription()`.
+   *
+   * No traffic data is discarded, but sources will be polled for an update, which may turn out
+   * larger than usual if the traffic manager was in disabled/paused state for an extended period of
+   * time or the subscription area has changed.
+   *
+   * @param forceRenewal If true, renew subscriptions even if the subscription area has not changed.
+   */
+  void RecalculateSubscription(bool forceRenewal);
 
   /**
    * @brief Ensures every TraFF source has a subscription covering all currently active MWMs.
