@@ -183,6 +183,31 @@ namespace qt
     }
 #endif
 
+    QLabel * trafficHttpUrlLabel = new QLabel("Traffic API URL:");
+
+    QLineEdit * trafficHttpUrlLineEdit = new QLineEdit();
+    {
+      trafficHttpUrlLineEdit->setText(QString::fromStdString(framework.LoadTrafficHttpUrl()));
+      connect(trafficHttpUrlLineEdit, &QLineEdit::editingFinished, [&framework, trafficHttpUrlLineEdit]()
+      {
+        framework.SaveTrafficHttpUrl(trafficHttpUrlLineEdit->text().toStdString());
+        framework.SetTrafficHttpUrl(trafficHttpUrlLineEdit->text().toStdString());
+      });
+    }
+
+    QCheckBox * trafficHttpEnabledCheckBox = new QCheckBox("Enable live traffic data");
+    {
+      trafficHttpEnabledCheckBox->setChecked(framework.LoadTrafficHttpEnabled());
+      connect(trafficHttpEnabledCheckBox, &QCheckBox::stateChanged, [&framework, trafficHttpUrlLabel, trafficHttpUrlLineEdit](int i)
+      {
+        bool const enable = i > 0;
+        framework.SaveTrafficHttpEnabled(enable);
+        framework.SetTrafficHttpEnabled(enable);
+        trafficHttpUrlLabel->setEnabled(enable);
+        trafficHttpUrlLineEdit->setEnabled(enable);
+      });
+    }
+
     QHBoxLayout * bottomLayout = new QHBoxLayout();
     {
       QPushButton * closeButton = new QPushButton(tr("Close"));
@@ -206,6 +231,9 @@ namespace qt
 #ifdef BUILD_DESIGNER
     finalLayout->addWidget(indexRegenCheckBox);
 #endif
+    finalLayout->addWidget(trafficHttpEnabledCheckBox);
+    finalLayout->addWidget(trafficHttpUrlLabel);
+    finalLayout->addWidget(trafficHttpUrlLineEdit);
     finalLayout->addLayout(bottomLayout);
     setLayout(finalLayout);
   }
