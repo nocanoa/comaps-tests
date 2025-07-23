@@ -740,9 +740,11 @@ public:
   bool LoadTrafficEnabled();
   void SaveTrafficEnabled(bool trafficEnabled);
 
+  void SetTrafficHttpEnabled(bool enabled);
   bool LoadTrafficHttpEnabled();
   void SaveTrafficHttpEnabled(bool trafficHttpEnabled);
 
+  void SetTrafficHttpUrl(std::string url);
   std::string LoadTrafficHttpUrl();
   void SaveTrafficHttpUrl(std::string trafficHttpUrl);
 

@@ -2589,6 +2589,11 @@ void Framework::SaveTrafficEnabled(bool trafficEnabled)
   settings::Set(kTrafficEnabledKey, trafficEnabled);
 }
 
+void Framework::SetTrafficHttpEnabled(bool enabled)
+{
+  m_trafficManager.SetHttpTraffSource(enabled, LoadTrafficHttpUrl());
+}
+
 bool Framework::LoadTrafficHttpEnabled()
 {
   bool enabled;
@@ -2600,6 +2605,11 @@ bool Framework::LoadTrafficHttpEnabled()
 void Framework::SaveTrafficHttpEnabled(bool trafficHttpEnabled)
 {
   settings::Set(kTrafficHttpEnabledKey, trafficHttpEnabled);
+}
+
+void Framework::SetTrafficHttpUrl(std::string url)
+{
+  m_trafficManager.SetHttpTraffSource(LoadTrafficHttpEnabled(), url);
 }
 
 std::string Framework::LoadTrafficHttpUrl()

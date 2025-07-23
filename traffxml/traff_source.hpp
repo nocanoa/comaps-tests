@@ -442,6 +442,15 @@ public:
   static void Create(TraffSourceManager & manager, std::string const & url);
 
   /**
+   * @brief Prepares the HTTP traffic source for unloading.
+   *
+   * If there is still an active subscription, it unsubscribes, but without processing the result
+   * received from the service. Otherwise, teardown is a no-op.
+   */
+  // TODO move this to the parent class and override it here?
+  void Close();
+
+  /**
    * @brief Subscribes to a traffic service.
    *
    * @param mwms The MWMs for which data is needed.

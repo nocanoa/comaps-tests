@@ -174,6 +174,23 @@ public:
   bool IsEnabled() const;
 
   /**
+   * @brief Sets the enabled state and URL for the `HttpTraffSource`.
+   *
+   * If the traffic manager is in test mode, this function is a no-op.
+   *
+   * Otherwise this function is expected to be called only if the enabled state and/or URL have
+   * actually changed. Setting both to the current state will remove the current source and create
+   * a new one with identical settings.
+   *
+   * This function currently assumes that there is never more than one `HttpTraffSource` configured
+   * at the same time.
+   *
+   * @param enabled Whether the HTTP TraFF source is enabled.
+   * @param url The URL for the TraFF API.
+   */
+  void SetHttpTraffSource(bool enabled, std::string url);
+
+  /**
    * @brief Starts the traffic manager.
    *
    */

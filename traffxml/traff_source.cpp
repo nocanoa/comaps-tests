@@ -136,6 +136,27 @@ HttpTraffSource::HttpTraffSource(TraffSourceManager & manager, std::string const
   , m_url(url)
 {}
 
+void HttpTraffSource::Close()
+{
+  std::string data;
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (m_subscriptionId.empty())
+      return;
+    data = "<request operation=\"UNSUBSCRIBE\" subscription_id=\"" + m_subscriptionId + "\"/>";
+    m_subscriptionId.clear();
+  }
+
+  LOG(LDEBUG, ("Sending request:\n", data));
+
+  threads::SimpleThread thread([this, data]() {
+    TraffResponse response = HttpPost(m_url, data);
+    return;
+  });
+  thread.detach();
+}
+
 void HttpTraffSource::Subscribe(std::set<MwmSet::MwmId> & mwms)
 {
   std::string data = "<request operation=\"SUBSCRIBE\">\n<filter_list>\n"

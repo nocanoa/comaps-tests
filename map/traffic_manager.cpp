@@ -923,6 +923,27 @@ bool TrafficManager::IsEnabled() const
   return m_state != TrafficState::Disabled;
 }
 
+void TrafficManager::SetHttpTraffSource(bool enabled, std::string url)
+{
+  if (IsTestMode())
+    return;
+
+  {
+    std::lock_guard<std::mutex> lock(m_trafficSourceMutex);
+
+    for (auto it = m_trafficSources.begin(); it != m_trafficSources.end(); )
+      if (traffxml::HttpTraffSource* httpSource = dynamic_cast<traffxml::HttpTraffSource*>(it->get()))
+      {
+        httpSource->Close();
+        m_trafficSources.erase(it);
+      }
+      else
+        ++it;
+  }
+  if (enabled)
+    traffxml::HttpTraffSource::Create(*this, url);
+}
+
 bool TrafficManager::IsInvalidState() const
 {
   return m_state == TrafficState::NetworkError;
