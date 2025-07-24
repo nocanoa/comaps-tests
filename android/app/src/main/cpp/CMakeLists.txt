@@ -110,6 +110,7 @@ target_link_libraries(${PROJECT_NAME}
   # icu
   # agg
   # vulkan_wrapper
+  traffxml
 
   # Android libs
   log
