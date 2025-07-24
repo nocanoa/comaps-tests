@@ -102,7 +102,7 @@ protected:
    * @param message The message to decode.
    * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
    */
-  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
+  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded) override;
 
 private:
   /**
@@ -307,7 +307,7 @@ public:
    *
    * This implementation does nothing, as `NumMwmIds` does not support removal.
    */
-  virtual void OnMapDeregistered(platform::LocalCountryFile const & /* localFile */) {}
+  virtual void OnMapDeregistered(platform::LocalCountryFile const & /* localFile */) override {}
 
 protected:
   /**
@@ -348,7 +348,7 @@ protected:
    * @param message The message to decode.
    * @param decoded Receives the decoded segments. The speed group will be `Unknown`.
    */
-  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded);
+  void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded) override;
 
 private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
