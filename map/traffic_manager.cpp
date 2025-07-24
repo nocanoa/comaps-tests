@@ -675,7 +675,7 @@ void TrafficManager::ThreadRoutine()
     {
       if (steady_clock::now() - lastPurged >= kPurgeInterval)
       {
-        lastPurged == steady_clock::now();
+        lastPurged = steady_clock::now();
         hasUpdates |= PurgeExpiredMessagesImpl();
       }
 
