@@ -87,9 +87,9 @@ public:
 private:
   friend std::string DebugPrint(IsoTime time);
 
-  IsoTime(std::chrono::time_point<std::chrono::utc_clock> tp);
+  IsoTime(std::chrono::time_point<std::chrono::system_clock> tp);
 
-  std::chrono::time_point<std::chrono::utc_clock> m_tp;
+  std::chrono::time_point<std::chrono::system_clock> m_tp;
 };
 
 // TODO enum urgency

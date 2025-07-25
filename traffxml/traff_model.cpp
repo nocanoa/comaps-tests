@@ -79,17 +79,28 @@ const std::map<EventType, uint16_t> kEventDelayMap{
 std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
 {
   /*
-   * We cannot use `std::chrono::from_stream` because it requires GCC 14+, and as of mid-2025, the
-   * supported development platform (Ubuntu 24.04) has GCC 13.2. Clang still does not support it.
+   * TODO this is ugly because we need to work around some compiler deficiencies.
    *
-   * As a reasonably portable workaround, we first parse the time string into its constituent values
-   * using a regex, then build a `sys_seconds` instance from the values and use `clock_cast` to
-   * convert it to a `std::chrono::time_point<std::chrono::utc_clock>` instance, which is the data
-   * type we use internally.
+   * Ideally, we would be using `std::chrono::time_point<std::chrono::utc_clock>` and parse the
+   * string using `std::chrono::from_stream`, using `%FT%T%z` for the format string.
+   * This works in GCC 14+ and is pleasantly liberal about the time zone format (all of +01, +0100
+   * and +01:00 are parsed correctly). Alas, Ubuntu 24.04 (currently the default dev platform) comes
+   * with GCC 13.2, which lacks this support. Clang, the only supported compiler for Android (and,
+   * presumably, iOS), as of mid-2025, doesn’t support it at all.
    *
-   * Once we have proper support for `std::chrono::from_stream` in all toolchains we support, this
-   * function can be rewritten accordingly. In GCC 14+, using `%FT%T%z` for the format string will
-   * work with all known UTC offset formats (+01, +0100 and +01:00), just like the regex does.
+   * The workaround is therefore to use `std::chrono::time_point<std::chrono::system_clock>`, which
+   * exposes the same API as its `utc_clock` counterpart, making transition at a later point easy.
+   * In addition, however, it can be constructed from `std::time_t`, which we can generate from
+   * `std::tm`. Unlike the other C legacy functions, gmtime is thread-safe.
+   * Still not the prettiest way (as it relies on legacy C functions which are not
+   * thread-safe), but the best we can get until we have proper compiler support for `from_stream`.
+   *
+   * Should we have support for `std::chrono:clock_cast` but not `std::chrono::from_stream`, we
+   * could build a `std::chrono::sys_seconds` from the constutuent values and use
+   * `std::chrono::clock_cast` to convert it to a `std::chrono::time_point`, based on whatever clock
+   * is supported. This works on Linux (using `utc_clock`) as of mid-2025, but not on the primary
+   * target platforms (Android and iOS) and has therefore been left out for uniformity (and
+   * reproducibility of bugs).
    */
   /*
    * Regex for ISO 8601 time, with some tolerance for time zone offset. If matched, the matcher
@@ -119,17 +130,17 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
     if (offset_h < 0)
       offset_m *= -1;
 
-    const auto y = static_cast<std::chrono::year>(std::stoi(iso8601Matcher[1]));
-    const auto mo = static_cast<std::chrono::month>(std::stoi(iso8601Matcher[2]));
-    const auto d = static_cast<std::chrono::day>(std::stoi(iso8601Matcher[3]));
-    const std::chrono::hours h{std::stoi(iso8601Matcher[4]) - offset_h};
-    const std::chrono::minutes min{std::stoi(iso8601Matcher[5]) - offset_m};
-    const std::chrono::seconds s{static_cast<uint8_t>(std::stof(iso8601Matcher[6]) + 0.5f)};
+    std::tm tm = {};
+    tm.tm_year = std::stoi(iso8601Matcher[1]) - 1900;
+    tm.tm_mon = std::stoi(iso8601Matcher[2]) - 1;
+    tm.tm_mday = std::stoi(iso8601Matcher[3]);
+    tm.tm_hour = std::stoi(iso8601Matcher[4]) - offset_h;
+    tm.tm_min = std::stoi(iso8601Matcher[5]) - offset_m;
+    tm.tm_sec = std::stof(iso8601Matcher[6]) + 0.5f;
 
-    std::chrono::sys_seconds sys_s = std::chrono::sys_days{y/mo/d};
-    sys_s = sys_s + h + min + s;
+    std::time_t tt = timegm(&tm);
 
-    std::chrono::time_point<std::chrono::utc_clock> tp = std::chrono::clock_cast<std::chrono::utc_clock>(sys_s);
+    std::chrono::time_point<std::chrono::system_clock> tp = std::chrono::system_clock::from_time_t(tt);
 
     IsoTime result(tp);
     return result;
@@ -143,21 +154,21 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
 
 IsoTime IsoTime::Now()
 {
-  return IsoTime(std::chrono::utc_clock::now());
+  return IsoTime(std::chrono::system_clock::now());
 }
 
-IsoTime::IsoTime(std::chrono::time_point<std::chrono::utc_clock> tp)
+IsoTime::IsoTime(std::chrono::time_point<std::chrono::system_clock> tp)
   : m_tp(tp)
 {}
 
 bool IsoTime::IsPast()
 {
-  return m_tp < std::chrono::utc_clock::now();
+  return m_tp < std::chrono::system_clock::now();
 }\
 
 void IsoTime::Shift(IsoTime nowRef)
 {
-  auto const offset = std::chrono::utc_clock::now() - nowRef.m_tp;
+  auto const offset = std::chrono::system_clock::now() - nowRef.m_tp;
   m_tp += offset;
 }
 
