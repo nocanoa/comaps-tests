@@ -870,7 +870,7 @@ bool ColoringFromXml(pugi::xml_node const & node, DataSource const & dataSource,
     return false;
   }
 
-  uint64_t version = 0;
+  int64_t version = 0;
   if (!IntegerFromXml(node.attribute("version"), version))
   {
     LOG(LWARNING, ("Can’t get version for country", countryName, "(skipping)"));
