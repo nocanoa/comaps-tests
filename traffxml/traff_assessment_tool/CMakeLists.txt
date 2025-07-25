@@ -22,7 +22,6 @@ omim_add_executable(${PROJECT_NAME} ${SRC})
 set_target_properties(${PROJECT_NAME} PROPERTIES AUTOUIC ON AUTOMOC ON)
 
 target_link_libraries(${PROJECT_NAME}
-  openlr
   qt_common
   map
   gflags::gflags

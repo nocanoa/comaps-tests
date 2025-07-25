@@ -5,8 +5,11 @@
 #include "indexer/data_source.hpp"
 #include "indexer/mwm_set.hpp"
 
+// Only needed for OpenlrTraffDecoder, see below
+#if 0
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
+#endif
 
 #include "routing/index_router.hpp"
 #include "routing/regions_decl.hpp"
@@ -85,6 +88,8 @@ protected:
 private:
 };
 
+// Disabled for now, as the OpenLR-based decoder is slow, buggy and not well suited to the task.
+#if 0
 /**
  * @brief A `TraffDecoder` implementation which internally uses the version 3 OpenLR decoder.
  */
@@ -170,6 +175,7 @@ private:
    */
   openlr::OpenLRDecoder m_openLrDecoder;
 };
+#endif
 
 /**
  * @brief A `TraffDecoder` implementation which internally uses the routing engine.

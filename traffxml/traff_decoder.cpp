@@ -7,9 +7,12 @@
 
 #include "indexer/feature.hpp"
 
+// Only needed for OpenlrTraffDecoder, see below
+#if 0
 #include "openlr/decoded_path.hpp"
 #include "openlr/openlr_decoder.hpp"
 #include "openlr/openlr_model.hpp"
+#endif
 
 #include "routing/async_router.hpp"
 #include "routing/checkpoints.hpp"
@@ -236,6 +239,8 @@ void TraffDecoder::DecodeMessage(traffxml::TraffMessage & message)
   }
 }
 
+// Disabled for now, as the OpenLR-based decoder is slow, buggy and not well suited to the task.
+#if 0
 OpenLrV3TraffDecoder::OpenLrV3TraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                            const CountryParentNameGetterFn & countryParentNameGetter,
                                            std::map<std::string, TraffMessage> & messageCache)
@@ -451,6 +456,7 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
       decoded[paths[i].m_path[j].GetFeatureId().m_mwmId][traffic::TrafficInfo::RoadSegmentId(fid, segment, direction)] = traffic::SpeedGroup::Unknown;
     }
 }
+#endif
 
 double RoutingTraffDecoder::TraffEstimator::GetUTurnPenalty(Purpose /* purpose */) const
 {
