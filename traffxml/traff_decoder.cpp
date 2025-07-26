@@ -779,7 +779,7 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
     while(!rsegments.empty() && rsegments.front().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
       rsegments.erase(rsegments.begin());
     while(!rsegments.empty() && rsegments.back().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
-      rsegments.erase(rsegments.end());
+      rsegments.pop_back();
 
     if (!backwards && message.m_location.value().m_at && !message.m_location.value().m_to)
       // from–at in forward direction, add last segment
