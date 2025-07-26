@@ -394,16 +394,6 @@ Framework::Framework(FrameworkParams const & params, bool loadMaps)
 
   if (loadMaps)
     LoadMapsSync();
-
-  m_trafficManager.SetEnabled(LoadTrafficEnabled());
-  if (!params.m_trafficTestMode && LoadTrafficHttpEnabled())
-    // TODO handle invalid URLs
-    traffxml::HttpTraffSource::Create(m_trafficManager, LoadTrafficHttpUrl());
-
-  /*
-   * MockTraffSource for debugging purposes.
-   */
-  //traffxml::MockTraffSource::Create(m_trafficManager);
 }
 
 Framework::~Framework()
@@ -421,6 +411,19 @@ Framework::~Framework()
   m_trafficManager.Teardown();
   DestroyDrapeEngine();
   m_featuresFetcher.SetOnMapDeregisteredCallback(nullptr);
+}
+
+void Framework::InitializeTraffic()
+{
+  m_trafficManager.SetEnabled(LoadTrafficEnabled());
+  if (!m_trafficManager.IsTestMode() && LoadTrafficHttpEnabled())
+    // TODO handle invalid URLs
+    traffxml::HttpTraffSource::Create(m_trafficManager, LoadTrafficHttpUrl());
+
+  /*
+   * MockTraffSource for debugging purposes.
+   */
+  //traffxml::MockTraffSource::Create(m_trafficManager);
 }
 
 void Framework::ShowNode(storage::CountryId const & countryId)
@@ -529,6 +532,8 @@ void Framework::LoadMapsSync()
   LOG(LDEBUG, ("Editor initialized"));
 
   GetStorage().RestoreDownloadQueue();
+
+  InitializeTraffic();
 }
 
 // Small copy-paste with LoadMapsSync, but I don't have a better solution.
@@ -550,6 +555,8 @@ void Framework::LoadMapsAsync(std::function<void()> && callback)
       LOG(LDEBUG, ("Editor initialized"));
 
       GetStorage().RestoreDownloadQueue();
+
+      InitializeTraffic();
 
       callback();
     });
