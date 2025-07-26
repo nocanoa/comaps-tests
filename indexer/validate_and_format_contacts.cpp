@@ -3,21 +3,22 @@
 #include "coding/url.hpp"
 
 #include "base/string_utils.hpp"
+#include <unicode/regex.h>
 
 #include <cstring>    // strlen
-#include <regex>
 
 namespace osm
 {
 using namespace std;
 
-static auto const s_instaRegex = regex(R"(^@?[A-Za-z0-9_][A-Za-z0-9_.]{0,28}[A-Za-z0-9_]$)");
-static auto const s_twitterRegex = regex(R"(^@?[A-Za-z0-9_]{1,15}$)");
-static auto const s_badVkRegex = regex(R"(^\d\d\d.+$)");
-static auto const s_goodVkRegex = regex(R"(^[A-Za-z0-9_.]{5,32}$)");
-static auto const s_lineRegex = regex(R"(^[a-z0-9-_.]{4,20}$)");
-static auto const s_fediverseRegex = regex(R"(^@?[a-zA-Z0-9_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)");
-static auto const s_blueskyRegex = regex(R"(^@?[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$)");
+UErrorCode status = U_ZERO_ERROR;
+icu::RegexPattern* s_instaRegex = icu::RegexPattern::compile(R"(^@?[A-Za-z0-9_][A-Za-z0-9_.]{0,28}[A-Za-z0-9_]$)", 0, status);
+icu::RegexPattern* s_twitterRegex = icu::RegexPattern::compile(R"(^@?[A-Za-z0-9_]{1,15}$)", 0, status);
+icu::RegexPattern* s_badVkRegex = icu::RegexPattern::compile(R"(^\d\d\d.+$)", 0, status);
+icu::RegexPattern* s_goodVkRegex = icu::RegexPattern::compile(R"(^[A-Za-z0-9_.]{5,32}$)", 0, status);
+icu::RegexPattern* s_lineRegex = icu::RegexPattern::compile(R"(^[a-z0-9-_.]{4,20}$)", 0, status);
+icu::RegexPattern* s_fediverseRegex = icu::RegexPattern::compile(R"(^@?[a-zA-Z0-9_]+@[\p{L}\p{N}-]+\.[\p{L}\p{N}.-]+$)", 0, status);
+icu::RegexPattern* s_blueskyRegex = icu::RegexPattern::compile(R"(^@?[\p{L}\p{N}-]+(\.[\p{L}\p{N}-]+)+$)", 0, status);
 
 constexpr string_view kFacebook{"contact:facebook"};
 constexpr string_view kInstagram{"contact:instagram"};
@@ -58,6 +59,14 @@ constexpr string_view kUrlBluesky{"https://bsky.app/profile/"};
 constexpr string_view kUrlPanoramax{"https://api.panoramax.xyz/?pic="};
 constexpr string_view kHttp{"http://"};
 constexpr string_view kHttps{"https://"};
+
+bool icuRegexMatches(const std::string& inputStr, icu::RegexPattern* pattern) {
+
+  UErrorCode status = U_ZERO_ERROR;
+  icu::UnicodeString input(inputStr.c_str(), "UTF-8");
+  std::unique_ptr<icu::RegexMatcher> matcher(pattern->matcher(input, status));
+  return U_SUCCESS(status) && matcher->matches(status);
+}
 
 size_t GetProtocolNameLength(string const & website)
 {
@@ -160,7 +169,7 @@ string ValidateAndFormat_instagram(string const & instagramPage)
     return {};
   // Check that instagramPage contains valid username.
   // Rules are defined here: https://blog.jstassen.com/2016/03/code-regex-for-instagram-username-and-hashtags/
-  if (regex_match(instagramPage, s_instaRegex))
+  if (icuRegexMatches(instagramPage, s_instaRegex))
   {
     if (instagramPage.front() == '@')
       return instagramPage.substr(1);
@@ -189,7 +198,7 @@ string ValidateAndFormat_twitter(string const & twitterPage)
     return {};
   // Check that twitterPage contains valid username.
   // Rules took here: https://stackoverflow.com/q/11361044
-  if (regex_match(twitterPage, s_twitterRegex))
+  if (icuRegexMatches(twitterPage, s_twitterRegex))
   {
     if (twitterPage.front() == '@')
       return twitterPage.substr(1);
@@ -231,9 +240,9 @@ string ValidateAndFormat_vk(string const & vkPage)
     if (vkPageClean.front() == '@')
       vkPageClean = vkPageClean.substr(1);
 
-    if ((vkPageClean.front() == '_' && vkPageClean.back() == '_') || regex_match(vkPageClean, s_badVkRegex))
+    if ((vkPageClean.front() == '_' && vkPageClean.back() == '_') || icuRegexMatches(vkPageClean, s_badVkRegex))
       return {};
-    if (regex_match(vkPageClean, s_goodVkRegex))
+    if (icuRegexMatches(vkPageClean, s_goodVkRegex))
       return vkPageClean;
   }
   if (!ValidateWebsite(vkPage))
@@ -279,7 +288,7 @@ string ValidateAndFormat_contactLine(string const & linePage)
 
     string linePageClean = stripAtSymbol(linePage);
 
-    if (regex_match(linePageClean, s_lineRegex))
+    if (icuRegexMatches(linePageClean, s_lineRegex))
       return linePageClean;
   }
 
@@ -339,7 +348,7 @@ string ValidateAndFormat_fediverse(string const & fediPage)
     return {};
 
   // Parse {@?}{username}@{domain.name} format
-  if (regex_match(fediPage, s_fediverseRegex))
+  if (icuRegexMatches(fediPage, s_fediverseRegex))
     return stripAtSymbol(fediPage);
 
   // If it doesn't match the above format, it can only be an URL format.
@@ -368,7 +377,7 @@ string ValidateAndFormat_fediverse(string const & fediPage)
   // Then construct the final username@domain.name format
   path.append("@").append(parsedDomain);
   // and make sure it's valid
-  if (regex_match(path, s_fediverseRegex))
+  if (icuRegexMatches(path, s_fediverseRegex))
     return path;
   else
     return {};
@@ -380,7 +389,7 @@ string ValidateAndFormat_bluesky(string const & bskyPage)
     return {};
 
   // Try matching {@?}{user/domain.name} format to avoid doing the other stuff
-  if (regex_match(bskyPage, s_blueskyRegex))
+  if (icuRegexMatches(bskyPage, s_blueskyRegex))
     return stripAtSymbol(bskyPage);
 
   // If not, it must match the URL format
@@ -398,7 +407,7 @@ string ValidateAndFormat_bluesky(string const & bskyPage)
       path.erase(path.find_last_not_of('/') + 1); // Strip last '/' symbol if exists
 
       // Then make sure it matches {@?}{user/domain.name}
-      if (regex_match(path, s_blueskyRegex))
+      if (icuRegexMatches(path, s_blueskyRegex))
         return stripAtSymbol(path);
     }
   }
@@ -458,7 +467,7 @@ bool ValidateInstagramPage(string const & page)
     return true;
 
   // Rules are defined here: https://blog.jstassen.com/2016/03/code-regex-for-instagram-username-and-hashtags/
-  if (regex_match(page, s_instaRegex))
+  if (icuRegexMatches(page, s_instaRegex))
     return true;
 
   if (!ValidateWebsite(page))
@@ -474,7 +483,7 @@ bool ValidateTwitterPage(string const & page)
     return true;
 
   if (!ValidateWebsite(page))
-    return regex_match(page, s_twitterRegex); // Rules are defined here: https://stackoverflow.com/q/11361044
+    return icuRegexMatches(page, s_twitterRegex); // Rules are defined here: https://stackoverflow.com/q/11361044
 
   string const domain = strings::MakeLowerCase(url::Url::FromString(page).GetHost());
   return domain == kXCom || domain.ends_with(kDotXCom) || domain == kTwitterCom || domain.ends_with(kDotTwitterCom);
@@ -500,9 +509,9 @@ bool ValidateVkPage(string const & page)
     if (vkLogin.front() == '@')
       vkLogin = vkLogin.substr(1);
 
-    if ((vkLogin.front() == '_' && vkLogin.back() == '_') || regex_match(vkLogin, s_badVkRegex))
+    if ((vkLogin.front() == '_' && vkLogin.back() == '_') || icuRegexMatches(vkLogin, s_badVkRegex))
       return false;
-    if (regex_match(vkLogin, s_goodVkRegex))
+    if (icuRegexMatches(vkLogin, s_goodVkRegex))
       return true;
   }
 
@@ -525,7 +534,7 @@ bool ValidateLinePage(string const & page)
     // The page name must be between 4 and 20 characters. Should contain alphanumeric characters
     // and symbols '.', '-', and '_'
 
-    if (regex_match(stripAtSymbol(page), s_lineRegex))
+    if (icuRegexMatches(stripAtSymbol(page), s_lineRegex))
       return true;
   }
 
@@ -543,7 +552,7 @@ bool ValidateFediversePage(string const & page)
     return true;
 
   // Match @username@instance.name format
-  if (regex_match(page, s_fediverseRegex))
+  if (icuRegexMatches(page, s_fediverseRegex))
     return true;
 
   // If it doesn't match the above format, it can only be an URL format.
@@ -572,7 +581,7 @@ bool ValidateFediversePage(string const & page)
   // Then construct the username@domain.name format
   path.append("@").append(domain);
   // And return if it's valid or not
-  return regex_match(path, s_fediverseRegex);
+  return icuRegexMatches(path, s_fediverseRegex);
 }
 
 bool ValidateBlueskyPage(string const & page)
@@ -582,7 +591,7 @@ bool ValidateBlueskyPage(string const & page)
     return true;
 
   // Match {@?}{user/domain.name} format
-  if (regex_match(page, s_blueskyRegex))
+  if (icuRegexMatches(page, s_blueskyRegex))
     return true;
 
   // Has to be an url format now
@@ -600,7 +609,7 @@ bool ValidateBlueskyPage(string const & page)
     path.erase(0, 8); // Strip "profile/" part
     path.erase(path.find_last_not_of('/') + 1); // Strip last '/' symbol if exists
     // Then try to parse the remaining text as a username again
-    if (regex_match(path, s_blueskyRegex))
+    if (icuRegexMatches(path, s_blueskyRegex))
       return true;
   }
 

@@ -119,11 +119,17 @@ UNIT_TEST(EditableMapObject_ValidateAndFormat_fediverse)
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("@comaps@floss.social.uk"), "comaps@floss.social.uk", ());
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("pub.mastodon.org.uk/@comaps"), "comaps@pub.mastodon.org.uk", ());
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("pub.mastodon.org.uk/users/@comaps"), "comaps@pub.mastodon.org.uk", ());
+  TEST_EQUAL(osm::ValidateAndFormat_fediverse("https://bawü.social/@mannheim"), "mannheim@bawü.social", ());
+  TEST_EQUAL(osm::ValidateAndFormat_fediverse("@mannheim@bawü.social"), "mannheim@bawü.social", ());
+
 
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("comaps@fosstodon@mastodon.org"), "", ());
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("co$maps@mastodon.social"), "", ());
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("pub.mastodon.org.uk/comaps"), "", ());
   TEST_EQUAL(osm::ValidateAndFormat_fediverse("pub.mastodon.org.uk/users/"), "", ());
+  TEST_EQUAL(osm::ValidateAndFormat_fediverse("@comaps.org"), "", ());
+  TEST_EQUAL(osm::ValidateAndFormat_fediverse("@comaps@.org"), "", ());
+  TEST_EQUAL(osm::ValidateAndFormat_fediverse("@comaps"), "", ());
 }
 
 UNIT_TEST(EditableMapObject_ValidateAndFormat_bluesky)
@@ -306,11 +312,16 @@ UNIT_TEST(EditableMapObject_ValidateFediversePage)
   TEST(osm::ValidateFediversePage("@comaps@floss.social.uk"), ());
   TEST(osm::ValidateFediversePage("pub.mastodon.org.uk/@comaps"), ());
   TEST(osm::ValidateFediversePage("pub.mastodon.org.uk/users/@comaps"), ());
+  TEST(osm::ValidateFediversePage("https://bawü.social/@mannheim"), ());
+  TEST(osm::ValidateFediversePage("@mannheim@bawü.social"), ());
 
   TEST(!osm::ValidateFediversePage("comaps@floss@mastodon.org"), ());
-  TEST(!osm::ValidateFediversePage("orga$nicmaps@mastodon.social"), ());
+  TEST(!osm::ValidateFediversePage("co$maps@mastodon.social"), ());
   TEST(!osm::ValidateFediversePage("pub.mastodon.org.uk/comaps"), ());
   TEST(!osm::ValidateFediversePage("pub.mastodon.org.uk/users/"), ());
+  TEST(!osm::ValidateFediversePage("@comaps.org"), ());
+  TEST(!osm::ValidateFediversePage("@comaps@.org"), ());
+  TEST(!osm::ValidateFediversePage("@comaps"), ());
 }
 
 UNIT_TEST(EditableMapObject_ValidateBlueskyPage)

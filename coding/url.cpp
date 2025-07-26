@@ -115,21 +115,19 @@ string Join(string const & lhs, string const & rhs)
 
 string UrlEncode(string const & rawUrl)
 {
-  size_t const count = rawUrl.size();
   string result;
-  result.reserve(count);
+  result.reserve(rawUrl.size());
 
-  for (size_t i = 0; i < count; ++i)
+  for (unsigned char c : rawUrl)
   {
-    char const c = rawUrl[i];
-    if (c < '-' || c == '/' || (c > '9' && c < 'A') || (c > 'Z' && c < '_') ||
-        c == '`' || (c > 'z' && c < '~') || c > '~')
+    // Allowed URI chars: https://www.ietf.org/rfc/rfc3986.txt
+    if (isalnum(c) || c == '-' || c == '.' || c == '_' || c == '~')
+      result += c;
+    else
     {
       result += '%';
       result += NumToHex(c);
     }
-    else
-      result += rawUrl[i];
   }
 
   return result;

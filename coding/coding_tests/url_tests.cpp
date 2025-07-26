@@ -80,6 +80,7 @@ UNIT_TEST(Url_Encode)
   TEST_EQUAL(UrlEncode("%% "), "%25%25%20", ());
   TEST_EQUAL(UrlEncode("20"), "20", ());
   TEST_EQUAL(UrlEncode("Guinea-Bissau"), "Guinea-Bissau", ());
+  TEST_EQUAL(UrlEncode("ümlaut"), "%C3%BCmlaut", ());
   TEST_EQUAL(UrlEncode(orig1), enc1, ());
   TEST_EQUAL(UrlEncode(orig2), enc2, ());
   TEST_EQUAL(UrlEncode(orig3), enc3, ());
@@ -98,6 +99,8 @@ UNIT_TEST(Url_Decode)
   TEST_EQUAL(UrlDecode(enc3), orig3, ());
   TEST_EQUAL(UrlDecode(enc4), orig4, ());
   TEST_EQUAL(UrlDecode("123+Main+St,+Seattle,+WA+98101"), "123 Main St, Seattle, WA 98101", ());
+  TEST_EQUAL(UrlDecode("%C3%BCmlaut"), "ümlaut", ());
+
 }
 
 UNIT_TEST(Url_Invalid)
@@ -125,6 +128,11 @@ UNIT_TEST(Url_Valid)
   TestUrl("http://www.sandwichparlour.com.au/")
       .Scheme("http")
       .Host("www.sandwichparlour.com.au")
+      .Path("");
+
+  TestUrl("https://www.ümlaut.org.de/")
+      .Scheme("https")
+      .Host("www.ümlaut.org.de")
       .Path("");
 
   TestUrl("cm:/&test").Scheme("cm").Host("&test").Path("");

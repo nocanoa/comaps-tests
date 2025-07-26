@@ -27,6 +27,10 @@ data/edits.xml
 data/World.mwm
 data/WorldCoasts.mwm
 
+# generated when running tests. NOT the lowercase 'testing' which should be kept.
+Testing
+!testing
+
 # Compiled Python
 *.pyc
 
