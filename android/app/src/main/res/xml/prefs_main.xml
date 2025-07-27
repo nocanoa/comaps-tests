@@ -106,6 +106,18 @@
         app:singleLineTitle="false"
         android:persistent="false"
         android:order="18"/>
+    <SwitchPreferenceCompat
+      android:key="@string/pref_traffic_http_enabled"
+      android:title="@string/traffic_http_enabled"
+      app:singleLineTitle="false"
+      android:summary="@string/traffic_http_enabled_description"
+      android:defaultValue="true"
+      android:order="19"/>
+    <EditTextPreference
+      android:key="@string/pref_traffic_http_url"
+      android:title="@string/traffic_http_url"
+      app:singleLineTitle="false"
+      android:order="20"/>
   </androidx.preference.PreferenceCategory>
 
   <androidx.preference.PreferenceCategory

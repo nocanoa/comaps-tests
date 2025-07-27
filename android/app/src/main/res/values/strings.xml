@@ -833,6 +833,14 @@
     <string name="enable_show_on_lock_screen_description">When enabled, the app will work on the lockscreen even when the device is locked.</string>
     <!-- Current language of the map! -->
     <string name="change_map_locale">Map language</string>
+    <!-- Enable live traffic data via HTTP (title) -->
+    <string name="traffic_http_enabled">Enable live traffic data</string>
+    <!-- Enable live traffic data via HTTP (description) -->
+    <string name="traffic_http_enabled_description">When enabled, the app will periodically retrieve traffic information from the configured URL.</string>
+    <!-- URL for live traffic data -->
+    <string name="traffic_http_url">Traffic service URL</string>
+    <!-- Status message indicating that user did not set a traffic URL yet. -->
+    <string name="traffic_http_url_not_set">Not set</string>
     <!-- OpenStreetMap text on splash screen -->
     <string name="splash_subtitle">Map data from OpenStreetMap</string>
     <!-- Telegram group url for the "?" About page -->

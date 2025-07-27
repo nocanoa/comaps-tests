@@ -123,4 +123,33 @@ extern "C"
       frm()->SaveTransliteration(value);
       frm()->AllowTransliteration(value);
     }
+
+    JNIEXPORT jboolean JNICALL
+    Java_app_organicmaps_util_Config_nativeGetTrafficHttpEnabled(JNIEnv * env, jclass thiz)
+    {
+      return frm()->LoadTrafficHttpEnabled();
+    }
+
+    JNIEXPORT void JNICALL
+    Java_app_organicmaps_util_Config_nativeSetTrafficHttpEnabled(JNIEnv * env, jclass thiz,
+                                                                 jboolean value)
+    {
+      frm()->SaveTrafficHttpEnabled(value);
+      frm()->SetTrafficHttpEnabled(value);
+    }
+
+    JNIEXPORT jstring JNICALL
+    Java_app_organicmaps_util_Config_nativeGetTrafficHttpUrl(JNIEnv * env, jclass thiz)
+    {
+      std::string value = frm()->LoadTrafficHttpUrl();
+      return jni::ToJavaString(env, value);
+    }
+
+    JNIEXPORT void JNICALL
+    Java_app_organicmaps_util_Config_nativeSetTrafficHttpUrl(JNIEnv * env, jclass thiz,
+                                                             jstring value)
+    {
+      frm()->SaveTrafficHttpUrl(jni::ToNativeString(env, value));
+      frm()->SetTrafficHttpUrl(jni::ToNativeString(env, value));
+    }
 } // extern "C"

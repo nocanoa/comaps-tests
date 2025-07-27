@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -57,6 +58,8 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     initAutoDownloadPrefsCallbacks();
     initLargeFontSizePrefsCallbacks();
     initTransliterationPrefsCallbacks();
+    initTrafficHttpEnabledPrefsCallbacks();
+    initTrafficHttpUrlPrefsCallbacks();
     init3dModePrefsCallbacks();
     initPerspectivePrefsCallbacks();
     initAutoZoomPrefsCallbacks();
@@ -82,6 +85,16 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     final Preference pref = getPreference(getString(R.string.pref_map_locale));
     Locale locale = new Locale(MapLanguageCode.getMapLanguageCode());
     pref.setSummary(locale.getDisplayLanguage());
+  }
+
+  private void updateTrafficHttpUrlSummary()
+  {
+    final Preference pref = getPreference(getString(R.string.pref_traffic_http_url));
+    String summary = Config.getTrafficHttpUrl();
+    if (summary.length() == 0)
+      pref.setSummary(R.string.traffic_http_url_not_set);
+    else
+      pref.setSummary(summary);
   }
 
   private void updateRoutingSettingsPrefsSummary()
@@ -111,6 +124,7 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     updateVoiceInstructionsPrefsSummary();
     updateRoutingSettingsPrefsSummary();
     updateMapLanguageCodeSummary();
+    updateTrafficHttpUrlSummary();
   }
 
   @Override
@@ -165,6 +179,36 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
       final boolean newVal = (Boolean) newValue;
       if (oldVal != newVal)
         Config.setTransliteration(newVal);
+
+      return true;
+    });
+  }
+
+  private void initTrafficHttpEnabledPrefsCallbacks()
+  {
+    final Preference pref = getPreference(getString(R.string.pref_traffic_http_enabled));
+
+    ((TwoStatePreference)pref).setChecked(Config.getTrafficHttpEnabled());
+    pref.setOnPreferenceChangeListener((preference, newValue) -> {
+      final boolean oldVal = Config.getTrafficHttpEnabled();
+      final boolean newVal = (Boolean) newValue;
+      if (oldVal != newVal)
+        Config.setTrafficHttpEnabled(newVal);
+
+      return true;
+    });
+  }
+
+  private void initTrafficHttpUrlPrefsCallbacks()
+  {
+    final Preference pref = getPreference(getString(R.string.pref_traffic_http_url));
+
+    ((EditTextPreference)pref).setText(Config.getTrafficHttpUrl());
+    pref.setOnPreferenceChangeListener((preference, newValue) -> {
+      final String oldVal = Config.getTrafficHttpUrl();
+      final String newVal = (String) newValue;
+      if (!oldVal.equals(newVal))
+        Config.setTrafficHttpUrl(newVal);
 
       return true;
     });

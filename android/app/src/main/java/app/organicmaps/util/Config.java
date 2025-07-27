@@ -354,6 +354,26 @@ public final class Config
     nativeSetTransliteration(value);
   }
 
+  public static boolean getTrafficHttpEnabled()
+  {
+    return nativeGetTrafficHttpEnabled();
+  }
+
+  public static void setTrafficHttpEnabled(boolean value)
+  {
+    nativeSetTrafficHttpEnabled(value);
+  }
+
+  public static String getTrafficHttpUrl()
+  {
+    return nativeGetTrafficHttpUrl();
+  }
+
+  public static void setTrafficHttpUrl(String value)
+  {
+    nativeSetTrafficHttpUrl(value);
+  }
+
   public static boolean isNY()
   {
     return getBool("NY");
@@ -507,4 +527,8 @@ public final class Config
   private static native void nativeSetLargeFontsSize(boolean value);
   private static native boolean nativeGetTransliteration();
   private static native void nativeSetTransliteration(boolean value);
+  private static native boolean nativeGetTrafficHttpEnabled();
+  private static native void nativeSetTrafficHttpEnabled(boolean value);
+  private static native String nativeGetTrafficHttpUrl();
+  private static native void nativeSetTrafficHttpUrl(String value);
 }

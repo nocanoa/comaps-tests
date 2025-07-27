@@ -36,6 +36,8 @@
   <string name="pref_settings_general" translatable="false">GeneralSettings</string>
   <string name="pref_navigation" translatable="false">Navigation</string>
   <string name="pref_information" translatable="false">Information</string>
+  <string name="pref_traffic_http_enabled" translatable="false">TrafficHttpEnabled</string>
+  <string name="pref_traffic_http_url" translatable="false">TrafficHttpUrl</string>
   <string name="pref_transliteration" translatable="false">Transliteration</string>
   <string name="pref_power_management" translatable="false">PowerManagment</string>
   <string name="pref_keep_screen_on" translatable="false">KeepScreenOn</string>
