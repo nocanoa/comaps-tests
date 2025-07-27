@@ -134,7 +134,7 @@ void TrafficManager::SetEnabled(bool enabled)
                                                                     m_countryParentNameGetterFn, m_messageCache);
       if (!m_storage && !IsTestMode())
       {
-        m_storage = make_unique<traffxml::LocalStorage>(kTrafficXMLFileName);
+        m_storage = std::make_unique<traffxml::LocalStorage>(kTrafficXMLFileName);
         notifyUpdate = RestoreCache();
         m_lastStorageUpdate = steady_clock::now();
       }
