@@ -203,8 +203,12 @@ namespace qt
         bool const enable = i > 0;
         framework.SaveTrafficHttpEnabled(enable);
         framework.SetTrafficHttpEnabled(enable);
-        trafficHttpUrlLabel->setEnabled(enable);
-        trafficHttpUrlLineEdit->setEnabled(enable);
+        /*
+         * Keep URL editable even when the source is disabled. Since changes are applied immediately
+         * (no Apply button), we want to be able to set the URL before enabling the source.
+         */
+        //trafficHttpUrlLabel->setEnabled(enable);
+        //trafficHttpUrlLineEdit->setEnabled(enable);
       });
     }
 
