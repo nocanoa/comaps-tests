@@ -43,16 +43,16 @@
 "country_status_download_failed" = "Lataus epäonnistui";
 
 /* Text in About screen */
-"about_headline" = "Ilmainen kaikille, tehty rakkaudella";
+"about_headline" = "Avoin projekti yhteisön voimin";
 
 /* Text in About screen */
-"about_proposition_1" = "• Ei mainoksia, ei seurantaa, ei tiedonkeruuta";
+"about_proposition_1" = "Yhteydetön tila, nopea ja helppokäyttöinen";
 
 /* Text in About screen */
-"about_proposition_2" = "• Ei akun tyhjenemistä, toimii offline-tilassa";
+"about_proposition_2" = "Yksityisyyteen keskittynyt ja mainokseton";
 
 /* Text in About screen */
-"about_proposition_3" = "• Nopea, minimalistinen, yhteisön kehittämä";
+"about_proposition_3" = "Läpinäkyvä ja voittoa tavoittelematon";
 "close" = "Sulje";
 "download" = "Lataa";
 
@@ -154,7 +154,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Karavaanaritilat";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Ladataan kirjanmerkkejä";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "Sijaintiasi ei ole vielä määritetty";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hei, katso merkintäni Organic Maps-kartalla!";
+"bookmark_share_email_subject" = "Hei, katso merkintäni CoMaps-kartalla!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hei, kurkkaa tämänhetkinen sijaintini Organic Maps:n kartalla!";
+"my_position_share_email_subject" = "Hei, kurkkaa tämänhetkinen sijaintini CoMaps:n kartalla!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Sähköposti";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Kopioi leikepöydälle";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Kopioitu leikepöydälle: %@";
@@ -190,7 +193,9 @@
 "done" = "Valmis";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps versio: %@";
+"version" = "CoMaps versio: %@";
+"version %@ (%@)" = "Versio %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versio: %@ (%@)\nKarttatiedot: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Reitit";
@@ -200,6 +205,7 @@
 "share_my_location" = "Jaa sijaintini";
 "prefs_group_route" = "Navigointi";
 "pref_zoom_title" = "Zoomauspainikkeet";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Ulkoasu";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tumma";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Pois päältä";
@@ -229,7 +238,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D-rakennukset ovat poissa päältä virransäästötilassa";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Ääniohjeistukset";
+"pref_tts_title" = "Ääniohjeistukset";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Ilmoita kadunnimet";
@@ -241,7 +253,7 @@
 "pref_tts_language_title" = "Äänen kieli";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testaa puheohjeita (TTS, Text-To-Speech).";
+"pref_tts_test_voice_title" = "Testaa puheohjeita (TTS, Text-To-Speech)";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Muu";
@@ -252,8 +264,20 @@
 /* Text in menu */
 "website" = "Kotisivut";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Uutiset";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Sähköposti";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +291,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax-kuva";
+
 /* Text in menu */
 "rate_the_app" = "Arvioi sovellus";
 
@@ -278,12 +314,6 @@
 
 /* Button in the main menu */
 "donate" = "Lahjoita";
-
-/* Tex label above the Donate button */
-"donate_description" = "Lahjoittakaa, jotta voimme rakentaa parhaita karttoja yhdessä!";
-"already_donated" = "Jo lahjoitettu";
-"remind_me_later" = "Muistuta myöhemmin";
-"support_organic_maps" = "Tukea Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Tekijänoikeudet";
@@ -298,7 +328,7 @@
 "volunteer" = "Vapaaehtoiseksi";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Seuraa ja ota meihin yhteyttä:";
+"follow_us" = "Ota yhteyttä";
 
 /* Alert text */
 "email_error_body" = "Sähköpostisovellusta ei ole asetettu. Ole hyvä ja määritä sähköpostiasetukset tai ota meihin yhteyttä toista kautta osoitteessa %@";
@@ -310,7 +340,7 @@
 "pref_calibration_title" = "Kompassin kalibrointi";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "Näytä käyttöliittymä napauttamalla karttaa uudelleen pitkään.";
+"long_tap_toast" = "Paina karttaa pitkään uudelleen nähdäksesi käyttöliittymän";
 
 /* Update all button text */
 "downloader_update_all_button" = "Päivitä kaikki";
@@ -411,10 +441,10 @@
 /* blue gray color */
 "blue_gray" = "Siniharmaa";
 "dialog_routing_disclaimer_title" = "Muista seuraavat asiat seuratessasi reittiä:";
-"dialog_routing_disclaimer_priority" = "— Tien kunto, liikennesäännöt ja tiekyltit ovat aina tärkeämpiä kuin navigointilaitteen ohjeet;";
+"dialog_routing_disclaimer_priority" = "— Tien kunnon, liikennesääntöjen ja tiekylttien noudattaminen on aina ensisijaista verrattuna navigointisovelluksen ohjeisiin;";
 "dialog_routing_disclaimer_precision" = "— Kartta saattaa olla epätarkka, joten ehdotettu reitti ei välttämättä ole paras mahdollinen tapa päästä määränpäähän;";
 "dialog_routing_disclaimer_recommendations" = "— Ehdotettuja reittejä tulee pitää vain suosituksina;";
-"dialog_routing_disclaimer_borders" = "— Ole varovainen reittien suhteen raja-alueilla: sovelluksemme luomat reitit voivat toisinaan ylittää maiden rajoja luvattomissa paikoissa;";
+"dialog_routing_disclaimer_borders" = "— Ole varovainen reittien kanssa raja-alueilla: sovelluksemme luomat reitit voivat joskus ylittää maiden rajoja luvattomissa paikoissa.";
 "dialog_routing_disclaimer_beware" = "Pysy tarkkana ja liiku turvallisesti!";
 "dialog_routing_check_gps" = "Tarkista GPS-signaali";
 "dialog_routing_error_location_not_found" = "Reittiä ei voi luoda. Tämänhetkisiä GPS-koordinaatteja ei löydy.";
@@ -510,15 +540,27 @@
 "closes_in" = "Sulkeutuu %@ kuluttua";
 "closed" = "Suljettu";
 "add_opening_hours" = "Lisää aukioloajat";
-"no_osm_account" = "Eikö sinulla ole OpenStreetMap-tiliä?";
-"register_at_openstreetmap" = "Rekisteröidy";
-"password_8_chars_min" = "Salasana (vähintään 8 merkkiä)";
-"invalid_username_or_password" = "Virheellinen käyttäjätunnus tai salasana.";
-"login" = "Kirjaudu sisään";
-"login_osm" = "Kirjaudu OpenStreetMapiin";
-"forgot_password" = "Unohtuiko salasana?";
-"osm_account" = "OSM-tili";
-"logout" = "Kirjaudu ulos";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Karttatiedot OpenStreetMapista";
+"osm_mapdata_explanation %@" = "Yhteisön luomat karttadata *%@*:sta alkaen. Lisätietoja kartan muokkaamisesta ja päivittämisestä osoitteessa [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Lisätietoja OpenStreetMap:sta";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap-profiili";
+"osm_profile_promt" = "Luo OpenStreetMap-tili tai kirjaudu sisään, jotta voit julkaista karttamuokkauksesi maailmalle.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) on yhteisöprojekti, jonka tarkoituksena on rakentaa ilmainen ja avoin kartta. Se on CoMapsin tärkein karttatietojen lähde ja toimii samalla tavalla kuin Wikipedia. Voit lisätä tai muokata paikkoja, ja ne tulevat miljoonien käyttäjien saataville kaikkialla maailmassa. \nLiity yhteisöön ja auta tekemään parempi kartta kaikille!";
+"osm_profile_login" = "Kirjaudu OpenStreetMap-tilille";
+"osm_profile_reauthorize_promt" = "OpenStreetMap-tilin yhteys tähän sovellukseen irrotettiin";
+"osm_profile_reauthorize" = "Yhdistä uudelleen OpenStreetMapiin";
+"osm_profile_remove_promt" = "Jos et voi tai halua yhdistää tiliäsi uudelleen, voit vain poistaa sen tästä sovelluksesta";
+"osm_profile_remove" = "Poista OpenStreetMap-tilin muisti tästä sovelluksesta";
+"osm_profile_register_promt" = "Eikö sinulla ole OpenStreetMap-tiliä?";
+"osm_profile_register" = "Rekisteröi tili OpenStreetMapissa";
+"osm_profile_verfied_changes" = "Vahvistetut karttamuutokset";
+"osm_profile_logout" = "Kirjaudu ulos OpenStreetMap-tililtä";
+"osm_profile_delete" = "Poista OpenStreetMap-tili";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Viimeisin lisäys";
@@ -567,13 +609,9 @@
 "dialog_incorrect_feature_position" = "Vaihda sijaintia";
 "message_invalid_feature_position" = "Kohdetta ei voida asettaa tänne";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Yhteisön luomat OpenStreetMap-tiedot %@:sta alkaen. Lisätietoja kartan muokkaamisesta ja päivittämisestä osoitteessa OpenStreetMap.org.";
-"login_to_make_edits_visible" = "Luo OpenStreetMap-tili tai kirjaudu sisään, jotta voit julkaista karttamuokkauksesi maailmalle.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Tarvitset lisää tilaa ladataksesi. Poista tarpeeton data.";
-"editor_sharing_title" = "Paransin Organic Maps-karttoja";
+"editor_sharing_title" = "Paransin CoMaps-karttoja";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d/%2$d";
@@ -593,14 +631,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Huomautus OpenStreetMapin vapaaehtoisille (valinnainen)";
 "editor_detailed_description_hint" = "Yksityiskohtainen kommentti";
-"editor_detailed_description" = "Ehdottamasi muutokset lähetetään OpenStreetMap-yhteisöön. Kuvaa tiedot, joita ei voi muokata Organic Maps:ssä.";
+"editor_detailed_description" = "Ehdottamasi muutokset lähetetään OpenStreetMap-yhteisöön. Kuvaa tiedot, joita ei voi muokata CoMaps:ssä.";
 "editor_more_about_osm" = "Lisätietoja OpenStreetMap:sta";
 "editor_operator" = "Operaattori";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
-"operator" = "Operaattori: %@";
+"operator" = "Palveluntarjoaja: %@";
 "editor_category_unsuitable_title" = "Etkö löydä sopivaa luokkaa?";
-"editor_category_unsuitable_text" = "Organic Maps mahdollistaa vain yksinkertaisten pisteluokkien lisäämisen, eli ei kaupunkeja, teitä, järviä, rakennusten ääriviivoja jne. Lisää tällaiset luokat suoraan <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Tarkista <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">oppaastamme</a> yksityiskohtaiset ohjeet vaihe vaiheelta.";
+"editor_category_unsuitable_text" = "CoMaps mahdollistaa vain yksinkertaisten pisteluokkien lisäämisen, eli ei kaupunkeja, teitä, järviä, rakennusten ääriviivoja jne. Lisää tällaiset luokat suoraan <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Tarkista <a href=\"https://www.comaps.app/support/advanced-map-editing/\">oppaastamme</a> yksityiskohtaiset ohjeet vaihe vaiheelta.";
 "downloader_no_downloaded_maps_title" = "Et ole ladannut yhtään karttaa";
 "downloader_no_downloaded_maps_message" = "Lataa karttoja löytääksesi paikkoja ja navigoidaksesi offline-tilassa.";
 "current_location_unknown_error_title" = "Nykyinen sijainti on tuntematon.";
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2. Valitse Tietosuoja";
 "location_services_disabled_on_device_3" = "3. Valitse Sijaintipalvelut";
 "location_services_disabled_on_device_4" = "4. Ota Sijaintipalvelut käyttöön";
-"location_services_disabled_on_device_additional_message" = "Tai jatka Organic Maps käyttöä ilman sijaintia";
+"location_services_disabled_on_device_additional_message" = "Tai jatka CoMaps käyttöä ilman sijaintia";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +675,6 @@
 "day" = "pv";
 "placepage_more_button" = "Lisää";
 "book_button" = "Varaa";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Kuvat, arvostelut, varaus";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Jokaisesta tämän linkin kautta tehdystä varauksesta saatu suosittelubonus käytetään Organic Mapsin kehittämiseen.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Lisätietoa osoitteessa Kayak";
 "placepage_call_button" = "Soita";
 "placepage_edit_bookmark_button" = "Muokkaa kirjanmerkkiä";
 "placepage_bookmark_name_hint" = "Kirjanmerkin nimi";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Tarkastele";
-"recent_track_background_dialog_message" = "Organic Maps käyttää sijaintipalveluita taustalla viimeisimmän reittisi tallentamiseksi.";
+"recent_track_background_dialog_message" = "CoMaps käyttää sijaintipalveluita taustalla viimeisimmän reittisi tallentamiseksi.";
 "general_settings" = "Yleiset asetukset";
 
 /* For the first routing */
@@ -718,13 +747,16 @@
 "routing_add_start_point" = "Käytä hakua tai napauta karttaa lisätäksesi reitin lähtöpisteen";
 
 /* User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". */
-"routing_add_finish_point" = "Käytä hakua tai napauta karttaa lisätäksesi kohdepisteen.";
+"routing_add_finish_point" = "Käytä hakua tai napauta karttaa lisätäksesi kohdepisteen";
 "planning_route_manage_route" = "Hallitse reittiä";
 "button_plan" = "Suunnittele";
 "placepage_remove_stop" = "Poista pysähdys";
 "planning_route_remove_title" = "Vedä tähän poistaaksesi";
 "placepage_add_stop" = "Lisää pysähdys";
 "start_from_my_position" = "Aloita kohdasta";
+
+/* Title for button when a route was saved. */
+"saved" = "Tallennettu";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Kirjaudu sisään OpenStreetMapiin, jotta voit ladata kaikki karttamuutoksesi automaattisesti. Lisätietoja";
@@ -787,7 +819,7 @@
 "power_managment_setting_never" = "Ei koskaan";
 "power_managment_setting_auto" = "Automaattinen";
 "power_managment_setting_manual_max" = "Täysi virransäästö";
-"enable_logging_warning_message" = "Valinta ottaa käyttöön lokikirjaukset diagnostiikkaa varten. Se voi auttaa tukihenkilöstöämme, kun he korjaavat sovelluksen ongelmia. Ota tämä ominaisuus käyttöön vain, jos Organic Maps:n tuki pyytää.";
+"enable_logging_warning_message" = "Valinta ottaa käyttöön lokikirjaukset diagnostiikkaa varten. Se voi auttaa tukihenkilöstöämme, kun he korjaavat sovelluksen ongelmia. Ota tämä ominaisuus käyttöön vain, jos CoMaps:n tuki pyytää.";
 "driving_options_title" = "Reititysvalinnat";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +877,7 @@
 "ok" = "Ok";
 "speedcams_alert_title_carplay_1" = "Nopeuskamerat";
 "speedcams_alert_title_carplay_2" = "Nopeusvaroitukset";
-"download_map_carplay" = "Lataa kartat laitteesi Organic Maps-sovelluksessa";
+"download_map_carplay" = "Lataa kartat laitteesi CoMaps-sovelluksessa";
 "carplay_roundabout_exit" = "Poistumisramppi %@";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +956,8 @@
 /* edit track screen title */
 "track_title" = "Reitti";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/fi/";
 
 /* App Tip #00 */
 "app_tip_00" = "Kiitos, että käytät yhteisön laatimia karttojamme!";
@@ -967,10 +990,10 @@
 "app_tip_09" = "Päätavoitteemme on rakentaa nopeita, yksityisyyteen keskittyviä, helppokäyttöisiä karttoja, joista pidät.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Käytät nyt puhelimen näytöllä Organic Maps -palvelua.";
+"car_used_on_the_phone_screen" = "Käytät nyt puhelimen näytöllä CoMaps -palvelua.";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Käytät nyt Organic Maps auton näytöllä";
+"car_used_on_the_car_screen" = "Käytät nyt CoMaps auton näytöllä";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Jatka puhelimessa";
@@ -995,7 +1018,10 @@
 "website_menu" = "Valikkolinkki";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Haluatko lähettää vikailmoituksen kehittäjille?\nLuotamme käyttäjiin, sillä Organic Maps ei kerää virhetietoja automaattisesti. Kiitos etukäteen Organic Mapsin tukemisesta!";
+"bugreport_alert_message" = "Haluatko lähettää vikailmoituksen kehittäjille?\nLuotamme käyttäjiin, sillä CoMaps ei kerää virhetietoja automaattisesti. Kiitos etukäteen CoMapsin tukemisesta!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Ota iCloud-synkronointi käyttöön";
@@ -1004,7 +1030,7 @@
 "enable_icloud_synchronization_message" = "iCloud-synkronointi on kehitteillä oleva kokeellinen ominaisuus. Varmista, että olet tehnyt varmuuskopion kaikista kirjanmerkeistäsi ja kappaleistasi.";
 
 /* Title for the "iCloud Is Disabled" alert. */
-"icloud_disabled_title" = "iCloud on poistettu käytöstä";
+"icloud_disabled_title" = "iCloud on poissa käytöstä";
 
 /* Message for the "iCloud is Disabled" alert. */
 "icloud_disabled_message" = "Ota iCloud käyttöön laitteesi asetuksissa, jotta voit käyttää tätä ominaisuutta.";
@@ -1069,3 +1095,6 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Reitti on tyhjä - ei mitään tallennettavaa";
 "edit_track" = "Muokkaa reittiä";
+"osm_profile_view_edit_history" = "Näytä muokkaushistoria";
+"osm_profile_view_notes" = "Näytä ilmoitukset";
+"pref_mapappearance_title" = "Kartan ulkoasu";

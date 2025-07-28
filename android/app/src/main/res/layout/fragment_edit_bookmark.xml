@@ -5,14 +5,14 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="?windowBackgroundForced">
-  <androidx.appcompat.widget.Toolbar
+  <com.google.android.material.appbar.MaterialToolbar
     android:id="@+id/toolbar"
     style="@style/MwmWidget.ToolbarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/MwmWidget.ToolbarTheme">
 
-      <ImageView
+      <com.google.android.material.imageview.ShapeableImageView
         app:tint="@color/image_view"
         android:id="@+id/save"
         app:srcCompat="@drawable/ic_done"
@@ -22,7 +22,7 @@
         android:layout_gravity="end|center_vertical"
         android:scaleType="centerInside"
         android:contentDescription="@string/save" />
-  </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.MaterialToolbar>
   <FrameLayout
     style="@style/MwmWidget.FrameLayout.Elevation"
     android:layout_width="match_parent"

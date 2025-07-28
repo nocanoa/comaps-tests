@@ -155,10 +155,11 @@ public:
     FMD_SELF_SERVICE = 47,
     FMD_OUTDOOR_SEATING = 48,
     FMD_NETWORK = 49,
+    FMD_CONTACT_FEDIVERSE = 50,
+    FMD_CONTACT_BLUESKY = 51,
+    FMD_PANORAMAX = 52,
     FMD_COUNT
   };
-
-  enum ESource : uint8_t { SRC_KAYAK = 0 };
 
   /// Used to normalize tags like "contact:phone", "phone" and "contact:mobile" to a common metadata enum value.
   static bool TypeFromString(std::string_view osmTagKey, EType & outType);

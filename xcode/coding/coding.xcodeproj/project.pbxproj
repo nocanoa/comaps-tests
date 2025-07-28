@@ -443,7 +443,9 @@
 				6753421C1A3F586300A0A8C3 /* Products */,
 				3496AB6C1DC1F53500C5DDBA /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6753421C1A3F586300A0A8C3 /* Products */ = {
 			isa = PBXGroup;
@@ -785,7 +787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.coding_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.coding_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -794,7 +796,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.coding_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.coding_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

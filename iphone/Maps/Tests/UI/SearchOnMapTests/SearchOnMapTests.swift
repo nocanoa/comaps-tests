@@ -1,5 +1,5 @@
 import XCTest
-@testable import Organic_Maps__Debug_
+@testable import CoMaps__Debug_
 
 final class SearchOnMapTests: XCTestCase {
 
@@ -41,12 +41,12 @@ final class SearchOnMapTests: XCTestCase {
   func test_GivenInitialState_WhenSelectCategory_ThenUpdateSearchResultsAndShowMap() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("category")
-    interactor.handle(.didSelectText(searchText, isCategory: true))
+    let query = SearchQuery("category", source: .category)
+    interactor.handle(.didSelect(query))
 
     XCTAssertEqual(view.viewModel.presentationStep, .halfScreen)
     XCTAssertEqual(view.viewModel.contentState, .searching)
-    XCTAssertEqual(view.viewModel.searchingText, searchText.text)
+    XCTAssertEqual(view.viewModel.searchingText, query.text)
     XCTAssertEqual(view.viewModel.isTyping, false)
 
     let results = SearchResult.stubResults()
@@ -62,8 +62,8 @@ final class SearchOnMapTests: XCTestCase {
   func test_GivenInitialState_WhenTypeText_ThenUpdateSearchResults() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didType(query))
 
     XCTAssertEqual(view.viewModel.presentationStep, .fullScreen)
     XCTAssertEqual(view.viewModel.contentState, .searching)
@@ -83,8 +83,8 @@ final class SearchOnMapTests: XCTestCase {
   func test_GivenInitialState_WhenTapSearch_ThenUpdateSearchResultsAndShowMap() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didType(query))
 
     let results = SearchResult.stubResults()
     searchManager.results = results
@@ -94,7 +94,7 @@ final class SearchOnMapTests: XCTestCase {
     XCTAssertEqual(view.viewModel.searchingText, nil)
     XCTAssertEqual(view.viewModel.isTyping, true)
 
-    interactor.handle(.searchButtonDidTap(searchText))
+    interactor.handle(.searchButtonDidTap(query))
 
     XCTAssertEqual(currentState, .searching)
     XCTAssertEqual(view.viewModel.presentationStep, .halfScreen)
@@ -123,14 +123,14 @@ final class SearchOnMapTests: XCTestCase {
     interactor.handle(.openSearch)
     XCTAssertEqual(view.viewModel.isTyping, true)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didSelect(query))
 
     let results = SearchResult.stubResults()
     searchManager.results = results
 
-    interactor.handle(.didSelectResult(results[0], withSearchText: searchText))
-    if isIPad {
+    interactor.handle(.didSelectResult(results[0], withQuery: query))
+    if isiPad {
       XCTAssertEqual(currentState, .searching)
       XCTAssertEqual(view.viewModel.presentationStep, .fullScreen)
     } else {
@@ -145,7 +145,7 @@ final class SearchOnMapTests: XCTestCase {
 
     interactor.handle(.didSelectPlaceOnMap)
 
-    if isIPad {
+    if isiPad {
       XCTAssertNotEqual(view.viewModel.presentationStep, .hidden)
     } else {
       XCTAssertEqual(view.viewModel.presentationStep, .hidden)
@@ -156,14 +156,14 @@ final class SearchOnMapTests: XCTestCase {
     interactor.handle(.openSearch)
     XCTAssertEqual(view.viewModel.isTyping, true)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didSelect(query))
 
     let results = SearchResult.stubResults()
     searchManager.results = results
 
-    interactor.handle(.didSelectResult(results[0], withSearchText: searchText))
-    if isIPad {
+    interactor.handle(.didSelectResult(results[0], withQuery: query))
+    if isiPad {
       XCTAssertEqual(currentState, .searching)
       XCTAssertEqual(view.viewModel.presentationStep, .fullScreen)
     } else {
@@ -187,8 +187,8 @@ final class SearchOnMapTests: XCTestCase {
   func test_GivenSearchHasText_WhenClearSearch_ThenShowHistoryAndCategory() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didSelect(query))
 
     interactor.handle(.clearButtonDidTap)
     XCTAssertEqual(view.viewModel.presentationStep, .fullScreen)
@@ -200,8 +200,8 @@ final class SearchOnMapTests: XCTestCase {
   func test_GivenSearchExecuted_WhenNoResults_ThenShowNoResults() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("text")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("text", source: .typedText)
+    interactor.handle(.didSelect(query))
 
     searchManager.results = SearchOnMap.SearchResults([])
     interactor.onSearchCompleted()
@@ -209,17 +209,52 @@ final class SearchOnMapTests: XCTestCase {
     XCTAssertEqual(view.viewModel.contentState, .noResults)
   }
 
-  func test_GivenSearchIsActive_WhenSelectSuggestion_ThenSearchAgain() {
+  func test_GivenSearchIsActive_WhenSelectSuggestion_ThenReplaceWithSuggestion() {
     interactor.handle(.openSearch)
 
-    let searchText = SearchOnMap.SearchText("old search")
-    interactor.handle(.didType(searchText))
+    let query = SearchQuery("ca", source: .typedText)
+    interactor.handle(.didType(query))
 
-    let suggestion = SearchResult(titleText: "", type: .suggestion, suggestion: "suggestion")
-    interactor.handle(.didSelectResult(suggestion, withSearchText: searchText))
+    let result = SearchResult(titleText: "", type: .suggestion, suggestion: "cafe")
+    interactor.handle(.didSelectResult(result, withQuery: query))
 
-    XCTAssertEqual(view.viewModel.searchingText, "suggestion")
+    XCTAssertEqual(view.viewModel.searchingText, "cafe")
+    XCTAssertEqual(view.viewModel.presentationStep, .fullScreen)
     XCTAssertEqual(view.viewModel.contentState, .searching)
+    XCTAssertEqual(view.viewModel.isTyping, true)
+  }
+
+  func test_GivenSearchIsActive_WhenPasteDeeplink_ThenShowResult() {
+    interactor.handle(.openSearch)
+
+    let query = SearchQuery("om://search?cll=42.0,44.0&query=Toilet", source: .deeplink)
+    interactor.handle(.didSelect(query))
+
+    let result = SearchResult(titleText: "some result", type: .regular, suggestion: "")
+    let results = SearchOnMap.SearchResults([result])
+    searchManager.results = results
+    interactor.onSearchCompleted()
+
+    XCTAssertEqual(view.viewModel.contentState, .results(results))
+    XCTAssertEqual(view.viewModel.presentationStep, .halfScreen)
+    XCTAssertEqual(view.viewModel.isTyping, false) // No typing when deeplink is used
+  }
+
+  func test_GivenSearchIsActive_WhenPresentationStepUpdate_ThenUpdateSearchMode() {
+    interactor.handle(.openSearch)
+    XCTAssertEqual(searchManager.searchMode(), isiPad ? .everywhereAndViewport : .everywhere)
+
+    interactor.handle(.didUpdatePresentationStep(.halfScreen))
+    XCTAssertEqual(searchManager.searchMode(), .everywhereAndViewport)
+
+    interactor.handle(.didUpdatePresentationStep(.compact))
+    XCTAssertEqual(searchManager.searchMode(), .everywhereAndViewport)
+
+    interactor.handle(.didUpdatePresentationStep(.hidden))
+    XCTAssertEqual(searchManager.searchMode(), .viewport)
+
+    interactor.handle(.didUpdatePresentationStep(.fullScreen))
+    XCTAssertEqual(searchManager.searchMode(), isiPad ? .everywhereAndViewport : .everywhere)
   }
 }
 
@@ -246,6 +281,7 @@ private class SearchManagerMock: SearchManager {
       }
     }
   }
+  private static var _searchMode: SearchMode = .everywhere
 
   static func add(_ observer: any MWMSearchObserver) {
     self.observers.addListener(observer)
@@ -255,13 +291,13 @@ private class SearchManagerMock: SearchManager {
     self.observers.removeListener(observer)
   }
 
-  static func saveQuery(_ query: String, forInputLocale inputLocale: String) {}
-  static func searchQuery(_ query: String, forInputLocale inputLocale: String, withCategory isCategory: Bool) {}
+  static func save(_ query: SearchQuery) {}
+  static func searchQuery(_ query: SearchQuery) {}
   static func showResult(at index: UInt) {}
-  static func showEverywhereSearchResultsOnMap() {}
-  static func showViewportSearchResultsOnMap() {}
   static func clear() {}
   static func getResults() -> [SearchResult] { results.results }
+  static func searchMode() -> SearchMode { _searchMode }
+  static func setSearchMode(_ mode: SearchMode) { _searchMode = mode }
 }
 
 private extension SearchResult {

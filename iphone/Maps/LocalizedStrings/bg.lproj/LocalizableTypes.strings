@@ -1,90 +1,89 @@
 "type.addr_interpolation" = "Адрес/Блок";
 "type.addr_interpolation.even" = "Адрес/Блок";
 "type.addr_interpolation.odd" = "Адрес/Блок";
-"type.aerialway" = "Aerialway";
-"type.aerialway.cable_car" = "Cable Car";
-"type.aerialway.chair_lift" = "Chair Lift";
-"type.aerialway.drag_lift" = "Drag Lift";
-"type.aerialway.gondola" = "Gondola";
-"type.aerialway.mixed_lift" = "Mixed Lift";
-"type.aerialway.station" = "Aerialway Station";
-"type.aeroway" = "Airspace Infrastructure";
-"type.aeroway.aerodrome" = "Airport";
-"type.aeroway.aerodrome.international" = "International Airport";
-"type.aeroway.apron" = "Apron";
-"type.aeroway.gate" = "Gate";
-"type.aeroway.helipad" = "Helipad";
-"type.aeroway.runway" = "Runway";
-"type.aeroway.taxiway" = "Taxiway";
-"type.aeroway.terminal" = "Terminal";
-"type.amenity" = "Amenity";
-"type.amenity.arts_centre" = "Arts Center";
-"type.amenity.atm" = "ATM";
-"type.amenity.bank" = "Bank";
-"type.amenity.bar" = "Bar";
+"type.aerialway" = "Самолетна писта";
+"type.aerialway.cable_car" = "Кабинков влек";
+"type.aerialway.chair_lift" = "Седалков лифт";
+"type.aerialway.drag_lift" = "Влек";
+"type.aerialway.gondola" = "Гондола";
+"type.aerialway.mixed_lift" = "Смесен влек";
+"type.aerialway.station" = "Аерогара";
+"type.aeroway" = "Летателно съоръжение";
+"type.aeroway.aerodrome" = "Летище";
+"type.aeroway.aerodrome.international" = "Международно летище";
+"type.aeroway.apron" = "Завеса";
+"type.aeroway.gate" = "Врата";
+"type.aeroway.helipad" = "Въртолетна площадка";
+"type.aeroway.runway" = "Писта";
+"type.aeroway.taxiway" = "Място за таксита";
+"type.aeroway.terminal" = "Терминал";
+"type.amenity" = "Развлечение";
+"type.amenity.arts_centre" = "Средище за изкуство";
+"type.amenity.atm" = "Банкомат";
+"type.amenity.bank" = "Банка";
+"type.amenity.bar" = "Бар";
 "type.amenity.bbq" = "Грил барбекю";
-"type.amenity.bench" = "Bench";
-"type.amenity.bicycle_parking" = "Bicycle Parking";
-"type.amenity.bicycle_rental" = "Bicycle Rental";
-"type.amenity.bicycle_repair_station" = "Bicycle Repair Station";
-"type.amenity.biergarten" = "Biergarten";
-"type.amenity.brothel" = "Brothel";
-"type.amenity.bureau_de_change" = "Currency Exchange";
-"type.amenity.bus_station" = "Bus Station";
-"type.amenity.cafe" = "Cafe";
-"type.amenity.car_rental" = "Car Rental";
+"type.amenity.bench" = "Пейка";
+"type.amenity.bicycle_parking" = "Паркинг за колела";
+"type.amenity.bicycle_rental" = "Колела под наем";
+"type.amenity.bicycle_repair_station" = "Сервиз на колела";
+"type.amenity.biergarten" = "Бирария";
+"type.amenity.brothel" = "Бардак";
+"type.amenity.bureau_de_change" = "Валутен обмен";
+"type.amenity.bus_station" = "Автобусна гара";
+"type.amenity.cafe" = "Кафене";
+"type.amenity.car_rental" = "Коли под наем";
 "type.amenity.motorcycle_rental" = "Мотоциклети под наем";
-"type.amenity.car_sharing" = "Car Sharing";
-"type.amenity.car_wash" = "Car Wash";
-"type.amenity.casino" = "Casino";
+"type.amenity.car_sharing" = "Споделяне на коли";
+"type.amenity.car_wash" = "Автомивка";
+"type.amenity.casino" = "Казино";
 "type.amenity.gambling" = "Хазарт";
 "type.leisure.adult_gaming_centre" = "Център за игри за възрастни";
 "type.leisure.amusement_arcade" = "Аркада";
-"type.amenity.charging_station" = "Charging Station";
+"type.amenity.charging_station" = "Зарядна остановка";
 "type.amenity.charging_station.bicycle" = "Станция за зареждане на велосипеди";
 "type.amenity.charging_station.motorcar" = "Станция за зареждане на автомобили";
-"type.amenity.childcare" = "Nursery";
-"type.amenity.cinema" = "Cinema";
+"type.amenity.childcare" = "Ясла";
+"type.amenity.cinema" = "Кино";
 "type.leisure.bowling_alley" = "Боулинг писта";
-"type.amenity.clinic" = "Clinic";
-"type.amenity.college" = "College";
-"type.amenity.community_centre" = "Community Centre";
+"type.amenity.clinic" = "Клиника";
+"type.amenity.community_centre" = "Обществено средище";
 "type.amenity.compressed_air" = "Сгъстен въздух";
 "type.amenity.conference_centre" = "Конферентен център";
-"type.amenity.courthouse" = "Courthouse";
-"type.amenity.dentist" = "Dentist";
-"type.amenity.doctors" = "Doctor";
-"type.amenity.drinking_water" = "Drinking Water";
-"type.drinking_water.yes" = "Drinking Water";
+"type.amenity.courthouse" = "Съд";
+"type.amenity.dentist" = "Зъболекар";
+"type.amenity.doctors" = "Лекар";
+"type.amenity.drinking_water" = "Питейна вода";
+"type.drinking_water.yes" = "Питейна вода";
 "type.amenity.driving_school" = "Автошкола";
 "type.amenity.exhibition_centre" = "Изложбен център";
 "type.amenity.money_transfer" = "Паричен превод";
 "type.amenity.music_school" = "Музикално училище";
 "type.amenity.language_school" = "Езиково училище";
-"type.office.diplomatic" = "Embassy";
-"type.amenity.fast_food" = "Fast Food";
-"type.amenity.ferry_terminal" = "Ferry";
-"type.amenity.fire_station" = "Fire Station";
-"type.amenity.food_court" = "Food Court";
-"type.amenity.fountain" = "Fountain";
-"type.amenity.fuel" = "Gas Station";
+"type.office.diplomatic" = "Посолство";
+"type.amenity.fast_food" = "Бързо хранене";
+"type.amenity.ferry_terminal" = "Ферибот";
+"type.amenity.fire_station" = "Пожарна";
+"type.amenity.food_court" = "Двор за хранене";
+"type.amenity.fountain" = "Фонтан";
+"type.amenity.fuel" = "Бензиностанция";
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
-"type.amenity.grave_yard" = "Graveyard";
+"type.amenity.grave_yard" = "Гробове";
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
-"type.amenity.grave_yard.christian" = "Graveyard";
-"type.amenity.hospital" = "Hospital";
-"type.amenity.hunting_stand" = "Hunting Stand";
-"type.amenity.ice_cream" = "Ice Cream";
-"type.amenity.internet_cafe" = "Internet Cafe";
-"type.amenity.kindergarten" = "Kindergarten";
-"type.amenity.library" = "Library";
+"type.amenity.grave_yard.christian" = "Християнски гробове";
+"type.amenity.hospital" = "Болница";
+"type.amenity.hunting_stand" = "Ловджийска пусия";
+"type.amenity.ice_cream" = "Сладолед";
+"type.amenity.internet_cafe" = "Кафене с интернет";
+"type.amenity.kindergarten" = "Детска градина";
+"type.amenity.library" = "Библиотека";
 "type.amenity.loading_dock" = "Товарен док";
-"type.amenity.marketplace" = "Marketplace";
-"type.amenity.motorcycle_parking" = "Motorcycle Parking";
-"type.amenity.nightclub" = "Nightclub";
-"type.amenity.nursing_home" = "Nursing Home";
+"type.amenity.marketplace" = "Пазар";
+"type.amenity.motorcycle_parking" = "Паркинг за мотори";
+"type.amenity.nightclub" = "Нощен клуб";
+"type.amenity.nursing_home" = "Старчески дом";
 "type.amenity.parking" = "Паркинг";
 "type.amenity.parking.fee" = "Паркинг";
 "type.amenity.parking.multi.storey" = "Многоетажен паркинг";
@@ -105,48 +104,48 @@
 "type.amenity.parking_entrance" = "Вход за паркинг";
 "type.amenity.parking_entrance.private" = "Частен вход за паркинг";
 "type.amenity.parking_entrance.permissive" = "Вход за паркинг";
-"type.amenity.parking_space" = "Parking Space";
-"type.amenity.parking_space.permissive" = "Parking Space";
-"type.amenity.parking_space.private" = "Parking Space";
-"type.amenity.parking_space.underground" = "Parking Space";
+"type.amenity.parking_space" = "Място за спиране";
+"type.amenity.parking_space.permissive" = "Място за спиране";
+"type.amenity.parking_space.private" = "Частно място за спиране";
+"type.amenity.parking_space.underground" = "Подземно място за спиране";
 "type.amenity.parking_space.disabled" = "Паркомясто за инвалиди";
-"type.amenity.payment_terminal" = "Payment Terminal";
-"type.amenity.pharmacy" = "Pharmacy";
-"type.amenity.place_of_worship" = "Place of Worship";
-"type.amenity.place_of_worship.buddhist" = "Buddhist Temple";
-"type.amenity.place_of_worship.christian" = "Church";
+"type.amenity.payment_terminal" = "Разплащателна остановка";
+"type.amenity.pharmacy" = "Аптека";
+"type.amenity.place_of_worship" = "Светилище";
+"type.amenity.place_of_worship.buddhist" = "Будистки храм";
+"type.amenity.place_of_worship.christian" = "Църква";
 "type.amenity.place_of_worship.christian.mormon" = "Църквата на Исус Христос на светиите от последните дни";
 "type.amenity.place_of_worship.christian.jehovahs_witness" = "Зала на царството на Свидетелите на Йехова";
-"type.amenity.place_of_worship.hindu" = "Hindu Temple";
-"type.amenity.place_of_worship.jewish" = "Synagogue";
-"type.amenity.place_of_worship.muslim" = "Mosque";
-"type.amenity.place_of_worship.shinto" = "Shinto Shrine";
-"type.amenity.place_of_worship.taoist" = "Taoist Temple";
-"type.amenity.police" = "Police";
-"type.amenity.post_box" = "Mailbox";
-"type.amenity.post_office" = "Post Office";
+"type.amenity.place_of_worship.hindu" = "Хиндуистки храм";
+"type.amenity.place_of_worship.jewish" = "Синагога";
+"type.amenity.place_of_worship.muslim" = "Джамия";
+"type.amenity.place_of_worship.shinto" = "Шинтоистко светилище";
+"type.amenity.place_of_worship.taoist" = "Даоистки храм";
+"type.amenity.police" = "Полиция";
+"type.amenity.post_box" = "Пощенска кутия";
+"type.amenity.post_office" = "Поща";
 "type.amenity.prison" = "Затвор";
-"type.amenity.pub" = "Pub";
-"type.amenity.public_bookcase" = "Book Exchange";
-"type.amenity.recycling.centre" = "Recycling Center";
-"type.amenity.recycling" = "Recycling Container";
-"type.amenity.recycling.container" = "Recycling Container";
+"type.amenity.pub" = "Кръчма";
+"type.amenity.public_bookcase" = "Книжен обмен";
+"type.amenity.recycling.centre" = "Преработвателно средище";
+"type.amenity.recycling" = "Кофи за преработваем отпадък";
+"type.amenity.recycling.container" = "Кофи за преработваем отпадък";
 "type.recycling.batteries" = "Батерии";
-"type.recycling.clothes" = "Clothes";
-"type.recycling.glass_bottles" = "Glass Bottles";
-"type.recycling.paper" = "Paper";
-"type.recycling.plastic" = "Plastic";
-"type.recycling.plastic_bottles" = "Plastic Bottles";
-"type.recycling.scrap_metal" = "Scrap Metal";
-"type.recycling.small_appliances" = "Electronic Waste";
-"type.recycling.cardboard" = "Cardboard";
-"type.recycling.cans" = "Cans";
-"type.recycling.shoes" = "Shoes";
-"type.recycling.green_waste" = "Green/Organic Waste";
-"type.recycling.cartons" = "Cartons";
-"type.amenity.restaurant" = "Restaurant";
-"type.amenity.sanitary_dump_station" = "Holding Tank Dump Station";
-"type.amenity.school" = "School";
+"type.recycling.clothes" = "Дрехи";
+"type.recycling.glass_bottles" = "Стъклени бутилки";
+"type.recycling.paper" = "Хартия";
+"type.recycling.plastic" = "Пластмаса";
+"type.recycling.plastic_bottles" = "Пластмасови бутилки";
+"type.recycling.scrap_metal" = "Желязо за преработване";
+"type.recycling.small_appliances" = "Електронни отпадъци";
+"type.recycling.cardboard" = "Картон";
+"type.recycling.cans" = "Консерви";
+"type.recycling.shoes" = "Обувки";
+"type.recycling.green_waste" = "Растителен/органичен отпадък";
+"type.recycling.cartons" = "Кашони";
+"type.amenity.restaurant" = "Заведение";
+"type.amenity.sanitary_dump_station" = "Станция за изхвърляне на резервоара за задържане";
+"type.amenity.school" = "Училище";
 
 /* Weather shelter (including sun shelters and natural rock shelters). */
 "type.amenity.shelter" = "Подслон";
@@ -160,68 +159,67 @@
 /* A traditional 3-walled shelter (one side open), suitable for overnight camping. */
 "type.amenity.shelter.lean_to" = "Подслон за бивак";
 "type.amenity.public_bath" = "Обществена баня";
-"type.amenity.shower" = "Shower";
+"type.amenity.shower" = "Душ";
 "type.amenity.stripclub" = "Стриптийз клуб";
-"type.amenity.taxi" = "Taxi Stand";
-"type.amenity.telephone" = "Phone";
-"type.amenity.theatre" = "Theatre";
-"type.amenity.toilets" = "Toilet";
-"type.toilets.yes" = "Toilet";
-"type.amenity.townhall" = "Town Hall";
-"type.amenity.university" = "University";
-"type.amenity.vending_machine" = "Vending Machine";
-"type.amenity.vending_machine.cigarettes" = "Cigarette Dispenser";
-"type.amenity.vending_machine.coffee" = "Coffee Dispenser";
-"type.amenity.vending_machine.condoms" = "Condoms Dispenser";
-"type.amenity.vending_machine.drinks" = "Drinks Dispenser";
-"type.amenity.vending_machine.food" = "Food Dispenser";
-"type.amenity.vending_machine.newspapers" = "Newspaper Dispenser";
-"type.amenity.vending_machine.parking_tickets" = "Parking Meter";
-"type.amenity.vending_machine.public_transport_tickets" = "Ticket Machine";
-"type.amenity.vending_machine.sweets" = "Sweets Dispenser";
-"type.amenity.vending_machine.excrement_bags" = "Excrement Bags Dispenser";
-"type.amenity.parcel_locker" = "Parcel Locker";
+"type.amenity.taxi" = "Място за такси";
+"type.amenity.telephone" = "Телефон";
+"type.amenity.theatre" = "Театър";
+"type.amenity.toilets" = "Тоалетна";
+"type.toilets.yes" = "Тоалетна";
+"type.amenity.townhall" = "Община";
+"type.amenity.university" = "Висше учебно заведение";
+"type.amenity.vending_machine" = "Вендинг машина";
+"type.amenity.vending_machine.cigarettes" = "Диспенсър за цигари";
+"type.amenity.vending_machine.coffee" = "Диспенсър за кафе";
+"type.amenity.vending_machine.condoms" = "Диспенсър за презервативи";
+"type.amenity.vending_machine.drinks" = "Диспенсър за напитки";
+"type.amenity.vending_machine.food" = "Диспенсър за храна";
+"type.amenity.vending_machine.newspapers" = "Диспенсър за вестници";
+"type.amenity.vending_machine.parking_tickets" = "Паркинг метър";
+"type.amenity.vending_machine.public_transport_tickets" = "Машина за билети";
+"type.amenity.vending_machine.sweets" = "Разпределител на сладки";
+"type.amenity.parcel_locker" = "Заключващо се шкафче";
 "type.amenity.vehicle_inspection" = "Проверка на автомобила";
-"type.amenity.vending_machine.fuel" = "Fuel Pump";
-"type.amenity.veterinary" = "Veterinary Doctor";
-"type.amenity.waste_basket" = "Trash Bin";
-"type.amenity.waste_disposal" = "Dumpster";
-"type.amenity.waste_transfer_station" = "Waste Transfer Station";
-"type.amenity.water_point" = "Water Tank Refill Point";
-"type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
-"type.barrier" = "Barrier";
-"type.barrier.block" = "Block";
-"type.barrier.bollard" = "Bollard";
-"type.barrier.border_control" = "Border Control";
-"type.barrier.chain" = "Chain";
+"type.amenity.vending_machine.fuel" = "Горивна помпа";
+"type.amenity.veterinary" = "Ветеринар";
+"type.amenity.waste_basket" = "Кошче за отпадък";
+"type.amenity.waste_disposal" = "Кофа";
+"type.amenity.waste_transfer_station" = "Средище за извозване на отпадък";
+"type.amenity.water_point" = "Остановка за пълнене на водни хранилища";
+"type.amenity.water_point.drinking_water_no" = "Остановка за пълнене на водни хранилища";
+"type.barrier" = "Бариера";
+"type.barrier.block" = "Блокова преграда";
+"type.barrier.bollard" = "Колчета";
+"type.barrier.border_control" = "Гранична остановка";
+"type.barrier.chain" = "Верига";
 "type.barrier.city_wall" = "Градска стена";
-"type.barrier.cycle_barrier" = "Cycle Barrier";
+"type.barrier.cycle_barrier" = "Преграда за колела";
 "type.waterway.ditch" = "Отводнителна канавка";
 "type.natural.water.moat" = "Ров";
 "type.natural.water.wastewater" = "Отпадъчни води";
-"type.barrier.entrance" = "Entrance";
-"type.barrier.fence" = "Fence";
-"type.barrier.gate" = "Gate";
-"type.barrier.hedge" = "Hedge";
-"type.barrier.kissing_gate" = "Gate";
-"type.barrier.lift_gate" = "Lift Gate";
-"type.barrier.retaining_wall" = "Retaining Wall";
-"type.barrier.stile" = "Stile";
+"type.barrier.entrance" = "Вход";
+"type.barrier.fence" = "Ограда";
+"type.barrier.gate" = "Врата";
+"type.barrier.hedge" = "Плет";
+"type.barrier.kissing_gate" = "Преграда за добитък";
+"type.barrier.lift_gate" = "Вдигаща се преграда";
+"type.barrier.retaining_wall" = "Подпорна стена";
+"type.barrier.stile" = "Стъпалата";
 "type.barrier.turnstile" = "Турникет";
-"type.barrier.swing_gate" = "Swing Gate";
-"type.barrier.toll_booth" = "Toll Booth";
-"type.barrier.wall" = "Wall";
-"type.boundary" = "Boundary";
-"type.boundary.administrative" = "Administrative Boundary";
+"type.barrier.swing_gate" = "Бариера на жп линия";
+"type.barrier.toll_booth" = "Плащане на винетка";
+"type.barrier.wall" = "Стена";
+"type.boundary" = "Преграда";
+"type.boundary.administrative" = "Административна граница";
 
 /* Borders between countries. */
-"type.boundary.administrative.2" = "National Border";
+"type.boundary.administrative.2" = "Държавна граница";
 
 /* Country's primary subdivision borders, e.g. between regions, provinces, states.. */
-"type.boundary.administrative.3" = "Regional Boundary";
+"type.boundary.administrative.3" = "Областна граница";
 
 /* Country's primary subdivision borders, e.g. between regions, provinces, states.. */
-"type.boundary.administrative.4" = "Regional Boundary";
+"type.boundary.administrative.4" = "Областна граница";
 "type.boundary.national_park" = "National Park";
 "type.boundary.aboriginal_lands" = "Земи на коренното население";
 "type.boundary.protected_area" = "Защитена местност";
@@ -231,15 +229,15 @@
 "type.boundary.protected_area.4" = "Защитена местност";
 "type.boundary.protected_area.5" = "Защитена местност";
 "type.boundary.protected_area.6" = "Защитена местност";
-"type.building" = "Building";
+"type.building" = "Сграда";
 
 /* Duplicates [address] in strings.txt */
 "type.building.address" = "Адрес";
-"type.building.has_parts" = "Building";
-"type.building_part" = "Building";
-"type.building.garage" = "Garage";
+"type.building.has_parts" = "Сграда";
+"type.building_part" = "Сграда";
+"type.building.garage" = "Гараж";
 "type.building.train_station" = "Сграда на гарата";
-"type.building.warehouse" = "Warehouse";
+"type.building.warehouse" = "Склад";
 "type.cemetery.grave" = "Гроб";
 "type.craft" = "Занаяти";
 "type.craft.beekeeper" = "Пчелар";
@@ -267,97 +265,97 @@
 "type.craft.shoemaker" = "Обущар";
 "type.craft.winery" = "Винарна";
 "type.craft.tailor" = "Шивач";
-"type.cuisine.african" = "African";
+"type.cuisine.african" = "Африканска";
 "type.cuisine.american" = "American";
 "type.cuisine.arab" = "Arab";
-"type.cuisine.argentinian" = "Argentinian";
-"type.cuisine.asian" = "Asian";
+"type.cuisine.argentinian" = "Аржентински";
+"type.cuisine.asian" = "Азиатски";
 "type.cuisine.austrian" = "Austrian";
-"type.cuisine.bagel" = "Bagel";
+"type.cuisine.bagel" = "Геврек";
 "type.cuisine.balkan" = "Balkan";
-"type.cuisine.barbecue" = "Barbecue";
+"type.cuisine.barbecue" = "Барбекю";
 "type.cuisine.bavarian" = "Bavarian";
-"type.cuisine.beef_bowl" = "Beef Bowl";
+"type.cuisine.beef_bowl" = "Купа с говеждо месо";
 "type.cuisine.brazilian" = "Brazilian";
-"type.cuisine.breakfast" = "Breakfast";
-"type.cuisine.bubble_tea" = "Bubble Tea";
-"type.cuisine.burger" = "Burger";
-"type.cuisine.buschenschank" = "Buschenschank";
-"type.cuisine.cake" = "Cake";
+"type.cuisine.breakfast" = "Закуска";
+"type.cuisine.bubble_tea" = "Бабъл чай";
+"type.cuisine.burger" = "Бургер";
+"type.cuisine.buschenschank" = "Бушеншанк";
+"type.cuisine.cake" = "Торта";
 "type.cuisine.caribbean" = "Caribbean";
-"type.cuisine.chicken" = "Chicken";
-"type.cuisine.chinese" = "Chinese";
-"type.cuisine.coffee_shop" = "Coffee";
-"type.cuisine.crepe" = "Crepe";
-"type.cuisine.croatian" = "Croatian";
-"type.cuisine.curry" = "Curry";
+"type.cuisine.chicken" = "Пиле";
+"type.cuisine.chinese" = "Китайска";
+"type.cuisine.coffee_shop" = "Кафе";
+"type.cuisine.crepe" = "Креп";
+"type.cuisine.croatian" = "Хърватски";
+"type.cuisine.curry" = "Къри";
 "type.cuisine.deli" = "Деликатеси";
-"type.cuisine.diner" = "Diner";
-"type.cuisine.donut" = "Donut";
-"type.cuisine.ethiopian" = "Ethiopian";
-"type.cuisine.filipino" = "Filipino";
-"type.cuisine.fine_dining" = "Fine Dining";
-"type.cuisine.fish" = "Fish";
-"type.cuisine.fish_and_chips" = "Fish and Chips";
-"type.cuisine.french" = "French";
-"type.cuisine.friture" = "Friture";
-"type.cuisine.georgian" = "Georgian";
-"type.cuisine.german" = "German";
-"type.cuisine.greek" = "Greek";
-"type.cuisine.grill" = "Grill";
+"type.cuisine.diner" = "Вагон-ресторант";
+"type.cuisine.donut" = "Донът";
+"type.cuisine.ethiopian" = "Етиопска";
+"type.cuisine.filipino" = "Филипинска";
+"type.cuisine.fine_dining" = "Изящна кухня";
+"type.cuisine.fish" = "Риба";
+"type.cuisine.fish_and_chips" = "Риба и чипс";
+"type.cuisine.french" = "Френска";
+"type.cuisine.friture" = "Фритюр";
+"type.cuisine.georgian" = "Грузинска";
+"type.cuisine.german" = "Немска";
+"type.cuisine.greek" = "Гръцка";
+"type.cuisine.grill" = "Грил";
 "type.cuisine.heuriger" = "Heuriger";
-"type.cuisine.hotdog" = "Hotdog";
-"type.cuisine.hungarian" = "Hungarian";
-"type.cuisine.ice_cream" = "Ice Cream";
-"type.cuisine.indian" = "Indian";
-"type.cuisine.indonesian" = "Indonesian";
-"type.cuisine.international" = "International";
-"type.cuisine.irish" = "Irish";
-"type.cuisine.italian" = "Italian";
-"type.cuisine.italian_pizza" = "Italian, Pizza";
-"type.cuisine.japanese" = "Japanese";
-"type.cuisine.kebab" = "Kebab";
-"type.cuisine.korean" = "Korean";
-"type.cuisine.lao" = "Lao";
-"type.cuisine.lebanese" = "Lebanese";
-"type.cuisine.local" = "Local";
-"type.cuisine.malagasy" = "Malagasy";
-"type.cuisine.malaysian" = "Malaysian";
-"type.cuisine.mediterranean" = "Mediterranean";
-"type.cuisine.mexican" = "Mexican";
-"type.cuisine.moroccan" = "Moroccan";
-"type.cuisine.noodles" = "Noodles";
-"type.cuisine.oriental" = "East Asian";
-"type.cuisine.pancake" = "Pancake";
-"type.cuisine.pasta" = "Pasta";
+"type.cuisine.hotdog" = "Хотдог";
+"type.cuisine.hungarian" = "Унгарска";
+"type.cuisine.ice_cream" = "Сладолед";
+"type.cuisine.indian" = "Индийска";
+"type.cuisine.indonesian" = "Индонезийска";
+"type.cuisine.international" = "Международна";
+"type.cuisine.irish" = "Ирландска";
+"type.cuisine.italian" = "Италианска";
+"type.cuisine.italian_pizza" = "Италиански, пица";
+"type.cuisine.japanese" = "Японска";
+"type.cuisine.kebab" = "Кебап";
+"type.cuisine.korean" = "Корейска";
+"type.cuisine.lao" = "Лао";
+"type.cuisine.lebanese" = "Ливанска";
+"type.cuisine.local" = "Местна";
+"type.cuisine.malagasy" = "Мадагаскар";
+"type.cuisine.malaysian" = "Мадагаскарска";
+"type.cuisine.mediterranean" = "Средиземноморски";
+"type.cuisine.mexican" = "Мексиканска";
+"type.cuisine.moroccan" = "Мароканска";
+"type.cuisine.noodles" = "Азиатски спагети";
+"type.cuisine.oriental" = "Източноазиатска";
+"type.cuisine.pancake" = "Палачинки";
+"type.cuisine.pasta" = "Паста";
 "type.cuisine.persian" = "Persian";
 "type.cuisine.peruvian" = "Peruvian";
-"type.cuisine.pizza" = "Pizza";
-"type.cuisine.polish" = "Polish";
-"type.cuisine.portuguese" = "Portuguese";
-"type.cuisine.ramen" = "Ramen";
-"type.cuisine.regional" = "Regional";
-"type.cuisine.russian" = "Russian";
+"type.cuisine.pizza" = "Пица";
+"type.cuisine.polish" = "Полска";
+"type.cuisine.portuguese" = "Португалска";
+"type.cuisine.ramen" = "Рамен";
+"type.cuisine.regional" = "Регионална";
+"type.cuisine.russian" = "Руска";
 "type.cuisine.sandwich" = "Sandwich";
-"type.cuisine.sausage" = "Sausage";
-"type.cuisine.savory_pancakes" = "Savory Pancakes";
-"type.cuisine.seafood" = "Seafood";
-"type.cuisine.soba" = "Soba";
+"type.cuisine.sausage" = "Колбаси";
+"type.cuisine.savory_pancakes" = "Пикантни палачинки";
+"type.cuisine.seafood" = "Морски дарове";
+"type.cuisine.soba" = "Соба";
 "type.cuisine.spanish" = "Spanish";
-"type.cuisine.steak_house" = "Steak House";
-"type.cuisine.sushi" = "Sushi";
-"type.cuisine.tapas" = "Tapas";
-"type.cuisine.tea" = "Tea";
-"type.cuisine.thai" = "Thai";
-"type.cuisine.turkish" = "Turkish";
-"type.cuisine.vegan" = "Vegan";
-"type.cuisine.vegetarian" = "Vegetarian";
-"type.cuisine.vietnamese" = "Vietnamese";
-"type.emergency" = "Emergency";
+"type.cuisine.steak_house" = "Стекхаус";
+"type.cuisine.sushi" = "Суши";
+"type.cuisine.tapas" = "Тапас";
+"type.cuisine.tea" = "Чай";
+"type.cuisine.thai" = "Тайландска";
+"type.cuisine.turkish" = "Турска";
+"type.cuisine.vegan" = "Веганска";
+"type.cuisine.vegetarian" = "Вегетарианска";
+"type.cuisine.vietnamese" = "Виетнамска";
+"type.emergency" = "Спешна помощ";
 "type.emergency.assembly_point" = "Авариен сборен пункт";
-"type.emergency.defibrillator" = "Defibrillator";
-"type.emergency.fire_hydrant" = "Fire Hydrant";
-"type.emergency.phone" = "Emergency Phone";
+"type.emergency.defibrillator" = "Дефибрилатор";
+"type.emergency.fire_hydrant" = "Пожарен кран";
+"type.emergency.phone" = "Телефон за спешни случаи";
 
 /* A place where a lifeguard is on duty. */
 "type.emergency.lifeguard" = "Спасител";
@@ -366,7 +364,7 @@
 "type.emergency.mountain_rescue" = "Планинска спасителна станция";
 
 /* This is for secondary entrances, for main entrances see type.entrance.main */
-"type.entrance" = "Entrance";
+"type.entrance" = "Вход";
 
 /* This is for main/primary entrances, for secondary entrances see type.entrance */
 "type.entrance.main" = "Главния вход";
@@ -383,12 +381,12 @@
 "type.healthcare.psychotherapist" = "Психотерапия";
 "type.healthcare.sample_collection" = "Вземане на проби";
 "type.healthcare.speech_therapist" = "Логопедия";
-"type.highway" = "Highway";
-"type.highway.bridleway" = "Bridle Path";
+"type.highway" = "Магистрала";
+"type.highway.bridleway" = "Пътека за юздечки";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.bridleway.bridge" = "Мост";
-"type.highway.bridleway.permissive" = "Bridle Path";
+"type.highway.bridleway.permissive" = "Пътека за юздечки";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.bridleway.tunnel" = "Тунел";
@@ -399,43 +397,43 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.busway.tunnel" = "Тунел";
-"type.highway.bus_stop" = "Bus Stop";
-"type.highway.construction" = "Road Under Construction";
-"type.highway.cycleway" = "Cycle Path";
+"type.highway.bus_stop" = "Спирка";
+"type.highway.construction" = "Път в процес на изграждане";
+"type.highway.cycleway" = "Пътека за колела";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.cycleway.bridge" = "Мост";
-"type.highway.cycleway.permissive" = "Cycle Path";
+"type.highway.cycleway.permissive" = "Пътека за колела";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.cycleway.tunnel" = "Тунел";
-"type.highway.elevator" = "Elevator";
-"type.highway.footway" = "Foot Path";
+"type.highway.elevator" = "Асансьор";
+"type.highway.footway" = "Пътек";
 "type.highway.footway.sidewalk" = "Тротоар";
 "type.highway.footway.crossing" = "Пешеходно пресичане";
-"type.highway.footway.area" = "Foot Path";
+"type.highway.footway.area" = "Пешеходно поле";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.footway.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.footway.tunnel" = "Тунел";
-"type.highway.ford" = "Ford";
-"type.highway.living_street" = "Living Street";
+"type.highway.ford" = "Брод";
+"type.highway.living_street" = "Жилищна улица";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.living_street.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.living_street.tunnel" = "Тунел";
-"type.highway.motorway" = "Motorway";
+"type.highway.motorway" = "Магистрала";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.motorway.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.motorway.tunnel" = "Тунел";
-"type.highway.motorway_junction" = "Road Exit";
+"type.highway.motorway_junction" = "Разклонение";
 "type.highway.motorway_link" = "Motorway";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -450,16 +448,16 @@
 
 /* Hiking trail tagged as sac_scale=alpine_hiking (4+ of 6) or trail_visibility=horrible or more extreme. */
 "type.highway.path.expert" = "Много трудна или неразличима пътека";
-"type.highway.path.bicycle" = "Път";
-"type.highway.footway.bicycle" = "Път";
+"type.highway.path.bicycle" = "Пътека за колела и пешеходци";
+"type.highway.footway.bicycle" = "Път за колела и пешеходци";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.path.bridge" = "Мост";
-"type.highway.path.horse" = "Път";
+"type.highway.path.horse" = "Конен път";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.path.tunnel" = "Тунел";
-"type.highway.pedestrian" = "Pedestrian Street";
+"type.highway.pedestrian" = "Пешеходна улица";
 "type.highway.pedestrian.area" = "Pedestrian Street";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -467,7 +465,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Тунел";
-"type.highway.primary" = "Primary Road";
+"type.highway.primary" = "Главен път";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.primary.bridge" = "Мост";
@@ -481,17 +479,17 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.primary_link.tunnel" = "Тунел";
-"type.highway.raceway" = "Racetrack";
-"type.highway.residential" = "Residential Street";
-"type.highway.residential.area" = "Residential Street";
+"type.highway.raceway" = "Състезателен път";
+"type.highway.residential" = "Жилищна улица";
+"type.highway.residential.area" = "Жилищна улица";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.residential.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.residential.tunnel" = "Тунел";
-"type.highway.rest_area" = "Rest Area";
-"type.highway.road" = "Road";
+"type.highway.rest_area" = "Място за отдих";
+"type.highway.road" = "Път";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.road.bridge" = "Мост";
@@ -501,7 +499,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.road.tunnel" = "Тунел";
-"type.highway.secondary" = "Secondary Road";
+"type.highway.secondary" = "Второстепенен пър";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.secondary.bridge" = "Мост";
@@ -515,26 +513,26 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.secondary_link.tunnel" = "Тунел";
-"type.highway.service" = "Service Road";
-"type.highway.service.area" = "Service Road";
+"type.highway.service" = "Обслужващ път";
+"type.highway.service.area" = "Обслужващ път";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.service.bridge" = "Мост";
-"type.highway.service.driveway" = "Service Road";
+"type.highway.service.driveway" = "Отбивка";
 "type.highway.service.parking_aisle" = "Service Road";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.service.tunnel" = "Тунел";
 "type.highway.services" = "Service Area";
-"type.highway.speed_camera" = "Speed Camera";
-"type.highway.steps" = "Stairs";
+"type.highway.speed_camera" = "Радар";
+"type.highway.steps" = "Стълби";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.steps.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.steps.tunnel" = "Тунел";
-"type.highway.tertiary" = "Tertiary Road";
+"type.highway.tertiary" = "Третостепенен път";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.tertiary.bridge" = "Мост";
@@ -548,17 +546,17 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.tertiary_link.tunnel" = "Тунел";
-"type.highway.track" = "Track";
-"type.highway.track.area" = "Track";
+"type.highway.track" = "Пътека";
+"type.highway.track.area" = "Пътека";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.track.bridge" = "Мост";
-"type.highway.track.grade1" = "Track";
-"type.highway.track.no.access" = "Track";
+"type.highway.track.grade1" = "Пътека";
+"type.highway.track.no.access" = "Пътека";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.track.tunnel" = "Тунел";
-"type.highway.traffic_signals" = "Traffic Lights";
+"type.highway.traffic_signals" = "Светофар";
 "type.highway.trunk" = "Автомагистрала";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -573,29 +571,29 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.trunk_link.tunnel" = "Тунел";
-"type.highway.unclassified" = "Minor Road";
-"type.highway.unclassified.area" = "Minor Road";
+"type.highway.unclassified" = "Малък път";
+"type.highway.unclassified.area" = "Малък път";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.unclassified.bridge" = "Мост";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.unclassified.tunnel" = "Тунел";
-"type.area_highway.cycleway" = "Cycle Path";
-"type.area_highway.footway" = "Foot Path";
-"type.area_highway.living_street" = "Living Street";
-"type.area_highway.motorway" = "Motorway";
+"type.area_highway.cycleway" = "Пътека за колела";
+"type.area_highway.footway" = "Пешеходен път";
+"type.area_highway.living_street" = "Жилищна улица";
+"type.area_highway.motorway" = "Магистрала";
 "type.area_highway.path" = "Път";
-"type.area_highway.pedestrian" = "Pedestrian Street";
-"type.area_highway.primary" = "Primary Road";
-"type.area_highway.residential" = "Residential Street";
-"type.area_highway.secondary" = "Secondary Road";
-"type.area_highway.service" = "Service Road";
-"type.area_highway.tertiary" = "Tertiary Road";
-"type.area_highway.steps" = "Stairs";
-"type.area_highway.track" = "Track";
+"type.area_highway.pedestrian" = "Пешеходна улица";
+"type.area_highway.primary" = "Главен път";
+"type.area_highway.residential" = "Жилищна улица";
+"type.area_highway.secondary" = "Второстепенен път";
+"type.area_highway.service" = "Обслужващ път";
+"type.area_highway.tertiary" = "Третостепенен път";
+"type.area_highway.steps" = "Стълбища";
+"type.area_highway.track" = "Пътека";
 "type.area_highway.trunk" = "Автомагистрала";
-"type.area_highway.unclassified" = "Minor Road";
+"type.area_highway.unclassified" = "Малък път";
 "type.highway.world_level" = "highway-world_level";
 "type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Исторически обект";
@@ -659,99 +657,99 @@
 "type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
-"type.junction" = "Junction";
-"type.junction.circular" = "Roundabout";
-"type.junction.roundabout" = "Roundabout";
-"type.landuse" = "Landuse";
-"type.landuse.allotments" = "Allotments";
-"type.landuse.basin" = "Резервоар";
-"type.landuse.brownfield" = "Brownfield";
+"type.junction" = "Съединение";
+"type.junction.circular" = "Кръгово";
+"type.junction.roundabout" = "Кръгово";
+"type.landuse" = "Земеползване";
+"type.landuse.allotments" = "Овощни градини";
+"type.landuse.basin" = "Езерце";
+"type.landuse.brownfield" = "Земля за застройки";
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
-"type.landuse.cemetery" = "Graveyard";
+"type.landuse.cemetery" = "Гробище";
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
-"type.landuse.cemetery.christian" = "Graveyard";
-"type.landuse.churchyard" = "Churchyard";
-"type.landuse.commercial" = "Commercial Area";
-"type.landuse.construction" = "Construction Area";
-"type.landuse.education" = "Educational Facility";
-"type.landuse.farmland" = "Farmland";
-"type.landuse.farmyard" = "Farmyard";
-"type.landuse.field" = "Field";
+"type.landuse.cemetery.christian" = "Християнско гробище";
+"type.landuse.religious" = "Религиозна земя";
+"type.landuse.commercial" = "Търговска зона";
+"type.landuse.construction" = "Строителна зона";
+"type.landuse.education" = "Учебно заведение";
+"type.landuse.farmland" = "Земеделска земя";
+"type.landuse.farmyard" = "Стопански двор";
+"type.landuse.field" = "Поле";
 "type.landuse.flowerbed" = "Цветна леха";
 "type.landuse.forest" = "Forest";
-"type.landuse.forest.coniferous" = "Coniferous Forest";
-"type.landuse.forest.deciduous" = "Deciduous Forest";
-"type.landuse.forest.mixed" = "Mixed-Leaf Forest";
-"type.landuse.garages" = "Garages";
+"type.landuse.forest.coniferous" = "Иглолистни гори";
+"type.landuse.forest.deciduous" = "Широколистна гора";
+"type.landuse.forest.mixed" = "Смесена гора";
+"type.landuse.garages" = "Гаражи";
 "type.landuse.grass" = "Grass";
-"type.landuse.greenfield" = "Greenfield";
-"type.landuse.greenhouse_horticulture" = "Greenhouse";
-"type.landuse.industrial" = "Industrial Area";
-"type.landuse.landfill" = "Landfill";
+"type.landuse.greenfield" = "Земля за застройки";
+"type.landuse.greenhouse_horticulture" = "Оранжерия";
+"type.landuse.industrial" = "Индустриална зона";
+"type.landuse.landfill" = "Депо за отпадъци";
 "type.landuse.meadow" = "Meadow";
-"type.landuse.military" = "Military Area";
-"type.landuse.orchard" = "Orchard";
-"type.landuse.quarry" = "Quarry";
-"type.landuse.railway" = "Railway Premises";
-"type.landuse.recreation_ground" = "Recreation Ground";
-"type.landuse.reservoir" = "Reservoir";
-"type.landuse.residential" = "Residential Area";
-"type.landuse.retail" = "Retail Area";
-"type.landuse.salt_pond" = "Salt Pond";
+"type.landuse.military" = "Военна зона";
+"type.landuse.orchard" = "Овощна градина";
+"type.landuse.quarry" = "Кариера";
+"type.landuse.railway" = "Железопътни съоръжения";
+"type.landuse.recreation_ground" = "Място за отдих";
+"type.landuse.reservoir" = "Резервоар";
+"type.landuse.residential" = "Жилищна зона";
+"type.landuse.retail" = "Търговска площ";
+"type.landuse.salt_pond" = "Солено езеро";
 "type.landuse.village_green" = "Land";
 "type.landuse.vineyard" = "Vineyard";
-"type.leisure" = "Leisure";
+"type.leisure" = "Място за отдих";
 "type.leisure.common" = "Public Land";
-"type.leisure.dog_park" = "Dog Park";
-"type.leisure.fitness_centre" = "Fitness Centre";
-"type.leisure.fitness_station" = "Fitness Station";
+"type.leisure.dog_park" = "Парк за кучета";
+"type.leisure.fitness_centre" = "Фитнес център";
+"type.leisure.fitness_station" = "Фитнес станция";
 "type.leisure.dance" = "Зала за танци";
-"type.leisure.garden" = "Garden";
+"type.leisure.garden" = "Градина";
 "type.leisure.garden.residential" = "Garden";
-"type.leisure.golf_course" = "Golf Course";
+"type.leisure.golf_course" = "Голф игрище";
 "type.leisure.miniature_golf" = "Миниголф";
-"type.leisure.hackerspace" = "Hackerspace";
-"type.leisure.ice_rink" = "Ice Rink";
-"type.leisure.marina" = "Marina";
-"type.leisure.nature_reserve" = "Nature Reserve";
+"type.leisure.hackerspace" = "Хакерспейс";
+"type.leisure.ice_rink" = "Ледена пързалка";
+"type.leisure.marina" = "Яхт-клуб";
+"type.leisure.nature_reserve" = "Природен резерват";
 "type.leisure.outdoor_seating" = "Места за сядане на открито";
-"type.leisure.park" = "Park";
-"type.leisure.park.no.access" = "Park";
-"type.leisure.park.permissive" = "Park";
-"type.leisure.park.private" = "Park";
+"type.leisure.park" = "Парк";
+"type.leisure.park.no.access" = "Частен парк";
+"type.leisure.park.permissive" = "Парк";
+"type.leisure.park.private" = "Частен парк";
 "type.leisure.picnic_table" = "Маса за пикник";
-"type.leisure.pitch" = "Sport Pitch";
-"type.leisure.playground" = "Playground";
-"type.leisure.recreation_ground" = "Recreation Ground";
-"type.leisure.sauna" = "Sauna";
-"type.leisure.slipway" = "Slipway";
-"type.leisure.sports_centre" = "Sports Center";
+"type.leisure.pitch" = "Спортен терен";
+"type.leisure.playground" = "Детска площадка";
+"type.leisure.recreation_ground" = "Парк за отдих";
+"type.leisure.sauna" = "Сауна";
+"type.leisure.slipway" = "Стапел";
+"type.leisure.sports_centre" = "Спортен център";
 "type.sport.climbing" = "Катерене";
 "type.sport.yoga" = "Йога";
-"type.leisure.stadium" = "Stadium";
+"type.leisure.stadium" = "Стадион";
 "type.leisure.swimming_pool" = "Басейн";
 "type.leisure.swimming_pool.private" = "Басейн";
-"type.leisure.track" = "Track";
-"type.leisure.track.area" = "Track";
-"type.leisure.water_park" = "Water Park";
-"type.leisure.beach_resort" = "Beach Resort";
-"type.man_made" = "Man Made";
-"type.man_made.breakwater" = "Breakwater";
-"type.man_made.cairn" = "Cairn";
-"type.man_made.chimney" = "Chimney";
-"type.man_made.cutline" = "Cutline";
-"type.man_made.survey_point" = "Survey Point";
-"type.man_made.flagpole" = "Flagpole";
-"type.man_made.lighthouse" = "Lighthouse";
-"type.man_made.mast" = "Mast";
-"type.man_made.pier" = "Pier";
-"type.man_made.pipeline" = "Pipeline";
-"type.man_made.pipeline.overground" = "Overground Pipeline";
-"type.man_made.silo" = "Silo";
-"type.man_made.storage_tank" = "Storage Tank";
-"type.man_made.surveillance" = "Surveillance Camera";
+"type.leisure.track" = "Пътека";
+"type.leisure.track.area" = "Пътека";
+"type.leisure.water_park" = "Аквапарк";
+"type.leisure.beach_resort" = "Плажен курорт";
+"type.man_made" = "Изкуствена структура";
+"type.man_made.breakwater" = "Вълнолом";
+"type.man_made.cairn" = "Керн";
+"type.man_made.chimney" = "Комин";
+"type.man_made.cutline" = "Просека";
+"type.man_made.survey_point" = "Геодезическа точка";
+"type.man_made.flagpole" = "Мачта за знаме";
+"type.man_made.lighthouse" = "Фар";
+"type.man_made.mast" = "Мачта";
+"type.man_made.pier" = "Пирс";
+"type.man_made.pipeline" = "Тръбопровод";
+"type.man_made.pipeline.overground" = "Надземен тръбопровод";
+"type.man_made.silo" = "Складова кула";
+"type.man_made.storage_tank" = "Резервоар за съхранение";
+"type.man_made.surveillance" = "Камера за наблюдение";
 "type.man_made.tower" = "Tower";
 
 /* A huge telecommunications tower. Often a local monument or a landmark. */
@@ -765,18 +763,18 @@
 
 /* A tower/mast constructed to burn off excess gas. */
 "type.man_made.flare" = "Газова факла";
-"type.man_made.wastewater_plant" = "Wastewater Treatment Plant";
-"type.man_made.water_tap" = "Water Tap";
-"type.man_made.water_tap.drinking_water_no" = "Water Tap";
-"type.man_made.water_tower" = "Water Tower";
-"type.man_made.water_well" = "Water Well";
-"type.man_made.water_well.drinking_water_no" = "Water Well";
-"type.man_made.windmill" = "Windmill";
-"type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
+"type.man_made.wastewater_plant" = "Пречиствателна станция за отпадъчни води";
+"type.man_made.water_tap" = "Кранче за вода";
+"type.man_made.water_tap.drinking_water_no" = "Кранче за вода";
+"type.man_made.water_tower" = "Водна кула";
+"type.man_made.water_well" = "Кладенец";
+"type.man_made.water_well.drinking_water_no" = "Кладенец";
+"type.man_made.windmill" = "Вятърна мелница";
+"type.man_made.works" = "Промишлени предприятия";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
-"type.military" = "Military";
-"type.military.bunker" = "Bunker";
+"type.military" = "Военни";
+"type.military.bunker" = "Бункер";
 "type.mountain_pass" = "Mountain Pass";
 "type.natural" = "Природа";
 
@@ -827,17 +825,17 @@
 "type.natural.wetland" = "Влажна зона";
 "type.natural.wetland.bog" = "Торфено блато";
 "type.natural.wetland.marsh" = "Блато";
-"type.noexit" = "Dead End";
+"type.noexit" = "Задънена улица";
 "type.office" = "Office";
-"type.office.company" = "Company Office";
-"type.office.estate_agent" = "Estate Agent";
-"type.office.government" = "Government Office";
-"type.office.insurance" = "Insurance Office";
-"type.office.lawyer" = "Lawyer";
-"type.office.ngo" = "Non-Governmental Organization";
+"type.office.company" = "Офис на компанията";
+"type.office.estate_agent" = "Агент по недвижими имоти";
+"type.office.government" = "Правителствен офис";
+"type.office.insurance" = "Застрахователна служба";
+"type.office.lawyer" = "Адвокат";
+"type.office.ngo" = "Неправителствена организация";
 "type.office.telecommunication" = "Телекомуникационна компания";
-"type.organic.only" = "Organic";
-"type.organic.yes" = "Organic";
+"type.organic.only" = "Органичен";
+"type.organic.yes" = "Органичен";
 "type.place.city" = "Град";
 "type.place.city.capital" = "Столица";
 "type.place.city.capital.10" = "Град";
@@ -874,34 +872,33 @@
 
 /* Named part of a city or town, bigger than place=quarter (Wiki: https://wiki.openstreetmap.org/wiki/Tag:place%3Dsuburb) */
 "type.place.suburb" = "Предградие";
-"type.place.town" = "Касаба";
+"type.place.town" = "Градче";
 "type.place.village" = "Село";
-"type.power" = "Power";
-"type.power.generator" = "Power Generator";
+"type.power" = "Електричество";
+"type.power.generator" = "Генератор на електроенергия";
 "type.power.generator.solar" = "Слънчев генератор";
 "type.power.generator.wind" = "Вятърен генератор";
 "type.power.generator.gas" = "Газотурбинна електроцентрала";
 "type.power.generator.hydro" = "Водноелектрическа централа";
-"type.power.line" = "Power Line";
-"type.power.line.underground" = "Underground Power Line";
-"type.power.minor_line" = "Minor Power Line";
+"type.power.line" = "Електропровод";
+"type.power.line.underground" = "Подземен електропровод";
+"type.power.minor_line" = "Електропровод за ниско напрежение";
 "type.power.plant" = "Електроцентрала";
 "type.power.plant.coal" = "Въглищна централа";
 "type.power.plant.gas" = "Газотурбинна електроцентрала";
 "type.power.plant.hydro" = "Водноелектрическа централа";
 "type.power.plant.solar" = "Слънчева електроцентрала";
 "type.power.plant.wind" = "Вятърна електроцентрала";
-"type.power.station" = "Power Station";
-"type.power.substation" = "Substation";
+"type.power.substation" = "Подстанция";
 
 /* A tower or pylon carrying high voltage electricity cables. */
-"type.power.tower" = "Power Tower";
+"type.power.tower" = "Електрическа кула";
 
 /* A single pole supporting minor power lines. */
-"type.power.pole" = "Power Pole";
+"type.power.pole" = "Електрически стълб";
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
-"type.man_made.utility_pole" = "Utility Pole";
+"type.man_made.utility_pole" = "Стълб за комунални услуги";
 "type.psurface" = "psurface";
 "type.psurface.paved_bad" = "psurface-paved_bad";
 "type.psurface.paved_good" = "psurface-paved_good";
@@ -909,24 +906,24 @@
 "type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Public Transport";
 "type.public_transport.platform" = "Platform";
-"type.railway" = "Railway";
-"type.railway.abandoned" = "Abandoned Railway";
-"type.railway.abandoned.bridge" = "Abandoned Railway Bridge";
-"type.railway.abandoned.tunnel" = "Abandoned Railway Tunnel";
-"type.railway.construction" = "Railway Construction";
-"type.railway.crossing" = "Railway Crossing";
-"type.railway.disused" = "Disused Railway";
+"type.railway" = "Железопътна линия";
+"type.railway.abandoned" = "Изоставена железопътна линия";
+"type.railway.abandoned.bridge" = "Изоставен железопътен мост";
+"type.railway.abandoned.tunnel" = "Изоставен железопътен тунел";
+"type.railway.construction" = "Строителство на железопътни линии";
+"type.railway.crossing" = "Железопътен прелез";
+"type.railway.disused" = "Неизползвана железопътна линия";
 "type.railway.funicular" = "Фуникуляр";
-"type.railway.funicular.bridge" = "Funicular Bridge";
-"type.railway.funicular.tunnel" = "Funicular Tunnel";
-"type.railway.halt" = "Rail Halt";
-"type.railway.level_crossing" = "Level Crossing";
-"type.railway.light_rail" = "Light Rail";
-"type.railway.light_rail.bridge" = "Light Rail Bridge";
-"type.railway.light_rail.tunnel" = "Light Rail Tunnel";
-"type.railway.monorail" = "Monorail";
-"type.railway.monorail.bridge" = "Monorail Bridge";
-"type.railway.monorail.tunnel" = "Monorail Tunnel";
+"type.railway.funicular.bridge" = "Фуникулярен мост";
+"type.railway.funicular.tunnel" = "Фуникулярен тунел";
+"type.railway.halt" = "Железопътна спирка";
+"type.railway.level_crossing" = "Железопътен прелез";
+"type.railway.light_rail" = "Скоростен трамвай";
+"type.railway.light_rail.bridge" = "Мост на скоростен трамвай";
+"type.railway.light_rail.tunnel" = "Тунел на скоростен трамвай";
+"type.railway.monorail" = "Монорелс";
+"type.railway.monorail.bridge" = "Мост на монорелсите";
+"type.railway.monorail.tunnel" = "Тунел на монорелсите";
 "type.railway.narrow_gauge" = "Narrow Gauge Rail";
 "type.railway.narrow_gauge.bridge" = "Narrow Gauge Rail Bridge";
 "type.railway.narrow_gauge.tunnel" = "Narrow Gauge Rail Tunnel";
@@ -1122,52 +1119,52 @@
 "type.railway.subway_entrance.dubai" = "Subway Entrance";
 "type.railway.subway_entrance.ekb" = "Subway Entrance";
 "type.railway.subway_entrance.fukuoka" = "Subway Entrance";
-"type.railway.subway_entrance.glasgow" = "Subway Entrance";
-"type.railway.subway_entrance.guangzhou" = "Subway Entrance";
-"type.railway.subway_entrance.hamburg" = "Subway Entrance";
-"type.railway.subway_entrance.helsinki" = "Subway Entrance";
-"type.railway.subway_entrance.hiroshima" = "Subway Entrance";
-"type.railway.subway_entrance.hongkong" = "Subway Entrance";
-"type.railway.subway_entrance.isfahan" = "Subway Entrance";
-"type.railway.subway_entrance.istanbul" = "Subway Entrance";
+"type.railway.subway_entrance.glasgow" = "Вход на метро";
+"type.railway.subway_entrance.guangzhou" = "Вход ма метро";
+"type.railway.subway_entrance.hamburg" = "Вход ма метро";
+"type.railway.subway_entrance.helsinki" = "Вход ма метро";
+"type.railway.subway_entrance.hiroshima" = "Вход ма метро";
+"type.railway.subway_entrance.hongkong" = "Вход ма метро";
+"type.railway.subway_entrance.isfahan" = "Вход ма метро";
+"type.railway.subway_entrance.istanbul" = "Вход ма метро";
 "type.railway.subway_entrance.izmir" = "Subway Entrance";
-"type.railway.subway_entrance.kazan" = "Subway Entrance";
-"type.railway.subway_entrance.kharkiv" = "Subway Entrance";
-"type.railway.subway_entrance.kiev" = "Subway Entrance";
+"type.railway.subway_entrance.kazan" = "Вход ма метро";
+"type.railway.subway_entrance.kharkiv" = "Вход ма метро";
+"type.railway.subway_entrance.kiev" = "Вход ма метро";
 "type.railway.subway_entrance.kobe" = "Subway Entrance";
-"type.railway.subway_entrance.kolkata" = "Subway Entrance";
+"type.railway.subway_entrance.kolkata" = "Вход ма метро";
 "type.railway.subway_entrance.kunming" = "Subway Entrance";
-"type.railway.subway_entrance.kyoto" = "Subway Entrance";
+"type.railway.subway_entrance.kyoto" = "Вход ма метро";
 "type.railway.subway_entrance.la" = "Subway Entrance";
-"type.railway.subway_entrance.lausanne" = "Subway Entrance";
+"type.railway.subway_entrance.lausanne" = "Вход ма метро";
 "type.railway.subway_entrance.lille" = "Subway Entrance";
-"type.railway.subway_entrance.lima" = "Subway Entrance";
-"type.railway.subway_entrance.lisboa" = "Subway Entrance";
-"type.railway.subway_entrance.london" = "Subway Entrance";
-"type.railway.subway_entrance.lyon" = "Subway Entrance";
+"type.railway.subway_entrance.lima" = "Вход ма метро";
+"type.railway.subway_entrance.lisboa" = "Вход ма метро";
+"type.railway.subway_entrance.london" = "Вход на метростанция";
+"type.railway.subway_entrance.lyon" = "Вход ма метро";
 "type.railway.subway_entrance.madrid" = "Subway Entrance";
-"type.railway.subway_entrance.malaga" = "Subway Entrance";
+"type.railway.subway_entrance.malaga" = "Вход ма метро";
 "type.railway.subway_entrance.manila" = "Subway Entrance";
-"type.railway.subway_entrance.maracaibo" = "Subway Entrance";
+"type.railway.subway_entrance.maracaibo" = "Вход ма метро";
 "type.railway.subway_entrance.mashhad" = "Subway Entrance";
-"type.railway.subway_entrance.mecca" = "Subway Entrance";
-"type.railway.subway_entrance.medellin" = "Subway Entrance";
-"type.railway.subway_entrance.mexico" = "Subway Entrance";
+"type.railway.subway_entrance.mecca" = "Вход ма метро";
+"type.railway.subway_entrance.medellin" = "Вход ма метро";
+"type.railway.subway_entrance.mexico" = "Вход ма метро";
 "type.railway.subway_entrance.milan" = "Subway Entrance";
-"type.railway.subway_entrance.minsk" = "Subway Entrance";
+"type.railway.subway_entrance.minsk" = "Вход ма метро";
 "type.railway.subway_entrance.montreal" = "Subway Entrance";
-"type.railway.subway_entrance.moscow" = "Subway Entrance";
-"type.railway.subway_entrance.munchen" = "Subway Entrance";
+"type.railway.subway_entrance.moscow" = "Вход ма метро";
+"type.railway.subway_entrance.munchen" = "Вход ма метро";
 "type.railway.subway_entrance.nagoya" = "Subway Entrance";
-"type.railway.subway_entrance.newyork" = "Subway Entrance";
+"type.railway.subway_entrance.newyork" = "Вход ма метро";
 "type.railway.subway_entrance.nnov" = "Subway Entrance";
-"type.railway.subway_entrance.novosibirsk" = "Subway Entrance";
+"type.railway.subway_entrance.novosibirsk" = "Вход ма метро";
 "type.railway.subway_entrance.osaka" = "Subway Entrance";
-"type.railway.subway_entrance.oslo" = "Subway Entrance";
+"type.railway.subway_entrance.oslo" = "Вход ма метро";
 "type.railway.subway_entrance.palma" = "Subway Entrance";
-"type.railway.subway_entrance.panama" = "Subway Entrance";
+"type.railway.subway_entrance.panama" = "Вход ма метро";
 "type.railway.subway_entrance.paris" = "Subway Entrance";
-"type.railway.subway_entrance.philadelphia" = "Subway Entrance";
+"type.railway.subway_entrance.philadelphia" = "Вход ма метро";
 "type.railway.subway_entrance.pyongyang" = "Subway Entrance";
 "type.railway.subway_entrance.rennes" = "Subway Entrance";
 "type.railway.subway_entrance.rio" = "Subway Entrance";
@@ -1213,20 +1210,20 @@
 "type.shop.alcohol" = "Liquor Shop";
 "type.shop.bakery" = "Bakery";
 "type.shop.bathroom_furnishing" = "Обзавеждане за баня";
-"type.shop.beauty" = "Beauty Shop";
-"type.shop.beverages" = "Beverages";
-"type.shop.bicycle" = "Bicycle Shop";
+"type.shop.beauty" = "Магазин за красота";
+"type.shop.beverages" = "Напитки";
+"type.shop.bicycle" = "Магазин за колела";
 "type.shop.bookmaker" = "Bookmaker";
 "type.shop.books" = "Bookstore";
-"type.shop.butcher" = "Butcher";
+"type.shop.butcher" = "Месар";
 "type.shop.cannabis" = "Магазин за канабис";
 "type.shop.car" = "Car Dealership";
-"type.shop.car_parts" = "Car Parts Shop";
-"type.shop.car_repair" = "Car Repair Workshop";
-"type.shop.car_repair.tyres" = "Tyre Repair";
+"type.shop.car_parts" = "Магазин за авточасти";
+"type.shop.car_repair" = "Сервиз за коли";
+"type.shop.car_repair.tyres" = "Гумаджия";
 "type.shop.caravan" = "RV Dealership";
 "type.shop.carpet" = "Килими";
-"type.shop.chemist" = "Chemist";
+"type.shop.chemist" = "Химик";
 "type.shop.chocolate" = "Chocolate Shop";
 "type.shop.clothes" = "Clothes Shop";
 "type.shop.coffee" = "Coffee Shop";
@@ -1234,7 +1231,7 @@
 "type.shop.confectionery" = "Candy Shop";
 "type.shop.convenience" = "Convenience Store";
 "type.shop.copyshop" = "Copyshop";
-"type.shop.cosmetics" = "Cosmetics Shop";
+"type.shop.cosmetics" = "Магазин за козметика";
 "type.shop.curtain" = "Пердета";
 "type.shop.deli" = "Магазин за деликатеси";
 "type.shop.department_store" = "Department Store";
@@ -1245,7 +1242,7 @@
 "type.shop.fabric" = "Fabric Shop";
 "type.shop.farm" = "Магазин за селскостопански храни";
 "type.shop.fashion_accessories" = "Модни аксесоари";
-"type.shop.florist" = "Florist";
+"type.shop.florist" = "Цветарски магазин";
 "type.shop.funeral_directors" = "Funeral Directors";
 "type.shop.furniture" = "Furniture Store";
 "type.shop.garden_centre" = "Garden Center";
@@ -1279,27 +1276,27 @@
 "type.shop.pasta" = "Магазин за паста";
 "type.shop.pastry" = "Тестени изделия";
 "type.shop.pawnbroker" = "Pawnbroker";
-"type.shop.pet" = "Pet Store";
+"type.shop.pet" = "Магазин за животни";
 "type.shop.pet_grooming" = "Грижа за домашни любимци";
 "type.shop.photo" = "Photo Shop";
 "type.shop.rental" = "Магазин под наем";
 "type.shop.rental.bicycle" = "Магазин за велосипеди под наем";
-"type.shop.seafood" = "Fishmonger";
+"type.shop.seafood" = "Риба";
 "type.shop.second_hand" = "Магазин втора употреба";
-"type.shop.shoes" = "Shoe Shop";
-"type.shop.sports" = "Sports Shop";
+"type.shop.shoes" = "Магазин за обувки";
+"type.shop.sports" = "Спортни стоки";
 "type.shop.stationery" = "Stationery Shop";
-"type.shop.supermarket" = "Supermarket";
+"type.shop.supermarket" = "Супермаркет";
 "type.shop.tattoo" = "Tattoo Parlour";
-"type.shop.tea" = "Tea Shop";
+"type.shop.tea" = "Магазин за чай";
 "type.shop.ticket" = "Ticket Shop";
-"type.shop.toys" = "Toy Store";
+"type.shop.toys" = "Играчки";
 "type.shop.travel_agency" = "Travel Agency";
-"type.shop.tyres" = "Tyre Shop";
+"type.shop.tyres" = "Гуми";
 "type.shop.variety_store" = "Variety Store";
 "type.shop.video" = "Video Shop";
 "type.shop.video_games" = "Video Game Shop";
-"type.shop.wine" = "Wine Shop";
+"type.shop.wine" = "Вино";
 "type.shop.agrarian" = "Селскостопански магазин";
 "type.shop.antiques" = "Антики";
 "type.shop.appliance" = "Магазин за техника";
@@ -1374,8 +1371,8 @@
 "type.tourism.artwork.architecture" = "Architectural Artwork";
 "type.tourism.artwork.painting" = "Painting";
 "type.tourism.artwork.sculpture" = "Sculpture";
-"type.tourism.artwork.statue" = "Statue";
-"type.tourism.attraction" = "Attraction";
+"type.tourism.artwork.statue" = "Статуя";
+"type.tourism.attraction" = "Забележителност";
 "type.attraction.amusement_ride" = "Развлекателна атракция";
 "type.attraction.animal" = "Заграждение за животни";
 "type.attraction.bumper_car" = "Bumper Car";
@@ -1385,15 +1382,15 @@
 "type.attraction.maze" = "Лабиринт";
 "type.attraction.roller_coaster" = "Въртележка";
 "type.attraction.water_slide" = "Водна пързалка";
-"type.tourism.attraction.specified" = "Attraction";
+"type.tourism.attraction.specified" = "Забележителност";
 "type.tourism.camp_site" = "Campground";
 "type.tourism.caravan_site" = "RV Park";
 
 /* A rentable countryside vacation house. */
 "type.tourism.chalet" = "Ваканционна вила";
 "type.tourism.gallery" = "Art Gallery";
-"type.tourism.guest_house" = "Guest House";
-"type.tourism.hostel" = "Hostel";
+"type.tourism.guest_house" = "Къща за гости";
+"type.tourism.hostel" = "Гостилница";
 "type.tourism.hotel" = "Hotel";
 "type.tourism.information" = "Туринформация";
 "type.tourism.information.board" = "Информационен щит";
@@ -1406,7 +1403,7 @@
 "type.tourism.picnic_site" = "Picnic Site";
 "type.leisure.resort" = "Resort";
 "type.tourism.theme_park" = "Theme Park";
-"type.tourism.viewpoint" = "Viewpoint";
+"type.tourism.viewpoint" = "Гледка";
 
 /* Typically more basic, not staffed and free (compared to alpine_hut). */
 "type.tourism.wilderness_hut" = "Хижа-заслон";
@@ -1419,7 +1416,7 @@
 "type.waterway.canal" = "Canal";
 "type.waterway.canal.tunnel" = "Canal Tunnel";
 "type.waterway.fish_pass" = "Стълба за риба";
-"type.waterway.dam" = "Dam";
+"type.waterway.dam" = "Язовир";
 "type.barrier.ditch" = "Ditch";
 "type.natural.water.ditch" = "Отводнителна канавка";
 "type.waterway.ditch.tunnel" = "водосток";
@@ -1428,17 +1425,17 @@
 "type.natural.water.drain" = "Drain";
 "type.waterway.drain.tunnel" = "водосток";
 "type.waterway.lock_gate" = "Lock Gate";
-"type.waterway.river" = "River";
-"type.waterway.river.tunnel" = "River";
-"type.waterway.stream" = "Stream";
+"type.waterway.river" = "Река";
+"type.waterway.river.tunnel" = "Река";
+"type.waterway.stream" = "Поток";
 "type.waterway.stream.ephemeral" = "Ephemeral Stream";
 "type.waterway.stream.intermittent" = "Intermittent Stream";
-"type.waterway.stream.tunnel" = "Stream";
-"type.waterway.waterfall" = "Waterfall";
+"type.waterway.stream.tunnel" = "Поток";
+"type.waterway.waterfall" = "Водопад";
 "type.waterway.weir" = "Weir";
-"type.wheelchair" = "Wheelchair";
-"type.wheelchair.limited" = "Limited Wheelchair Access";
-"type.wheelchair.no" = "No Wheelchair Access";
+"type.wheelchair" = "Инвалидна количка";
+"type.wheelchair.limited" = "Ограничен достъп за колички";
+"type.wheelchair.no" = "Без достъп за колички";
 "type.wheelchair.yes" = "Full Wheelchair Access";
 "type.aerialway.j.bar" = "J-bar Lift";
 "type.aerialway.magic_carpet" = "Magic Carpet";
@@ -1484,3 +1481,21 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Спортна зала";
+"type.amenity.love_hotel" = "Любовен хотел";
+"type.amenity.college" = "Колеж";
+"type.amenity.vending_machine.excrement_bags" = "Диспенсър за торбички";
+"type.amenity.studio" = "Студио";
+"type.barrier.guard_rail" = "Мантинела";
+"type.highway.ladder" = "Стълба";
+"type.natural.wetland.reedbed" = "Тръстиково легло";
+"type.natural.wetland.swamp" = "Блато";
+"type.natural.wetland.mangrove" = "Мангрова гора";
+"type.railway.station.subway.qingdao" = "Метростанция";
+"type.natural.wetland.tidalflat" = "Приливната равнина";
+"type.sport.diving" = "Високо гмуркане";
+"type.leisure.firepit" = "Огнище";
+"type.natural.wetland.fen" = "Мочурище";
+"type.natural.wetland.saltmarsh" = "Солено блато";
+"type.man_made.crane" = "Кран";
+"type.natural.wetland.saltmarsh.tidal" = "Приливни солени блато";
+"type.landuse.plant_nursery" = "Посадъчен материал";

@@ -1,7 +1,6 @@
 #import "MapsAppDelegate.h"
 
 #import "EAGLView.h"
-#import "MWMAuthorizationCommon.h"
 #import "MWMCoreRouterType.h"
 #import "MWMFrameworkListener.h"
 #import "MWMFrameworkObservers.h"
@@ -58,7 +57,6 @@ void InitLocalizedStrings() {
 }
 }  // namespace
 
-using namespace osm_auth_ios;
 
 @interface MapsAppDelegate () <MWMStorageObserver,
                                CPApplicationDelegate>
@@ -85,9 +83,10 @@ using namespace osm_auth_ios;
     });
     return;
   }
-
-  [[MWMMapViewControlsManager manager] searchText:[searchString stringByAppendingString:@" "]
-                                   forInputLocale:[MWMSettings spotlightLocaleLanguageId]];
+  SearchQuery * query = [[SearchQuery alloc] init:[searchString stringByAppendingString:@" "]
+                                           locale:[MWMSettings spotlightLocaleLanguageId]
+                                           source:SearchTextSourceDeeplink];
+  [[MWMMapViewControlsManager manager] search:query];
 }
 
 - (void)commonInit {
@@ -258,9 +257,6 @@ using namespace osm_auth_ios;
 - (void)disableDownloadIndicator {
   --m_activeDownloadsCounter;
   if (m_activeDownloadsCounter <= 0) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
-    });
     m_activeDownloadsCounter = 0;
     if (UIApplication.sharedApplication.applicationState == UIApplicationStateBackground) {
       [UIApplication.sharedApplication endBackgroundTask:m_backgroundTask];
@@ -271,9 +267,6 @@ using namespace osm_auth_ios;
 
 - (void)enableDownloadIndicator {
   ++m_activeDownloadsCounter;
-  dispatch_async(dispatch_get_main_queue(), ^{
-    UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
-  });
 }
 
 + (void)customizeAppearanceForNavigationBar:(UINavigationBar *)navigationBar {

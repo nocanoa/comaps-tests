@@ -17,6 +17,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <optional>
+#include <regex>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -309,6 +310,22 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_wikimedia_commons(std::s
   return {};
 }
 
+std::string MetadataTagProcessorImpl::ValidateAndFormat_panoramax(std::string v)
+{
+  static auto const s_panoramaxRegex = std::regex(R"(^([a-z0-9]{8}(-[a-z0-9]{4}){3}-[a-z0-9]{12})$)");
+
+    if (std::regex_match(v, s_panoramaxRegex))
+    return v;
+    url::Url const parsedUrl = url::Url::FromString(v);
+    if (const std::string* paramValue = parsedUrl.GetParamValue("pic"))
+    {
+        if (std::regex_match(*paramValue, s_panoramaxRegex))
+            return v;
+    }
+    LOG(LDEBUG, ("Invalid Panoramax tag value:", v));
+    return {};
+}
+
 std::string MetadataTagProcessorImpl::ValidateAndFormat_airport_iata(std::string const & v) const
 {
   if (!ftypes::IsAirportChecker::Instance()(m_params.m_types))
@@ -534,6 +551,8 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
   case Metadata::FMD_CONTACT_TWITTER: valid = osm::ValidateAndFormat_twitter(v); break;
   case Metadata::FMD_CONTACT_VK: valid = osm::ValidateAndFormat_vk(v); break;
   case Metadata::FMD_CONTACT_LINE: valid = osm::ValidateAndFormat_contactLine(v); break;
+  case Metadata::FMD_CONTACT_FEDIVERSE: valid = osm::ValidateAndFormat_fediverse(v); break;
+  case Metadata::FMD_CONTACT_BLUESKY: valid = osm::ValidateAndFormat_bluesky(v); break;
   case Metadata::FMD_INTERNET: valid = ValidateAndFormat_internet(v); break;
   case Metadata::FMD_ELE: valid = ValidateAndFormat_ele(v); break;
   case Metadata::FMD_DESTINATION: valid = ValidateAndFormat_destination(v); break;
@@ -546,6 +565,7 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
   case Metadata::FMD_POSTCODE: valid = ValidateAndFormat_postcode(v); break;
   case Metadata::FMD_WIKIPEDIA: valid = ValidateAndFormat_wikipedia(v); break;
   case Metadata::FMD_WIKIMEDIA_COMMONS: valid = ValidateAndFormat_wikimedia_commons(v); break;
+  case Metadata::FMD_PANORAMAX: valid = ValidateAndFormat_panoramax(v); break;
   case Metadata::FMD_FLATS: valid = ValidateAndFormat_flats(v); break;
   case Metadata::FMD_MIN_HEIGHT:  // The same validator as for height.
   case Metadata::FMD_HEIGHT: valid = ValidateAndFormat_height(v); break;

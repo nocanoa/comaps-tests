@@ -38,7 +38,7 @@
     <string name="country_status_download_failed">Yükləmə uğursuz oldu</string>
     <!-- Button text for the button under the country_status_download_failed message -->
     <string name="try_again">Yenidən cəhd et</string>
-    <string name="about_menu_title">Organic Maps Haqqında</string>
+    <string name="about_menu_title">CoMaps Haqqında</string>
     <!-- Text in About screen -->
     <string name="about_headline">Hər kəs üçün ödənişsiz və sevgi ilə hazırlanmış xəritə</string>
     <!-- Text in About screen -->
@@ -46,7 +46,7 @@
     <!-- Text in About screen -->
     <string name="about_proposition_2">• Batareyanın boşalması yoxdur, oflayn işləyir</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• Sürətli, minimalist, icma tərəfindən hazırlanmışdır</string>
+    <string name="about_proposition_3">• Oflayn, sürətli və yığcam</string>
     <!-- Text in About screen -->
     <string name="about_developed_by_enthusiasts">Həvəskarlar və könüllülər tərəfindən yaradılan açıq mənbə proqramı.</string>
     <!-- The button that opens system location settings -->
@@ -55,15 +55,14 @@
     <string name="unsupported_phone">Tətbiq aparatla sürətləndirilmiş OpenGL tələb edir. Təəssüf ki, cihazınız dəstəklənmir.</string>
     <string name="download">Yüklə</string>
     <!-- Used in DownloadResources startup screen -->
-    <string name="disconnect_usb_cable">Organic Maps\'dan istifadə etmək üçün zəhmət olmasa USB kabeli ayırın və ya yaddaş kartı daxil edin</string>
+    <string name="disconnect_usb_cable">CoMaps\'dan istifadə etmək üçün zəhmət olmasa USB kabeli ayırın və ya yaddaş kartı daxil edin</string>
     <!-- Used in DownloadResources startup screen -->
     <string name="not_enough_free_space_on_sdcard">Tətbiqdən istifadə etmək üçün SD kartda/USB yaddaş cihazında bir qədər yer boşaldın.</string>
-    <string name="download_resources">Başlamazdan əvvəl gəlin ümumi dünya xəritəsini cihazınıza endirək.
-\n%s yer tələb olunur.</string>
+    <string name="download_resources">Başlamazdan əvvəl gəlin ümumi dünya xəritəsini cihazınıza endirək. \n%s yer tələb olunur.</string>
     <string name="download_resources_continue">Xəritəyə keçin</string>
-    <string name="downloading_country_can_proceed">%s endirilir. İndi xəritəyə gedə bilərsiniz.</string>
-    <string name="download_country_ask">%s endirilir?</string>
-    <string name="update_country_ask">%s yenilənsin?</string>
+    <string name="downloading_country_can_proceed">%1$s (%2$s) endirilir. İndi xəritəyə gedə bilərsiniz.</string>
+    <string name="download_country_ask">%1$s endirilir? (%2$s)</string>
+    <string name="update_country_ask">%1$s yenilənsin? (%2$s)</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
     <string name="pause">Dayan</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
@@ -109,13 +108,11 @@
     <!-- Error moving map files from one storage to another -->
     <string name="move_maps_error">Xəritə fayllarının köçürülmə xətası</string>
     <!-- Ask user to wait several minutes (some long process in modal dialog). -->
-    <string name="wait_several_minutes">Bu proses bir neçə dəqiqə çəkə bilər. 
-\nZəhmət olmasa gözləyin.</string>
+    <string name="wait_several_minutes">Bu proses bir neçə dəqiqə çəkə bilər. \nZəhmət olmasa gözləyin.</string>
     <!-- Measurement units title in settings activity -->
     <string name="measurement_units">Ölçü vahidləri</string>
     <!-- Detailed description of Measurement Units settings button -->
     <string name="measurement_units_summary">Mil və ya kilometr seçin</string>
-
     <!-- SECTION: Search categories -->
     <!-- Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! -->
     <string name="category_eat">Harada yemək</string>
@@ -163,17 +160,12 @@
     <string name="category_water">Su</string>
     <!-- Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! -->
     <string name="category_rv">Karvan qurğuları</string>
-
     <!-- SECTION: Other translations -->
     <!-- Notes field in Bookmarks view -->
     <string name="description">Qeydlər</string>
     <!-- Email Subject when sharing bookmark list -->
-    <string name="share_bookmarks_email_subject">Organic Maps əlfəcinləri sizinlə paylaşıldı</string>
-    <string name="share_bookmarks_email_body">Salam!
-\n
-\nOrganic Maps əlfəcinlərim əlavə olunub. Zəhmət olmasa Organic Maps-da onları açın. Əgər onu quraşdırmamısınızsa, bu linkə daxil olub cihazınıza yükləyə bilərsiniz: https://omaps.app/get?kmz
-\n
-\nOrganic Maps ilə səyahətdən həzz alın!</string>
+    <string name="share_bookmarks_email_subject">CoMaps əlfəcinləri sizinlə paylaşıldı</string>
+    <string name="share_bookmarks_email_body">Salam! \n \nCoMaps əlfəcinlərim əlavə olunub. Zəhmət olmasa CoMaps-da onları açın. Əgər onu quraşdırmamısınızsa, bu linkə daxil olub cihazınıza yükləyə bilərsiniz: https://www.comaps.app/download/ \n \nCoMaps ilə səyahətdən həzz alın!</string>
     <!-- message title of loading file -->
     <string name="load_kmz_title">Əlfəcinlər yüklənir</string>
     <!-- Kmz file successful loading -->
@@ -181,12 +173,9 @@
     <!-- Kml file loading failed -->
     <string name="load_kmz_failed">Əlfəcinlərin quraşdırılması uğursuz oldu. Fayl zədələnmiş və ya qüsurlu ola bilər.</string>
     <!-- Failed to recognize the format of a bookmarks or tracks file. -->
-    <string name="unknown_file_type">Fayl növü tətbiq tərəfindən tanınmır:
-\n%1$s</string>
-    <!-- Failed to open a bookmarks or tracks file in Organic Maps. -->
-    <string name="failed_to_open_file">Faylı açmaq alınmadı %1$s
-\n
-\n%2$s</string>
+    <string name="unknown_file_type">Fayl növü tətbiq tərəfindən tanınmır: \n%1$s</string>
+    <!-- Failed to open a bookmarks or tracks file in CoMaps. -->
+    <string name="failed_to_open_file">Faylı açmaq alınmadı %1$s \n \n%2$s</string>
     <!-- resource for context menu -->
     <string name="edit">Redaktə et</string>
     <!-- Warning message when doing search around current position -->
@@ -195,18 +184,14 @@
     <string name="cant_change_this_setting">Üzr istəyirik, Xəritə Yaddaşı parametrləri hazırda deaktivdir.</string>
     <!-- Alert message that downloading is in progress. -->
     <string name="downloading_is_active">Xəritənin endirilməsi hazırda davam edir.</string>
-    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://omaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
-    <string name="my_position_share_sms">Salam, Organic Maps\'da mənim hal-hazırda olduğum ünvanı yoxla! %1$s və ya %2$s Oflayn xəritələriniz yoxdur? Buradan endirin: https://omaps.app/get</string>
+    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
+    <string name="my_position_share_sms">Salam, CoMaps\'da mənim hal-hazırda olduğum ünvanı yoxla! %1$s və ya %2$s Oflayn xəritələriniz yoxdur? Buradan endirin: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
-    <string name="bookmark_share_email_subject">Salam, Organic Maps xəritəsində mənim pin kodumu yoxlayın!</string>
+    <string name="bookmark_share_email_subject">Salam, CoMaps xəritəsində mənim pin kodumu yoxlayın!</string>
     <!-- Subject for emailed position -->
-    <string name="my_position_share_email_subject">Hey, Organic Maps\'da mənim hal-hazırda olduğum ünvana baxın!</string>
-    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://omaps.app link WITHOUT NAME -->
-    <string name="my_position_share_email">Salam,
-\n
-\nMən hazırda bu ünvandayam: %1$s. Xəritədə yeri görmək üçün %2$s və ya %3$s üzərinə klikləyin.
-\n
-\nTəşəkkür edirik.</string>
+    <string name="my_position_share_email_subject">Hey, CoMaps\'da mənim hal-hazırda olduğum ünvana baxın!</string>
+    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://comaps.app link WITHOUT NAME -->
+    <string name="my_position_share_email">Salam, \n \nMən hazırda bu ünvandayam: %1$s. Xəritədə yeri görmək üçün %2$s və ya %3$s üzərinə klikləyin. \n \nTəşəkkür edirik.</string>
     <!-- Share button text which opens menu with more buttons, like Message, EMail, Facebook etc. -->
     <string name="share">Paylaşın</string>
     <!-- Share by email button text, also used in editor and About. -->
@@ -264,7 +249,7 @@
     <string name="search_show_on_map">Xəritədə baxın</string>
     <!-- Text in menu -->
     <string name="website">Veb sayt</string>
-    <!-- Text in About menu, opens Organic Maps news website -->
+    <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">Xəbərlər</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">Rəy</string>
@@ -276,9 +261,6 @@
     <string name="faq">Tez-tez soruşulan suallar</string>
     <!-- Button in the main menu -->
     <string name="donate">Bağışlamaq</string>
-    <string name="already_donated">Artıq ianə edildi</string>
-    <string name="remind_me_later">Daha sonra xatırlat</string>
-    <string name="support_organic_maps">Organic Maps-i dəstəkləmək</string>
     <!-- Button in the main Help dialog -->
     <string name="how_to_support_us">Bu layihəni dəstəkləyin</string>
     <!-- Button in the main Help dialog -->
@@ -321,9 +303,7 @@
     <!-- Preference text -->
     <string name="pref_use_google_play">Bluetooth, WiFi və ya mobil şəbəkə vasitəsilə təxmini yerinizi tez müəyyənləşdirin</string>
     <!-- Preference title -->
-    <string name="pref_display_kayak_title">Kayak.com Otel Bağlantıları</string>
     <!-- Preference description -->
-    <string name="pref_display_kayak_text">Şəkillər, rəylər, rezervasiya linkləri Kayak.com-da siyahısı olan otellər üçün göstərilir. Bu bağlantılar vasitəsilə hər bir rezervasiya üçün alınan tövsiyə bonusu Organic Maps-in inkişafına yönəldilir.</string>
     <!-- Text for routing error dialog -->
     <string name="routing_download_maps_along">Marşrut boyunca bütün xəritələri endirin</string>
     <!-- Text for routing error dialog -->
@@ -366,7 +346,6 @@
     <string name="gray">Boz</string>
     <!-- blue gray color -->
     <string name="blue_gray">Mavi-boz</string>
-
     <!-- SECTION: Routing dialogs strings -->
     <string name="dialog_routing_disclaimer_title">Marşrutunuzu izləyərkən aşağıdakıları yadda saxlayın:</string>
     <string name="dialog_routing_disclaimer_priority">— Yol şəraiti, yol hərəkəti qaydaları və yol nişanları həmişə naviqasiya məsləhətindən üstündür;</string>
@@ -396,7 +375,6 @@
     <string name="not_now">İndi yox</string>
     <string name="dialog_routing_download_and_build_cross_route">Xəritəni endirmək və çoxsaylı xəritələr arasında daha rahat marşrut yaratmaq istərdinizmi?</string>
     <string name="dialog_routing_download_cross_route">Bu xəritənin sərhədlərini keçən daha rahat marşrut yaratmaq üçün xəritəni endirin.</string>
-
     <!-- SECTION: Strings for downloading map from search -->
     <string name="search_without_internet_advertisement">Axtarmaq və marşrut yaratmağa başlamaq üçün xəritəni endirin. Yüklədikdən sonra artıq internet bağlantısına ehtiyacınız olmayacaq.</string>
     <string name="search_select_map">Xəritə seçin</string>
@@ -511,15 +489,13 @@
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">%s tarixinə icma tərəfindən yaradılmış OpenStreetMap datası. OpenStreetMap.org saytında xəritəni necə redaktə etmək və yeniləmək haqqında ətraflı məlumat əldə edin</string>
     <!-- OSM explanation on Android login screen -->
-    <string name="login_osm_presentation">OpenStreetMap.org (OSM) pulsuz və açıq xəritə yaratmaq üçün icma layihəsidir. O, Üzvi Xəritələrdə xəritə məlumatlarının əsas mənbəyidir və Vikipediyaya oxşar işləyir. Siz yerlər əlavə edə və ya redaktə edə bilərsiniz və onlar bütün dünyada milyonlarla istifadəçi üçün əlçatan olur.
-\nİcmaya qoşulun və hər kəs üçün daha yaxşı xəritə yaratmağa kömək edin!</string>
+    <string name="login_osm_presentation">OpenStreetMap.org (OSM) pulsuz və açıq xəritə yaratmaq üçün icma layihəsidir. O, CoMaps xəritə məlumatlarının əsas mənbəyidir və Vikipediyaya oxşar işləyir. Siz yerlər əlavə edə və ya redaktə edə bilərsiniz və onlar bütün dünyada milyonlarla istifadəçi üçün əlçatan olur. \nİcmaya qoşulun və hər kəs üçün daha yaxşı xəritə yaratmağa kömək edin!</string>
     <string name="login_to_make_edits_visible">OpenStreetMap hesabı yaradın və ya xəritə redaktələrinizi dünyada dərc etmək üçün daxil olun.</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%1$d/%2$d</string>
     <string name="download_over_mobile_header">Mobil şəbəkə vasitəsilə endirilsin?</string>
     <string name="download_over_mobile_message">Bəzi planlarda və ya rouminqlə bu olduqca bahalı hesab oluna bilərr.</string>
     <string name="error_enter_correct_house_number">Etibarlı bina nömrəsini daxil edin</string>
-    <string name="editor_storey_number">Mərtəbə sayı (maks. %d)</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">Mərtəbələrin sayı %d-dən çox olmamalıdır</string>
     <string name="editor_zip_code">Poçt kodu</string>
@@ -529,7 +505,7 @@
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">OpenStreetMap könüllüləri üçün qeyd (isteğe bağlı)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
-    <string name="editor_note_hint">Xəritədəki səhvləri və ya Üzvi Xəritələrdən istifadə edərək redaktə edilə bilməyənləri təsvir edin</string>
+    <string name="editor_note_hint">Xəritədəki səhvləri və ya CoMaps istifadə edərək redaktə edilə bilməyənləri təsvir edin</string>
     <!-- Information about OSM at the top of the editing page -->
     <string name="editor_about_osm">Redaktələriniz ictimai <a href="https://wiki.openstreetmap.org/wiki/Tr:About">OpenStreetMap</a> verilənlər bazasına yüklənir. Zəhmət olmasa şəxsi və ya müəllif hüquqları ilə qorunan məlumatları əlavə etməyin.</string>
     <string name="editor_more_about_osm">OpenStreetMap haqqında əlavə məlumat</string>
@@ -539,7 +515,7 @@
     <!-- To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... -->
     <string name="operator">Operator: %s</string>
     <string name="editor_category_unsuitable_title">Uyğun kateqoriya tapa bilmirsiniz?</string>
-    <string name="editor_category_unsuitable_text">Üzvi Xəritələr yalnız sadə nöqtə kateqoriyaları əlavə etməyə imkan verir, bu o deməkdir ki, şəhərlər, yollar, göllər, bina konturları və s. yoxdur. Lütfən, belə kateqoriyaları birbaşa <a href="https://www.openstreetmap.org">OpenStreetMap.org</a> saytına əlavə edin. Ətraflı addım-addım təlimatlar üçün <a href="https://organicmaps.app/faq/editing/advanced-map-editing">bələdçimizi</a> yoxlayın.</string>
+    <string name="editor_category_unsuitable_text">CoMaps yalnız sadə nöqtə kateqoriyaları əlavə etməyə imkan verir, bu o deməkdir ki, şəhərlər, yollar, göllər, bina konturları və s. yoxdur. Lütfən, belə kateqoriyaları birbaşa <a href="https://www.openstreetmap.org">OpenStreetMap.org</a> saytına əlavə edin. Ətraflı addım-addım təlimatlar üçün <a href="https://www.comaps.app/support/advanced-map-editing/">bələdçimizi</a> yoxlayın.</string>
     <string name="downloader_no_downloaded_maps_title">Siz heç bir xəritə endirməmisiniz</string>
     <string name="downloader_no_downloaded_maps_message">Ünvanları tapmaq və oflayn naviqasiya etmək üçün xəritələri endirin.</string>
     <string name="current_location_unknown_error_title">Cari yer məlum deyil.</string>
@@ -558,14 +534,6 @@
     <string name="minute">dəq</string>
     <string name="day">gün</string>
     <string name="placepage_more_button">Digər</string>
-    <!-- A referral link on the place page for some hotels -->
-    <string name="more_on_kayak">Şəkillər, rəylər, rezervasiya</string>
-    <!-- An explanation dialog shown when clicking on more_on_kayak link. -->
-    <string name="dialog_kayak_disclaimer">Bu link vasitəsilə edilən hər rezervasiya üçün alınan tövsiyə bonusu Organic Maps\'in inkişafına sərf olunur.</string>
-    <!-- A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_button">Xizək sürmə haqqında təfərrüatlar</string>
-    <!-- A disable button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_disable_button">Kayak-ı söndürün</string>
     <string name="placepage_edit_bookmark_button">Əlfəcini redaktə edin</string>
     <string name="placepage_personal_notes_hint">Şəxsi qeydlər (mətn və ya html)</string>
     <string name="editor_comment_hint">Şərh…</string>
@@ -609,16 +577,14 @@
     <string name="mobile_data_option_ask">Həmişə Soruşun</string>
     <string name="traffic_update_maps_text">Nəqliyyat məlumatlarını göstərmək üçün xəritələr yenilənməlidir.</string>
     <string name="big_font">Xəritədə şrift ölçüsünü artırın</string>
-    <string name="traffic_update_app">Organic Maps\'i yeniləyin</string>
+    <string name="traffic_update_app">CoMaps\'i yeniləyin</string>
     <!-- "traffic" as in "road congestion" -->
     <string name="traffic_data_unavailable">Nəqliyyat məlumatları mövcud deyil</string>
     <string name="enable_logging">Girişi aktivləşdirin</string>
     <!-- Settings: "Send general feedback" button -->
     <string name="feedback_general">Ümumi rəy</string>
     <string name="prefs_languages_information">Biz səsli təlimatlar üçün TTS sistemindən istifadə edirik. Əksər Android cihazları Google TTS-dən istifadə edir. Siz proqramı Google Play-dən yükləyə və ya yeniləyə bilərsiniz (https://play.google.com/store/apps/details?id=com.google.android.tts)</string>
-    <string name="prefs_languages_information_off">Bəzi dillər üçün proqram mağazasından (Google Play, Galaxy Store, App Gallery, FDroid) fərqli nitq sintezatoru və ya əlavə dil paketi quraşdırmalı ola bilərsiniz. 
-\nCihaz parametrləri → Dil və Daxiletmə → Nitq → Mətndən nitqə funksiyasını yandırın. 
-\nBuradan siz nitq sintezi parametrlərini idarə edə bilərsiniz (məsələn, oflayn istifadə üçün dil paketini endirə bilərsiniz) və başqa mətndən-nitqə mühərrik seçə bilərsiniz.</string>
+    <string name="prefs_languages_information_off">Bəzi dillər üçün proqram mağazasından (Google Play, Galaxy Store, App Gallery, FDroid) fərqli nitq sintezatoru və ya əlavə dil paketi quraşdırmalı ola bilərsiniz. \nCihaz parametrləri → Dil və Daxiletmə → Nitq → Mətndən nitqə funksiyasını yandırın. \nBuradan siz nitq sintezi parametrlərini idarə edə bilərsiniz (məsələn, oflayn istifadə üçün dil paketini endirə bilərsiniz) və başqa mətndən-nitqə mühərrik seçə bilərsiniz.</string>
     <string name="prefs_languages_information_off_link">Əlavə məlumat üçün bu təlimatı nəzərdən keçirin.</string>
     <string name="transliteration_title">Latın transliterasiyası</string>
     <string name="learn_more">Daha ətraflı</string>
@@ -635,7 +601,7 @@
     <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
     <string name="alert_reauth_message">Bütün xəritə redaktələrinizi avtomatik yükləmək üçün OpenStreetMap-a daxil olun. <a href="https://github.com/organicmaps/organicmaps/issues/6144">burada</a> ətraflı məlumat əldə edin.</string>
     <string name="dialog_error_storage_title">Yaddaş giriş problemi</string>
-    <string name="dialog_error_storage_message">Xarici yaddaş mövcud deyil, ola bilsin ki, SD Kart çıxarılıb, zədələnib və ya fayl sistemi yalnız oxunur. Zəhmət olmasa yoxlayın və ya support\@organicmaps.app ünvanında bizimlə əlaqə saxlayın</string>
+    <string name="dialog_error_storage_message">Xarici yaddaş mövcud deyil, ola bilsin ki, SD Kart çıxarılıb, zədələnib və ya fayl sistemi yalnız oxunur. Zəhmət olmasa yoxlayın və ya support@comaps.app ünvanında bizimlə əlaqə saxlayın</string>
     <string name="setting_emulate_bad_storage">Zədələnmiş yaddaşı təqlid edin</string>
     <string name="core_entrance">Giriş</string>
     <string name="error_enter_correct_name">Düzgün ad daxil edin</string>
@@ -675,7 +641,7 @@
     <string name="privacy_policy">Gizlilik Siyasəti</string>
     <string name="terms_of_use">İstifadə qaydaları</string>
     <string name="button_layer_traffic">Nəqliyyat</string>
-    <string name="button_layer_subway">Metro</string>
+    <string name="subway">Metro</string>
     <string name="layers_title">Xəritə Üslubları və Qatları</string>
     <string name="subway_data_unavailable">Metro xəritəsi mövcud deyil</string>
     <string name="bookmarks_empty_list_title">Bu siyahı boşdur</string>
@@ -702,7 +668,7 @@
     <string name="power_managment_setting_never">Heç vaxt</string>
     <string name="power_managment_setting_auto">Avtomatik</string>
     <string name="power_managment_setting_manual_max">Maksimum enerji qənaəti</string>
-    <string name="enable_logging_warning_message">Yardım dialoq qutusunda “Problemi bildir” istifadə etməklə probleminizlə bağlı ətraflı diaqnostik jurnalları qeyd etmək və bizə göndərmək üçün bu seçimi müvəqqəti aktivləşdirin. Qeydlərə məkan məlumatı daxil ola bilər</string>
+    <string name="enable_logging_warning_message">Yardım dialoq qutusunda “Problemi bildir” istifadə etməklə probleminizlə bağlı ətraflı diaqnostik jurnalları qeyd etmək və bizə göndərmək üçün bu seçimi müvəqqəti aktivləşdirin. Qeydlərə məkan məlumatı daxil ola bilər.</string>
     <string name="access_rules_author_only">Onlayn redaktə</string>
     <string name="driving_options_title">Marşrutlaşdırma seçimləri</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
@@ -713,7 +679,7 @@
     <string name="avoid_ferry">Bərə keçidlərindən çəkinin</string>
     <string name="avoid_motorways">Magistral yoldan çəkinin</string>
     <string name="unable_to_calc_alert_title">Marşrutu hesablamaq mümkün deyil</string>
-    <string name="unable_to_calc_alert_subtitle">Təəssüf ki, seçdiyiniz seçimlərə görə marşrut tapa bilmədik. Seçimləri dəyişdirin və yenidən cəhd edin</string>
+    <string name="unable_to_calc_alert_subtitle">Təəssüf ki, seçdiyiniz seçimlərə görə marşrut tapa bilmədik. Seçimləri dəyişdirin və yenidən cəhd edin.</string>
     <string name="define_to_avoid_btn">Qarşısını almaq üçün yolları müəyyənləşdirin</string>
     <string name="change_driving_options_btn">Sürmə seçimləri aktiv edildi</string>
     <string name="toll_road">Ücrətli yol</string>
@@ -751,7 +717,6 @@
     <string name="moreyear_ago_sorttype">Bir ildən çox əvvəl</string>
     <string name="near_me_sorttype">Mənə yaxın</string>
     <string name="others_sorttype">Digərləri</string>
-
     <!-- SECTION: Bookmark types used for sorting -->
     <string name="food_places">Qida</string>
     <string name="tourist_places">Görməli yerlər</string>
@@ -806,19 +771,18 @@
     <!-- OpenStreetMap text on splash screen -->
     <string name="splash_subtitle">OpenStreetMap-dan xəritə məlumatları</string>
     <!-- Telegram group url for the "?" About page -->
-    <string name="telegram_url">https://t.me/OrganicMapsTR # Probably better than Ru</string>
-    <!-- Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
-    <string name="translated_om_site_url">https://organicmaps.app/tr/</string>
+    <!-- Translated CoMaps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
+    <string name="translated_om_site_url">https://comaps.app/tr/</string>
     <!-- Link to OSM wiki for Editor, Profile and About pages -->
-    <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/Tr:About</string>
+    <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/Az:Layihə_haqqında</string>
     <!-- App Tip #00 -->
     <string name="app_tip_00">İcma tərəfindən yaradılmış xəritələrimizdən istifadə etdiyiniz üçün təşəkkür edirik!</string>
     <!-- App tip #04 -->
     <string name="app_tip_04">Nəyisə seçmək üçün xəritədə istənilən yerə toxunun. Gizlətmək və interfeysi geri göstərmək üçün uzun müddət toxunun.</string>
     <!-- Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen -->
-    <string name="car_used_on_the_phone_screen">İndi telefon ekranında Organic Maps istifadə edirsiniz</string>
+    <string name="car_used_on_the_phone_screen">İndi telefon ekranında CoMaps istifadə edirsiniz</string>
     <!-- Text on the phone placeholder screen that maps are displayed on the car screen -->
-    <string name="car_used_on_the_car_screen">Hazırda avtomobil ekranında Organic Maps istifadə edirsiniz</string>
+    <string name="car_used_on_the_car_screen">Hazırda avtomobil ekranında CoMaps istifadə edirsiniz</string>
     <!-- Displayed on the phone screen. Android Auto connected -->
     <string name="aa_connected_title">Siz Android Auto-a qoşulmusunuz</string>
     <!-- Displayed on the phone screen. Button to display maps on the phone screen instead of a car -->
@@ -873,4 +837,12 @@
     <string name="uri_open_location_failed">Məkanı aça biləcək proqram quraşdırılmayıb</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Naviqasiyada avtomatik</string>
+    <string name="telegram_url">https://t.me/CoMapsApp/</string>
+    <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
+    <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
+    <string name="wikimedia_commons">Vikianbar</string>
+    <string name="panoramax">Panoramax Şəkil</string>
+    <string name="editor_line_social_network">LINE</string>
+    <string name="app_site_url">https://comaps.app/tr/</string>
+    <string name="saved">Saxlandı</string>
 </resources>

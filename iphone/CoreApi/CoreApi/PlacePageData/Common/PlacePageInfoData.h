@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
 @class OpeningHours;
+@class PlacePagePhone;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -8,17 +9,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, readonly, nullable) NSString *openingHoursString;
 @property(nonatomic, readonly, nullable) OpeningHours *openingHours;
-@property(nonatomic, readonly, nullable) NSString *phone;
-@property(nonatomic, readonly, nullable) NSURL *phoneUrl;
+@property(nonatomic, readonly) NSArray<PlacePagePhone *> *phones;
 @property(nonatomic, readonly, nullable) NSString *website;
-@property(nonatomic, readonly, nullable) NSString *kayak;
 @property(nonatomic, readonly, nullable) NSString *wikipedia;
 @property(nonatomic, readonly, nullable) NSString *wikimediaCommons;
+@property(nonatomic, readonly, nullable) NSString *fediverse;
 @property(nonatomic, readonly, nullable) NSString *facebook;
 @property(nonatomic, readonly, nullable) NSString *instagram;
 @property(nonatomic, readonly, nullable) NSString *twitter;
 @property(nonatomic, readonly, nullable) NSString *vk;
 @property(nonatomic, readonly, nullable) NSString *line;
+@property(nonatomic, readonly, nullable) NSString *bluesky;
+@property(nonatomic, readonly, nullable) NSString *panoramax;
 @property(nonatomic, readonly, nullable) NSString *email;
 @property(nonatomic, readonly, nullable) NSURL *emailUrl;
 @property(nonatomic, readonly, nullable) NSString *cuisine;

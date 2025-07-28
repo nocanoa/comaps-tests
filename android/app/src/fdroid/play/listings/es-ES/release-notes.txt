@@ -1,8 +1,9 @@
-• New OpenStreetMap data as of February 27
-• Ability to manually arrange intermediate route points
-• Share a single selected track from the list
-• Improved routing for bicycles
-• Display a system notification when downloading maps and don't interrupt background downloads
-• Added a flashing Track Recording widget
-
-…more details at omaps.org/news
+¡Presentamos el logo de CoMaps!
+• mejora de isolíneas con más detalle para muchas regiones
+• añade enlaces de imágenes de Panoramax a POIs seleccionados
+• datos de OpenStreetMap a 13 de julio
+• añadidos rellenos de color a muchas características
+• se muestra el estado de horarios de apertura al seleccionar un POI
+• se dividen los humedales en tipos distintos
+• se actualiza la vegetación y otros colores del mapa, así como otros iconos
+• exteriores: líneas de contorno de altitud más gruesas

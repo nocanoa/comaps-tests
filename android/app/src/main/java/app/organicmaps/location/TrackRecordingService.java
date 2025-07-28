@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.location.Location;
 import android.os.Build;
 import android.os.IBinder;
@@ -17,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
 import app.organicmaps.MwmActivity;
 import app.organicmaps.MwmApplication;
@@ -106,7 +108,7 @@ public class TrackRecordingService extends Service implements LocationListener
         .setOngoing(true)
         .setShowWhen(true)
         .setOnlyAlertOnce(true)
-        .setSmallIcon(R.drawable.ic_splash)
+        .setSmallIcon(R.drawable.ic_logo_small)
         .setContentTitle(context.getString(R.string.track_recording))
         .addAction(0, context.getString(R.string.navigation_stop_button), getExitPendingIntent(context))
         .setContentIntent(getPendingIntent(context))
@@ -135,7 +137,7 @@ public class TrackRecordingService extends Service implements LocationListener
   @Override
   public int onStartCommand(@NonNull Intent intent, int flags, int startId)
   {
-    if (!MwmApplication.from(this).arePlatformAndCoreInitialized())
+    if (!MwmApplication.from(this).getOrganicMaps().arePlatformAndCoreInitialized())
     {
       Logger.w(TAG, "Application is not initialized");
       stopSelf();
@@ -158,20 +160,25 @@ public class TrackRecordingService extends Service implements LocationListener
       return START_NOT_STICKY;
     }
 
-    Logger.i(TAG, "Starting foreground service");
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+    Logger.i(TAG, "Starting Track Recording Foreground service");
+
+    try
     {
-      try
-      {
-        startForeground(TrackRecordingService.TRACK_REC_NOTIFICATION_ID, getNotificationBuilder(this).build());
-      } catch (ForegroundServiceStartNotAllowedException e)
-      {
-        Logger.e(TAG, "Oops! ForegroundService is not allowed", e);
-      }
+      int type = 0;
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        type = ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION;
+      ServiceCompat.startForeground(this, TrackRecordingService.TRACK_REC_NOTIFICATION_ID, getNotificationBuilder(this).build(), type);
     }
-    else
+    catch (Exception e)
     {
-      startForeground(TrackRecordingService.TRACK_REC_NOTIFICATION_ID, getNotificationBuilder(this).build());
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+          e instanceof ForegroundServiceStartNotAllowedException)
+      {
+        // App not in a valid state to start foreground service (e.g started from bg)
+        Logger.e(TAG, "Not in a valid state to start foreground service", e);
+      }
+      else
+        Logger.e(TAG, "Failed to promote the service to foreground", e);
     }
 
     final LocationHelper locationHelper = LocationHelper.from(this);

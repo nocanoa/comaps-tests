@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
-import app.organicmaps.BuildConfig;
 import app.organicmaps.Framework;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmToolbarFragment;
@@ -26,14 +23,16 @@ import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils.ScrollableContentInsetsListener;
 import app.organicmaps.util.concurrency.ThreadPool;
 import app.organicmaps.util.concurrency.UiThread;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class OsmLoginFragment extends BaseMwmToolbarFragment
 {
   private ProgressBar mProgress;
-  private Button mLoginButton;
-  private Button mLostPasswordButton;
+  private MaterialButton mLoginButton;
+  private MaterialButton mLostPasswordButton;
   private TextInputEditText mLoginInput;
   private TextInputEditText mPasswordInput;
 
@@ -53,25 +52,25 @@ public class OsmLoginFragment extends BaseMwmToolbarFragment
     mPasswordInput = view.findViewById(R.id.osm_password);
     mLoginButton = view.findViewById(R.id.login);
     mLostPasswordButton = view.findViewById(R.id.lost_password);
-    Button registerButton = view.findViewById(R.id.register);
+    MaterialButton registerButton = view.findViewById(R.id.register);
     registerButton.setOnClickListener((v) -> Utils.openUrl(requireActivity(), Constants.Url.OSM_REGISTER));
     mProgress = view.findViewById(R.id.osm_login_progress);
     final String dataVersion = DateUtils.getShortDateFormatter().format(Framework.getDataVersion());
 
-    if (BuildConfig.FLAVOR.equals("google"))
-    {
-      // Hide login and password inputs and Forgot password button
-      UiUtils.hide(view.findViewById(R.id.osm_username_container),
-          view.findViewById(R.id.osm_password_container),
-          mLostPasswordButton);
+    // TODO(@pastk): remove unused flow with users entering credentials into app's form
+    // Hide login and password inputs and Forgot password button
+    UiUtils.hide(view.findViewById(R.id.osm_username_container),
+      view.findViewById(R.id.osm_password_container),
+      mLostPasswordButton);
 
-      mLoginButton.setOnClickListener((v) -> loginWithBrowser());
-    }
+    mLoginButton.setOnClickListener((v) -> loginWithBrowser());
+    /* login via in-app form
     else
     {
       mLoginButton.setOnClickListener((v) -> login());
       mLostPasswordButton.setOnClickListener((v) -> Utils.openUrl(requireActivity(), Constants.Url.OSM_RECOVER_PASSWORD));
     }
+    */
 
     String code = readOAuth2CodeFromArguments();
     if (code != null && !code.isEmpty())
@@ -150,7 +149,7 @@ public class OsmLoginFragment extends BaseMwmToolbarFragment
     requireActivity().finish();
   }
 
-  // This method is called by MwmActivity & UrlProcessor when "om://oauth2/osm/callback?code=XXX" is handled
+  // This method is called by MwmActivity & UrlProcessor when "cm://oauth2/osm/callback?code=XXX" is handled
   private void continueOAuth2Flow(String oauth2code)
   {
     if (!isAdded())

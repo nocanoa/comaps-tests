@@ -43,16 +43,10 @@
 "country_status_download_failed" = "다운로드에 실패하였습니다";
 
 /* Text in About screen */
-"about_headline" = "사랑으로 만든 모든 사람에게 무료";
+"about_proposition_1" = "오프라인, 빠르고 사용하기 쉽습니다";
 
 /* Text in About screen */
-"about_proposition_1" = "• 광고 없음, 추적 없음, 데이터 수집 없음";
-
-/* Text in About screen */
-"about_proposition_2" = "• 배터리 소모 없음, 오프라인에서 작동";
-
-/* Text in About screen */
-"about_proposition_3" = "• 빠르고 미니멀한, 커뮤니티가 개발한";
+"about_proposition_2" = "개인 정보 보호에 중점을 두고 광고 없음";
 "close" = "닫기";
 "download" = "다운로드";
 
@@ -154,7 +148,6 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "RV용";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
 
 /* message title of loading file */
 "load_kmz_title" = "즐겨찾기 로드";
@@ -172,13 +165,16 @@
 "unknown_current_position" = "귀하의 위치를 아직 알아내지 못 했습니다";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Organic Maps 지도에서 내 핀 보기";
+"bookmark_share_email_subject" = "CoMaps 지도에서 내 핀 보기!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Organic Maps 지도에서 제 현재 위치를 살펴 보시기 바랍니다";
+"my_position_share_email_subject" = "CoMaps 지도에서 제 현재 위치를 살펴 보시기 바랍니다!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "이메일";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "클립보드에 복사";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "클립보드에 복사됨: %@";
@@ -190,7 +186,9 @@
 "done" = "완료";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps 버전: %@";
+"version" = "CoMaps 버전: %@";
+"version %@ (%@)" = "버전 %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "버전: %@ (%@)\n지도 데이터: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "트랙";
@@ -200,6 +198,7 @@
 "share_my_location" = "내 위치 공유";
 "prefs_group_route" = "내비게이션";
 "pref_zoom_title" = "확대/축소 버튼";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "모양";
@@ -209,6 +208,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "다크";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "끄기";
@@ -226,16 +228,19 @@
 "pref_map_3d_buildings_title" = "주변 건물 3D";
 
 /* A message in Settings/Preferences explaining why is it not possible to enable 3D buildings when max power saving mode is enabled */
-"pref_map_3d_buildings_disabled_summary" = "3D 빌딩은 절전 모드에서 꺼집니다.";
+"pref_map_3d_buildings_disabled_summary" = "3D 빌딩은 절전 모드에서 꺼집니다";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "음성 지침";
+"pref_tts_title" = "음성 지침";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
-"pref_tts_street_names_title" = "\"거리 이름 발표\"";
+"pref_tts_street_names_title" = "거리 이름 발표";
 
 /* Settings «Route» category: «Tts announce street names» description */
-"pref_tts_street_names_description" = "\"사용하도록 설정하면 회전할 거리 또는 출구의 이름을 소리내어 말합니다.\"";
+"pref_tts_street_names_description" = "사용하도록 설정하면 회전할 거리 또는 출구의 이름을 소리내어 말합니다.";
 
 /* Settings «Route» category: «Tts language» title */
 "pref_tts_language_title" = "음성 언어";
@@ -252,8 +257,20 @@
 /* Text in menu */
 "website" = "웹사이트";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "소식";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "마스토돈";
+"social_lemmy" = "레미";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "이메일";
+
+/* Text in the editor */
+"fediverse" = "마스토돈";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +284,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax 사진";
+
 /* Text in menu */
 "rate_the_app" = "앱 평가";
 
@@ -278,12 +307,6 @@
 
 /* Button in the main menu */
 "donate" = "기부";
-
-/* Tex label above the Donate button */
-"donate_description" = "기부하여 최고의 지도를 함께 만들어 보세요!";
-"already_donated" = "기부완료";
-"remind_me_later" = "나중에 알림";
-"support_organic_maps" = "Organic Maps 지원하기";
 
 /* Button in the main Help dialog */
 "copyright" = "저작권";
@@ -298,7 +321,7 @@
 "volunteer" = "자원봉사에 참여하려면";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "팔로우하고 문의하세요:";
+"follow_us" = "팔로우하고 문의하세요";
 
 /* Alert text */
 "email_error_body" = "이메일 클라이언트가 설정되지 않았습니다. 이를 구성하거나 %@로 연락할 다른 방법을 사용하십시오.";
@@ -467,7 +490,7 @@
 "read_in_wikipedia" = "Wikipedia";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "위키미디어 공용";
 "p2p_your_location" = "위치";
 "p2p_start" = "시작";
 "p2p_from_here" = "출발지";
@@ -510,15 +533,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "닫음";
 "add_opening_hours" = "영업일 추가";
-"no_osm_account" = "OpenStreetMap에서 계정이 없습니까?";
-"register_at_openstreetmap" = "등록";
-"password_8_chars_min" = "암호(최소 8자)";
-"invalid_username_or_password" = "잘못된 사용자 이름 또는 암호.";
-"login" = "로그인";
-"login_osm" = "OpenStreetMap에 로그인";
-"forgot_password" = "암호를 잊으 셨나요?";
-"osm_account" = "OSM 계정";
-"logout" = "로그 아웃";
+
+/* OpenStreetMap */
+"osm_mapdata" = "OpenStreetMap의 지도 데이터";
+"osm_mapdata_explanation %@" = "커뮤니티에서 만든 지도 데이터(*%@* 기준). 지도를 편집하고 업데이트하는 방법에 대한 자세한 내용은 [OpenStreetMap.org](https://openstreetmap.org)에서 확인하세요.";
+"osm_more_about" = "OpenStreetMap 정보";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Ko:OpenStreetMap_소개";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap 프로필";
+"osm_profile_promt" = "OpenStreetMap 계정을 만들거나 로그인하여 지도 편집 내용을 전 세계에 공개하세요.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM)은 무료 오픈스트리트맵을 구축하기 위한 커뮤니티 프로젝트입니다. CoMaps의 지도 데이터의 주요 소스이며 위키백과와 유사하게 작동합니다. 장소를 추가하거나 편집하면 전 세계 수백만 명의 사용자가 사용할 수 있습니다. \n커뮤니티에 참여하여 모두를 위한 더 나은 지도를 만드는 데 도움을 주세요!";
+"osm_profile_login" = "OpenStreetMap 계정 로그인";
+"osm_profile_reauthorize_promt" = "OpenStreetMap 계정이 이 앱에서 연결 해제되었습니다";
+"osm_profile_reauthorize" = "OpenStreetMap에 다시 연결";
+"osm_profile_remove_promt" = "계정을 다시 연결할 수 없거나 원하지 않는 경우, 이 앱에서 계정을 제거할 수 있습니다";
+"osm_profile_remove" = "OpenStreetMap 계정 제거";
+"osm_profile_register_promt" = "OpenStreetMap에서 계정이 없습니까?";
+"osm_profile_register" = "OpenStreetMap에 등록하세요";
+"osm_profile_verfied_changes" = "변경사항 승인";
+"osm_profile_logout" = "OpenStreetMap 계정 로그아웃";
+"osm_profile_delete" = "OpenStreetMap 계정 삭제";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "마지막 업로드";
@@ -567,13 +602,9 @@
 "dialog_incorrect_feature_position" = "위치 변경";
 "message_invalid_feature_position" = "목적지를 이곳에서 찾을 수 없습니다";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "커뮤니티에서 만든 오픈스트리트맵 데이터(%@ 기준). 지도를 편집하고 업데이트하는 방법에 대한 자세한 내용은 OpenStreetMap.org에서 확인하세요.";
-"login_to_make_edits_visible" = "오픈스트리트맵 계정을 만들거나 로그인하여 지도 편집 내용을 전 세계에 공개하세요.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "다운로드하려면, 더 많은 여유 공간이 필요합니다. 불필요한 데이터를 삭제하십시오.";
-"editor_sharing_title" = "나는 Organic Maps 지도를 향상함";
+"editor_sharing_title" = "나는 CoMaps 지도를 향상함";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%2$d중의 %1$d";
@@ -591,16 +622,16 @@
 "core_placepage_unknown_place" = "지도 지점";
 
 /* Title for OSM note section in the editor */
-"editor_other_info" = "오픈스트리트맵 자원 봉사자 참고 사항(선택 사항)";
+"editor_other_info" = "OpenStreetMap 자원 봉사자 참고 사항(선택 사항)";
 "editor_detailed_description_hint" = "상세 설명";
-"editor_detailed_description" = "귀하가 제안한 변경 사항은 OpenStreetMap 커뮤니티로 전송됩니다. Organic Maps에서 편집할 수 없는 세부정보를 작성해 주세요.";
+"editor_detailed_description" = "귀하가 제안한 변경 사항은 OpenStreetMap 커뮤니티로 전송됩니다. CoMaps에서 편집할 수 없는 세부정보를 작성해 주세요.";
 "editor_more_about_osm" = "OpenStreetMap 정보";
 "editor_operator" = "연산자";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "연산자: %@";
 "editor_category_unsuitable_title" = "적합한 카테고리를 찾을 수 없나요?";
-"editor_category_unsuitable_text" = "오가닉 지도에서는 단순한 포인트 카테고리만 추가할 수 있으므로 도시, 도로, 호수, 건물 윤곽선 등은 추가할 수 없습니다. 이러한 카테고리는 <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> 에 직접 추가하세요. 자세한 단계별 지침은 <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">가이드</a>를 참조하세요.";
+"editor_category_unsuitable_text" = "CoMaps에서는 단순한 포인트 카테고리만 추가할 수 있으므로 도시, 도로, 호수, 건물 윤곽선 등은 추가할 수 없습니다. 이러한 카테고리는 <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> 에 직접 추가하세요. 자세한 단계별 지침은 <a href=\"https://www.comaps.app/support/advanced-map-editing/\">가이드</a>를 참조하세요.";
 "downloader_no_downloaded_maps_title" = "지도를 다운로드하지 않았습니다";
 "downloader_no_downloaded_maps_message" = "오프라인으로 위치를 검색하려면 지도를 다운로드하세요.";
 "current_location_unknown_error_title" = "현재 위치를 알 수 없습니다.";
@@ -615,7 +646,7 @@
 "location_services_disabled_on_device_2" = "2. 2. 개인정보 보호 선택";
 "location_services_disabled_on_device_3" = "3. 3. 위치 서비스 선택";
 "location_services_disabled_on_device_4" = "4. 위치 서비스 켜기";
-"location_services_disabled_on_device_additional_message" = "또는 위치 없이 오가닉 맵을 계속 사용하세요.";
+"location_services_disabled_on_device_additional_message" = "또는 위치 없이 CoMaps을 계속 사용하세요";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +668,6 @@
 "day" = "일";
 "placepage_more_button" = "자세히";
 "book_button" = "예약";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "사진, 리뷰, 예약";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "이 링크를 통해 예약할 때마다 받는 추천 보너스는 오가닉맵 개발에 사용됩니다.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Kayak의 세부 정보";
 "placepage_call_button" = "전화";
 "placepage_edit_bookmark_button" = "즐겨찾기 편집";
 "placepage_bookmark_name_hint" = "즐겨찾기 이름";
@@ -665,7 +687,7 @@
 "error_enter_correct_web" = "유효한 웹 주소 입력";
 "error_enter_correct_email" = "유효한 이메일 주소 입력";
 "refresh" = "최신 정보";
-"placepage_add_place_button" = "오픈스트리트맵에 장소 추가";
+"placepage_add_place_button" = "OpenStreetMap에 장소 추가";
 
 /* Displayed when saving some edits to the map to warn against publishing personal data */
 "editor_share_to_all_dialog_title" = "이를 모든 사용자에게 전송하시겠습니까?";
@@ -681,7 +703,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "체크아웃";
-"recent_track_background_dialog_message" = "Organic Maps는 최근 여행한 경로를 녹음하기 위해 배경 화면에서 지역 위치 서비스를 사용합니다.";
+"recent_track_background_dialog_message" = "CoMaps는 최근 여행한 경로를 녹음하기 위해 배경 화면에서 지역 위치 서비스를 사용합니다.";
 "general_settings" = "일반 설정";
 
 /* For the first routing */
@@ -725,6 +747,9 @@
 "planning_route_remove_title" = "여기로 끌어와서 제거";
 "placepage_add_stop" = "스톱 추가";
 "start_from_my_position" = "시작 위치:";
+
+/* Title for button when a route was saved. */
+"saved" = "저장됨";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "모든 지도 편집 내용을 자동으로 업로드하려면 오픈스트리트맵에 로그인하세요. 자세히 알아보기";
@@ -787,7 +812,7 @@
 "power_managment_setting_never" = "안함";
 "power_managment_setting_auto" = "자동";
 "power_managment_setting_manual_max" = "최대 전력 절약";
-"enable_logging_warning_message" = "이 옵션은 진단을 목적으로 로그를 엽니다 이를 통해 앱에 대한 문제를 분석하는 우리의 스탭을 도울 수 있습니다 이 옵션은 오직 Organic Maps 지원 요청에서만 가능합니다.";
+"enable_logging_warning_message" = "이 옵션은 진단을 목적으로 로그를 엽니다 이를 통해 앱에 대한 문제를 분석하는 우리의 스탭을 도울 수 있습니다 이 옵션은 오직 CoMaps 지원 요청에서만 가능합니다.";
 "driving_options_title" = "운전 옵션";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +870,7 @@
 "ok" = "OK";
 "speedcams_alert_title_carplay_1" = "속도단속 카메라";
 "speedcams_alert_title_carplay_2" = "속도단속 카메라";
-"download_map_carplay" = "Organic Maps 앱 안의 지도들을 디바이스에 다운로드하세요";
+"download_map_carplay" = "CoMaps 앱 안의 지도들을 디바이스에 다운로드하세요";
 "carplay_roundabout_exit" = "%@번 출구";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +949,8 @@
 /* edit track screen title */
 "track_title" = "길";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Ko:OpenStreetMap_소개";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "커뮤니티에서 제작한 지도를 이용해 주셔서 감사합니다!";
@@ -967,10 +983,10 @@
 "app_tip_09" = "우리의 주요 목표는 귀하가 좋아할 빠르고 개인 정보 보호에 중점을 두고 사용하기 쉬운 지도를 구축하는 것입니다.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "이제 휴대폰 화면에서 유기적 지도를 사용하고 있습니다";
+"car_used_on_the_phone_screen" = "이제 휴대폰 화면에서 CoMaps를 사용하고 있습니다";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "이제 자동차 화면에서 유기적 지도를 사용하고 있습니다";
+"car_used_on_the_car_screen" = "이제 자동차 화면에서 CoMaps를 사용하고 있습니다";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "전화기에서 계속";
@@ -995,7 +1011,10 @@
 "website_menu" = "메뉴 링크";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "개발자에게 버그 리포트를 보내시겠습니까?\n오가닉 맵은 오류 정보를 자동으로 수집하지 않으므로 사용자의 도움을 받아야 합니다. 오가닉 맵을 이용해 주셔서 미리 감사드립니다!";
+"bugreport_alert_message" = "개발자에게 버그 리포트를 보내시겠습니까?\nCoMaps은 오류 정보를 자동으로 수집하지 않으므로 사용자의 도움을 받아야 합니다. CoMaps을 이용해 주셔서 미리 감사드립니다!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "iCloud 동기화 활성화";
@@ -1069,3 +1088,9 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "경로가 비어 있음 - 저장할 항목이 없음";
 "edit_track" = "경로 편집";
+"osm_profile_view_notes" = "참고 보기";
+"osm_profile_view_edit_history" = "편집 기록 보기";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

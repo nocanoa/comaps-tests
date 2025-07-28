@@ -43,16 +43,16 @@
 "country_status_download_failed" = "ダウンロードに失敗しました";
 
 /* Text in About screen */
-"about_headline" = "すべての人のために無料で、愛を込めて作られています";
+"about_headline" = "コミュニティ主導のオープンプロジェクト";
 
 /* Text in About screen */
-"about_proposition_1" = "• 広告、追跡なし、データ収集なし";
+"about_proposition_1" = "オフライン、高速、使いやすい";
 
 /* Text in About screen */
-"about_proposition_2" = "• バッテリーの消耗がなく、オフラインで動作する";
+"about_proposition_2" = "プライバシー重視、広告なし";
 
 /* Text in About screen */
-"about_proposition_3" = "• 高速、ミニマリスト、コミュニティによる開発";
+"about_proposition_3" = "透明な経営と非営利";
 "close" = "閉じる";
 "download" = "ダウンロード";
 
@@ -154,7 +154,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "RV用";
-"share_bookmarks_email_body" = "こんにちは！\n\n添付ファイルOrganic Mapsのお気に入りリストです。もしインストールされていない場合はここからダウンロードができます： https://omaps.app/get?kmz\n\n旅行を楽しむときはOrganic Mapsを使用してください!";
+"share_bookmarks_email_body" = "こんにちは！\n\n添付ファイルCoMapsのお気に入りリストです。もしインストールされていない場合はここからダウンロードができます： https://www.comaps.app/download/\n\n旅行を楽しむときはCoMapsを使用してください!";
 
 /* message title of loading file */
 "load_kmz_title" = "お気に入りをロード中";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "現在の座標が未確定です";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Organic Mapsでピン情報を確認";
+"bookmark_share_email_subject" = "CoMapsでピン情報を確認！";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Organic Mapsで現在地を確認";
+"my_position_share_email_subject" = "CoMapsで現在地を確認！";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Eメール";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "クリップボードにコピー";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "クリップボードにコピーしました: %@";
@@ -190,7 +193,9 @@
 "done" = "完了";
 
 /* Prints version number in About dialog */
-"version" = "Organic Mapsバージョン: %@";
+"version" = "CoMapsバージョン: %@";
+"version %@ (%@)" = "バージョン %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "バージョン: %@ (%@)\n地図データ: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "トラック";
@@ -200,6 +205,7 @@
 "share_my_location" = "現在地を共有する";
 "prefs_group_route" = "ナビゲーション";
 "pref_zoom_title" = "ズームボタン";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "外観";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "ダーク";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "オフ";
@@ -229,7 +238,10 @@
 "pref_map_3d_buildings_disabled_summary" = "省電力モードで建物の 3D 表示がオフになっている";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "音声指示";
+"pref_tts_title" = "音声指示";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "通りの名前を発表";
@@ -252,8 +264,20 @@
 /* Text in menu */
 "website" = "ウェブサイト";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "ニュース";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "電子メール";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +291,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax 写真";
+
 /* Text in menu */
 "rate_the_app" = "アプリを評価";
 
@@ -278,12 +314,6 @@
 
 /* Button in the main menu */
 "donate" = "寄付";
-
-/* Tex label above the Donate button */
-"donate_description" = "寄付して最高の地図を一緒に作ろう！";
-"already_donated" = "寄付済み";
-"remind_me_later" = "後でリマインド";
-"support_organic_maps" = "Organic Maps を支援";
 
 /* Button in the main Help dialog */
 "copyright" = "著作権";
@@ -298,10 +328,10 @@
 "volunteer" = "ボランティアに参加する";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "フォローして連絡しよう：";
+"follow_us" = "フォローして連絡しよう";
 
 /* Alert text */
-"email_error_body" = "メールアプリは設定されていません。設定するか、%@にご連絡ください。";
+"email_error_body" = "メールアプリは設定されていません。設定するか、%@にご連絡ください";
 
 /* Alert title */
 "email_error_title" = "メール送信エラー";
@@ -310,7 +340,7 @@
 "pref_calibration_title" = "コンパスの調整";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "インターフェイスを見るには、もう一度地図をロングタップする。";
+"long_tap_toast" = "インターフェイスを見るには、もう一度地図をロングタップする";
 
 /* Update all button text */
 "downloader_update_all_button" = "全てをアップデート";
@@ -414,7 +444,7 @@
 "dialog_routing_disclaimer_priority" = "— 道路の状況や道路交通法、道路標識をナビゲーションよりも常に優先してください;";
 "dialog_routing_disclaimer_precision" = "— マップは必ずしも正確であるとは限らず、また案内ルートが常に目的地までの最適なルートであるとは限りません。;";
 "dialog_routing_disclaimer_recommendations" = "— 表示されるルートはあくまでも推奨ルートとしてご利用ください。;";
-"dialog_routing_disclaimer_borders" = "— 国境付近のルートにご注意ください。アプリの作成したルートは時々入国の許可されていない国への国境を超える場合があります;";
+"dialog_routing_disclaimer_borders" = "— 国境付近のルートにご注意ください。アプリの作成したルートは時々入国の許可されていない国への国境を超える場合があります。";
 "dialog_routing_disclaimer_beware" = "よく注意して安全運転を心がけましょう！";
 "dialog_routing_check_gps" = "GPS信号をご確認ください";
 "dialog_routing_error_location_not_found" = "案内ルートを作成できません。現在のGPS座標が認識できません。";
@@ -510,15 +540,27 @@
 "closes_in" = "あと %@ に閉店";
 "closed" = "閉店";
 "add_opening_hours" = "営業時間を追加";
-"no_osm_account" = "OpenStreetMapのアカウントをお持ちではないですか？";
-"register_at_openstreetmap" = "OpenStreetMapのアカウントを登録";
-"password_8_chars_min" = "パスワード(最低8文字)";
-"invalid_username_or_password" = "ユーザー名またはパスワードが無効です。";
-"login" = "ログイン";
-"login_osm" = "OpenStreetMapにログイン";
-"forgot_password" = "パスワードをお忘れですか？";
-"osm_account" = "OSMアカウント";
-"logout" = "ログアウト";
+
+/* OpenStreetMap */
+"osm_mapdata" = "OpenStreetMapからの地図データ";
+"osm_mapdata_explanation %@" = "コミュニティが作成した*%@*時点の地図データ。地図の編集や更新の方法については、[OpenStreetMap.org](https://openstreetmap.org) を参照してください。";
+"osm_more_about" = "OpenStreetMapについての詳細";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/JA:OpenStreetMap_について";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap プロフィール";
+"osm_profile_promt" = "OpenStreetMapのアカウントを作成するかログインして、あなたの地図編集を世界中に公開しましょう。";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM)は、フリーでオープンな地図を構築するコミュニティ・プロジェクトです。OSMは、CoMapsの地図データの主要なソースであり、ウィキペディアと同じように機能します。あなたが場所を追加したり編集したりすると、世界中の何百万人ものユーザーがその場所を利用できるようになります。\nコミュニティに参加して、より良い地図を一緒に作りましょう！";
+"osm_profile_login" = "OpenStreetMapアカウントにログイン";
+"osm_profile_reauthorize_promt" = "OpenStreetMapアカウントがこのアプリから切断されました";
+"osm_profile_reauthorize" = "OpenStreetMapに再接続";
+"osm_profile_remove_promt" = "アカウントを再接続できない場合、または再接続したくない場合は、このアプリからアカウントを削除することができます";
+"osm_profile_remove" = "このアプリからOpenStreetMapアカウントの記憶を削除";
+"osm_profile_register_promt" = "OpenStreetMapのアカウントをお持ちではないですか？";
+"osm_profile_register" = "OpenStreetMapのアカウントを登録";
+"osm_profile_verfied_changes" = "確認された変更";
+"osm_profile_logout" = "OpenStreetMapアカウントからログアウト";
+"osm_profile_delete" = "OpenStreetMapアカウントを削除";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "最終更新";
@@ -561,19 +603,15 @@
 "editor_edit_place_name_hint" = "場所の名前";
 
 /* The second part of the editor_edit_place_name_hint to explain that name should be entered in a local language, see https://wiki.openstreetmap.org/wiki/Key:name */
-"editor_default_language_hint" = "現地の言葉でこう書かれている。";
+"editor_default_language_hint" = "現地の言葉でこう書かれている";
 "editor_edit_place_category_title" = "カテゴリ";
 "whatsnew_editor_message_1" = "アプリから直接地図に新しい場所を追加したり、既存の場所を編集できます。";
 "dialog_incorrect_feature_position" = "位置を変更してください";
 "message_invalid_feature_position" = "ここにはオブジェクトを配置できません";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "コミュニティが作成した%@時点の OpenStreetMap のデータ。地図の編集や更新の方法については、OpenStreetMap.org を参照してください。";
-"login_to_make_edits_visible" = "OpenStreetMapのアカウントを作成するかログインして、あなたの地図編集を世界中に公開しましょう。";
-
 /* Error dialog no space */
 "migration_no_space_message" = "ダウンロードするには空き容量が必要です。不要なデータを削除してください。";
-"editor_sharing_title" = "Organic Mapsの地図を改善しました";
+"editor_sharing_title" = "CoMapsの地図を改善しました";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%2$dのうち%1$d";
@@ -593,14 +631,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "OpenStreetMapボランティアへの注意（オプション）";
 "editor_detailed_description_hint" = "詳細コメント";
-"editor_detailed_description" = "提案した変更は、OpenStreetMapのコミュニティに送信されます。Organic Mapsで編集できない詳細を説明してください。";
+"editor_detailed_description" = "提案した変更は、OpenStreetMapのコミュニティに送信されます。CoMapsで編集できない詳細を説明してください。";
 "editor_more_about_osm" = "OpenStreetMapについての詳細";
 "editor_operator" = "オペレーター";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "運営者: %@";
 "editor_category_unsuitable_title" = "適切なカテゴリーが見つからない？";
-"editor_category_unsuitable_text" = "つまり、町、道路、湖、建物の輪郭などは追加できない。そのようなカテゴリーは<a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>に直接追加してほしい。私たちの<a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">ガイド</a>のステップバイステップの詳細な手順をチェックする。";
+"editor_category_unsuitable_text" = "つまり、町、道路、湖、建物の輪郭などは追加できない。そのようなカテゴリーは<a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>に直接追加してほしい。私たちの<a href=\"https://www.comaps.app/support/advanced-map-editing/\">ガイド</a>のステップバイステップの詳細な手順をチェックする。";
 "downloader_no_downloaded_maps_title" = "マップをダウンロードしていません";
 "downloader_no_downloaded_maps_message" = "ロケーションの検索とオフラインナビゲートのためにマップをダウンロードしてください。";
 "current_location_unknown_error_title" = "現在地は不明です。";
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2.プライバシーを選択する";
 "location_services_disabled_on_device_3" = "3.位置情報サービスを選択する";
 "location_services_disabled_on_device_4" = "4.位置情報サービスをオンにする";
-"location_services_disabled_on_device_additional_message" = "または、位置情報なしでオーガニック・マップを使い続ける";
+"location_services_disabled_on_device_additional_message" = "または、位置情報なしでCoMapsを使い続ける";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +675,6 @@
 "day" = "日";
 "placepage_more_button" = "さらに詳しく";
 "book_button" = "予約";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "写真、レビュー、予約";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "このリンクを経由した予約の紹介ボーナスは、Organic Mapsの発展のために使われる。";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Kayak で詳細表示";
 "placepage_call_button" = "電話をかける";
 "placepage_edit_bookmark_button" = "ブックマークを編集";
 "placepage_bookmark_name_hint" = "ブックマーク名";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "ご覧ください";
-"recent_track_background_dialog_message" = "Organic Mapsは、あなたの位置情報をバックグラウンドで使用して最近の走行ルートを記録します。";
+"recent_track_background_dialog_message" = "CoMapsは、あなたの位置情報をバックグラウンドで使用して最近の走行ルートを記録します。";
 "general_settings" = "一般設定";
 
 /* For the first routing */
@@ -725,6 +754,9 @@
 "planning_route_remove_title" = "ここにドラッグして削除";
 "placepage_add_stop" = "中間地点を追加";
 "start_from_my_position" = "出発地";
+
+/* Title for button when a route was saved. */
+"saved" = "保存しました";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "すべてのマップ編集を自動的にアップロードするには、OpenStreetMapにログインしてください。詳しくは";
@@ -783,11 +815,11 @@
 /* Speed camera settings menu option - Never warn (about speedcams) */
 "pref_tts_speedcams_never" = "自動速度違反取締装置を警告しません";
 "power_managment_title" = "電力節約モード";
-"power_managment_description" = "自動モードが選択されている場合、このアプリケーションは現在のバッテリーの充電状態に応じてバッテリー消費の激しい機能の無効化を開始します";
+"power_managment_description" = "自動モードが選択されている場合、このアプリケーションは現在のバッテリーの充電状態に応じてバッテリー消費の激しい機能の無効化を開始します。";
 "power_managment_setting_never" = "無効";
 "power_managment_setting_auto" = "自動";
 "power_managment_setting_manual_max" = "最大電力節約";
-"enable_logging_warning_message" = "このオプションは診断目的でのデータ記録を有効にします。これはこのアプリケーションのトラブルシューティングを担当する当社のサポートスタッフの助けになります。このオプションはOrganic Mapsにリクエストされた場合にのみ有効にしてください。";
+"enable_logging_warning_message" = "このオプションは診断目的でのデータ記録を有効にします。これはこのアプリケーションのトラブルシューティングを担当する当社のサポートスタッフの助けになります。このオプションはCoMapsにリクエストされた場合にのみ有効にしてください。";
 "driving_options_title" = "経路オプション";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +877,7 @@
 "ok" = "OK";
 "speedcams_alert_title_carplay_1" = "速度警告";
 "speedcams_alert_title_carplay_2" = "速度警告";
-"download_map_carplay" = "端末のOrganic Mapsのアプリにマップをダウンロードしてください";
+"download_map_carplay" = "端末のCoMapsのアプリにマップをダウンロードしてください";
 "carplay_roundabout_exit" = "第%@出口";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,26 +956,17 @@
 /* edit track screen title */
 "track_title" = "トラック";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/JA:参加する";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "私たちのコミュニティが作った地図をご利用いただき、ありがとうございます！";
 
 /* App tip #01 */
-"app_tip_01" = "あなたの寄付とサポートがあれば、世界で最高の地図を作成できます。";
+"app_tip_01" = "あなたの寄付とサポートがあれば、世界で最高の地図を作成できます！";
 
 /* App tip #02 */
-"app_tip_02" = "私たちのアプリは気に入っていますか? 開発をサポートするために寄付をお願いします！ まだ気に入らないですか？ お知らせください。修正させていただきます。";
+"app_tip_02" = "私たちのアプリは気に入っていますか? 開発をサポートするために寄付をお願いします！ まだ気に入らないですか？ お知らせください。修正させていただきます！";
 
 /* App tip #03 */
 "app_tip_03" = "ソフトウェア開発者を知っている場合は、必要な機能を実装するように依頼できます。";
@@ -967,10 +990,10 @@
 "app_tip_09" = "私たちの主な目標は、ユーザーに気に入っていただける、プライバシーを重視した使いやすいマップを高速に構築することです。";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "端末の画面でOrganic Mapsを使用している";
+"car_used_on_the_phone_screen" = "端末の画面でCoMapsを使用している";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "あなたは今、車の画面でオーガニック・マップを使用している";
+"car_used_on_the_car_screen" = "あなたは今、車の画面でCoMapsを使用している";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "電話で続ける";
@@ -995,7 +1018,10 @@
 "website_menu" = "メニューリンク";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "開発者にバグレポートを送りたいか？\nオーガニック・マップはエラー情報を自動収集しないため、我々はユーザーに依存している。Organic Mapsを応援してくださりありがとう！";
+"bugreport_alert_message" = "開発者にバグレポートを送りたいか？\nCoMapsはエラー情報を自動収集しないため、我々はユーザーに依存している。CoMapsを応援してくださりありがとう！";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "iCloud同期を有効にする";
@@ -1022,7 +1048,7 @@
 "icloud_synchronization_error_connection_error" = "エラー：接続エラーにより同期に失敗した";
 
 /* iCloud error message: Failed to synchronize due to iCloud quota exceeded */
-"icloud_synchronization_error_quota_exceeded" = "エラー：iCloudのクォータが超過したため、同期に失敗しました。";
+"icloud_synchronization_error_quota_exceeded" = "エラー：iCloudのクォータが超過したため、同期に失敗しました";
 
 /* iCloud error message: iCloud is not available */
 "icloud_synchronization_error_cloud_is_unavailable" = "エラー：iCloudが利用できない";
@@ -1069,3 +1095,6 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "ルートが空です - 保存するものがありません";
 "edit_track" = "ルートを編集";
+"osm_profile_view_notes" = "メモを表示";
+"osm_profile_view_edit_history" = "編集履歴を表示";
+"pref_mapappearance_title" = "Map Appearance";

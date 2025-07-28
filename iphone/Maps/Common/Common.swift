@@ -1,30 +1,30 @@
 import Foundation
 
-var isIPad: Bool { return UI_USER_INTERFACE_IDIOM() == .pad }
+var isiPad: Bool {
+  if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+    return true
+  }
+  return UIDevice.current.userInterfaceIdiom == .pad
+}
 
 func L(_ key: String) -> String { return NSLocalizedString(key, comment: "") }
 
-func alternative<T>(iPhone: T, iPad: T) -> T { return isIPad ? iPad : iPhone }
+func alternative<T>(iPhone: T, iPad: T) -> T { isiPad ? iPad : iPhone }
 
 func iPadSpecific(_ f: () -> Void) {
-  if isIPad {
+  if isiPad {
     f()
   }
 }
 
 func iPhoneSpecific(_ f: () -> Void) {
-  if !isIPad {
+  if !isiPad {
     f()
   }
 }
 
 func toString(_ cls: AnyClass) -> String {
   return String(describing: cls)
-}
-
-func statusBarHeight() -> CGFloat {
-  let statusBarSize = UIApplication.shared.statusBarFrame.size
-  return min(statusBarSize.height, statusBarSize.width)
 }
 
 func LOG(_ level: LogLevel,

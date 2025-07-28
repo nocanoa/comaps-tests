@@ -1,53 +1,32 @@
-‣ Unsere kostenlose App trackt niemanden, enthält keine Werbung und braucht deine Unterstützung.
-‣ Sie wird ständig von Mitwirkenden und unserem kleinen Team verbessert, in unserer Freizeit.
-‣ Wenn etwas auf der Karte falsch ist oder fehlt, dann korrigiere es bitte in <b>OpenStreetMap</b> und sieh deine Änderungen in der zukünftigen Kartenaktualisierung.
-‣ Sollte die Navigation oder die Suche nicht funktionieren, sende uns bitte eine E-Mail. Wir antworten auf <i>JEDE</i> E-Mail und werden das Problem so schnell wie möglich beheben!
+Eine von der Community betriebene, kostenlose Open-Source Karten-App, die auf OpenStreetMap Daten basiert. Transparent und nicht gewinnorientiert. CoMaps ist ein Fork/Abspaltung von Organic Maps, die wiederum ein Fork/Abspaltung von Maps.Me ist.
 
-<b>Dein Feedback und deine 5-Sterne-Bewertungen sind die beste Motivation für uns!</b>
+Lese mehr über die Gründe und Ziele des Projektes unter <b><i>codeberg.org/comaps</i></b>.
+Werde Teil der Community und hilf mit, die beste Karten-App zu entwickeln
+• Nutze die App und erzähle anderen davon
+• Gib Feedback und melde Probleme
+• Aktualisiere Kartendaten in der App oder auf der OpenStreetMap-Webseite
 
-Wichtigste Funktionen:
+‣ <b>Einfach und ausgereift</b>: Essenzielle, leicht zu bedienende Funktionen, die einfach funktionieren.
+‣ <b>Offline-orientiert</b>: Plane und navigiere im Ausland ohne Mobilfunkverbindung, finde Wegpunkte auf abgelegenen Wanderungen usw. Alle Funktionen sind für den Offline-Einsatz konzipiert.
+‣ <b>Datenschutzfreundlich</b>: Die App wurde mit Fokus auf Privatsphäre entwickelt – keine Personenidentifikation, kein Tracking, keine Erfassung persönlicher Daten, keine Werbung.
+‣ <b>Spart Akku und Speicherplatz</b>: Verbraucht nicht unnötig Akku wie andere Navi-Apps. Kompakte Karten sparen Speicherplatz auf deinem Gerät.
+‣ <b>Kostenlos und von der Community entwickelt</b>: Menschen wie du haben geholfen, diese App zu entwickeln – durch das Hinzufügen von Orten zu OpenStreetMap, Testen von neuen Funktionen, Softwareentwicklung oder Spenden.
+‣ <b>Offen und transparent bei Entscheidungen und Finanzen, gemeinnützig und vollständig Open-Source</b>
 
-• Kostenlos, Open-Source, keine Werbung, kein Tracking
-• Detaillierte Offline-Karten mit Orten, die es auf anderen Karten nicht gibt, dank an die <b>OpenStreetMap</b> Community
-• Rad-, Wander- und Spazierwege
-• Höhenlinien, Höhenprofile, Bergspitzen und Steigungen
-• Schritt-für-Schritt-Navigation für Fußgänger, Radfahrer und Autos mit Sprachführung
-• Schnelle Offlinesuche
-• Export und Import von Lesezeichen im KML, KMZ, GPX-Format
-• Dunkler Modus zum Schutz deiner Augen
+<b>Hauptfunktionen</b>:
+• Detaillierte, herunterladbare Karten mit Orten, die bei Google Maps oft fehlen
+• Outdoor-Modus mit hervorgehobenen Wanderwegen, Campingplätzen, Wasserquellen, Gipfeln, Höhenlinien usw.
+• Geh- und Radwege
+• Orte wie Restaurants, Tankstellen, Hotels, Geschäfte, Sehenswürdigkeiten und viele mehr
+• Suche nach Namen, Adressen oder Kategorien
+• Sprachausgabe bei der Navigation zu Fuß, Rad oder Auto
+• Lesezeichen mit einem einzigen Tippen speichern
+• Offline verfügbare Wikipedia-Artikel
+• U- und S-Bahn-Netze
+• Aufzeichnen von GPS-Tracks
+• Import und Export von Favoriten und Routen im KML-, KMZ- oder GPX-Format
+• Dunkler Modus für die Nutzung bei Nacht
+• Kartenbearbeitung direkt in der App mit einem einfachen Editor
 
-Öffentlichen Verkehrsmittel, Satellitenbildkarten und viele weitere wichtige Merkmale werden <i>noch</i> nicht unterstützt. Aber mit <i>deiner Hilfe und Unterstützung</i> können wir diese Welt und unsere Karten Schritt für Schritt besser machen.
-
-Organic Maps ist <b>rein, organisch und mit Liebe gemacht</b>:
-
-• Rasend schnelle Offline-Erfahrung
-• Respektiert deine Privatsphäre
-• Schont deinen Akku
-• Keine unerwarteten Gebühren für mobile Daten
-• Einfach zu bedienen, nur die wichtigsten Funktionen integriert
-
-Frei von Trackern und schlechten Dingen:
-
-• Keine Werbung
-• Kein Tracking
-• Keine Datenerfassung
-• Kein Telefonieren nach Hause
-• Keine lästige Registrierung
-• Keine obligatorischen Tutorials
-• Kein lästiger E-Mail-Spam
-• Keine Push-Benachrichtigungen
-• Keine Crapware
-• -K̶e̶i̶n̶e̶ ̶P̶e̶s̶t̶i̶z̶i̶d̶e̶ Rein organisch
-
-Wir bei Organic Maps glauben, dass <b>Privatsphäre ein grundlegendes Menschenrecht</b> ist:
-
-• Organic Maps ist ein von einer unabhängigen Gemeinschaft betriebenes Open-Source-Projekt
-• Wir schützen deine Privatsphäre vor den neugierigen Augen der großen Technologiekonzerne
-• Bleib sicher, egal wo du bist
-
-Keine Tracker und nur minimal erforderliche Berechtigungen sind laut dem Exodus-Datenschutzbericht vorhanden.
-
-Bitte besuche <b><i>organicmaps.app</i></b> Webseite für weitere Details und ein FAQ. Oder kontaktiere uns direkt unter @OrganicMapsApp in Telegram.
-
-Lehne Überwachung ab - lebe deine Freiheit.
-<b>Teste Organic Maps!</b>
+<b>Entdecke die Unabhängigkeit</b>
+Entdecke deine Reise – navigiere in der Welt mit Datenschutz!

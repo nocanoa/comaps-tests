@@ -180,11 +180,25 @@ using namespace storage;
   [data updateBookmarkStatus];
 }
 
+- (void)updateBookmark:(PlacePageData *)data color:(MWMBookmarkColor)color category:(MWMMarkGroupID)category {
+  MWMBookmarksManager * bookmarksManager = [MWMBookmarksManager sharedManager];
+  [bookmarksManager updateBookmark:data.bookmarkData.bookmarkId setGroupId:category title:data.previewData.title color:color description:data.bookmarkData.bookmarkDescription];
+  [MWMFrameworkHelper updatePlacePageData];
+  [data updateBookmarkStatus];
+}
+
 - (void)removeBookmark:(PlacePageData *)data
 {
   auto &f = GetFramework();
   f.GetBookmarkManager().GetEditSession().DeleteBookmark(data.bookmarkData.bookmarkId);
   [MWMFrameworkHelper updateAfterDeleteBookmark];
+  [data updateBookmarkStatus];
+}
+
+- (void)updateTrack:(PlacePageData *)data color:(UIColor *)color category:(MWMMarkGroupID)category {
+  MWMBookmarksManager * bookmarksManager = [MWMBookmarksManager sharedManager];
+  [bookmarksManager updateTrack:data.trackData.trackId setGroupId:category color:color title:data.previewData.title];
+  [MWMFrameworkHelper updatePlacePageData];
   [data updateBookmarkStatus];
 }
 
@@ -194,9 +208,10 @@ using namespace storage;
   f.GetBookmarkManager().GetEditSession().DeleteTrack(data.trackData.trackId);
 }
 
-- (void)call:(PlacePageData *)data {
-  if (data.infoData.phoneUrl && [UIApplication.sharedApplication canOpenURL:data.infoData.phoneUrl]) {
-    [UIApplication.sharedApplication openURL:data.infoData.phoneUrl options:@{} completionHandler:nil];
+- (void)call:(PlacePagePhone *)phone {
+  NSURL * _Nullable phoneURL = phone.url;
+  if (phoneURL && [UIApplication.sharedApplication canOpenURL:phoneURL]) {
+    [UIApplication.sharedApplication openURL:phoneURL options:@{} completionHandler:nil];
   }
 }
 
@@ -249,16 +264,17 @@ using namespace storage;
   [self.ownerViewController openUrl:data.infoData.websiteMenu externally:YES];
 }
 
-- (void)openKayak:(PlacePageData *)data {
-  [self.ownerViewController openUrl:data.infoData.kayak externally:YES];
-}
-
 - (void)openWikipedia:(PlacePageData *)data {
   [self.ownerViewController openUrl:data.infoData.wikipedia externally:YES];
 }
 
 - (void)openWikimediaCommons:(PlacePageData *)data {
   [self.ownerViewController openUrl:data.infoData.wikimediaCommons externally:YES];
+}
+
+- (void)openFediverse:(PlacePageData *)data {
+  std::string const fullUrl = osm::socialContactToURL(osm::MapObject::MetadataID::FMD_CONTACT_FEDIVERSE, [data.infoData.fediverse UTF8String]);
+  [self.ownerViewController openUrl:ToNSString(fullUrl) externally:YES];
 }
 
 - (void)openFacebook:(PlacePageData *)data {
@@ -283,6 +299,16 @@ using namespace storage;
 
 - (void)openLine:(PlacePageData *)data {
   std::string const fullUrl = osm::socialContactToURL(osm::MapObject::MetadataID::FMD_CONTACT_LINE, [data.infoData.line UTF8String]);
+  [self.ownerViewController openUrl:ToNSString(fullUrl) externally:YES];
+}
+
+- (void)openBluesky:(PlacePageData *)data {
+  std::string const fullUrl = osm::socialContactToURL(osm::MapObject::MetadataID::FMD_CONTACT_BLUESKY, [data.infoData.bluesky UTF8String]);
+  [self.ownerViewController openUrl:ToNSString(fullUrl) externally:YES];
+}
+
+- (void)openPanoramax:(PlacePageData *)data {
+  std::string const fullUrl = osm::socialContactToURL(osm::MapObject::MetadataID::FMD_PANORAMAX, [data.infoData.panoramax UTF8String]);
   [self.ownerViewController openUrl:ToNSString(fullUrl) externally:YES];
 }
 

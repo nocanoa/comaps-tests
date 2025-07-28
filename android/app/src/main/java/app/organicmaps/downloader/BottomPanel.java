@@ -1,19 +1,20 @@
 package app.organicmaps.downloader;
 
 import android.view.View;
-import android.widget.Button;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import app.organicmaps.R;
 import app.organicmaps.util.StringUtils;
 import app.organicmaps.util.UiUtils;
+
 import static app.organicmaps.downloader.CountryItem.*;
 
 class BottomPanel
 {
   private final DownloaderFragment mFragment;
   private final FloatingActionButton mFab;
-  private final Button mButton;
+  private final MaterialButton mButton;
 
   private final View.OnClickListener mDownloadListener = new View.OnClickListener()
   {
@@ -39,7 +40,17 @@ class BottomPanel
     @Override
     public void onClick(View v)
     {
-        mFragment.getAdapter().refreshData();
+      MapManager.nativeCancel(mFragment.getCurrentRoot());
+      mFragment.getAdapter().refreshData();
+    }
+  };
+
+  private final View.OnClickListener mRetryListener = new View.OnClickListener()
+  {
+    @Override
+    public void onClick(View v)
+    {
+      MapManager.warn3gAndRetry(mFragment.requireActivity(), mFragment.getCurrentRoot(), null);
     }
   };
 
@@ -68,6 +79,12 @@ class BottomPanel
   {
     mButton.setText(R.string.downloader_download_all_button);
     mButton.setOnClickListener(mDownloadListener);
+  }
+
+  private void setRetryFailedStates()
+  {
+    mButton.setText(R.string.downloader_retry);
+    mButton.setOnClickListener(mRetryListener);
   }
 
   private void setCancelState()
@@ -99,7 +116,7 @@ class BottomPanel
           }  // Special case for "Countries" node when no maps currently downloaded.
           case STATUS_DOWNLOADABLE, STATUS_DONE, STATUS_PARTLY -> show = false;
           case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
-          case STATUS_FAILED -> setDownloadAllState();
+          case STATUS_FAILED -> setRetryFailedStates();
           default -> throw new IllegalArgumentException("Inappropriate status for \"" + root + "\": " + status);
         }
       }
@@ -117,6 +134,7 @@ class BottomPanel
             }
             case STATUS_DONE -> show = false;
             case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
+            case STATUS_FAILED -> setRetryFailedStates();
             default -> setDownloadAllState();
           }
         }

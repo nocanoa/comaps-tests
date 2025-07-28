@@ -93,7 +93,9 @@
 				47375D982420D4DB00FFCC49 /* Chart */,
 				47375D972420D4DB00FFCC49 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		47375D972420D4DB00FFCC49 /* Products */ = {
 			isa = PBXGroup;
@@ -190,7 +192,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastUpgradeCheck = 1510;
-				ORGANIZATIONNAME = "Organic Maps";
+				ORGANIZATIONNAME = CoMaps;
 				TargetAttributes = {
 					47375D952420D4DB00FFCC49 = {
 						CreatedOnToolsVersion = 11.3;
@@ -359,7 +361,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.chart;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.chart;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 			};
@@ -380,7 +383,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.chart;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.chart;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 			};

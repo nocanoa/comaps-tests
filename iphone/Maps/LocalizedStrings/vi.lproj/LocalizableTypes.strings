@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Bãi tha ma";
-"type.landuse.churchyard" = "Nhà thờ";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Commercial Area";
 "type.landuse.construction" = "Construction Area";
 "type.landuse.education" = "Educational Facility";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Giếng Nước";
 "type.man_made.windmill" = "Cối xay gió";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Boongke";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Nhà máy thủy điện";
 "type.power.plant.solar" = "Nhà máy điện mặt trời";
 "type.power.plant.wind" = "Nhà máy điện gió";
-"type.power.station" = "Power Station";
 "type.power.substation" = "Trạm biến áp";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Nhà thi đấu thể thao";
+"type.railway.station.subway.qingdao" = "Ngầm";
+"type.highway.ladder" = "Ladder";
+"type.man_made.crane" = "Crane";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.sport.diving" = "High Diving";
+"type.natural.wetland.swamp" = "Swamp";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

@@ -4,12 +4,13 @@
 #import <CoreApi/PlacePageData.h>
 #import <CoreApi/PlacePagePreviewData.h>
 #import <CoreApi/PlacePageInfoData.h>
+#import <CoreApi/PlacePagePhone.h>
 #import <LinkPresentation/LPLinkMetadata.h>
 
 NSString * httpGe0Url(NSString * shortUrl)
 {
-  // Replace 'om://' with 'https://omaps.app/'
-  return [shortUrl stringByReplacingCharactersInRange:NSMakeRange(0, 5) withString:@"https://omaps.app/"];
+  // Replace 'cm://' with 'https://comaps.at/'
+  return [shortUrl stringByReplacingCharactersInRange:NSMakeRange(0, 5) withString:@"https://comaps.at/"];
 }
 
 @interface MWMShareActivityItem ()
@@ -106,9 +107,9 @@ NSString * httpGe0Url(NSString * shortUrl)
 - (LPLinkMetadata *)activityViewControllerLinkMetadata:(UIActivityViewController *)activityViewController API_AVAILABLE(ios(13.0))
 {
   LPLinkMetadata * metadata = [[LPLinkMetadata alloc] init];
-  metadata.originalURL = [NSURL URLWithString:[self url:NO]];
+  metadata.originalURL = [NSURL URLWithString:httpGe0Url([self url:NO])];
   metadata.title = self.isMyPosition ? L(@"core_my_position") : self.data.previewData.title;
-  metadata.iconProvider = [[NSItemProvider alloc] initWithObject:[UIImage imageNamed:@"imgLogo"]];
+  metadata.iconProvider = [[NSItemProvider alloc] initWithObject:[UIImage imageNamed:@"Logo"]];
   return metadata;
 }
 
@@ -130,18 +131,22 @@ NSString * httpGe0Url(NSString * shortUrl)
   {
     BOOL const hasSubject = [activityType isEqualToString:UIActivityTypeMail];
     if (hasSubject)
-      return [NSString stringWithFormat:@"%@ %@", url, ge0Url];
+      return url;
     return [NSString
-        stringWithFormat:@"%@ %@\n%@", L(@"my_position_share_email_subject"), url, ge0Url];
+        stringWithFormat:@"%@ %@", L(@"my_position_share_email_subject"), url];
   }
+
+  NSMutableArray *phones = [NSMutableArray new];
+  [self.data.infoData.phones enumerateObjectsUsingBlock:^(PlacePagePhone * _Nonnull phone, NSUInteger idx, BOOL * _Nonnull stop) {
+    [phones addObject:phone.phone];
+  }];
 
   NSMutableString * result = [L(@"sharing_call_action_look") mutableCopy];
   std::vector<NSString *> strings{self.data.previewData.title,
                                  self.data.previewData.subtitle,
                                  self.data.previewData.secondarySubtitle,
-                                 self.data.infoData.phone,
-                                 url,
-                                 ge0Url};
+                                 [phones componentsJoinedByString:@"; "],
+                                 url};
 
   for (auto const & str : strings)
   {

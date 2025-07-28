@@ -123,7 +123,7 @@ uint64_t ServerApi06::CreateNote(ms::LatLon const & ll, std::string const & mess
   CHECK(!message.empty(), ("Note content should not be empty."));
   std::string const params = "?lat=" + strings::to_string_dac(ll.m_lat, 7) +
                              "&lon=" + strings::to_string_dac(ll.m_lon, 7) +
-                             "&text=" + url::UrlEncode(message + " #organicmaps " + OMIM_OS_NAME);
+                             "&text=" + url::UrlEncode(message + " #CoMaps " + OMIM_OS_NAME);
   OsmOAuth::Response const response = m_auth.Request("/notes" + params, "POST");
   if (response.first != OsmOAuth::HTTP::OK)
     MYTHROW(ErrorAddingNote, ("Could not post a new note:", response));
@@ -151,25 +151,33 @@ bool ServerApi06::TestOSMUser(std::string const & userName)
 
 UserPreferences ServerApi06::GetUserPreferences() const
 {
-  OsmOAuth::Response const response = m_auth.Request("/user/details");
-  if (response.first != OsmOAuth::HTTP::OK)
-    MYTHROW(CantGetUserPreferences, (response));
+  try {
+    OsmOAuth::Response const response = m_auth.Request("/user/details");
+    if (response.first != OsmOAuth::HTTP::OK)
+      MYTHROW(CantGetUserPreferences, (response));
 
-  pugi::xml_document details;
-  if (!details.load_string(response.second.c_str()))
-    MYTHROW(CantParseUserPreferences, (response));
+    pugi::xml_document details;
+    if (!details.load_string(response.second.c_str()))
+      MYTHROW(CantParseUserPreferences, (response));
 
-  pugi::xml_node const user = details.child("osm").child("user");
-  if (!user || !user.attribute("id"))
-    MYTHROW(CantParseUserPreferences, ("No <user> or 'id' attribute", response));
+    pugi::xml_node const user = details.child("osm").child("user");
+    if (!user || !user.attribute("id"))
+      MYTHROW(CantParseUserPreferences, ("No <user> or 'id' attribute", response));
 
-  UserPreferences pref;
-  pref.m_id = user.attribute("id").as_ullong();
-  pref.m_displayName = user.attribute("display_name").as_string();
-  pref.m_accountCreated = base::StringToTimestamp(user.attribute("account_created").as_string());
-  pref.m_imageUrl = user.child("img").attribute("href").as_string();
-  pref.m_changesets = user.child("changesets").attribute("count").as_uint();
-  return pref;
+    UserPreferences pref;
+    pref.m_id = user.attribute("id").as_ullong();
+    pref.m_displayName = user.attribute("display_name").as_string();
+    pref.m_accountCreated = base::StringToTimestamp(user.attribute("account_created").as_string());
+    pref.m_imageUrl = user.child("img").attribute("href").as_string();
+    pref.m_changesets = user.child("changesets").attribute("count").as_uint();
+    return pref;
+  }
+  catch (std::exception const & e)
+  {
+    LOG(LWARNING, ("Can't load user preferences from server: ", e.what()));
+  }
+
+  return {};
 }
 
 OsmOAuth::Response ServerApi06::GetXmlFeaturesInRect(double minLat, double minLon, double maxLat, double maxLon) const

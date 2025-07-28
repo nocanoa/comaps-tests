@@ -40,9 +40,34 @@ ChunksDownloadStrategy::GetChunk(RangeT const & range)
 
 void ChunksDownloadStrategy::InitChunks(int64_t fileSize, int64_t chunkSize, ChunkStatusT status)
 {
-  m_chunks.reserve(static_cast<size_t>(fileSize / chunkSize + 2));
+  if (chunkSize == 0)
+  {
+    int64_t constexpr kMb = 1024 * 1024;
+    size_t const sizeMb = std::max(fileSize / kMb, static_cast<int64_t>(1));
+
+    size_t constexpr kTargetCount = 40;
+    size_t constexpr kMinMb = 1;
+    size_t constexpr kMaxMb = 16;
+    size_t const chunkMb = std::min(std::max(sizeMb / kTargetCount, kMinMb), kMaxMb);
+
+    size_t chunksCount = sizeMb / chunkMb;
+    if (static_cast<int64_t>(kMb * chunkMb * chunksCount) < fileSize)
+      ++chunksCount;
+    ASSERT_GREATER_OR_EQUAL(static_cast<int64_t>(kMb * chunkMb * chunksCount), fileSize, ());
+
+    LOG(LINFO, ("File size", sizeMb, "MB; chunk size", chunkMb, "MB; chunks count", chunksCount));
+
+    m_chunks.reserve(chunksCount + 1);
+    chunkSize = chunkMb * kMb;
+  }
+  else
+  {
+    m_chunks.reserve(static_cast<size_t>(fileSize / chunkSize + 2));
+  }
+
   for (int64_t i = 0; i < fileSize; i += chunkSize)
     m_chunks.push_back(ChunkT(i, status));
+  // The last AUX chunk is just used to hold end of the range (eof) for the previous chunk.
   m_chunks.push_back(ChunkT(fileSize, CHUNK_AUX));
 }
 
@@ -77,7 +102,7 @@ void ChunksDownloadStrategy::SaveChunks(int64_t fileSize, string const & fName)
     }
     catch (FileWriter::Exception const & e)
     {
-      LOG(LWARNING, ("Can't save chunks to file", e.Msg()));
+      LOG(LWARNING, ("Can't save chunks statuses to file", e.Msg()));
     }
   }
 
@@ -89,7 +114,6 @@ int64_t ChunksDownloadStrategy::LoadOrInitChunks(string const & fName, int64_t f
                                                  int64_t chunkSize)
 {
   ASSERT ( fileSize > 0, () );
-  ASSERT ( chunkSize > 0, () );
 
   if (Platform::IsFileExistsByFullPath(fName))
   {
@@ -112,13 +136,19 @@ int64_t ChunksDownloadStrategy::LoadOrInitChunks(string const & fName, int64_t f
 
         // Reset status "downloading" to "free".
         int64_t downloadedSize = 0;
+        size_t completed = 0;
         for (size_t i = 0; i < count - 1; ++i)
         {
           if (m_chunks[i].m_status != CHUNK_COMPLETE)
             m_chunks[i].m_status = CHUNK_FREE;
           else
+          {
             downloadedSize += (m_chunks[i + 1].m_pos - m_chunks[i].m_pos);
+            ++completed;
+          }
         }
+        LOG(LINFO, ("Resumed file: downloaded", downloadedSize / 1024 / 1024, "out of", fileSize / 1024 / 1024,
+                    "MB; completed chunks", completed, "out of", count - 1));
 
         return downloadedSize;
       }
@@ -147,14 +177,14 @@ string ChunksDownloadStrategy::ChunkFinished(bool success, RangeT const & range)
         url = m_servers[s].m_url;
         if (success)
         {
+          LOG(LDEBUG, ("Completed chunk", m_servers[s].m_chunkIndex, "via", m_servers[s].m_url));
           // mark server as free and chunk as ready
           m_servers[s].m_chunkIndex = SERVER_READY;
           res.first->m_status = CHUNK_COMPLETE;
         }
         else
         {
-          LOG(LINFO, ("Thread for url", m_servers[s].m_url,
-                      "failed to download chunk number", m_servers[s].m_chunkIndex));
+          LOG(LWARNING, ("Failed to dl chunk", m_servers[s].m_chunkIndex, "via", m_servers[s].m_url));
           // remove failed server and mark chunk as free
           m_servers.erase(m_servers.begin() + s);
           res.first->m_status = CHUNK_FREE;
@@ -201,6 +231,7 @@ ChunksDownloadStrategy::NextChunk(string & outUrl, RangeT & range)
       range.second = m_chunks[i+1].m_pos - 1;
 
       m_chunks[i].m_status = CHUNK_DOWNLOADING;
+      LOG(LDEBUG, ("Download chunk", server->m_chunkIndex, "via", outUrl));
       return ENextChunk;
 
     case CHUNK_DOWNLOADING:

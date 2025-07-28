@@ -100,9 +100,6 @@ BOOL defaultOrientation(CGSize const &size) {
 
 @implementation MWMNavigationInfoView
 
-- (void)setMapSearch {
-  [self setSearchState:NavigationSearchState::MinimizedSearch animated:YES];
-}
 - (void)updateToastView {
   // -S-F-L -> Start
   // -S-F+L -> Finish
@@ -193,10 +190,11 @@ BOOL defaultOrientation(CGSize const &size) {
 
 - (IBAction)searchButtonTouchUpInside:(MWMButton *)sender {
   auto const body = ^(NavigationSearchState state) {
-    NSString *query = [kSearchButtonRequest.at(state) stringByAppendingString:@" "];
-    NSString *locale = [[AppInfo sharedInfo] languageId];
+    NSString * text = [kSearchButtonRequest.at(state) stringByAppendingString:@" "];
+    NSString * locale = [[AppInfo sharedInfo] languageId];
     // Category request from navigation search wheel.
-    [MWMSearch searchQuery:query forInputLocale:locale withCategory:YES];
+    SearchQuery * query = [[SearchQuery alloc] init:text locale:locale source:SearchTextSourceCategory];
+    [MWMSearch searchQuery:query];
     [self setSearchState:state animated:YES];
   };
 

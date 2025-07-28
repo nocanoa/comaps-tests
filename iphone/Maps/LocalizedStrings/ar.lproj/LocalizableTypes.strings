@@ -6,7 +6,7 @@
 "type.aerialway.chair_lift" = "مصعد مقعدي";
 "type.aerialway.drag_lift" = "مصعد الجر";
 "type.aerialway.gondola" = "غندول";
-"type.aerialway.mixed_lift" = "Mixed Lift";
+"type.aerialway.mixed_lift" = "رفع مختلط";
 "type.aerialway.station" = "محطة تلفريك";
 "type.aeroway" = "بنية الطيران";
 "type.aeroway.aerodrome" = "مطار";
@@ -43,7 +43,7 @@
 "type.amenity.charging_station" = "محطة شحن";
 "type.amenity.charging_station.bicycle" = "محطة شحن الدراجات";
 "type.amenity.charging_station.motorcar" = "محطة شحن السيارات";
-"type.amenity.childcare" = "حضانة";
+"type.amenity.childcare" = "حضّانة";
 "type.amenity.cinema" = "سينما";
 "type.leisure.bowling_alley" = "صالة بولينج";
 "type.amenity.clinic" = "عيادة";
@@ -60,7 +60,7 @@
 "type.amenity.exhibition_centre" = "مركز المعرض";
 "type.amenity.money_transfer" = "تحويل المال";
 "type.amenity.music_school" = "مدرسة موسيقى";
-"type.amenity.language_school" = "مدرسة لغة";
+"type.amenity.language_school" = "مدرسة لغات";
 "type.office.diplomatic" = "سفارة";
 "type.amenity.fast_food" = "وجبات سريعة";
 "type.amenity.ferry_terminal" = "محطة عبّارات";
@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "مقبرة مسيحية";
-"type.landuse.churchyard" = "فناء الكنيسة";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "منطقة تجارية";
 "type.landuse.construction" = "منطقة بناء";
 "type.landuse.education" = "مؤسسة تعليمية";
@@ -712,7 +712,7 @@
 "type.leisure.garden.residential" = "حديقة";
 "type.leisure.golf_course" = "ملعب غولف";
 "type.leisure.miniature_golf" = "Minigolf";
-"type.leisure.hackerspace" = "هاكرزبيس";
+"type.leisure.hackerspace" = "مختبر اختراق";
 "type.leisure.ice_rink" = "Ice Rink";
 "type.leisure.marina" = "مرسى";
 "type.leisure.nature_reserve" = "محمية طبيعية";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "بئر ماء";
 "type.man_made.windmill" = "طاحونة هواء";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "عسكري";
 "type.military.bunker" = "ملجأ";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "محطة توليد الطاقة الكهرمائية";
 "type.power.plant.solar" = "محطة طاقة شمسية";
 "type.power.plant.wind" = "محطة طاقة الرياح";
-"type.power.station" = "Power Station";
 "type.power.substation" = "محطة كهرباء فرعية";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "الصالة الرياضية";
+"type.amenity.love_hotel" = "فندق جب";
+"type.amenity.studio" = "معرض";
+"type.railway.station.subway.qingdao" = "محطة مترو";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.sport.diving" = "High Diving";
+"type.highway.ladder" = "Ladder";
+"type.natural.wetland.swamp" = "Swamp";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";

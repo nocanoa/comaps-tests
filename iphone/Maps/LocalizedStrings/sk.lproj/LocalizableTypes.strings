@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Kresťanský cintorín";
-"type.landuse.churchyard" = "Cintorín";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Komerčná oblasť";
 "type.landuse.construction" = "Stavenisko";
 "type.landuse.education" = "Vzdelávacia inštitúcia";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Studňa";
 "type.man_made.windmill" = "Veterný mlyn";
 "type.man_made.works" = "Továreň";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Bunker";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Vodná elektráreň";
 "type.power.plant.solar" = "Solárna elektráreň";
 "type.power.plant.wind" = "Veterná elektráreň";
-"type.power.station" = "Elektrická stanica";
 "type.power.substation" = "Rozvodňa";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Športová hala";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.natural.wetland.swamp" = "Swamp";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.leisure.firepit" = "Firepit";
+"type.sport.diving" = "High Diving";
+"type.highway.ladder" = "Ladder";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

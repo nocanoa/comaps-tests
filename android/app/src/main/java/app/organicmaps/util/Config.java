@@ -20,8 +20,6 @@ public final class Config
   private static final String KEY_PREF_USE_GS = "UseGoogleServices";
 
   private static final String KEY_MISC_DISCLAIMER_ACCEPTED = "IsDisclaimerApproved";
-  private static final String KEY_PREF_KAYAK_DISPLAY = "DisplayKayak";
-  private static final String KEY_MISC_KAYAK_ACCEPTED = "IsKayakApproved";
   private static final String KEY_MISC_LOCATION_REQUESTED = "LocationRequested";
   private static final String KEY_MISC_UI_THEME = "UiTheme";
   private static final String KEY_MISC_UI_THEME_SETTINGS = "UiThemeSettings";
@@ -59,12 +57,6 @@ public final class Config
   private static final String KEY_MISC_FIRST_START_DIALOG_SEEN = "FirstStartDialogSeen";
 
   private Config() {}
-
-  @SuppressWarnings("ConstantConditions") // BuildConfig
-  private static boolean isFdroid()
-  {
-    return BuildConfig.FLAVOR.equals("fdroid");
-  }
 
   private static int getInt(String key, int def)
   {
@@ -195,14 +187,7 @@ public final class Config
 
   public static boolean useGoogleServices()
   {
-    // F-droid users expect non-free networks to be disabled by default
-    // https://t.me/organicmaps/47334
-    // Additionally, in the µG play-services-location library which is used for
-    // F-droid builds, GMS api availability is stubbed and always returns true.
-    // https://github.com/microg/GmsCore/issues/2309
-    // For more details, see the discussion in
-    // https://github.com/organicmaps/organicmaps/pull/9575
-    return getBool(KEY_PREF_USE_GS, !isFdroid());
+    return getBool(KEY_PREF_USE_GS, false);
   }
 
   public static void setUseGoogleService(boolean use)
@@ -220,28 +205,6 @@ public final class Config
     setBool(KEY_MISC_DISCLAIMER_ACCEPTED);
   }
 
-  public static boolean isKayakDisplayEnabled()
-  {
-    // Kayak is disabled by default in F-Droid build,
-    // unless a user has already accepted its disclaimer before.
-    return getBool(KEY_PREF_KAYAK_DISPLAY, !isFdroid() || isKayakDisclaimerAccepted());
-  }
-
-  public static void setKayakDisplay(boolean enabled)
-  {
-    setBool(KEY_PREF_KAYAK_DISPLAY, enabled);
-  }
-
-  public static boolean isKayakDisclaimerAccepted()
-  {
-    return getBool(KEY_MISC_KAYAK_ACCEPTED);
-  }
-
-  public static void acceptKayakDisclaimer()
-  {
-    setBool(KEY_MISC_KAYAK_ACCEPTED);
-  }
-
   public static boolean isLocationRequested()
   {
     return getBool(KEY_MISC_LOCATION_REQUESTED);
@@ -255,6 +218,7 @@ public final class Config
   @NonNull
   public static String getCurrentUiTheme(@NonNull Context context)
   {
+    // This is the actual map theme, only set to theme_default/night
     String defaultTheme = MwmApplication.from(context).getString(R.string.theme_default);
     String res = getString(KEY_MISC_UI_THEME, defaultTheme);
 
@@ -275,12 +239,13 @@ public final class Config
   @NonNull
   public static String getUiThemeSettings(@NonNull Context context)
   {
-    String autoTheme = MwmApplication.from(context).getString(R.string.theme_auto);
-    String res = getString(KEY_MISC_UI_THEME_SETTINGS, autoTheme);
+    // This is the default theme *mode*, eg. auto/dark/nav_auto/light.
+    String defaultSetting = MwmApplication.from(context).getString(R.string.theme_nav_auto);
+    String res = getString(KEY_MISC_UI_THEME_SETTINGS, defaultSetting);
     if (ThemeUtils.isValidTheme(context, res) || ThemeUtils.isAutoTheme(context, res) || ThemeUtils.isNavAutoTheme(context, res))
       return res;
 
-    return autoTheme;
+    return defaultSetting;
   }
 
   public static boolean setUiThemeSettings(@NonNull Context context, String theme)
@@ -384,10 +349,10 @@ public final class Config
   public static String getDonateUrl(@NonNull Context context)
   {
     final String url = getString(KEY_DONATE_URL);
-    // Enable donations by default if not Google or Huawei. Replace organicmaps.app/donate/ with localized page.
+    // Enable donations by default if not Google or Huawei. Replace comaps.app/donate/ with localized page.
     if ((url.isEmpty() && !BuildConfig.FLAVOR.equals("google") && !BuildConfig.FLAVOR.equals("huawei")) ||
-        url.endsWith("organicmaps.app/donate/"))
-      return context.getString(R.string.translated_om_site_url) + "donate/";
+        url.endsWith("comaps.app/donate/"))
+      return context.getString(R.string.app_site_url) + "donate/";
     return url;
   }
 

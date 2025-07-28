@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Sikertelen letöltés";
 
 /* Text in About screen */
-"about_headline" = "Mindenki számára ingyenes – szeretettel készült";
+"about_proposition_1" = "Offline, gyors és könnyen használható";
 
 /* Text in About screen */
-"about_proposition_1" = "• Nincs hirdetés, nyomon követés és adatgyűjtés";
-
-/* Text in About screen */
-"about_proposition_2" = "• Nem merül le az akkumulátor – offline is működik";
-
-/* Text in About screen */
-"about_proposition_3" = "• Gyors, minimalista – a közösség által fejlesztett";
+"about_proposition_2" = "Adatvédelem-központú és hirdetésmentes";
 "close" = "Bezár";
 "download" = "Letöltés";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Lakókocsis létesítmények";
-"share_bookmarks_email_body" = "Üdvözlöm!\n\nCsatoltam a könyvjelzőimet; nyissa meg őket az Organic Maps alkalmazásban. Ha még nem telepítette, akkor innen tudja letölteni: https://omaps.app/get?kmz\n\nJó utat kívánok az Organic Maps alkalmazással!";
+"share_bookmarks_email_body" = "Üdvözlöm!\n\nMellékeltem a könyvjelzőimet; nyissa meg őket az CoMaps alkalmazásban. Ha még nem telepítette, akkor innen tudja letölteni: https://www.comaps.app/download/\n\nJó utat kívánok az CoMaps alkalmazással!";
 
 /* message title of loading file */
 "load_kmz_title" = "Könyvjelzők betöltése";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Az Ön tartózkodási helye még nincs meghatározva";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Tekintse meg a térképjelzőmet az Organic Maps alkalmazásban!";
+"bookmark_share_email_subject" = "Tekintse meg a térképjelzőmet az CoMaps alkalmazásban!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Tekintse meg a helyzetemet az Organic Maps alkalmazásban!";
+"my_position_share_email_subject" = "Tekintse meg a helyzetemet az CoMaps alkalmazásban!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-mail-cím";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Másolás vágólapra";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "A vágólapra másolva: %@";
@@ -190,7 +187,9 @@
 "done" = "Kész";
 
 /* Prints version number in About dialog */
-"version" = "Az Organic Maps verziója: %@";
+"version" = "Az CoMaps verziója: %@";
+"version %@ (%@)" = "%@ (%@) verzió";
+"version: %@ (%@)\nmap data: %@" = "Vverzió: %@ (%@)\nTérképadatok: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Nyomvonalak";
@@ -200,6 +199,7 @@
 "share_my_location" = "Saját helyzet megosztása";
 "prefs_group_route" = "Navigáció";
 "pref_zoom_title" = "Nagyítás/kicsinyítés gombok";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Megjelenés";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Sötét";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Ki";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "A 3D-s épületek energiatakarékos módban ki vannak kapcsolva";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Hangutasítások";
+"pref_tts_title" = "Hangutasítások";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Utcanevek felolvasása";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Honlap";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Hírek";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-Mail";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VKontakte";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax kép";
+
 /* Text in menu */
 "rate_the_app" = "Értékelje az alkalmazást";
 
@@ -279,14 +309,8 @@
 /* Button in the main menu */
 "donate" = "Adományozás";
 
-/* Tex label above the Donate button */
-"donate_description" = "Adományozzon, hogy együtt építsük a legjobb térképeket!";
-"already_donated" = "Már adományozott";
-"remind_me_later" = "Emlékeztessen később";
-"support_organic_maps" = "Organic Maps támogatása";
-
 /* Button in the main Help dialog */
-"copyright" = "Szerzői jog";
+"copyright" = "Szerzői jogok";
 
 /* Text in menu + Button in the main Help dialog */
 "report_a_bug" = "Hiba jelentése";
@@ -298,7 +322,7 @@
 "volunteer" = "Önkéntes";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Kövessen és lépjen kapcsolatba velünk:";
+"follow_us" = "Kövessen és lépjen kapcsolatba velünk";
 
 /* Alert text */
 "email_error_body" = "Az e-mail kliens nem lett beállítva. Állítsa be, vagy lépjen kapcsolatba velünk a(z) %@ címen";
@@ -467,7 +491,7 @@
 "read_in_wikipedia" = "Wikipédia";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Wikimédia Commons";
 "p2p_your_location" = "Saját tartózkodási hely";
 "p2p_start" = "Indítás";
 "p2p_from_here" = "Kiindulópont";
@@ -510,15 +534,27 @@
 "closes_in" = "Bezár ekkor: %@";
 "closed" = "Zárva";
 "add_opening_hours" = "Nyitvatartás hozzáadása";
-"no_osm_account" = "Nem rendelkezik még felhasználói fiókkal az OpenStreetMapen?";
-"register_at_openstreetmap" = "Regisztráció az OpenStreetMap oldalon";
-"password_8_chars_min" = "Jelszó (legalább 8 karakter)";
-"invalid_username_or_password" = "Érvénytelen felhasználónév vagy jelszó.";
-"login" = "Bejelentkezés";
-"login_osm" = "Jelentkezzen be az OpenStreetMap fiókjába";
-"forgot_password" = "Elfelejtette a jelszavát?";
-"osm_account" = "OSM-fiók";
-"logout" = "Kijelentkezés";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Térképadatok az OpenStreetMap-ből";
+"osm_mapdata_explanation %@" = "Közösség által létrehozott térképadatok innen: *%@*. További információkat a térkép szerkesztéséről és frissítéséről az [OpenStreetMap.org](https://openstreetmap.org) oldalon találhat.";
+"osm_more_about" = "További részletek az OpenStreetMap adatbázisról";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Hu:Névjegy";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap profil";
+"osm_profile_promt" = "Hozzon létre egy fiókot az OpenStreetMapen, vagy jelentkezzen be, hogy közzétehesse térképszerkesztéseit a világ számára.";
+"osm_profile_explanation" = "Az [OpenStreetMap.org](https://openstreetmap.org) (OSM) egy közösségi projekt, amelynek célja egy ingyenes és nyílt térkép létrehozása. Ez az CoMaps alkalmazás térképadatainak fő forrása, és a Wikipédiához hasonlóan működik. Helyeket adhat hozzá vagy szerkeszthet, és azok világszerte felhasználók milliói számára válnak elérhetővé. \nCsatlakozzon a közösséghez, és segítsen egy jobb térképet készíteni mindenki számára!";
+"osm_profile_login" = "Bejelentkezés az OpenStreetMap fiókba";
+"osm_profile_reauthorize_promt" = "Az OpenStreetMap fiókot leválasztották erről az alkalmazásról";
+"osm_profile_reauthorize" = "Újracsatlakozás az OpenStreetMap-hez";
+"osm_profile_remove_promt" = "Ha nem tudja vagy nem akarja újra csatlakoztatni fiókját, egyszerűen eltávolíthatja az alkalmazásból";
+"osm_profile_remove" = "OpenStreetMap-fiók eltávolítása";
+"osm_profile_register_promt" = "Nem rendelkezik még felhasználói fiókkal az OpenStreetMapen?";
+"osm_profile_register" = "Regisztráció az OpenStreetMap oldalon";
+"osm_profile_verfied_changes" = "Jóváhagyott módosítások";
+"osm_profile_logout" = "Kijelentkezés az OpenStreetMap fiókból";
+"osm_profile_delete" = "OpenStreetMap-fiók törlése";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Utolsó frissítés";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Helyszín módosítása";
 "message_invalid_feature_position" = "Itt nem található objektum";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Közösség által létrehozott OpenStreetMap adatok innen: %@. További információkat a térkép szerkesztéséről és frissítéséről az OpenStreetMap.org oldalon találhat";
-"login_to_make_edits_visible" = "Hozzon létre egy fiókot az OpenStreetMapen, vagy jelentkezzen be, hogy közzétehesse térképszerkesztéseit a világ számára.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "A letöltéshez több szabad tárhelyre van szükség. Törölje a szükségtelen adatokat.";
-"editor_sharing_title" = "Fejlesztettem a Organic Maps térképeket";
+"editor_sharing_title" = "Fejlesztettem a CoMaps térképeket";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d / %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Megjegyzés az OpenStreetMap önkénteseinek (nem kötelező)";
 "editor_detailed_description_hint" = "Részletes megjegyzés";
-"editor_detailed_description" = "Az Ön által javasolt térképmódosításokat elküldjük az OpenStreetMap közösségnek. Írja le azokat a további részleteket, amelyek nem szerkeszthetők az Organic Mapsben.";
+"editor_detailed_description" = "Az Ön által javasolt térképmódosításokat elküldjük az OpenStreetMap közösségnek. Írja le azokat a további részleteket, amelyek nem szerkeszthetők az CoMapsben.";
 "editor_more_about_osm" = "További részletek az OpenStreetMap adatbázisról";
 "editor_operator" = "Üzemeltető";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Üzemeltető: %@";
 "editor_category_unsuitable_title" = "Nem találja a megfelelő kategóriát?";
-"editor_category_unsuitable_text" = "Az Organic Maps csak egyszerű pontkategóriák hozzáadását teszi lehetővé, azaz nem tartalmaz városokat, utakat, tavakat, épületek körvonalait stb., az ilyen kategóriákat közvetlenül az <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> oldalon adhatja hozzá. A részletes, lépésről lépésre történő útmutatásért tekintse meg az <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">útmutatónkat</a>.";
+"editor_category_unsuitable_text" = "Az CoMaps csak egyszerű pontkategóriák hozzáadását teszi lehetővé, azaz nem tartalmaz városokat, utakat, tavakat, épületek körvonalait stb., az ilyen kategóriákat közvetlenül az <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> oldalon adhatja hozzá. A részletes, lépésről lépésre történő útmutatásért tekintse meg az <a href=\"https://www.comaps.app/support/advanced-map-editing/\">útmutatónkat</a>.";
 "downloader_no_downloaded_maps_title" = "Még nem töltött le térképet";
 "downloader_no_downloaded_maps_message" = "Térkép letöltése offline kereséshez és navigáláshoz.";
 "current_location_unknown_error_title" = "A jelenlegi helyzet ismeretlen.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Válassza az „Adatvédelem” menüpontot";
 "location_services_disabled_on_device_3" = "3. Válassza a „Helymeghatározási szolgáltatások” menüpontot";
 "location_services_disabled_on_device_4" = "4. Engedélyezze a „Helymeghatározási szolgáltatások lehetőséget";
-"location_services_disabled_on_device_additional_message" = "Vagy folytassa az Organic Maps használatát helymeghatározás nélkül";
+"location_services_disabled_on_device_additional_message" = "Vagy folytassa az CoMaps használatát helymeghatározás nélkül";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +669,6 @@
 "day" = "nap";
 "placepage_more_button" = "Tovább";
 "book_button" = "Foglalás";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Fényképek, vélemények, foglalás";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Az ezen a hivatkozáson keresztül történő minden egyes foglalásért kapott ajánlói bónusz az Organic Maps fejlesztését szolgálja.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Részletek a Kayakon";
 "placepage_call_button" = "Hívás";
 "placepage_edit_bookmark_button" = "Könyvjelző szerkesztése";
 "placepage_bookmark_name_hint" = "Könyvjelző neve";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Tekintse meg";
-"recent_track_background_dialog_message" = "Az Organic Maps a háttérben az Ön tartózkodási helyét használja a nemrég megtett útvonal rögzítéséhez.";
+"recent_track_background_dialog_message" = "Az CoMaps a háttérben az Ön tartózkodási helyét használja a nemrég megtett útvonal rögzítéséhez.";
 "general_settings" = "Általános beállítások";
 
 /* For the first routing */
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "Húzza ide az eltávolításhoz";
 "placepage_add_stop" = "Köztes célpont hozzáadása";
 "start_from_my_position" = "Kiindulás innen:";
+
+/* Title for button when a route was saved. */
+"saved" = "Mentett";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Jelentkezzen be az OpenStreetMap rendszerébe, hogy automatikusan feltölthesse az összes térképszerkesztését. Tudjon meg többet";
@@ -787,7 +813,7 @@
 "power_managment_setting_never" = "Soha";
 "power_managment_setting_auto" = "Amikor az akkumulátor lemerül";
 "power_managment_setting_manual_max" = "Mindig";
-"enable_logging_warning_message" = "Ha ideiglenesen engedélyezi ezt az opciót, akkor a Súgó párbeszédpanel „Hibajelentés” menüpontjának használatával rögzítheti és kézzel küldheti el nekünk a problémával kapcsolatos részletes diagnosztikai naplókat. A naplók tartalmazhatnak helyadatokat.";
+"enable_logging_warning_message" = "Ha ideiglenesen engedélyezi ezt az opciót, akkor a „Súgó” párbeszédpanel „Hibajelentés” menüpontjának használatával rögzítheti és kézzel küldheti el nekünk a problémával kapcsolatos részletes diagnosztikai naplókat. A naplók tartalmazhatnak helyadatokat.";
 "driving_options_title" = "Útvonaltervezési beállítások";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -898,7 +924,7 @@
 "downloader_loading_ios" = "Letöltés";
 
 /* Autoupdate dialog on start */
-"whats_new_auto_update_title" = "Frissítse a letöltött térképeit";
+"whats_new_auto_update_title" = "Letöltött térképek frissítése";
 
 /* Autoupdate dialog on start */
 "whats_new_auto_update_message" = "A térképek frissítésével naprakészen tarthatja az objektumokra vonatkozó adatokat";
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Nyomvonal";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/hu/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Hu:Névjegy";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/hu/";
 
 /* App Tip #00 */
 "app_tip_00" = "Köszönjük, hogy használja a közösség által készített térképeinket!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "A fő célunk az, hogy gyors, az adatvédelemre fókuszáló, könnyen használható térképeket készítsünk, amelyeket szeretni fog.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Ön most az Organic Maps alkalmazást használja a telefon képernyőjén";
+"car_used_on_the_phone_screen" = "Ön most az CoMaps alkalmazást használja a telefon képernyőjén";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Ön most az Organic Maps alkalmazást használja az autó képernyőjén";
+"car_used_on_the_car_screen" = "Ön most az CoMaps alkalmazást használja az autó képernyőjén";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Folytatás telefonon";
@@ -995,7 +1012,10 @@
 "website_menu" = "Menühivatkozás";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Szeretne hibajelentést küldeni a fejlesztőknek?\nA felhasználóinkra támaszkodunk, mivel az Organic Maps nem gyűjt automatikusan hibainformációkat. Előre is köszönjük, hogy támogatja az Organic Maps csapatát!";
+"bugreport_alert_message" = "Szeretne hibajelentést küldeni a fejlesztőknek?\nA felhasználóinkra támaszkodunk, mivel az CoMaps nem gyűjt automatikusan hibainformációkat. Előre is köszönjük, hogy támogatja az CoMaps csapatát!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "iCloud-szinkronizálás engedélyezése";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "A nyomvonal üres – nincs mit menteni";
 "edit_track" = "Nyomvonal szerkesztése";
+"osm_profile_view_notes" = "Jegyzetek megtekintése";
+"osm_profile_view_edit_history" = "Szerkesztési előzmények megtekintése";
+"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Open project powered by the community";
+"pref_mapappearance_title" = "Map Appearance";

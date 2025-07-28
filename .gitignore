@@ -16,11 +16,16 @@ screenlog.0
 
 data/styles/*/*/out/*
 data/resources-*_design/*
+# symbols png/sdf are now generated at build
+data/resources-*_*/symbols.png
+data/resources-*_*/symbols.sdf
 data/drules_proto_default_design.bin
 data/colors_design.txt
 data/patterns_design.txt
 data/bookmarks
 data/edits.xml
+data/World.mwm
+data/WorldCoasts.mwm
 
 # Compiled Python
 *.pyc
@@ -57,7 +62,7 @@ iphone/*/build/*
 tools/emacsmode/build
 **/DerivedData/*
 **/xcshareddata/*
-!iphone/Maps/Maps.xcodeproj/xcshareddata/xcschemes/OMaps.xcscheme
+!iphone/Maps/Maps.xcodeproj/xcshareddata/xcschemes/CoMaps.xcscheme
 **/xcuserdata
 **/xcschemes
 iphone/**/*.moved-aside
@@ -134,10 +139,7 @@ private.h
 android/release.keystore
 android/secure.properties
 android/libnotify.properties
-android/google-services.json
 android/google-play.json
-android/firebase-app-distribution.json
-android/firebase-test-lab.json
 android/huawei-appgallery.json
 android/res/xml/network_security_config.xml
 ./server/
@@ -173,6 +175,7 @@ tools/python/*/venv/
 # Configs
 tools/python/maps_generator/var/etc/map_generator.ini
 tools/python/routing/etc/*.ini
+tools/unix/maps/settings.sh
 
 # Helpers
 /node_modules/
@@ -183,9 +186,4 @@ tools/python/routing/etc/*.ini
 
 # VS Code
 .vscode
-
-# AppStore metadata
-screenshots/
-android/src/google/play/listings/
-keywords/
-iphone/metadata/**/keywords.txt
+.cache

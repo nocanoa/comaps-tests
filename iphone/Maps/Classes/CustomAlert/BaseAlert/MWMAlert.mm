@@ -4,8 +4,6 @@
 #import "MWMDownloadTransitMapAlert.h"
 #import "MWMEditorViralAlert.h"
 #import "MWMLocationAlert.h"
-#import "MWMOsmAuthAlert.h"
-#import "MWMOsmReauthAlert.h"
 #import "MWMPlaceDoesntExistAlert.h"
 #import "MWMRoutingDisclaimerAlert.h"
 
@@ -135,12 +133,6 @@
 + (MWMAlert *)editorViralAlert {
   return [MWMEditorViralAlert alert];
 }
-+ (MWMAlert *)osmAuthAlert {
-  return [MWMOsmAuthAlert alert];
-}
-+ (MWMAlert *)osmReauthAlert {
-  return [MWMOsmReauthAlert alert];
-}
 + (MWMAlert *)personalInfoWarningAlertWithBlock:(MWMVoidBlock)block {
   return [MWMDefaultAlert personalInfoWarningAlertWithBlock:block];
 }
@@ -220,19 +212,6 @@
   UIView *view = self.alertController.view;
   [window addSubview:view];
   view.frame = window.bounds;
-}
-
-- (void)setAlertController:(MWMAlertViewController *)alertController {
-  _alertController = alertController;
-  UIView *view = alertController.view;
-  UIViewController *ownerViewController = alertController.ownerViewController;
-  view.frame = ownerViewController.view.bounds;
-  [ownerViewController.view addSubview:view];
-  [self addControllerViewToWindow];
-  auto const orientation = UIApplication.sharedApplication.statusBarOrientation;
-  [self rotate:orientation duration:0.0];
-  [view addSubview:self];
-  self.frame = view.bounds;
 }
 
 - (void)layoutSubviews {

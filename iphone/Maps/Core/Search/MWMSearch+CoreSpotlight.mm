@@ -24,7 +24,7 @@
   for (auto const & categoryKey : categoriesKeys)
   {
     CSSearchableItemAttributeSet * attrSet = [[CSSearchableItemAttributeSet alloc]
-        initWithItemContentType:static_cast<NSString *>(kUTTypeItem)];
+        initWithItemContentType: UTTypeItem.identifier];
 
     NSString * categoryName = nil;
     NSMutableDictionary<NSString *, NSString *> * localizedStrings = [@{} mutableCopy];
@@ -43,13 +43,17 @@
     attrSet.displayName = [[CSLocalizedString alloc] initWithLocalizedStrings:localizedStrings];
 
     NSString * categoryKeyString = @(categoryKey.c_str());
-    NSString * imageName = [NSString stringWithFormat:@"ic_%@_spotlight", categoryKeyString];
-    UIImage * image = [UIImage imageNamed:imageName];
-    attrSet.thumbnailData = UIImagePNGRepresentation(image);
+    NSString * imageName = [NSString stringWithFormat:@"Search/Categories/%@", [categoryKeyString stringByReplacingOccurrencesOfString: @"category_" withString:@""]];
+    UIImage * image = [UIImage imageNamed:imageName inBundle:nil compatibleWithTraitCollection:[UITraitCollection traitCollectionWithUserInterfaceStyle: UIUserInterfaceStyleLight]];
+    UIGraphicsBeginImageContext(CGSizeMake(360, 360));
+    [image drawInRect:CGRectMake(0, 0, 360, 360)];
+    UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext() ;
+    attrSet.thumbnailData = UIImagePNGRepresentation(resizedImage);
 
     CSSearchableItem * item =
         [[CSSearchableItem alloc] initWithUniqueIdentifier:categoryKeyString
-                                          domainIdentifier:@"omaps.app.categories"
+                                          domainIdentifier:@"comaps.app.categories"
                                               attributeSet:attrSet];
     [items addObject:item];
   }

@@ -1,8 +1,7 @@
-• Nouvelles données OpenStreetMap du 27 février
-• Possibilité d'organiser manuellement les points d'itinéraire intermédiaires
-• Partager une seule piste sélectionnée dans la liste
-• Amélioration du routage pour les vélos
-• Afficher une notification système lors du téléchargement de cartes et ne pas interrompre les téléchargements en arrière-plan
-• Ajout d'un widget d'enregistrement de piste clignotant
-
-…plus de détails sur omaps.org/news
+Présentation du logo CoMaps !
+• Amélioration des courbes d’altitude à une précision de 20 ou 50 mètres pour de nombreuses régions
+• Ajout d'un lien vers les images Panoramax des POI
+• Données OpenStreetMap du 13 juillet
+• Affichage de l’état des heures d’ouverture lors de la sélection d’un POI
+• Mise à jour du style(végétation et zones humides), mise à jour de certaines icônes de la carte
+• Outdoors: Améliorations de la visibilité des courbes d'altitude

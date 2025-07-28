@@ -8,9 +8,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -33,8 +30,12 @@ import app.organicmaps.util.StringUtils;
 import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils.PaddingInsetsListener;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;
 import java.util.Objects;
@@ -53,10 +54,10 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
   private static final int ERR_NO_MORE_FILES = -5;
   private static final int ERR_FILE_IN_PROGRESS = -6;
 
-  private TextView mTvMessage;
+  private MaterialTextView mTvMessage;
   private LinearProgressIndicator mProgress;
-  private Button mBtnDownload;
-  private CheckBox mChbDownloadCountry;
+  private MaterialButton mBtnDownload;
+  private MaterialCheckBox mChbDownloadCountry;
 
   private String mCurrentCountry;
 
@@ -110,17 +111,17 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
         return;
       }
 
-      int status = MapManager.nativeGetStatus(mCurrentCountry);
-      String name = MapManager.nativeGetName(mCurrentCountry);
+      CountryItem item = CountryItem.fill(mCurrentCountry);
+      String fileSizeString = StringUtils.getFileSizeString(getApplicationContext(), item.totalSize);
 
-      if (status != CountryItem.STATUS_DONE)
+      if (item.status != CountryItem.STATUS_DONE)
       {
         UiUtils.show(mChbDownloadCountry);
         String checkBoxText;
-        if (status == CountryItem.STATUS_UPDATABLE)
-          checkBoxText = String.format(getString(R.string.update_country_ask), name);
+        if (item.status == CountryItem.STATUS_UPDATABLE)
+          checkBoxText = String.format(getString(R.string.update_country_ask), item.name, fileSizeString);
         else
-          checkBoxText = String.format(getString(R.string.download_country_ask), name);
+          checkBoxText = String.format(getString(R.string.download_country_ask), item.name, fileSizeString);
 
         mChbDownloadCountry.setText(checkBoxText);
       }
@@ -383,9 +384,10 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
 
       if (mCurrentCountry != null && mChbDownloadCountry.isChecked())
       {
-        CountryItem item = CountryItem.fill(mCurrentCountry);
         UiUtils.hide(mChbDownloadCountry);
-        mTvMessage.setText(getString(R.string.downloading_country_can_proceed, item.name));
+        CountryItem item = CountryItem.fill(mCurrentCountry);
+        String fileSizeString = StringUtils.getFileSizeString(this, item.totalSize);
+        mTvMessage.setText(getString(R.string.downloading_country_can_proceed, item.name, fileSizeString));
         mProgress.setMax((int)item.totalSize);
         mProgress.setProgressCompat(0, true);
 

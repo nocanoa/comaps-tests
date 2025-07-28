@@ -108,7 +108,9 @@
 				675E88511DB7AC0300F8EBDA /* Products */,
 				675E888D1DB7B03400F8EBDA /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		675E88511DB7AC0300F8EBDA /* Products */ = {
 			isa = PBXGroup;
@@ -343,7 +345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.tracking_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.tracking_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -352,7 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.tracking_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.tracking_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

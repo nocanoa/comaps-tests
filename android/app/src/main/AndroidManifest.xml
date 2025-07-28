@@ -20,6 +20,9 @@
   <uses-feature
       android:name="android.hardware.location.gps"
       android:required="false"/>
+  <uses-permission
+      android:name="android.permission.READ_EXTERNAL_STORAGE"
+      android:maxSdkVersion="22" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
   <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -38,7 +41,6 @@
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
   <!--
     Android 13 (API level 33) and higher supports a runtime permission for sending non-exempt (including Foreground
     Services (FGS)) notifications from an app.
@@ -98,7 +100,7 @@
 
         <data android:scheme="geo"/>
         <data android:scheme="ge0"/>
-        <data android:scheme="om"/>
+        <data android:scheme="cm"/>
       </intent-filter>
 
       <intent-filter>
@@ -120,7 +122,7 @@
 
         <data android:scheme="http"/>
         <data android:scheme="https"/>
-        <data android:host="omaps.app"/>
+        <data android:host="comaps.at"/>
       </intent-filter>
 
       <intent-filter>

@@ -5,6 +5,7 @@
 #import "PlacePageInfoData+Core.h"
 #import "PlacePageBookmarkData+Core.h"
 #import "PlacePageTrackData+Core.h"
+#import "ElevationProfileData+Core.h"
 #import "MWMMapNodeAttributes.h"
 
 #include <CoreApi/CoreApi.h>
@@ -31,6 +32,11 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
   std::vector<std::string> m_rawTypes;
 }
 
+@property(nonatomic, readwrite) PlacePagePreviewData *previewData;
+@property(nonatomic, readwrite) CLLocationCoordinate2D locationCoordinate;
+
+- (PlacePageObjectType)objectTypeFromRawData;
+
 @end
 
 @implementation PlacePageData
@@ -42,7 +48,6 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
     _infoData = [[PlacePageInfoData alloc] initWithRawData:rawData() ohLocalization:localization];
 
     if (rawData().IsBookmark()) {
-      _objectType = PlacePageObjectTypeBookmark;
       _bookmarkData = [[PlacePageBookmarkData alloc] initWithRawData:rawData()];
     }
 
@@ -64,10 +69,10 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
     }
 
     if (rawData().IsTrack()) {
-      _objectType = PlacePageObjectTypeTrack;
-      auto const & track = GetFramework().GetBookmarkManager().GetTrack(rawData().GetTrackId());
-      _trackData = [[PlacePageTrackData alloc] initWithTrack:*track];
-      _isPreviewPlus = track->HasAltitudes();
+      __weak auto weakSelf = self;
+      _trackData = [[PlacePageTrackData alloc] initWithRawData:rawData() onActivePointChanged:^(void) {
+        [weakSelf handleActiveTrackSelectionPointChanged];
+      }];
     }
     _previewData = [[PlacePagePreviewData alloc] initWithRawData:rawData()];
 
@@ -77,11 +82,46 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
       [[MWMStorage sharedStorage] addObserver:self];
     }
 
+    _objectType = [self objectTypeFromRawData];
+
     m_featureID = rawData().GetID();
     m_mercator = rawData().GetMercator();
     m_rawTypes = rawData().GetRawTypes();
   }
   return self;
+}
+
+- (instancetype)initWithTrackInfo:(TrackInfo * _Nonnull)trackInfo elevationInfo:(ElevationProfileData * _Nullable)elevationInfo {
+  self = [super init];
+  if (self) {
+    _objectType = PlacePageObjectTypeTrackRecording;
+    _roadType = PlacePageRoadTypeNone;
+    _previewData = [[PlacePagePreviewData alloc] initWithTrackInfo:trackInfo];
+    __weak auto weakSelf = self;
+    _trackData = [[PlacePageTrackData alloc] initWithTrackInfo:trackInfo
+                                                 elevationInfo:elevationInfo
+                                          onActivePointChanged:^(void) {
+      [weakSelf handleActiveTrackSelectionPointChanged];
+    }];
+  }
+  return self;
+}
+
+- (void)updateWithTrackInfo:(TrackInfo * _Nonnull)trackInfo elevationInfo:(ElevationProfileData * _Nullable)elevationInfo {
+  _previewData = [[PlacePagePreviewData alloc] initWithTrackInfo:trackInfo];
+  _trackData.trackInfo = trackInfo;
+  _trackData.elevationProfileData = elevationInfo;
+  if (self.onTrackRecordingProgressUpdate != nil)
+    self.onTrackRecordingProgressUpdate();
+}
+
+- (void)handleActiveTrackSelectionPointChanged {
+  if (!self || !rawData().IsTrack())
+    return;
+  auto const & trackInfo = GetFramework().GetBookmarkManager().GetTrackSelectionInfo(rawData().GetTrackId());
+  auto const latlon = mercator::ToLatLon(trackInfo.m_trackPoint);
+  _locationCoordinate = CLLocationCoordinate2DMake(latlon.m_lat, latlon.m_lon);
+  self.previewData = [[PlacePagePreviewData alloc] initWithRawData:rawData()];
 }
 
 - (void)dealloc {
@@ -102,12 +142,30 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
   }
   if (rawData().IsBookmark()) {
     _bookmarkData = [[PlacePageBookmarkData alloc] initWithRawData:rawData()];
+  } else if (rawData().IsTrack()) {
+    __weak auto weakSelf = self;
+    _trackData = [[PlacePageTrackData alloc] initWithRawData:rawData() onActivePointChanged:^(void) {
+      [weakSelf handleActiveTrackSelectionPointChanged];
+    }];
   } else {
     _bookmarkData = nil;
   }
   _previewData = [[PlacePagePreviewData alloc] initWithRawData:rawData()];
+  _objectType = [self objectTypeFromRawData];
   if (self.onBookmarkStatusUpdate != nil) {
     self.onBookmarkStatusUpdate();
+  }
+}
+
+- (PlacePageObjectType)objectTypeFromRawData {
+  if (rawData().IsBookmark()) {
+    return PlacePageObjectTypeBookmark;
+  } else if (rawData().IsTrack()) {
+    return PlacePageObjectTypeTrack;
+  } else if (self.trackData) {
+    return PlacePageObjectTypeTrackRecording;
+  } else {
+    return PlacePageObjectTypePOI;
   }
 }
 

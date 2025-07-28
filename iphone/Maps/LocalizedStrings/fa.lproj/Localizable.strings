@@ -43,16 +43,10 @@
 "country_status_download_failed" = "دانلود با شکست مواجه شد";
 
 /* Text in About screen */
-"about_headline" = "رایگان برای همه ، ساخته شده با عشق";
+"about_proposition_1" = "آفلاین، سریع و آسان برای استفاده";
 
 /* Text in About screen */
-"about_proposition_1" = "• بدون تبلیغات ، ردیابی ، جمع آوری داده ها";
-
-/* Text in About screen */
-"about_proposition_2" = "• بدون تخلیه باتری، آفلاین کار می کند";
-
-/* Text in About screen */
-"about_proposition_3" = "• سریع، مینیمالیستی، توسعه یافته توسط انجمن";
+"about_proposition_2" = "متمرکز بر حریم خصوصی و بدون تبلیغات";
 "close" = "بستن";
 "download" = "دانلود";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "RV برای";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "در حال بارگیری نشانه‌ها";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "مکان شما هنوز مشخص نشده است";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hey, check out my pin in Organic Maps!";
+"bookmark_share_email_subject" = "Hey, check out my pin in CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hey, check out my current location on the Organic Maps map!";
+"my_position_share_email_subject" = "Hey, check out my current location on the CoMaps map!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "ایمیل";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "رونوشت در بریده‌دان";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "کپی در کلیپ‌برد: %@";
@@ -190,7 +187,9 @@
 "done" = "انجام شد";
 
 /* Prints version number in About dialog */
-"version" = "نسخه Organic Maps: %@";
+"version" = "نسخه CoMaps: %@";
+"version %@ (%@)" = "نسخه %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "نسخه: %@ (%@)\nداده‌های نقشه: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "مسیر";
@@ -200,6 +199,7 @@
 "share_my_location" = "به اشتراک گذاری موقعیت مکانی من";
 "prefs_group_route" = "مسیریابی";
 "pref_zoom_title" = "دکمه‌های بزرگنمایی";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "ظاهری";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "تاریک";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "خاموش";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "ساختمان های سه بعدی در حالت صرفه جویی در مصرف برق خاموش می شوند";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "دستور العمل صوتی";
+"pref_tts_title" = "دستور العمل صوتی";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "نام خیابان ها را اعلام کنید";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "وب سایت";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "اخبار";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "ماستودون";
+"social_lemmy" = "لمی";
+"social_matrix" = "ماتریس";
+"social_bluesky" = "بلواسکای";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "ایمیل";
+
+/* Text in the editor */
+"fediverse" = "ماستودون";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "تصویر Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "امتیاز به این اپلیکیشن";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "حمایت مالی";
-
-/* Tex label above the Donate button */
-"donate_description" = "کمک مالی کنید تا بهترین نقشه ها را با هم بسازید!";
-"already_donated" = "قبلاً اهدا شده";
-"remind_me_later" = "بعداً یادآوری کن";
-"support_organic_maps" = "پشتیبانی از Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "حق نشر و کپی رایت";
@@ -298,7 +322,7 @@
 "volunteer" = "داوطلب شدن";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "دنبال کنید و با ما تماس بگیرید:";
+"follow_us" = "دنبال کنید و با ما تماس بگیرید";
 
 /* Alert text */
 "email_error_body" = "کلاینت ایمیل شما پیکربندی نشده است.لطفا آن را پیکربندی کنید یا از طریق دیگر با ما تماس بگیرید %@";
@@ -467,7 +491,7 @@
 "read_in_wikipedia" = "ویکی پدیا";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "ویکی‌انبار";
 "p2p_your_location" = "موقعیت شما";
 "p2p_start" = "شروع";
 "p2p_from_here" = "مسیر از";
@@ -510,15 +534,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "تعطیل";
 "add_opening_hours" = "اضافه کردن ساعت بازگشایی";
-"no_osm_account" = "آیا حساب OpenStreetMap ندارید؟";
-"register_at_openstreetmap" = "ثبت نام در OpenStreetMap";
-"password_8_chars_min" = "رمز عبور (حداقل 8 عدد یا حرف)";
-"invalid_username_or_password" = "نام کاربری یا رمز عبور نامعتبر است.";
-"login" = "ورود";
-"login_osm" = "شوید OpenStreetMap وارد";
-"forgot_password" = "رمز عبور خود را فراموش کردید؟";
-"osm_account" = "حساب OSM";
-"logout" = "خروج از حساب";
+
+/* OpenStreetMap */
+"osm_mapdata" = "داده‌های نقشه از OpenStreetMap";
+"osm_mapdata_explanation %@" = "داده های نقشه ایجاد شده توسط انجمن از *%@*. درباره نحوه ویرایش و به روز رسانی نقشه در [OpenStreetMap.org](https://openstreetmap.org) بیشتر بیاموزید.";
+"osm_more_about" = "در مورد OpenStreetMap بیشتر بدانید";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Fa:About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap نمایه";
+"osm_profile_promt" = "یک حساب OpenStreetMap ایجاد کنید یا وارد شوید تا ویرایش های نقشه خود را در جهان منتشر کنید.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) یک پروژه اجتماعی برای ساخت یک نقشه رایگان و باز است. این منبع اصلی داده های نقشه در CoMaps است و مشابه ویکی پدیا کار می کند. می توانید مکان ها را اضافه یا ویرایش کنید تا در دسترس میلیون ها کاربر در سراسر جهان قرار گیرند. \nبه انجمن بپیوندید و به ایجاد نقشه بهتر برای همه کمک کنید!";
+"osm_profile_login" = "ورود به حساب کاربری OpenStreetMap";
+"osm_profile_reauthorize_promt" = "اتصال حساب کاربری OpenStreetMap از این برنامه قطع شد";
+"osm_profile_reauthorize" = "اتصال مجدد به OpenStreetMap";
+"osm_profile_remove_promt" = "اگر نمی‌توانید یا نمی‌خواهید حساب کاربری خود را دوباره متصل کنید، می‌توانید آن را از این برنامه حذف کنید";
+"osm_profile_remove" = "حذف حافظه حساب کاربری OpenStreetMap از این برنامه";
+"osm_profile_register_promt" = "آیا حساب OpenStreetMap ندارید؟";
+"osm_profile_register" = "ثبت نام در OpenStreetMap";
+"osm_profile_verfied_changes" = "تغییرات تایید شد";
+"osm_profile_logout" = "خروج از حساب کاربری OpenStreetMap";
+"osm_profile_delete" = "حذف حساب کاربری OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "اخرین بروزرسانی";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "تغییر موقعیت";
 "message_invalid_feature_position" = "نمی توان شی ای در این مکان باشد";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "داده های OpenStreetMap ایجاد شده توسط انجمن از %@. درباره نحوه ویرایش و به روز رسانی نقشه در OpenStreetMap.org بیشتر بیاموزید";
-"login_to_make_edits_visible" = "یک حساب OpenStreetMap ایجاد کنید یا وارد شوید تا ویرایش های نقشه خود را در جهان منتشر کنید.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "برای دانلود، شما نیازمند فضای ذخیره سازی بیشتری هستید.لطفا داده‌های غیر ضروری خود را حذف کنید.";
-"editor_sharing_title" = "من نقشه‌های Organic Maps را بهبود بخشیدم";
+"editor_sharing_title" = "من نقشه‌های CoMaps را بهبود بخشیدم";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d از %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "توجه به داوطلبان OpenStreetMap (اختیاری)";
 "editor_detailed_description_hint" = "اظهار نظر بیشتر";
-"editor_detailed_description" = "شما یک سری تغییرات در نقشه را برای انجمن OpenStreetMap ارسال کردید.جزئیات اضافی را که نتوانستید در Organic Maps ویرایش کنید را برایشان بنویسید.";
+"editor_detailed_description" = "شما یک سری تغییرات در نقشه را برای انجمن OpenStreetMap ارسال کردید.جزئیات اضافی را که نتوانستید در CoMaps ویرایش کنید را برایشان بنویسید.";
 "editor_more_about_osm" = "در مورد OpenStreetMap بیشتر بدانید";
 "editor_operator" = "اپراتور";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "اپراتور: %@";
 "editor_category_unsuitable_title" = "آیا نمی توانید یک دسته بندی مناسب پیدا کنید؟";
-"editor_category_unsuitable_text" = "Organic Maps اجازه میu200cدهد فقط دستهu200cهای نقطهu200cای ساده را اضافه کند، یعنی هیچ شهر، جاده، دریاچه، طرح کلی ساختمان و غیره وجود ندارد. لطفاً این دستهu200cها را مستقیماً به <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> اضافه کنید. برای دستورالعملu200cهای گام به گام، <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">راهنمای</a> ما را بررسی کنید.";
+"editor_category_unsuitable_text" = "CoMaps اجازه می دهد فقط دسته های نقطه ای ساده را اضافه کند، یعنی هیچ شهر، جاده، دریاچه، طرح کلی ساختمان و غیره وجود ندارد. لطفاً این دسته ها را مستقیماً به <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> اضافه کنید. برای دستورالعمل های گام به گام، <a href=\"https://www.comaps.app/support/advanced-map-editing/\">راهنمای</a> ما را بررسی کنید.";
 "downloader_no_downloaded_maps_title" = "شما هیچ نقشه دانلود شده ای ندارید";
 "downloader_no_downloaded_maps_message" = "برای جست وجو یک مکان و استفاده از قابلیت ناوبری، نقشه‌ها را دانلود کنید.";
 "current_location_unknown_error_title" = "مکان فعلیتان ناشناس است.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Privacy را انتخاب کنید";
 "location_services_disabled_on_device_3" = "3. Location Services را انتخاب کنید";
 "location_services_disabled_on_device_4" = "4. Location Services را روشن کنید";
-"location_services_disabled_on_device_additional_message" = "یا به استفاده از نقشه های ارگانیک بدون موقعیت مکانی ادامه دهید";
+"location_services_disabled_on_device_additional_message" = "یا به استفاده از CoMaps بدون موقعیت مکانی ادامه دهید";
 
 /* abbreviation for meters */
 "m" = "متر";
@@ -637,15 +669,6 @@
 "day" = "روز";
 "placepage_more_button" = "بیشتر";
 "book_button" = "رزرو";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "عکس ها، نظرات، رزرو";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "پاداش ارجاعی دریافت شده برای هر رزرو از طریق این پیوند به سمت توسعه نقشه های ارگانیک می رود.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "جزئیات در Kayak";
 "placepage_call_button" = "تماس";
 "placepage_edit_bookmark_button" = "ویرایش نشانه‌ها";
 "placepage_bookmark_name_hint" = "نام نشانه‌ها";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "بررسی کنید";
-"recent_track_background_dialog_message" = "Organic Maps از اطلاعات موقعیت مکانی شما در پس ضمینه برای ذخیره مسیر‌هایی که اخیرا سفر کرده اید استفاده می کند.";
+"recent_track_background_dialog_message" = "CoMaps از اطلاعات موقعیت مکانی شما در پس ضمینه برای ذخیره مسیر‌هایی که اخیرا سفر کرده اید استفاده می کند.";
 "general_settings" = "تنظیمات عمومی";
 
 /* For the first routing */
@@ -726,6 +749,9 @@
 "placepage_add_stop" = "اضافه کردن توقف";
 "start_from_my_position" = "شروع از";
 
+/* Title for button when a route was saved. */
+"saved" = "ذخیره شد";
+
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "لطفاً به OpenStreetMap وارد شوید تا به طور خودکار تمام ویرایش های نقشه خود را آپلود کنید.";
 
@@ -741,7 +767,7 @@
 "bookmarks_create_new_group" = "ایجاد لیست جدید";
 
 /* Bookmark categories screen, button that opens folder selection dialog to import KML/KMZ/GPX/KMB files */
-"bookmarks_import" = "وارد کردن نشانکu200cها و آهنگu200cها";
+"bookmarks_import" = "وارد کردن نشانک ها و آهنگ ها";
 "downloader_hide_screen" = "پنهان کردن صفحه";
 "downloader_percent" = "%@ (%@ از %@)";
 "downloader_process" = "در حال دانلود %@…";
@@ -787,7 +813,7 @@
 "power_managment_setting_never" = "هرگز";
 "power_managment_setting_auto" = "خودکار";
 "power_managment_setting_manual_max" = "حداکثر ذخیره انرژی";
-"enable_logging_warning_message" = "این گزینه ثبت گزارش را برای اهداف تشخیصی فعال می‌کند. برای کارکنان بخش پشتیبانی که مشکلات برنامه را عیب یابی می‌کنند، مفید باشد. این گزینه را تنها در صورت درخواست پشتیبانی Organic Maps فعال کنید.";
+"enable_logging_warning_message" = "این گزینه ثبت گزارش را برای اهداف تشخیصی فعال می‌کند. برای کارکنان بخش پشتیبانی که مشکلات برنامه را عیب یابی می‌کنند، مفید باشد. این گزینه را تنها در صورت درخواست پشتیبانی CoMaps فعال کنید.";
 "driving_options_title" = "گزینه‌های رانندگی";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +871,7 @@
 "ok" = "موافقت کردن";
 "speedcams_alert_title_carplay_1" = "دوربین سرعت";
 "speedcams_alert_title_carplay_2" = "هشدارهای سرعت";
-"download_map_carplay" = "لطفا نقشه‌ها را در نرم افزار Organic Maps روی دستگاه خود دانلود کنید";
+"download_map_carplay" = "لطفا نقشه‌ها را در نرم افزار CoMaps روی دستگاه خود دانلود کنید";
 "carplay_roundabout_exit" = "خروجی %@";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "مسیر";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsIR";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Fa:About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app";
 
 /* App Tip #00 */
 "app_tip_00" = "از شما برای استفاده از نقشه های ساخته شده توسط جامعه سپاسگزاریم!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "هدف اصلی ما ساختن نقشه هایی سریع، متمرکز بر حریم خصوصی و با کاربری آسان است که شما عاشق آن خواهید شد.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "اکنون در حال استفاده از نقشه های ارگانیک در صفحه گوشی هستید";
+"car_used_on_the_phone_screen" = "اکنون در حال استفاده از CoMaps در صفحه گوشی هستید";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "اکنون از نقشه های ارگانیک در صفحه ماشین استفاده می کنید";
+"car_used_on_the_car_screen" = "اکنون از CoMaps در صفحه ماشین استفاده می کنید";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "با تلفن ادامه دهید";
@@ -995,13 +1012,16 @@
 "website_menu" = "لینک منو";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "آیا می خواهید یک گزارش اشکال برای توسعه دهندگان ارسال کنید؟\nما به کاربران خود تکیه می کنیم زیرا نقشه های ارگانیک هیچ گونه اطلاعات خطا را به طور خودکار جمع آوری نمی کند. پیشاپیش از شما برای حمایت از نقشه های ارگانیک سپاسگزاریم!";
+"bugreport_alert_message" = "آیا می خواهید یک گزارش اشکال برای توسعه دهندگان ارسال کنید؟\nما به کاربران خود تکیه می کنیم زیرا CoMaps هیچ گونه اطلاعات خطا را به طور خودکار جمع آوری نمی کند. پیشاپیش از شما برای حمایت از CoMaps سپاسگزاریم!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "همگام سازی iCloud را فعال کنید";
 
 /* Message for the "Enable iCloud Syncronization" alert. */
-"enable_icloud_synchronization_message" = "همگام سازی iCloud یک ویژگی آزمایشی در دست توسعه است. مطمئن شوید که از تمام نشانکu200cها و آهنگu200cهای خود یک نسخه پشتیبان تهیه کردهu200cاید.";
+"enable_icloud_synchronization_message" = "همگام سازی iCloud یک ویژگی آزمایشی در دست توسعه است. مطمئن شوید که از تمام نشانک ها و آهنگ های خود یک نسخه پشتیبان تهیه کرده اید.";
 
 /* Title for the "iCloud Is Disabled" alert. */
 "icloud_disabled_title" = "iCloud غیرفعال است";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "مسیر خالی است - چیزی برای ذخیره کردن وجود ندارد";
 "edit_track" = "ویرایش مسیر";
+"osm_profile_view_notes" = "مشاهده یادداشت‌ها";
+"osm_profile_view_edit_history" = "مشاهده تاریخچه ویرایش‌ها";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

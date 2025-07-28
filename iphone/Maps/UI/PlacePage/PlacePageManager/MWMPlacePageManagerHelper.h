@@ -1,4 +1,5 @@
 @class PlacePageData;
+@class PlacePagePhone;
 @class ElevationProfileData;
 
 @interface MWMPlacePageManagerHelper : NSObject
@@ -9,16 +10,18 @@
 + (void)addPlace:(CLLocationCoordinate2D)coordinate;
 + (void)openWebsite:(PlacePageData *)data;
 + (void)openWebsiteMenu:(PlacePageData *)data;
-+ (void)openKayak:(PlacePageData *)data;
 + (void)openWikipedia:(PlacePageData *)data;
 + (void)openWikimediaCommons:(PlacePageData *)data;
 + (void)openEmail:(PlacePageData *)data;
++ (void)openFediverse:(PlacePageData *)data;
 + (void)openFacebook:(PlacePageData *)data;
 + (void)openInstagram:(PlacePageData *)data;
 + (void)openTwitter:(PlacePageData *)data;
 + (void)openVk:(PlacePageData *)data;
 + (void)openLine:(PlacePageData *)data;
-+ (void)call:(PlacePageData *)data;
++ (void)openBluesky:(PlacePageData *)data;
++ (void)openPanoramax:(PlacePageData *)data;
++ (void)call:(PlacePagePhone *)phone;
 + (void)showAllFacilities:(PlacePageData *)data;
 + (void)showPlaceDescription:(NSString *)htmlString;
 + (void)openMoreUrl:(PlacePageData *)data;
@@ -27,7 +30,9 @@
 + (void)openCatalogSingleItem:(PlacePageData *)data atIndex:(NSInteger)index;
 + (void)openCatalogMoreItems:(PlacePageData *)data;
 + (void)addBookmark:(PlacePageData *)data;
++ (void)updateBookmark:(PlacePageData *)data color:(MWMBookmarkColor)color category:(MWMMarkGroupID)category;
 + (void)removeBookmark:(PlacePageData *)data;
++ (void)updateTrack:(PlacePageData *)data color:(UIColor *)color category:(MWMMarkGroupID)category;
 + (void)removeTrack:(PlacePageData *)data;
 + (void)editBookmark:(PlacePageData *)data;
 + (void)editTrack:(PlacePageData *)data;

@@ -1,39 +1,28 @@
-• Detaillierte Offline-Karten mit Orten, die es auf anderen Karten nicht gibt
-• Rad-, Wander- und Spazierwege
-• Höhenlinien, Höhenprofile, Bergspitzen und Steigungen
-• Schritt-für-Schritt-Navigation für Fußgänger, Radfahrer und Autos mit Sprachführung
-• Schnelle Offlinesuche
-• Export und Import von Lesezeichen als KML, KMZ, GPX
-• Dunkler Modus zum Schutz deiner Augen
-• … und viele weitere Funktionen!
+Eine von der Community betriebene, kostenlose Open-Source Karten App, die auf OpenStreetMap Daten basiert. Transparent, datensparsam und nicht gewinnorientiert.
 
-Organic Maps ist rein, organisch und mit Liebe gemacht:
+‣ Einfach und ausgereift: Essenzielle, leicht zu bedienende Funktionen, die einfach funktionieren.
+‣ Offline-orientiert: Plane und navigiere im Ausland ohne Mobilfunkverbindung, finde Wegpunkte auf abgelegenen Wanderungen usw. Alle Funktionen sind für den Offline-Einsatz konzipiert.
+‣ Datenschutzfreundlich: Die App wurde mit Fokus auf Privatsphäre entwickelt – keine Personenidentifikation, kein Tracking, keine Erfassung persönlicher Daten, keine Werbung.
+‣ Spart Akku und Speicherplatz: Verbraucht nicht unnötig Akku wie andere Navi-Apps. Kompakte Karten sparen Speicherplatz auf deinem Gerät.
+‣ Kostenlos und von der Community entwickelt: Menschen wie du haben geholfen, die App zu entwickeln – durch das Hinzufügen von Orten zu OpenStreetMap, Testen von neuen Funktionen, Softwareentwicklung oder Spenden.
+‣ Offen und transparent bei Entscheidungen und Finanzen, gemeinnützig und vollständig Open Source
 
-• Respektiert deine Privatsphäre
-• Schont deinen Akku
-• Keine unerwarteten Gebühren für mobile Daten
+Hauptfunktionen:
+• Detaillierte, herunterladbare Karten mit Orten, die bei Google Maps oft fehlen
+• Outdoor-Modus mit hervorgehobenen Wanderwegen, Campingplätzen, Wasserquellen, Gipfeln, Höhenlinien usw.
+• Geh- und Radwege
+• Orte wie Restaurants, Tankstellen, Hotels, Geschäfte, Sehenswürdigkeiten und viele mehr
+• Suche nach Namen, Adressen oder Kategorien
+• Navigation mit Sprachausgabe für Fußgänger, Radfahrer und Autos
+• Lesezeichen mit einem einzigen Tippen speichern
+• iCloud Synchronisation für deine Lesezeichen und GPS Tracks
+• Offline verfügbare Wikipedia-Artikel
+• U- und S-Bahn-Netze
+• Aufzeichnen von GPS Tracks
+• Import und Export von Favoriten und Routen im KML-, KMZ- oder GPX-Format
+• Dunkler Modus für die Nutzung bei Nacht
+• Kartenbearbeitung direkt in der App mit einem einfachen Editor
+• Unterstützung für CarPlay
 
-Frei von Trackern und schlechten Dingen:
-
-• Keine Werbung
-• Kein Tracking
-• Keine Datensammlung
-• Kein Telefonieren nach Hause
-• Keine lästige Registrierung
-• Keine obligatorischen Tutorials
-• Kein lästiger E-Mail-Spam
-• Keine Push-Benachrichtigungen
-• Keine Crapware
-• Keine Pestizide
-
-Wir bei Organic Maps glauben, dass Privatsphäre ein grundlegendes Menschenrecht ist:
-
-• Organic Maps ist ein von einer unabhängigen Gemeinschaft betriebenes Open-Source-Projekt
-• Der Code ist Open Source
-• Die Kartendaten stammen von OpenStreetMap, einem ebenfalls von der Community betriebenen Projekt
-• Wir schützen deine Privatsphäre vor den neugierigen Augen der großen Technologiekonzerne
-• Bleib sicher, egal wo du bist
-
-Lehne Überwachung ab, lebe deine Freiheit und unterstütze die Community.
-
-Teste Organic Maps!
+Freiheit beginnt hier
+Entdecke deine Reise – navigiere in der Welt mit Datenschutz!

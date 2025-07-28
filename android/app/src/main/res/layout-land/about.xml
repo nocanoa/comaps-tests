@@ -41,7 +41,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/MwmTextAppearance.Body3"
             android:textIsSelectable="true"
-            tools:text="2021.10.15-15-Google" />
+            tools:text="2025.04.16-FDroid" />
 
           <TextView
             android:layout_width="match_parent"
@@ -53,18 +53,18 @@
             app:layout_constraintTop_toTopOf="@id/version" />
         </LinearLayout>
 
-        <ImageView
+        <!--ImageView
           android:id="@+id/imageView3"
           android:layout_width="@dimen/about_logo"
           android:layout_height="@dimen/about_logo"
           android:contentDescription="@string/app_name"
-          app:srcCompat="@drawable/logo"
+          app:srcCompat="@drawable/ic_launcher"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
           app:layout_constraintHorizontal_bias="0.5"
           app:layout_constraintStart_toEndOf="@+id/linearLayout1"
           app:layout_constraintTop_toTopOf="parent"
-          app:tint="?attr/colorLogo" />
+          app:tint="?attr/colorLogo" /-->
 
         <LinearLayout
           android:id="@+id/linearLayout2"
@@ -153,6 +153,7 @@
           android:text="@string/osm_presentation"
           android:textAppearance="@style/MwmTextAppearance.Body2"
           android:textColor="?android:textColorPrimary"
+          android:autoLink="web"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/osm_logo"
@@ -236,11 +237,11 @@
         app:drawableStartCompat="@drawable/ic_telegram" />
 
       <TextView
-        android:id="@+id/github"
+        android:id="@+id/code_repo"
         android:textAlignment="viewStart"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/github"
-        app:drawableStartCompat="@drawable/ic_github" />
+        android:text="@string/codeberg"
+        app:drawableStartCompat="@drawable/ic_codeberg" />
 
       <TextView
         android:id="@+id/web"
@@ -276,14 +277,14 @@
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/facebook"
         app:drawableStartCompat="@drawable/ic_facebook" />
-
+<!--
       <TextView
         android:id="@+id/twitter"
         android:textAlignment="viewStart"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/twitter"
         app:drawableStartCompat="@drawable/ic_twitterx" />
-
+-->
       <TextView
         android:id="@+id/instagram"
         android:textAlignment="viewStart"
@@ -322,6 +323,5 @@
         android:textAlignment="viewStart"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/copyright" />
-
     </LinearLayout>
   </ScrollView>

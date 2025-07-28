@@ -30,6 +30,13 @@ amenity-parking-street_side-fee                     # area z15- (also has icon z
 amenity-parking-street_side-private                 # area z15- (also has icon z17-, caption(optional) z17-)
 === 160
 
+amenity-car_wash                                    # area z17- (also has icon z17-, caption(optional) z17-)
+amenity-charging_station-motorcar                   # area z15- (also has icon z14-, caption(optional) z14-)
+amenity-fuel                                        # area z15- (also has icon z12-, caption(optional) z12-)
+amenity-vehicle_inspection                          # area z17- (also has icon z17-)
+highway-rest_area                                   # area z13- (also has icon z14-, caption(optional) z14-)
+highway-services                                    # area z13- (also has icon z12-, caption(optional) z13-)
+landuse-garages                                     # area z13-
 leisure-stadium                                     # area z15-
 === 150
 
@@ -50,7 +57,14 @@ leisure-golf_course                                 # area z12-
 leisure-miniature_golf                              # area z12-
 natural-wetland                                     # area z11- (also has caption z16-)
 natural-wetland-bog                                 # area z11- (also has caption z16-)
+natural-wetland-fen                                 # area z11- (also has caption z16-)
+natural-wetland-mangrove                            # area z11- (also has caption z16-)
 natural-wetland-marsh                               # area z11- (also has caption z16-)
+natural-wetland-reedbed                             # area z11- (also has caption z16-)
+natural-wetland-saltmarsh                           # area z11- (also has caption z16-)
+natural-wetland-saltmarsh-tidal                     # area z11- (also has caption z16-)
+natural-wetland-swamp                               # area z11- (also has caption z16-)
+natural-wetland-tidalflat                           # area z11- (also has caption z16-)
 === 90
 
 landuse-grass                                       # area z12-
@@ -63,7 +77,6 @@ landuse-farmyard                                    # area z14-
 
 landuse-allotments                                  # area z12-
 landuse-farmland                                    # area z14-
-landuse-field                                       # area z12-
 landuse-meadow                                      # area z12-
 landuse-orchard                                     # area z12-
 landuse-recreation_ground                           # area z12-
@@ -87,13 +100,26 @@ landuse-forest-deciduous                            # area z10- (also has icon z
 landuse-forest-mixed                                # area z10- (also has icon z12-, caption(optional) z12-)
 === 50
 
-landuse-churchyard                                  # area z15-
+amenity-waste_transfer_station                      # area z15-
 landuse-construction                                # area z15-
 landuse-industrial                                  # area z15-
 landuse-industrial-mine                             # area z15-
 landuse-landfill                                    # area z15- (also has caption z15-)
 landuse-quarry                                      # area z15- (also has caption z15-)
 landuse-railway                                     # area z15- (also has caption z15-)
+man_made-works                                      # area z15-
+power-generator                                     # area z15-
+power-generator-gas                                 # area z15-
+power-generator-hydro                               # area z15-
+power-generator-solar                               # area z15-
+power-generator-wind                                # area z15-
+power-plant                                         # area z15-
+power-plant-coal                                    # area z15-
+power-plant-gas                                     # area z15-
+power-plant-hydro                                   # area z15-
+power-plant-solar                                   # area z15-
+power-plant-wind                                    # area z15-
+power-substation                                    # area z15-
 === 40
 
 aeroway-aerodrome                                   # area z10- (also has icon z14-, caption(optional) z14-)

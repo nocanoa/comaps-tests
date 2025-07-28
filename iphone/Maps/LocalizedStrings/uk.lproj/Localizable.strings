@@ -43,16 +43,13 @@
 "country_status_download_failed" = "Помилка завантаження";
 
 /* Text in About screen */
-"about_headline" = "Безкоштовно для всіх, зроблене з любов'ю";
+"about_headline" = "Відкритий проєкт, що створюється спільнотою";
 
 /* Text in About screen */
-"about_proposition_1" = "• Без реклами, без трекінгу, без стеження";
+"about_proposition_1" = "Офлайн, швидкий та простий у використанні";
 
 /* Text in About screen */
-"about_proposition_2" = "• Не розряджає батарею, працює в автономному режимі";
-
-/* Text in About screen */
-"about_proposition_3" = "• Швидкий, мінімалістичний, розроблений спільнотою";
+"about_proposition_2" = "Орієнтований на конфіденційність та без реклами";
 "close" = "Закрити";
 "download" = "Завантажити";
 
@@ -154,7 +151,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Для автобудинків";
-"share_bookmarks_email_body" = "Привіт!\n\nДодаю мої мiтки; відкрийте їх у Organic Maps. Якщо застосунок не встановлено, ви можете завантажити його тут: https://omaps.app/get?kmz\n\nНасолоджуйтесь подорожами з Organic Maps!";
+"share_bookmarks_email_body" = "Привіт!\n\nДодаю мої мiтки; відкрийте їх у CoMaps. Якщо застосунок не встановлено, ви можете завантажити його тут: https://www.comaps.app/download/\n\nНасолоджуйтесь подорожами з CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Завантаження мiток";
@@ -172,13 +169,16 @@
 "unknown_current_position" = "Ваше місце розташування не визначено";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Поглянь на мою мiтку на мапі Organic Maps!";
+"bookmark_share_email_subject" = "Поглянь на мою мiтку на мапі CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Поглянь на моє поточне розташування на мапі Organic Maps!";
+"my_position_share_email_subject" = "Поглянь на моє поточне розташування на мапі CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Ел. пошта";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Скопіювати до буфера обміну";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Скопійовано в буфер обміну: %@";
@@ -190,7 +190,9 @@
 "done" = "Готово";
 
 /* Prints version number in About dialog */
-"version" = "Версія Organic Maps: %@";
+"version" = "Версія CoMaps: %@";
+"version %@ (%@)" = "Версія %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Версія: %@ (%@)\nДані карти: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Маршрути";
@@ -200,6 +202,7 @@
 "share_my_location" = "Поділитися моїм місцезнаходженням";
 "prefs_group_route" = "Навігація";
 "pref_zoom_title" = "Кнопки трансфокації";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Вигляд";
@@ -209,6 +212,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Темний";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Вимкнуто";
@@ -229,7 +235,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D будівлі вимкнені в режимі енергозбереження";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Голосові інструкції";
+"pref_tts_title" = "Голосові інструкції";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Проговорювати назви вулиць";
@@ -252,8 +261,20 @@
 /* Text in menu */
 "website" = "Вебсайт";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Новини";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Електро́нна по́шта";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +288,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Фото Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Оцінити застосунок";
 
@@ -278,12 +311,6 @@
 
 /* Button in the main menu */
 "donate" = "Підтримати грошима";
-
-/* Tex label above the Donate button */
-"donate_description" = "Пожертвуйте, щоб разом створювати найкращі мапи!";
-"already_donated" = "Вже пожертвувано";
-"remind_me_later" = "Нагадати пізніше";
-"support_organic_maps" = "Підтримати Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Копірайт";
@@ -298,7 +325,7 @@
 "volunteer" = "Стати волонтером";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Підписуйтесь та зв'язуйтесь з нами:";
+"follow_us" = "Підписуйтесь та зв'язуйтесь з нами";
 
 /* Alert text */
 "email_error_body" = "Поштовий клієнт не налаштований. Налаштуйте його або скористайтеся іншими способами зв'язку. Наша адреса – %@";
@@ -467,7 +494,7 @@
 "read_in_wikipedia" = "Вікіпедія";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Вікісховище";
 "p2p_your_location" = "Ваше місцезнаходження";
 "p2p_start" = "Почати рух";
 "p2p_from_here" = "Звідси";
@@ -510,15 +537,27 @@
 "closes_in" = "Зачиняється через %@";
 "closed" = "Зачинено";
 "add_opening_hours" = "Додати години роботи";
-"no_osm_account" = "Не зареєстровані в OpenStreetMap?";
-"register_at_openstreetmap" = "Зареєструватися";
-"password_8_chars_min" = "Пароль (мінімум 8 символів)";
-"invalid_username_or_password" = "Невірне ім'я користувача або пароль.";
-"login" = "Увійти";
-"login_osm" = "Увійдіть до OpenStreetMap";
-"forgot_password" = "Забули пароль?";
-"osm_account" = "Обліковий запис OSM";
-"logout" = "Вийти";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Дані карти з OpenStreetMap";
+"osm_mapdata_explanation %@" = "Дані карти, створені спільнотою, станом на *%@*. Дізнайтеся більше про те, як редагувати та оновлювати мапу на [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Більше про OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Uk:Про_проект";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Профіль OpenStreetMap";
+"osm_profile_promt" = "Створіть обліковий запис OpenStreetMap або увійдіть до нього, щоб опублікувати свої редагування мапи для всього світу.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) - це громадський проект зі створення вільної та відкритої мапи. Це основне джерело картографічних даних в CoMaps і працює подібно до Вікіпедії. Ви можете додавати або редагувати місця, і вони стають доступними мільйонам користувачів по всьому світу. \nПриєднуйтесь до спільноти і допоможіть зробити мапу кращою для всіх!";
+"osm_profile_login" = "Увійти до облікового запису OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Обліковий запис OpenStreetMap було відключено від цієї програми";
+"osm_profile_reauthorize" = "Повторно підключитися до OpenStreetMap";
+"osm_profile_remove_promt" = "Якщо ви не можете або не хочете повторно підключити свій обліковий запис, ви можете просто Прибрати його з цієї програми";
+"osm_profile_remove" = "Прибрати обліковий запис OpenStreetMap";
+"osm_profile_register_promt" = "Не зареєстровані в OpenStreetMap?";
+"osm_profile_register" = "Зареєструватися";
+"osm_profile_verfied_changes" = "Виправлення, що ураховані";
+"osm_profile_logout" = "Вийти з облікового запису OpenStreetMap";
+"osm_profile_delete" = "Видалити обліковий запис OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Остання вiдправка";
@@ -567,13 +606,9 @@
 "dialog_incorrect_feature_position" = "Змініть розташування";
 "message_invalid_feature_position" = "Об'єкт не може перебувати в цьому місцезнаходженні";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Дані OpenStreetMap, створені спільнотою, станом на %@. Дізнайтеся більше про те, як редагувати та оновлювати мапу на OpenStreetMap.org";
-"login_to_make_edits_visible" = "Створіть обліковий запис OpenStreetMap або увійдіть до нього, щоб опублікувати свої редагування мапи для всього світу.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Для завантаження потрібно більше вільного місця. Будь ласка, видаліть непотрібні дані.";
-"editor_sharing_title" = "Я покращив мапи Organic Maps";
+"editor_sharing_title" = "Я покращив мапи CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d з %2$d";
@@ -593,14 +628,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Примітка для волонтерів OpenStreetMap (необов'язково)";
 "editor_detailed_description_hint" = "Докладний коментар";
-"editor_detailed_description" = "Зміни, що ви запропонували, буде відправлено до OpenStreetMap. Опишіть подробиці про об'єкт, які не можна редагувати у Organic Maps.";
+"editor_detailed_description" = "Зміни, що ви запропонували, буде відправлено до OpenStreetMap. Опишіть подробиці про об'єкт, які не можна редагувати у CoMaps.";
 "editor_more_about_osm" = "Більше про OpenStreetMap";
 "editor_operator" = "Оператор";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Оператор: %@";
 "editor_category_unsuitable_title" = "Не можете знайти відповідну категорію?";
-"editor_category_unsuitable_text" = "Organic Maps дозволяють додавати до мапи лише прості типи об'єктів, тобто без міст, доріг, озер та контурів будівель. Будь ласка, додайте такі категорії на сайті <a href=\"https://www.openstreetmap.org/\">OpenStreetMap.org</a>. Ми також рекомендуємо ознайомитися із <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing/\">детальними інструкціями та іншими додатками для редагування карти</a>.";
+"editor_category_unsuitable_text" = "CoMaps дозволяють додавати до мапи лише прості типи об'єктів, тобто без міст, доріг, озер та контурів будівель. Будь ласка, додайте такі категорії на сайті <a href=\"https://www.openstreetmap.org/\">OpenStreetMap.org</a>. Ми також рекомендуємо ознайомитися із <a href=\"https://www.comaps.app/support/advanced-map-editing/\">детальними інструкціями та іншими додатками для редагування карти</a>.";
 "downloader_no_downloaded_maps_title" = "Ви не маєте завантажених мап";
 "downloader_no_downloaded_maps_message" = "Завантажте необхідні мапи, щоб знаходити місця та користуватися навігацією без iнтернету.";
 "current_location_unknown_error_title" = "Місцезнаходження не знайдено.";
@@ -615,7 +650,7 @@
 "location_services_disabled_on_device_2" = "2. Виберіть Конфіденційність";
 "location_services_disabled_on_device_3" = "3. Виберіть Служби визначення місцезнаходження";
 "location_services_disabled_on_device_4" = "4. Увімкніть Служби визначення місцезнаходження";
-"location_services_disabled_on_device_additional_message" = "Або продовжуйте використовувати Organic Maps без визначення місцезнаходження";
+"location_services_disabled_on_device_additional_message" = "Або продовжуйте використовувати CoMaps без визначення місцезнаходження";
 
 /* abbreviation for meters */
 "m" = "м";
@@ -637,15 +672,6 @@
 "day" = "д";
 "placepage_more_button" = "Ще";
 "book_button" = "Забронювати";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Фото, відгуки, бронювання";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Реферальний бонус, отриманий за кожне бронювання за цим посиланням, йде на розробку Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Докладніше на Kayak";
 "placepage_call_button" = "Подзвонити";
 "placepage_edit_bookmark_button" = "Редагувати мiтку";
 "placepage_bookmark_name_hint" = "Назва мiтки";
@@ -681,7 +707,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Подивись,";
-"recent_track_background_dialog_message" = "Organic Maps використовує вашу геопозицію у фоновому режимі для запису нещодавно пройденого шляху.";
+"recent_track_background_dialog_message" = "CoMaps використовує вашу геопозицію у фоновому режимі для запису нещодавно пройденого шляху.";
 "general_settings" = "Загальні налаштування";
 
 /* For the first routing */
@@ -725,6 +751,9 @@
 "planning_route_remove_title" = "Перетягніть сюди, щоб видалити";
 "placepage_add_stop" = "Додати зупинку";
 "start_from_my_position" = "Почати з";
+
+/* Title for button when a route was saved. */
+"saved" = "Збережено";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Будь ласка увійдіть в акаунт OpenStreetMap.org, щоб автоматично публікувати зміни до мапи. Подробиці за";
@@ -845,7 +874,7 @@
 "ok" = "Ок";
 "speedcams_alert_title_carplay_1" = "Камери";
 "speedcams_alert_title_carplay_2" = "Інфо о камерах";
-"download_map_carplay" = "Завантажте карти в додатку Organic Maps на своєму пристрої";
+"download_map_carplay" = "Завантажте карти в додатку CoMaps на своєму пристрої";
 "carplay_roundabout_exit" = "%@ з’їзд";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +953,8 @@
 /* edit track screen title */
 "track_title" = "Маршрут";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/uk/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Uk:Про_проект";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/uk/";
 
 /* App Tip #00 */
 "app_tip_00" = "Дякуємо, що користуєтесь нашими мапами, створеними спільнотою!";
@@ -967,10 +987,10 @@
 "app_tip_09" = "Наша головна мета – створити швидкі, конфіденційні та прості у використанні карти, які вам сподобаються.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Зараз ви використовуєте Organic Maps на екрані телефону";
+"car_used_on_the_phone_screen" = "Зараз ви використовуєте CoMaps на екрані телефону";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Ви використовуєте Organic Maps на екрані автомобіля";
+"car_used_on_the_car_screen" = "Ви використовуєте CoMaps на екрані автомобіля";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Продовжуйте в телефоні";
@@ -995,7 +1015,10 @@
 "website_menu" = "Посилання на меню";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Бажаєте надіслати розробникам звіт про помилку?\nМи покладаємося на наших користувачів, оскільки Organic Maps не збирає інформацію про помилки автоматично. Заздалегідь дякуємо за підтримку Organic Maps!";
+"bugreport_alert_message" = "Бажаєте надіслати розробникам звіт про помилку?\nМи покладаємося на наших користувачів, оскільки CoMaps не збирає інформацію про помилки автоматично. Заздалегідь дякуємо за підтримку CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Увімкнути синхронізацію з iCloud";
@@ -1069,3 +1092,7 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Маршрут порожній - нічого зберігати";
 "edit_track" = "Редагувати маршрут";
+"osm_profile_view_notes" = "Переглянути нотатки";
+"osm_profile_view_edit_history" = "Переглянути історію редагувань";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

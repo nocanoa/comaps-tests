@@ -7,22 +7,15 @@
 
 /* Button which deletes downloaded country */
 "delete" = "Delete";
-"download_maps" = "Download Maps";
-
-/* Settings/Downloader - info for country which started downloading */
-"downloading" = "Downloading…";
 
 /* Choose measurement on first launch alert - choose metric system button */
-"kilometres" = "Kilometers";
+"kilometres" = "Kilomita";
 
 /* Leave Review dialog - Review button */
 "leave_a_review" = "Leave a Review";
 
 /* Choose measurement on first launch alert - choose imperial system button */
 "miles" = "Miles";
-
-/* A text for current gps location point/arrow selected on the map */
-"core_my_position" = "My Position";
 
 /* Update maps later button text */
 "later" = "Later";
@@ -39,22 +32,13 @@
 /* Button text for the button at the center of the screen when the country is not downloaded and the size should not be shown */
 "country_status_download_without_size" = "Download Map";
 
-/* Message to display at the center of the screen when the country download has failed */
-"country_status_download_failed" = "Download has failed";
+/* Text in About screen */
+"about_proposition_1" = "Nje ya mtandao, haraka na rahisi kutumia";
 
 /* Text in About screen */
-"about_headline" = "Bure kwa kila mtu, iliyotengenezwa na upendo";
-
-/* Text in About screen */
-"about_proposition_1" = "• Hakuna matangazo, hakuna ufuatiliaji, hakuna mkusanyiko wa data";
-
-/* Text in About screen */
-"about_proposition_2" = "• Hakuna betri kuisha, inafanya kazi nje ya mtandao";
-
-/* Text in About screen */
-"about_proposition_3" = "• Haraka, minimalist, iliyotengenezwa na jumuiya";
+"about_proposition_2" = "Inalenga faragha na bila matangazo";
 "close" = "Close";
-"download" = "Download";
+"download" = "Pakua";
 
 /* REMOVE THIS STRING AFTER REFACTORING */
 "continue_button" = "Continue";
@@ -154,7 +138,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Kwa RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Loading Bookmarks";
@@ -172,13 +156,16 @@
 "unknown_current_position" = "Your location hasn't been determined yet";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hey, check out my pin in Organic Maps!";
+"bookmark_share_email_subject" = "Hey, check out my pin in CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hey, check out my current location on the Organic Maps map!";
+"my_position_share_email_subject" = "Hey, check out my current location on the CoMaps map!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Email";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Nakili kwenye ubao wako wa kunakili";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Copied to clipboard: %@";
@@ -190,7 +177,9 @@
 "done" = "Done";
 
 /* Prints version number in About dialog */
-"version" = "Toleo la Organic Maps: %@";
+"version" = "Toleo la CoMaps: %@";
+"version %@ (%@)" = "Toleo la %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Toleo: %@ (%@)\nData ya Ramani: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Tracks";
@@ -200,6 +189,7 @@
 "share_my_location" = "Share My Location";
 "prefs_group_route" = "Navigation";
 "pref_zoom_title" = "Zoom buttons";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Appearance";
@@ -209,6 +199,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Dark";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Off";
@@ -229,7 +222,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Majengo ya 3D yamezimwa katika hali ya kuokoa nishati";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Tangaza Majina ya Mitaa";
+"pref_tts_title" = "Tangaza Majina ya Mitaa";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Tangaza Majina ya Mitaa";
@@ -252,8 +248,20 @@
 /* Text in menu */
 "website" = "Website";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Habari";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Barua pepe";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +275,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Picha ya Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Rate the app";
 
@@ -278,12 +298,6 @@
 
 /* Button in the main menu */
 "donate" = "Changia";
-
-/* Tex label above the Donate button */
-"donate_description" = "Changia ili kuunda ramani bora pamoja!";
-"already_donated" = "Tayari kutoa";
-"remind_me_later" = "Kumbusha baadaye";
-"support_organic_maps" = "Kuunga mkono Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Copyright";
@@ -298,7 +312,7 @@
 "volunteer" = "Kujitolea";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Fuata na uwasiliane nasi:";
+"follow_us" = "Fuata na uwasiliane nasi";
 
 /* Alert text */
 "email_error_body" = "The email client has not been set up. Please configure it or contact us at %@";
@@ -510,15 +524,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "Closed";
 "add_opening_hours" = "Add opening hours";
-"no_osm_account" = "Don't have an OpenStreetMap account?";
-"register_at_openstreetmap" = "Register at OpenStreetMap";
-"password_8_chars_min" = "Password (8 characters minimum)";
-"invalid_username_or_password" = "Invalid username or password.";
-"login" = "Login";
-"login_osm" = "Ingia kwa OpenStreetMap";
-"forgot_password" = "Forgot your password?";
-"osm_account" = "OSM Account";
-"logout" = "Log Out";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Data ya ramani kutoka OpenStreetMap";
+"osm_mapdata_explanation %@" = "Data ya ramani iliyoundwa na jumuiya kufikia *%@*. Pata maelezo zaidi kuhusu jinsi ya kuhariri na kusasisha ramani katika [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "More about OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap profile";
+"osm_profile_promt" = "Fungua akaunti ya OpenStreetMap au ingia ili kuchapisha mabadiliko yako ya ramani kwa ulimwengu.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) ni mradi wa jumuiya wa kujenga ramani isiyolipishwa na iliyo wazi. Ndiyo chanzo kikuu cha data ya ramani katika CoMaps na inafanya kazi sawa na Wikipedia. Unaweza kuongeza au kubadilisha maeneo na yanapatikana kwa mamilioni ya watumiaji kote Ulimwenguni. \nJiunge na jumuiya na usaidie kutengeneza ramani bora kwa kila mtu!";
+"osm_profile_login" = "Ingia kwenye akaunti ya OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Akaunti ya OpenStreetMap imekatwa kutoka kwa programu hii";
+"osm_profile_reauthorize" = "Unganisha tena na OpenStreetMap";
+"osm_profile_remove_promt" = "Kama huwezi au hutaki kuunganisha akaunti yako tena, unaweza kuiondoa tu kutoka kwenye programu hii";
+"osm_profile_remove" = "Ondoa akaunti ya OpenStreetMap";
+"osm_profile_register_promt" = "Don't have an OpenStreetMap account?";
+"osm_profile_register" = "Register at OpenStreetMap";
+"osm_profile_verfied_changes" = "Verified Changes";
+"osm_profile_logout" = "Ondoka kwenye akaunti ya OpenStreetMap";
+"osm_profile_delete" = "Futa akaunti ya OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Last upload";
@@ -567,13 +593,9 @@
 "dialog_incorrect_feature_position" = "Change location";
 "message_invalid_feature_position" = "No object can be located here";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Data ya OpenStreetMap iliyoundwa na jumuiya kufikia %@. Pata maelezo zaidi kuhusu jinsi ya kuhariri na kusasisha ramani katika OpenStreetMap.org";
-"login_to_make_edits_visible" = "Fungua akaunti ya OpenStreetMap au ingia ili kuchapisha mabadiliko yako ya ramani kwa ulimwengu.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "To download, you need more space. Please delete any unnecessary data.";
-"editor_sharing_title" = "I improved the Organic Maps maps";
+"editor_sharing_title" = "I improved the CoMaps maps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d of %2$d";
@@ -593,14 +615,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Kumbuka kwa wanaojitolea wa OpenStreetMap (si lazima)";
 "editor_detailed_description_hint" = "Detailed comment";
-"editor_detailed_description" = "Your suggested map changes will be sent to the OpenStreetMap community. Please describe any additional details that cannot be edited in Organic Maps.";
+"editor_detailed_description" = "Your suggested map changes will be sent to the OpenStreetMap community. Please describe any additional details that cannot be edited in CoMaps.";
 "editor_more_about_osm" = "More about OpenStreetMap";
 "editor_operator" = "Mwendeshaji";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Mwendeshaji: %@";
 "editor_category_unsuitable_title" = "Je, huwezi kupata aina inayofaa?";
-"editor_category_unsuitable_text" = "Ramani za Kikaboni huruhusu kuongeza kategoria rahisi pekee, hiyo inamaanisha hakuna miji, barabara, maziwa, muhtasari wa majengo, n.k. Tafadhali ongeza kategoria kama hizo moja kwa moja kwenye <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Angalia <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">mwongozo wetu</a> kwa maagizo ya kina ya hatua kwa hatua.";
+"editor_category_unsuitable_text" = "CoMaps huruhusu kuongeza kategoria rahisi pekee, hiyo inamaanisha hakuna miji, barabara, maziwa, muhtasari wa majengo, n.k. Tafadhali ongeza kategoria kama hizo moja kwa moja kwenye <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Angalia <a href=\"https://www.comaps.app/support/advanced-map-editing/\">mwongozo wetu</a> kwa maagizo ya kina ya hatua kwa hatua.";
 "downloader_no_downloaded_maps_title" = "You haven't downloaded any maps";
 "downloader_no_downloaded_maps_message" = "Download maps to search and navigate offline.";
 "current_location_unknown_error_title" = "Current location is unknown.";
@@ -615,7 +637,7 @@
 "location_services_disabled_on_device_2" = "2. Chagua Faragha";
 "location_services_disabled_on_device_3" = "3. Chagua Huduma za Mahali";
 "location_services_disabled_on_device_4" = "4. Washa Huduma za Mahali";
-"location_services_disabled_on_device_additional_message" = "Au endelea kutumia Organic Maps bila Mahali";
+"location_services_disabled_on_device_additional_message" = "Au endelea kutumia CoMaps bila Mahali";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +659,6 @@
 "day" = "d";
 "placepage_more_button" = "More";
 "book_button" = "Book";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Picha, hakiki, uhifadhi";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Bonasi ya rufaa inayopokelewa kwa kila nafasi uliyohifadhi kupitia kiungo hiki huenda kwenye uundaji wa ramani za kikaboni.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Maelezo kuhusu Kayak";
 "placepage_call_button" = "Call";
 "placepage_edit_bookmark_button" = "Edit Bookmark";
 "placepage_bookmark_name_hint" = "Bookmark Name";
@@ -681,7 +694,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Check out";
-"recent_track_background_dialog_message" = "Organic Maps uses your location in the background to record your recently travelled route.";
+"recent_track_background_dialog_message" = "CoMaps uses your location in the background to record your recently travelled route.";
 "general_settings" = "General settings";
 
 /* For the first routing */
@@ -725,6 +738,9 @@
 "planning_route_remove_title" = "Vuta hapa ili kuondoa";
 "placepage_add_stop" = "Ongeza eneo la kusimama";
 "start_from_my_position" = "Anzia";
+
+/* Title for button when a route was saved. */
+"saved" = "Imehifadhiwa";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Tafadhali ingia kwenye OpenStreetMap ili kupakia kiotomatiki hariri zako zote za ramani. Pata maelezo zaidi";
@@ -783,11 +799,11 @@
 /* Speed camera settings menu option - Never warn (about speedcams) */
 "pref_tts_speedcams_never" = "Kamwe usionye";
 "power_managment_title" = "Mtindo wa kuokoa nishati";
-"power_managment_description" = "Pindi mtindo wa kiotomatiki unapochaguliwa programu tumizi inaanza kuzima sifa za kumaliza betri kulingana na kiwango cha chaji cha sasa cha betri";
+"power_managment_description" = "Pindi mtindo wa kiotomatiki unapochaguliwa programu tumizi inaanza kuzima sifa za kumaliza betri kulingana na kiwango cha chaji cha sasa cha betri.";
 "power_managment_setting_never" = "Kamwe";
 "power_managment_setting_auto" = "Kiotomatiki";
 "power_managment_setting_manual_max" = "Upeo wa kuhifadhi nishati";
-"enable_logging_warning_message" = "Chaguo huwasha data kwa madhumuni ya uchunguzi. Itakuwa muhimu kwa wafanyakazi wetu ambao wanatatua matatizo ya programu. Washa chaguo hili kwa maombi ya mhudumu wa Organic Maps tu.";
+"enable_logging_warning_message" = "Chaguo huwasha data kwa madhumuni ya uchunguzi. Itakuwa muhimu kwa wafanyakazi wetu ambao wanatatua matatizo ya programu. Washa chaguo hili kwa maombi ya mhudumu wa CoMaps tu.";
 "driving_options_title" = "Machaguo ya njia";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +861,7 @@
 "ok" = "Sawa";
 "speedcams_alert_title_carplay_1" = "Kam za kasi";
 "speedcams_alert_title_carplay_2" = "Onyo la kasi";
-"download_map_carplay" = "Tafadhali pakua ramani katika programu tumizi ya Organic Maps kwenye kifaa chako";
+"download_map_carplay" = "Tafadhali pakua ramani katika programu tumizi ya CoMaps kwenye kifaa chako";
 "carplay_roundabout_exit" = "Kutoka kwa %@";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +940,8 @@
 /* edit track screen title */
 "track_title" = "Track";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Asante kwa kutumia ramani zetu zilizojengwa na jumuiya!";
@@ -967,7 +974,7 @@
 "app_tip_09" = "Lengo letu kuu ni kujenga ramani za haraka, zinazozingatia faragha, na rahisi kutumia ambazo utapenda.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Sasa unatumia ramani za kikaboni kwenye skrini ya simu";
+"car_used_on_the_phone_screen" = "Sasa unatumia CoMaps kwenye skrini ya simu";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
 "car_used_on_the_car_screen" = "Sasa unatumia ramani za kikaboni kwenye skrini ya gari";
@@ -995,7 +1002,10 @@
 "website_menu" = "Kiungo cha menyu";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Je, ungependa kutuma ripoti ya hitilafu kwa wasanidi programu?\nTunategemea watumiaji wetu kwani Ramani za Kikaboni hazikusanyi maelezo yoyote ya hitilafu kiotomatiki. Asante mapema kwa kusaidia Ramani za Organic!";
+"bugreport_alert_message" = "Je, ungependa kutuma ripoti ya hitilafu kwa wasanidi programu?\nTunategemea watumiaji wetu kwani CoMaps hazikusanyi maelezo yoyote ya hitilafu kiotomatiki. Asante mapema kwa kusaidia CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Washa Usawazishaji wa iCloud";
@@ -1069,3 +1079,12 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Njia ni tupu - hakuna cha kuhifadhi";
 "edit_track" = "Hariri Njia";
+"osm_profile_view_notes" = "Angalia madokezo";
+"osm_profile_view_edit_history" = "Angalia historia ya uhariri";
+"download_maps" = "Download Maps";
+"about_headline" = "Open project powered by the community";
+"core_my_position" = "My Position";
+"country_status_download_failed" = "Download has failed";
+"about_proposition_3" = "Transparent and not for profit";
+"downloading" = "Downloading…";
+"pref_mapappearance_title" = "Map Appearance";

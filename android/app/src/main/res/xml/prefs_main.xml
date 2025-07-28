@@ -28,16 +28,22 @@
       app:singleLineTitle="false"
       android:summary="@string/pref_zoom_summary"
       android:order="2"/>
+    <ListPreference
+        android:key="@string/pref_left_button"
+        android:title="@string/pref_left_button_title"
+        app:singleLineTitle="false"
+        android:persistent="true"
+        android:order="3"/>
     <SwitchPreferenceCompat
       android:key="@string/pref_3d_buildings"
       android:title="@string/pref_map_3d_buildings_title"
       app:singleLineTitle="false"
-      android:order="3"/>
+      android:order="4"/>
     <SwitchPreferenceCompat
       android:key="@string/pref_autodownload"
       android:title="@string/autodownload"
       app:singleLineTitle="false"
-      android:order="4"/>
+      android:order="5"/>
     <SwitchPreferenceCompat
       android:key="@string/pref_large_fonts_size"
       android:title="@string/big_font"
@@ -106,18 +112,25 @@
         app:singleLineTitle="false"
         android:persistent="false"
         android:order="18"/>
+    <Preference
+        android:key="@string/pref_backup"
+        android:title="@string/pref_backup_title"
+        android:summary="@string/pref_backup_summary"
+        app:singleLineTitle="false"
+        android:persistent="false"
+        android:order="19"/>
     <SwitchPreferenceCompat
       android:key="@string/pref_traffic_http_enabled"
       android:title="@string/traffic_http_enabled"
       app:singleLineTitle="false"
       android:summary="@string/traffic_http_enabled_description"
       android:defaultValue="true"
-      android:order="19"/>
+      android:order="20"/>
     <EditTextPreference
       android:key="@string/pref_traffic_http_url"
       android:title="@string/traffic_http_url"
       app:singleLineTitle="false"
-      android:order="20"/>
+      android:order="21"/>
   </androidx.preference.PreferenceCategory>
 
   <androidx.preference.PreferenceCategory
@@ -176,23 +189,5 @@
       app:singleLineTitle="false"
       android:defaultValue="true"
       android:order="2"/>
-    <SwitchPreferenceCompat
-      android:key="@string/pref_display_kayak"
-      android:title="@string/pref_display_kayak_title"
-      app:singleLineTitle="false"
-      android:summary="@string/pref_display_kayak_text"
-      android:defaultValue="true"
-      android:order="3"/>
-  </androidx.preference.PreferenceCategory>
-  <androidx.preference.PreferenceCategory
-    android:key="@string/pref_information"
-    android:title="@string/prefs_group_information"
-    android:order="7">
-    <Preference
-      android:key="@string/pref_help"
-      android:title="@string/help"
-      app:singleLineTitle="false"
-      android:order="1">
-    </Preference>
   </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>

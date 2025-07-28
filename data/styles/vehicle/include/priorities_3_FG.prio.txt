@@ -26,6 +26,7 @@ waterway-weir                                       # line z15-
 
 barrier-city_wall                                   # line z15-
 barrier-fence                                       # line z17-
+barrier-guard_rail                                  # line z17-
 barrier-hedge                                       # line z18-
 barrier-wall                                        # line z17-
 railway-monorail                                    # line z14-
@@ -330,7 +331,6 @@ railway-subway-bridge::bridgeblack                  # line::bridgeblack z16- (al
 === 100
 
 building:part                                       # area z16-
-landuse-garages                                     # area z15-
 === 90
 
 barrier-retaining_wall                              # line z17-

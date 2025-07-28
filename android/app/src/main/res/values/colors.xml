@@ -8,17 +8,17 @@
   <color name="text_light_subtitle">@color/white_secondary</color>
   <color name="text_light_hint">@color/white_lightest</color>
 
-  <color name="base_accent">#FF249CF2</color>
-  <color name="base_accent_night">#FF4BB9E6</color>
-  <color name="base_accent_pressed">#FF1C85D6</color>
-  <color name="base_accent_pressed_night">#FF3C9BBE</color>
-  <color name="base_accent_transparent">#1E249CF2</color>
+  <color name="base_accent">#FF37653F</color>
+  <color name="base_accent_night">#FF7CBC7B</color>
+  <color name="base_accent_pressed">#FF588157</color>
+  <color name="base_accent_pressed_night">#FF588157</color>
+  <color name="base_accent_transparent">#1EF9B42D</color>
 
-  <color name="base_red">#FFF54137</color>
   <color name="dark_red">#F51E30</color>
-  <color name="base_yellow">#FFFFC30A</color>
+  <color name="base_red">#DE241B</color>
+  <color name="base_yellow">#E6A100</color>
   <color name="base_green">#FF558B2F</color>
-  <color name="light_green">#2D8953</color>
+  <color name="light_green">#7CBC7B</color> <!-- secondary light -->
   <color name="driving_options_bg_black">#25282B</color>
 
   <color name="black_primary">#DE000000</color>   <!-- 87% black -->
@@ -30,6 +30,7 @@
   <color name="black_16">#29000000</color> <!-- 16% black -->
   <color name="black_20">#33000000</color> <!-- 20% black -->
   <color name="black_24">#3D000000</color> <!-- 24% black -->
+  <color name="black_30">#4D000000</color>  <!-- 30% black -->
   <color name="black_38">#61000000</color>  <!-- 38% black -->
   <color name="black_40">#66000000</color>  <!-- 40% black -->
   <color name="black_50">#80000000</color> <!-- 50% black -->
@@ -61,20 +62,18 @@
 
   <color name="divider">#1E000000</color>
   <color name="divider_night">#1EFFFFFF</color>
-  
-  <color name="logo">#006C35</color>
 
   <!-- Backgrounds -->
   <color name="bg_window">#FFEEEEEE</color>
   <color name="bg_window_night">#FF32363A</color>
-  <color name="bg_primary">#006C35</color>
-  <color name="bg_primary_night">#1E2226</color>
+  <color name="bg_primary">#588157</color> <!-- deep olive green - primary -->
+  <color name="bg_primary_night">#37653F</color> <!-- secondary dark -->
   <color name="bg_cards">@android:color/white</color>
   <color name="bg_cards_night">#FF3C4044</color>
   <color name="bg_panel">@color/bg_window</color>
   <color name="bg_panel_night">@color/bg_window_night</color>
-  <color name="bg_primary_dark">#197841</color>
-  <color name="bg_primary_dark_night">#14181C</color>
+  <color name="bg_primary_dark">#37653F</color> <!-- secondary dark -->
+  <color name="bg_primary_dark_night">#FF588157</color>
 
   <color name="bg_dialog_translucent">#BB000000</color>
   <color name="bg_text_translucent">#99FFFFFF</color>
@@ -100,8 +99,8 @@
 
   <color name="button_accent_normal">@color/base_accent</color>
   <color name="button_accent_normal_night">@color/base_accent_night</color>
-  <color name="button_accent_pressed">#FF1C85D6</color>
-  <color name="button_accent_pressed_night">#FF3C9BBE</color>
+  <color name="button_accent_pressed">@color/base_accent_pressed</color>
+  <color name="button_accent_pressed_night">@color/base_accent_pressed_night</color>
   <color name="button_accent_disabled">@color/black_12</color>
   <color name="button_accent_disabled_night">#FF505050</color>
   <color name="button_accent_text">#FFFFFFFF</color>
@@ -126,8 +125,8 @@
   <!-- LanesView -->
   <color name="nav_lane_arrow_active_light">@color/white_primary</color>
   <color name="nav_lane_arrow_active_night">@color/black_primary</color>
-  <color name="nav_lane_arrow_inactive_light">@color/black_20</color>
-  <color name="nav_lane_arrow_inactive_night">@color/black_20</color>
+  <color name="nav_lane_arrow_inactive_light">@color/black_30</color>
+  <color name="nav_lane_arrow_inactive_night">@color/black_30</color>
 
   <!-- Editor -->
   <color name="bg_editor_light">#FFF2F6F6</color>
@@ -139,6 +138,8 @@
   <color name="elevation_profile_dot_enabled">#FF9600</color>
   <color name="elevation_profile">#1E96F0</color>
   <color name="elevation_profile_dark">#4BB9E6</color>
+
+  <color name="active_track_recording">#0057ff</color>
 
   <color name="material_calendar_surface_dark">#929292</color>
   <color name="notification_warning">#FFC22219</color>

@@ -9,8 +9,8 @@
 "type.aerialway.mixed_lift" = "Mixed Lift";
 "type.aerialway.station" = "Aerialway Station";
 "type.aeroway" = "Airspace Infrastructure";
-"type.aeroway.aerodrome" = "Airport";
-"type.aeroway.aerodrome.international" = "International Airport";
+"type.aeroway.aerodrome" = "Lidosta";
+"type.aeroway.aerodrome.international" = "Starptautiskā lidosta";
 "type.aeroway.apron" = "Apron";
 "type.aeroway.gate" = "Gate";
 "type.aeroway.helipad" = "Helipad";
@@ -30,7 +30,7 @@
 "type.amenity.biergarten" = "Alus dārzs";
 "type.amenity.brothel" = "Bordelis";
 "type.amenity.bureau_de_change" = "Valūtas maiņa";
-"type.amenity.bus_station" = "Autobusu stacija";
+"type.amenity.bus_station" = "Autoosta";
 "type.amenity.cafe" = "Kafejnīca";
 "type.amenity.car_rental" = "Auto īre";
 "type.amenity.motorcycle_rental" = "Motociklu noma";
@@ -395,11 +395,11 @@
 "type.highway.busway" = "Dedicated Bus Road";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.busway.bridge" = "Bridge";
+"type.highway.busway.bridge" = "Tilts";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.busway.tunnel" = "Tunnel";
-"type.highway.bus_stop" = "Bus Stop";
+"type.highway.busway.tunnel" = "Tunelis";
+"type.highway.bus_stop" = "Pietura";
 "type.highway.construction" = "Road Under Construction";
 "type.highway.cycleway" = "Cycle Path";
 
@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Graveyard";
-"type.landuse.churchyard" = "Churchyard";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Commercial Area";
 "type.landuse.construction" = "Construction Area";
 "type.landuse.education" = "Educational Facility";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Water Well";
 "type.man_made.windmill" = "Windmill";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Bunker";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Hydroelectric Power Plant";
 "type.power.plant.solar" = "Solar Power Plant";
 "type.power.plant.wind" = "Wind Power Plant";
-"type.power.station" = "Power Station";
 "type.power.substation" = "Substation";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sports hall";
+"type.leisure.firepit" = "Firepit";
+"type.sport.diving" = "High Diving";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.highway.ladder" = "Ladder";
+"type.natural.wetland.swamp" = "Swamp";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

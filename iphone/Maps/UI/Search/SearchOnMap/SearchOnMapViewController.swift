@@ -18,7 +18,6 @@ protocol ModallyPresentedViewController: AnyObject {
 final class SearchOnMapViewController: UIViewController {
   typealias ViewModel = SearchOnMap.ViewModel
   typealias Content = SearchOnMap.ViewModel.Content
-  typealias SearchText = SearchOnMap.SearchText
 
   fileprivate enum Constants {
     static let estimatedRowHeight: CGFloat = 80
@@ -168,8 +167,8 @@ final class SearchOnMapViewController: UIViewController {
     }
     view.addSubview(availableAreaView)
     availableAreaView.addSubview(contentView)
-    contentView.addSubview(headerView)
     contentView.addSubview(searchResultsView)
+    contentView.addSubview(headerView)
 
     contentView.translatesAutoresizingMaskIntoConstraints = false
     headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -310,6 +309,7 @@ final class SearchOnMapViewController: UIViewController {
     case .searching:
       break
     }
+    headerView.setSeparatorHidden(content == .historyAndCategory)
     showView(viewToShow(for: content))
   }
 
@@ -417,7 +417,7 @@ extension SearchOnMapViewController: UITableViewDataSource {
 extension SearchOnMapViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let result = searchResults[indexPath.row]
-    interactor?.handle(.didSelectResult(result, withSearchText: headerView.searchText))
+    interactor?.handle(.didSelectResult(result, withQuery: headerView.searchQuery))
     tableView.deselectRow(at: indexPath, animated: true)
   }
 
@@ -437,12 +437,12 @@ extension SearchOnMapViewController: SearchOnMapHeaderViewDelegate {
       interactor?.handle(.clearButtonDidTap)
       return
     }
-    interactor?.handle(.didType(SearchText(searchText, locale: searchBar.textInputMode?.primaryLanguage)))
+    interactor?.handle(.didType(SearchQuery(searchText, locale: searchBar.textInputMode?.primaryLanguage, source: .typedText)))
   }
 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-    interactor?.handle(.searchButtonDidTap(SearchText(searchText, locale: searchBar.textInputMode?.primaryLanguage)))
+    interactor?.handle(.searchButtonDidTap(SearchQuery(searchText, locale: searchBar.textInputMode?.primaryLanguage, source: .typedText)))
   }
 
   func cancelButtonDidTap() {
@@ -456,8 +456,8 @@ extension SearchOnMapViewController: SearchOnMapHeaderViewDelegate {
 
 // MARK: - SearchTabViewControllerDelegate
 extension SearchOnMapViewController: SearchTabViewControllerDelegate {
-  func searchTabController(_ viewController: SearchTabViewController, didSearch text: String, withCategory: Bool) {
-    interactor?.handle(.didSelectText(SearchText(text, locale: nil), isCategory: withCategory))
+  func searchTabController(_ viewController: SearchTabViewController, didSearch query: SearchQuery) {
+    interactor?.handle(.didSelect(query))
   }
 }
 

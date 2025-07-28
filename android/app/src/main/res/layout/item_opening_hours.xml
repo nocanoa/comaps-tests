@@ -9,17 +9,16 @@
   android:minHeight="@dimen/editor_height_field"
   android:paddingEnd="@dimen/margin_quarter"
   android:paddingStart="@dimen/margin_half_plus"
-  android:tag="schedule"
   tools:ignore="RtlSymmetry">
 
-  <ImageView
+  <com.google.android.material.imageview.ShapeableImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/margin_base_plus"
     android:layout_marginTop="@dimen/margin_base"
     app:srcCompat="@drawable/ic_operating_hours"
     app:tint="?iconTint" />
-  
+
   <LinearLayout
     android:id="@+id/empty_opening_hours"
     android:layout_width="match_parent"
@@ -29,7 +28,7 @@
     android:orientation="vertical"
     tools:visibility="gone">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:enabled="false"
@@ -46,7 +45,7 @@
 
   </LinearLayout>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/opening_hours"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -57,7 +56,7 @@
     android:textAppearance="@style/MwmTextAppearance.PlacePage"
     tools:text="Mo-Fr 16:00-18.00\nSu 16:00-18.00"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/edit_opening_hours"
     style="@style/MwmWidget.Editor.FieldLayout"
     android:layout_below="@id/opening_hours"

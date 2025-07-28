@@ -12,20 +12,19 @@ public final class Constants
 
   public static class Url
   {
-    public static final String SHORT_SHARE_PREFIX = "om://";
-    public static final String HTTP_SHARE_PREFIX = "https://omaps.app/";
+    public static final String SHORT_SHARE_PREFIX = "cm://";
+    public static final String HTTP_SHARE_PREFIX = "https://comaps.at/";
 
     public static final String MAILTO_SCHEME = "mailto:";
     public static final String MAIL_SUBJECT = "?subject=";
     public static final String MAIL_BODY = "&body=";
 
-    public static final String FB_OM_COMMUNITY_HTTP = "https://www.facebook.com/OrganicMaps";
-    public static final String FB_OM_COMMUNITY_NATIVE = "fb://profile/102378968471811";
-    public static final String TWITTER = "https://twitter.com/OrganicMapsApp";
-    public static final String MATRIX = "https://matrix.to/#/%23organicmaps:matrix.org";
-    public static final String MASTODON = "https://fosstodon.org/@organicmaps";
+    public static final String MATRIX = "https://matrix.to/#/%23comaps:matrix.org";
+    public static final String MASTODON = "https://floss.social/@comaps";
+    public static final String FB_OM_COMMUNITY_HTTP = "https://www.facebook.com/profile.php?id=61575286559965";
+    public static final String FB_OM_COMMUNITY_NATIVE = "fb://profile/61575286559965";
 
-    public static final String GITHUB = "https://github.com/organicmaps/organicmaps";
+    public static final String CODE_REPO = "https://codeberg.org/comaps/comaps";
 
     public static final String COPYRIGHT = "file:///android_asset/copyright.html";
     public static final String FAQ = "file:///android_asset/faq.html";
@@ -55,14 +54,6 @@ public final class Constants
   {
     public static final String HUAWEI = "HUAWEI";
     public static final String XIAOMI = "XIAOMI";
-  }
-
-  public static class ProductsPopupCloseReason
-  {
-    public static final String CLOSE = "close";
-    public static final String REMIND_LATER = "remind_later";
-    public static final String ALREADY_DONATED = "already_donated";
-    public static final String SELECT_PRODUCT = "select_product";
   }
 
   private Constants() {}

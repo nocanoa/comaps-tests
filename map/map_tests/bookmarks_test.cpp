@@ -44,49 +44,49 @@ char const * kmlString =
       "<Style id=\"placemark-blue\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-blue.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-blue.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-brown\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-brown.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-brown.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-green\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-green.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-green.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-orange\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-orange.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-orange.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-pink\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-pink.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-pink.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-purple\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-purple.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-purple.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
       "<Style id=\"placemark-red\">"
         "<IconStyle>"
           "<Icon>"
-            "<href>https://omaps.app/placemarks/placemark-red.png</href>"
+            "<href>https://comaps.at/placemarks/placemark-red.png</href>"
           "</Icon>"
         "</IconStyle>"
       "</Style>"
@@ -1458,7 +1458,7 @@ UNIT_CLASS_TEST(Runner, ExportAll)
     TEST_EQUAL(files.size(), 5, ("5 files are expected in kmz"));
     auto index = "doc.kml";
     std::vector<std::string> expectedFiles = {"doc.kml", "files/new.kml", "files/Some random route.kml",
-                                               "files/OrganicMaps_1.kml", "files/OrganicMaps_2.kml"};
+                                               "files/CoMaps_1.kml", "files/CoMaps_2.kml"};
     for (auto const & file : files)
       TEST(std::find(expectedFiles.begin(), expectedFiles.end(), file.first) != expectedFiles.end(), ());
     auto indexPath = base::JoinPath(GetPlatform().TmpDir(), index);
@@ -1498,7 +1498,7 @@ UNIT_CLASS_TEST(Runner, ExportSingleUnicode)
     ZipFileReader::FileList files;
     ZipFileReader::FilesList(kmz, files);
     TEST_EQUAL(1, files.size(), ());
-    TEST_EQUAL("OrganicMaps.kml", files.at(0).first, ());
+    TEST_EQUAL("CoMaps.kml", files.at(0).first, ());
     auto tmpPath = base::JoinPath(GetPlatform().TmpDir(), "tmp.xml");
     ZipFileReader::UnzipFile(kmz, files.at(0).first, tmpPath);
     TEST(base::DeleteFileX(kmz), ());
@@ -1639,4 +1639,18 @@ UNIT_CLASS_TEST(Runner, Bookmarks_RecentlyDeleted)
   TEST(!Platform::IsFileExistsByFullPath(filePath), ());
   TEST(!Platform::IsFileExistsByFullPath(deletedFilePath), ());
 }
+
+UNIT_CLASS_TEST(Runner, Bookmarks_TestSaveRoute)
+{
+  BookmarkManager bmManager(BM_CALLBACKS);
+  bmManager.EnableTestMode(true);
+  auto const points = {m2::PointD(0.0, 0.0), m2::PointD(0.001, 0.001)};
+  auto const trackId = bmManager.SaveRoute(points, "London", "Paris");
+  auto const * track = bmManager.GetTrack(trackId);
+  TEST_EQUAL(track->GetName(), "London - Paris", ());
+  auto const line = track->GetData().m_geometry.m_lines[0];
+  std::vector const expectedLine = {{geometry::PointWithAltitude(m2::PointD(0.0, 0.0)), geometry::PointWithAltitude(m2::PointD(0.001, 0.001))}};
+  TEST_EQUAL(line, expectedLine, ());
+}
+
 } // namespace bookmarks_test

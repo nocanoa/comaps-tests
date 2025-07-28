@@ -46,13 +46,10 @@
 "about_headline" = "Hər kəs üçün ödənişsiz və sevgi ilə hazırlanmış xəritə";
 
 /* Text in About screen */
-"about_proposition_1" = "• Reklam yoxdur, izləmə yoxdur, məlumatların toplanması yoxdur";
+"about_proposition_1" = "Oflayn, sürətli və istifadəsi asan";
 
 /* Text in About screen */
-"about_proposition_2" = "• Batareyanın boşalması yoxdur, oflayn işləyir";
-
-/* Text in About screen */
-"about_proposition_3" = "• Sürətli, minimalist, icma tərəfindən hazırlanmışdır";
+"about_proposition_2" = "Məxfiliyə yönəlmiş və reklamsız";
 "close" = "Yaxın";
 "download" = "Yüklə";
 
@@ -154,7 +151,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Karvan qurğuları";
-"share_bookmarks_email_body" = "Salam!\n\nOrganic Maps əlfəcinlərim əlavə olunub. Zəhmət olmasa Organic Maps-da onları açın. Əgər onu quraşdırmamısınızsa, bu linkə daxil olub cihazınıza yükləyə bilərsiniz: https://omaps.app/get?kmz\n\nOrganic Maps ilə səyahətdən həzz alın!";
+"share_bookmarks_email_body" = "Salam!\n\nCoMaps əlfəcinlərim əlavə olunub. Zəhmət olmasa CoMaps-da onları açın. Əgər onu quraşdırmamısınızsa, bu linkə daxil olub cihazınıza yükləyə bilərsiniz: https://www.comaps.app/download/\n\nCoMaps ilə səyahətdən həzz alın!";
 
 /* message title of loading file */
 "load_kmz_title" = "Əlfəcinlər yüklənir";
@@ -172,13 +169,16 @@
 "unknown_current_position" = "Məkanınız hələ müəyyən edilməyib";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Salam, Organic Maps xəritəsində mənim pin kodumu yoxlayın!";
+"bookmark_share_email_subject" = "Salam, CoMaps xəritəsində mənim pin kodumu yoxlayın!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hey, Organic Maps'da mənim hal-hazırda olduğum ünvana baxın!";
+"my_position_share_email_subject" = "Hey, CoMaps'da mənim hal-hazırda olduğum ünvana baxın!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-poçt";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Buferə kopyalayın";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Buferə kopyalandı: %@";
@@ -190,7 +190,9 @@
 "done" = "Bitdi";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps versiyası: %@";
+"version" = "CoMaps versiyası: %@";
+"version %@ (%@)" = "Versiya %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versiya: %@ (%@)\nXəritə Data: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Marşrutlari";
@@ -200,6 +202,7 @@
 "share_my_location" = "Məkanımı Paylaşın";
 "prefs_group_route" = "Naviqasiya";
 "pref_zoom_title" = "Böyütmə düymələri";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Görünüş";
@@ -209,6 +212,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tünd";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Bağlı";
@@ -229,7 +235,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D binalar enerjiyə qənaət rejimində söndürülür";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Səsli təlimatlar";
+"pref_tts_title" = "Səsli təlimatlar";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Küçə adlarını elan edin";
@@ -252,8 +261,20 @@
 /* Text in menu */
 "website" = "Veb sayt";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Xəbərlər";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Elektron poçt";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +288,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax Şəkil";
+
 /* Text in menu */
 "rate_the_app" = "Proqramı qiymətləndirin";
 
@@ -278,12 +311,6 @@
 
 /* Button in the main menu */
 "donate" = "Bağışlamaq";
-
-/* Tex label above the Donate button */
-"donate_description" = "Ən yaxşı xəritələri birlikdə qurmaq üçün ianə edin!";
-"already_donated" = "Artıq ianə edildi";
-"remind_me_later" = "Daha sonra xatırlat";
-"support_organic_maps" = "Organic Maps-i dəstəkləmək";
 
 /* Button in the main Help dialog */
 "copyright" = "Müəllif hüququ";
@@ -298,10 +325,10 @@
 "volunteer" = "Könüllü olmaq";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "İzləyin və bizimlə əlaqə saxlayın:";
+"follow_us" = "İzləyin və bizimlə əlaqə saxlayın";
 
 /* Alert text */
-"email_error_body" = "E-poçt müştəri xidməti hələ quraşdırılmayıb. Zəhmət olmasa e-poçt müştəri xidmətini konfiqurasiya edin və ya %@ vasitəsilə bizimlə əlaqə saxlayın.";
+"email_error_body" = "E-poçt müştəri xidməti hələ quraşdırılmayıb. Zəhmət olmasa e-poçt müştəri xidmətini konfiqurasiya edin və ya %@ vasitəsilə bizimlə əlaqə saxlayın";
 
 /* Alert title */
 "email_error_title" = "E-poçt göndərmə xətası";
@@ -467,7 +494,7 @@
 "read_in_wikipedia" = "Vikipediya";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Vikianbar";
 "p2p_your_location" = "Məkanınız";
 "p2p_start" = "Başla";
 "p2p_from_here" = "Başlanğıc";
@@ -510,15 +537,27 @@
 "closes_in" = "%@ sonra bağlanır";
 "closed" = "Bağlı";
 "add_opening_hours" = "Açılış saatlarını əlavə edin";
-"no_osm_account" = "OpenStreetMap hesabınız yoxdur?";
-"register_at_openstreetmap" = "OpenStreetMap üçün qeydiyyatdan keçin";
-"password_8_chars_min" = "Parol (ən azı 8 simvol)";
-"invalid_username_or_password" = "Yanlış istifadəçi adı və ya şifrə.";
-"login" = "Daxil ol";
-"login_osm" = "OpenStreetMap-a daxil olun";
-"forgot_password" = "Parolu unutmusunuz?";
-"osm_account" = "OSM Hesabı";
-"logout" = "Çıxış";
+
+/* OpenStreetMap */
+"osm_mapdata" = "OpenStreetMap-dan xəritə məlumatları";
+"osm_mapdata_explanation %@" = "*%@* tarixinə icma tərəfindən yaradılmış xəritə məlumatları. [OpenStreetMap.org](https://openstreetmap.org) saytında xəritəni necə redaktə etmək və yeniləmək haqqında ətraflı məlumat əldə edin.";
+"osm_more_about" = "OpenStreetMap haqqında əlavə məlumat";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Az:Layihə_haqqında";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap profili";
+"osm_profile_promt" = "OpenStreetMap hesabı yaradın və ya xəritə redaktələrinizi dünyada dərc etmək üçün daxil olun.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) pulsuz və açıq xəritə yaratmaq üçün icma layihəsidir. O, CoMaps xəritə məlumatlarının əsas mənbəyidir və Vikipediyaya oxşar işləyir. Siz yerlər əlavə edə və ya redaktə edə bilərsiniz və onlar bütün dünyada milyonlarla istifadəçi üçün əlçatan olur. \nİcmaya qoşulun və hər kəs üçün daha yaxşı xəritə yaratmağa kömək edin!";
+"osm_profile_login" = "OpenStreetMap hesabına daxil olun";
+"osm_profile_reauthorize_promt" = "OpenStreetMap hesabının bu proqramla əlaqəsi kəsildi";
+"osm_profile_reauthorize" = "OpenStreetMap ilə yenidən əlaqə qurun";
+"osm_profile_remove_promt" = "Hesabınızı yenidən qoşa bilmirsinizsə və ya istəmirsinizsə, onu bu proqramdan silə bilərsiniz";
+"osm_profile_remove" = "OpenStreetMap hesabını bu proqramdan silin";
+"osm_profile_register_promt" = "OpenStreetMap hesabınız yoxdur?";
+"osm_profile_register" = "OpenStreetMap üçün qeydiyyatdan keçin";
+"osm_profile_verfied_changes" = "Təsdiqlənmiş Dəyişikliklər";
+"osm_profile_logout" = "OpenStreetMap hesabından çıxın";
+"osm_profile_delete" = "OpenStreetMap hesabını silin";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Son yükləmə";
@@ -567,13 +606,9 @@
 "dialog_incorrect_feature_position" = "Ünvanı dəyişdirin";
 "message_invalid_feature_position" = "Burada obyekti yerləşdirmək mümkün deyil";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "%@ tarixinə icma tərəfindən yaradılmış OpenStreetMap datası. OpenStreetMap.org saytında xəritəni necə redaktə etmək və yeniləmək haqqında ətraflı məlumat əldə edin";
-"login_to_make_edits_visible" = "OpenStreetMap hesabı yaradın və ya xəritə redaktələrinizi dünyada dərc etmək üçün daxil olun.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Endirmək üçün daha çox yerə ehtiyacınız var. Zəhmət olmasa önəmli olmayan məlumatları silin.";
-"editor_sharing_title" = "Organic Maps xəritələrini təkmilləşdirdim";
+"editor_sharing_title" = "CoMaps xəritələrini təkmilləşdirdim";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d/%2$d";
@@ -593,14 +628,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "OpenStreetMap könüllüləri üçün qeyd (isteğe bağlı)";
 "editor_detailed_description_hint" = "Ətraflı şərh";
-"editor_detailed_description" = "Təklif etdiyiniz dəyişikliklər OpenStreetMap icmasına yerləşdiriləcək. Zəhmət olmasa Organic Maps'da redaktə edilə bilməyən əlavə detalları izah edin.";
+"editor_detailed_description" = "Təklif etdiyiniz dəyişikliklər OpenStreetMap icmasına yerləşdiriləcək. Zəhmət olmasa CoMaps'da redaktə edilə bilməyən əlavə detalları izah edin.";
 "editor_more_about_osm" = "OpenStreetMap haqqında əlavə məlumat";
 "editor_operator" = "Operator";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operator: %@";
 "editor_category_unsuitable_title" = "Uyğun kateqoriya tapa bilmirsiniz?";
-"editor_category_unsuitable_text" = "Üzvi Xəritələr yalnız sadə nöqtə kateqoriyaları əlavə etməyə imkan verir, bu o deməkdir ki, şəhərlər, yollar, göllər, bina konturları və s. yoxdur. Lütfən, belə kateqoriyaları birbaşa <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> saytına əlavə edin. Ətraflı addım-addım təlimatlar üçün <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">bələdçimizi</a> yoxlayın.";
+"editor_category_unsuitable_text" = "CoMaps yalnız sadə nöqtə kateqoriyaları əlavə etməyə imkan verir, bu o deməkdir ki, şəhərlər, yollar, göllər, bina konturları və s. yoxdur. Lütfən, belə kateqoriyaları birbaşa <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> saytına əlavə edin. Ətraflı addım-addım təlimatlar üçün <a href=\"https://www.comaps.app/support/advanced-map-editing/\">bələdçimizi</a> yoxlayın.";
 "downloader_no_downloaded_maps_title" = "Siz heç bir xəritə endirməmisiniz";
 "downloader_no_downloaded_maps_message" = "Ünvanları tapmaq və oflayn naviqasiya etmək üçün xəritələri endirin.";
 "current_location_unknown_error_title" = "Cari yer məlum deyil.";
@@ -615,7 +650,7 @@
 "location_services_disabled_on_device_2" = "2. Məxfilik seçin";
 "location_services_disabled_on_device_3" = "3. Məkan Xidmətləri seçin";
 "location_services_disabled_on_device_4" = "4. Məkan Xidmətlərini yandırın";
-"location_services_disabled_on_device_additional_message" = "Və ya Məkan olmadan Üzvi Xəritələrdən istifadə etməyə davam edin";
+"location_services_disabled_on_device_additional_message" = "Və ya Məkan olmadan CoMapsdən istifadə etməyə davam edin";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +672,6 @@
 "day" = "gün";
 "placepage_more_button" = "Digər";
 "book_button" = "Rezervasyon";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Şəkillər, rəylər, rezervasiya";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Bu link vasitəsilə edilən hər rezervasiya üçün alınan tövsiyə bonusu Organic Maps'in inkişafına sərf olunur.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Xizək sürmə haqqında təfərrüatlar";
 "placepage_call_button" = "Zəng";
 "placepage_edit_bookmark_button" = "Əlfəcini redaktə edin";
 "placepage_bookmark_name_hint" = "Əlfəcin Adı";
@@ -681,7 +707,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Yoxla";
-"recent_track_background_dialog_message" = "Organic Maps son səyahət etdiyiniz marşrutu qeyd etmək üçün arxa fonda geolokasiyadan istifadə edir.";
+"recent_track_background_dialog_message" = "CoMaps son səyahət etdiyiniz marşrutu qeyd etmək üçün arxa fonda geolokasiyadan istifadə edir.";
 "general_settings" = "Ümumi Parametrlər";
 
 /* For the first routing */
@@ -726,8 +752,11 @@
 "placepage_add_stop" = "Dayanacaq nöqtəsini əlavə edin";
 "start_from_my_position" = "Buradan başlayın";
 
+/* Title for button when a route was saved. */
+"saved" = "Saxlandı";
+
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Bütün xəritə redaktələrinizi avtomatik yükləmək üçün OpenStreetMap-a daxil olun.";
+"alert_reauth_message_ios" = "Bütün xəritə redaktələrinizi avtomatik yükləmək üçün OpenStreetMap-a daxil olun";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
 "alert_reauth_link_text_ios" = "burada";
@@ -787,7 +816,7 @@
 "power_managment_setting_never" = "Heç vaxt";
 "power_managment_setting_auto" = "Avtomatik";
 "power_managment_setting_manual_max" = "Maksimum enerji qənaəti";
-"enable_logging_warning_message" = "Yardım dialoq qutusunda “Problemi bildir” istifadə etməklə probleminizlə bağlı ətraflı diaqnostik jurnalları qeyd etmək və bizə göndərmək üçün bu seçimi müvəqqəti aktivləşdirin. Qeydlərə məkan məlumatı daxil ola bilər";
+"enable_logging_warning_message" = "Yardım dialoq qutusunda “Problemi bildir” istifadə etməklə probleminizlə bağlı ətraflı diaqnostik jurnalları qeyd etmək və bizə göndərmək üçün bu seçimi müvəqqəti aktivləşdirin. Qeydlərə məkan məlumatı daxil ola bilər.";
 "driving_options_title" = "Marşrutlaşdırma seçimləri";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -800,7 +829,7 @@
 "avoid_ferry" = "Bərə keçidlərindən çəkinin";
 "avoid_motorways" = "Magistral yoldan çəkinin";
 "unable_to_calc_alert_title" = "Marşrutu hesablamaq mümkün deyil";
-"unable_to_calc_alert_subtitle" = "Təəssüf ki, seçdiyiniz seçimlərə görə marşrut tapa bilmədik. Seçimləri dəyişdirin və yenidən cəhd edin";
+"unable_to_calc_alert_subtitle" = "Təəssüf ki, seçdiyiniz seçimlərə görə marşrut tapa bilmədik. Seçimləri dəyişdirin və yenidən cəhd edin.";
 "define_to_avoid_btn" = "Qarşısını almaq üçün yolları müəyyənləşdirin";
 "change_driving_options_btn" = "Sürmə seçimləri aktiv edildi";
 "toll_road" = "Ücrətli yol";
@@ -826,7 +855,7 @@
 "no_available" = "Yox";
 
 /* To indicate the capacity of car parkings, bicycle parkings, electric vehicle charging stations... */
-"capacity" = "Capacity: %@";
+"capacity" = "Tutumu: %@";
 
 /* To indicate the network of ATMs, bicycle rentals, electric vehicle charging stations... */
 "network" = "Şəbəkə: %@";
@@ -845,7 +874,7 @@
 "ok" = "Yaxşı";
 "speedcams_alert_title_carplay_1" = "Sürət kameraları";
 "speedcams_alert_title_carplay_2" = "Sürət xəbərdarlıqları";
-"download_map_carplay" = "Organic Maps tətbiqindən xəritələri cihazınıza endirin";
+"download_map_carplay" = "CoMaps tətbiqindən xəritələri cihazınıza endirin";
 "carplay_roundabout_exit" = "%@ çıxın";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,53 +953,20 @@
 /* edit track screen title */
 "track_title" = "Yol qeydi";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsTR # Probably better than Ru";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/tr/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Tr:About";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/tr/";
 
 /* App Tip #00 */
 "app_tip_00" = "İcma tərəfindən yaradılmış xəritələrimizdən istifadə etdiyiniz üçün təşəkkür edirik!";
 
-/* App tip #01 */
-"app_tip_01" = "With your donations and support, we can create the best maps in the World!";
-
-/* App tip #02 */
-"app_tip_02" = "Do you like our app? Please donate to support the development! Don't like it yet? Please let us know why, and we will fix it!";
-
-/* App tip #03 */
-"app_tip_03" = "If you know a software developer, you can ask him or her to implement a feature that you need.";
-
 /* App tip #04 */
 "app_tip_04" = "Nəyisə seçmək üçün xəritədə istənilən yerə toxunun. Gizlətmək və interfeysi geri göstərmək üçün uzun müddət toxunun.";
 
-/* App tip #05 */
-"app_tip_05" = "Did you know that your current location on the map can be selected?";
-
-/* App tip #06 */
-"app_tip_06" = "You can help to translate our app into your language.";
-
-/* App tip #07 */
-"app_tip_07" = "Our app is developed by a few enthusiasts and the community.";
-
-/* App tip #08 */
-"app_tip_08" = "You can easily fix and improve the map data.";
-
-/* App tip #09 */
-"app_tip_09" = "Our main goal is to build fast, privacy-focused, easy-to-use maps that you will love.";
-
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "İndi telefon ekranında Organic Maps istifadə edirsiniz";
+"car_used_on_the_phone_screen" = "İndi telefon ekranında CoMaps istifadə edirsiniz";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Hazırda avtomobil ekranında Organic Maps istifadə edirsiniz";
+"car_used_on_the_car_screen" = "Hazırda avtomobil ekranında CoMaps istifadə edirsiniz";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Telefonda davam edin";
@@ -995,7 +991,10 @@
 "website_menu" = "Menyu keçidi";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Tərtibatçılara səhv hesabatı göndərmək istərdinizmi?\nÜzvi Xəritələr heç bir səhv məlumatını avtomatik toplamadığından istifadəçilərimizə etibar edirik. Üzvi Xəritələri dəstəklədiyiniz üçün əvvəlcədən təşəkkür edirik!";
+"bugreport_alert_message" = "Tərtibatçılara səhv hesabatı göndərmək istərdinizmi?\nCoMaps heç bir səhv məlumatını avtomatik toplamadığından istifadəçilərimizə etibar edirik. CoMaps dəstəklədiyiniz üçün əvvəlcədən təşəkkür edirik!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "iCloud Sinxronizasiyasını aktivləşdirin";
@@ -1069,3 +1068,15 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Marşrut boşdur - saxlamaq üçün heç nə yoxdur";
 "edit_track" = "Marşrutu redaktə edin";
+"osm_profile_view_edit_history" = "Redaktə tarixçəsinə baxın";
+"osm_profile_view_notes" = "Qeydlərə baxın";
+"app_tip_09" = "Our main goal is to build fast, privacy-focused, easy-to-use maps that you will love.";
+"app_tip_05" = "Did you know that your current location on the map can be selected?";
+"app_tip_03" = "If you know a software developer, you can ask him or her to implement a feature that you need.";
+"about_proposition_3" = "Transparent and not for profit";
+"app_tip_08" = "You can easily fix and improve the map data.";
+"app_tip_07" = "Our app is developed by a few enthusiasts and the community.";
+"app_tip_06" = "You can help to translate our app into your language.";
+"app_tip_02" = "Do you like our app? Please donate to support the development! Don't like it yet? Please let us know why, and we will fix it!";
+"app_tip_01" = "With your donations and support, we can create the best maps in the World!";
+"pref_mapappearance_title" = "Map Appearance";

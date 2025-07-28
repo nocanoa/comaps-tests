@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Хришћанско гробље";
-"type.landuse.churchyard" = "Двориште цркве";
+"type.landuse.religious" = "Верско земљиште";
 "type.landuse.commercial" = "Кмерцијална област";
 "type.landuse.construction" = "Градилиште";
 "type.landuse.education" = "Образовна установа";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Бунар";
 "type.man_made.windmill" = "Ветрењача";
 "type.man_made.works" = "Фабрика";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Војска";
 "type.military.bunker" = "Бункер";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Хидроелектрана";
 "type.power.plant.solar" = "Соларна електрана";
 "type.power.plant.wind" = "Ветропарк";
-"type.power.station" = "Електрична станица";
 "type.power.substation" = "Подстаница";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -973,7 +972,7 @@
 "type.railway.station.monorail" = "Железничка станица";
 "type.railway.station.subway" = "Метро станица";
 "type.railway.station.subway.adana" = "Метро станица";
-"type.railway.station.subway.algiers" = "Метро станица";
+"type.railway.station.subway.algiers" = "Метро станица у Алжиру";
 "type.railway.station.subway.almaty" = "Метро станица";
 "type.railway.station.subway.amsterdam" = "Метро станица";
 "type.railway.station.subway.ankara" = "Метро станица";
@@ -1026,7 +1025,7 @@
 "type.railway.station.subway.lille" = "Метро станица";
 "type.railway.station.subway.lima" = "Метро станица";
 "type.railway.station.subway.lisboa" = "Метро станица";
-"type.railway.station.subway.london" = "Метро станица";
+"type.railway.station.subway.london" = "Подземна станица";
 "type.railway.station.subway.lyon" = "Метро станица";
 "type.railway.station.subway.madrid" = "Метро станица";
 "type.railway.station.subway.malaga" = "Метро станица";
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Спортска хала";
+"type.amenity.love_hotel" = "Ljubavni hotel";
+"type.leisure.firepit" = "Ognjište";
+"type.highway.ladder" = "Merdevine";
+"type.landuse.plant_nursery" = "Расадник";
+"type.sport.diving" = "Слободни скокови";
+"type.amenity.studio" = "Студио";
+"type.barrier.guard_rail" = "Заштитна ограда";
+"type.man_made.crane" = "Кран";
+"type.natural.wetland.mangrove" = "Мангров";
+"type.natural.wetland.fen" = "Тресетна мочвара";
+"type.natural.wetland.reedbed" = "Плавни";
+"type.natural.wetland.tidalflat" = "Блатњави спруд";
+"type.natural.wetland.swamp" = "Мочварна шума";
+"type.natural.wetland.saltmarsh.tidal" = "Слана мочвара у зони плиме";
+"type.natural.wetland.saltmarsh" = "Приморска слана мочвара";
+"type.railway.station.subway.qingdao" = "Метро станица";

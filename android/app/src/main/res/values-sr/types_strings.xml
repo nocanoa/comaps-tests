@@ -593,13 +593,11 @@
     <string name="type.landuse.cemetery">Гробље</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">Хришћанско гробље</string>
-    <string name="type.landuse.churchyard">Двориште цркве</string>
     <string name="type.landuse.commercial">Кмерцијална област</string>
     <string name="type.landuse.construction">Градилиште</string>
     <string name="type.landuse.education">Образовна установа</string>
     <string name="type.landuse.farmland">Пољопривредно земљиште</string>
     <string name="type.landuse.farmyard">Пољопривредно земљиште</string>
-    <string name="type.landuse.field">Поље</string>
     <string name="type.landuse.flowerbed">Цветно острво</string>
     <string name="type.landuse.forest">Шума</string>
     <string name="type.landuse.forest.coniferous">Четинарска шума</string>
@@ -794,7 +792,6 @@
     <string name="type.power.plant.hydro">Хидроелектрана</string>
     <string name="type.power.plant.solar">Соларна електрана</string>
     <string name="type.power.plant.wind">Ветропарк</string>
-    <string name="type.power.station">Електрична станица</string>
     <string name="type.power.substation">Подстаница</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Далековод</string>
@@ -859,7 +856,7 @@
     <string name="type.railway.station.monorail">Железничка станица</string>
     <string name="type.railway.station.subway">Метро станица</string>
     <string name="type.railway.station.subway.adana">Метро станица</string>
-    <string name="type.railway.station.subway.algiers">Метро станица</string>
+    <string name="type.railway.station.subway.algiers">Метро станица у Алжиру</string>
     <string name="type.railway.station.subway.almaty">Метро станица</string>
     <string name="type.railway.station.subway.amsterdam">Метро станица</string>
     <string name="type.railway.station.subway.ankara">Метро станица</string>
@@ -912,7 +909,7 @@
     <string name="type.railway.station.subway.lille">Метро станица</string>
     <string name="type.railway.station.subway.lima">Метро станица</string>
     <string name="type.railway.station.subway.lisboa">Метро станица</string>
-    <string name="type.railway.station.subway.london">Метро станица</string>
+    <string name="type.railway.station.subway.london">Подземна станица</string>
     <string name="type.railway.station.subway.lyon">Метро станица</string>
     <string name="type.railway.station.subway.madrid">Метро станица</string>
     <string name="type.railway.station.subway.malaga">Метро станица</string>
@@ -1360,7 +1357,7 @@
     <string name="type.hwtag.private">hwtag-private</string>
     <string name="type.hwtag.toll">hwtag-toll</string>
     <string name="type.hwtag.yesbicycle">hwtag-yesbicycle</string>
-    <string name="type.mapswithme">mapswithme</string>
+    <string name="type.mapswithme">MapsWithMe</string>
     <string name="type.place.neighbourhood">Насеље</string>
     <string name="type.amenity.motorcycle_rental">Изнајмљивање мотоцикала</string>
     <string name="type.hwtag">hwtag</string>
@@ -1394,4 +1391,21 @@
     <string name="type.shop.hearing_aids">Продавница слушног апарата</string>
     <string name="type.railway.funicular.tunnel">Тунел успињаче</string>
     <string name="type.railway.narrow_gauge.tunnel">Тунел уског колосека</string>
+    <string name="type.sport.diving">Слободни скокови</string>
+    <string name="type.amenity.love_hotel">Ljubavni hotel</string>
+    <string name="type.leisure.firepit">Ognjište</string>
+    <string name="type.landuse.plant_nursery">Расадник</string>
+    <string name="type.barrier.guard_rail">Заштитна ограда</string>
+    <string name="type.amenity.studio">Студио</string>
+    <string name="type.highway.ladder">Merdevine</string>
+    <string name="type.man_made.crane">Кран</string>
+    <string name="type.railway.station.subway.qingdao">Метро станица</string>
+    <string name="type.landuse.religious">Верско земљиште</string>
+    <string name="type.natural.wetland.fen">Тресетна мочвара</string>
+    <string name="type.natural.wetland.reedbed">Плавни</string>
+    <string name="type.natural.wetland.swamp">Мочварна шума</string>
+    <string name="type.natural.wetland.mangrove">Мангров</string>
+    <string name="type.natural.wetland.tidalflat">Блатњави спруд</string>
+    <string name="type.natural.wetland.saltmarsh.tidal">Слана мочвара у зони плиме</string>
+    <string name="type.natural.wetland.saltmarsh">Приморска слана мочвара</string>
 </resources>

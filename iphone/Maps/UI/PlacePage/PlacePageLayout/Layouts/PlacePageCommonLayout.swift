@@ -57,13 +57,6 @@ class PlacePageCommonLayout: NSObject, IPlacePageLayout {
     return vc
   } ()
 
-  private func productsViewController() -> ProductsViewController? {
-    let productsManager = FrameworkHelper.self
-    guard let configuration = productsManager.getProductsConfiguration() else { return nil }
-    let viewModel = ProductsViewModel(manager: productsManager, configuration: configuration)
-    return ProductsViewController(viewModel: viewModel)
-  }
-
   lazy var buttonsViewController: PlacePageButtonsViewController = {
     let vc = storyboard.instantiateViewController(ofType: PlacePageButtonsViewController.self)
     vc.buttonsData = placePageData.buttonsData!
@@ -93,26 +86,20 @@ class PlacePageCommonLayout: NSObject, IPlacePageLayout {
   private func configureViewControllers() -> [UIViewController] {
     var viewControllers = [UIViewController]()
 
-    viewControllers.append(wikiDescriptionViewController)
-    if let wikiDescriptionHtml = placePageData.wikiDescriptionHtml {
-      wikiDescriptionViewController.descriptionHtml = wikiDescriptionHtml
-      if placePageData.bookmarkData?.bookmarkDescription == nil {
-        wikiDescriptionViewController.view.isHidden = false
-      }
-    }
-
     viewControllers.append(editBookmarkViewController)
     if let bookmarkData = placePageData.bookmarkData {
       editBookmarkViewController.data = .bookmark(bookmarkData)
       editBookmarkViewController.view.isHidden = false
     }
 
-    if placePageData.infoData != nil {
-      viewControllers.append(infoViewController)
+    viewControllers.append(wikiDescriptionViewController)
+    if let wikiDescriptionHtml = placePageData.wikiDescriptionHtml {
+      wikiDescriptionViewController.descriptionHtml = wikiDescriptionHtml
+      wikiDescriptionViewController.view.isHidden = false
     }
 
-    if let productsViewController = productsViewController() {
-      viewControllers.append(productsViewController)
+    if placePageData.infoData != nil {
+      viewControllers.append(infoViewController)
     }
 
     if placePageData.buttonsData != nil {

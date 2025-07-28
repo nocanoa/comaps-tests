@@ -6,10 +6,12 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import android.app.ForegroundServiceStartNotAllowedException;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
 
 import java.util.List;
@@ -40,18 +42,24 @@ public class DownloaderService extends Service implements MapManager.StorageCall
     Logger.i(TAG, "Downloading: " + MapManager.nativeIsDownloading());
 
     var notification = mNotifier.buildProgressNotification();
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+    Logger.i(TAG, "Starting Downloader Foreground Service");
+    try
     {
-      try
+      int type = 0;
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        type = ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC;
+      ServiceCompat.startForeground(this, DownloaderNotifier.NOTIFICATION_ID, notification, type);
+    }
+    catch (Exception e)
+    {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+          e instanceof ForegroundServiceStartNotAllowedException)
       {
-        startForeground(DownloaderNotifier.NOTIFICATION_ID, notification);
-      } catch (ForegroundServiceStartNotAllowedException e)
-      {
-        Logger.e(TAG, "Oops! ForegroundService is not allowed", e);
+        // App not in a valid state to start foreground service (e.g started from bg)
+        Logger.e(TAG, "Not in a valid state to start foreground service", e);
       }
-    } else
-    {
-      startForeground(DownloaderNotifier.NOTIFICATION_ID, notification);
+      else
+        Logger.e(TAG, "Failed to promote the service to foreground", e);
     }
 
     return START_NOT_STICKY;

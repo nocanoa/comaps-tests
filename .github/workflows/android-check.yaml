@@ -3,36 +3,7 @@ on:
   workflow_dispatch: # Manual trigger
   push:
     branches:
-      - master
-  pull_request:
-    paths-ignore:
-      - .gitignore
-      - .github/**
-      - '!.github/workflows/android-check.yaml'  # Run check on self change
-      - '**/*_tests/**'
-      - CONTRIBUTORS
-      - LICENSE
-      - NOTICE
-      - README.md
-      - android/app/src/fdroid/**
-      - android/app/src/google/**
-      - iphone/**
-      - data/strings/**
-      - docs/**
-      - generator/**
-      - packaging/**
-      - platform/*apple*
-      - platform/*_ios*
-      - platform/*_linux*
-      - platform/*_mac*
-      - platform/*qt*
-      - platform/*_win*
-      - pyhelpers/**
-      - qt*/**
-      - skin_generator/**
-      - tools/**
-      - track_generator/**
-      - xcode/**
+      - main
 
 env:
   JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
@@ -51,9 +22,9 @@ jobs:
         shell: bash
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
 
-      - name: Configure repository
+      - name:  Init boost, generate textures
         shell: bash
-        run: ./configure.sh
+        run: ./configure.sh --skip-map-download
 
       - name: Lint
         shell: bash
@@ -61,14 +32,14 @@ jobs:
         run: ./gradlew -Pandroidauto=true lint
 
   android-check:
-    name: Build Android Debug
+    name: Build Android apps
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        flavor: [WebDebug, FdroidDebug]
+        flavor: [WebBeta, FdroidDebug]
         include:
-          - flavor: WebDebug
+          - flavor: WebBeta
             arch: arm64
           - flavor: FdroidDebug
             arch: arm32
@@ -82,7 +53,19 @@ jobs:
         shell: bash
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y ninja-build
+          sudo apt-get install -y ninja-build \
+          qt6-base-dev \
+          qt6-declarative-dev \
+          qt6-positioning-dev \
+          libqt6svg6-dev \
+          optipng \
+          libfreetype-dev \
+          libharfbuzz-dev \
+          libxrandr-dev \
+          libxinerama-dev \
+          libxcursor-dev \
+          libxi-dev \
+          zlib1g-dev
 
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -93,9 +76,9 @@ jobs:
         shell: bash
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
 
-      - name: Configure repository
+      - name:  Init boost, generate textures
         shell: bash
-        run: ./configure.sh
+        run: ./configure.sh --skip-map-download
 
       - name: Configure ccache
         uses: hendrikmuhs/ccache-action@v1.2
@@ -117,5 +100,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: android-${{ matrix.flavor }}
-          path: android/app/build/outputs/apk/**/OrganicMaps-*.apk
+          path: android/app/build/outputs/apk/**/CoMaps-*.apk
           if-no-files-found: error

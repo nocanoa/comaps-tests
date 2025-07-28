@@ -3,6 +3,7 @@ protocol BottomMenuInteractorProtocol: AnyObject {
   func addPlace()
   func downloadMaps()
   func donate()
+  func openHelp()
   func openSettings()
   func shareLocation(cell: BottomMenuItemCell)
   func toggleTrackRecording()
@@ -48,8 +49,8 @@ extension BottomMenuInteractor: BottomMenuInteractorProtocol {
 
   func donate() {
     close()
-    guard var url = Settings.donateUrl() else { return }
-    if url == "https://organicmaps.app/donate/" {
+    guard var url = SettingsBridge.donateUrl() else { return }
+    if url == "https://www.comaps.app/donate/" {
       url = L("translated_om_site_url") + "donate/"
     }
     viewController?.openUrl(url, externally: true)
@@ -60,18 +61,20 @@ extension BottomMenuInteractor: BottomMenuInteractorProtocol {
     delegate?.actionDownloadMaps(.downloaded)
   }
 
+  func openHelp() {
+    close()
+    mapViewController?.openAbout()
+  }
+
   func openSettings() {
     close()
     mapViewController?.openSettings()
   }
 
   func shareLocation(cell: BottomMenuItemCell) {
-    let lastLocation = LocationManager.lastLocation()
-    guard let coordinates = lastLocation?.coordinate else {
-      let alert = UIAlertController(title: L("unknown_current_position"), message: nil, preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: L("ok"), style: .default, handler: nil))
-      viewController?.present(alert, animated: true, completion: nil)
-      return;
+    guard let coordinates = LocationManager.lastLocation()?.coordinate else {
+      viewController?.present(UIAlertController.unknownCurrentPosition(), animated: true, completion: nil)
+      return
     }
     guard let viewController = viewController else { return }
     let vc = ActivityViewController.share(forMyPosition: coordinates)
@@ -79,8 +82,20 @@ extension BottomMenuInteractor: BottomMenuInteractorProtocol {
   }
 
   func toggleTrackRecording() {
-    trackRecorder.processAction(trackRecorder.recordingState == .active ? .stop : .start) { [weak self] in
-      self?.close()
+    close()
+    let mapViewController = MapViewController.shared()!
+    switch trackRecorder.recordingState {
+    case .active:
+      mapViewController.showTrackRecordingPlacePage()
+    case .inactive:
+      trackRecorder.start { result in
+        switch result {
+        case .success:
+          mapViewController.showTrackRecordingPlacePage()
+        case .failure:
+          break
+        }
+      }
     }
   }
 }

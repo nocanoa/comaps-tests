@@ -1,6 +1,5 @@
 #import "MWMEditorViewController.h"
 #import "MWMAlertViewController.h"
-#import "MWMAuthorizationCommon.h"
 #import "MWMButtonCell.h"
 #import "MWMCuisineEditorViewController.h"
 #import "MWMEditorAddAdditionalNameTableViewCell.h"
@@ -244,7 +243,7 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
       [self showNotesQueuedToast];
     break;
   case osm::Editor::SaveResult::SavedSuccessfully:
-    osm_auth_ios::AuthorizationSetNeedCheck(YES);
+    [Profile requestReauthorizationWithShouldReauthorize:YES];
     f.UpdatePlacePageInfoForCurrentSelection();
     [self.navigationController popToRootViewControllerAnimated:YES];
     break;
@@ -256,7 +255,7 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
 
 - (void)showNotesQueuedToast
 {
-  [[MWMToast toastWithText:L(@"editor_edits_sent_message")] show];
+  [Toast showWithText:L(@"editor_edits_sent_message")];
 }
 
 #pragma mark - Headers
@@ -669,7 +668,15 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
                          text:L(@"outdoor_seating")
                          value:feature::YesNoUnknownFromString(m_mapObject.GetMetadata(feature::Metadata::FMD_OUTDOOR_SEATING))];
     break;
-  } 
+  }
+  case MetadataID::FMD_CONTACT_FEDIVERSE:
+  {
+    [self configTextViewCell:cell
+                      cellID:cellID
+                        icon:@"ic_placepage_fediverse"
+                 placeholder:L(@"fediverse")];
+    break;
+  }
   case MetadataID::FMD_CONTACT_FACEBOOK:
   {
     [self configTextViewCell:cell
@@ -708,6 +715,14 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
                       cellID:cellID
                         icon:@"ic_placepage_line"
                  placeholder:L(@"line")];
+    break;
+  }
+  case MetadataID::FMD_CONTACT_BLUESKY:
+  {
+    [self configTextViewCell:cell
+                      cellID:cellID
+                        icon:@"ic_placepage_bluesky"
+                 placeholder:L(@"bluesky")];
     break;
   }
   case MWMEditorCellTypeNote:
@@ -885,13 +900,12 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
 {
   self.offscreenCells[(id<NSCopying>)cellClass(MWMEditorCellTypeNote)] = cell;
   self.note = text;
-  [UIView setAnimationsEnabled:NO];
-  [self.tableView refresh];
-  [UIView setAnimationsEnabled:YES];
-  NSIndexPath * ip = [self.tableView indexPathForCell:cell];
-  [self.tableView scrollToRowAtIndexPath:ip
-                        atScrollPosition:UITableViewScrollPositionBottom
-                                animated:YES];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [UIView setAnimationsEnabled:NO];
+    [self.tableView refresh];
+    [self.tableView layoutIfNeeded];
+    [UIView setAnimationsEnabled:YES];
+  });
 }
 
 - (void)cell:(MWMNoteCell *)cell didFinishEditingWithText:(NSString *)text { self.note = text; }

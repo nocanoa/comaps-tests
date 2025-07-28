@@ -43,16 +43,16 @@
 "country_status_download_failed" = "Stahování selhalo";
 
 /* Text in About screen */
-"about_headline" = "Zdarma pro všechny, vyrobené s láskou";
+"about_headline" = "Otevřený projekt vyvíjený komunitou";
 
 /* Text in About screen */
-"about_proposition_1" = "• Žádné reklamy, žádné sledování, žádný sběr dat";
+"about_proposition_1" = "Offline, rychlé a snadno použitelné";
 
 /* Text in About screen */
-"about_proposition_2" = "• Žádné vybíjení baterie, funguje offline";
+"about_proposition_2" = "Zaměřeno na soukromí a bez reklam";
 
 /* Text in About screen */
-"about_proposition_3" = "• Rychlé, minimalistické, vyvinuté komunitou";
+"about_proposition_3" = "Transparentní a neziskové";
 "close" = "Zavřít";
 "download" = "Stáhnout";
 
@@ -154,7 +154,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Pro obytné vozy";
-"share_bookmarks_email_body" = "Ahoj!\n \nV příloze najdeš mé záložky; otevři je v aplikaci Organic Maps. Pokud ji nemáš nainstalovanou, můžeš si ji stáhnout zde: https://omaps.app/get?kmz\n \nUžij si cestování s Organic Maps!";
+"share_bookmarks_email_body" = "Ahoj!\n \nV příloze najdeš mé záložky; otevři je v aplikaci CoMaps. Pokud ji nemáš nainstalovanou, můžeš si ji stáhnout zde: https://www.comaps.app/download/\n \nUžij si cestování s CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Nahrávání záložek";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "Vaše poloha zatím nebyla určena";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Koukni na mojí značku na mapě v Organic Maps!";
+"bookmark_share_email_subject" = "Koukni na mojí značku na mapě v CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Podívej se na mou aktuální polohu na mapě v Organic Maps!";
+"my_position_share_email_subject" = "Podívej se na mou aktuální polohu na mapě v CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-mail";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Zkopírovat do schránky";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Zkopírováno do schránky: %@";
@@ -190,7 +193,9 @@
 "done" = "Hotovo";
 
 /* Prints version number in About dialog */
-"version" = "Verze Organic Maps: %@";
+"version" = "Verze CoMaps: %@";
+"version %@ (%@)" = "Verze %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Verze: %@ (%@)\nMapová data: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Stopy";
@@ -200,6 +205,7 @@
 "share_my_location" = "Sdílet mé umístění";
 "prefs_group_route" = "Navigace";
 "pref_zoom_title" = "Tlačítka přiblížení/oddálení";
+"pref_left_button_type" = "Levé hlavní tlačítko";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Vzhled";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tmavý";
+
+/* Generic «Disabled» string */
+"disabled" = "Zakázáno";
 
 /* Generic «Off» string */
 "off" = "Vypnuto";
@@ -229,7 +238,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D budovy jsou vypnuty v úsporném režimu";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Hlasové instrukce";
+"pref_tts_title" = "Hlasové instrukce";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Zapnout hlasové pokyny";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Oznamovat názvy ulic";
@@ -252,8 +264,20 @@
 /* Text in menu */
 "website" = "Webové stránky";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Novinky";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-Mail";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +291,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Obrázek Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Ohodnotit aplikaci";
 
@@ -278,12 +314,6 @@
 
 /* Button in the main menu */
 "donate" = "Darovat";
-
-/* Tex label above the Donate button */
-"donate_description" = "Přispějte, abychom společně vytvořili ty nejlepší mapy!";
-"already_donated" = "Již darováno";
-"remind_me_later" = "Připomeň později";
-"support_organic_maps" = "Podpořit Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Autorská práva";
@@ -298,7 +328,7 @@
 "volunteer" = "Dobrovolnictví";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Sledujte nás a kontaktujte nás:";
+"follow_us" = "Spojte se s námi";
 
 /* Alert text */
 "email_error_body" = "Emailový klient nebyl ještě nakonfigurován. Nastavte ho, prosím, nebo použijte jiný způsob k našemu kontaktování na %@";
@@ -494,7 +524,7 @@
 "autodownload" = "Automaticky stahovat mapy";
 
 /* Place Page opening hours text */
-"closed_now" = "Nyní je zavřeno";
+"closed_now" = "Zavřeno";
 
 /* Place Page opening hours text */
 "daily" = "Denně";
@@ -510,15 +540,27 @@
 "closes_in" = "Zavírá za %@";
 "closed" = "Zavřeno";
 "add_opening_hours" = "Přidat otevírací dobu";
-"no_osm_account" = "Nemáte účet u OpenStreetMap?";
-"register_at_openstreetmap" = "Registrace";
-"password_8_chars_min" = "Heslo (minimálně 8 znaků)";
-"invalid_username_or_password" = "Neplatné uživatelské jméno nebo heslo.";
-"login" = "Přihlásit se";
-"login_osm" = "Přihlásit se do OpenStreetMap";
-"forgot_password" = "Zapomenuté heslo?";
-"osm_account" = "Účet OSM";
-"logout" = "Odhlášení";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Mapová data z OpenStreetMap";
+"osm_mapdata_explanation %@" = "Data map vytvořená komunitou ke dni *%@*. Další informace o tom, jak upravovat a aktualizovat mapu, najdete na stránkách [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Další informace o projektu OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Cs:Co_je_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Profil OpenStreetMap";
+"osm_profile_promt" = "Vytvořte si účet OpenStreetMap nebo se přihlaste a zveřejněte své úpravy mapy celému světu.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) je komunitní projekt, jehož cílem je vytvořit svobodnou a otevřenou mapu. Je hlavním zdrojem mapových dat v aplikaci CoMaps a funguje podobně jako Wikipedie. Můžete přidávat nebo upravovat místa a ta se pak stanou dostupná milionům uživatelů po celém světě. \nPřipojte se ke komunitě a pomozte vytvořit lepší mapu pro všechny!";
+"osm_profile_login" = "Přihlásit se k účtu OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Účet OpenStreetMap byl odpojen z této aplikace";
+"osm_profile_reauthorize" = "Znovu připojit pomocí OpenStreetMap";
+"osm_profile_remove_promt" = "Pokud nemůžete nebo nechcete znovu připojit svůj účet, můžete jej jednoduše odebrat z této aplikace";
+"osm_profile_remove" = "Odebrat účet OpenStreetMap";
+"osm_profile_register_promt" = "Nemáte účet u OpenStreetMap?";
+"osm_profile_register" = "Zaregistrujte si účet na OpenStreetMap";
+"osm_profile_verfied_changes" = "Oveřené změny";
+"osm_profile_logout" = "Odhlásit se z účtu OpenStreetMap";
+"osm_profile_delete" = "Odstranit účet OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Poslední nahrání";
@@ -557,7 +599,7 @@
 "editor_add_select_category_popular_subtitle" = "Populární";
 "editor_add_select_category_all_subtitle" = "Všechny kategorie";
 "editor_edit_place_title" = "Probíhají úpravy";
-"editor_add_place_title" = "Probíhá přidávání";
+"editor_add_place_title" = "Přidávání";
 "editor_edit_place_name_hint" = "Název místa";
 
 /* The second part of the editor_edit_place_name_hint to explain that name should be entered in a local language, see https://wiki.openstreetmap.org/wiki/Key:name */
@@ -567,13 +609,9 @@
 "dialog_incorrect_feature_position" = "Změnit umístění";
 "message_invalid_feature_position" = "Objekt zde nemůže být umístěn";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Data OpenStreetMap vytvořená komunitou ke dni %@. Další informace o tom, jak upravovat a aktualizovat mapu, najdete na stránkách OpenStreetMap.org";
-"login_to_make_edits_visible" = "Vytvořte si účet OpenStreetMap nebo se přihlaste a zveřejněte své úpravy mapy celému světu.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Ke stažení potřebujete více volného místa. Odstraňte prosím nepotřebná data.";
-"editor_sharing_title" = "Vylepšil jsem mapy Organic Maps";
+"editor_sharing_title" = "Vylepšil jsem mapy CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d z %2$d";
@@ -593,14 +631,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Poznámka pro dobrovolníky OpenStreetMap (nepovinné)";
 "editor_detailed_description_hint" = "Podrobný komentář";
-"editor_detailed_description" = "Vámi navržené změny odešleme do komunity OpenStreetMap. Popište podrobnosti, které nelze upravit v Organic Maps.";
+"editor_detailed_description" = "Vámi navržené změny odešleme do komunity OpenStreetMap. Popište podrobnosti, které nelze upravit v CoMaps.";
 "editor_more_about_osm" = "Další informace o projektu OpenStreetMap";
 "editor_operator" = "Provozovatel";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operátor: %@";
 "editor_category_unsuitable_title" = "Nemůžete najít vhodnou kategorii?";
-"editor_category_unsuitable_text" = "Organické mapy umožňují přidávat pouze jednoduché kategorie bodů, tedy žádná města, silnice, jezera, obrysy budov atd. Takové kategorie prosím přidávejte přímo na <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Podrobné pokyny krok za krokem najdete v našem <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">průvodci</a>.";
+"editor_category_unsuitable_text" = "CoMaps umožňují přidávat pouze jednoduché kategorie bodů, tedy žádná města, silnice, jezera, obrysy budov atd. Takové kategorie prosím přidávejte přímo na <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Podrobné pokyny krok za krokem najdete v našem <a href=\"https://www.comaps.app/support/advanced-map-editing/\">průvodci</a>.";
 "downloader_no_downloaded_maps_title" = "Nemáte stažené žádné mapy";
 "downloader_no_downloaded_maps_message" = "Stáhněte si mapy a hledejte cestu a její cíl, i když jste offline.";
 "current_location_unknown_error_title" = "Současná poloha nezjištěna.";
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2. Vyberte možnost Soukromí";
 "location_services_disabled_on_device_3" = "3. Vyberte možnost Služby určování polohy";
 "location_services_disabled_on_device_4" = "4. Zapnutí služeb určování polohy";
-"location_services_disabled_on_device_additional_message" = "Nebo pokračujte v používání aplikace Organic Maps bez polohy";
+"location_services_disabled_on_device_additional_message" = "Nebo pokračujte v používání aplikace CoMaps bez polohy";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +675,6 @@
 "day" = "d";
 "placepage_more_button" = "Více";
 "book_button" = "Rezervace";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Fotografie, recenze, rezervace";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Bonus za každou rezervaci provedenou prostřednictvím tohoto odkazu je určen na rozvoj služby Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Podrobnosti na Kayak";
 "placepage_call_button" = "Volat";
 "placepage_edit_bookmark_button" = "Upravit záložku";
 "placepage_bookmark_name_hint" = "Název záložky";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Odjezd";
-"recent_track_background_dialog_message" = "Organic Maps používají geopozici na pozadí, aby se zaznamenala vaše nedávno ujetá trasa.";
+"recent_track_background_dialog_message" = "CoMaps používají geopozici na pozadí, aby se zaznamenala vaše nedávno ujetá trasa.";
 "general_settings" = "Obecná nastavení";
 
 /* For the first routing */
@@ -725,6 +754,9 @@
 "planning_route_remove_title" = "Pro odebrání přetáhněte sem";
 "placepage_add_stop" = "Přidat zastávku";
 "start_from_my_position" = "Začít z";
+
+/* Title for button when a route was saved. */
+"saved" = "Uloženo";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Přihlaste se do OpenStreetMap, abyste mohli automaticky nahrávat všechny své úpravy mapy. Více informací";
@@ -845,7 +877,7 @@
 "ok" = "Ok";
 "speedcams_alert_title_carplay_1" = "Rych. kam.";
 "speedcams_alert_title_carplay_2" = "Rych. varování";
-"download_map_carplay" = "Stáhněte si prosím mapy do aplikace Organic Maps ve vašem zařízení";
+"download_map_carplay" = "Stáhněte si prosím mapy do aplikace CoMaps ve vašem zařízení";
 "carplay_roundabout_exit" = "%@ výjezd";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +956,8 @@
 /* edit track screen title */
 "track_title" = "Dráha";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/cs/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Cs:Co_je_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/cs/";
 
 /* App Tip #00 */
 "app_tip_00" = "Děkujeme, že používáte naše komunitní mapy!";
@@ -967,10 +990,10 @@
 "app_tip_09" = "Naším hlavním cílem je vytvářet rychlé, na soukromí zaměřené a snadno použitelné mapy, které si zamilujete.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Na obrazovce telefonu nyní používáte aplikaci Organic Maps";
+"car_used_on_the_phone_screen" = "Na obrazovce telefonu nyní používáte aplikaci CoMaps";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Na obrazovce auta nyní používáte aplikaci Organic Maps";
+"car_used_on_the_car_screen" = "Na obrazovce auta nyní používáte aplikaci CoMaps";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Pokračujte v telefonu";
@@ -995,7 +1018,10 @@
 "website_menu" = "Odkaz na menu";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Chcete poslat vývojářům hlášení o chybě?\nSpoléháme na naše uživatele, protože společnost Organic Maps neshromažďuje žádné informace o chybách automaticky. Předem vám děkujeme za podporu Organic Maps!";
+"bugreport_alert_message" = "Chcete poslat vývojářům hlášení o chybě?\nSpoléháme na naše uživatele, protože společnost CoMaps neshromažďuje žádné informace o chybách automaticky. Předem vám děkujeme za podporu CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "Synchronizace iCloud (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Povolení synchronizace s iCloudem";
@@ -1069,3 +1095,6 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Trasa je prázdná - není co ukládat";
 "edit_track" = "Upravit trasu";
+"osm_profile_view_notes" = "Zobrazit poznámky";
+"osm_profile_view_edit_history" = "Zobrazit historii úprav";
+"pref_mapappearance_title" = "Vzhled mapy";

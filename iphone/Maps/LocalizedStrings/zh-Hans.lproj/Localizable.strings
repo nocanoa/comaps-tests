@@ -43,16 +43,16 @@
 "country_status_download_failed" = "下载失败";
 
 /* Text in About screen */
-"about_headline" = "对每个人都免费，用爱制成";
+"about_headline" = "由社区推动的开放项目";
 
 /* Text in About screen */
-"about_proposition_1" = "• 没有广告，不会跟踪您，更不会收集您的数据";
+"about_proposition_1" = "离线、快速、易用";
 
 /* Text in About screen */
-"about_proposition_2" = "• 无需耗费太多电量，可离线工作";
+"about_proposition_2" = "注重隐私且无广告";
 
 /* Text in About screen */
-"about_proposition_3" = "• 快速且简约，由社区开发";
+"about_proposition_3" = "决策问责、财务透明、非营利性";
 "close" = "关闭";
 "download" = "下载";
 
@@ -154,10 +154,10 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "房车设施";
-"share_bookmarks_email_body" = "您好！\n\n附件是我的书签，请在 Organic Maps 中打开。如果您没有安装 Organic Maps，可以在这里下载: https://omaps.app/get?kmz\n\n祝您使用 Organic Maps 旅行愉快！";
+"share_bookmarks_email_body" = "您好！\n\n附件是我的书签，请在 CoMaps 中打开。如果您没有安装 CoMaps，可以在这里下载: https://www.comaps.app/download/\n\n祝您使用 CoMaps 旅行愉快！";
 
 /* message title of loading file */
-"load_kmz_title" = "正在载入书签…";
+"load_kmz_title" = "正在加载书签";
 
 /* Kmz file successful loading */
 "load_kmz_successful" = "书签载入成功！您可以在地图或书签管理页面中找到它们。";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "您的位置尚未确定";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "嘿，看看我在 Organic Maps 上标记的图钉吧！";
+"bookmark_share_email_subject" = "嘿，看看我在 CoMaps 上标记的图钉吧！";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "嗨，到 Organic Maps 查看我当前的位置！";
+"my_position_share_email_subject" = "嗨，到 CoMaps 查看我当前的位置！";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "电子邮件";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "复制到剪贴板";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "已复制到剪贴板：%@";
@@ -190,7 +193,9 @@
 "done" = "完成";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps 版本：%@";
+"version" = "CoMaps 版本：%@";
+"version %@ (%@)" = "%@ (%@) 版本";
+"version: %@ (%@)\nmap data: %@" = "版本: %@ (%@)\n地图数据: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "轨迹";
@@ -200,6 +205,7 @@
 "share_my_location" = "分享我的位置";
 "prefs_group_route" = "导航";
 "pref_zoom_title" = "缩放按钮";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "外观";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "深色";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "关闭";
@@ -229,7 +238,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D 建筑在省电模式下处于关闭状态";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "语音指导";
+"pref_tts_title" = "语音指导";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "播报街道名称";
@@ -252,20 +264,44 @@
 /* Text in menu */
 "website" = "网站";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "新闻";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "邮箱";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
 
 /* Text in menu */
-"twitter" = "X (推特)";
+"twitter" = "X（推特）";
 
 /* Text in menu */
 "instagram" = "Instagram";
 
 /* Text in the editor */
 "vk" = "VK";
+
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax 照片";
 
 /* Text in menu */
 "rate_the_app" = "为我们评分";
@@ -279,17 +315,11 @@
 /* Button in the main menu */
 "donate" = "捐助我们";
 
-/* Tex label above the Donate button */
-"donate_description" = "捐助，以共同打造最好的地图！";
-"already_donated" = "已捐赠";
-"remind_me_later" = "稍后提醒";
-"support_organic_maps" = "支持 Organic Maps";
-
 /* Button in the main Help dialog */
 "copyright" = "版权";
 
 /* Text in menu + Button in the main Help dialog */
-"report_a_bug" = "报告问题";
+"report_a_bug" = "报告错误";
 
 /* Button in the About screen */
 "report_incorrect_map_bug" = "报告或修复不正确的地图数据";
@@ -298,10 +328,10 @@
 "volunteer" = "志愿者";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "关注并联系我们：";
+"follow_us" = "关注并联系我们";
 
 /* Alert text */
-"email_error_body" = "电子邮件客户端未设置。请配置电子邮件客户端或通过 %@ 联系我们。";
+"email_error_body" = "尚未设置电子邮件客户端。请进行配置或通过 %@ 联系我们";
 
 /* Alert title */
 "email_error_title" = "电子邮件发送失败";
@@ -414,7 +444,7 @@
 "dialog_routing_disclaimer_priority" = "— 路况、交通法规和路标始终优先于导航建议；";
 "dialog_routing_disclaimer_precision" = "— 地图可能不准确，建议的路线可能并非总是去往目的地的最佳路线；";
 "dialog_routing_disclaimer_recommendations" = "— 建议的路线仅作为推荐路线供您采纳；";
-"dialog_routing_disclaimer_borders" = "— 小心对待国界区的路线：我们的应用程序生成的路线有时会在未经授权的地方跨越国界；";
+"dialog_routing_disclaimer_borders" = "— 小心对待国界区的路线：我们的应用生成的路线有时会在未经授权的地方跨越国界。";
 "dialog_routing_disclaimer_beware" = "上路时请当心，祝您一路平安！";
 "dialog_routing_check_gps" = "检查 GPS 信号";
 "dialog_routing_error_location_not_found" = "无法规划路线。无法识别当前 GPS 坐标。";
@@ -494,7 +524,7 @@
 "autodownload" = "自动下载";
 
 /* Place Page opening hours text */
-"closed_now" = "现已关门";
+"closed_now" = "已歇业";
 
 /* Place Page opening hours text */
 "daily" = "每天";
@@ -502,23 +532,35 @@
 "day_off_today" = "今天不营业";
 "day_off" = "不营业";
 "today" = "今天";
-"opens_tomorrow_at" = "Opens tomorrow at %@";
-"opens_dayoftheweek_at" = "Opens %1$@ at %2$@";
-"opens_at" = "Opens at %@";
-"opens_in" = "将于 %@ 后开业";
-"closes_at" = "Closes at %@";
-"closes_in" = "将于 %@ 后歇业";
+"opens_tomorrow_at" = "明天 %@ 营业";
+"opens_dayoftheweek_at" = "%1$@ %2$@ 营业";
+"opens_at" = "%@ 营业";
+"opens_in" = "将于 %@ 后营业";
+"closes_at" = "%@ 不营业";
+"closes_in" = "将于 %@ 后不营业";
 "closed" = "已停止营业";
 "add_opening_hours" = "添加营业时间";
-"no_osm_account" = "没有 OpenStreetMap 账户吗？";
-"register_at_openstreetmap" = "注册";
-"password_8_chars_min" = "密码（至少 8 个字符）";
-"invalid_username_or_password" = "无效的用户名或密码。";
-"login" = "登录";
-"login_osm" = "登录 OpenStreetMap";
-"forgot_password" = "忘记密码";
-"osm_account" = "OSM 账户";
-"logout" = "登出";
+
+/* OpenStreetMap */
+"osm_mapdata" = "地图数据来自 OpenStreetMap";
+"osm_mapdata_explanation %@" = "截至 *%@* 的地图数据由社区所创建。请访问 [OpenStreetMap.org](https://openstreetmap.org) 详细了解如何编辑和更新地图。";
+"osm_more_about" = "关于 OpenStreetMap 的更多信息";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Zh-hans:关于";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap 个人资料";
+"osm_profile_promt" = "创建 OpenStreetMap 账号或登录，向全世界发布您编辑的地图。";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org)（OSM）是一个构建免费开放地图的社区项目。它是 CoMaps 中地图数据的主要来源，其工作原理类似于维基百科。您可以添加或编辑地点，可供全世界数以百万计的用户使用并受益。\n加入OSM，让我们共绘更优质的地图吧！";
+"osm_profile_login" = "登录 OpenStreetMap 帐户";
+"osm_profile_reauthorize_promt" = "OpenStreetMap 帐户已与此应用断开连接";
+"osm_profile_reauthorize" = "重新连接 OpenStreetMap";
+"osm_profile_remove_promt" = "如果您无法或不想重新连接账户，可以直接从本应用中移除";
+"osm_profile_remove" = "移除 OpenStreetMap 帐户";
+"osm_profile_register_promt" = "没有 OpenStreetMap 账号吗？";
+"osm_profile_register" = "注册 OpenStreetMap 账号";
+"osm_profile_verfied_changes" = "已验证的更改";
+"osm_profile_logout" = "退出 OpenStreetMap 帐户";
+"osm_profile_delete" = "删除 OpenStreetMap 帐户";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "最后上传";
@@ -567,13 +609,9 @@
 "dialog_incorrect_feature_position" = "更改位置";
 "message_invalid_feature_position" = "地点不能放置在这里";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "截至 %@ 的社区创建的 OpenStreetMap 数据。请访问 OpenStreetMap.org 以了解有关如何编辑和更新地图的信息。";
-"login_to_make_edits_visible" = "创建 OpenStreetMap 账户或登录，向全世界发布您编辑的地图。";
-
 /* Error dialog no space */
 "migration_no_space_message" = "为了下载，您需要更多的存储空间。请删除不必要的文件。";
-"editor_sharing_title" = "我改进了 Organic Maps 地图";
+"editor_sharing_title" = "我改进了 CoMaps 地图";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d / %2$d";
@@ -593,14 +631,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "OpenStreetMap 志愿者须知（可选）";
 "editor_detailed_description_hint" = "详细备注";
-"editor_detailed_description" = "您建议的更改将发送至 OpenStreetMap 社区。说明无法在 Organic Maps 编辑的详情。";
+"editor_detailed_description" = "您建议的更改将发送至 OpenStreetMap 社区。说明无法在 CoMaps 编辑的详情。";
 "editor_more_about_osm" = "关于 OpenStreetMap 的更多信息";
 "editor_operator" = "操作员";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "操作员: %@";
 "editor_category_unsuitable_title" = "找不到合适的类别？";
-"editor_category_unsuitable_text" = "Organic Maps 只允许添加简单的点类别，即无法添加城镇、道路、湖泊、建筑轮廓等类别。请直接向 <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> 添加此类类别。请查看我们的<a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">指南</a>，了解详细的步骤说明。";
+"editor_category_unsuitable_text" = "CoMaps 只允许添加简单的点类别，即无法添加城镇、道路、湖泊、建筑轮廓等类别。请直接向 <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> 添加此类类别。请查看我们的<a href=\"https://www.comaps.app/support/advanced-map-editing/\">指南</a>，了解详细的步骤说明。";
 "downloader_no_downloaded_maps_title" = "您尚未下载任何地图";
 "downloader_no_downloaded_maps_message" = "下载地图来查找位置和离线浏览。";
 "current_location_unknown_error_title" = "当前位置未知。";
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2. 点击“隐私和安全性”";
 "location_services_disabled_on_device_3" = "3. 选择“定位服务”";
 "location_services_disabled_on_device_4" = "4. 打开“定位服务”";
-"location_services_disabled_on_device_additional_message" = "或继续使用 Organic Maps，但无法定位到您目前所在的位置。";
+"location_services_disabled_on_device_additional_message" = "或没有定位继续使用 CoMaps";
 
 /* abbreviation for meters */
 "m" = "米";
@@ -637,15 +675,6 @@
 "day" = "天";
 "placepage_more_button" = "更多";
 "book_button" = "预定";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "照片、评论、预订";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "每次通过此链接预订所获得的推荐奖金将用于 Organic Maps 的开发。";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "客涯 (Kayak) 上的详细信息";
 "placepage_call_button" = "呼叫";
 "placepage_edit_bookmark_button" = "编辑书签";
 "placepage_bookmark_name_hint" = "书签名称";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "来看看";
-"recent_track_background_dialog_message" = "Organic Maps 在后台使用您的位置记录您最近去过的路线。";
+"recent_track_background_dialog_message" = "CoMaps 在后台使用您的位置记录您最近去过的路线。";
 "general_settings" = "常规设置";
 
 /* For the first routing */
@@ -726,6 +755,9 @@
 "placepage_add_stop" = "添加经停点";
 "start_from_my_position" = "起点";
 
+/* Title for button when a route was saved. */
+"saved" = "已保存";
+
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "请登录 OpenStreetMap 以自动上传您的所有地图编辑。了解更多";
 
@@ -752,7 +784,7 @@
 "bookmarks_error_message_empty_list_name" = "请输入列表名称";
 "bookmarks_error_title_list_name_already_taken" = "这个名称已经被使用了";
 "bookmarks_error_title_list_name_too_long" = "这个名称太长了";
-"profile" = "OpenStreetMap 资料";
+"profile" = "OpenStreetMap 个人资料";
 "bookmarks_detect_title" = "检测到新文件";
 "button_convert" = "转换";
 "bookmarks_convert_error_title" = "错误";
@@ -764,7 +796,7 @@
 "layers_title" = "地图样式和图层";
 "subway_data_unavailable" = "地铁地图不可用";
 "title_error_downloading_bookmarks" = "发生错误";
-"popular_place" = "Popular";
+"popular_place" = "受欢迎的";
 "export_file" = "导出为 KMZ";
 "export_file_gpx" = "导出为 GPX";
 "delete_list" = "删除列表";
@@ -783,7 +815,7 @@
 /* Speed camera settings menu option - Never warn (about speedcams) */
 "pref_tts_speedcams_never" = "永远不会对摄像头发出警告";
 "power_managment_title" = "省电模式";
-"power_managment_description" = "如果开启省电模式，应用程序将根据手机的当前电量关闭耗电功能";
+"power_managment_description" = "如果开启省电模式，本应用将根据手机的当前电量关闭耗电功能。";
 "power_managment_setting_never" = "从不";
 "power_managment_setting_auto" = "当电量低时";
 "power_managment_setting_manual_max" = "最大程度省电";
@@ -800,7 +832,7 @@
 "avoid_ferry" = "避开轮渡";
 "avoid_motorways" = "避开高速公路";
 "unable_to_calc_alert_title" = "无法规划路线";
-"unable_to_calc_alert_subtitle" = "很遗憾，我们无法使用所选的绕行设置规划路线。请更改设置，然后重试";
+"unable_to_calc_alert_subtitle" = "很遗憾，找不到可行的路线。这可能是因为您的路线选项当前不可用或 OpenStreetMap 数据不完整。请更改路线选项再重试。";
 "define_to_avoid_btn" = "选择要避开的道路";
 "change_driving_options_btn" = "绕行设置已开启";
 "toll_road" = "收费公路";
@@ -845,7 +877,7 @@
 "ok" = "好的";
 "speedcams_alert_title_carplay_1" = "限速拍照";
 "speedcams_alert_title_carplay_2" = "超速警告";
-"download_map_carplay" = "将 Organic Maps 应用程序中的地图下载至个人设备中";
+"download_map_carplay" = "将 CoMaps 应用程序中的地图下载至个人设备中";
 "carplay_roundabout_exit" = "第 %@ 个出口";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +956,8 @@
 /* edit track screen title */
 "track_title" = "轨迹";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/zh-Hans/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Zh-hans:关于";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/zh-Hans/";
 
 /* App Tip #00 */
 "app_tip_00" = "感谢您使用我们社区构建的地图！";
@@ -967,10 +990,10 @@
 "app_tip_09" = "我们的主要目标是构建您会喜欢的快速、注重隐私、易于使用的地图。";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "您现在正在手机屏幕上使用 Organic Maps";
+"car_used_on_the_phone_screen" = "您现在正在手机屏幕上使用 CoMaps";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "您现在正在汽车屏幕上使用 Organic Maps";
+"car_used_on_the_car_screen" = "您现在正在汽车屏幕上使用 CoMaps";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "在手机上继续";
@@ -995,7 +1018,10 @@
 "website_menu" = "菜单链接";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "您想向开发人员发送错误报告吗？\n由于 Organic Maps 不会自动收集任何错误信息，因此我们只能依靠我们的用户。感谢您对 Organic Maps 的支持！";
+"bugreport_alert_message" = "您想向开发人员发送错误报告吗？\n由于 CoMaps 不会自动收集任何错误信息，因此我们只能依靠我们的用户。感谢您对 CoMaps 的支持！";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "启用 iCloud 同步";
@@ -1028,7 +1054,7 @@
 "icloud_synchronization_error_cloud_is_unavailable" = "错误：iCloud 不可用";
 
 /* Title for the "Open in Another App" button on the PlacePage. */
-"open_in_app" = "在另一个应用程序中打开";
+"open_in_app" = "在另一个应用中打开";
 
 /* To indicate if the place proposed self service... */
 "self_service" = "自助服务";
@@ -1058,7 +1084,7 @@
 "stop_track_recording" = "停止轨迹记录";
 
 /* Title for the "Stop Without Saving" action for the alert when saving a track recording. */
-"stop_without_saving" = "不保存停止";
+"stop_without_saving" = "停止而不保存";
 
 /* Title for the "Stop Without Saving" action for the alert when saving a track recording. */
 "continue_recording" = "继续录制";
@@ -1067,5 +1093,8 @@
 "track_recording_alert_title" = "保存到书签和轨迹？";
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
-"track_recording_toast_nothing_to_save" = "轨迹是空的 - 没有要保存的内容";
+"track_recording_toast_nothing_to_save" = "轨迹为空 — 无内容可保存";
 "edit_track" = "编辑轨迹";
+"osm_profile_view_edit_history" = "查看编辑历史";
+"osm_profile_view_notes" = "查看注记";
+"pref_mapappearance_title" = "Map Appearance";

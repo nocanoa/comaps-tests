@@ -1,8 +1,9 @@
-• New OpenStreetMap data as of February 27
-• Ability to manually arrange intermediate route points
-• Share a single selected track from the list
-• Improved routing for bicycles
-• Display a system notification when downloading maps and don't interrupt background downloads
-• Added a flashing Track Recording widget
-
-…more details at omaps.org/news
+Представљамо CoMaps лого!
+• ажуриране изохипсе за многе регионе на кораке од 20 или 50 метара
+• додате везе ка Panoramax сликама за изабране тачке интересовања (POI)
+• подаци са OpenStreetMap-а од 13. јула
+• додате боје за многе елементе и раније приказивање постојећих површина
+• приказ стања радног времена при избору POI-ја
+• мочваре подељене на неколико различитих типова
+• ажуриране боје вегетације и других елемената на мапи, ажуриране поједине иконе
+• на отвореном: наглашеније изохипсе

@@ -1,52 +1,32 @@
-‣ Ücretsiz uygulamamız sizi takip etmez, reklam içermez ve desteğinizle geliştirilir.
-‣ Küçük ekibimiz ve katkıda bulunanlar tarafından, boş zamanlarımızda sürekli olarak geliştirilmektedir.
-‣ Haritada yanlış veya eksik bir şey varsa, lütfen <b>OpenStreetMap'te</b> düzeltin ve gelecekteki harita güncellemelerinde değişikliklerinizi görün.
-‣ Navigasyon veya arama çalışmazsa, lütfen önce osm.org'da kontrol edin ve ardından bize e-posta gönderin. <i>HER</i> e-postaya cevap veriyoruz ve en kısa sürede düzelteceğiz!
+OpenStreetMap'in verilerine ve kar amacı gütmeyen olma taahhüdündeki topluluk liderliğine dayanan şeffaflık, gizlilik, ücretsiz ve açık kaynaklı haritalar uygulaması. Comaps, Organic Maps çatalı/düzenlemesidir, bu da bir Maps.ME çatalıdır.
 
-<b>Geri bildiriminiz ve 5 yıldızlı yorumlarınız bizim için en iyi motivasyon kaynağı!</b>
+Projenin sebepleri ve rotası hakkında <b><i>codeberg.org/comaps</i></b> adresinden bilgi edinebilirsiniz.
+Oradaki topluluğa katılın ve en iyi harita uygulamasını yapmanıza yardımcı olun
+• Uygulamayı kullanın ve bu bilgiyi yayın
+• Geri bildirim verin ve sorunları bildirin
+• Uygulamada veya OpenStreetMap internet sitesinde harita verilerini güncelleyin
 
-Öne Çıkan Özellikler:
-• Ücretsiz, açık kaynaklı, reklam ve izleyici içermez
-• <b>OpenStreetMap</b> topluluğu sayesinde, Google haritalarda bulunmayan yerleri içeren ayrıntılı çevrimdışı haritalar
-• Bisiklet yolları, yürüyüş parkurları ve yürüyüş yolları
-• Eş yükselti çizgileri, yükseklik profilleri, tepeler ve eğimler
-• Sesli yönergelerle ayrıntılı yürüyüş, bisiklet ve Android Auto desteğine sahip araç navigasyonu
-• Hızlı çevrimdışı arama
-• Yer imlerini KML, KMZ ve GPX dosyalarını dışa ve içe aktarma
-• Gözlerinizi korumak için karanlık mod
+‣ <b>Çevrimdışı odaklı</b>: Hücresel veriye ihtiyaç duymadan yurt dışında seyahatinizi planlayın ve gezin, uzak bir yürüyüş sırasında durak noktaları arama, vb. Tüm uygulama işlevleri çevrimdışı çalışacak şekilde tasarlanmıştır.
+‣ <b>Gizliliğe saygı gösterir</b>: Uygulama gizlilik göz önünde bulundurularak tasarlanmıştır - insanları fişlemez, izlemez ve kişisel bilgileri toplamaz. Reklamsızdır.
+‣ <b>Basit ve parlak</b>: Sadece işe yarayan kullanımı kolay özellikler.
+‣ <b>Pilinizi ve hafızanızı kurtarın</b>: Pilinizi diğer gezinme uygulamaları gibi boşaltmaz. Sıkıştırılmış haritalar telefonunuzdaki değerli hafızadan tasarruf eder.
+‣ <b>Özgür ve topluluk tarafından inşa edilmiştir</b>: Sizin gibi insanlar, OpenStreetMap'e yerler ekleyerek, özellikleri test edip hakkında geri bildirim vererek, geliştirme becerileri ve paralarıyla katkıda bulunarak uygulamanın oluşturulmasına yardımcı oldu.
+‣ <b>Açık, şeffaf finans ve karar verme, kar amacı gütmeyen ve tamamen açık kaynaklı.</b>
 
-Organic Maps'te <i>henüz</i> toplu taşıma, uydu haritaları ve diğer harika özellikler yok. Ancak <i>sizin yardımınız ve desteğinizle</i> bu dünyayı adım adım daha iyi hale getirebiliriz.
+<b>Ana Özellikler</b>:
+• Google Haritalarda mevcut olmayan yerlerle, indirilebilir ve ayrıntılı haritalar
+• Vurgulanmış yürüyüş parkurları, kamp alanları, su kaynakları, zirveler, yükseklik çizgileri, vb.
+• Yürüyüş ve bisiklet yolları
+• Lokantalar, benzin istasyonları, oteller, mağazalar, şahin tepeleri ve daha fazla ilgi çekici nokta
+• Ada, adrese veya ilgi alanına göre arayın
+• Yürüyüş, bisiklete binme veya sürüş için sesli bildirimlerle gezinme
+• En sevdiğiniz yerlere tek bir dokunuşla yer işareti koyun
+• Çevrimdışı Vikipedi makaleleri
+• Metro katmanı ve tarifler
+• Rota kaydı
+• KML, KMZ, GPX biçimlerindeki yer imlerini ve izlerini dışa veya içe aktarın
+• Gece boyunca kullanılacak karanlık kip
+• Temel yerleşik bir arayüz kullanan herkes için harita verilerini geliştirin
 
-Organic Maps; sevgiyle yapılmış, saf ve organiktir:
-
-• Göz alıcı derecede hızlı çevrimdışı deneyim
-• Gizliliğinize saygı duyar
-• Pilinizi korur
-• Beklenmeyen mobil veri ücretleri olmaz
-• Yalnızca en önemli özellikleri içerir, kullanımı basittir
-
-İzleyicilerden ve diğer kötü şeylerden arınmıştır:
-
-• Reklam yok
-• İzleyiciler yok
-• Veri toplama yok
-• Evi aramak yok
-• Rahatsız edici kayıt yok
-• Zorunlu öğretici yok
-• Sürekli e-posta spamı yok
-• Push bildirimleri yok
-• Zararlı yazılım yok
-• Böcek ilacı yok. Tamamen organik!
-
-Organic Maps'te <b>gizliliğin temel bir insan hakkı olduğuna</b> inanıyoruz:
-
-• Organic Maps, bağımsız bir topluluk tarafından yürütülen açık kaynaklı bir projedir
-• Gizliliğinizi büyük teknoloji şirketlerinin meraklı gözlerinden koruyoruz
-• Nerede olursanız olun güvende kalın
-
-Exodus Gizlilik Raporuna göre hiç izleyici içermez ve yalnızca minimum düzeyde izinler gerekir.
-
-Ek ayrıntılar ve SSS için lütfen <b><i>organicmaps.app/tr</i></b> adresini ziyaret edin. Ayrıca Telegram'daki @OrganicMapsTR adresinden bizimle doğrudan iletişime geçin.
-
-Gözetlemeyi reddedin - özgürlüğünüzü kucaklayın.
-<b>Organic Maps'i deneyin!</b>
+<b>Özgürlük Burada</b>
+Yolculuğunuzu keşfedin, dünyayı gizlilik ve topluluk desteğiyle gezin!

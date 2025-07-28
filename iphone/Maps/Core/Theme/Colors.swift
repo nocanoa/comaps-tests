@@ -1,10 +1,10 @@
 class DayColors: IColors {
   var clear = UIColor.clear
   var primaryDark = UIColor(24, 128, 68, alpha100)
-  var primary = UIColor(0, 108, 53, alpha100)
-  var secondary = UIColor(45, 137, 83, alpha100)
+  var primary = UIColor.accent
+  var secondary = UIColor(55, 101, 63, alpha100)
   // Light green color
-  var primaryLight = UIColor(36, 180, 98, alpha100)
+  var primaryLight = UIColor(124, 188, 123, alpha100)
   var menuBackground = UIColor(255, 255, 255, alpha90)
   var tabBarButtonBackground = UIColor(255, 255, 255, alpha70)
   var downloadBadgeBackground = UIColor(255, 55, 35, alpha100)
@@ -16,15 +16,15 @@ class DayColors: IColors {
   // Orange color (use for status 15 min in place page)
   var orange = UIColor(255, 120, 5, alpha100)
   // Blue color (use for links and phone numbers)
-  var linkBlue = UIColor(30, 150, 240, alpha100)
-  var linkBlueHighlighted = UIColor(30, 150, 240, alpha30)
-  var linkBlueDark = UIColor(25, 135, 215, alpha100)
+  var linkBlue = UIColor.accent
+  var linkBlueHighlighted = UIColor.accent
+  var linkBlueDark = UIColor.accent
   var buttonRed = UIColor(244, 67, 67, alpha100)
   var buttonRedHighlighted = UIColor(183, 28, 28, alpha100)
   var blackPrimaryText = UIColor(0, 0, 0, alpha87)
   var blackSecondaryText = UIColor(0, 0, 0, alpha54)
   var blackHintText = UIColor(0, 0, 0, alpha26)
-  var blackDividers = UIColor(0, 0, 0, alpha12)
+  var blackDividers = UIColor(0, 0, 0, alpha08)
   var solidDividers = UIColor(224, 224, 224, alpha100)
   var white = UIColor(255, 255, 255, alpha100)
   var whitePrimaryText = UIColor(255, 255, 255, alpha87);
@@ -63,7 +63,7 @@ class DayColors: IColors {
 class NightColors: IColors {
   var clear = UIColor.clear
   var primaryDark = UIColor(25, 30, 35, alpha100)
-  var primary =  UIColor(45, 50, 55, alpha100)
+  var primary = UIColor.accent
   var secondary =  UIColor(0x25, 0x28, 0x2b, alpha100)
   // Light green color
   var primaryLight = UIColor(65, 70, 75, alpha100)
@@ -71,24 +71,24 @@ class NightColors: IColors {
   var tabBarButtonBackground = UIColor(60, 64, 68, alpha70)
   var downloadBadgeBackground = UIColor(230, 70, 60, alpha100)
   // Background color && press color
-  var pressBackground = UIColor(50, 54, 58, alpha100)
+  var pressBackground = UIColor(28, 28, 30, alpha100)
   // Red color (use for status closed in place page)
   var red =  UIColor(230, 70, 60, alpha100)
   var errorPink = UIColor(246, 60, 51, alpha26)
   // Orange color (use for status 15 min in place page)
   var orange =  UIColor(250, 190, 10, alpha100)
   // Blue color (use for links and phone numbers)
-  var linkBlue = UIColor(80, 195, 240, alpha100)
-  var linkBlueHighlighted = UIColor(60, 155, 190, alpha30)
-  var linkBlueDark = UIColor(75, 185, 230, alpha100)
+  var linkBlue = UIColor.alternativeAccent
+  var linkBlueHighlighted = UIColor.accent
+  var linkBlueDark = UIColor.accent
   var buttonRed = UIColor(244, 67, 67, alpha100)
   var buttonRedHighlighted = UIColor(183, 28, 28, alpha100)
   var blackPrimaryText =  UIColor(255, 255, 255, alpha90)
   var blackSecondaryText =  UIColor(255, 255, 255, alpha70)
   var blackHintText =  UIColor(255, 255, 255, alpha30)
-  var blackDividers =  UIColor(255, 255, 255, alpha12)
+  var blackDividers =  UIColor(255, 255, 255, alpha08)
   var solidDividers = UIColor(84, 86, 90, alpha100)
-  var white =  UIColor(60, 64, 68, alpha100)
+  var white =  UIColor(34, 34, 36, alpha100)
   var whitePrimaryText = UIColor(255, 255, 255, alpha87)
   var whitePrimaryTextHighlighted = UIColor(255, 255, 255, alpha30)
   var whiteSecondaryText =  UIColor(0, 0, 0, alpha70)

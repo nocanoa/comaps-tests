@@ -28,7 +28,7 @@
     <string name="type.amenity.bicycle_parking">חניית אופניים</string>
     <string name="type.amenity.bicycle_rental">השכרת אופניים</string>
     <string name="type.amenity.bicycle_repair_station">תחנת תיקון אופניים</string>
-    <string name="type.amenity.biergarten">ביר גרדן</string>
+    <string name="type.amenity.biergarten">גן בירה</string>
     <string name="type.amenity.brothel">בית בושת</string>
     <string name="type.amenity.bureau_de_change">המרת מטבע חוץ</string>
     <string name="type.amenity.bus_station">תחנת אוטובוס</string>
@@ -127,7 +127,6 @@
     <string name="type.amenity.prison">בית כלא</string>
     <string name="type.amenity.pub">פאב</string>
     <string name="type.amenity.public_bookcase">כוננית ספרים ציבורית</string>
-
     <!-- SECTION: Types: Recycling -->
     <string name="type.amenity.recycling.centre">מרכז מיחזור</string>
     <string name="type.amenity.recycling">מיכל מיחזור</string>
@@ -370,7 +369,6 @@
     <string name="type.healthcare.psychotherapist">פסיכותרפיה</string>
     <string name="type.healthcare.sample_collection">מרכז איסוף דגימות</string>
     <string name="type.healthcare.speech_therapist">ריפוי בדיבור</string>
-
     <!-- SECTION: Types: Roads -->
     <string name="type.highway">כביש</string>
     <string name="type.highway.bridleway">שביל סוסים</string>
@@ -536,7 +534,6 @@
     <string name="type.area_highway.track">מסלול</string>
     <string name="type.area_highway.trunk">כביש בין עירוני</string>
     <string name="type.area_highway.unclassified">כביש לא מסומן/מזערי</string>
-
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">חפץ היסטורי</string>
     <string name="type.historic.aircraft">מטוס היסטורי</string>
@@ -607,13 +604,11 @@
     <string name="type.landuse.cemetery">בית קברות</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">בית קברות נוצרי</string>
-    <string name="type.landuse.churchyard">חצר כנסיה</string>
     <string name="type.landuse.commercial">אזור מסחרי</string>
     <string name="type.landuse.construction">אתר בניה</string>
     <string name="type.landuse.education">קריית חינוך</string>
     <string name="type.landuse.farmland">אדמה חקלאית</string>
     <string name="type.landuse.farmyard">חצר חקלאית</string>
-    <string name="type.landuse.field">שדה</string>
     <string name="type.landuse.flowerbed">ערוגת פרחים</string>
     <string name="type.landuse.forest">יער</string>
     <string name="type.landuse.forest.coniferous">יער מחטניים</string>
@@ -681,7 +676,7 @@
     <string name="type.man_made.pier">מזח</string>
     <string name="type.man_made.pipeline">צינור</string>
     <string name="type.man_made.pipeline.overground">צינור עילי</string>
-    <string name="type.man_made.silo">סילו</string>
+    <string name="type.man_made.silo">ממגורה</string>
     <string name="type.man_made.storage_tank">מיכל איחסון</string>
     <string name="type.man_made.surveillance">מצלמת מעקב</string>
     <string name="type.man_made.tower">מגדל</string>
@@ -809,7 +804,6 @@
     <string name="type.power.plant.hydro">תחנת כוח הידרואלקטרית</string>
     <string name="type.power.plant.solar">תחנת כוח סולארית</string>
     <string name="type.power.plant.wind">תחנת כוח רוח</string>
-    <string name="type.power.station">תחנת כוח</string>
     <string name="type.power.substation">תחנת כוח משנית</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">מגדל קירור</string>
@@ -1062,4 +1056,5 @@
     <string name="type.amenity.dojo">דוג\'ו</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">אולם ספורט</string>
+    <string name="type.mapswithme">MapsWithMe</string>
 </resources>

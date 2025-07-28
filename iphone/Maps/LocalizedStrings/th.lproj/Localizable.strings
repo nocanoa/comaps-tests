@@ -43,16 +43,10 @@
 "country_status_download_failed" = "การดาวน์โหลดล้มเหลว";
 
 /* Text in About screen */
-"about_headline" = "ฟรีสำหรับทุกคนทำด้วยความรัก";
+"about_proposition_1" = "ออฟไลน์ รวดเร็ว และใช้งานง่าย";
 
 /* Text in About screen */
-"about_proposition_1" = "• ไม่มีโฆษณาไม่มีการติดตามไม่มีการรวบรวมข้อมูล";
-
-/* Text in About screen */
-"about_proposition_2" = "• ไม่มีแบตเตอรี่หมด ทำงานแบบออฟไลน์";
-
-/* Text in About screen */
-"about_proposition_3" = "• รวดเร็ว เรียบง่าย พัฒนาโดยชุมชน";
+"about_proposition_2" = "เน้นความเป็นส่วนตัวและไม่มีโฆษณา";
 "close" = "ปิด";
 "download" = "ดาวน์โหลด";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "สำหรับ RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "กำลังโหลดบุ๊กมาร์ก";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "ตำแหน่งที่ตั้งของคุณยังไม่ได้รับการกำหนด";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "เฮ้ ตรวจสอบหมุดของฉันที่ แผนที่ Organic Maps!";
+"bookmark_share_email_subject" = "เฮ้ ตรวจสอบหมุดของฉันที่ แผนที่ CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "นี่ มาดูตำแหน่งปัจจุบันของฉันที่แผนที่ Organic Maps สิ!";
+"my_position_share_email_subject" = "นี่ มาดูตำแหน่งปัจจุบันของฉันที่แผนที่ CoMaps สิ!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "อีเมล";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "คัดลอกไปยังคลิปบอร์ด";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "คัดลอกไปยังคลิปบอร์ด: %@";
@@ -190,7 +187,9 @@
 "done" = "เสร็จแล้ว";
 
 /* Prints version number in About dialog */
-"version" = "เวอร์ชัน Organic Maps: %@";
+"version" = "เวอร์ชัน CoMaps: %@";
+"version %@ (%@)" = "เวอร์ชัน %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "เวอร์ชัน: %@ (%@)\nข้อมูลแผนที่: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "การติดตาม";
@@ -200,6 +199,7 @@
 "share_my_location" = "แชร์ตำแหน่งที่ตั้งของฉัน";
 "prefs_group_route" = "การนำทาง";
 "pref_zoom_title" = "ปุ่มซูม";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "รูปแบบ";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "มืด";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "ปิด";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "สิ่งปลูกสร้าง 3 มิติจะปิดในโหมดประหยัดพลังงาน";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "คำแนะนำด้วยเสียง";
+"pref_tts_title" = "คำแนะนำด้วยเสียง";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "ประกาศชื่อถนน";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "เว็บไซต์";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "ข่าว";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "อีเมล";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "ภาพถ่าย Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "ให้คะแนนแอป";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "บริจาค";
-
-/* Tex label above the Donate button */
-"donate_description" = "บริจาคเพื่อสร้างแผนที่ที่ดีที่สุดด้วยกัน!";
-"already_donated" = "บริจาคแล้ว";
-"remind_me_later" = "เตือนภายหลัง";
-"support_organic_maps" = "สนับสนุน Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "ลิขสิทธิ์";
@@ -298,7 +322,7 @@
 "volunteer" = "อาสาสมัคร";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "ติดตามและติดต่อเรา:";
+"follow_us" = "ติดตามและติดต่อเรา";
 
 /* Alert text */
 "email_error_body" = "อีเมลลูกค้ายังไม่ได้รับการจัดตั้งขึ้น กรุณาตั้งค่าหรือใช้วิธีอื่นที่จะติดต่อเราที่ %@";
@@ -414,7 +438,7 @@
 "dialog_routing_disclaimer_priority" = "— สภาพถนน กฎจราจร และสัญลักษณ์บนถนนย่อมมีความสำคัญกว่าคำแนะนำเพื่อบอกทางเสมอ;";
 "dialog_routing_disclaimer_precision" = "— แผนที่อาจมีความคลาดเคลื่อนและเส้นทางที่แนะนำอาจไม่ใช่เส้นทางที่เหมาะสมที่สุดเสมอไปสำหรับการไปยังที่หมาย;";
 "dialog_routing_disclaimer_recommendations" = "— เส้นทางที่แนะนำเป็นเพียงคำแนะนำเท่านั้น;";
-"dialog_routing_disclaimer_borders" = "— โปรดระมัดระวังเมื่อใช้เส้นทางในพื้นที่ชายแดน: บางครั้งเส้นทางที่สร้างขึ้นโดยแอปของเรานั้นอาจข้ามผ่านชายแดนประเทศในพื้นที่ที่ไม่ได้รับการอนุญา;";
+"dialog_routing_disclaimer_borders" = "— โปรดระมัดระวังเมื่อใช้เส้นทางในพื้นที่ชายแดน: บางครั้งเส้นทางที่สร้างขึ้นโดยแอปของเรานั้นอาจข้ามผ่านชายแดนประเทศในพื้นที่ที่ไม่ได้รับการอนุญา";
 "dialog_routing_disclaimer_beware" = "โปรดมีสติอยู่เสมอและยึดถือความปลอดภัยบนถนน!";
 "dialog_routing_check_gps" = "ตรวจสอบสัญญาณ GPS";
 "dialog_routing_error_location_not_found" = "ไม่สามารถสร้างเส้นทางได้ ไม่สามารถระบุพิกัด GPS ปัจจุบันได้";
@@ -467,7 +491,7 @@
 "read_in_wikipedia" = "Wikipedia";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "วิกิมีเดียคอมมอนส์";
 "p2p_your_location" = "ตำแหน่งที่ตั้งของคุณ";
 "p2p_start" = "เริ่มต้น";
 "p2p_from_here" = "จาก";
@@ -510,15 +534,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "ปิด";
 "add_opening_hours" = "เพิ่มชั่วโมงทำการ";
-"no_osm_account" = "ไม่มีบัญชีใน OpenStreetMap?";
-"register_at_openstreetmap" = "ลงทะเบียน";
-"password_8_chars_min" = "รหัสผ่าน (อย่างน้อย 8 ตัวอักษร)";
-"invalid_username_or_password" = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-"login" = "ล็อกอิน";
-"login_osm" = "เข้าสู่ระบบ OpenStreetMap";
-"forgot_password" = "ลืมรหัสผ่าน?";
-"osm_account" = "บัญชี OSM";
-"logout" = "ออกจากระบบ";
+
+/* OpenStreetMap */
+"osm_mapdata" = "ข้อมูลแผนที่จาก OpenStreetMap";
+"osm_mapdata_explanation %@" = "ข้อมูลแผนที่ที่สร้างโดยชุมชน ณ *%@* เรียนรู้เพิ่มเติมเกี่ยวกับวิธีแก้ไขและอัปเดตแผนที่ได้ที่ [OpenStreetMap.org](https://openstreetmap.org)";
+"osm_more_about" = "ข้อมูลเพิ่มเติมเกี่ยวกับ OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Th:เกี่ยวกับ_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "โปรไฟล์ OpenStreetMap";
+"osm_profile_promt" = "สร้างบัญชี OpenStreetMap หรือเข้าสู่ระบบเพื่อเผยแพร่การแก้ไขแผนที่ของคุณไปทั่วโลก";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) เป็นโครงการชุมชนเพื่อสร้างแผนที่แบบเปิดและเสรี เป็นแหล่งข้อมูลแผนที่หลักในCoMapsและทำงานคล้ายกับวิกิพีเดีย คุณสามารถเพิ่มหรือแก้ไขสถานที่ได้ และสถานที่เหล่านั้นจะพร้อมให้บริการแก่ผู้ใช้หลายล้านคนทั่วโลก \nเข้าร่วมชุมชนและช่วยสร้างแผนที่ที่ดีขึ้นสำหรับทุกคน!";
+"osm_profile_login" = "เข้าสู่ระบบบัญชี OpenStreetMap";
+"osm_profile_reauthorize_promt" = "บัญชี OpenStreetMap ถูกตัดการเชื่อมต่อจากแอปนี้";
+"osm_profile_reauthorize" = "เชื่อมต่อใหม่ด้วย OpenStreetMap";
+"osm_profile_remove_promt" = "หากคุณไม่สามารถหรือไม่ต้องการเชื่อมต่อบัญชีของคุณอีกครั้ง คุณสามารถลบบัญชีออกจากแอปนี้ได้เลย";
+"osm_profile_remove" = "นำบัญชี OpenStreetMap ออก";
+"osm_profile_register_promt" = "ไม่มีบัญชีใน OpenStreetMap?";
+"osm_profile_register" = "ลงทะเบียนที่ OpenStreetMap";
+"osm_profile_verfied_changes" = "การเปลี่ยนแปลงที่อนุมัติแล้ว";
+"osm_profile_logout" = "ออกจากระบบบัญชี OpenStreetMap";
+"osm_profile_delete" = "ลบบัญชี OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "อัปโหลดครั้งสุดท้าย";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "เปลี่ยนสถานที่ตั้ง";
 "message_invalid_feature_position" = "ไม่สามารถตั้งวัตถุได้ที่นี่";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "ข้อมูล OpenStreetMap ที่สร้างโดยชุมชน ณ %@ เรียนรู้เพิ่มเติมเกี่ยวกับวิธีแก้ไขและอัปเดตแผนที่ได้ที่ OpenStreetMap.org";
-"login_to_make_edits_visible" = "สร้างบัญชี OpenStreetMap หรือเข้าสู่ระบบเพื่อเผยแพร่การแก้ไขแผนที่ของคุณไปทั่วโลก";
-
 /* Error dialog no space */
 "migration_no_space_message" = "ในการดาวน์โหลด คุณต้องมีพื้นที่มากขึ้น กรุณาลบเนื้อหาที่ไม่จำเป็นออกไป";
-"editor_sharing_title" = "ฉันได้ปรับปรุงแผนที่ Organic Maps";
+"editor_sharing_title" = "ฉันได้ปรับปรุงแผนที่ CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d จาก %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "หมายเหตุถึงอาสาสมัคร OpenStreetMap (ไม่บังคับ)";
 "editor_detailed_description_hint" = "ข้อคิดเห็นอย่างละเอียด";
-"editor_detailed_description" = "คำแนะนำการเปลี่ยนแปลงของคุณจะถูกส่งไปยังกลุ่ม OpenStreetMap โปรดอธิบายรายละเอียดที่ Organic Maps ไม่สามารถแก้ไขได้";
+"editor_detailed_description" = "คำแนะนำการเปลี่ยนแปลงของคุณจะถูกส่งไปยังกลุ่ม OpenStreetMap โปรดอธิบายรายละเอียดที่ CoMaps ไม่สามารถแก้ไขได้";
 "editor_more_about_osm" = "ข้อมูลเพิ่มเติมเกี่ยวกับ OpenStreetMap";
 "editor_operator" = "ตัวดำเนินการ";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "ตัวดำเนินการ: %@";
 "editor_category_unsuitable_title" = "ไม่พบหมวดหมู่ที่เหมาะสมใช่ไหม?";
-"editor_category_unsuitable_text" = "แผนที่ทั่วไปอนุญาตให้เพิ่มหมวดหมู่จุดธรรมดาเท่านั้น ซึ่งหมายความว่าไม่มีเมือง ถนน ทะเลสาบ โครงร่างอาคาร ฯลฯ โปรดเพิ่มหมวดหมู่ดังกล่าวลงใน <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. ดู<a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">คำแนะนำ</a> ของเราเพื่อดูคำแนะนำโดยละเอียดทีละขั้นตอน";
+"editor_category_unsuitable_text" = "CoMapsอนุญาตให้เพิ่มหมวดหมู่จุดธรรมดาเท่านั้น ซึ่งหมายความว่าไม่มีเมือง ถนน ทะเลสาบ โครงร่างอาคาร ฯลฯ โปรดเพิ่มหมวดหมู่ดังกล่าวลงใน <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. ดู<a href=\"https://www.comaps.app/support/advanced-map-editing/\">คำแนะนำ</a> ของเราเพื่อดูคำแนะนำโดยละเอียดทีละขั้นตอน";
 "downloader_no_downloaded_maps_title" = "คุณยังไม่ได้ดาวน์โหลดแผนที่";
 "downloader_no_downloaded_maps_message" = "ดาวน์โหลดแผนที่เพื่อค้นหาสถานที่ และนำทางแบบออฟไลน์";
 "current_location_unknown_error_title" = "ไม่ทราบชื่อของที่ตั้งปัจจุบัน";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. เลือกความเป็นส่วนตัว";
 "location_services_disabled_on_device_3" = "3. เลือกบริการระบุตำแหน่ง";
 "location_services_disabled_on_device_4" = "4. เปิดบริการระบุตำแหน่ง";
-"location_services_disabled_on_device_additional_message" = "หรือใช้แผนที่ทั่วไปโดยไม่มีตำแหน่งต่อไป";
+"location_services_disabled_on_device_additional_message" = "หรือใช้CoMapsโดยไม่มีตำแหน่งต่อไป";
 
 /* abbreviation for meters */
 "m" = "ม.";
@@ -637,15 +669,6 @@
 "day" = "วัน";
 "placepage_more_button" = "เพิ่มเติม";
 "book_button" = "จอง";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "รูปภาพ รีวิว การจอง";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "โบนัสการแนะนำที่ได้รับสำหรับการจองแต่ละครั้งผ่านลิงก์นี้จะนำไปใช้ในการพัฒนาแผนที่ทั่วไป";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "รายละเอียดบน Kayak";
 "placepage_call_button" = "โทร";
 "placepage_edit_bookmark_button" = "แก้ไข Bookmark";
 "placepage_bookmark_name_hint" = "ชื่อของ Bookmark";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "ตรวจชม";
-"recent_track_background_dialog_message" = "Organic Maps ใช้ตำแหน่งทางภูมิศาสตร์ของคุณในพื้นหลังเพื่อบันทึกเส้นทางที่คุณเดินทางเมื่อเร็ว ๆ นี้";
+"recent_track_background_dialog_message" = "CoMaps ใช้ตำแหน่งทางภูมิศาสตร์ของคุณในพื้นหลังเพื่อบันทึกเส้นทางที่คุณเดินทางเมื่อเร็ว ๆ นี้";
 "general_settings" = "การตั้งค่าทั่วไป";
 
 /* For the first routing */
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "ลากมาที่นี่เพื่อเอาออก";
 "placepage_add_stop" = "เพิ่มจุดแวะพัก";
 "start_from_my_position" = "เริ่มจาก";
+
+/* Title for button when a route was saved. */
+"saved" = "บันทึกแล้ว";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "กรุณาเข้าสู่ระบบ OpenStreetMap เพื่ออัปโหลดการแก้ไขแผนที่ทั้งหมดของคุณโดยอัตโนมัติ เรียนรู้เพิ่มเติม";
@@ -787,7 +813,7 @@
 "power_managment_setting_never" = "ไม่ใช้";
 "power_managment_setting_auto" = "อัตโนมัติ";
 "power_managment_setting_manual_max" = "ประหยัดพลังงานสูงสุด";
-"enable_logging_warning_message" = "ออปชันเพื่อเปิดการบันทึกประวัติการทำงานเพื่อการวินิจฉัย ประวัติดังกล่าวอาจเป็นประโยชน์กับทีมงานช่วยเหลือของเราที่คอยจัดการกับปัญหาที่เจอระหว่างแอปทำงาน โปรดเปิดออปชันดังกล่าวจากการร้องข้อการสนับสนุนจาก Organic Maps เท่านั้น";
+"enable_logging_warning_message" = "ออปชันเพื่อเปิดการบันทึกประวัติการทำงานเพื่อการวินิจฉัย ประวัติดังกล่าวอาจเป็นประโยชน์กับทีมงานช่วยเหลือของเราที่คอยจัดการกับปัญหาที่เจอระหว่างแอปทำงาน โปรดเปิดออปชันดังกล่าวจากการร้องข้อการสนับสนุนจาก CoMaps เท่านั้น";
 "driving_options_title" = "ทางเลือกเส้นทางขับขี่";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +871,7 @@
 "ok" = "โอเค";
 "speedcams_alert_title_carplay_1" = "จับความเร็ว";
 "speedcams_alert_title_carplay_2" = "เตือนความเร็ว";
-"download_map_carplay" = "โปรดดาวน์โหลดแผนที่ในแอพฯ Organic Maps บนอุปกรณ์ของคุณ";
+"download_map_carplay" = "โปรดดาวน์โหลดแผนที่ในแอพฯ CoMaps บนอุปกรณ์ของคุณ";
 "carplay_roundabout_exit" = "ทางออกที่ %@";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "ติดตาม";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "ขอขอบคุณที่ใช้แผนที่ที่สร้างโดยชุมชนของเรา!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "เป้าหมายหลักของเราคือการสร้างแผนที่ที่รวดเร็ว เน้นความเป็นส่วนตัว และใช้งานง่ายที่คุณจะหลงรัก";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "ขณะนี้คุณกำลังใช้แผนที่ทั่วไปบนหน้าจอโทรศัพท์";
+"car_used_on_the_phone_screen" = "ขณะนี้คุณกำลังใช้CoMapsบนหน้าจอโทรศัพท์";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "ขณะนี้คุณกำลังใช้แผนที่ทั่วไปบนหน้าจอรถยนต์";
+"car_used_on_the_car_screen" = "ขณะนี้คุณกำลังใช้CoMapsบนหน้าจอรถยนต์";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "ดำเนินการต่อบนโทรศัพท์";
@@ -995,7 +1012,10 @@
 "website_menu" = "ลิงค์เมนู";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "คุณต้องการส่งรายงานข้อผิดพลาดไปยังนักพัฒนาหรือไม่?\nเราไว้วางใจผู้ใช้ของเราเนื่องจาก Organic Maps จะไม่รวบรวมข้อมูลข้อผิดพลาดใด ๆ โดยอัตโนมัติ ขอขอบคุณล่วงหน้าสำหรับการสนับสนุน Organic Maps!";
+"bugreport_alert_message" = "คุณต้องการส่งรายงานข้อผิดพลาดไปยังนักพัฒนาหรือไม่?\nเราไว้วางใจผู้ใช้ของเราเนื่องจาก CoMaps จะไม่รวบรวมข้อมูลข้อผิดพลาดใด ๆ โดยอัตโนมัติ ขอขอบคุณล่วงหน้าสำหรับการสนับสนุน CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "เปิดใช้งานการซิงโครไนซ์ iCloud";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "เส้นทางว่างเปล่า - ไม่มีอะไรจะบันทึก";
 "edit_track" = "แก้ไขเส้นทาง";
+"osm_profile_view_notes" = "ดูหมายเหตุ";
+"osm_profile_view_edit_history" = "ดูประวัติการแก้ไข";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

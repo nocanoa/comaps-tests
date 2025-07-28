@@ -129,7 +129,6 @@
     <string name="type.amenity.prison">Prisão</string>
     <string name="type.amenity.pub">Pub ou taberna</string>
     <string name="type.amenity.public_bookcase">Biblioteca livre</string>
-
     <!-- SECTION: Types: Recycling -->
     <string name="type.amenity.recycling.centre">Centro de reciclagem</string>
     <string name="type.amenity.recycling">Contentor de reciclagem</string>
@@ -356,7 +355,6 @@
     <string name="type.healthcare.psychotherapist">Psicoterapia</string>
     <string name="type.healthcare.sample_collection">Amostragem</string>
     <string name="type.healthcare.speech_therapist">Terapia da fala</string>
-
     <!-- SECTION: Types: Roads -->
     <string name="type.highway">Rodovia</string>
     <string name="type.highway.bridleway">Caminho para cavaleiros</string>
@@ -521,7 +519,6 @@
     <string name="type.area_highway.track">Pista para desportos não motorizados</string>
     <string name="type.area_highway.trunk">Via rápida</string>
     <string name="type.area_highway.unclassified">Estrada sem classificação</string>
-
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">Objeto histórico</string>
     <string name="type.historic.aircraft">Aeronaves Históricas</string>
@@ -580,12 +577,10 @@
     <string name="type.landuse.cemetery">Cemitério</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">Cemitério cristão</string>
-    <string name="type.landuse.churchyard">Adro de igreja</string>
     <string name="type.landuse.commercial">Área comercial</string>
     <string name="type.landuse.construction">Construção</string>
     <string name="type.landuse.farmland">Campo agrícola</string>
     <string name="type.landuse.farmyard">Pátio de quinta</string>
-    <string name="type.landuse.field">Campo</string>
     <string name="type.landuse.flowerbed">Canteiro de flores</string>
     <string name="type.landuse.forest">Floresta</string>
     <string name="type.landuse.forest.coniferous">Floresta de coníferas</string>
@@ -778,7 +773,6 @@
     <string name="type.power.plant.hydro">Usina hidrelétrica</string>
     <string name="type.power.plant.solar">Planta de energia solar</string>
     <string name="type.power.plant.wind">Usina de energia eólica</string>
-    <string name="type.power.station">Subestação elétrica</string>
     <string name="type.power.substation">Subestação elétrica</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Torre de eletricidade</string>
@@ -1345,4 +1339,66 @@
     <string name="type.amenity.dojo">Dojo</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">Pavilhão desportivo</string>
+    <string name="type.cuisine.bubble_tea">Chá de bolhas</string>
+    <string name="type.man_made.crane">Guindaste</string>
+    <string name="type.power.pole">Poste de energia</string>
+    <string name="type.highway.elevator">Elevador</string>
+    <string name="type.landuse.plant_nursery">Viveiro de plantas</string>
+    <string name="type.recycling.cardboard">Cartão</string>
+    <string name="type.highway.ladder">Escada</string>
+    <string name="type.hwtag">hwtag</string>
+    <string name="type.amenity.studio">Estúdio</string>
+    <string name="type.amenity.vending_machine.sweets">Dispensador de doces</string>
+    <string name="type.psurface.unpaved_bad">psurface-não pavimentado_ruim</string>
+    <string name="type.route.shuttle_train">rota-ônibus_trem</string>
+    <string name="type.hwtag.bidir_bicycle">hwtag-bidir_bicicleta</string>
+    <string name="type.recycling.cans">Latas</string>
+    <string name="type.amenity.love_hotel">Hotel do Amor</string>
+    <string name="type.recycling.shoes">Sapato</string>
+    <string name="type.recycling.green_waste">Resíduos Verdes/Orgânicos</string>
+    <string name="type.recycling.cartons">Caixas</string>
+    <string name="type.amenity.sanitary_dump_station">Estação de despejo de tanques de retenção</string>
+    <string name="type.amenity.vending_machine.coffee">Dispensador de café</string>
+    <string name="type.amenity.vending_machine.condoms">Distribuidor de preservativos</string>
+    <string name="type.amenity.vending_machine.food">Distribuidor de alimentos</string>
+    <string name="type.amenity.vending_machine.newspapers">Distribuidor de jornais</string>
+    <string name="type.amenity.vending_machine.excrement_bags">Dispensador de sacos de excrementos</string>
+    <string name="type.amenity.vending_machine.fuel">Bomba de combustível</string>
+    <string name="type.amenity.waste_transfer_station">Estação de Transferência de Resíduos</string>
+    <string name="type.barrier.chain">Corrente</string>
+    <string name="type.barrier.guard_rail">Guarda-corpo</string>
+    <string name="type.fee.yes">$</string>
+    <string name="type.highway.world_level">nível mundial de rodovias</string>
+    <string name="type.highway.world_towns_level">nível_das_cidades_do_mundo_das_rodovias</string>
+    <string name="type.hwtag.onedir_bicycle">hwtag-onedir_bicicleta</string>
+    <string name="type.hwtag.lit">hwtag-lit</string>
+    <string name="type.hwtag.yesbicycle">hwtag-simbicicleta</string>
+    <string name="type.leisure.hackerspace">Hackerspace</string>
+    <string name="type.leisure.firepit">Fogueira</string>
+    <string name="type.leisure.beach_resort">Resort de praia</string>
+    <string name="type.man_made.survey_point">Ponto de Levantamento</string>
+    <string name="type.man_made.flagpole">Mastro de bandeira</string>
+    <string name="type.man_made.mast">Mastro</string>
+    <string name="type.man_made.silo">Silo</string>
+    <string name="type.man_made.storage_tank">Tanque de armazenamento</string>
+    <string name="type.mapswithme">MapsWithMe</string>
+    <string name="type.mapswithme.grid">mapswithme-grade</string>
+    <string name="type.mountain_pass">Passo da Montanha</string>
+    <string name="type.man_made.utility_pole">Poste de serviço público</string>
+    <string name="type.psurface">superfície p</string>
+    <string name="type.psurface.paved_bad">superfície pavimentada ruim</string>
+    <string name="type.psurface.paved_good">superfície pavimentada_boa</string>
+    <string name="type.shop.caravan">Concessionária de RV</string>
+    <string name="type.sport.diving">Mergulho alto</string>
+    <string name="type.hwtag.nobicycle">hwtag-nobicycle</string>
+    <string name="type.hwtag.nocar">hwtag-nocar</string>
+    <string name="type.hwtag.nofoot">hwtag-nofoot</string>
+    <string name="type.hwtag.oneway">hwtag-oneway</string>
+    <string name="type.hwtag.private">hwtag-private</string>
+    <string name="type.hwtag.toll">hwtag-toll</string>
+    <string name="type.hwtag.yescar">hwtag-yescar</string>
+    <string name="type.hwtag.yesfoot">hwtag-yesfoot</string>
+    <string name="type.psurface.unpaved_good">psurface-unpaved_good</string>
+    <string name="type.landuse.education">Instalação Educativa</string>
+    <string name="type.railway.station.subway.qingdao">Estação de metro</string>
 </resources>

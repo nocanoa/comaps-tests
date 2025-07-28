@@ -45,7 +45,7 @@
     <string name="type.amenity.charging_station">محطة شحن</string>
     <string name="type.amenity.charging_station.bicycle">محطة شحن الدراجات</string>
     <string name="type.amenity.charging_station.motorcar">محطة شحن السيارات</string>
-    <string name="type.amenity.childcare">حضانة</string>
+    <string name="type.amenity.childcare">حضّانة</string>
     <string name="type.amenity.cinema">سينما</string>
     <string name="type.leisure.bowling_alley">صالة بولينج</string>
     <string name="type.amenity.clinic">عيادة</string>
@@ -62,7 +62,7 @@
     <string name="type.amenity.exhibition_centre">مركز المعرض</string>
     <string name="type.amenity.money_transfer">تحويل المال</string>
     <string name="type.amenity.music_school">مدرسة موسيقى</string>
-    <string name="type.amenity.language_school">مدرسة لغة</string>
+    <string name="type.amenity.language_school">مدرسة لغات</string>
     <string name="type.office.diplomatic">سفارة</string>
     <string name="type.amenity.fast_food">وجبات سريعة</string>
     <string name="type.amenity.ferry_terminal">محطة عبّارات</string>
@@ -128,7 +128,6 @@
     <string name="type.amenity.prison">سجن</string>
     <string name="type.amenity.pub">حانة</string>
     <string name="type.amenity.public_bookcase">مكتبة، تبادل كتب</string>
-
     <!-- SECTION: Types: Recycling -->
     <string name="type.amenity.recycling.centre">مركز إعادة تدوير</string>
     <string name="type.amenity.recycling">حاوية لإعادة التدوير</string>
@@ -368,7 +367,6 @@
     <string name="type.healthcare.psychotherapist">العلاج النفسي</string>
     <string name="type.healthcare.sample_collection">أخذ العينات</string>
     <string name="type.healthcare.speech_therapist">علاج النطق</string>
-
     <!-- SECTION: Types: Roads -->
     <string name="type.highway">طريق السريع</string>
     <string name="type.highway.bridleway">طريق خيول</string>
@@ -534,7 +532,6 @@
     <string name="type.area_highway.track">شارع</string>
     <string name="type.area_highway.trunk">شارع وطني</string>
     <string name="type.area_highway.unclassified">شارع صغير</string>
-
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">مكان تاريخي</string>
     <string name="type.historic.aircraft">الطائرات التاريخية</string>
@@ -592,12 +589,10 @@
     <string name="type.landuse.cemetery">مقبرة</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">مقبرة مسيحية</string>
-    <string name="type.landuse.churchyard">فناء الكنيسة</string>
     <string name="type.landuse.commercial">منطقة تجارية</string>
     <string name="type.landuse.construction">منطقة بناء</string>
     <string name="type.landuse.education">مؤسسة تعليمية</string>
     <string name="type.landuse.farmland">حقل</string>
-    <string name="type.landuse.field">حقل</string>
     <string name="type.landuse.flowerbed">مشتل أزهار</string>
     <string name="type.landuse.forest">غابة</string>
     <string name="type.landuse.forest.coniferous">غابة صنوبرية</string>
@@ -626,7 +621,7 @@
     <string name="type.leisure.garden">حديقة</string>
     <string name="type.leisure.garden.residential">حديقة</string>
     <string name="type.leisure.golf_course">ملعب غولف</string>
-    <string name="type.leisure.hackerspace">هاكرزبيس</string>
+    <string name="type.leisure.hackerspace">مختبر اختراق</string>
     <string name="type.leisure.marina">مرسى</string>
     <string name="type.leisure.nature_reserve">محمية طبيعية</string>
     <string name="type.leisure.outdoor_seating">جلوس في الهواء الطلق</string>
@@ -1281,4 +1276,9 @@
     <string name="type.amenity.dojo">دوجو</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">الصالة الرياضية</string>
+    <string name="type.aerialway.mixed_lift">رفع مختلط</string>
+    <string name="type.amenity.love_hotel">فندق جب</string>
+    <string name="type.amenity.studio">معرض</string>
+    <string name="type.railway.station.subway.qingdao">محطة مترو</string>
+    <string name="type.mapswithme">MapsWithMe</string>
 </resources>

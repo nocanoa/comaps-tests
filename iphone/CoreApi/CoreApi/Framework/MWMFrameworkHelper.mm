@@ -1,8 +1,7 @@
 #import "MWMFrameworkHelper.h"
 #import "MWMMapSearchResult+Core.h"
-#import "ProductsConfiguration+Core.h"
-#import "Product+Core.h"
 #import "TrackInfo+Core.h"
+#import "ElevationProfileData+Core.h"
 
 #include "Framework.h"
 
@@ -10,19 +9,6 @@
 
 #include "platform/local_country_file_utils.hpp"
 #include "platform/network_policy_ios.h"
-
-static Framework::ProductsPopupCloseReason ConvertProductPopupCloseReasonToCore(ProductsPopupCloseReason reason) {
-  switch (reason) {
-    case ProductsPopupCloseReasonClose:
-      return Framework::ProductsPopupCloseReason::Close;
-    case ProductsPopupCloseReasonSelectProduct:
-      return Framework::ProductsPopupCloseReason::SelectProduct;
-    case ProductsPopupCloseReasonAlreadyDonated:
-      return Framework::ProductsPopupCloseReason::AlreadyDonated;
-    case ProductsPopupCloseReasonRemindLater:
-      return Framework::ProductsPopupCloseReason::RemindLater;
-  }
-}
 
 @implementation MWMFrameworkHelper
 
@@ -195,6 +181,10 @@ static Framework::ProductsPopupCloseReason ConvertProductPopupCloseReasonToCore(
   GetFramework().ShowTrack(trackId);
 }
 
++ (void)saveRouteAsTrack {
+  GetFramework().SaveRoute();
+}
+
 + (void)updatePlacePageData {
   GetFramework().UpdatePlacePageInfoForCurrentSelection();
 }
@@ -234,8 +224,8 @@ static Framework::ProductsPopupCloseReason ConvertProductPopupCloseReasonToCore(
   GetFramework().StopTrackRecording();
 }
 
-+ (void)saveTrackRecordingWithName:(nullable NSString *)name {
-  GetFramework().SaveTrackRecordingWithName(name == nil ? "" : name.UTF8String);
++ (void)saveTrackRecordingWithName:(nonnull NSString *)name {
+  GetFramework().SaveTrackRecordingWithName(name.UTF8String);
 }
 
 + (BOOL)isTrackRecordingEnabled {
@@ -246,19 +236,8 @@ static Framework::ProductsPopupCloseReason ConvertProductPopupCloseReasonToCore(
   return GetFramework().IsTrackRecordingEmpty();
 }
 
-// MARK: - ProductsManager
-
-+ (nullable ProductsConfiguration *)getProductsConfiguration {
-  auto const & config = GetFramework().GetProductsConfiguration();
-  return config.has_value() ? [[ProductsConfiguration alloc] init:config.value()] : nil;
-}
-
-+ (void)didCloseProductsPopupWithReason:(ProductsPopupCloseReason)reason {
-  GetFramework().DidCloseProductsPopup(ConvertProductPopupCloseReasonToCore(reason));
-}
-
-+ (void)didSelectProduct:(Product *)product {
-  GetFramework().DidSelectProduct({product.title.UTF8String, product.link.UTF8String});
++ (ElevationProfileData * _Nonnull)trackRecordingElevationInfo {
+  return [[ElevationProfileData alloc] initWithElevationInfo:GetFramework().GetTrackRecordingElevationInfo()];
 }
 
 @end

@@ -7,15 +7,15 @@
     <string name="cancel">Annuller</string>
     <!-- Button which deletes downloaded country -->
     <string name="delete">Slet</string>
-    <string name="download_maps">Download kort</string>
+    <string name="download_maps">Hent kort</string>
     <!-- Settings/Downloader - info for country when download fails -->
-    <string name="download_has_failed">Download mislykkedes. Tryk for at prøve igen.</string>
+    <string name="download_has_failed">Hentning af kort mislykkedes. Tryk for at prøve igen.</string>
     <!-- Settings/Downloader - info for country which started downloading -->
-    <string name="downloading">Downloader…</string>
+    <string name="downloading">Henter…</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
     <string name="kilometres">Kilometer</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
-    <string name="miles">Miles</string>
+    <string name="miles">Mil</string>
     <!-- A text for current gps location point/arrow selected on the map -->
     <string name="core_my_position">Min position</string>
     <!-- Update maps later button text -->
@@ -29,49 +29,48 @@
     <!-- A dialog title, that warns a user that Precise Location is disabled and suggests to turn it on -->
     <string name="limited_accuracy">Begrænset nøjagtighed</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">For at sikre nøjagtig navigation skal du aktivere Præcis placering i indstillingerne.</string>
+    <string name="precise_location_is_disabled_long_text">For at sikre nøjagtig navigation skal du aktivere præcis placering i indstillinger.</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Vis på kortet</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
-    <string name="country_status_download_failed">Download mislykket</string>
+    <string name="country_status_download_failed">Hentning mislykket</string>
     <!-- Button text for the button under the country_status_download_failed message -->
     <string name="try_again">Prøv igen</string>
-    <string name="about_menu_title">Om Organic Maps</string>
+    <string name="about_menu_title">Om CoMaps</string>
     <!-- Text in About screen -->
-    <string name="about_headline">Gratis for alle, lavet med kærlighed</string>
+    <string name="about_headline">Åbent projekt drevet af fællesskabet</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_1">• Ingen annoncer, ingen sporing, ingen dataindsamling</string>
+    <string name="about_proposition_1">• Let at bruge og veludført</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_2">• Intet batteridræn, fungerer offline</string>
+    <string name="about_proposition_2">• Fokuseret på beskyttelse af privatlivets fred og fri for reklamer</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• Hurtig, minimalistisk, udviklet af fællesskabet</string>
+    <string name="about_proposition_3">• Offline, hurtig og kompakt</string>
     <!-- Text in About screen -->
-    <string name="about_developed_by_enthusiasts">Open source-applikation oprettet af entusiaster og frivillige.</string>
+    <string name="about_developed_by_enthusiasts">Helt open source, non-profit, gennemsigtig beslutningstagning og økonomi.</string>
     <!-- The button that opens system location settings -->
     <string name="location_settings">Indstillinger for placering</string>
     <string name="close">Luk</string>
     <string name="unsupported_phone">Appen kræver hardwareaccelereret OpenGL. Din enhed er desværre ikke understøttet.</string>
-    <string name="download">Download</string>
+    <string name="download">Hent</string>
     <!-- Used in DownloadResources startup screen -->
-    <string name="disconnect_usb_cable">Frakobl venligst USB-kabel eller indsæt et hukommelseskort for at bruge Organic Maps</string>
+    <string name="disconnect_usb_cable">Frakobl venligst USB-kabel, eller indsæt et hukommelseskort for at bruge CoMaps</string>
     <!-- Used in DownloadResources startup screen -->
     <string name="not_enough_free_space_on_sdcard">Frigør først noget plads på dit SD-kort/USB lager for at bruge denne app</string>
-    <string name="download_resources">Før du begynder at bruge appen, skal du downloade oversigtskortet over verden til din enhed. \nDet vil bruge %s lagerplads.</string>
-    <string name="download_resources_continue">Gå til kort</string>
-    <string name="downloading_country_can_proceed">Downloader %s. Du kan nu
-\nfortsætte til kortet.</string>
-    <string name="download_country_ask">Download %s?</string>
-    <string name="update_country_ask">Opdater %s?</string>
+    <string name="download_resources">Før du begynder at bruge appen, skal du hente oversigtskortet over verden til din enhed. \nDet vil bruge %s lagerplads.</string>
+    <string name="download_resources_continue">Gå til kortet</string>
+    <string name="downloading_country_can_proceed">Henter %1$s (%2$s). Du kan nu \nfortsætte til kortet.</string>
+    <string name="download_country_ask">Hent %1$s? (%2$s)</string>
+    <string name="update_country_ask">Opdater %1$s? (%2$s)</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
     <string name="pause">Pause</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
     <string name="continue_button">Fortsæt</string>
     <!-- Show popup notification on top of the map when country download has failed. -->
-    <string name="download_country_failed">%s download mislykkedes</string>
+    <string name="download_country_failed">%s hentning mislykkedes</string>
     <!-- "Add new bookmark list" dialog title -->
     <string name="add_new_set">Tilføj en ny liste</string>
     <!-- Add Bookmark list dialog - hint when the list name is empty -->
-    <string name="bookmark_set_name">Indstil bogmærkenavn for liste</string>
+    <string name="bookmark_set_name">Indstil navn for bogmærkeliste</string>
     <!-- Should be used in the bookmarks-only context, see bookmarks_and_tracks if tracks are also implied. -->
     <string name="bookmarks">Bogmærker</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
@@ -95,12 +94,11 @@
     <!-- Question dialog for transferring maps from one storage to another -->
     <string name="move_maps">Flyt kort?</string>
     <!-- Ask user to wait several minutes (some long process in modal dialog). -->
-    <string name="wait_several_minutes">Dette kan tage flere minutter.
-\nVent venligst…</string>
+    <string name="wait_several_minutes">Dette kan tage flere minutter. \nVent venligst…</string>
     <!-- Measurement units title in settings activity -->
     <string name="measurement_units">Måleenheder</string>
     <!-- Detailed description of Measurement Units settings button -->
-    <string name="measurement_units_summary">Vælg mellem miles eller kilometer</string>
+    <string name="measurement_units_summary">Vælg mellem mil eller kilometer</string>
     <!-- SECTION: Search categories -->
     <!-- Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! -->
     <string name="category_eat">Spisesteder</string>
@@ -115,7 +113,7 @@
     <!-- Search category for malls/clothes/shoes/gifts/jewellery/sport shops; any changes should be duplicated in categories.txt @category_shopping! -->
     <string name="category_shopping">Indkøb</string>
     <!-- Search category for second_hand/charity/antique/auction shops; any changes should be duplicated in categories.txt @category_secondhand! -->
-    <string name="category_secondhand">Brugt</string>
+    <string name="category_secondhand">Genbrugsbutikker</string>
     <!-- Search category for places to stay; any changes should be duplicated in categories.txt @category_hotel! -->
     <string name="category_hotel">Hotel</string>
     <!-- Search category sight seeings and touristic attractions; any changes should be duplicated in categories.txt @category_tourism! -->
@@ -143,16 +141,16 @@
     <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
     <string name="category_wifi">WiFi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
-    <string name="category_recycling">Genbrug</string>
+    <string name="category_recycling">Recirkulering</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
     <string name="category_water">Vand</string>
     <!-- Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! -->
-    <string name="category_rv">Faciliteter til autocamper</string>
+    <string name="category_rv">Autocamper-faciliteter</string>
     <!-- SECTION: Other translations -->
     <!-- Notes field in Bookmarks view -->
     <string name="description">Noter</string>
     <!-- Email Subject when sharing bookmark list -->
-    <string name="share_bookmarks_email_subject">Organic Maps bogmærker er blevet delt med dig</string>
+    <string name="share_bookmarks_email_subject">CoMaps bogmærker er blevet delt med dig</string>
     <!-- message title of loading file -->
     <string name="load_kmz_title">Indlæser bogmærker</string>
     <!-- Kmz file successful loading -->
@@ -160,12 +158,9 @@
     <!-- Kml file loading failed -->
     <string name="load_kmz_failed">Bogmærkerne kunne ikke indlæses. Filen kan være skadet eller defekt.</string>
     <!-- Failed to recognize the format of a bookmarks or tracks file. -->
-    <string name="unknown_file_type">Filtypen genkendes ikke af appen:
-\n%1$s</string>
-    <!-- Failed to open a bookmarks or tracks file in Organic Maps. -->
-    <string name="failed_to_open_file">Kunne ikke åbne filen %1$s
-\n
-\n%2$s</string>
+    <string name="unknown_file_type">Filtypen genkendes ikke af appen: \n%1$s</string>
+    <!-- Failed to open a bookmarks or tracks file in CoMaps. -->
+    <string name="failed_to_open_file">Kunne ikke åbne filen %1$s \n \n%2$s</string>
     <!-- resource for context menu -->
     <string name="edit">Rediger</string>
     <!-- Warning message when doing search around current position -->
@@ -174,13 +169,13 @@
     <string name="cant_change_this_setting">Beklager, indstillingerne for kortlagring er i øjeblikket deaktiveret.</string>
     <!-- Alert message that downloading is in progress. -->
     <string name="downloading_is_active">Download af kort er i gang nu.</string>
-    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://omaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
-    <string name="my_position_share_sms">Hey, tjek min nuværende placering på Organic Maps! %1$s eller %2$s. Har du ikke offline kort? Download her: https://omaps.app/get</string>
+    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
+    <string name="my_position_share_sms">Hey, tjek min nuværende placering på CoMaps! %1$s eller %2$s. Har du ikke offline kort? Download her: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
-    <string name="bookmark_share_email_subject">Hey, tjek min knappenål på Organic Maps!</string>
+    <string name="bookmark_share_email_subject">Hey, tjek min knappenål på CoMaps!</string>
     <!-- Subject for emailed position -->
-    <string name="my_position_share_email_subject">Hey, tjek min nuværende placering på Organic Maps-kortet!</string>
-    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://omaps.app link WITHOUT NAME -->
+    <string name="my_position_share_email_subject">Hey, tjek min nuværende placering på CoMaps-kortet!</string>
+    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://comaps.app link WITHOUT NAME -->
     <string name="my_position_share_email">Hej, \n \nJeg er her nu: %1$s. Tryk på dette link %2$s eller dette %3$s for at se stedet på kortet. \n \nTak.</string>
     <!-- Share button text which opens menu with more buttons, like Message, EMail, Facebook etc. -->
     <string name="share">Del</string>
@@ -235,7 +230,7 @@
     <string name="search_show_on_map">Vis på kort</string>
     <!-- Text in menu -->
     <string name="website">Hjemmeside</string>
-    <!-- Text in About menu, opens Organic Maps news website -->
+    <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">Nyheder</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">Feedback</string>
@@ -247,9 +242,6 @@
     <string name="faq">Spørgsmål og svar</string>
     <!-- Button in the main menu -->
     <string name="donate">Doner</string>
-    <string name="already_donated">Allerede doneret</string>
-    <string name="remind_me_later">Påmind mig senere</string>
-    <string name="support_organic_maps">Støt Organic Maps</string>
     <!-- Button in the main Help dialog -->
     <string name="how_to_support_us">Støt projektet</string>
     <!-- Button in the main Help dialog -->
@@ -288,13 +280,11 @@
     <!-- Item in context menu. -->
     <string name="downloader_update_map">Opdater kort</string>
     <!-- Preference title -->
-    <string name="google_play_services">Google Play Placeringstjenester</string>
+    <string name="google_play_services">Google Fused Placeringstjenester</string>
     <!-- Preference text -->
-    <string name="pref_use_google_play">Find hurtigt din omtrentlige position via Bluetooth, WiFi eller mobilnetværk</string>
+    <string name="pref_use_google_play">En proprietær tjeneste, der kombinerer GPS, Wi-Fi, mobilnetværk osv. for at bestemme din placering mere præcist. Den kan oprette forbindelse til Googles servere.</string>
     <!-- Preference title -->
-    <string name="pref_display_kayak_title">Kayak.com hotel-links</string>
     <!-- Preference description -->
-    <string name="pref_display_kayak_text">Fotos, anmeldelser og bookinglinks vises for hoteller, der er opført på Kayak.com. Den henvisningsbonus, der modtages for hver booking via disse links, går til udvikling af Organic Maps.</string>
     <!-- Text for routing error dialog -->
     <string name="routing_download_maps_along">Download alle kort langs din rute</string>
     <!-- Text for routing error dialog -->
@@ -475,15 +465,13 @@
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Fællesskabsskabte OpenStreetMap-data fra %s. Få mere at vide om, hvordan du redigerer og opdaterer kortet på OpenStreetMap.org</string>
     <!-- OSM explanation on Android login screen -->
-    <string name="login_osm_presentation">OpenStreetMap.org (OSM) er et fællesskabsprojekt til opbygning af et gratis og åbent kort. Det er hovedkilden til kortdata i Organic Maps og fungerer på samme måde som Wikipedia. Du kan tilføje eller redigere steder, og de bliver tilgængelige for millioner af brugere over hele verden.
-\nSlut dig til fællesskabet og vær med til at skabe et bedre kort for alle!</string>
+    <string name="login_osm_presentation">OpenStreetMap.org (OSM) er et fællesskabsprojekt til opbygning af et gratis og åbent kort. Det er hovedkilden til kortdata i CoMaps og fungerer på samme måde som Wikipedia. Du kan tilføje eller redigere steder, og de bliver tilgængelige for millioner af brugere over hele verden. \nSlut dig til fællesskabet og vær med til at skabe et bedre kort for alle!</string>
     <string name="login_to_make_edits_visible">Opret en OpenStreetMap-konto eller log ind for at offentliggøre dine kortredigeringer til hele verden.</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%1$d af %2$d</string>
     <string name="download_over_mobile_header">Download ved brug af mobilnetværksforbindelse?</string>
     <string name="download_over_mobile_message">Dette kan være meget dyrt med nogle abonnementer eller ved roaming.</string>
     <string name="error_enter_correct_house_number">Indtast et gyldigt bygningsnummer</string>
-    <string name="editor_storey_number">Antal etager (maks %d)</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">Antallet af etager må ikke overstige %d etager</string>
     <string name="editor_zip_code">Postnummer</string>
@@ -493,7 +481,7 @@
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">Note til OpenStreetMap-frivillige (valgfrit)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
-    <string name="editor_note_hint">Beskriv fejl på kortet eller ting, der ikke kan redigeres med Organic Maps</string>
+    <string name="editor_note_hint">Beskriv fejl på kortet eller ting, der ikke kan redigeres med CoMaps</string>
     <!-- Information about OSM at the top of the editing page -->
     <string name="editor_about_osm">Dine ændringer uploades til den offentlige <a href="https://wiki.openstreetmap.org/wiki/Da:Om_OpenStreetMap">OpenStreetMap</a>-database. Tilføj venligst ikke personlige eller ophavsretligt beskyttede oplysninger.</string>
     <string name="editor_more_about_osm">Mere om OpenStreetMap</string>
@@ -503,7 +491,7 @@
     <!-- To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... -->
     <string name="operator">Operatør: %s</string>
     <string name="editor_category_unsuitable_title">Kan du ikke finde en passende kategori?</string>
-    <string name="editor_category_unsuitable_text">Organic Maps giver kun mulighed for at tilføje simple punktkategorier, dvs. ingen byer, veje, søer, bygningsomrids osv. Tilføj sådanne kategorier direkte til <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Se vores <a href="https://organicmaps.app/faq/editing/advanced-map-editing">guide</a> for detaljerede trin for trin-instruktioner.</string>
+    <string name="editor_category_unsuitable_text">CoMaps giver kun mulighed for at tilføje simple punktkategorier, dvs. ingen byer, veje, søer, bygningsomrids osv. Tilføj sådanne kategorier direkte til <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Se vores <a href="https://www.comaps.app/support/advanced-map-editing/">guide</a> for detaljerede trin for trin-instruktioner.</string>
     <string name="downloader_no_downloaded_maps_title">Du har ikke downloadet nogen kort</string>
     <string name="downloader_no_downloaded_maps_message">Download kort for at søge og navigere offline.</string>
     <string name="current_location_unknown_error_title">Aktuel placering er ukendt.</string>
@@ -522,14 +510,6 @@
     <string name="minute">min</string>
     <string name="day">d</string>
     <string name="placepage_more_button">Mere</string>
-    <!-- A referral link on the place page for some hotels -->
-    <string name="more_on_kayak">Fotos, anmeldelser, booking</string>
-    <!-- An explanation dialog shown when clicking on more_on_kayak link. -->
-    <string name="dialog_kayak_disclaimer">Henvisningsbonussen, der modtages for hver booking via dette link, går til udviklingen af Organic Maps.</string>
-    <!-- A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_button">Detaljer på Kayak</string>
-    <!-- A disable button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_disable_button">Deaktiver Kayak</string>
     <string name="placepage_edit_bookmark_button">Rediger bogmærke</string>
     <string name="placepage_personal_notes_hint">Personlige notater (tekst eller html)</string>
     <string name="editor_comment_hint">Kommentar…</string>
@@ -565,7 +545,7 @@
     <string name="mobile_data_option_ask">Spørg altid</string>
     <string name="traffic_update_maps_text">Kort skal opdateres for at vise trafikdata.</string>
     <string name="big_font">Forøg størrelsen på kortetiketter</string>
-    <string name="traffic_update_app">Opdater Organic Maps</string>
+    <string name="traffic_update_app">Opdater CoMaps</string>
     <!-- "traffic" as in "road congestion" -->
     <string name="traffic_data_unavailable">Trafikdata er ikke tilgængelige</string>
     <string name="enable_logging">Aktiver logføring</string>
@@ -589,7 +569,7 @@
     <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
     <string name="alert_reauth_message">Log ind på OpenStreetMap for automatisk at uploade alle dine kortredigeringer. Få mere at vide <a href="https://github.com/organicmaps/organicmaps/issues/6144">her</a>.</string>
     <string name="dialog_error_storage_title">Problem med lageradgang</string>
-    <string name="dialog_error_storage_message">Eksternt lager er ikke tilgængeligt. SD-kortet kan være blevet fjernet eller beskadiget, eller filsystemet er skrivebeskyttet. Kontroller dit SD-kort eller kontakt os på support@organicmaps.app</string>
+    <string name="dialog_error_storage_message">Eksternt lager er ikke tilgængeligt. SD-kortet kan være blevet fjernet eller beskadiget, eller filsystemet er skrivebeskyttet. Kontroller dit SD-kort eller kontakt os på support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emulér beskadiget lager</string>
     <string name="core_entrance">Indgang</string>
     <string name="error_enter_correct_name">Angiv et korrekt navn</string>
@@ -629,7 +609,7 @@
     <string name="privacy_policy">Privatlivspolitik</string>
     <string name="terms_of_use">Vilkår for bruger</string>
     <string name="button_layer_traffic">Trafik</string>
-    <string name="button_layer_subway">Undergrundsbane</string>
+    <string name="subway">Undergrundsbane</string>
     <string name="layers_title">Kortstile og -lag</string>
     <string name="subway_data_unavailable">Kort over undergrundsbaner er ikke tilgængeligt</string>
     <string name="bookmarks_empty_list_title">Listen er tom</string>
@@ -768,9 +748,9 @@
     <!-- App tip #09 -->
     <string name="app_tip_09">Vores hovedmål er at bygge hurtige, privatlivsfokuserede, brugervenlige kort, som du vil elske.</string>
     <!-- Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen -->
-    <string name="car_used_on_the_phone_screen">Du bruger nu Organic Maps på telefonens skærm</string>
+    <string name="car_used_on_the_phone_screen">Du bruger nu CoMaps på telefonens skærm</string>
     <!-- Text on the phone placeholder screen that maps are displayed on the car screen -->
-    <string name="car_used_on_the_car_screen">Du bruger nu Organic Maps på bilens skærm</string>
+    <string name="car_used_on_the_car_screen">Du bruger nu CoMaps på bilens skærm</string>
     <!-- Displayed on the phone screen. Android Auto connected -->
     <string name="aa_connected_title">Du er forbundet til Android Auto</string>
     <!-- Displayed on the phone screen. Button to display maps on the phone screen instead of a car -->
@@ -778,11 +758,11 @@
     <!-- Displayed on the Android Auto or CarPlay screen. Button to display maps on the car screen instead of a phone. Must be no more than 18 symbols! -->
     <string name="car_continue_in_the_car">Til bilens skærm</string>
     <!-- Ask user to grant location permissions -->
-    <string name="aa_location_permissions_request">Organic Maps har brug for placeringsadgang. Når det er sikkert, kan du tjekke notifikationen på din telefon.</string>
+    <string name="aa_location_permissions_request">CoMaps har brug for placeringsadgang. Når det er sikkert, kan du tjekke notifikationen på din telefon.</string>
     <!-- Notification title for permission request from AA. -->
     <string name="aa_request_permission_notification">Denne app har brug for din tilladelse</string>
     <!-- The text in the activity for location permission request. -->
-    <string name="aa_request_permission_activity_text">Organic Maps i Android Auto har brug for placeringstilladelse for at fungere effektivt</string>
+    <string name="aa_request_permission_activity_text">CoMaps i Android Auto har brug for placeringstilladelse for at fungere effektivt</string>
     <!-- Grant Permissions button. -->
     <string name="aa_grant_permissions">Giv tilladelser</string>
     <!-- Outdoors/hiking map style (activity) name in the Styles and Layers dialog -->
@@ -845,11 +825,11 @@
     <string name="mb">MB</string>
     <string name="twitter">X (Twitter)</string>
     <string name="error_enter_correct_twitter_page">Indtast et gyldigt Twitter-brugernavn eller en webadresse</string>
-    <string name="share_bookmarks_email_body">Hej! \n \nVedhæftet er mine bogmærker; åbn dem venligst i Organic Maps. Hvis du ikke har den installeret, kan du downloade den her: https://omaps.app/get?kmz\n \nGod rejse med Organic Maps!</string>
+    <string name="share_bookmarks_email_body">Hej! \n \nVedhæftet er mine bogmærker; åbn dem venligst i CoMaps. Hvis du ikke har den installeret, kan du downloade den her: https://www.comaps.app/download/\n \nGod rejse med CoMaps!</string>
     <string name="delete_place_empty_comment_error">Angiv begrundelsen for at slette stedet</string>
     <string name="disk_error_title">Diskfejl</string>
     <string name="error_enter_correct_instagram_page">Indtast et gyldigt Instagram-brugernavn eller en webadresse</string>
-    <string name="translated_om_site_url">https://organicmaps.app/</string>
+    <string name="translated_om_site_url">https://comaps.app/</string>
     <string name="navigation_stop_button">Stop</string>
     <string name="error_enter_correct_vk_page">Indtast et gyldigt VK-brugernavn eller en webadresse</string>
     <string name="gb">GB</string>
@@ -858,7 +838,7 @@
     <string name="maps_storage_shared">Intern delt lagerplads</string>
     <string name="maps_storage_removable">SD-kort</string>
     <string name="maps_storage_external">Ekstern delt lagerplads</string>
-    <string name="tts_info_link">https://organicmaps.app/faq/text-to-speech-android-tts/</string>
+    <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="level_value_generic">Etage: %s</string>
     <string name="closes_in">Lukker om %s</string>
     <string name="enable_show_on_lock_screen_description">Når den er aktiveret, fungerer appen på låseskærmen, selv når enheden er låst.</string>
@@ -868,7 +848,6 @@
     <string name="move_maps_error">Fejl ved flytning af kortfiler</string>
     <string name="disk_error">Kan ikke oprette mapper og flytte filer på enhedens interne hukommelse eller sd-kort</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="telegram_url">https://t.me/OrganicMapsApp</string>
     <string name="editor_line_social_network">LINE</string>
     <string name="github">GitHub</string>
     <string name="prefs_group_general">Generelle indstillinger</string>
@@ -878,7 +857,50 @@
     <string name="telegram">Telegram</string>
     <string name="instagram">Instagram</string>
     <string name="openstreetmap">OpenStreetMap</string>
-    <string name="instagram_url">https://www.instagram.com/organicmaps.app</string>
     <string name="change_map_locale">Sprog på kort</string>
     <string name="prefs_group_information">Information</string>
+    <string name="telegram_url">https://t.me/CoMapsApp/</string>
+    <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
+    <string name="panoramax">Panoramax-billede</string>
+    <string name="saved">Gemt</string>
+    <string name="about_help">Om og hjælp</string>
+    <string name="bluesky">Bluesky</string>
+    <string name="error_enter_correct_fediverse_page">Indtast et gyldigt Mastodon-brugernavn eller en gyldig webadresse</string>
+    <string name="error_enter_correct_bluesky_page">Indtast et gyldigt Bluesky-brugernavn eller en webadresse</string>
+    <string name="editor_level">Etage (0 er stueetage)</string>
+    <string name="pref_backup_now_summary_ok">Sikkerhedskopiering fuldført</string>
+    <string name="pref_backup_now_summary_empty_lists">Ingen bogmærker og spor at lave sikkerhedskopi af</string>
+    <string name="pref_backup_now_summary_failed">Sikkerhedskopiering mislykkedes</string>
+    <string name="pref_backup_now_summary_folder_unavailable">Mappen til sikkerhedskopiering er ikke tilgængelig</string>
+    <string name="pref_backup_status_summary_success">Sidste vellykkede sikkerhedskopiering</string>
+    <string name="pref_backup_location_summary_initial">Vælg først en mappe, og giv tilladelse</string>
+    <string name="pref_backup_history_title">Antal sikkerhedskopier, der skal gemmes</string>
+    <string name="pref_backup_interval_title">Automatisk sikkerhedskopiering</string>
+    <string name="backup_interval_every_day">Dagligt</string>
+    <string name="backup_interval_every_week">Ugentligt</string>
+    <string name="backup_interval_manual_only">Fra (kun manuelt)</string>
+    <string name="dialog_report_error_missing_folder">Den valgte sikkerhedskopi-placering er ikke tilgængelig eller skrivbar. Vælg en anden placering.</string>
+    <string name="dialog_report_error_with_logs">Send os en fejlrapport:\n - \"Aktivér logning\" i indstillingerne\n - genskab problemet\n - Tryk på knappen \"Rapporter en fejl\" i skærmbilledet \"Om og hjælp\" og send via e-mail eller chat.\n - deaktiver logning</string>
+    <string name="editor_building_levels">Etager (inkl. stueetage, ekskl. tag)</string>
+    <string name="error_enter_correct_level">Indtast et gyldigt etagenummer</string>
+    <string name="codeberg">Codeberg</string>
+    <string name="pref_left_button_title">Indstilling af venstre knap</string>
+    <string name="pref_backup_title">Sikkerhedskopi af bogmærker og spor</string>
+    <string name="pref_backup_now_title">Sikkerhedskopiér nu</string>
+    <string name="pref_backup_now_summary">Opret en sikkerhedskopi straks</string>
+    <string name="clear">Ryd</string>
+    <string name="route_type">Rutetype</string>
+    <string name="vehicle">Køretøj</string>
+    <string name="pedestrian">Fodgænger</string>
+    <string name="bicycle">Cykel</string>
+    <string name="ruler">Lineal</string>
+    <string name="bookmark_color">Bogmærkefarve</string>
+    <string name="pref_backup_summary">Automatisk sikkerhedskopiering til en mappe på din enhed</string>
+    <string name="pref_backup_now_summary_progress">Sikkerhedskopiering i gang…</string>
+    <string name="pref_backup_location_title">Placering af sikkerhedskopi</string>
+    <string name="pref_left_button_disable">Deaktiver</string>
+    <string name="app_site_url">https://comaps.app/</string>
+    <string name="closed_now">Lukket nu</string>
+    <string name="open_now">Åben nu</string>
+    <string name="at">kl. %s</string>
 </resources>

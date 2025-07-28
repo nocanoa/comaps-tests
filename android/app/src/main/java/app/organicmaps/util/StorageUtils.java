@@ -1,6 +1,6 @@
 package app.organicmaps.util;
 
-import android.app.Application;
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -11,10 +11,13 @@ import android.provider.DocumentsContract;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
+import androidx.documentfile.provider.DocumentFile;
+
 import app.organicmaps.BuildConfig;
 import app.organicmaps.util.log.Logger;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -91,11 +94,11 @@ public class StorageUtils
   }
 
   @NonNull
-  public static String getApkPath(@NonNull Application application)
+  public static String getApkPath(@NonNull Context context)
   {
     try
     {
-      return Utils.getApplicationInfo(application.getPackageManager(), BuildConfig.APPLICATION_ID, 0).sourceDir;
+      return Utils.getApplicationInfo(context.getPackageManager(), BuildConfig.APPLICATION_ID, 0).sourceDir;
     }
     catch (final PackageManager.NameNotFoundException e)
     {
@@ -113,21 +116,21 @@ public class StorageUtils
   }
 
   @NonNull
-  public static String getSettingsPath(@NonNull Application application)
+  public static String getSettingsPath(@NonNull Context context)
   {
-    return addTrailingSeparator(application.getFilesDir().getAbsolutePath());
+    return addTrailingSeparator(context.getFilesDir().getAbsolutePath());
   }
 
   @NonNull
-  public static String getPrivatePath(@NonNull Application application)
+  public static String getPrivatePath(@NonNull Context context)
   {
-    return addTrailingSeparator(application.getFilesDir().getAbsolutePath());
+    return addTrailingSeparator(context.getFilesDir().getAbsolutePath());
   }
 
   @NonNull
-  public static String getTempPath(@NonNull Application application)
+  public static String getTempPath(@NonNull Context context)
   {
-    return addTrailingSeparator(application.getCacheDir().getAbsolutePath());
+    return addTrailingSeparator(context.getCacheDir().getAbsolutePath());
   }
 
   public static boolean createDirectory(@NonNull final String path)
@@ -323,5 +326,77 @@ public class StorageUtils
         }
       }
     }
+  }
+
+  public static boolean copyFileToDocumentFile(
+      @NonNull Activity activity,
+      @NonNull File sourceFile,
+      @NonNull DocumentFile targetFile
+  )
+  {
+    try (
+        InputStream in = new FileInputStream(sourceFile);
+        OutputStream out = activity.getContentResolver().openOutputStream(targetFile.getUri())
+    )
+    {
+      if (out == null)
+      {
+        Logger.e(TAG, "Failed to open output stream for " + targetFile.getUri());
+        return false;
+      }
+
+      byte[] buffer = new byte[8192];
+      int length;
+
+      while ((length = in.read(buffer)) > 0)
+        out.write(buffer, 0, length);
+
+      out.flush();
+      return true;
+    } catch (IOException e)
+    {
+      Logger.e(TAG, "Failed to copy file from " + sourceFile.getAbsolutePath() + " to " + targetFile.getUri(), e);
+      return false;
+    }
+  }
+
+  public static void deleteDirectoryRecursive(@NonNull DocumentFile dir)
+  {
+    try
+    {
+      for (DocumentFile file : dir.listFiles())
+      {
+        if (file.isDirectory())
+          deleteDirectoryRecursive(file);
+        else
+          file.delete();
+      }
+      dir.delete();
+    } catch (Exception e)
+    {
+      Logger.e(TAG, "Failed to delete directory: " + dir.getUri(), e);
+    }
+  }
+
+  public static boolean isFolderWritable(Context context, String folderPath)
+  {
+    try
+    {
+      Uri folderUri = Uri.parse(folderPath);
+      DocumentFile folder = DocumentFile.fromTreeUri(context, folderUri);
+      if (folder != null && folder.canWrite())
+      {
+        DocumentFile tempFile = folder.createFile("application/octet-stream", "temp_file");
+        if (tempFile != null)
+        {
+          tempFile.delete();
+          return true;
+        }
+      }
+    } catch (Exception e)
+    {
+      Logger.e(TAG, "Failed to check if folder is writable: " + folderPath, e);
+    }
+    return false;
   }
 }

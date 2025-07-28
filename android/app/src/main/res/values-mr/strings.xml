@@ -36,27 +36,25 @@
     <string name="country_status_download_failed">डाउनलोड अयशस्वी</string>
     <!-- Button text for the button under the country_status_download_failed message -->
     <string name="try_again">पुन्हा प्रयत्न करा</string>
-    <string name="about_menu_title">Organic Maps बद्दल</string>
+    <string name="about_menu_title">CoMaps बद्दल</string>
     <!-- Text in About screen -->
     <string name="about_proposition_2">• बॅटरी संपत नाही, ऑफलाइन कार्य करते</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• जलद, मिनिमलिस्ट, समुदायाद्वारे विकसित</string>
+    <string name="about_proposition_3">• ऑफलाइन, जलद आणि संक्षिप्त</string>
     <!-- The button that opens system location settings -->
     <string name="location_settings">स्थान सेटिंग्ज</string>
     <string name="close">बंद</string>
     <string name="unsupported_phone">ह्या ऍपला हार्डवेअर प्रवेगक OpenGL आवश्यक आहे. दुर्दैवाने, तुमच्या उपकरणाला ह्याचा आधार नाही.</string>
     <string name="download">डाउनलोड करा</string>
     <!-- Used in DownloadResources startup screen -->
-    <string name="disconnect_usb_cable">Organic Maps वापरण्यासाठी कृपया USB केबल काढून टाका किंवा मेमरी कार्ड घाला</string>
+    <string name="disconnect_usb_cable">CoMaps वापरण्यासाठी कृपया USB केबल काढून टाका किंवा मेमरी कार्ड घाला</string>
     <!-- Used in DownloadResources startup screen -->
     <string name="not_enough_free_space_on_sdcard">कृपया ऍप वापरण्यासाठी प्रथम SD कार्ड/USB स्टोरेजवरील काही जागा मोकळी करा</string>
-    <string name="download_resources">ऍपचा वापर सुरू करण्यापूर्वी, आम्हाला तुमच्या उपकरणावर जगाचा सामान्य नकाशा डाउनलोड करण्याची परवानगी द्या.
-\nते %s जागा वापरेल.</string>
+    <string name="download_resources">ऍपचा वापर सुरू करण्यापूर्वी, आम्हाला तुमच्या उपकरणावर जगाचा सामान्य नकाशा डाउनलोड करण्याची परवानगी द्या. \nते %s जागा वापरेल.</string>
     <string name="download_resources_continue">नकाशावर जा</string>
-    <string name="downloading_country_can_proceed">%s डाउनलोड करत आहे.
-\nतुम्ही आता नकाशावर जाऊ शकता.</string>
-    <string name="download_country_ask">%s डाउनलोड करायचे?</string>
-    <string name="update_country_ask">%s अद्ययावत करायचे?</string>
+    <string name="downloading_country_can_proceed">%1$s (%2$s) डाउनलोड करत आहे. \nतुम्ही आता नकाशावर जाऊ शकता.</string>
+    <string name="download_country_ask">%1$s डाउनलोड करायचे? (%2$s)</string>
+    <string name="update_country_ask">%1$s अद्ययावत करायचे? (%2$s)</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
     <string name="pause">विराम द्या</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
@@ -88,8 +86,7 @@
     <!-- Question dialog for transferring maps from one storage to another -->
     <string name="move_maps">नकाशे हलवायचे?</string>
     <!-- Ask user to wait several minutes (some long process in modal dialog). -->
-    <string name="wait_several_minutes">यास काही मिनिटे लागू शकतात.
-\nकृपया प्रतीक्षा करा…</string>
+    <string name="wait_several_minutes">यास काही मिनिटे लागू शकतात. \nकृपया प्रतीक्षा करा…</string>
     <!-- Measurement units title in settings activity -->
     <string name="measurement_units">मापन एकके</string>
     <!-- Detailed description of Measurement Units settings button -->
@@ -143,12 +140,8 @@
     <!-- Notes field in Bookmarks view -->
     <string name="description">चिठ्ठया</string>
     <!-- Email Subject when sharing bookmark list -->
-    <string name="share_bookmarks_email_subject">Organic Maps द्वारे तुम्हाला खूणपत्रे सामायिक केले</string>
-    <string name="share_bookmarks_email_body">नमस्कार!
-\n
-\nOrganic Maps ऍप मधील माझे खूणपत्रे संलग्न केले आहेत. तुम्ही Organic Maps इन्स्टॉल केले असल्यास हे खूणपत्रे उघडा. इन्स्टॉल केले नसल्यास, पुढील दुव्यावर जाऊन तुमच्या iOS किंवा अँड्रॉइड उपकरणावर हे डाउनलोड करा: https://omaps.app/get?kmz
-\n
-\nOrganic Maps सह प्रवासाचा आनंद घ्या!</string>
+    <string name="share_bookmarks_email_subject">CoMaps द्वारे तुम्हाला खूणपत्रे सामायिक केले</string>
+    <string name="share_bookmarks_email_body">नमस्कार! \n \nCoMaps ऍप मधील माझे खूणपत्रे संलग्न केले आहेत. तुम्ही CoMaps इन्स्टॉल केले असल्यास हे खूणपत्रे उघडा. इन्स्टॉल केले नसल्यास, पुढील दुव्यावर जाऊन तुमच्या iOS किंवा अँड्रॉइड उपकरणावर हे डाउनलोड करा: https://www.comaps.app/download/ \n \nCoMaps सह प्रवासाचा आनंद घ्या!</string>
     <!-- message title of loading file -->
     <string name="load_kmz_title">खूणपत्रे वाचत आहे</string>
     <!-- Kmz file successful loading -->
@@ -156,12 +149,9 @@
     <!-- Kml file loading failed -->
     <string name="load_kmz_failed">खूणपत्रे वाचण्यात अपयश. फाइल दूषित किंवा बिघडलेली असू शकते.</string>
     <!-- Failed to recognize the format of a bookmarks or tracks file. -->
-    <string name="unknown_file_type">फाइल प्रकार ॲपद्वारे ओळखला जात नाही:
-\n%1$s</string>
-    <!-- Failed to open a bookmarks or tracks file in Organic Maps. -->
-    <string name="failed_to_open_file">फाइल उघडण्यात अयशस्वी%1$s
-\n
-\n%2$s</string>
+    <string name="unknown_file_type">फाइल प्रकार ॲपद्वारे ओळखला जात नाही: \n%1$s</string>
+    <!-- Failed to open a bookmarks or tracks file in CoMaps. -->
+    <string name="failed_to_open_file">फाइल उघडण्यात अयशस्वी%1$s \n \n%2$s</string>
     <!-- resource for context menu -->
     <string name="edit">संपादन</string>
     <!-- Warning message when doing search around current position -->
@@ -170,18 +160,14 @@
     <string name="cant_change_this_setting">क्षमस्व, नकाशा साठवायचे सेटिंग सध्या बंद आहेत.</string>
     <!-- Alert message that downloading is in progress. -->
     <string name="downloading_is_active">नकाशा डाउनलोड होत आहे</string>
-    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://omaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
-    <string name="my_position_share_sms">मी आता इथे आहे %1$s किंवा %2$s Organic Maps डाउनलोड करा: https://omaps.app/get</string>
+    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
+    <string name="my_position_share_sms">मी आता इथे आहे %1$s किंवा %2$s CoMaps डाउनलोड करा: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
-    <string name="bookmark_share_email_subject">Organic Maps द्वारे एक खूणपत्र पाठवत आहे!</string>
+    <string name="bookmark_share_email_subject">CoMaps द्वारे एक खूणपत्र पाठवत आहे!</string>
     <!-- Subject for emailed position -->
-    <string name="my_position_share_email_subject">Organic Maps द्वारे माझे वर्तमान स्थान पाठवत आहे!</string>
-    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://omaps.app link WITHOUT NAME -->
-    <string name="my_position_share_email">नमस्कार,
-\n
-\nमी आता इथे आहे: %1$s. नकाशावर ठिकाण पाहण्यासाठी या %2$s किंवा या %3$s वर क्लिक करा.
-\n
-\nआभारी.</string>
+    <string name="my_position_share_email_subject">CoMaps द्वारे माझे वर्तमान स्थान पाठवत आहे!</string>
+    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://comaps.app link WITHOUT NAME -->
+    <string name="my_position_share_email">नमस्कार, \n \nमी आता इथे आहे: %1$s. नकाशावर ठिकाण पाहण्यासाठी या %2$s किंवा या %3$s वर क्लिक करा. \n \nआभारी.</string>
     <!-- Share button text which opens menu with more buttons, like Message, EMail, Facebook etc. -->
     <string name="share">सामायिक</string>
     <!-- Share by email button text, also used in editor and About. -->
@@ -235,7 +221,7 @@
     <string name="search_show_on_map">नकाशावर पहा</string>
     <!-- Text in menu -->
     <string name="website">संकेतस्थळ</string>
-    <!-- Text in About menu, opens Organic Maps news website -->
+    <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">बातम्या</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">अभिप्राय</string>
@@ -245,9 +231,6 @@
     <string name="help">मदत</string>
     <!-- Button in the main Help dialog -->
     <string name="faq">वारंवार विचारलेले प्रश्न</string>
-    <string name="already_donated">आधीच दान केले</string>
-    <string name="remind_me_later">नंतर आठवण करून द्या</string>
-    <string name="support_organic_maps">Organic Maps ला समर्थन द्या</string>
     <!-- Button in the main Help dialog -->
     <string name="how_to_support_us">प्रकल्पाला पाठठिंबा द्या</string>
     <!-- Button in the main Help dialog -->
@@ -290,9 +273,7 @@
     <!-- Preference text -->
     <string name="pref_use_google_play">ब्लूटूथ, वायफाय किंवा मोबाइल नेटवर्क वापरून तुमचे अंदाजे स्थान द्रुतपणे निर्धारित करा</string>
     <!-- Preference title -->
-    <string name="pref_display_kayak_title">Kayak.com हटल लकस</string>
     <!-- Preference description -->
-    <string name="pref_display_kayak_text">Kayak.com वर सच असललय हटलसठ फट, पनरवलकन, बकग लकस परदरशत कल जतत. य लकसदवर परतयक बकगसठ मळलल रफरल बनस Organic Maps चय वकससठ जत.</string>
     <!-- Text for routing error dialog -->
     <string name="routing_download_maps_along">तुमच्या मार्गावरील सर्व नकाशे डाउनलोड करा</string>
     <!-- Text for routing error dialog -->
@@ -475,15 +456,13 @@
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">समुदाय-निर्मित OpenStreetMap डेटा %s नुसार. OpenStreetMap.org वर नकाशा संपादित आणि अपडेट कसा करायचा याबद्दल अधिक जाणून घ्या</string>
     <!-- OSM explanation on Android login screen -->
-    <string name="login_osm_presentation">OpenStreetMap.org (OSM) हा एक विनामूल्य आणि खुला नकाशा तयार करण्यासाठी एक समुदाय प्रकल्प आहे. ऑरगॅनिक नकाशे मधील नकाशा डेटाचा हा मुख्य स्त्रोत आहे आणि विकिपीडिया प्रमाणेच कार्य करतो. तुम्ही ठिकाणे जोडू किंवा संपादित करू शकता आणि ती जगभरातील लाखो वापरकर्त्यांसाठी उपलब्ध होतील.
-\nसमुदायामध्ये सामील व्हा आणि प्रत्येकासाठी चांगला नकाशा बनवण्यात मदत करा!</string>
+    <string name="login_osm_presentation">OpenStreetMap.org (OSM) हा एक विनामूल्य आणि खुला नकाशा तयार करण्यासाठी एक समुदाय प्रकल्प आहे. CoMaps मधील नकाशा डेटाचा हा मुख्य स्त्रोत आहे आणि विकिपीडिया प्रमाणेच कार्य करतो. तुम्ही ठिकाणे जोडू किंवा संपादित करू शकता आणि ती जगभरातील लाखो वापरकर्त्यांसाठी उपलब्ध होतील. \nसमुदायामध्ये सामील व्हा आणि प्रत्येकासाठी चांगला नकाशा बनवण्यात मदत करा!</string>
     <string name="login_to_make_edits_visible">एक OpenStreetMap खाते तयार करा किंवा तुमची नकाशा संपादने जगासमोर प्रकाशित करण्यासाठी लॉग इन करा.</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%2$d पैकी %1$d</string>
     <string name="download_over_mobile_header">मोबाईल डेटा वापरून डाउनलोड करायचे?</string>
     <string name="download_over_mobile_message">रोमिंग वर असल्यास हे बरेच महाग पडू शकते.</string>
     <string name="error_enter_correct_house_number">एक वैध बिल्डिंग क्रमांक प्रविष्ट करा</string>
-    <string name="editor_storey_number">मजल्यांची संख्या (कमाल %d)</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">मजल्यांची संख्या %d पेक्षा जास्त नसावी</string>
     <string name="editor_zip_code">पिनकोड</string>
@@ -493,7 +472,7 @@
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">OpenStreetMap स्वयंसेवकांसाठी टीप (पर्यायी)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
-    <string name="editor_note_hint">नकाशामधील त्रुटी किंवा सेंद्रिय नकाशे वापरून काय संपादित केले जाऊ शकत नाही याचे वर्णन करा</string>
+    <string name="editor_note_hint">नकाशामधील त्रुटी किंवा CoMaps वापरून काय संपादित केले जाऊ शकत नाही याचे वर्णन करा</string>
     <!-- Information about OSM at the top of the editing page -->
     <string name="editor_about_osm">तुमची संपादने सार्वजनिक <a href="https://wiki.openstreetmap.org/wiki/About_OpenStreetMap">OpenStreetMap</a> डेटाबेसवर अपलोड केली जातात. कृपया वैयक्तिक किंवा कॉपीराइट केलेली माहिती जोडू नका.</string>
     <string name="editor_more_about_osm">OpenStreetMap बद्दल अधिक</string>
@@ -503,7 +482,7 @@
     <!-- To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... -->
     <string name="operator">ऑपरेटर: %s</string>
     <string name="editor_category_unsuitable_title">योग्य श्रेणी शोधू शकत नाही?</string>
-    <string name="editor_category_unsuitable_text">ऑरगॅनिक नकाशे फक्त साध्या बिंदू श्रेणी जोडण्याची परवानगी देतात, म्हणजे शहरे, रस्ते, तलाव, इमारत बाह्यरेखा इ. कृपया अशा श्रेणी थेट <a href="https://www.openstreetmap.org">OpenStreetMap.org</a> वर जोडा. तपशीलवार चरण-दर-चरण सूचनांसाठी आमचे <a href="https://organicmaps.app/faq/editing/advanced-map-editing">मार्गदर्शक</a> पहा.</string>
+    <string name="editor_category_unsuitable_text">CoMaps फक्त साध्या बिंदू श्रेणी जोडण्याची परवानगी देतात, म्हणजे शहरे, रस्ते, तलाव, इमारत बाह्यरेखा इ. कृपया अशा श्रेणी थेट <a href="https://www.openstreetmap.org">OpenStreetMap.org</a> वर जोडा. तपशीलवार चरण-दर-चरण सूचनांसाठी आमचे <a href="https://www.comaps.app/support/advanced-map-editing/">मार्गदर्शक</a> पहा.</string>
     <string name="downloader_no_downloaded_maps_title">तुम्ही कोणतेही नकाशे डाउनलोड केलेले नाहीत</string>
     <string name="downloader_no_downloaded_maps_message">स्थान शोधण्यासाठी नकाशे डाउनलोड करा आणि ऑफलाइन मार्गनिर्देशन वापरा.</string>
     <string name="current_location_unknown_error_title">वर्तमान स्थान अज्ञात आहे.</string>
@@ -522,14 +501,6 @@
     <string name="minute">मिनिट</string>
     <string name="day">दि</string>
     <string name="placepage_more_button">अधिक</string>
-    <!-- A referral link on the place page for some hotels -->
-    <string name="more_on_kayak">फोटोपुनरावलोकनेबुकिंगबुकिंग</string>
-    <!-- An explanation dialog shown when clicking on more_on_kayak link. -->
-    <string name="dialog_kayak_disclaimer">या लिंकद्वारे प्रत्येक बुकिंगसाठी मिळणारा रेफरल बोनस ऑरगॅनिक नकाशांच्या विकासासाठी जातो.</string>
-    <!-- A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_button">कायाक वर तपशील</string>
-    <!-- A disable button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_disable_button">Kayak अकषम कर</string>
     <string name="placepage_edit_bookmark_button">खूणपत्र संपादित करा</string>
     <string name="placepage_personal_notes_hint">वैयक्तिक चिठ्ठ्या (मजकूर किंवा html)</string>
     <string name="editor_comment_hint">टिप्पणी…</string>
@@ -570,16 +541,14 @@
     <string name="mobile_data_option_ask">नेहमी विचारा</string>
     <string name="traffic_update_maps_text">वाहतूक माहिती दाखवण्यासाठी नकाशे अद्ययावत करणे आवश्यक आहे.</string>
     <string name="big_font">नकाशावर अक्षरांचा आकार वाढवा</string>
-    <string name="traffic_update_app">कृपया Organic Maps अद्ययावत करा</string>
+    <string name="traffic_update_app">कृपया CoMaps अद्ययावत करा</string>
     <!-- "traffic" as in "road congestion" -->
     <string name="traffic_data_unavailable">वाहतूक माहिती उपलब्ध नाही</string>
     <string name="enable_logging">लॉग चालू करा</string>
     <!-- Settings: "Send general feedback" button -->
     <string name="feedback_general">सामान्य अभिप्राय</string>
     <string name="prefs_languages_information">आम्ही ध्वनी निर्देशांसाठी \"सिस्टम TTS\" वापरतो. अनेक Android उपकरणे \"Google TTS\" वापरतात, जे तुम्ही Google Play वरून डाउनलोड किंवा अद्ययावत करू शकता (https://play.google.com/store/apps/details?idu003dcom.google.android.tts)</string>
-    <string name="prefs_languages_information_off">काही भाषांसाठी, तुम्हाला अँप स्टोअर (Google Play, Galaxy Store, App Gallery, FDroid) वरून स्पीच मिश्रक किंवा अतिरिक्त भाषा संच इन्स्टॉल करावे लागतील.
-\nतुमच्या उपकरणाची सेटिंग → भाषा आणि इनपुट → स्पीच → \"टेक्स्ट टू स्पीच आउटपुट\" उघडा.
-\nयेथे तुम्ही स्पीच मिश्रणासाठी सेटिंग व्यवस्थापित करू शकता (उदाहरणार्थ, ऑफलाइन वापरासाठी भाषा संच डाउनलोड करा) आणि दुसरे टेक्स्ट-टू-स्पीच इंजिन निवडा.</string>
+    <string name="prefs_languages_information_off">काही भाषांसाठी, तुम्हाला अँप स्टोअर (Google Play, Galaxy Store, App Gallery, FDroid) वरून स्पीच मिश्रक किंवा अतिरिक्त भाषा संच इन्स्टॉल करावे लागतील. \nतुमच्या उपकरणाची सेटिंग → भाषा आणि इनपुट → स्पीच → \"टेक्स्ट टू स्पीच आउटपुट\" उघडा. \nयेथे तुम्ही स्पीच मिश्रणासाठी सेटिंग व्यवस्थापित करू शकता (उदाहरणार्थ, ऑफलाइन वापरासाठी भाषा संच डाउनलोड करा) आणि दुसरे टेक्स्ट-टू-स्पीच इंजिन निवडा.</string>
     <string name="prefs_languages_information_off_link">अधिक माहितीसाठी कृपया ही मार्गदर्शिका पहा.</string>
     <string name="transliteration_title">रोमन लिपीत लिप्यंतरण</string>
     <string name="learn_more">अधिक जाणून घ्या</string>
@@ -596,7 +565,7 @@
     <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
     <string name="alert_reauth_message">तुमची सर्व नकाशा संपादने स्वयंचलितपणे अपलोड करण्यासाठी कृपया OpenStreetMap वर लॉग इन करा. <a href="https://github.com/organicmaps/organicmaps/issues/6144">येथे</a> अधिक जाणून घ्या.</string>
     <string name="dialog_error_storage_title">स्टोरेज प्रवेश समस्या</string>
-    <string name="dialog_error_storage_message">बाह्य साठ्याचा प्रवेश अपयशी. SD कार्ड कदाचित काढले गेले असेल, खराब झाले असेल किंवा फाइल सिस्टम ही केवळ-वाचनीय असावी. कृपया, तुमचे SD कार्ड तपासा किंवा support\@organicmaps.app वर आमच्याशी संपर्क साधा</string>
+    <string name="dialog_error_storage_message">बाह्य साठ्याचा प्रवेश अपयशी. SD कार्ड कदाचित काढले गेले असेल, खराब झाले असेल किंवा फाइल सिस्टम ही केवळ-वाचनीय असावी. कृपया, तुमचे SD कार्ड तपासा किंवा support@comaps.app वर आमच्याशी संपर्क साधा</string>
     <string name="setting_emulate_bad_storage">खराब साठ्याचे अनुकरण करा</string>
     <string name="core_entrance">प्रवेशद्वार</string>
     <string name="error_enter_correct_name">कृपया योग्य नाव प्रविष्ट करा</string>
@@ -636,7 +605,7 @@
     <string name="privacy_policy">गोपनीयता धोरण</string>
     <string name="terms_of_use">वापरण्याच्या अटी</string>
     <string name="button_layer_traffic">ट्रॅफिक</string>
-    <string name="button_layer_subway">मेट्रो/भुयारी मार्ग</string>
+    <string name="subway">मेट्रो/भुयारी मार्ग</string>
     <string name="layers_title">नकाशा शैली आणि स्तर</string>
     <string name="subway_data_unavailable">मेट्रो नकाशा अनुपलब्ध आहे</string>
     <string name="bookmarks_empty_list_title">ही यादी रिकामी आहे</string>
@@ -765,8 +734,8 @@
     <string name="enable_show_on_lock_screen_description">चालू असल्यास, ऍप चालू असताना प्रत्येक वेळी तुम्हाला तुमचे उपकरण अनलॉक करण्याची आवश्यकता नाही.</string>
     <!-- Current language of the map! -->
     <string name="change_map_locale">नकाशाची भाषा</string>
-    <!-- Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
-    <string name="translated_om_site_url">https://organicmaps.app/mr/</string>
+    <!-- Translated CoMaps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
+    <string name="translated_om_site_url">https://comaps.app/mr/</string>
     <!-- App Tip #00 -->
     <string name="app_tip_00">आमचे समुदाय-निर्मित नकाशे वापरल्याबद्दल धन्यवाद!</string>
     <!-- App tip #01 -->
@@ -788,9 +757,9 @@
     <!-- App tip #09 -->
     <string name="app_tip_09">आमचे मुख्य ध्येय जलद, गोपनीयता-केंद्रित, वापरण्यास-सुलभ नकाशे तयार करणे आहे जे तुम्हाला आवडतील.</string>
     <!-- Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen -->
-    <string name="car_used_on_the_phone_screen">तुम्ही आता फोन स्क्रीनवर ऑरगॅनिक नकाशे वापरत आहात</string>
+    <string name="car_used_on_the_phone_screen">तुम्ही आता फोन स्क्रीनवर CoMaps वापरत आहात</string>
     <!-- Text on the phone placeholder screen that maps are displayed on the car screen -->
-    <string name="car_used_on_the_car_screen">तुम्ही आता कार स्क्रीनवर ऑरगॅनिक नकाशे वापरत आहात</string>
+    <string name="car_used_on_the_car_screen">तुम्ही आता कार स्क्रीनवर CoMaps वापरत आहात</string>
     <!-- Displayed on the phone screen. Android Auto connected -->
     <string name="aa_connected_title">तुम्ही Android Auto शी कनेक्ट आहात</string>
     <!-- Displayed on the phone screen. Button to display maps on the phone screen instead of a car -->
@@ -798,11 +767,11 @@
     <!-- Displayed on the Android Auto or CarPlay screen. Button to display maps on the car screen instead of a phone. Must be no more than 18 symbols! -->
     <string name="car_continue_in_the_car">कारच्या स्क्रीनकडे</string>
     <!-- Ask user to grant location permissions -->
-    <string name="aa_location_permissions_request">ऑर्गेनिक नकाशेला स्थान प्रवेश आवश्यक आहे. ते सुरक्षित असताना, तुमच्या फोनवरील सूचना तपासा.</string>
+    <string name="aa_location_permissions_request">CoMaps ला स्थान प्रवेश आवश्यक आहे. ते सुरक्षित असताना, तुमच्या फोनवरील सूचना तपासा.</string>
     <!-- Notification title for permission request from AA. -->
     <string name="aa_request_permission_notification">या अॅपला तुमची परवानगी आवश्यक आहे</string>
     <!-- The text in the activity for location permission request. -->
-    <string name="aa_request_permission_activity_text">Android Auto मधील ऑरगॅनिक नकाशे प्रभावीपणे कार्य करण्यासाठी स्थान परवानगी आवश्यक आहे</string>
+    <string name="aa_request_permission_activity_text">Android Auto मधील CoMaps प्रभावीपणे कार्य करण्यासाठी स्थान परवानगी आवश्यक आहे</string>
     <!-- Grant Permissions button. -->
     <string name="aa_grant_permissions">परवानग्या द्या</string>
     <!-- Outdoors/hiking map style (activity) name in the Styles and Layers dialog -->
@@ -857,8 +826,16 @@
     <string name="about_proposition_1">• जाहिराती नाही, माहितीचा मागोवा नाही, डेटा संग्रहण नाही</string>
     <string name="donate">दान करा</string>
     <string name="login_osm">OpenStreetMap मध्ये लॉगिन करा</string>
-    <string name="about_headline">सर्वांसाठी विनामूल्य, आवडीने तयार केलेले</string>
     <string name="pref_tts_street_names_description">चालू केल्यास, वळण घेण्यापूर्वी रस्त्याचे किंवा वळणाचे नाव बोलून सांगितले जाईल.</string>
     <string name="editor_share_to_all_dialog_message_2">OpenStreetMap संपादक बदल तपासतील व काही प्रश्न असल्यास तुमच्याशी संपर्क साधतील.</string>
     <string name="category_rv">कँपिंग वाहन सोयी</string>
+    <string name="telegram_url">https://t.me/CoMapsApp/</string>
+    <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
+    <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
+    <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
+    <string name="wikimedia_commons">विकिमीडिया कॉमन्स</string>
+    <string name="panoramax">Panoramax चित्र</string>
+    <string name="editor_line_social_network">LINE</string>
+    <string name="app_site_url">https://comaps.app/mr/</string>
+    <string name="saved">जतन केले</string>
 </resources>

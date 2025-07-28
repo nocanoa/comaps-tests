@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Tải xuống đã thất bại";
 
 /* Text in About screen */
-"about_headline" = "Miễn phí cho mọi người, được làm bằng tình yêu";
+"about_proposition_1" = "Ngoại tuyến, nhanh chóng và dễ sử dụng";
 
 /* Text in About screen */
-"about_proposition_1" = "• Không có quảng cáo, không theo dõi, không thu thập dữ liệu";
-
-/* Text in About screen */
-"about_proposition_2" = "• Không hao pin, hoạt động offline";
-
-/* Text in About screen */
-"about_proposition_3" = "• Nhanh chóng, tối giản, được phát triển bởi cộng đồng";
+"about_proposition_2" = "Tập trung vào quyền riêng tư và không có quảng cáo";
 "close" = "Đóng";
 "download" = "Tải xuống";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Đối với RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Tải Điểm đánh dấu";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Chưa xác định được vị trí của bạn";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Này, hãy xem ghim của tôi tại Organic Maps map";
+"bookmark_share_email_subject" = "Này, hãy xem ghim của tôi tại CoMaps map";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Này, hãy xem vị trí hiện tại của tôi tại Organic Maps map!";
+"my_position_share_email_subject" = "Này, hãy xem vị trí hiện tại của tôi tại CoMaps map!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Email";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Sao chép vào bộ nhớ tạm";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Đã sao chép vào Bảng tạm: %@";
@@ -190,7 +187,9 @@
 "done" = "Xong";
 
 /* Prints version number in About dialog */
-"version" = "Phiên bản Organic Maps: %@";
+"version" = "Phiên bản CoMaps: %@";
+"version %@ (%@)" = "Phiên bản %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Phiên bản: %@ (%@)\nDữ liệu bản đồ: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Dấu vết";
@@ -200,6 +199,7 @@
 "share_my_location" = "Chia sẻ Vị trí của tôi";
 "prefs_group_route" = "Điều hướng";
 "pref_zoom_title" = "Nút Phóng to/Thu nhỏ";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Giao diện";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tối";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Tắt";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Tòa nhà 3D bị tắt ở chế độ tiết kiệm năng lượng";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Hướng dẫn bằng Giọng nói";
+"pref_tts_title" = "Hướng dẫn bằng Giọng nói";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Thông báo tên đường";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Trang web";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Tin tức";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-Mail";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Ảnh Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Cho điểm ứng dụng";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Quyên tặng";
-
-/* Tex label above the Donate button */
-"donate_description" = "Hãy quyên góp để cùng nhau xây dựng những bản đồ tốt nhất!";
-"already_donated" = "Đã quyên góp";
-"remind_me_later" = "Nhắc sau";
-"support_organic_maps" = "Hỗ trợ Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Bản quyền";
@@ -298,7 +322,7 @@
 "volunteer" = "Tình nguyện";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Theo dõi và liên hệ với chúng tôi:";
+"follow_us" = "Theo dõi và liên hệ với chúng tôi";
 
 /* Alert text */
 "email_error_body" = "Trình khách email này chưa được thiết lập. Bạn vui lòng cấu hình nó hoặc sử dụng một cách khác để liên hệ với chúng tôi tại %@";
@@ -510,15 +534,26 @@
 "closes_in" = "Closes in %@";
 "closed" = "Đã đóng";
 "add_opening_hours" = "Thêm giờ làm việc";
-"no_osm_account" = "Bạn chưa có tài khoản tại OpenStreetMap ư?";
-"register_at_openstreetmap" = "Đăng ký";
-"password_8_chars_min" = "Mật khẩu (tối thiểu 8 ký tự)";
-"invalid_username_or_password" = "Sai Tên người dùng hoặc Mật khẩu.";
-"login" = "Đăng nhập";
-"login_osm" = "Đăng nhập vào OpenStreetMap";
-"forgot_password" = "Quên mật khẩu?";
-"osm_account" = "Tài khoản OSM";
-"logout" = "Đăng xuất";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Dữ liệu bản đồ từ OpenStreetMap";
+"osm_mapdata_explanation %@" = "Dữ liệu bản đồ do cộng đồng tạo ra kể từ *%@*. Tìm hiểu thêm về cách chỉnh sửa và cập nhật bản đồ tại [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Thông tin bổ sung về OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Hồ sơ OpenStreetMap";
+"osm_profile_promt" = "Tạo tài khoản OpenStreetMap hoặc đăng nhập để xuất bản các chỉnh sửa bản đồ của bạn với thế giới.";
+"osm_profile_login" = "Đăng nhập vào tài khoản OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Tài khoản OpenStreetMap đã bị ngắt kết nối khỏi ứng dụng này";
+"osm_profile_reauthorize" = "Kết nối lại với OpenStreetMap";
+"osm_profile_remove_promt" = "Nếu bạn không thể hoặc không muốn kết nối lại tài khoản của mình, bạn có thể xóa tài khoản đó khỏi ứng dụng này";
+"osm_profile_remove" = "Xóa thông tin tài khoản OpenStreetMap khỏi ứng dụng này";
+"osm_profile_register_promt" = "Bạn chưa có tài khoản tại OpenStreetMap ư?";
+"osm_profile_register" = "Đăng ký tại OpenStreetMap";
+"osm_profile_verfied_changes" = "Các thay đổi đã được xác thực";
+"osm_profile_logout" = "Đăng xuất khỏi tài khoản OpenStreetMap";
+"osm_profile_delete" = "Xóa tài khoản OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Tải lên mới nhất";
@@ -567,13 +602,9 @@
 "dialog_incorrect_feature_position" = "Thay đổi địa điểm";
 "message_invalid_feature_position" = "Một đối tượng không thể đặt được ở đây";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Dữ liệu OpenStreetMap do cộng đồng tạo ra kể từ %@. Tìm hiểu thêm về cách chỉnh sửa và cập nhật bản đồ tại OpenStreetMap.org";
-"login_to_make_edits_visible" = "Tạo tài khoản OpenStreetMap hoặc đăng nhập để xuất bản các chỉnh sửa bản đồ của bạn với thế giới.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Để tải xuống, bạn cần thêm dung lượng. Xin xóa mọi dữ liệu không cần thiết.";
-"editor_sharing_title" = "Tôi đã cải thiện các bản đồ Organic Maps";
+"editor_sharing_title" = "Tôi đã cải thiện các bản đồ CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d trên %2$d";
@@ -593,14 +624,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Lưu ý dành cho tình nguyện viên OpenStreetMap (tùy chọn)";
 "editor_detailed_description_hint" = "Nhận xét chi tiết";
-"editor_detailed_description" = "Những thay đổi đề nghị của bạn sẽ được gửi đến cộng đồng OpenStreetMap. Mô tả các chi tiết không thể sửa trong Organic Maps.";
+"editor_detailed_description" = "Những thay đổi đề nghị của bạn sẽ được gửi đến cộng đồng OpenStreetMap. Mô tả các chi tiết không thể sửa trong CoMaps.";
 "editor_more_about_osm" = "Thông tin bổ sung về OpenStreetMap";
 "editor_operator" = "Toán tử";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Toán tử: %@";
 "editor_category_unsuitable_title" = "Không thể tìm thấy một danh mục phù hợp?";
-"editor_category_unsuitable_text" = "Bản đồ không phải trả tiền chỉ cho phép thêm các danh mục điểm đơn giản, nghĩa là không có thị trấn, đường, hồ, đường viền tòa nhà, v.v. Vui lòng thêm các danh mục đó trực tiếp vào <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Hãy xem <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">hướng dẫn</a> của chúng tôi để biết hướng dẫn chi tiết từng bước.";
+"editor_category_unsuitable_text" = "CoMaps chỉ cho phép thêm các danh mục điểm đơn giản, nghĩa là không có thị trấn, đường, hồ, đường viền tòa nhà, v.v. Vui lòng thêm các danh mục đó trực tiếp vào <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Hãy xem <a href=\"https://www.comaps.app/support/advanced-map-editing/\">hướng dẫn</a> của chúng tôi để biết hướng dẫn chi tiết từng bước.";
 "downloader_no_downloaded_maps_title" = "Bạn chưa tải về bất kỳ bản đồ nào";
 "downloader_no_downloaded_maps_message" = "Tải về bản đồ để tìm địa điểm và định hướng ngoại tuyến.";
 "current_location_unknown_error_title" = "Chưa biết địa điểm hiện tại.";
@@ -615,7 +646,7 @@
 "location_services_disabled_on_device_2" = "2. Chọn Quyền riêng tư";
 "location_services_disabled_on_device_3" = "3. Chọn Dịch vụ định vị";
 "location_services_disabled_on_device_4" = "4. Bật Dịch vụ định vị";
-"location_services_disabled_on_device_additional_message" = "Hoặc tiếp tục sử dụng Bản đồ không phải trả tiền mà không có Vị trí";
+"location_services_disabled_on_device_additional_message" = "Hoặc tiếp tục sử dụng CoMaps mà không có Vị trí";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +668,6 @@
 "day" = "ngày";
 "placepage_more_button" = "Bổ sung";
 "book_button" = "Đặt trước";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Hình ảnh, đánh giá, đặt phòng";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Phần thưởng giới thiệu nhận được cho mỗi lần đặt phòng thông qua liên kết này sẽ hướng tới việc phát triển bản đồ không phải trả tiền.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Chi tiết trên Kayak";
 "placepage_call_button" = "Gọi";
 "placepage_edit_bookmark_button" = "Sửa Dấu Trang";
 "placepage_bookmark_name_hint" = "Tên Dấu Trang";
@@ -681,7 +703,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Xem";
-"recent_track_background_dialog_message" = "Organic Maps sử dụng định vị của bạn trong ứng dụng chạy nền để ghi lại tuyến đường đã đi gần đây của bạn.";
+"recent_track_background_dialog_message" = "CoMaps sử dụng định vị của bạn trong ứng dụng chạy nền để ghi lại tuyến đường đã đi gần đây của bạn.";
 "general_settings" = "Thiết lập chung";
 
 /* For the first routing */
@@ -725,6 +747,9 @@
 "planning_route_remove_title" = "Kéo vào đây để xóa";
 "placepage_add_stop" = "Thêm điểm dừng";
 "start_from_my_position" = "Bắt đầu từ";
+
+/* Title for button when a route was saved. */
+"saved" = "Đã lưu";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Vui lòng đăng nhập vào OpenStreetMap để tự động tải lên tất cả các chỉnh sửa bản đồ của bạn. Tìm hiểu thêm";
@@ -787,7 +812,7 @@
 "power_managment_setting_never" = "Không bao giờ";
 "power_managment_setting_auto" = "Tự động";
 "power_managment_setting_manual_max" = "Tiết kiệm năng lượng tối đa";
-"enable_logging_warning_message" = "Tùy chọn này được kích hoạt để ghi nhật ký đăng nhập cho mục đích chẩn đoán. Điều này sẽ giúp nhóm chúng tôi làm rõ các vấn đề liên quan đến ứng dụng. Hãy bật tùy chọn này chỉ khi nào có yêu cầu hỗ trợ từ Organic Maps.";
+"enable_logging_warning_message" = "Tùy chọn này được kích hoạt để ghi nhật ký đăng nhập cho mục đích chẩn đoán. Điều này sẽ giúp nhóm chúng tôi làm rõ các vấn đề liên quan đến ứng dụng. Hãy bật tùy chọn này chỉ khi nào có yêu cầu hỗ trợ từ CoMaps.";
 "driving_options_title" = "Thiết lập đi vòng";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +870,7 @@
 "ok" = "Ok";
 "speedcams_alert_title_carplay_1" = "Сam tốc độ";
 "speedcams_alert_title_carplay_2" = "Cảnh báo tốc độ";
-"download_map_carplay" = "Vui lòng tải xuống bản đồ trong ứng dụng Organic Maps trên thiết bị của bạn";
+"download_map_carplay" = "Vui lòng tải xuống bản đồ trong ứng dụng CoMaps trên thiết bị của bạn";
 "carplay_roundabout_exit" = "Lối ra %@ của vòng xuyến";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +949,8 @@
 /* edit track screen title */
 "track_title" = "Dấu chân";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Cảm ơn bạn đã sử dụng bản đồ do cộng đồng xây dựng của chúng tôi!";
@@ -967,10 +983,10 @@
 "app_tip_09" = "Mục tiêu chính của chúng tôi là xây dựng các bản đồ nhanh chóng, tập trung vào quyền riêng tư, dễ sử dụng mà bạn sẽ yêu thích.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Bạn hiện đang sử dụng bản đồ không phải trả tiền trên màn hình điện thoại";
+"car_used_on_the_phone_screen" = "Bạn hiện đang sử dụng CoMaps trên màn hình điện thoại";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Bạn hiện đang sử dụng bản đồ không phải trả tiền trên màn hình ô tô";
+"car_used_on_the_car_screen" = "Bạn hiện đang sử dụng bản CoMaps trên màn hình ô tô";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Tiếp tục trên điện thoại";
@@ -995,7 +1011,10 @@
 "website_menu" = "Liên kết thực đơn";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Bạn có muốn gửi báo cáo lỗi cho nhà phát triển không?\nChúng tôi dựa vào người dùng của mình vì Bản đồ không phải trả tiền không tự động thu thập bất kỳ thông tin lỗi nào. Cảm ơn bạn trước vì đã ủng hộ Organic Maps!";
+"bugreport_alert_message" = "Bạn có muốn gửi báo cáo lỗi cho nhà phát triển không?\nChúng tôi dựa vào người dùng của mình vì CoMaps không tự động thu thập bất kỳ thông tin lỗi nào. Cảm ơn bạn trước vì đã ủng hộ CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Kích hoạt đồng bộ hóa iCloud";
@@ -1069,3 +1088,9 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Tuyến đường trống - không có gì để lưu";
 "edit_track" = "Chỉnh sửa tuyến đường";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) là một dự án cộng đồng nhằm xây dựng bản đồ mở và miễn phí. Đây là nguồn dữ liệu bản đồ chính trong CoMaps và hoạt động tương tự như Wikipedia. Bạn có thể thêm hoặc chỉnh sửa địa điểm và chúng sẽ có sẵn cho hàng triệu người dùng trên toàn thế giới. \nTham gia cộng đồng và giúp tạo bản đồ tốt hơn cho mọi người!";
+"osm_profile_view_notes" = "Xem Ghi chú";
+"osm_profile_view_edit_history" = "Xem Lịch sử Đóng góp";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

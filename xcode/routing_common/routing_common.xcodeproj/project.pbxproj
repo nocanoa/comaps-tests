@@ -76,7 +76,9 @@
 				671E78741E6A3BE200B2859B /* routing_common */,
 				671E78971E6A3DA800B2859B /* routing_common_tests */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		671E78731E6A3BE200B2859B /* Products */ = {
 			isa = PBXGroup;
@@ -288,7 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.routing_common_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.routing_common_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -297,7 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
-				PRODUCT_BUNDLE_IDENTIFIER = app.organicmaps.routing_common_tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.comaps.routing_common_tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -84,9 +84,12 @@ final class PlacePagePreviewViewController: UIViewController {
         subtitleString.append(NSAttributedString(string: !subtitleString.string.isEmpty ? " • " + subtitle : subtitle,
                                                  attributes: [.foregroundColor : UIColor.blackSecondaryText(),
                                                               .font : UIFont.regular14()]))
+        subtitleLabel.attributedText = subtitleString
+        subtitleContainerView.isHidden = false
+      } else {
+        subtitleLabel.text = nil
+        subtitleContainerView.isHidden = true
       }
-
-      subtitleLabel.attributedText = subtitleString
     }
 
     placePageDirectionView = subtitleDirectionView
@@ -153,7 +156,7 @@ final class PlacePagePreviewViewController: UIViewController {
       scheduleContainerView.isHidden = true
     case .allDay:
       setScheduleLabel(state: L("twentyfour_seven"),
-                       stateColor: UIColor.systemGreen,
+                       stateColor: UIColor.BaseColors.green,
                        details: nil)
       
     case .open:
@@ -162,8 +165,16 @@ final class PlacePagePreviewViewController: UIViewController {
       let stringTimeInterval = getTimeIntervalString(minutes: minutesUntilClosed)
       let stringTime = stringFromTime(nextTimeClosed)
 
+      var state: String = L("editor_time_open")
+      var stateColor = UIColor.BaseColors.green
       let details: String?
-      if (minutesUntilClosed < 3 * 60)  // Less than 3 hours
+      if (minutesUntilClosed < 60)  // Less than 1 hour
+      {
+        state = String(format: L("closes_in"), stringTimeInterval)
+        stateColor = UIColor.BaseColors.yellow
+        details = stringTime
+      }
+      else if (minutesUntilClosed < 3 * 60)  // Less than 3 hours
       {
         details = String(format: L("closes_in"), stringTimeInterval) + " • " + stringTime
       }
@@ -176,8 +187,8 @@ final class PlacePagePreviewViewController: UIViewController {
         details = nil
       }
       
-      setScheduleLabel(state: L("editor_time_open"),
-                       stateColor: UIColor.systemGreen,
+      setScheduleLabel(state: state,
+                       stateColor: stateColor,
                        details: details)
       
     case .closed:
@@ -212,7 +223,7 @@ final class PlacePagePreviewViewController: UIViewController {
       }
       
       setScheduleLabel(state: L("closed_now"),
-                       stateColor: UIColor.systemRed,
+                       stateColor: UIColor.BaseColors.red,
                        details: details)
       
     @unknown default:
@@ -233,7 +244,7 @@ final class PlacePagePreviewViewController: UIViewController {
   private func setScheduleLabel(state: String, stateColor: UIColor, details: String?) {
     let attributedString = NSMutableAttributedString()
     let stateString = NSAttributedString(string: state,
-                                         attributes: [NSAttributedString.Key.font: UIFont.regular14(),
+                                         attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .semibold),
                                                       NSAttributedString.Key.foregroundColor: stateColor])
     attributedString.append(stateString)
     if (details != nil)

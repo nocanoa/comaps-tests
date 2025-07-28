@@ -43,16 +43,10 @@
 "country_status_download_failed" = "डाउनलोड अयशस्वी";
 
 /* Text in About screen */
-"about_headline" = "सर्वांसाठी विनामूल्य, आवडीने तयार केलेले";
+"about_proposition_1" = "ऑफलाइन, जलद आणि वापरण्यास सोपा";
 
 /* Text in About screen */
-"about_proposition_1" = "• जाहिराती नाही, माहितीचा मागोवा नाही, डेटा संग्रहण नाही";
-
-/* Text in About screen */
-"about_proposition_2" = "• बॅटरी संपत नाही, ऑफलाइन कार्य करते";
-
-/* Text in About screen */
-"about_proposition_3" = "• जलद, मिनिमलिस्ट, समुदायाद्वारे विकसित";
+"about_proposition_2" = "गोपनीयतेवर केंद्रित आणि जाहिरातमुक्त";
 "close" = "बंद";
 "download" = "डाउनलोड करा";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "कँपिंग वाहन सोयी";
-"share_bookmarks_email_body" = "नमस्कार!\n\nOrganic Maps ऍप मधील माझे खूणपत्रे संलग्न केले आहेत. तुम्ही Organic Maps इन्स्टॉल केले असल्यास हे खूणपत्रे उघडा. इन्स्टॉल केले नसल्यास, पुढील दुव्यावर जाऊन तुमच्या iOS किंवा अँड्रॉइड उपकरणावर हे डाउनलोड करा: https://omaps.app/get?kmz\n\nOrganic Maps सह प्रवासाचा आनंद घ्या!";
+"share_bookmarks_email_body" = "नमस्कार!\n\nCoMaps ऍप मधील माझे खूणपत्रे संलग्न केले आहेत. तुम्ही CoMaps इन्स्टॉल केले असल्यास हे खूणपत्रे उघडा. इन्स्टॉल केले नसल्यास, पुढील दुव्यावर जाऊन तुमच्या iOS किंवा अँड्रॉइड उपकरणावर हे डाउनलोड करा: https://www.comaps.app/download/\n\nCoMaps सह प्रवासाचा आनंद घ्या!";
 
 /* message title of loading file */
 "load_kmz_title" = "खूणपत्रे वाचत आहे";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "तुमचे स्थान अद्याप निश्चित केलेले नाही";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Organic Maps द्वारे एक खूणपत्र पाठवत आहे!";
+"bookmark_share_email_subject" = "CoMaps द्वारे एक खूणपत्र पाठवत आहे!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Organic Maps द्वारे माझे वर्तमान स्थान पाठवत आहे!";
+"my_position_share_email_subject" = "CoMaps द्वारे माझे वर्तमान स्थान पाठवत आहे!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "ई-मेल";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "क्लिपबोर्डवर कॉपी करा";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "क्लिपबोर्डावर कॉपी केले: %@";
@@ -190,7 +187,9 @@
 "done" = "झाले";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps आवृत्ती: %@";
+"version" = "CoMaps आवृत्ती: %@";
+"version %@ (%@)" = "आवृत्ती %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "आवृत्ती: %@ (%@)\nनकाशा डेटा: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "ट्रॅक";
@@ -200,6 +199,7 @@
 "share_my_location" = "माझे स्थान सामायिक करा";
 "prefs_group_route" = "मार्गनिर्देशन";
 "pref_zoom_title" = "झूम बटणे";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "दर्शनी रूप";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "अंधार";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "बंद";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D इमारती वीज बचत मोडमध्ये बंद केल्या आहेत";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "ध्वनी सूचना";
+"pref_tts_title" = "ध्वनी सूचना";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "मार्गांची नावे घोषित करा";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "संकेतस्थळ";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "बातम्या";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "ईमेल";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax चित्र";
+
 /* Text in menu */
 "rate_the_app" = "ऍप मानांकित करा";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "दान करा";
-
-/* Tex label above the Donate button */
-"donate_description" = "एकत्र सर्वोत्तम नकाशे तयार करण्यासाठी देणगी द्या!";
-"already_donated" = "आधीच दान केले";
-"remind_me_later" = "नंतर आठवण करून द्या";
-"support_organic_maps" = "Organic Maps ला समर्थन द्या";
 
 /* Button in the main Help dialog */
 "copyright" = "प्रकाशन अधिकार (कॉपीराईट)";
@@ -298,7 +322,7 @@
 "volunteer" = "स्वयंसेवक करण्यासाठी";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "अनुसरण करा आणि आमच्याशी संपर्क साधा:";
+"follow_us" = "अनुसरण करा आणि आमच्याशी संपर्क साधा";
 
 /* Alert text */
 "email_error_body" = "ईमेल वाहक सेट केलेले नाही. कृपया ते सेट करा किंवा वेगळ्या पद्धतीने आमच्याशी %@ वर संपर्क करा";
@@ -507,15 +531,27 @@
 "closes_in" = "आणखी %@ मध्ये बंद होईल";
 "closed" = "बंद";
 "add_opening_hours" = "उघडण्याची वेळ जोड";
-"no_osm_account" = "OpenStreetMap खाते नाही?";
-"register_at_openstreetmap" = "OpenStreetMap वर नोंदणी करा";
-"password_8_chars_min" = "पासवर्ड (किमान ८ अक्षरे)";
-"invalid_username_or_password" = "अवैध वापरकर्तानाव किंवा पासवर्ड.";
-"login" = "लॉग इन";
-"login_osm" = "OpenStreetMap मध्ये लॉगिन करा";
-"forgot_password" = "पासवर्ड विसरलात?";
-"osm_account" = "OSM खाते";
-"logout" = "लॉग आऊट";
+
+/* OpenStreetMap */
+"osm_mapdata" = "OpenStreetMap कडून नकाशा डेटा";
+"osm_mapdata_explanation %@" = "समुदाय-निर्मित नकाशा डेटा *%@* नुसार. [OpenStreetMap.org](https://openstreetmap.org) वर नकाशा संपादित आणि अपडेट कसा करायचा याबद्दल अधिक जाणून घ्या.";
+"osm_more_about" = "OpenStreetMap बद्दल अधिक";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap प्रोफाइल";
+"osm_profile_promt" = "एक OpenStreetMap खाते तयार करा किंवा तुमची नकाशा संपादने जगासमोर प्रकाशित करण्यासाठी लॉग इन करा.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) हा एक विनामूल्य आणि खुला नकाशा तयार करण्यासाठी एक समुदाय प्रकल्प आहे. CoMaps मधील नकाशा डेटाचा हा मुख्य स्त्रोत आहे आणि विकिपीडिया प्रमाणेच कार्य करतो. तुम्ही ठिकाणे जोडू किंवा संपादित करू शकता आणि ती जगभरातील लाखो वापरकर्त्यांसाठी उपलब्ध होतील. \nसमुदायामध्ये सामील व्हा आणि प्रत्येकासाठी चांगला नकाशा बनवण्यात मदत करा!";
+"osm_profile_login" = "OpenStreetMap खात्यात लॉगइन करा";
+"osm_profile_reauthorize_promt" = "OpenStreetMap खाते या ॲपवरून डिस्कनेक्ट झाले";
+"osm_profile_reauthorize" = "OpenStreetMap सह पुन्हा कनेक्ट करा";
+"osm_profile_remove_promt" = "तुम्ही तुमचे खाते पुन्हा कनेक्ट करू शकत नसल्यास किंवा करू इच्छित नसल्यास, तुम्ही ते या ॲपमधून काढून टाकू शकता";
+"osm_profile_remove" = "OpenStreetMap खाते काढून टाका";
+"osm_profile_register_promt" = "OpenStreetMap खाते नाही?";
+"osm_profile_register" = "OpenStreetMap वर नोंदणी करा";
+"osm_profile_verfied_changes" = "सत्यापित बदल";
+"osm_profile_logout" = "OpenStreetMap खात्यातून लॉगआउट करा";
+"osm_profile_delete" = "OpenStreetMap खाते हटवा";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "शेवटचे अपलोड";
@@ -564,13 +600,9 @@
 "dialog_incorrect_feature_position" = "स्थान बदला";
 "message_invalid_feature_position" = "इथे कोणतीही वस्तू ठेवू शकत नाही";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "समुदाय-निर्मित OpenStreetMap डेटा %@ नुसार. OpenStreetMap.org वर नकाशा संपादित आणि अपडेट कसा करायचा याबद्दल अधिक जाणून घ्या";
-"login_to_make_edits_visible" = "एक OpenStreetMap खाते तयार करा किंवा तुमची नकाशा संपादने जगासमोर प्रकाशित करण्यासाठी लॉग इन करा.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "डाउनलोड करण्यासाठी तुम्हाला अधिक जागा आवश्यक आहे. कृपया अनावश्यक डेटा पुसून टाका.";
-"editor_sharing_title" = "मी Organic Maps नकाशे सुधारित केले";
+"editor_sharing_title" = "मी CoMaps नकाशे सुधारित केले";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%2$d पैकी %1$d";
@@ -590,14 +622,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "OpenStreetMap स्वयंसेवकांसाठी टीप (पर्यायी)";
 "editor_detailed_description_hint" = "तपशीलवार टिप्पणी";
-"editor_detailed_description" = "तुम्ही सुचवलेले नकाशातील बदल OpenStreetMap समुदायाला पाठवले जातील. Organic Maps मध्ये संपादित न करता येणाऱ्या अधिक तपशीलांचे वर्णन करा.";
+"editor_detailed_description" = "तुम्ही सुचवलेले नकाशातील बदल OpenStreetMap समुदायाला पाठवले जातील. CoMaps मध्ये संपादित न करता येणाऱ्या अधिक तपशीलांचे वर्णन करा.";
 "editor_more_about_osm" = "OpenStreetMap बद्दल अधिक";
 "editor_operator" = "ऑपरेटर";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "ऑपरेटर: %@";
 "editor_category_unsuitable_title" = "योग्य श्रेणी शोधू शकत नाही?";
-"editor_category_unsuitable_text" = "ऑरगॅनिक नकाशे फक्त साध्या बिंदू श्रेणी जोडण्याची परवानगी देतात, म्हणजे शहरे, रस्ते, तलाव, इमारत बाह्यरेखा इ. कृपया अशा श्रेणी थेट <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> वर जोडा. तपशीलवार चरण-दर-चरण सूचनांसाठी आमचे <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">मार्गदर्शक</a> पहा.";
+"editor_category_unsuitable_text" = "CoMaps फक्त साध्या बिंदू श्रेणी जोडण्याची परवानगी देतात, म्हणजे शहरे, रस्ते, तलाव, इमारत बाह्यरेखा इ. कृपया अशा श्रेणी थेट <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> वर जोडा. तपशीलवार चरण-दर-चरण सूचनांसाठी आमचे <a href=\"https://www.comaps.app/support/advanced-map-editing/\">मार्गदर्शक</a> पहा.";
 "downloader_no_downloaded_maps_title" = "तुम्ही कोणतेही नकाशे डाउनलोड केलेले नाहीत";
 "downloader_no_downloaded_maps_message" = "स्थान शोधण्यासाठी नकाशे डाउनलोड करा आणि ऑफलाइन मार्गनिर्देशन वापरा.";
 "current_location_unknown_error_title" = "वर्तमान स्थान अज्ञात आहे.";
@@ -612,7 +644,7 @@
 "location_services_disabled_on_device_2" = "2. गोपनीयता निवडा";
 "location_services_disabled_on_device_3" = "3. स्थान सेवा निवडा";
 "location_services_disabled_on_device_4" = "4. स्थान सेवा चालू करा";
-"location_services_disabled_on_device_additional_message" = "किंवा स्थानाशिवाय ऑरगॅनिक नकाशे वापरणे सुरू ठेवा";
+"location_services_disabled_on_device_additional_message" = "किंवा स्थानाशिवाय CoMaps वापरणे सुरू ठेवा";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -634,15 +666,6 @@
 "day" = "दि";
 "placepage_more_button" = "अधिक";
 "book_button" = "पुस्तक";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "फोटोपुनरावलोकनेबुकिंगबुकिंग";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "या लिंकद्वारे प्रत्येक बुकिंगसाठी मिळणारा रेफरल बोनस ऑरगॅनिक नकाशांच्या विकासासाठी जातो.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "कायाक वर तपशील";
 "placepage_call_button" = "फोन करा";
 "placepage_edit_bookmark_button" = "खूणपत्र संपादित करा";
 "placepage_bookmark_name_hint" = "खूणपत्राचे नाव";
@@ -678,7 +701,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "तपासा";
-"recent_track_background_dialog_message" = "तुम्ही अलीकडे प्रवास केलेला मार्ग रेकॉर्ड करण्यासाठी Organic Maps पार्श्वभूमीत तुमचे स्थान वापरते.";
+"recent_track_background_dialog_message" = "तुम्ही अलीकडे प्रवास केलेला मार्ग रेकॉर्ड करण्यासाठी CoMaps पार्श्वभूमीत तुमचे स्थान वापरते.";
 "general_settings" = "सामान्य सेटिंग";
 
 /* For the first routing */
@@ -722,6 +745,9 @@
 "planning_route_remove_title" = "काढण्यासाठी इथे सरकवा";
 "placepage_add_stop" = "स्टॉप जोडा";
 "start_from_my_position" = "पासून प्रारंभ";
+
+/* Title for button when a route was saved. */
+"saved" = "जतन केले";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "तुमची सर्व नकाशा संपादने स्वयंचलितपणे अपलोड करण्यासाठी कृपया OpenStreetMap वर लॉग इन करा. अधिक जाणून घ्या";
@@ -842,7 +868,7 @@
 "ok" = "ठीक आहे";
 "speedcams_alert_title_carplay_1" = "वेगकॅमेरा";
 "speedcams_alert_title_carplay_2" = "गती चेतावणी";
-"download_map_carplay" = "कृपया तुमच्या उपकरणावर Organic Maps ऍप मध्ये नकाशे डाउनलोड करा";
+"download_map_carplay" = "कृपया तुमच्या उपकरणावर CoMaps ऍप मध्ये नकाशे डाउनलोड करा";
 "carplay_roundabout_exit" = "%@ बाहेर पडा";
 
 /* max. 10 symbols, both iOS and Android */
@@ -921,17 +947,8 @@
 /* edit track screen title */
 "track_title" = "ट्रॅक";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/mr/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/mr/";
 
 /* App Tip #00 */
 "app_tip_00" = "आमचे समुदाय-निर्मित नकाशे वापरल्याबद्दल धन्यवाद!";
@@ -964,10 +981,10 @@
 "app_tip_09" = "आमचे मुख्य ध्येय जलद, गोपनीयता-केंद्रित, वापरण्यास-सुलभ नकाशे तयार करणे आहे जे तुम्हाला आवडतील.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "तुम्ही आता फोन स्क्रीनवर ऑरगॅनिक नकाशे वापरत आहात";
+"car_used_on_the_phone_screen" = "तुम्ही आता फोन स्क्रीनवर CoMaps वापरत आहात";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "तुम्ही आता कार स्क्रीनवर ऑरगॅनिक नकाशे वापरत आहात";
+"car_used_on_the_car_screen" = "तुम्ही आता कार स्क्रीनवर CoMaps वापरत आहात";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "फोनवर सुरू ठेवा";
@@ -992,7 +1009,10 @@
 "website_menu" = "मेनू लिंक";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "तुम्ही विकासकांना बग अहवाल पाठवू इच्छिता?\nआम्ही आमच्या वापरकर्त्यांवर अवलंबून आहोत कारण सेंद्रिय नकाशे कोणतीही त्रुटी माहिती स्वयंचलितपणे संकलित करत नाही. ऑरगॅनिक नकाशेला समर्थन दिल्याबद्दल आगाऊ धन्यवाद!";
+"bugreport_alert_message" = "तुम्ही विकासकांना बग अहवाल पाठवू इच्छिता?\nआम्ही आमच्या वापरकर्त्यांवर अवलंबून आहोत कारण CoMaps कोणतीही त्रुटी माहिती स्वयंचलितपणे संकलित करत नाही. CoMaps ला समर्थन दिल्याबद्दल आगाऊ धन्यवाद!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "iCloud सिंक्रोनाइझेशन सक्षम करा";
@@ -1066,3 +1086,9 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "मार्ग रिकामा आहे - साठवण्यासाठी काहीही नाही";
 "edit_track" = "मार्ग संपादित करा";
+"wikimedia_commons" = "विकिमीडिया कॉमन्स";
+"osm_profile_view_notes" = "टिपा पहा";
+"osm_profile_view_edit_history" = "संपादन इतिहास पहा";
+"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Open project powered by the community";
+"pref_mapappearance_title" = "Map Appearance";

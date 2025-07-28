@@ -1,38 +1,28 @@
-• Mappe offline dettagliate con luoghi che non esistono su altre mappe
-• Navigatore per bici, escursioni, e sentieri
-• Contorni, profili di elevazione, picchi e pendenze
-• Guida vocale a piedi, in bicicletta e in auto
-• Ricerca veloce offline
-• Aggiungi ai preferiti tutto ciò di cui hai bisogno, importa e condividi KML, KMZ, GPX
-• Modalità scura per proteggere gli occhi
+Una app sviluppata dalla comunità, gratuita e open-source, basata su OpenStreetMap e sull'impegno alla trasparenza, al rispetto della Privacy senza scopo di lucro. CoMaps è uno spin-off di CoMaps, che a sua volta deriva da Maps.ME.
 
-Organic Maps è pura e biologica, fatta con amore:
+‣ Semplice ed Elegante: funzionalità semplici e affidabili.
+‣ Offline: Pianifica e percorri il tuo viaggio senza necessità di essere connesso alla rete, cerca tappe mentre sei in una escursione etc. Tutte le funzionalità dell'app sono pensate per operare senza rete.
+‣ Rispetta la Privacy: L'app è pensata per rispettare la tua Privacy, non identifica le persone e non registra o colleziona i tuoi dati personali. Senza pubblicità.
+‣ Preserva la Batteria e lo Spazio in Memoria: Non consuma batteria come altre app di navigazione. Le mappe compatte salvano il prezioso spazio del tuo telefono.
+‣ Gratis e Sviluppata dalla Comunità: Persone come te posso aiutare a migliorare l'app aggiungendo luoghi su OpenStreetMap, testando e dando opinioni sulle funzionalità dell'app e contribuendo al loro sviluppo e sostentamento economico.
+‣ Aperta e Trasparente nel Processo Decisionale e Finanziario, Senza Scopo di Lucro e Completamente Open Source
 
-• Rispetta la tua privacy
-• Risparmia la batteria
-• Nessun addebito imprevisto sui dati mobili
+Funzionalità principali:
+• Scarica mappe dettagliate di luoghi che non sono disponibili su Google Maps
+• Modalità Outdoor con percorsi escursionistici, campeggi, sorgenti d'acqua, picchi, dislivelli ed altro evidenziati
+• Strade pedonali e piste ciclabili
+• Punti d'interesse come ristoranti, stazioni di benzina, hotel, negozi, luoghi turistici e molto altro
+• Cerca per nome, indirizzo o categoria
+• Navigazione con assistente vocale a piedi, in bici o in macchina
+• Salva i tuoi luoghi preferiti con un tocco
+• Sincronizzazione iCloud per i preferiti e percorsi
+• Leggi gli articoli Wikipedia Offline
+• Cartina delle metropolitane con direzioni
+• Registrazione del percorso
+• Esporta ed importa i tuoi luoghi preferiti e percorsi nei formati KML, KMZ o GPX
+• Modalità notturna per la notte
+• Migliora le mappe per tutti usando l'editor interno
+• Supporto CarPlay
 
-Organic Maps è libero da trackers e altre cose cattive:
-
-• Non ci sono annunci
-• Nessun monitoraggio
-• Nessuna raccolta di dati
-• Non ti telefona a casa
-• Nessuna registrazione fastidiosa
-• Nessun tutorial obbligatorio
-• Nessuno spam
-• Nessuna notifica push
-• Nessun crapware
-• Nessun pesticida
-
-Noi di Organic Maps crediamo che la privacy sia un diritto umano fondamentale:
-
-• Organic Maps è un progetto indipendente guidato dalla comunità
-• Il codice è open-source
-• I dati delle mappe sono presi da OpenStreetMap, anch'esso un progetto basato sulla comunità
-• Proteggiamo la tua privacy dagli occhi indiscreti delle Big Tech
-• Stai al sicuro ovunque tu sia
-
-Rifiuta la sorveglianza, abbraccia la tua libertà e sostieni la comunità.
-
-Prova Organic Maps!
+La Libertà è Qui
+Esplora la tua nuova avventura, naviga il mondo con Privacy e la comunità in prima linea!

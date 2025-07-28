@@ -96,6 +96,7 @@ highway|service|parking_aisle;[highway=service][service=parking_aisle];;name;int
 place|hamlet;30;
 moved:highway|road:05.2024;31;highway|road
 deprecated:highway|track|grade2:04.2024;[highway=track][tracktype=grade2];x;name;int_name;32;highway|track
+# ~1.5M usages w/o a more specific wetland=*
 natural|wetland;33;
 deprecated:highway|track|grade3:04.4024;[highway=track][tracktype=grade3];x;name;int_name;34;highway|track
 # ~1M usages.
@@ -304,7 +305,8 @@ amenity|charging_station|motorcar;[amenity=charging_station][motorcar?];;name;in
 leisure|golf_course;202;
 highway|service|bridge;[highway=service][bridge?];;name;int_name;203;
 deprecated:power|minor_line:01.2017;204;x
-natural|wetland|marsh;[natural=wetland][wetland=marsh],[natural=marsh];;name;int_name;205;
+# Marsh 500K usages, wet_meadow 160K
+natural|wetland|marsh;[natural=wetland][wetland=marsh],[natural=wetland][wetland=wet_meadow],[natural=wetland][wetland=dambo];;;;205;
 leisure|stadium;206;
 amenity|doctors;207;
 railway|disused;208;
@@ -319,7 +321,7 @@ place|county;215;
 sport|table_tennis;216;
 sport|beachvolleyball;217;
 sport|volleyball;218;
-power|station;219;
+deprecated:power|station:07.2025;219;x
 sport|swimming;220;
 leisure|track;221;
 sport|skateboard;222;
@@ -421,10 +423,11 @@ aeroway|gate;315;
 # TODO: railway=preserved is deprecated in OSM, recommended mapping is railway:preserved=yes + railway=*
 railway|preserved;316;
 highway|path|horse;[highway=path][horse?];;name;int_name;317;
-landuse|field;318;
+deprecated:landuse|field:06.2025;318;x
 hwtag|nocycleway;319;
 leisure|water_park;320;
-natural|wetland|bog;[natural=wetland][wetland=bog];;name;int_name;321;
+# 1M usages
+natural|wetland|bog;[natural=wetland][wetland=bog],[natural=wetland][wetland=string_bog];;;;321;
 man_made|windmill;322;
 military|bunker;323;
 aerialway|chair_lift;324;
@@ -594,7 +597,7 @@ emergency|lifeguard;475;
 emergency|mountain_rescue;476;
 aerialway|platter;477;
 man_made|flare;478;
-deprecated|deprecated;479;x
+highway|ladder;479;
 railway|preserved|tunnel;[railway=preserved][tunnel?];;name;int_name;480;
 boundary|protected_area|1;[boundary=protected_area][protect_class=1],[boundary=protected_area][protect_class=1a],[boundary=protected_area][protect_class=1b];;name;int_name;481;
 boundary|protected_area|2;[boundary=protected_area][protect_class=2];;name;int_name;482;
@@ -667,10 +670,10 @@ deprecated|deprecated;547;x
 deprecated|deprecated;548;x
 deprecated|deprecated;549;x
 waterway|lock_gate;550;
-deprecated|deprecated;551;x
-deprecated|deprecated;552;x
-deprecated|deprecated;553;x
-deprecated|deprecated;554;x
+leisure|firepit;551;
+barrier|guard_rail;552;
+amenity|studio;553;
+amenity|love_hotel;554;
 deprecated:highway|footway|demanding_alpine_hiking:04.2024;[highway=footway][sac_scale=demanding_alpine_hiking];x;name;int_name;555;highway|path|expert
 deprecated|deprecated;556;x
 deprecated|deprecated;557;x
@@ -774,13 +777,13 @@ deprecated|deprecated;654;x
 deprecated|deprecated;655;x
 deprecated|deprecated;656;x
 deprecated:boundary|administrative|municipality:04.2024;[boundary=administrative][border_type=municipality];x;name;int_name;657;
-deprecated|deprecated;658;x
-deprecated|deprecated;659;x
-deprecated|deprecated;660;x
-deprecated|deprecated;661;x
-deprecated|deprecated;662;x
-deprecated|deprecated;663;x
-deprecated|deprecated;664;x
+natural|wetland|saltmarsh;[natural=wetland][wetland=saltmarsh];;;;658;
+natural|wetland|saltmarsh|tidal;[natural=wetland][wetland=saltmarsh][tidal=yes];;;;659;
+natural|wetland|fen;[natural=wetland][wetland=fen];;;;660;
+natural|wetland|reedbed;[natural=wetland][wetland=reedbed];;;;661;
+natural|wetland|swamp;[natural=wetland][wetland=swamp];;;;662;
+natural|wetland|mangrove;[natural=wetland][wetland=mangrove];;;;663;
+natural|wetland|tidalflat;[natural=wetland][wetland=tidalflat];;;;664;
 deprecated|railway|yard|bridge:06.2023;665;x
 deprecated|deprecated;666;x
 deprecated|deprecated;667;x
@@ -810,7 +813,7 @@ deprecated|deprecated;690;x
 deprecated:boundary|administrative|country:04.2024;[boundary=administrative][border_type=country];x;name;int_name;691;
 man_made|cross;692;
 natural|orchard;693;landuse|orchard
-deprecated|deprecated;694;x
+landuse|plant_nursery;694;
 deprecated|deprecated;695;x
 deprecated|deprecated;696;x
 deprecated|deprecated;697;x
@@ -1016,7 +1019,7 @@ historic|memorial|cross;[historic=memorial][memorial=cross];;name;int_name;895;
 historic|gallows;[historic=gallows];;name;int_name;896;
 historic|pillory;[historic=pillory];;name;int_name;897;
 amenity|money_transfer;898;
-deprecated|deprecated;899;x
+man_made|crane;899;
 railway|subway|darkgreen;[railway=subway][colour=darkgreen];x;name;int_name;900;railway|subway|tunnel
 deprecated|deprecated;901;x
 railway|subway|gray;[railway=subway][colour=gray];x;name;int_name;902;railway|subway|tunnel
@@ -1250,7 +1253,7 @@ amenity|vending_machine|condoms;[amenity=vending_machine][vending=condoms];;name
 amenity|vending_machine|food;[amenity=vending_machine][vending=food];;name;int_name;1129;
 amenity|vending_machine|newspapers;[amenity=vending_machine][vending=newspapers];;name;int_name;1130;
 amenity|vending_machine|sweets;[amenity=vending_machine][vending=sweets];;name;int_name;1131;
-leisure|dance;1132;
+leisure|dance;[leisure=dance],[amenity=dancing_school];;;;1132;
 amenity|music_school;1133;
 amenity|language_school;1134;
 historic|city_gate;1135;
@@ -1448,7 +1451,7 @@ amenity|parking_space;1326;
 amenity|parking_space|underground;[amenity=parking_space][parking=underground];;name;int_name;1327;
 amenity|parking_space|private;[amenity=parking_space][access=private];;name;int_name;1328;
 amenity|parking_space|permissive;[amenity=parking_space][access=permissive];;name;int_name;1329;
-landuse|churchyard;1330;
+landuse|religious;1330;
 isoline|step_1000;1331;
 isoline|step_500;1332;
 isoline|step_100;1333;
@@ -1741,3 +1744,5 @@ railway|station|light_rail|berlin;[railway=station][station=light_rail][city=ber
 railway|station|subway|shenzhen;[railway=station][transport=subway][city=shenzhen],[railway=station][station=subway][city=shenzhen];;name;int_name;1620;
 railway|subway_entrance|shenzhen;[railway=subway_entrance][city=shenzhen];;name;int_name;1621;
 shop|hearing_aids;1622;
+railway|station|subway|qingdao;[railway=station][transport=subway][city=qingdao],[railway=station][station=subway][city=qingdao];;name;int_name;1623;
+railway|subway_entrance|qingdao;[railway=subway_entrance][city=qingdao];;name;int_name;1624;

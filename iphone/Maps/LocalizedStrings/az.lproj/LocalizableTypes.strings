@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Xristian qəbiristanlığı";
-"type.landuse.churchyard" = "Kilsə rayonu";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Kommersiya";
 "type.landuse.construction" = "Struktur";
 "type.landuse.education" = "Educational Facility";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Su quyusu";
 "type.man_made.windmill" = "Yel dəyirmanı";
 "type.man_made.works" = "Sənaye İşləri";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Hərbi";
 "type.military.bunker" = "Sığınacaq";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Su elektrik stansiyası";
 "type.power.plant.solar" = "Günəş Elektrik Stansiyası";
 "type.power.plant.wind" = "Yel deyirmani";
-"type.power.station" = "Stansiya";
 "type.power.substation" = "Transformator";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "İdman zalı";
+"type.amenity.studio" = "Studio";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.man_made.crane" = "Crane";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.sport.diving" = "High Diving";
+"type.highway.ladder" = "Ladder";
+"type.natural.wetland.swamp" = "Swamp";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.amenity.love_hotel" = "Love Hotel";

@@ -1,39 +1,28 @@
-• Detailed offline maps with places that don't exist on other maps
-• Cycling routes, hiking trails, and walking paths
-• Contour lines, elevation profiles, peaks, and slopes
-• Turn-by-turn walking, cycling, and car navigation with voice guidance
-• Fast offline search
-• Bookmark everything you need, import and share KML, KMZ, GPX
-• Dark mode to protect your eyes
-• … and many other features!
+Yhteisön ylläpitämä ilmainen ja avoimen lähdekoodin karttasovellus, joka perustuu OpenStreetMap-dataan ja jonka kulmakivinä ovat läpinäkyvyys, yksityisyys ja voittoa tavoittelematon toiminta.
 
-Organic Maps is pure and organic, made with love:
+‣ Yksinkertainen ja viimeistelty: Vain olennaiset, helppokäyttöiset toiminnot, jotka toimivat vaivattomasti.
+‣ Suunnittele ja navigoi matkoja ulkomailla ilman mobiiliverkkoa, etsi reittipisteitä vaelluksella – kaikki sovelluksen toiminnot on suunniteltu toimimaan myös offline-tilassa.
+‣ Yksityisyyttä kunnioittava: Sovellus on suunniteltu yksityisyyttä silmällä pitäen – ei tunnista käyttäjiä, ei seuraa eikä kerää henkilötietoja. Ei mainoksia.
+‣ Säästää akkua ja tallennustilaa: Ei kuluta akkua kuten muut navigointisovellukset. Kompaktit kartat säästävät puhelimesi tilaa.
+‣ Ilmainen ja yhteisön rakentama: Ihmiset kuten sinä ovat rakentaneet sovellusta lisäämällä paikkoja OpenStreetMapiin, testaamalla ja antamalla palautetta sekä osallistumalla kehitykseen ja rahoitukseen.
+‣ Avoin ja läpinäkyvä päätöksenteko ja talous, voittoa tavoittelematon ja täysin avoimen lähdekoodin.
 
-• Respects your privacy
-• Saves your battery
-• No unexpected mobile data charges
+Pääominaisuudet:
+• Ladattavat yksityiskohtaiset kartat, joissa on paikkoja, joita monista kaupallisista kartoista ei löydy
+• Ulkoilutila, jossa korostettuina vaellusreitit, leirintäalueet, vesipisteet, huiput, korkeuskäyrät jne.
+• Kävely- ja pyöräilyreitit
+• Kiinnostavat kohteet kuten ravintolat, huoltoasemat, hotellit, kaupat, nähtävyydet ja paljon muuta
+• Haku nimen, osoitteen tai kiinnostavan kohteen kategorian perusteella
+• Navigointi ääniohjeilla kävelyyn, pyöräilyyn ja autoiluun
+• Lisää suosikkipaikkasi kirjanmerkkeihin yhdellä napautuksella
+• iCloud-synkronointi kirjanmerkeille ja reiteille
+• Offline Wikipedia-artikkelit
+• Metrokerros ja reittiohjeet
+• Reittien tallennus
+• Kirjanmerkkien ja reittien vienti ja tuonti KML-, KMZ- ja GPX-muodoissa
+• Tumma tila yöaikaan käyttöä varten
+• Paranna karttatietoja kaikille sisäänrakennetulla editorilla
+• CarPlay-tuki
 
-Organic Maps is free from trackers and other bad stuff:
-
-• No ads
-• No tracking
-• No data collection
-• No phoning home
-• No annoying registration
-• No mandatory tutorials
-• No noisy email spam
-• No push notifications
-• No crapware
-• No pesticides
-
-At Organic Maps, we believe that privacy is a fundamental human right:
-
-• Organic Maps is an indie community-driven project
-• The code is open-sourced
-• The maps data is taken from OpenStreetMap, also community-driven project
-• We protect your privacy from Big Tech’s prying eyes
-• Stay safe no matter wherever you are
-
-Reject surveillance, embrace your freedom, and support the community.
-
-Give Organic Maps a try!
+Vapaus on täällä
+Lähde matkalle – navigoi maailmassa, jossa yksityisyys ja yhteisö ovat etusijalla!

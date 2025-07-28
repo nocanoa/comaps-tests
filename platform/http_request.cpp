@@ -136,9 +136,9 @@ class FileHttpRequest : public HttpRequest, public IHttpThreadCallback
   string m_filePath;
   unique_ptr<FileWriter> m_writer;
 
-  size_t m_goodChunksCount;
   bool m_doCleanProgressFiles;
 
+  // Starts a thread per each free/available server.
   ChunksDownloadStrategy::ResultT StartThreads()
   {
     string url;
@@ -198,6 +198,7 @@ class FileHttpRequest : public HttpRequest, public IHttpThreadCallback
     }
   }
 
+  // Saves current chunks' statuses into a resume file.
   void SaveResumeChunks()
   {
     try
@@ -246,13 +247,9 @@ class FileHttpRequest : public HttpRequest, public IHttpThreadCallback
     else if (result == ChunksDownloadStrategy::EDownloadSucceeded)
       m_status = DownloadStatus::Completed;
 
-    if (isChunkOk)
-    {
-      // save information for download resume
-      ++m_goodChunksCount;
-      if (m_status != DownloadStatus::Completed && m_goodChunksCount % 10 == 0)
-        SaveResumeChunks();
-    }
+    // Save chunks statuses into the resume file.
+    if (isChunkOk && m_status != DownloadStatus::Completed)
+      SaveResumeChunks();
 
     if (m_status == DownloadStatus::InProgress)
       return;
@@ -298,7 +295,7 @@ public:
                   int64_t chunkSize, bool doCleanProgressFiles)
     : HttpRequest(std::move(onFinish), std::move(onProgress)),
       m_strategy(urls), m_filePath(filePath),
-      m_goodChunksCount(0), m_doCleanProgressFiles(doCleanProgressFiles)
+      m_doCleanProgressFiles(doCleanProgressFiles)
   {
     ASSERT ( !urls.empty(), () );
 
@@ -316,7 +313,10 @@ public:
               size <= static_cast<uint64_t>(fileSize))
         openMode = FileWriter::OP_WRITE_EXISTING;
       else
+      {
+        LOG(LWARNING, ("Incomplete file size is bigger than expected, re-downloading."));
         m_strategy.InitChunks(fileSize, chunkSize);
+      }
     }
 
     // Create file and reserve needed size.

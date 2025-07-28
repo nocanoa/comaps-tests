@@ -11,7 +11,7 @@ namespace url
 {
 
 // Url in format: 'scheme://host/path?key1=value1&key2&key3=&key4=value4'
-// host - any string ('omaps.app' or 'search'), without any valid domain check
+// host - any string ('comaps.app' or 'search'), without any valid domain check
 class Url
 {
 public:
@@ -56,9 +56,6 @@ std::string Join(std::string const & lhs, std::string const & rhs, Args &&... ar
 {
   return Join(Join(lhs, rhs), std::forward<Args>(args)...);
 }
-
-// Replaces all special characters with '-'
-std::string Slug(std::string const & raw);
 
 std::string UrlEncode(std::string const & rawUrl);
 std::string UrlDecode(std::string_view encodedUrl);

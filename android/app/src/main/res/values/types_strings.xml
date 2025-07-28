@@ -32,6 +32,7 @@
     <string name="type.amenity.bicycle_repair_station">Bicycle Repair Station</string>
     <string name="type.amenity.biergarten">Biergarten</string>
     <string name="type.amenity.brothel">Brothel</string>
+    <string name="type.amenity.love_hotel">Love Hotel</string>
     <string name="type.amenity.bureau_de_change">Currency Exchange</string>
     <string name="type.amenity.bus_station">Bus Station</string>
     <string name="type.amenity.cafe">Cafe</string>
@@ -48,6 +49,7 @@
     <string name="type.amenity.charging_station.motorcar">Car Charging Station</string>
     <string name="type.amenity.childcare">Nursery</string>
     <string name="type.amenity.cinema">Cinema</string>
+    <string name="type.amenity.studio">Studio</string>
     <string name="type.leisure.bowling_alley">Bowling Alley</string>
     <string name="type.amenity.clinic">Clinic</string>
     <string name="type.amenity.college">College</string>
@@ -199,6 +201,7 @@
     <string name="type.natural.water.wastewater">Wastewater</string>
     <string name="type.barrier.entrance">Entrance</string>
     <string name="type.barrier.fence">Fence</string>
+    <string name="type.barrier.guard_rail">Guard Rail</string>
     <string name="type.barrier.gate">Gate</string>
     <string name="type.barrier.hedge">Hedge</string>
     <string name="type.barrier.kissing_gate">Kissing Gate</string>
@@ -483,6 +486,7 @@
     <string name="type.highway.services">Service Area</string>
     <string name="type.highway.speed_camera">Speed Camera</string>
     <string name="type.highway.steps">Stairs</string>
+    <string name="type.highway.ladder">Ladder</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.steps.bridge">Bridge</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
@@ -610,13 +614,12 @@
     <string name="type.landuse.cemetery">Cemetery</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">Christian Cemetery</string>
-    <string name="type.landuse.churchyard">Churchyard</string>
+    <string name="type.landuse.religious">Religious Land</string>
     <string name="type.landuse.commercial">Commercial Area</string>
     <string name="type.landuse.construction">Construction Area</string>
     <string name="type.landuse.education">Educational Facility</string>
     <string name="type.landuse.farmland">Farmland</string>
     <string name="type.landuse.farmyard">Farmyard</string>
-    <string name="type.landuse.field">Field</string>
     <string name="type.landuse.flowerbed">Flowerbed</string>
     <string name="type.landuse.forest">Forest</string>
     <string name="type.landuse.forest.coniferous">Coniferous Forest</string>
@@ -640,6 +643,7 @@
     <string name="type.landuse.salt_pond">Salt Pond</string>
     <string name="type.landuse.village_green">Land</string>
     <string name="type.landuse.vineyard">Vineyard</string>
+    <string name="type.landuse.plant_nursery">Plant Nursery</string>
     <string name="type.leisure">Leisure</string>
     <string name="type.leisure.common">Public Land</string>
     <string name="type.leisure.dog_park">Dog Park</string>
@@ -655,6 +659,7 @@
     <string name="type.leisure.marina">Marina</string>
     <string name="type.leisure.nature_reserve">Nature Reserve</string>
     <string name="type.leisure.outdoor_seating">Outdoor Seating</string>
+    <string name="type.leisure.firepit">Firepit</string>
     <string name="type.leisure.park">Park</string>
     <string name="type.leisure.park.no.access">Private Park</string>
     <string name="type.leisure.park.permissive">Park</string>
@@ -699,6 +704,7 @@
     <string name="type.man_made.petroleum_well">Oil or Gas Well</string>
     <!-- A tower/mast constructed to burn off excess gas. -->
     <string name="type.man_made.flare">Gas Flare</string>
+    <string name="type.man_made.crane">Crane</string>
     <string name="type.man_made.wastewater_plant">Wastewater Treatment Plant</string>
     <string name="type.man_made.water_tap">Water Tap</string>
     <string name="type.man_made.water_tap.drinking_water_no">Water Tap</string>
@@ -758,6 +764,13 @@
     <string name="type.natural.wetland">Wetland</string>
     <string name="type.natural.wetland.bog">Bog</string>
     <string name="type.natural.wetland.marsh">Marsh</string>
+    <string name="type.natural.wetland.saltmarsh">Salt Marsh</string>
+    <string name="type.natural.wetland.saltmarsh.tidal">Tidal Salt Marsh</string>
+    <string name="type.natural.wetland.fen">Fen</string>
+    <string name="type.natural.wetland.reedbed">Reed Bed</string>
+    <string name="type.natural.wetland.swamp">Swamp</string>
+    <string name="type.natural.wetland.mangrove">Mangrove</string>
+    <string name="type.natural.wetland.tidalflat">Tidal Flat</string>
     <string name="type.noexit">Dead End</string>
     <string name="type.office">Office</string>
     <string name="type.office.company">Company Office</string>
@@ -819,7 +832,6 @@
     <string name="type.power.plant.hydro">Hydroelectric Power Plant</string>
     <string name="type.power.plant.solar">Solar Power Plant</string>
     <string name="type.power.plant.wind">Wind Power Plant</string>
-    <string name="type.power.station">Power Station</string>
     <string name="type.power.substation">Substation</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Power Tower</string>
@@ -974,6 +986,7 @@
     <string name="type.railway.station.subway.paris">Subway Station</string>
     <string name="type.railway.station.subway.philadelphia">Subway Station</string>
     <string name="type.railway.station.subway.pyongyang">Subway Station</string>
+    <string name="type.railway.station.subway.qingdao">Subway Station</string>
     <string name="type.railway.station.subway.rennes">Subway Station</string>
     <string name="type.railway.station.subway.rio">Subway Station</string>
     <string name="type.railway.station.subway.roma">Subway Station</string>
@@ -1268,6 +1281,8 @@
     <string name="type.sport.multi">Various Sports</string>
     <!-- Used to tag a scuba diving site. -->
     <string name="type.sport.scuba_diving">Scuba Diving Site</string>
+    <!-- Used for high diving sites. -->
+    <string name="type.sport.diving">High Diving</string>
     <string name="type.sport.shooting">Shooting</string>
     <string name="type.sport.skateboard">Skateboarding</string>
     <string name="type.sport.skiing">Skiing</string>

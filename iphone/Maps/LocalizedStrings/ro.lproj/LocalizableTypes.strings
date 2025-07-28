@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Cimitir";
-"type.landuse.churchyard" = "Curtea Bisericii";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Commercial Area";
 "type.landuse.construction" = "Construction Area";
 "type.landuse.education" = "Educational Facility";
@@ -749,7 +749,7 @@
 "type.man_made.pier" = "Pier";
 "type.man_made.pipeline" = "Pipeline";
 "type.man_made.pipeline.overground" = "Overground Pipeline";
-"type.man_made.silo" = "Silo";
+"type.man_made.silo" = "Siloz";
 "type.man_made.storage_tank" = "Storage Tank";
 "type.man_made.surveillance" = "Cameră de supraveghere";
 "type.man_made.tower" = "Turn";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Puț de apă";
 "type.man_made.windmill" = "Moară de vânt";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Buncăr";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Centrală hidroelectrică";
 "type.power.plant.solar" = "Centrală solară";
 "type.power.plant.wind" = "Centrală eoliană";
-"type.power.station" = "Power Station";
 "type.power.substation" = "Stație subterană";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sală de sport";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.leisure.firepit" = "Firepit";
+"type.sport.diving" = "High Diving";
+"type.highway.ladder" = "Ladder";
+"type.natural.wetland.swamp" = "Swamp";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

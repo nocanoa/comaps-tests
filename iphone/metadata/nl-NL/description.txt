@@ -1,39 +1,27 @@
-• Detailed offline maps with places that don't exist on other maps
-• Cycling routes, hiking trails, and walking paths
-• Contour lines, elevation profiles, peaks, and slopes
-• Turn-by-turn walking, cycling, and car navigation with voice guidance
-• Fast offline search
-• Bookmark everything you need, import and share KML, KMZ, GPX
-• Dark mode to protect your eyes
-• … and many other features!
+Een door de community ontwikkelde, gratis en open source kaartenapp, gebaseerd op OpenStreetMap-gegevens, met een sterke focus op transparantie en privacy, en zonder winstoogmerk.
 
-Organic Maps is pure and organic, made with love:
+‣ Eenvoudig en verfijnd: essentiële, gebruiksvriendelijke functies die gewoon werken.
+‣ Offline-georiënteerd: Plan en navigeer je reis in het buitenland zonder internet, zoek waypoints tijdens een lange wandeling, enzovoort. Alle functies zijn ontworpen om offline te functioneren.
+‣ Respect voor privacy: De app is ontworpen met privacy in gedachten - geen gegevensverzameling en advertentievrij.
+‣ Bespaar je batterij en opslag: De app verbruikt minder batterij dan andere navigatie-apps. Compacte kaarten besparen ruimte op je telefoon.
+‣ Gratis en gebouwd door de community: Mensen zoals jij helpen de app door plaatsen toe te voegen aan OpenStreetMap, functies te testen en feedback te geven, en hun programmervaardigheden bij te dragen of te doneren.
+‣ Open en transparant besluitvormings- en financieel beleid, geen winstoogmerk en volledig open source.
 
-• Respects your privacy
-• Saves your battery
-• No unexpected mobile data charges
+Hoofdfuncties:
+• Downloadbare gedetailleerde kaarten met plaatsen die niet beschikbaar zijn bij Google Maps
+• Buitenmodus met gemarkeerde wandelpaden, campings, waterbronnen, toppen, hoogtelijnen, enz.
+• Wandelpaden en fietspaden
+• Bezienswaardigheden zoals restaurants, tankstations, hotels, winkels en nog veel meer
+• Zoeken op naam of adres of op categorie
+• Navigatie met spraakmeldingen voor wandelen, fietsen of autorijden
+• Sla je favoriete plaatsen op met een enkele klik
+• Offline Wikipedia-artikelen
+• Metro laag en routebeschrijvingen
+• Trackregistratie
+• Exporteer en importeer bladwijzers en tracks in KML, KMZ, GPX-formaten
+• Een donkere modus voor gebruik 's nachts
+• Verbeter kaartgegevens voor iedereen met een eenvoudige ingebouwde editor
+• Ondersteuning voor Android Auto
 
-Organic Maps is free from trackers and other bad stuff:
-
-• No ads
-• No tracking
-• No data collection
-• No phoning home
-• No annoying registration
-• No mandatory tutorials
-• No noisy email spam
-• No push notifications
-• No crapware
-• No pesticides
-
-At Organic Maps, we believe that privacy is a fundamental human right:
-
-• Organic Maps is an indie community-driven project
-• The code is open-sourced
-• The maps data is taken from OpenStreetMap, also community-driven project
-• We protect your privacy from Big Tech’s prying eyes
-• Stay safe no matter wherever you are
-
-Reject surveillance, embrace your freedom, and support the community.
-
-Give Organic Maps a try!
+Vrijheid is hier
+Ontdek je reis, navigeer over de wereld met privacy en community voorop!

@@ -26,18 +26,17 @@
 
 - (void)updateStatusBarStyle;
 
-- (void)migrateOAuthCredentials;
-
 - (void)performAction:(NSString *_Nonnull)action;
 
 - (void)openMenu;
 - (void)openSettings;
+- (void)openAbout;
 - (void)openMapsDownloader:(MWMMapDownloaderMode)mode;
 - (void)openEditor;
 - (void)openBookmarkEditor;
 - (void)openFullPlaceDescriptionWithHtml:(NSString *_Nonnull)htmlString;
-- (void)searchText:(NSString *_Nonnull)text;
 - (void)openDrivingOptions;
+- (void)showTrackRecordingPlacePage;
 
 - (void)setPlacePageTopBound:(CGFloat)bound duration:(double)duration;
 

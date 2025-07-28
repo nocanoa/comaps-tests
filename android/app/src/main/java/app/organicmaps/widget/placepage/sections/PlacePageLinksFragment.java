@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,12 +13,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import app.organicmaps.Framework;
-import app.organicmaps.MwmActivity;
 import app.organicmaps.R;
 import app.organicmaps.bookmarks.data.MapObject;
 import app.organicmaps.bookmarks.data.Metadata;
-import app.organicmaps.util.Config;
-import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.widget.placepage.PlacePageUtils;
 import app.organicmaps.widget.placepage.PlacePageViewModel;
@@ -30,37 +26,45 @@ import java.util.List;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import com.google.android.material.textview.MaterialTextView;
+
 public class PlacePageLinksFragment extends Fragment implements Observer<MapObject>
 {
   private static final String TAG = PlacePageLinksFragment.class.getSimpleName();
 
   private View mFrame;
   private View mFacebookPage;
-  private TextView mTvFacebookPage;
+  private MaterialTextView mTvFacebookPage;
   private View mInstagramPage;
-  private TextView mTvInstagramPage;
+  private MaterialTextView mTvInstagramPage;
   private View mTwitterPage;
-  private TextView mTvTwitterPage;
+  private MaterialTextView mTvTwitterPage;
+  private View mFediversePage;
+  private MaterialTextView mTvFediversePage;
+  private View mBlueskyPage;
+  private MaterialTextView mTvBlueskyPage;
   private View mVkPage;
-  private TextView mTvVkPage;
+  private MaterialTextView mTvVkPage;
   private View mLinePage;
-  private TextView mTvLinePage;
+  private MaterialTextView mTvLinePage;
 
-  private View mKayak;
   private View mWebsite;
-  private TextView mTvWebsite;
+  private MaterialTextView mTvWebsite;
   private View mWebsiteMenu;
-  private TextView mTvWebsiteMenuSubsite;
+  private MaterialTextView mTvWebsiteMenuSubsite;
   private View mEmail;
-  private TextView mTvEmail;
+  private MaterialTextView mTvEmail;
   private View mWikimedia;
-  private TextView mTvWikimedia;
+  private MaterialTextView mTvWikimedia;
+
+  private View mPanoramax;
+  private MaterialTextView mTvPanoramax;
 
   private PlacePageViewModel mViewModel;
   private MapObject mMapObject;
 
   private static void refreshMetadataOrHide(@Nullable String metadata, @NonNull View metaLayout,
-                                            @NonNull TextView metaTv)
+                                            @NonNull MaterialTextView metaTv)
   {
     if (!TextUtils.isEmpty(metadata))
     {
@@ -76,12 +80,12 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
   {
     return switch (type)
     {
-      case FMD_EXTERNAL_URI -> mMapObject.getKayakUrl();
       case FMD_WEBSITE ->
           mMapObject.getWebsiteUrl(false /* strip */, Metadata.MetadataType.FMD_WEBSITE);
       case FMD_WEBSITE_MENU ->
           mMapObject.getWebsiteUrl(false /* strip */, Metadata.MetadataType.FMD_WEBSITE_MENU);
-      case FMD_CONTACT_FACEBOOK, FMD_CONTACT_INSTAGRAM, FMD_CONTACT_TWITTER, FMD_CONTACT_VK, FMD_CONTACT_LINE ->
+      case FMD_CONTACT_FACEBOOK, FMD_CONTACT_INSTAGRAM, FMD_CONTACT_TWITTER,
+           FMD_CONTACT_FEDIVERSE, FMD_CONTACT_BLUESKY, FMD_CONTACT_VK, FMD_CONTACT_LINE, FMD_PANORAMAX ->
       {
         if (TextUtils.isEmpty(mMapObject.getMetadata(type)))
           yield "";
@@ -104,20 +108,6 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
   {
     super.onViewCreated(view, savedInstanceState);
     mFrame = view;
-
-    mKayak = mFrame.findViewById(R.id.ll__place_kayak);
-    mKayak.setOnClickListener((v) -> {
-      final String url = mMapObject.getKayakUrl();
-      final MwmActivity activity = (MwmActivity) requireActivity();
-      if (!TextUtils.isEmpty(url))
-        activity.openKayakLink(url);
-    });
-    mKayak.setOnLongClickListener((v) -> {
-      final String url = mMapObject.getKayakUrl();
-      if (!TextUtils.isEmpty(url))
-        PlacePageUtils.copyToClipboard(requireContext(), mFrame, url);
-      return true;
-    });
 
     mWebsite = mFrame.findViewById(R.id.ll__place_website);
     mTvWebsite = mFrame.findViewById(R.id.tv__place_website);
@@ -153,6 +143,16 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
     mInstagramPage.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_CONTACT_INSTAGRAM));
     mInstagramPage.setOnLongClickListener((v) -> copyUrl(mInstagramPage, Metadata.MetadataType.FMD_CONTACT_INSTAGRAM));
 
+    mFediversePage = mFrame.findViewById(R.id.ll__place_fediverse);
+    mTvFediversePage = mFrame.findViewById(R.id.tv__place_fediverse_page);
+    mFediversePage.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_CONTACT_FEDIVERSE));
+    mFediversePage.setOnLongClickListener((v) -> copyUrl(mFediversePage, Metadata.MetadataType.FMD_CONTACT_FEDIVERSE));
+
+    mBlueskyPage = mFrame.findViewById(R.id.ll__place_bluesky);
+    mTvBlueskyPage = mFrame.findViewById(R.id.tv__place_bluesky_page);
+    mBlueskyPage.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_CONTACT_BLUESKY));
+    mBlueskyPage.setOnLongClickListener((v) -> copyUrl(mBlueskyPage, Metadata.MetadataType.FMD_CONTACT_BLUESKY));
+
     mTwitterPage = mFrame.findViewById(R.id.ll__place_twitter);
     mTvTwitterPage = mFrame.findViewById(R.id.tv__place_twitter_page);
     mTwitterPage.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_CONTACT_TWITTER));
@@ -167,6 +167,11 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
     mTvLinePage = mFrame.findViewById(R.id.tv__place_line_page);
     mLinePage.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_CONTACT_LINE));
     mLinePage.setOnLongClickListener((v) -> copyUrl(mLinePage, Metadata.MetadataType.FMD_CONTACT_LINE));
+
+    mPanoramax = mFrame.findViewById(R.id.ll__place_panoramax);
+    mTvPanoramax = mFrame.findViewById(R.id.tv__place_panoramax);
+    mPanoramax.setOnClickListener((v) -> openUrl(Metadata.MetadataType.FMD_PANORAMAX));
+    mPanoramax.setOnLongClickListener((v) -> copyUrl(mPanoramax, Metadata.MetadataType.FMD_PANORAMAX));
   }
 
   private void openUrl(Metadata.MetadataType type)
@@ -187,6 +192,7 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
     final String title = switch (type){
       case FMD_WEBSITE -> mMapObject.getWebsiteUrl(false /* strip */, Metadata.MetadataType.FMD_WEBSITE);
       case FMD_WEBSITE_MENU -> mMapObject.getWebsiteUrl(false /* strip */, Metadata.MetadataType.FMD_WEBSITE_MENU);
+      case FMD_PANORAMAX -> null; // Don't add raw ID to list, as it's useless for users.
       default -> mMapObject.getMetadata(type);
     };
     // Add user names for social media if available
@@ -216,6 +222,12 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
     final String instagram = mMapObject.getMetadata(Metadata.MetadataType.FMD_CONTACT_INSTAGRAM);
     refreshMetadataOrHide(instagram, mInstagramPage, mTvInstagramPage);
 
+    final String fediverse = mMapObject.getMetadata(Metadata.MetadataType.FMD_CONTACT_FEDIVERSE);
+    refreshMetadataOrHide(fediverse, mFediversePage, mTvFediversePage);
+
+    final String bluesky = mMapObject.getMetadata(Metadata.MetadataType.FMD_CONTACT_BLUESKY);
+    refreshMetadataOrHide(bluesky, mBlueskyPage, mTvBlueskyPage);
+
     final String twitter = mMapObject.getMetadata(Metadata.MetadataType.FMD_CONTACT_TWITTER);
     refreshMetadataOrHide(twitter, mTwitterPage, mTvTwitterPage);
 
@@ -225,8 +237,9 @@ public class PlacePageLinksFragment extends Fragment implements Observer<MapObje
     final String line = mMapObject.getMetadata(Metadata.MetadataType.FMD_CONTACT_LINE);
     refreshMetadataOrHide(line, mLinePage, mTvLinePage);
 
-    final String kayak = Config.isKayakDisplayEnabled() ? mMapObject.getKayakUrl() : null;
-    UiUtils.showIf(!TextUtils.isEmpty(kayak), mKayak);
+    final String panoramax = mMapObject.getMetadata(Metadata.MetadataType.FMD_PANORAMAX);
+    final String panoramaxTitle = TextUtils.isEmpty(panoramax) ? "" : getResources().getString(R.string.panoramax);
+    refreshMetadataOrHide(panoramaxTitle, mPanoramax, mTvPanoramax);
   }
 
   @Override

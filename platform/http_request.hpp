@@ -53,12 +53,13 @@ public:
                                 Callback && onProgress = Callback());
 
   /// Download file to filePath.
+  /// Pulls chunks simultaneously from all available servers, 1 thread per server.
   /// @param[in]  fileSize  Correct file size (needed for resuming and reserving).
   static HttpRequest * GetFile(std::vector<std::string> const & urls,
                                std::string const & filePath, int64_t fileSize,
                                Callback && onFinish,
                                Callback && onProgress = Callback(),
-                               int64_t chunkSize = 512 * 1024,
+                               int64_t chunkSize = 0, // 0 for auto
                                bool doCleanOnCancel = true);
 };
 } // namespace downloader

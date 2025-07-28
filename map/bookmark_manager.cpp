@@ -124,7 +124,7 @@ std::string BuildIndexFile(std::vector<std::string> const & filesForIndex)
   std::string content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
       "<kml xmlns=\"http://earth.google.com/kml/2.0\">\n"
       "<Document>\n"
-      "<name>Organic Maps Bookmarks and Tracks</name>\n";
+      "<name>CoMaps Bookmarks and Tracks</name>\n";
   for (auto const & fileName : filesForIndex)
   {
     content.append("<NetworkLink><name>");
@@ -141,7 +141,7 @@ std::string BuildIndexFile(std::vector<std::string> const & filesForIndex)
 
 BookmarkManager::SharingResult ExportMultipleFiles(BookmarkManager::KMLDataCollectionPtr collection)
 {
-  auto const kmzFileName = "OrganicMapsBackup_" + std::to_string(base::GenerateYYMMDD(time(nullptr)));
+  auto const kmzFileName = "CoMaps_backup_" + std::to_string(base::GenerateYYMMDD(time(nullptr)));
   auto kmzFilePath = base::JoinPath(GetPlatform().TmpDir(), kmzFileName + std::string{kKmzExtension});
   auto const filesDir = "files/";
   kml::GroupIdCollection categoriesIds;
@@ -161,7 +161,7 @@ BookmarkManager::SharingResult ExportMultipleFiles(BookmarkManager::KMLDataColle
   {
     std::string fileName = base::FilenameWithoutExt(GetFileNameForExport(kmlToExport));
     if (!strings::IsASCIIString(fileName))
-      fileName = "OrganicMaps_" + std::to_string(suffix++);
+      fileName = "CoMaps_" + std::to_string(suffix++);
     auto const kmlPath = base::JoinPath(GetPlatform().TmpDir(), fileName + std::string{kKmlExtension});
     auto const filePathInArchive = filesDir + fileName + std::string{kKmlExtension};
     if (!SaveKmlFileSafe(*kmlToExport.second, kmlPath, KmlFileType::Text))
@@ -1168,6 +1168,51 @@ dp::Color BookmarkManager::GenerateTrackRecordingColor() const
 {
   /// @TODO(KK): - improve the color generation
   return kml::ColorFromPredefinedColor(kml::GetRandomPredefinedColor());
+}
+
+std::string BookmarkManager::GenerateSavedRouteName(std::string const & from, std::string const & to)
+{
+  if (!from.empty() && !to.empty())
+    return from + " - " + to;
+  if (!from.empty())
+    return from;
+  if (!to.empty())
+    return to;
+  return GenerateTrackRecordingName();
+}
+
+kml::TrackId BookmarkManager::SaveRoute(std::vector<m2::PointD> const & points, std::string const & from, std::string const & to)
+{
+  kml::MultiGeometry geometry;
+  geometry.m_lines.emplace_back();
+  geometry.m_timestamps.emplace_back();
+  auto & line = geometry.m_lines.back();
+
+  for (auto const & pt : points)
+    line.emplace_back(pt);
+
+  kml::TrackData trackData;
+  trackData.m_geometry = std::move(geometry);
+
+  auto trackName = GenerateSavedRouteName(from, to);
+  kml::SetDefaultStr(trackData.m_name, trackName);
+
+  kml::ColorData colorData;
+  colorData.m_rgba = GenerateTrackRecordingColor().GetRGBA();
+  kml::TrackLayer layer;
+  layer.m_color = colorData;
+  std::vector<kml::TrackLayer> m_layers;
+  m_layers.emplace_back(layer);
+  trackData.m_layers = std::move(m_layers);
+
+  trackData.m_timestamp = kml::TimestampClock::now();
+
+  auto editSession = GetEditSession();
+  auto const track = editSession.CreateTrack(std::move(trackData));
+  auto const groupId = LastEditedBMCategory();
+  auto const trackId = track->GetId();
+  AttachTrack(trackId, groupId);
+  return trackId;
 }
 
 void BookmarkManager::PrepareBookmarksAddresses(std::vector<SortBookmarkData> & bookmarksForSort,

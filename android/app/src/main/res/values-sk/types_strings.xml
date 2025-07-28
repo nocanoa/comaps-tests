@@ -123,7 +123,6 @@
     <string name="type.amenity.prison">Väznica</string>
     <string name="type.amenity.pub">Pohostinstvo</string>
     <string name="type.amenity.public_bookcase">Knižná búdka</string>
-
     <!-- SECTION: Types: Recycling -->
     <string name="type.amenity.recycling.centre">Zberné suroviny</string>
     <string name="type.amenity.recycling">Recyklačný kontajner</string>
@@ -362,7 +361,6 @@
     <string name="type.healthcare.psychotherapist">Psychoterapia</string>
     <string name="type.healthcare.sample_collection">Odber vzoriek</string>
     <string name="type.healthcare.speech_therapist">Logopédia</string>
-
     <!-- SECTION: Types: Roads -->
     <string name="type.highway">Cesta</string>
     <string name="type.highway.bridleway">Cesta pre jazdca na zvierati</string>
@@ -528,7 +526,6 @@
     <string name="type.area_highway.track">Poľná cesta</string>
     <string name="type.area_highway.trunk">Cesta</string>
     <string name="type.area_highway.unclassified">Cesta bez administratívneho zaradenia</string>
-
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">Historický objekt</string>
     <string name="type.historic.aircraft">Historické lietadlo</string>
@@ -584,13 +581,11 @@
     <string name="type.landuse.cemetery">Cintorín</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">Kresťanský cintorín</string>
-    <string name="type.landuse.churchyard">Cintorín</string>
     <string name="type.landuse.commercial">Komerčná oblasť</string>
     <string name="type.landuse.construction">Stavenisko</string>
     <string name="type.landuse.education">Vzdelávacia inštitúcia</string>
     <string name="type.landuse.farmland">Poľnohospodárska pôda</string>
     <string name="type.landuse.farmyard">Poľnohospodárske budovy</string>
-    <string name="type.landuse.field">Pole</string>
     <string name="type.landuse.flowerbed">Záhon</string>
     <string name="type.landuse.forest">Les</string>
     <string name="type.landuse.forest.coniferous">Ihličnatý les</string>
@@ -779,7 +774,6 @@
     <string name="type.power.plant.hydro">Vodná elektráreň</string>
     <string name="type.power.plant.solar">Solárna elektráreň</string>
     <string name="type.power.plant.wind">Veterná elektráreň</string>
-    <string name="type.power.station">Elektrická stanica</string>
     <string name="type.power.substation">Rozvodňa</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Stĺp elektrického vedenia</string>
@@ -1326,4 +1320,5 @@
     <string name="type.amenity.dojo">Dojo</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">Športová hala</string>
+    <string name="type.mapswithme">MapsWithMe</string>
 </resources>

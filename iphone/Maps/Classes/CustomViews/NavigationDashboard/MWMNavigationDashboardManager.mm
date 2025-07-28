@@ -145,6 +145,8 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
 
 - (void)statePrepare {
   self.navigationInfoView.state = MWMNavigationInfoViewStatePrepare;
+  if (self.searchManager.isSearching)
+    [self.navigationInfoView setSearchState:NavigationSearchState::MinimizedSearch animated:YES];
   auto routePreview = self.routePreview;
   [routePreview addToView:self.ownerView];
   [routePreview statePrepare];
@@ -198,6 +200,8 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
 }
 
 - (void)onRouteStart {
+  [MWMSearch clear];
+  [self.searchManager close];
   self.state = MWMNavigationDashboardStateNavigation;
 }
 - (void)onRouteStop {
@@ -226,6 +230,11 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
   [[MapViewController sharedController] presentViewController:routeManager animated:YES completion:nil];
 }
 
+- (IBAction)saveRouteAsTrack:(id)sender {
+  [MWMFrameworkHelper saveRouteAsTrack];
+  [self.baseRoutePreviewStatus setRouteSaved:YES];
+}
+
 #pragma mark - MWMNavigationControlView
 
 - (IBAction)ttsButtonAction {
@@ -252,7 +261,8 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
       break;
     case SearchOnMapStateHidden:
     case SearchOnMapStateSearching:
-      [self setMapSearch];
+      [self.navigationInfoView setSearchState:NavigationSearchState::MinimizedSearch animated:YES];
+      break;
   }
 }
 
@@ -347,10 +357,6 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
   if (!_entity)
     _entity = [[MWMNavigationDashboardEntity alloc] init];
   return _entity;
-}
-
-- (void)setMapSearch {
-  [_navigationInfoView setMapSearch];
 }
 
 #pragma mark - MWMRoutePreviewDelegate

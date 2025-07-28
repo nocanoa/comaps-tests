@@ -13,12 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,11 +33,16 @@ import app.organicmaps.downloader.CountryItem;
 import app.organicmaps.downloader.DownloaderStatusIcon;
 import app.organicmaps.downloader.MapManager;
 import app.organicmaps.editor.Editor;
+import app.organicmaps.editor.OhState;
+import app.organicmaps.editor.OpeningHours;
+import app.organicmaps.editor.data.HoursMinutes;
+import app.organicmaps.editor.data.Timetable;
 import app.organicmaps.location.LocationHelper;
 import app.organicmaps.location.LocationListener;
 import app.organicmaps.location.SensorHelper;
 import app.organicmaps.location.SensorListener;
 import app.organicmaps.routing.RoutingController;
+import app.organicmaps.util.DateUtils;
 import app.organicmaps.util.SharingUtils;
 import app.organicmaps.util.StringUtils;
 import app.organicmaps.util.UiUtils;
@@ -50,10 +53,15 @@ import app.organicmaps.widget.placepage.sections.PlacePageBookmarkFragment;
 import app.organicmaps.widget.placepage.sections.PlacePageLinksFragment;
 import app.organicmaps.widget.placepage.sections.PlacePageOpeningHoursFragment;
 import app.organicmaps.widget.placepage.sections.PlacePagePhoneFragment;
-import app.organicmaps.widget.placepage.sections.PlacePageProductsFragment;
 import app.organicmaps.widget.placepage.sections.PlacePageWikipediaFragment;
-import com.google.android.material.button.MaterialButton;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
+
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -70,7 +78,6 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
 {
   private static final String PREF_COORDINATES_FORMAT = "coordinates_format";
   private static final String BOOKMARK_FRAGMENT_TAG = "BOOKMARK_FRAGMENT_TAG";
-  private static final String PRODUCTS_FRAGMENT_TAG = "PRODUCTS_FRAGMENT_TAG";
   private static final String WIKIPEDIA_FRAGMENT_TAG = "WIKIPEDIA_FRAGMENT_TAG";
   private static final String PHONE_FRAGMENT_TAG = "PHONE_FRAGMENT_TAG";
   private static final String OPENING_HOURS_FRAGMENT_TAG = "OPENING_HOURS_FRAGMENT_TAG";
@@ -84,41 +91,44 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
                     CoordinatesFormat.MGRS,
                     CoordinatesFormat.OSMLink);
   private View mFrame;
+  private Context mContext;
+
   // Preview.
   private ViewGroup mPreview;
-  private Toolbar mToolbar;
-  private TextView mTvTitle;
-  private TextView mTvSecondaryTitle;
-  private TextView mTvSubtitle;
+  private MaterialToolbar mToolbar;
+  private MaterialTextView mTvTitle;
+  private MaterialTextView mTvSecondaryTitle;
+  private MaterialTextView mTvSubtitle;
+  private MaterialTextView mTvOpenState;
   private ArrowView mAvDirection;
-  private TextView mTvDistance;
-  private TextView mTvAddress;
+  private MaterialTextView mTvDistance;
+  private MaterialTextView mTvAddress;
   // Details.
-  private TextView mTvLatlon;
+  private MaterialTextView mTvLatlon;
   private View mWifi;
-  private TextView mTvWiFi;
+  private MaterialTextView mTvWiFi;
   private View mOperator;
-  private TextView mTvOperator;
+  private MaterialTextView mTvOperator;
   private View mNetwork;
-  private TextView mTvNetwork;
+  private MaterialTextView mTvNetwork;
   private View mLevel;
-  private TextView mTvLevel;
+  private MaterialTextView mTvLevel;
   private View mAtm;
-  private TextView mTvAtm;
+  private MaterialTextView mTvAtm;
   private View mCapacity;
-  private TextView mTvCapacity;
+  private MaterialTextView mTvCapacity;
   private View mWheelchair;
-  private TextView mTvWheelchair;
+  private MaterialTextView mTvWheelchair;
   private View mDriveThrough;
-  private TextView mTvDriveThrough;
+  private MaterialTextView mTvDriveThrough;
   private View mSelfService;
-  private TextView mTvSelfService;
+  private MaterialTextView mTvSelfService;
   private View mCuisine;
-  private TextView mTvCuisine;
+  private MaterialTextView mTvCuisine;
   private View mOutdoorSeating;
-  private TextView mTvOutdoorSeating;
+  private MaterialTextView mTvOutdoorSeating;
   private View mEntrance;
-  private TextView mTvEntrance;
+  private MaterialTextView mTvEntrance;
   private View mEditPlace;
   private View mAddOrganisation;
   private View mAddPlace;
@@ -128,7 +138,7 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
   private CoordinatesFormat mCoordsFormat = CoordinatesFormat.LatLonDecimal;
   // Downloader`s stuff
   private DownloaderStatusIcon mDownloaderIcon;
-  private TextView mDownloaderInfo;
+  private MaterialTextView mDownloaderInfo;
   private int mStorageCallbackSlot;
   @Nullable
   private CountryItem mCurrentCountry;
@@ -160,7 +170,7 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
   private PlacePageViewModel mViewModel;
   private MapObject mMapObject;
 
-  private static void refreshMetadataOrHide(@Nullable String metadata, @NonNull View metaLayout, @NonNull TextView metaTv)
+  private static void refreshMetadataOrHide(@Nullable String metadata, @NonNull View metaLayout, @NonNull MaterialTextView metaTv)
   {
     if (!TextUtils.isEmpty(metadata))
     {
@@ -202,7 +212,6 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
 
     mFrame = view;
     mFrame.setOnClickListener((v) -> mPlacePageViewListener.onPlacePageRequestToggleState());
-
     mPreview = mFrame.findViewById(R.id.pp__preview);
 
     mFrame.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
@@ -221,6 +230,7 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
     mTvSecondaryTitle.setOnClickListener(this);
     mToolbar = mFrame.findViewById(R.id.toolbar);
     mTvSubtitle = mPreview.findViewById(R.id.tv__subtitle);
+    mTvOpenState = mPreview.findViewById(R.id.tv__open_state);
 
     View directionFrame = mPreview.findViewById(R.id.direction_frame);
     mTvDistance = mPreview.findViewById(R.id.tv__straight_distance);
@@ -313,6 +323,7 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
     mViewModel.getMapObject().removeObserver(this);
     LocationHelper.from(requireContext()).removeListener(this);
     SensorHelper.from(requireContext()).removeListener(this);
+    UiThread.cancelDelayedTasks(updateOpenState);
     detachCountry();
   }
 
@@ -391,18 +402,6 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
     updateViewFragment(PlacePageWikipediaFragment.class, WIKIPEDIA_FRAGMENT_TAG, R.id.place_page_wikipedia_fragment, hasWikipediaEntry());
   }
 
-  private boolean hasProductsEntry()
-  {
-    return Framework.nativeShouldShowProducts();
-  }
-
-  private void updateProductsView()
-  {
-    var hasProductsEntry = hasProductsEntry();
-
-    updateViewFragment(PlacePageProductsFragment.class, PRODUCTS_FRAGMENT_TAG, R.id.place_page_products_fragment, hasProductsEntry);
-  }
-
   private void setTextAndColorizeSubtitle()
   {
     String text = mMapObject.getSubtitle();
@@ -425,6 +424,8 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
   {
     UiUtils.setTextAndHideIfEmpty(mTvTitle, mMapObject.getTitle());
     UiUtils.setTextAndHideIfEmpty(mTvSecondaryTitle, mMapObject.getSecondaryTitle());
+    refreshOpenState();
+
     if (mToolbar != null)
       mToolbar.setTitle(mMapObject.getTitle());
     setTextAndColorizeSubtitle();
@@ -458,10 +459,7 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
     refreshMetadataOrHide(wheelchair, mWheelchair, mTvWheelchair);
 
     final String driveThrough = mMapObject.getMetadata(Metadata.MetadataType.FMD_DRIVE_THROUGH);
-    if (driveThrough.equals("yes"))
-    {
-      refreshMetadataOrHide(getString(R.string.drive_through), mDriveThrough, mTvDriveThrough);
-    }
+    refreshMetadataOrHide(driveThrough.equals("yes") ? getString(R.string.drive_through) : "", mDriveThrough, mTvDriveThrough);
 
     final String selfService = mMapObject.getMetadata(Metadata.MetadataType.FMD_SELF_SERVICE);
     refreshMetadataOrHide(Utils.getTagValueLocalized(getContext(), "self_service", selfService), mSelfService, mTvSelfService);
@@ -483,9 +481,9 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
       mEditPlace.setEnabled(Editor.nativeShouldEnableEditPlace());
       mAddOrganisation.setEnabled(Editor.nativeShouldEnableAddPlace());
       mAddPlace.setEnabled(Editor.nativeShouldEnableAddPlace());
-      TextView mTvEditPlace = mEditPlace.findViewById(R.id.tv__editor);
-      TextView mTvAddBusiness = mAddPlace.findViewById(R.id.tv__editor);
-      TextView mTvAddPlace = mAddPlace.findViewById(R.id.tv__editor);
+      MaterialTextView mTvEditPlace = mEditPlace.findViewById(R.id.tv__editor);
+      MaterialTextView mTvAddBusiness = mAddPlace.findViewById(R.id.tv__editor);
+      MaterialTextView mTvAddPlace = mAddPlace.findViewById(R.id.tv__editor);
       final int editPlaceButtonColor = Editor.nativeShouldEnableEditPlace() ? ContextCompat.getColor(getContext(), UiUtils.getStyledResourceId(getContext(), androidx.appcompat.R.attr.colorAccent)) : getResources().getColor(R.color.button_accent_text_disabled);
       mTvEditPlace.setTextColor(editPlaceButtonColor);
       mTvAddBusiness.setTextColor(editPlaceButtonColor);
@@ -496,7 +494,6 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
     }
     updateLinksView();
     updateOpeningHoursView();
-    updateProductsView();
     updateWikipediaView();
     updateBookmarkView();
     updatePhoneView();
@@ -563,6 +560,62 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
       mTvLatlon.setText(latLon);
   }
 
+  Runnable updateOpenState = this::refreshOpenState;
+
+  private void refreshOpenState()
+  {
+    UiThread.runLater(updateOpenState, 45000); // Refresh every 45s
+
+    final String ohStr = mMapObject.getMetadata(Metadata.MetadataType.FMD_OPEN_HOURS);
+    final Timetable[] timetables = OpeningHours.nativeTimetablesFromString(ohStr);
+
+    if (timetables != null && timetables.length != 0)
+    {
+      final Context context = requireContext();
+      final OhState poiState = OpeningHours.nativeCurrentState(timetables);
+
+      // Ignore unknown rule state
+      if (poiState.state == OhState.State.Unknown)
+      { UiUtils.hide(mTvOpenState); return; }
+
+      // Get colours
+      final ForegroundColorSpan colorGreen = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.base_green));
+      final ForegroundColorSpan colorYellow = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.base_yellow));
+      final ForegroundColorSpan colorRed = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.base_red));
+
+      // Get next state info
+      final SpannableStringBuilder openStateString = new SpannableStringBuilder();
+      final boolean isOpen = (poiState.state == OhState.State.Open); // False == Closed due to early exit for Unknown
+      final long nextStateTime = isOpen ? poiState.nextTimeClosed : poiState.nextTimeOpen; // Unix time (seconds)
+      final int minsToNextState = (int) ((nextStateTime - (System.currentTimeMillis() / 1000)) / 60);
+
+      if (minsToNextState <= 60) // POI opens/closes in 60 mins
+      {
+        final String minsToChangeStr = minsToNextState + " " + getString(R.string.minute);
+        final String nextChangeFormatted = getString(isOpen ? R.string.closes_in : R.string.opens_in, minsToChangeStr);
+        final ForegroundColorSpan nextChangeColor = isOpen ? colorYellow : colorRed;
+        //TODO: We should check closed/open time for specific feature's timezone.
+        ZonedDateTime time = ZonedDateTime.ofInstant(Instant.ofEpochSecond(nextStateTime), ZoneId.systemDefault());
+        String localizedTime = new HoursMinutes(time.getHour(), time.getMinute(), DateUtils.is24HourFormat(context)).toString();
+
+        openStateString.append(nextChangeFormatted, nextChangeColor, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                       .append(" • ") // Add spacer
+                       .append(getString(R.string.at, localizedTime));
+      }
+      else if (isOpen)
+        openStateString.append(getString(R.string.open_now), colorGreen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //TODO: Add "Closes at 18:00" etc
+      else // Closed
+        openStateString.append(getString(R.string.closed_now), colorRed, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //TODO: Add "Opens at 18:00" etc
+
+      UiUtils.setTextAndHideIfEmpty(mTvOpenState, openStateString);
+      return;
+    }
+    // No valid timetable
+    UiUtils.hide(mTvOpenState);
+  }
+
   private void addOrganisation()
   {
     ((MwmActivity) requireActivity()).showPositionChooserForEditor(true, false);
@@ -572,9 +625,6 @@ public class PlacePageView extends Fragment implements View.OnClickListener,
   {
     ((MwmActivity) requireActivity()).showPositionChooserForEditor(false, true);
   }
-
-  /// @todo
-  /// - Why ll__place_editor and ll__place_latlon check if (mMapObject == null)
 
   @Override
   public void onClick(View v)

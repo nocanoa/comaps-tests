@@ -95,6 +95,10 @@ bool Metadata::TypeFromString(string_view k, Metadata::EType & outType)
     outType = Metadata::FMD_CONTACT_VK;
   else if (k == "contact:line")
     outType = Metadata::FMD_CONTACT_LINE;
+  else if (k == "contact:mastodon")
+    outType = Metadata::FMD_CONTACT_FEDIVERSE;
+  else if (k == "contact:bluesky")
+    outType = Metadata::FMD_CONTACT_BLUESKY;
   else if (k == "internet_access" || k == "wifi")
     outType = Metadata::FMD_INTERNET;
   else if (k == "ele")
@@ -120,6 +124,8 @@ bool Metadata::TypeFromString(string_view k, Metadata::EType & outType)
     outType = Metadata::FMD_WIKIPEDIA;
   else if (k == "wikimedia_commons")
     outType = Metadata::FMD_WIKIMEDIA_COMMONS;
+  else if (k == "panoramax")
+    outType = Metadata::FMD_PANORAMAX;
   else if (k == "addr:flats")
     outType = Metadata::FMD_FLATS;
   else if (k == "height")
@@ -264,11 +270,14 @@ string ToString(Metadata::EType type)
   case Metadata::FMD_CONTACT_TWITTER: return "contact:twitter";
   case Metadata::FMD_CONTACT_VK: return "contact:vk";
   case Metadata::FMD_CONTACT_LINE: return "contact:line";
+  case Metadata::FMD_CONTACT_FEDIVERSE: return "contact:mastodon";
+  case Metadata::FMD_CONTACT_BLUESKY: return "contact:bluesky";
   case Metadata::FMD_DESTINATION: return "destination";
   case Metadata::FMD_DESTINATION_REF: return "destination:ref";
   case Metadata::FMD_JUNCTION_REF: return "junction:ref";
   case Metadata::FMD_BUILDING_MIN_LEVEL: return "building:min_level";
   case Metadata::FMD_WIKIMEDIA_COMMONS: return "wikimedia_commons";
+  case Metadata::FMD_PANORAMAX: return "panoramax";
   case Metadata::FMD_CAPACITY: return "capacity";
   case Metadata::FMD_WHEELCHAIR: return "wheelchair";
   case Metadata::FMD_LOCAL_REF: return "local_ref";

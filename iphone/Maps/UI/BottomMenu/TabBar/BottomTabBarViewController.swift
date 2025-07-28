@@ -5,11 +5,15 @@ class BottomTabBarViewController: UIViewController {
   var presenter: BottomTabBarPresenterProtocol!
   
   @IBOutlet var searchButton: MWMButton!
-  @IBOutlet var helpButton: MWMButton!
+  @IBOutlet var searchConstraintWithLeftButton: NSLayoutConstraint!
+  @IBOutlet var searchConstraintWithoutLeftButton: NSLayoutConstraint!
+  @IBOutlet var leftButton: MWMButton!
   @IBOutlet var bookmarksButton: MWMButton!
+  @IBOutlet var bookmarksConstraintWithLeftButton: NSLayoutConstraint!
+  @IBOutlet var bookmarksConstraintWithoutLeftButton: NSLayoutConstraint!
   @IBOutlet var moreButton: MWMButton!
   @IBOutlet var downloadBadge: UIView!
-  @IBOutlet var helpBadge: UIView!
+  @IBOutlet var leftButtonBadge: UIView!
   
   private var avaliableArea = CGRect.zero
   @objc var isHidden: Bool = false {
@@ -32,15 +36,24 @@ class BottomTabBarViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.configure()
+    
+    NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: nil) { _ in
+      DispatchQueue.main.async {
+        self.updateLeftButton()
+      }
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if Settings.isNY() {
-      helpButton.setTitle("🎄", for: .normal)
-      helpButton.setImage(nil, for: .normal)
-    }
+    
+    leftButton.imageView?.contentMode = .scaleAspectFit
     updateBadge()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    updateLeftButton()
   }
   
   static func updateAvailableArea(_ frame: CGRect) {
@@ -51,12 +64,12 @@ class BottomTabBarViewController: UIViewController {
     presenter.onSearchButtonPressed()
   }
   
-  @IBAction func onHelpButtonPressed(_ sender: Any) {
-    if !helpBadge.isHidden {
-      presenter.onHelpButtonPressed(withBadge: true)
-      setHelpBadgeShown()
+  @IBAction func onLeftButtonPressed(_ sender: Any) {
+    if !leftButtonBadge.isHidden {
+      presenter.onLeftButtonPressed(withBadge: true)
+      setLeftButtonBadgeShown()
     } else {
-      presenter.onHelpButtonPressed(withBadge: false)
+      presenter.onLeftButtonPressed(withBadge: false)
     }
   }
   
@@ -97,19 +110,44 @@ class BottomTabBarViewController: UIViewController {
     }
   }
   
+  private func updateLeftButton() {
+    let leftButtonType = Settings.leftButtonType
+    if leftButtonType == .hidden {
+      leftButton.isHidden = true
+      leftButtonBadge.isHidden = true
+
+      if let searchConstraintWithLeftButton, let searchConstraintWithoutLeftButton, let bookmarksConstraintWithLeftButton, let bookmarksConstraintWithoutLeftButton {
+        NSLayoutConstraint.deactivate([searchConstraintWithLeftButton, bookmarksConstraintWithLeftButton])
+        NSLayoutConstraint.activate([searchConstraintWithoutLeftButton, bookmarksConstraintWithoutLeftButton])
+      }
+    } else {
+      leftButton.isHidden = false
+      leftButtonBadge.isHidden = !needsToShowleftButtonBadge()
+
+      leftButton.setTitle(nil, for: .normal)
+      leftButton.setImage(leftButtonType.image, for: .normal)
+      leftButton.accessibilityLabel = leftButtonType.description;
+
+      if let searchConstraintWithLeftButton, let searchConstraintWithoutLeftButton, let bookmarksConstraintWithLeftButton, let bookmarksConstraintWithoutLeftButton {
+        NSLayoutConstraint.deactivate([searchConstraintWithoutLeftButton, bookmarksConstraintWithoutLeftButton])
+        NSLayoutConstraint.activate([searchConstraintWithLeftButton, bookmarksConstraintWithLeftButton])
+      }
+    }
+  }
+  
   private func updateBadge() {
     downloadBadge.isHidden = isApplicationBadgeHidden
-    helpBadge.isHidden = !needsToShowHelpBadge()
+    leftButtonBadge.isHidden = !needsToShowleftButtonBadge() || Settings.leftButtonType == .hidden
   }
 }
 
 // MARK: - Help badge
 private extension BottomTabBarViewController {
-  private func needsToShowHelpBadge() -> Bool {
+  private func needsToShowleftButtonBadge() -> Bool {
     !UserDefaults.standard.bool(forKey: kUDDidShowFirstTimeRoutingEducationalHint)
   }
   
-  private func setHelpBadgeShown() {
+  private func setLeftButtonBadgeShown() {
     UserDefaults.standard.set(true, forKey: kUDDidShowFirstTimeRoutingEducationalHint)
   }
 }

@@ -6,13 +6,14 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:orientation="vertical">
-  <CheckBox
+  <com.google.android.material.checkbox.MaterialCheckBox
     android:id="@+id/chb_download_country"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_base"
     android:text="@string/download_country_ask"
     android:textAppearance="?fontBody2"
+    app:buttonTint="?colorAccent"
     android:visibility="gone"
     tools:visibility="visible"/>
   <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -27,7 +28,7 @@
     android:indeterminate="false"
     app:indicatorColor="?android:colorAccent"
     app:trackColor="@color/bg_routing_progress"/>
-  <Button
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/btn_download_resources"
     style="@style/MwmWidget.Button.Primary"
     android:layout_width="match_parent"

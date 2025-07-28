@@ -36,29 +36,30 @@
     if (result.IsSuggest())
       _suggestion = @(result.GetSuggestionString().c_str());
 
-    CLLocation * lastLocation = [MWMLocationManager lastLocation];
-    if (lastLocation && result.HasPoint()) {
-      double distanceInMeters = mercator::DistanceOnEarth(lastLocation.mercator, result.GetFeatureCenter());
-      std::string distanceStr = platform::Distance::CreateFormatted(distanceInMeters).ToString();
-      _distanceText = @(distanceStr.c_str());
+    _distanceText = nil;
+    if (result.HasPoint()) {
+      auto const center = result.GetFeatureCenter();
+      _point = CGPointMake(center.x, center.y);
+      auto const [centerLat, centerLon] = mercator::ToLatLon(center);
+      _coordinate = CLLocationCoordinate2DMake(centerLat, centerLon);
 
-      auto const & pivot = result.GetFeatureCenter();
-      _point = CGPointMake(pivot.x, pivot.y);
-      auto const location = mercator::ToLatLon(pivot);
-      _coordinate = CLLocationCoordinate2DMake(location.m_lat, location.m_lon);
-    } else {
-      _distanceText = nil;
+      CLLocation * lastLocation = [MWMLocationManager lastLocation];
+      if (lastLocation) {
+        double const distanceM = mercator::DistanceOnEarth(lastLocation.mercator, center);
+        std::string const distanceStr = platform::Distance::CreateFormatted(distanceM).ToString();
+        _distanceText = @(distanceStr.c_str());
+      }
     }
 
     switch (result.IsOpenNow()) {
       case osm::Yes: {
         const int minutes = result.GetMinutesUntilClosed();
         if (minutes < 60) { // less than 1 hour
-          _openStatusColor = UIColor.systemYellowColor;
+          _openStatusColor = [UIColor colorNamed:@"Base Colors/Yellow Color"];
           NSString * time = [NSString stringWithFormat:@"%d %@", minutes, L(@"minute")];
           _openStatusText = [NSString stringWithFormat:L(@"closes_in"), time];
         } else {
-          _openStatusColor = UIColor.systemGreenColor;
+          _openStatusColor = [UIColor colorNamed:@"Base Colors/Green Color"];
           _openStatusText = L(@"editor_time_open");
         }
         break;
@@ -71,7 +72,7 @@
         } else {
           _openStatusText = L(@"closed");
         }
-        _openStatusColor = UIColor.systemRedColor;
+        _openStatusColor = [UIColor colorNamed:@"Base Colors/Red Color"];
         break;
       }
       case osm::Unknown: {

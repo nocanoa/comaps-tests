@@ -3,16 +3,16 @@
 1.BASEMAP
 2.BOUNDARY
 3.NATURAL
-	3.1 Main natural
-	3.2 Vegetation
+  3.1 Main natural
+  3.2 Vegetation
 4.LANDUSE
-	4.1 Main landuse
-	4.2 Aerodrome
+  4.1 Main landuse
+  4.2 Aerodrome
   4.3 Barriers
   4.4 Buildings
 5.ROADS
   5.1 All roads
-	5.2 Bridges
+  5.2 Bridges
   5.3 Tunnels
   5.4 Piste
   5.5 Transport
@@ -26,7 +26,8 @@
 
 /* 1.BASEMAP */
 
-@background: #E3E1D2;
+@background0: #F5E8D6;
+@background1: #F5EADA;
 
 /* 2.BOUNDARY */
 
@@ -38,103 +39,144 @@
 /* 3.1 Main natural */
 
 @glacier: #FFFFFF;
-@water: #8BD3E0;
-@water_bad: #9dc7c1;
-@river: #36B0BF;
-@wetland: #c9ddd6;
-@beach: #FCEC7E;
+@water: #9EE4F2;
+@water_bad: #9CD7DE;
+@wetland_tidal: #BBE5E8;
+@wetland_tidal_saltmarsh: #A6E0D6;
+@wetland_saltmarsh: #AADEC4;
+@wetland_marsh: #ABDDC2;
+@wetland_fen: #B6DEC5;
+@wetland_bog: #B8DDC0;
+@wetland_reedbed: #C3E0D1;
+@wetland_swamp: #A1D4B7;
+@wetland_mangrove: #A2D4B0;
+@beach: #FADDA0;
 @barerock: #D9D2BF;
 @scree: #CCC7BA;
-@desert: #EEE5B2;
+@desert: #F4E5C8;
 
 /*3.2 Vegetation*/
 
-@green0: #CFD5A8;
-@green1: #C6CF93;
-@green1b: #C1CC89;
-@green2: #BCC87E;
-@green3: #B3C471;
-@green4: #AEC26B;
-@green5: #B0C270;
-@forest: #AABF65;
-@green6: #888C38;
-@flowers: #B3C471;
+@residential_garden: #EDE5CA;
+@residential_garden_13: #EDE5CB;
+@residential_garden_12: #EEE6CB;
+@park: #D5DB8F;
+@park_13: #D6DC93;
+@park_12: #D8DD96;
+@park_11: #D8DC97;
+@park_10: #DBDD9D;
+@heath: #CED797;
+@heath_13: #CFD89A;
+@heath_12: #D2D99E;
+@heath_11: #D4DAA0;
+@grass: #C4D181;
+@grass_13: #C6D285;
+@grass_12: #C9D48A;
+@grass_11: #CCD58E;
+@flowers: #BECC76;
+@golf: #B9C96F;
+@golf_13: #BBCB73;
+@golf_12: #BECC78;
+@allotments: #D5D395;
+@allotments_13: #D6D498;
+@allotments_12: #D8D59B;
+@scrubs: #B1C765;
+@scrubs_13: #B4C96B;
+@scrubs_12: #B8CB71;
+@scrubs_11: #BCCC76;
+@woods: #A4BD4F;
+@woods_13: #A8BE55;
+@woods_12: #ACC25C;
+@woods_11: #B1C462;
+@woods_10: #B4C469;
+
+@protected_nature: #7B8F35;
 
 /* 4.LANDUSE */
 /*4.1 Main landuse*/
 
-@pedestrian_area: #EDE8D6;
-@pedestrian_area_light: #F2EEDA;
-@university: #F8E4BA;
-@hospital: #F8D9D9;
-@industrial: #E4E2EB;
-@sport0: #DDD9B0;
-@sport1: #D7D3AC;
-@sport2: #D1CDA7;
-@parking: #F2F2BC;
-@military: #E53935;
+@general_area: #FAEFE1;
+@pedestrian_area: #FCF2E4;
+@pedestrian_area_light: #FCF3E6;
+@railway_platform: #ECE3D6;
+@university: #F5DFBC;
+@retail: #EFE1DB;
+@hospital: #FFDAD6;
+@industrial: #E5E5E4;
+@construction_area: #E4E3E6;
+@sport0: #F5EED3;
+@sport1: #E8E8C3;
+@sport2: #D4E796;
+@playground: #E4E7A2;
+@parking: #E8EFEC;
+@military: #DE2D28;
 @prison: #727272;
-@farmland: #E4DEAD;
-@farmyard: #E5D6AC;
+@farmland: #E3DEAC;
+@farmyard: #E6D6AF;
 
 /*4.2 Aerodrome*/
 
-@aerodrome0: #D4BFF2;
-@aerodrome1: #D4BFF2;
-@aerodrome2: #D1C0EB;
-@aerodrome3: #CFC1E8;
-@aerodrome4: #CDC0E3;
-@aerodrome5: #C8BCDE;
+@aerodrome0: #96B9CC;
+@aerodrome1: #94B6C9;
+@aerodrome2: #92B4C7;
+@aerodrome3: #90B1C4;
+@aerodrome4: #8BABBE;
+@aerodrome5: #82A3B7;
 
 /* 4.3 Barriers */
 @fence: #888888;
-@hedge: #8DB880;
+@hedge: #95A852;
 @cliff: #8C5826;
 
 /* 4.4 Buildings */
 
-@building0: #C9C8BB;
-@building1: #C2C0B3;
+@building0: #D5D6D2;
+@building1: #D0D1CC;
 @building_border0: #A1A096;
 @building_border1: #9B9A8F;
+@historic_wall: #AEAD9E;
 
 /* 5.ROADS */
 /* 5.1 All roads */
 
-@trunk0: #FF7326;
-@trunk1: #FF7A26;
-@primary0:  #FF8726;
-@primary1: #FF9440;
-@primary2: #FFA14C;
-@secondary0: #FFB226;
-@secondary1: #FFBF52;
+@motorway0: #F57A00;
+@motorway1: #F08800;
+@trunk0: #F29718;
+@trunk1: #F29E30;
+@primary0: #F5B74E;
+@primary1: #FABB40;
+@primary2: #FAC256;
+@secondary0: #FFCE5A;
+@secondary1: #FFD573;
 @tertiary: #FFFFFF;
-@residential: #F8F8F8;
-@pedestrian: #F8F8F8;
-@footway: #F8F8F8;
-@cycleway: #5654FF;
-@construction: #BBBBAA;
+@residential: #FFFEFE;
+@pedestrian: #FFFCFA;
+@footway: #FFFCFA;
+@cycleway: #8B8AFF;
+@construction: #B2B8C8;
 @track: #635730;
-@path: #A05012;
+@path: #8E4E1D;
 @path_expert: #3D2617;
 @bridleway: #3D361E;
 
 /* 5.2 Bridges */
 
-@bridge_background: #EDEBDB;
-@bridge_casing: #808080;
+@bridge_background: #FCF1DE;
+@bridge_casing: #E1D4BE;
 
 /* 5.3 Tunnels */
 
-@trunk_tunnel: #FCA462;
+@motorway_tunnel: #F2A540;
+@motorway_tunnel_casing: #808080;
+@trunk_tunnel: #F6BB5F;
 @trunk_tunnel_casing: #808080;
-@primary_tunnel: #FCA462;
+@primary_tunnel: #F6CB85;
 @primary_tunnel_casing: #808080;
-@secondary_tunnel: #FFBF52;
+@secondary_tunnel: #F9D393;
 @secondary_tunnel_casing:  #808080;
 @tertiary_tunnel: #FFFFFF;
 @tertiary_tunnel_casing:  #808080;
-@residential_tunnel: #FFFFFF;
+@residential_tunnel: #FFFEFE;
 @residential_tunnel_casing: #808080;
 
 /* 5.4 Piste */
@@ -149,15 +191,15 @@
 
 /* 5.5 Transport */
 
-@railway_light: #B2B1A2;
-@railway: #969586;
+@railway_light: #B0B1A4;
+@railway: #96968B;
 @railway_tourism: #9C7D65;
 @railway_dash: #EEEEEE;
 @railway_tunnel: #808080;
 @aerialway: #444444;
 @powerline: #969586;
 @tram: #7A7A7A;
-@ferry: #4499Bb;
+@ferry: #59A2AF;
 
 /* 6.LABELS COLORS */
 /* 6.1 Main labels */
@@ -169,7 +211,7 @@
 
 /* 6.2 Natural labels */
 
-@water_label: #4499Bb;
+@water_label: #278FA2;
 @park_label: #3A7921;
 @halo_park_label: #FFFFFF;
 

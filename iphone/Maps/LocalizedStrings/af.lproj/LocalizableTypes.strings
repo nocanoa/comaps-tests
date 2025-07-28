@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Christelike begraafplaas";
-"type.landuse.churchyard" = "Kerkhof";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Kommersiële gebied";
 "type.landuse.construction" = "Bouplek";
 "type.landuse.education" = "Opvoedkundige fasiliteit";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Waterput";
 "type.man_made.windmill" = "Windmeule";
 "type.man_made.works" = "Fabriek";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Militêr";
 "type.military.bunker" = "Bunker";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Hidroëlektriese kragsentrale";
 "type.power.plant.solar" = "Sonkragsentrale";
 "type.power.plant.wind" = "Windkragsentrale";
-"type.power.station" = "Kragstasie";
 "type.power.substation" = "Substasie";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sportsaal";
+"type.railway.station.subway.qingdao" = "Moltreinstasie";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.sport.diving" = "High Diving";
+"type.highway.ladder" = "Ladder";
+"type.natural.wetland.swamp" = "Swamp";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

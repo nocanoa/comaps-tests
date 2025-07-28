@@ -95,7 +95,6 @@
     <string name="type.amenity.prison">कारागार</string>
     <string name="type.amenity.pub">सराय</string>
     <string name="type.amenity.public_bookcase">सार्वजनिक किताबों की अलमारी</string>
-
     <!-- SECTION: Types: Recycling -->
     <string name="type.amenity.recycling.centre">रीसाइक्लिंग सेंटर</string>
     <string name="type.amenity.recycling">रीसाइक्लिंग कंटेनर</string>
@@ -263,7 +262,6 @@
     <string name="type.healthcare.psychotherapist">मनोचिकित्सक</string>
     <string name="type.healthcare.sample_collection">नमूना संग्रह केंद्र</string>
     <string name="type.healthcare.speech_therapist">वाक उपचार</string>
-
     <!-- SECTION: Types: Roads -->
     <string name="type.highway">राजमार्ग</string>
     <string name="type.highway.bus_stop">बस स्टॉप</string>
@@ -320,7 +318,6 @@
     <string name="type.area_highway.tertiary">तृतीयक सड़क</string>
     <string name="type.area_highway.track">सड़क</string>
     <string name="type.area_highway.trunk">प्रधान मार्ग</string>
-
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">ऐतिहासिक वस्तु</string>
     <string name="type.historic.archaeological_site">पुरातत्व स्थल</string>
@@ -353,7 +350,6 @@
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">ईसाई कब्रिस्तान</string>
     <string name="type.landuse.commercial">वाणिज्य क्षेत्र</string>
-    <string name="type.landuse.field">क्षेत्र</string>
     <string name="type.landuse.forest">वन</string>
     <string name="type.landuse.forest.mixed">मिश्रित वन</string>
     <string name="type.landuse.grass">घास</string>
@@ -463,7 +459,6 @@
     <!-- Named part of a city or town, bigger than place=quarter (Wiki: https://wiki.openstreetmap.org/wiki/Tag:place%3Dsuburb) -->
     <string name="type.place.suburb">उपनगर</string>
     <string name="type.place.village">गाँव</string>
-    <string name="type.power.station">बिजली घर</string>
     <string name="type.power.substation">विद्युत उपकेंद्र</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">संचरण स्तम्भ</string>
@@ -670,4 +665,5 @@
     <string name="type.amenity.dojo">डोजो</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">खेल हॉल</string>
+    <string name="type.mapswithme">MapsWithMe</string>
 </resources>

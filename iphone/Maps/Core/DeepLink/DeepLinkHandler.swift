@@ -32,10 +32,10 @@
   }
 
   func applicationDidReceiveUniversalLink(_ universalLink: URL) -> Bool {
-    // Convert http(s)://omaps.app/ENCODEDCOORDS/NAME to om://ENCODEDCOORDS/NAME
+    // Convert http(s)://comaps.at/ENCODEDCOORDS/NAME to cm://ENCODEDCOORDS/NAME
     self.url = URL(string: universalLink.absoluteString
-                    .replacingOccurrences(of: "http://omaps.app", with: "om:/")
-                    .replacingOccurrences(of: "https://omaps.app", with: "om:/"))
+                    .replacingOccurrences(of: "http://comaps.at", with: "cm:/")
+                    .replacingOccurrences(of: "https://comaps.at", with: "cm:/"))
     isLaunchedByUniversalLink = true
     return handleDeepLink(url: self.url!)
   }
@@ -113,10 +113,11 @@
           sd.onViewportChanged(kSearchInViewportZoom)
         }
       }
+      let searchQuery = SearchQuery(sd.query, locale: sd.locale, source: .deeplink)
       if (sd.isSearchOnMap) {
-        MWMMapViewControlsManager.manager()?.searchText(onMap: sd.query, forInputLocale: sd.locale)
+        MWMMapViewControlsManager.manager()?.search(onMap: searchQuery)
       } else {
-        MWMMapViewControlsManager.manager()?.searchText(sd.query, forInputLocale: sd.locale)
+        MWMMapViewControlsManager.manager()?.search(searchQuery)
       }
       return true
     case .menu:
@@ -129,9 +130,25 @@
       // Not supported on iOS.
       return false;
     case .oAuth2:
-      // TODO: support OAuth2
-      return false;
+      var components = url.absoluteString.components(separatedBy: "cm://oauth2/osm/callback?code=")
+      components.removeAll { component in
+        component.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+      }
+      if let code = components.first {
+        Task(priority: .userInitiated) {
+          await Profile.saveAuthorizationToken(from: code)
+          DispatchQueue.main.sync {
+            NotificationCenter.default.post(name: SafariView.dismissNotificationName, object: nil)
+          }
+        }
+        return true
+      } else {
+        return false
+      }
     case .incorrect:
+      if url.absoluteString.starts(with: "cm://oauth2/osm/callback") {
+        NotificationCenter.default.post(name: SafariView.dismissNotificationName, object: nil)
+      }
       // Invalid URL or API parameters.
       return false;
     @unknown default:

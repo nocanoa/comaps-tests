@@ -10,14 +10,14 @@ Here is the basic workflow to update styles:
 Please prepend `[styles]` to your commit message and add [Developers Certificate of Origin](CONTRIBUTING.md#legal-requirements) to it.
 Files changed by the script should be added as a separate `[styles] Regenerated` commit.
 
-Please check [a list of current styling issues](https://github.com/organicmaps/organicmaps/issues?q=is%3Aopen+is%3Aissue+label%3AStyles)
-and ["icons wanted" issues](https://github.com/organicmaps/organicmaps/issues?q=is%3Aopen+is%3Aissue+label%3AIcons+label%3A%22Good+first+issue%22).
+Please check [a list of current styling issues](https://codeberg.org/comaps/comaps/issues?q=is%3Aopen+is%3Aissue+label%3AStyles)
+and ["icons wanted" issues](https://codeberg.org/comaps/comaps/issues?q=is%3Aopen+is%3Aissue+label%3AIcons+label%3A%22Good+first+issue%22).
 
-An overview of currently used icons can be found in the [Wiki](https://github.com/organicmaps/organicmaps/wiki/Icons).
+An overview of currently used icons can be found in the [Wiki](https://codeberg.org/comaps/comaps/wiki/Icons).
 
 ## Requirements
 
-To work with styles first [clone the OM repository](INSTALL.md#getting-sources).
+To work with styles first [clone the CoMaps repository](INSTALL.md#getting-sources).
 
 Install a `protobuf` python package with `pip`
 ```
@@ -56,7 +56,7 @@ Icons are stored in [`data/styles/default/light/symbols/`](../data/styles/defaul
 ## How to add a new icon
 
 1. Add an svg icon to `data/styles/default/light/symbols/` (and to `dark` too)
-preferably look for icons in [collections OM uses already](../data/copyright.html#icons)
+preferably look for icons in [collections CoMaps uses already](../data/copyright.html#icons)
 2. Add icon rendering/visibility rules into `data/styles/default/include/Icons.mapcss` and to "navigation style" `data/styles/vehicle/include/Icons.mapcss`
 3. Run `tools/unix/generate_symbols.sh` to add new icons into skin files
 4. Run `tools/unix/generate_drules.sh` to generate drawing rules for the new icons
@@ -64,7 +64,7 @@ preferably look for icons in [collections OM uses already](../data/copyright.htm
 
 ## How to add a new map feature / POI type
 
-1. Add it into `data/mapcss-mapping.csv` (or better replace existing `deprecated` line) to make OM import it from OSM
+1. Add it into `data/mapcss-mapping.csv` (or better replace existing `deprecated` line) to make CoMaps import it from OSM
 2. If necessary merge similar tags in via `data/replaced_tags.txt`
 3. Define a priority for the new feature type in e.g. [`priorities_4_overlays.prio.txt`](../data/styles/default/include/priorities_4_overlays.prio.txt) and/or other priorities files
 4. Add a new icon (see [above](#how-to-add-a-new-icon)) and/or other styling (area, line..)
@@ -105,9 +105,9 @@ A whole map needs to be [regenerated](MAPS.md) for the changes to take effect if
 ## Technical details
 
 Map style files syntax is based on [MapCSS/0.2](https://wiki.openstreetmap.org/wiki/MapCSS/0.2),
-though the specification is not supported in full and there are OM-specific extensions to it.
+though the specification is not supported in full and there are CoMaps-specific extensions to it.
 
-The `tools/unix/generate_drules.sh` script uses a customized version of [Kothic](https://github.com/organicmaps/kothic)
+The `tools/unix/generate_drules.sh` script uses a customized version of [Kothic](https://codeberg.org/comaps/kothic)
 stylesheet processor to compile MapCSS files into binary drawing rules files `data/drules_proto*.bin`.
 The processor also produces text versions of these files (`data/drules_proto*.txt`) to ease debugging.
 

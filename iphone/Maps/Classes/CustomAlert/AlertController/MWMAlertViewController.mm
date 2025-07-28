@@ -158,13 +158,6 @@ static NSString *const kAlertControllerNibIdentifier = @"MWMAlertViewController"
 - (void)presentEditorViralAlert {
   [self displayAlert:[MWMAlert editorViralAlert]];
 }
-- (void)presentOsmAuthAlert {
-  [self displayAlert:[MWMAlert osmAuthAlert]];
-}
-
-- (void)presentOsmReauthAlert {
-  [self displayAlert:[MWMAlert osmReauthAlert]];
-}
 
 - (void)presentCreateBookmarkCategoryAlertWithMaxCharacterNum:(NSUInteger)max
                                               minCharacterNum:(NSUInteger)min
@@ -210,6 +203,9 @@ static NSString *const kAlertControllerNibIdentifier = @"MWMAlertViewController"
 
 - (void)displayAlert:(MWMAlert *)alert {
   UIViewController *ownerVC = self.ownerViewController;
+  if (ownerVC.navigationController != nil) {
+    ownerVC = ownerVC.navigationController;
+  }
   BOOL isOwnerLoaded = ownerVC.isViewLoaded;
   if (!isOwnerLoaded) {
     return;
@@ -234,10 +230,19 @@ static NSString *const kAlertControllerNibIdentifier = @"MWMAlertViewController"
                    }
                    completion:nil];
 
+  [self willMoveToParentViewController:NULL];
+  [self.view removeFromSuperview];
   [self removeFromParentViewController];
+  
   alert.alertController = self;
+  
   [ownerVC addChildViewController:self];
+  self.view.frame = CGRectMake(0, 0, ownerVC.view.frame.size.width, ownerVC.view.frame.size.height);
+  [ownerVC.view addSubview:self.view];
+  [self didMoveToParentViewController:ownerVC];
+  
   alert.alpha = 0.;
+  [self.view addSubview:alert];
   CGFloat const scale = 1.1;
   alert.transform = CGAffineTransformMakeScale(scale, scale);
   [UIView animateWithDuration:kDefaultAnimationDuration

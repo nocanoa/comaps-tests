@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "ख्रिश्चन स्मशानभूमी";
-"type.landuse.churchyard" = "Churchyard";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "व्यावसायिक क्षेत्र";
 "type.landuse.construction" = "बांधकाम";
 "type.landuse.education" = "शैक्षणिक सुविधा";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "पाण्याची विहीर";
 "type.man_made.windmill" = "पवनचक्की";
 "type.man_made.works" = "औद्योगिक कामे";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "लष्करी";
 "type.military.bunker" = "बंकर";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "जलविद्युत प्रकल्प";
 "type.power.plant.solar" = "सौर ऊर्जा संयंत्र";
 "type.power.plant.wind" = "पवन ऊर्जा संयंत्र";
-"type.power.station" = "विद्युत घर";
 "type.power.substation" = "विद्युत सबस्टेशन";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "क्रीडा हॉल";
+"type.highway.ladder" = "Ladder";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.man_made.crane" = "Crane";
+"type.sport.diving" = "High Diving";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.natural.wetland.swamp" = "Swamp";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.amenity.love_hotel" = "Love Hotel";

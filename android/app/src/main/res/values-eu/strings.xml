@@ -36,15 +36,15 @@
     <string name="country_status_download_failed">Deskargak huts egin du</string>
     <!-- Button text for the button under the country_status_download_failed message -->
     <string name="try_again">Saiatu berriro</string>
-    <string name="about_menu_title">Organic Maps-i buruz</string>
+    <string name="about_menu_title">CoMaps-i buruz</string>
     <!-- Text in About screen -->
-    <string name="about_headline">Denontzat doan, maitasunez egina</string>
+    <string name="about_headline">Proiektu irekia, auzolanean egina</string>
     <!-- Text in About screen -->
     <string name="about_proposition_1">• Ez iragarkirik, ez jarraipenik, ez datu-bilketarik</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_2">• Ez da bateria deskargatzen, konexiorik gabe funtzionatzen du</string>
+    <string name="about_proposition_2">• Pribatutasunean zentratua eta iragarkirik gabea</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• Azkarra, minimalista, komunitateak garatua</string>
+    <string name="about_proposition_3">• Offline, azkarra eta minimalista</string>
     <!-- Text in About screen -->
     <string name="about_developed_by_enthusiasts">Zale eta bolondresek sortutako kode irekiko aplikazioa.</string>
     <!-- The button that opens system location settings -->
@@ -53,16 +53,14 @@
     <string name="unsupported_phone">Aplikazioak hardwarez azeleratutako OpenGL behar du. Zoritxarrez, zure gailuak ez du hau eskaintzen.</string>
     <string name="download">Deskargatu</string>
     <!-- Used in DownloadResources startup screen -->
-    <string name="disconnect_usb_cable">Mesedez, deskonektatu USB kablea edo sartu SD memoria Organic Maps erabiltzeko</string>
+    <string name="disconnect_usb_cable">Mesedez, deskonektatu USB kablea edo sartu SD memoria CoMaps erabiltzeko</string>
     <!-- Used in DownloadResources startup screen -->
     <string name="not_enough_free_space_on_sdcard">Mesedez, egin lekua SD memorian/USB biltegian aplikazioa erabiltzeko</string>
-    <string name="download_resources">Hasi aurretik deskargatu mesedez mundu-mapa orokorra zure gailura.
-\nMemorian %s erabiliko ditu.</string>
+    <string name="download_resources">Hasi aurretik deskargatu mesedez mundu-mapa orokorra zure gailura. \nMemorian %s erabiliko ditu.</string>
     <string name="download_resources_continue">Joan mapara</string>
-    <string name="downloading_country_can_proceed">%s deskargatzen. Orain mapara
-\n joan zaitezke.</string>
-    <string name="download_country_ask">%s deskargatu?</string>
-    <string name="update_country_ask">%s eguneratu?</string>
+    <string name="downloading_country_can_proceed">%1$s (%2$s) deskargatzen. Orain mapara \n joan zaitezke.</string>
+    <string name="download_country_ask">%1$s deskargatu? (%2$s)</string>
+    <string name="update_country_ask">%1$s eguneratu? (%2$s)</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
     <string name="pause">Pausa</string>
     <!-- REMOVE THIS STRING AFTER REFACTORING -->
@@ -90,7 +88,7 @@
     <!-- Header of settings activity where user defines storage path -->
     <string name="maps_storage">Mapak gordetzeko tokia</string>
     <!-- Detailed description of Maps Storage settings button -->
-    <string name="maps_storage_summary">Hautatu mapak non deskargatu behar diren</string>
+    <string name="maps_storage_summary">Hautatu mapak non deskargatu behar diren.</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Deskargatutako mapak</string>
     <!-- Internal storage type in Maps Storage settings (not accessible by the user) -->
@@ -108,13 +106,11 @@
     <!-- Error moving map files from one storage to another -->
     <string name="move_maps_error">Ezin izan dira mapak mugitu</string>
     <!-- Ask user to wait several minutes (some long process in modal dialog). -->
-    <string name="wait_several_minutes">Honek minutu batzuk iraun ditzake.
-\n Itxaron mesedez…</string>
+    <string name="wait_several_minutes">Honek minutu batzuk iraun ditzake. \n Itxaron mesedez…</string>
     <!-- Measurement units title in settings activity -->
     <string name="measurement_units">Neurketa unitateak</string>
     <!-- Detailed description of Measurement Units settings button -->
     <string name="measurement_units_summary">Aukeratu mila eta kilometroen artean</string>
-
     <!-- SECTION: Search categories -->
     <!-- Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! -->
     <string name="category_eat">Non jan</string>
@@ -162,16 +158,12 @@
     <string name="category_water">Ura</string>
     <!-- Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! -->
     <string name="category_rv">Karabanak</string>
-
     <!-- SECTION: Other translations -->
     <!-- Notes field in Bookmarks view -->
     <string name="description">Oharrak</string>
     <!-- Email Subject when sharing bookmark list -->
-    <string name="share_bookmarks_email_subject">Organic Maps markagailuak zurekin partekatu dira</string>
-    <string name="share_bookmarks_email_body">Kaixo!
-\nNire markagailuak Organic Maps aplikazioan erantsi ditut. Mesedez, ireki itzazu Organic Maps instalatuta baduzu. Edo, ez baduzu, deskargatu aplikazioa zure iOS edo Android gailurako esteka hau jarraituz: https://omaps.app/get?kmz
-\n
-\nGozatu bidaiatzen Organic Maps-ekin!</string>
+    <string name="share_bookmarks_email_subject">CoMaps markagailuak zurekin partekatu dira</string>
+    <string name="share_bookmarks_email_body">Kaixo! \nNire markagailuak CoMaps aplikazioan erantsi ditut. Mesedez, ireki itzazu CoMaps instalatuta baduzu. Edo, ez baduzu, deskargatu aplikazioa zure iOS edo Android gailurako esteka hau jarraituz: https://www.comaps.app/download/ \n \nGozatu bidaiatzen CoMaps-ekin!</string>
     <!-- message title of loading file -->
     <string name="load_kmz_title">Markagailuak kargatzen</string>
     <!-- Kmz file successful loading -->
@@ -179,12 +171,9 @@
     <!-- Kml file loading failed -->
     <string name="load_kmz_failed">Ezin izan dira markagailuak kargatu. Fitxategia hondatuta edo akastuna izan daiteke.</string>
     <!-- Failed to recognize the format of a bookmarks or tracks file. -->
-    <string name="unknown_file_type">Aplikazioak ez du fitxategi mota ezagutzen:
-\n%1$s</string>
-    <!-- Failed to open a bookmarks or tracks file in Organic Maps. -->
-    <string name="failed_to_open_file">Ezin izan da fitxategia ireki %1$s
-\n
-\n%2$s</string>
+    <string name="unknown_file_type">Aplikazioak ez du fitxategi mota ezagutzen: \n%1$s</string>
+    <!-- Failed to open a bookmarks or tracks file in CoMaps. -->
+    <string name="failed_to_open_file">Ezin izan da fitxategia ireki %1$s \n \n%2$s</string>
     <!-- resource for context menu -->
     <string name="edit">Editatu</string>
     <!-- Warning message when doing search around current position -->
@@ -193,18 +182,14 @@
     <string name="cant_change_this_setting">Barkatu, mapa biltegiratzeko ezarpena desgaituta dago.</string>
     <!-- Alert message that downloading is in progress. -->
     <string name="downloading_is_active">Mapak deskargatzen ari dira.</string>
-    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://omaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
-    <string name="my_position_share_sms">Ikusi nire uneko kokapena Organic Maps-en! %1$s edo %2$s Ez al duzu lineaz kanpoko maparik? Deskargatu hemendik: https://omaps.app/get</string>
+    <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
+    <string name="my_position_share_sms">Ikusi nire uneko kokapena CoMaps-en! %1$s edo %2$s Ez al duzu lineaz kanpoko maparik? Deskargatu hemendik: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
-    <string name="bookmark_share_email_subject">Begiratu nire markagailua Organic Maps mapan!</string>
+    <string name="bookmark_share_email_subject">Begiratu nire markagailua CoMaps mapan!</string>
     <!-- Subject for emailed position -->
-    <string name="my_position_share_email_subject">Ikusi nire uneko kokapena Organic Maps mapan!</string>
-    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://omaps.app link WITHOUT NAME -->
-    <string name="my_position_share_email">Kaixo:
-\n
-\nOrain hemen nago: %1$s. Egin klik esteka honetan %2$s edo %3$s honetan mapan ikusteko.
-\n
-\nEskerrik asko.</string>
+    <string name="my_position_share_email_subject">Ikusi nire uneko kokapena CoMaps mapan!</string>
+    <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://comaps.app link WITHOUT NAME -->
+    <string name="my_position_share_email">Kaixo: \n \nOrain hemen nago: %1$s. Egin klik esteka honetan %2$s edo %3$s honetan mapan ikusteko. \n \nEskerrik asko.</string>
     <!-- Share button text which opens menu with more buttons, like Message, EMail, Facebook etc. -->
     <string name="share">Partekatu</string>
     <!-- Share by email button text, also used in editor and About. -->
@@ -218,7 +203,7 @@
     <!-- Confirmation for OpenStreetMap log out. -->
     <string name="osm_log_out_confirmation">Ziur zure OpenStreetMap kontutik saioa amaitu nahi duzula?</string>
     <!-- Title for tracks category in bookmarks manager -->
-    <string name="tracks_title">Arrastoak</string>
+    <string name="tracks_title">Arrasto</string>
     <!-- Length of track in cell that describes route -->
     <string name="length">Luzera</string>
     <string name="share_my_location">Partekatu nire kokapena</string>
@@ -264,7 +249,7 @@
     <string name="menu">Menua</string>
     <!-- Text in menu -->
     <string name="website">Webgunea</string>
-    <!-- Text in About menu, opens Organic Maps news website -->
+    <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">Albisteak</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">Iruzkinak</string>
@@ -276,9 +261,6 @@
     <string name="faq">Ohiko galderak</string>
     <!-- Button in the main menu -->
     <string name="donate">Dohaintza eman</string>
-    <string name="already_donated">Dohaintza jada emana</string>
-    <string name="remind_me_later">Gogoratu geroago</string>
-    <string name="support_organic_maps">Sustatu Organic Maps</string>
     <!-- Button in the main Help dialog -->
     <string name="how_to_support_us">Proiektuari laguntza eman</string>
     <!-- Button in the main Help dialog -->
@@ -321,13 +303,11 @@
     <!-- Preference text -->
     <string name="pref_use_google_play">Zehaztu azkar zure gutxi gorabeherako kokapena Bluetooth, WiFi edo sare mugikorra erabiliz</string>
     <!-- Preference title -->
-    <string name="pref_display_kayak_title">Kayak.com hotelen estekak</string>
     <!-- Preference description -->
-    <string name="pref_display_kayak_text">Kayak.com-en zerrenda bat duten hoteletarako \"argazkiak, iritziak, erreserba\" estekak bistaratuko dira. Esteka horien bidez egindako erreserbek lortzen dituzten hobariak Organic Maps garatzeko erabiliko dira.</string>
     <!-- Text for routing error dialog -->
     <string name="routing_download_maps_along">Deskargatu zure arrastoaren mapa guztiak</string>
     <!-- Text for routing error dialog -->
-    <string name="routing_requires_all_map">Arrasto bat sortzeko beharrezkoa da helmugako kokapenaren mapa guztiak deskargatzea eta eguneratzea.</string>
+    <string name="routing_requires_all_map">Arrasto bat sortzeko beharrezkoa da kokapenetik helmugarainoko mapa guztiak deskargatzea eta eguneratzea.</string>
     <!-- Text for routing error dialog -->
     <string name="routing_not_enough_space">Leku nahikorik ez</string>
     <!-- location service disabled -->
@@ -366,13 +346,12 @@
     <string name="gray">Grisa</string>
     <!-- blue gray color -->
     <string name="blue_gray">Gris urdinxka</string>
-
     <!-- SECTION: Routing dialogs strings -->
     <string name="dialog_routing_disclaimer_title">Arrastoa jarraitzean, kontuan izan:</string>
     <string name="dialog_routing_disclaimer_priority">— Bidearen egoera, zirkulazio arauek eta bide seinaleek lehentasuna dute beti nabigazio-iradokizunen gainetik;</string>
-    <string name="dialog_routing_disclaimer_precision">— Mapa zehazgabea izan daiteke eta helmugara iristeko biderik onena ez den ibilbide bat iradoki dezake;</string>
+    <string name="dialog_routing_disclaimer_precision">— Zehaztasunik gabeko mapa izan daiteke eta helmugara iristeko biderik onena ez den ibilbide bat iradoki dezake;</string>
     <string name="dialog_routing_disclaimer_recommendations">— Iradokitako ibilbideak gomendio gisa soilik hartu behar dira;</string>
-    <string name="dialog_routing_disclaimer_borders">— Kontuz ibili muga-eremuak dituzten ibilbideetan: gure aplikazioak sortutako ibilbideek batzuetan herrialdeen mugak zeharkatu ditzakete baimendu gabeko tokietan;</string>
+    <string name="dialog_routing_disclaimer_borders">— Kontuz ibili muga-eremuak dituzten ibilbideetan: gure aplikazioak sortutako ibilbideek batzuetan herrialdeen mugak zeharkatu ditzakete baimendu gabeko tokietan.</string>
     <string name="dialog_routing_disclaimer_beware">Egon adi eta seguru errepideetan!</string>
     <string name="dialog_routing_check_gps">Egiaztatu GPS seinalea</string>
     <string name="dialog_routing_error_location_not_found">Ezin da ibilbidea sortu. Ezin izan dira uneko GPS koordenatuak identifikatu.</string>
@@ -381,7 +360,7 @@
     <string name="dialog_routing_location_unknown_turn_on">Ezin dira GPS koordenatuak aurkitu. Aktibatu kokapen zerbitzuak arrastoa kalkulatzeko.</string>
     <string name="dialog_routing_unable_locate_route">Ezin da ibilbiderik aurkitu</string>
     <string name="dialog_routing_cant_build_route">Ezin da ibilbidea sortu.</string>
-    <string name="dialog_routing_change_start_or_end">Ezarri zure abiapuntua edo helmuga.</string>
+    <string name="dialog_routing_change_start_or_end">Ezarri zure abiapuntua edota helmuga.</string>
     <string name="dialog_routing_change_start">Ezarri abiapuntua</string>
     <string name="dialog_routing_start_not_determined">Ibilbidea ez da sortu. Abiapuntua ezin izan da aurkitu.</string>
     <string name="dialog_routing_select_closer_start">Hautatu errepide batetik gertuko abiapuntua.</string>
@@ -396,7 +375,6 @@
     <string name="not_now">Orain ez</string>
     <string name="dialog_routing_download_and_build_cross_route">Mapa deskargatu eta mapa bat baino gehiago hartzen duen ibilbide hobe bat sortu nahi duzu?</string>
     <string name="dialog_routing_download_cross_route">Deskargatu mapa osagarriak mapa honen mugak gainditzen dituen ibilbide hobea sortzeko.</string>
-
     <!-- SECTION: Strings for downloading map from search -->
     <string name="search_without_internet_advertisement">Ibilbideak bilatzen eta sortzen hasteko, deskargatu mapa. Horren ondoren, ez duzu Interneterako konexiorik beharko.</string>
     <string name="search_select_map">Hautatu mapa</string>
@@ -408,14 +386,14 @@
     <string name="history">Historiala</string>
     <string name="search_not_found">Barkatu, ez dut ezer aurkitu.</string>
     <!-- The message when user did not find anything in the search. -->
-    <string name="search_not_found_query">Deskargatu bilatzen ari zaren eskualdea edo saiatu inguruko herri/herri izena gehitzen.</string>
+    <string name="search_not_found_query">Deskargatu bilatzen ari zaren eskualdea edo saiatu inguruko herri/hiri izena gehitzen.</string>
     <string name="search_history_title">Bilaketa historia</string>
     <string name="search_history_text">Ikusi azken bilaketak.</string>
     <string name="clear_search">Garbitu bilaketa historia</string>
     <string name="p2p_your_location">Zure kokapena</string>
     <string name="p2p_start">Hasi</string>
-    <string name="p2p_from_here">Hemendik</string>
-    <string name="p2p_to_here">Bidea hona</string>
+    <string name="p2p_from_here">Abiapuntua</string>
+    <string name="p2p_to_here">Helmuga</string>
     <string name="p2p_only_from_current">Nabigazioa zure uneko kokapenetik soilik dago erabilgarri.</string>
     <string name="p2p_reroute_from_current">Zure uneko kokapenetik ibilbide bat antolatzea nahi duzu?</string>
     <!-- Edit open hours/set time and minutes dialog -->
@@ -460,7 +438,7 @@
     <string name="register_at_openstreetmap">Eman izena OpenStreetMap-en</string>
     <string name="login">Saioa hasi</string>
     <!-- Status message indicating that user did not login to OSM profile yet. -->
-    <string name="not_signed_in">Ez zaude saiatuta</string>
+    <string name="not_signed_in">Saioa hasi gabe</string>
     <string name="login_osm">Hasi saioa OpenStreetMap-en</string>
     <string name="password">Pasahitza</string>
     <string name="forgot_password">Pasahitza ahaztu duzu?</string>
@@ -509,15 +487,13 @@
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Komunitateak sortutako OpenStreetMap datuak %s-tik aurrera. Lortu informazio gehiago mapa editatu eta eguneratzeari buruz OpenStreetMap.org helbidean</string>
     <!-- OSM explanation on Android login screen -->
-    <string name="login_osm_presentation">OpenStreetMap.org (OSM) mapa libre eta irekia eraikitzeko komunitateko proiektu bat da. Organic Maps-en mapen datuen iturri nagusia da eta Wikipediaren antzera funtzionatzen du. Tokiak gehitu edo edita ditzakezu eta mundu osoko milioika erabiltzailerentzat eskuragarri egongo dira.
-\nSartu komunitatean eta lagundu mapa hobea egiten guztiontzat!</string>
+    <string name="login_osm_presentation">OpenStreetMap.org (OSM) mapa libre eta irekia eraikitzeko komunitateko proiektu bat da. CoMaps-en mapen datuen iturri nagusia da eta Wikipediaren antzera funtzionatzen du. Tokiak gehitu edo edita ditzakezu eta mundu osoko milioika erabiltzailerentzat eskuragarri egongo dira. \nSartu komunitatean eta lagundu mapa hobea egiten guztiontzat!</string>
     <string name="login_to_make_edits_visible">Sortu OpenStreetMap kontu bat edo hasi saioa zure maparen aldaketak munduan argitaratzeko.</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%1$d/%2$d</string>
     <string name="download_over_mobile_header">Deskargatu sare mugikorreko konexioarekin?</string>
     <string name="download_over_mobile_message">Oso garestia izan daiteke roaming plan batzuekin edo datu-ibiltaritzarekin.</string>
     <string name="error_enter_correct_house_number">Sartu etxeko zenbaki baliozkoa</string>
-    <string name="editor_storey_number">Solairu kopurua (gehienez %d)</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">Solairu kopurua ez da %d-tik gorakoa izan behar</string>
     <string name="editor_zip_code">Posta kodea</string>
@@ -527,7 +503,7 @@
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">OpenStreetMap-eko boluntarioentzako oharra (aukerakoa)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
-    <string name="editor_note_hint">Deskribatu mapan akatsak edo mapa organikoak erabiliz editatu ezin dena</string>
+    <string name="editor_note_hint">Deskribatu mapan akatsak edo CoMaps erabiliz editatu ezin dena</string>
     <!-- Information about OSM at the top of the editing page -->
     <string name="editor_about_osm">Zure aldaketak <a href="https://wiki.openstreetmap.org/wiki/About_OpenStreetMap">OpenStreetMap</a> datu-base publikora kargatzen dira. Mesedez, ez gehitu informazio pertsonalik edo copyrightdun informaziorik.</string>
     <string name="editor_more_about_osm">OpenStreetMap-i buruzko informazio gehiago</string>
@@ -537,7 +513,7 @@
     <!-- To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... -->
     <string name="operator">Operadorea: %s</string>
     <string name="editor_category_unsuitable_title">Ezin duzu kategoria egokirik aurkitu?</string>
-    <string name="editor_category_unsuitable_text">Organic Maps-ek puntu kategoria soilak gehitzeko aukera ematen du, hau da, ez da herririk, errepiderik, lakurik, eraikinen eskemarik, etab. Gehitu kategoria horiek zuzenean <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Begiratu gure <a href="https://organicmaps.app/faq/editing/advanced-map-editing">gida</a> urratsez urrats argibide zehatzak lortzeko.</string>
+    <string name="editor_category_unsuitable_text">CoMaps-ek puntu kategoria soilak gehitzeko aukera ematen du, hau da, ez da herririk, errepiderik, lakurik, eraikinen eskemarik, etab. Gehitu kategoria horiek zuzenean <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Begiratu gure <a href="https://www.comaps.app/support/advanced-map-editing/">gida</a> urratsez urrats argibide zehatzak lortzeko.</string>
     <string name="downloader_no_downloaded_maps_title">Ez duzu maparik deskargatu</string>
     <string name="downloader_no_downloaded_maps_message">Deskargatu mapak kokapena aurkitzeko eta lineaz kanpo nabigatzeko.</string>
     <string name="current_location_unknown_error_title">Uneko kokapena ezezaguna da.</string>
@@ -556,14 +532,6 @@
     <string name="minute">min</string>
     <string name="day">e</string>
     <string name="placepage_more_button">Gehiago</string>
-    <!-- A referral link on the place page for some hotels -->
-    <string name="more_on_kayak">Argazkiak, iritziak, erreserba</string>
-    <!-- An explanation dialog shown when clicking on more_on_kayak link. -->
-    <string name="dialog_kayak_disclaimer">Esteka honen bidez erreserba bakoitzeko jasotzen den erreferentzia-bonua Organic Maps garatzera doa.</string>
-    <!-- A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_button">Xehetasunak Kayak-en</string>
-    <!-- A disable button text in the explanation dialog that opens hotel details page on Kayak website. -->
-    <string name="dialog_kayak_disable_button">Desgaitu Kayak</string>
     <string name="placepage_edit_bookmark_button">Editatu markagailua</string>
     <string name="placepage_personal_notes_hint">Ohar pertsonalak (testua edo html)</string>
     <string name="editor_comment_hint">Iruzkina…</string>
@@ -607,14 +575,14 @@
     <string name="mobile_data_option_ask">Galdetu beti</string>
     <string name="traffic_update_maps_text">Trafiko datuak bistaratzeko, mapak eguneratu behar dira.</string>
     <string name="big_font">Handitu letra tamaina mapan</string>
-    <string name="traffic_update_app">Eguneratu Organic Maps</string>
+    <string name="traffic_update_app">Eguneratu CoMaps</string>
     <!-- "traffic" as in "road congestion" -->
     <string name="traffic_data_unavailable">Trafiko datuak ez daude eskuragarri</string>
     <string name="enable_logging">Historia gaitu</string>
     <!-- Settings: "Send general feedback" button -->
     <string name="feedback_general">Iritzi orokorra</string>
     <string name="prefs_languages_information">TTS sistema erabiltzen dugu ahots argibideetarako. Android gailu askok Google TTS erabiltzen dute. Google Play-tik deskargatu edo egunera dezakezu (https://play.google.com/store/apps/details?idu003dcom.google.android.tts)</string>
-    <string name="prefs_languages_information_off">Zenbait hizkuntzatan, beste ahots-sintetizadore bat edo hizkuntza-pakete gehigarri bat instalatu behar duzu aplikazio-dendatik (Google Play, Galaxy Store, App Gallery, FDroid). Ireki gailua Ezarpenak > Hizkuntza eta sarrera > Hizkera > Hizketarako testurako aukerak. Hemen ahots-sintesiaren ezarpenak kudea ditzakezu (adibidez, hizkuntza pakete bat deskargatu, konexiorik gabe erabiltzeko) edo testu-hizketarako beste motor bat hauta dezakezu.</string>
+    <string name="prefs_languages_information_off">Zenbait hizkuntzatan, beste ahots-sintetizadore bat edo hizkuntza-pakete gehigarri bat instalatu behar duzu aplikazio-dendatik (Google Play, Galaxy Store, App Gallery, FDroid). \nIreki zure gailuaren Ezarpenak &gt; Hizkuntza eta sarrera &gt; Hizkera &gt; Hizketarako testurako aukerak. \nHemen ahots-sintesiaren ezarpenak kudea ditzakezu (adibidez, hizkuntza pakete bat deskargatu, konexiorik gabe erabiltzeko) edo testu-hizketarako beste motor bat hauta dezakezu.</string>
     <string name="prefs_languages_information_off_link">Informazio gehiago lortzeko, ikusi gida hau.</string>
     <string name="transliteration_title">Latinezko transliterazioa</string>
     <string name="learn_more">Irakurri gehiago</string>
@@ -623,7 +591,7 @@
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Erabili bilaketa edo sakatu mapan ibilbidearen abiapuntua gehitzeko</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
-    <string name="routing_add_finish_point">Erabili bilaketa edo sakatu mapan helmuga puntu bat gehitzeko</string>
+    <string name="routing_add_finish_point">Erabili bilaketa edo sakatu mapan helmuga puntua gehitzeko</string>
     <string name="planning_route_manage_route">Kudeatu ibilbidea</string>
     <string name="button_plan">Planifikatu</string>
     <string name="placepage_remove_stop">Kendu geltokia</string>
@@ -631,7 +599,7 @@
     <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
     <string name="alert_reauth_message">Hasi saioa OpenStreetMap-en zure mapen aldaketa guztiak automatikoki kargatzeko. Lortu informazio gehiago <a href="https://github.com/organicmaps/organicmaps/issues/6144">hemen</a>.</string>
     <string name="dialog_error_storage_title">Biltegiratze sarbidearen arazoa</string>
-    <string name="dialog_error_storage_message">Kanpoko biltegiratzea ez dago erabilgarri; Baliteke SD txartela kendu edo hondatuta egotea, edo fitxategi sistema irakurtzeko soilik izatea. Mesedez, begiratu edo idatzi iezaguzu support\@organicmaps.app helbidera</string>
+    <string name="dialog_error_storage_message">Kanpoko biltegiratzea ez dago erabilgarri; Baliteke SD txartela kendu edo hondatuta egotea, edo fitxategi sistema irakurtzeko soilik izatea. Mesedez, begiratu edo idatzi iezaguzu support@comaps.app helbidera</string>
     <string name="setting_emulate_bad_storage">Emulatu kaltetutako biltegiratzea</string>
     <string name="core_entrance">Sarrera</string>
     <string name="error_enter_correct_name">Mesedez, idatzi baliozko izen bat</string>
@@ -671,7 +639,7 @@
     <string name="privacy_policy">Pribatutasun politika</string>
     <string name="terms_of_use">Erabilera baldintzak</string>
     <string name="button_layer_traffic">Trafikoa</string>
-    <string name="button_layer_subway">Metroa</string>
+    <string name="subway">Metroa</string>
     <string name="layers_title">Maparen estiloak eta geruzak</string>
     <string name="subway_data_unavailable">Metroaren mapa ez dago erabilgarri</string>
     <string name="bookmarks_empty_list_title">Zerrenda hau hutsik dago</string>
@@ -698,7 +666,7 @@
     <string name="power_managment_setting_never">Inoiz ez</string>
     <string name="power_managment_setting_auto">Automatikoa</string>
     <string name="power_managment_setting_manual_max">Energia aurrezpen handiena</string>
-    <string name="enable_logging_warning_message">Aukera hau diagnostiko helburua duten erregistro ekintzetarako gaituta dago. Honek gure taldeari aplikazioarekin arazoak identifikatzen laguntzen dio. Gaitu aukera Organic Maps laguntzari eskatuta soilik.</string>
+    <string name="enable_logging_warning_message">Aukera hau diagnostiko helburua duten erregistro ekintzetarako gaituta dago. Honek gure taldeari aplikazioarekin arazoak identifikatzen laguntzen dio. Gaitu aukera CoMaps laguntzari eskatuta soilik.</string>
     <string name="access_rules_author_only">Sarean editatzen</string>
     <string name="driving_options_title">Bideratzeko aukerak</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
@@ -709,7 +677,7 @@
     <string name="avoid_ferry">Ferriak saihestea</string>
     <string name="avoid_motorways">Autobideak saihestea</string>
     <string name="unable_to_calc_alert_title">Ezin da ibilbidea proposatu</string>
-    <string name="unable_to_calc_alert_subtitle">Zoritxarrez, ezin izan dugu aukeratutako aukerekin ibilbiderik proposatu. Aldatu ezarpenak eta saiatu berriro</string>
+    <string name="unable_to_calc_alert_subtitle">Zoritxarrez, ezin izan dugu aukeratutako aukerekin ibilbiderik proposatu. Aldatu ezarpenak eta saiatu berriro.</string>
     <string name="define_to_avoid_btn">Zehaztu saihestu beharreko bideak</string>
     <string name="change_driving_options_btn">Bideratze aukerak gaituta</string>
     <string name="toll_road">Ordainpeko errepidea</string>
@@ -749,7 +717,6 @@
     <string name="moreyear_ago_sorttype">Duela urtebete baino gehiago</string>
     <string name="near_me_sorttype">Nigandik gertu</string>
     <string name="others_sorttype">Beste batzuk</string>
-
     <!-- SECTION: Bookmark types used for sorting -->
     <string name="food_places">Janariak</string>
     <string name="tourist_places">Toki interesgarriak</string>
@@ -803,8 +770,8 @@
     <string name="change_map_locale">Maparen hizkuntza</string>
     <!-- OpenStreetMap text on splash screen -->
     <string name="splash_subtitle">OpenStreetMap-eko mapa-datuak</string>
-    <!-- Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
-    <string name="translated_om_site_url">https://organicmaps.app/eu/</string>
+    <!-- Translated CoMaps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content -->
+    <string name="translated_om_site_url">https://comaps.app/eu/</string>
     <!-- App Tip #00 -->
     <string name="app_tip_00">Eskerrik asko gure komunitateak eraikitako mapak erabiltzeagatik!</string>
     <!-- App tip #01 -->
@@ -826,9 +793,9 @@
     <!-- App tip #09 -->
     <string name="app_tip_09">Gure helburu nagusia maite dituzun mapa azkarrak, pribatutasunari begira eta erabilerrazak sortzea da.</string>
     <!-- Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen -->
-    <string name="car_used_on_the_phone_screen">Organic Maps telefonoaren pantailan erabiltzen ari zara</string>
+    <string name="car_used_on_the_phone_screen">CoMaps telefonoaren pantailan erabiltzen ari zara</string>
     <!-- Text on the phone placeholder screen that maps are displayed on the car screen -->
-    <string name="car_used_on_the_car_screen">Organic Maps autoaren pantailan erabiltzen ari zara</string>
+    <string name="car_used_on_the_car_screen">CoMaps autoaren pantailan erabiltzen ari zara</string>
     <!-- Displayed on the phone screen. Android Auto connected -->
     <string name="aa_connected_title">Android Auto-ra konektatuta zaude</string>
     <!-- Displayed on the phone screen. Button to display maps on the phone screen instead of a car -->
@@ -836,11 +803,11 @@
     <!-- Displayed on the Android Auto or CarPlay screen. Button to display maps on the car screen instead of a phone. Must be no more than 18 symbols! -->
     <string name="car_continue_in_the_car">Autoaren pantailara</string>
     <!-- Ask user to grant location permissions -->
-    <string name="aa_location_permissions_request">Organic Maps-ek kokapenerako sarbidea behar du. Seguru dagoenean, egiaztatu zure telefonoko jakinarazpena.</string>
+    <string name="aa_location_permissions_request">CoMaps-ek kokapenerako sarbidea behar du. Seguru dagoenean, egiaztatu zure telefonoko jakinarazpena.</string>
     <!-- Notification title for permission request from AA. -->
     <string name="aa_request_permission_notification">Aplikazio honek zure baimena behar du</string>
     <!-- The text in the activity for location permission request. -->
-    <string name="aa_request_permission_activity_text">Android Auto-ko Organic Maps-ek kokapen-baimena behar du eraginkortasunez funtzionatzeko</string>
+    <string name="aa_request_permission_activity_text">Android Auto-ko CoMaps-ek kokapen-baimena behar du eraginkortasunez funtzionatzeko</string>
     <!-- Grant Permissions button. -->
     <string name="aa_grant_permissions">Eman baimenak</string>
     <!-- Outdoors/hiking map style (activity) name in the Styles and Layers dialog -->
@@ -885,10 +852,47 @@
     <!-- Message for the toast when saving the track recording is finished but nothing to save. -->
     <string name="track_recording_toast_nothing_to_save">Ibilbidea hutsik dago; ez dago ezer gordetzeko</string>
     <!-- Error message when there are no File Manager apps installed to select a folder when importing Bookmarks and Tracks -->
-    <string name="error_no_file_manager_app">Ezin da karpeta hautatzeko elkarrizketa-koadroa erakutsi zure gailuan ez dagoelako aplikazio egokirik instalatuta. Instalatu fitxategi-kudeatzaile aplikazio bat eta saiatu berriro</string>
+    <string name="error_no_file_manager_app">Ezin da karpeta hautatzeko elkarrizketa-koadroa erakutsi zure gailuan ez dagoelako aplikazio egokirik instalatuta. Instalatu fitxategi-kudeatzaile aplikazio bat eta saiatu berriro.</string>
     <string name="choose_color">Aukeratu kolorea</string>
     <string name="edit_track">Editatu arrastoa</string>
-    <string name="uri_open_location_failed">Ez dago kokapena ireki dezakeen aplikaziorik instalatu</string>
+    <string name="uri_open_location_failed">Ez dago kokapena ireki dezakeen aplikaziorik instalatuta</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Nabigazioan automatikoa</string>
+    <string name="telegram">Telegram</string>
+    <string name="comma_separated_pair">%1$s, %2$s</string>
+    <string name="wikimedia_commons">Wikimedia Commons</string>
+    <string name="vk">VK</string>
+    <string name="editor_line_social_network">LINE</string>
+    <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
+    <string name="matrix">[Matrix]</string>
+    <string name="mastodon">Mastodon</string>
+    <string name="openstreetmap">OpenStreetMap</string>
+    <string name="read_in_wikipedia">Wikipedia</string>
+    <string name="level_value_generic">Maila: %s</string>
+    <string name="mb">MB</string>
+    <string name="gb">GB</string>
+    <string name="github">GitHub</string>
+    <string name="telegram_url">https://t.me/CoMapsApp/</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">X (Twitter)</string>
+    <string name="instagram">Instagram</string>
+    <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
+    <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
+    <string name="saved">Gordeta</string>
+    <string name="app_site_url">https://comaps.app/eu/</string>
+    <string name="pref_left_button_disable">Desgaitu</string>
+    <string name="pref_left_button_title">Ezkerreko botoiaren ezarpena</string>
+    <string name="about_help">Honi buruz eta Laguntza</string>
+    <string name="bookmark_color">Laster-markaren kolorea</string>
+    <string name="bluesky">Bluesky</string>
+    <string name="error_enter_correct_bluesky_page">Sartu baliozko Blueskyko erabiltzaile-izena edo web helbidea</string>
+    <string name="error_enter_correct_fediverse_page">Sartu baliozko Mastodoneko erabiltzaile-izena edo web helbidea</string>
+    <string name="route_type">Ibilbide mota</string>
+    <string name="vehicle">Ibilgailua</string>
+    <string name="pedestrian">Oinezkoa</string>
+    <string name="bicycle">Bizikleta</string>
+    <string name="ruler">Erregela</string>
+    <string name="clear">Garbitu</string>
+    <string name="panoramax">Panoramax Irudia</string>
+    <string name="codeberg">Codeberg</string>
 </resources>

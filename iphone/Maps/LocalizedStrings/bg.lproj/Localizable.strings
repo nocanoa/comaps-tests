@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Изтеглянето се провали";
 
 /* Text in About screen */
-"about_headline" = "Безплатно за всички, направени с любов";
+"about_proposition_1" = "Офлайн, бърз и лесен за използване";
 
 /* Text in About screen */
-"about_proposition_1" = "• Без реклами, без проследяване, без събиране на данни";
-
-/* Text in About screen */
-"about_proposition_2" = "• Без източване на батерията, работи офлайн";
-
-/* Text in About screen */
-"about_proposition_3" = "• Бързи, минималистични, разработен от общността";
+"about_proposition_2" = "Фокус върху поверителността и без реклами";
 "close" = "Затваряне";
 "download" = "Изтегляне";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "За RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Зареждане на отметки";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Местоположението ви още не е определено";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Хей, виж какво съм отбелязал в Organic Maps!";
+"bookmark_share_email_subject" = "Хей, виж какво съм отбелязал в CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Хей, виж текущото ми местоположение на картата в Organic Maps!";
+"my_position_share_email_subject" = "Хей, виж текущото ми местоположение на картата в CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Имейл";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Копиране в клипборда";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Копирано в клипборда: %@";
@@ -190,7 +187,9 @@
 "done" = "Готово";
 
 /* Prints version number in About dialog */
-"version" = "Версия на Organic Maps: %@";
+"version" = "Версия на CoMaps: %@";
+"version %@ (%@)" = "Версия %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Версия: %@ (%@)\nКартографски данни: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Пътеки";
@@ -200,6 +199,7 @@
 "share_my_location" = "Споделяне на местоположение";
 "prefs_group_route" = "Навигация";
 "pref_zoom_title" = "Мащабни бутони";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Изглед";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Тъмен";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Изключен";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D сградите са изключени в режим на пестене на енергия";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Гласови инструкции";
+"pref_tts_title" = "Гласови инструкции";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Обявете имена на улици";
@@ -246,14 +252,26 @@
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Друго";
 "pref_map_auto_zoom" = "Автоматично мащабиране";
-"placepage_distance" = "Distance";
+"placepage_distance" = "Разстояние";
 "search_show_on_map" = "Преглед на картата";
 
 /* Text in menu */
 "website" = "Уебсайт";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Новини";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Е-поща";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax Снимка";
+
 /* Text in menu */
 "rate_the_app" = "Оцени приложение";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Дарете";
-
-/* Tex label above the Donate button */
-"donate_description" = "Дарете, за да създадем заедно най-добрите карти!";
-"already_donated" = "Вече дарено";
-"remind_me_later" = "Напомни по-късно";
-"support_organic_maps" = "Подкрепи Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Авторски права";
@@ -298,7 +322,7 @@
 "volunteer" = "За доброволчество";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Следвайте и се свържете с нас:";
+"follow_us" = "Следвайте и се свържете с нас";
 
 /* Alert text */
 "email_error_body" = "Имейл клиентът не е настроен. Моля, конфигурирайте го или използвайте друг начин, за да се свържете с нас на %@";
@@ -388,30 +412,30 @@
 "pink" = "Розово";
 
 /* deep purple color */
-"deep_purple" = "Deep Purple";
+"deep_purple" = "Тъмно Лилаво";
 
 /* light blue color */
-"light_blue" = "Light Blue";
+"light_blue" = "Светло Синьо";
 
 /* cyan color */
-"cyan" = "Cyan";
+"cyan" = "Синьо";
 
 /* teal color */
-"teal" = "Teal";
+"teal" = "Тюркоаз";
 
 /* lime color */
-"lime" = "Lime";
+"lime" = "Светло Зелено";
 
 /* deep orange color */
-"deep_orange" = "Deep Orange";
+"deep_orange" = "Тъмно Оранжево";
 
 /* gray color */
-"gray" = "Gray";
+"gray" = "Сиво";
 
 /* blue gray color */
-"blue_gray" = "Blue Gray";
+"blue_gray" = "Синкаво Сиво";
 "dialog_routing_disclaimer_title" = "Когато следвате маршрута, моля, имайте предвид:";
-"dialog_routing_disclaimer_priority" = "- Пътната обстановка, законите за движение по пътищата и че пътните знаци винаги имат приоритет пред навигационните подсказки;";
+"dialog_routing_disclaimer_priority" = "- Пътната обстановка, законите за движение по пътищата и че пътните знаци винаги имат предимство пред пътеводителните подсказки;";
 "dialog_routing_disclaimer_precision" = "- Картата може да е неточна, а предложеният маршрут невинаги е най-оптималният начин за достигане до дестинацията;";
 "dialog_routing_disclaimer_recommendations" = "- Предложените маршрути са само препоръки;";
 "dialog_routing_disclaimer_borders" = "- Бъдете внимателни с маршрутите в гранични зони: маршрутите, създадени от нашето приложение, понякога могат да пресичат границите на страната на неразрешени места.";
@@ -464,10 +488,10 @@
 "clear_search" = "Изчистване на историята на търсенията";
 
 /* Place Page link to Wikipedia article (if map object has it). */
-"read_in_wikipedia" = "Wikipedia";
+"read_in_wikipedia" = "Уикипедия";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Общомедия";
 "p2p_your_location" = "Вашето местоположение";
 "p2p_start" = "Начало";
 "p2p_from_here" = "Маршрут от";
@@ -510,15 +534,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "Затворено";
 "add_opening_hours" = "Добавяне на работно време";
-"no_osm_account" = "Нямате акаунт в OpenStreetMap?";
-"register_at_openstreetmap" = "Регистриране в OpenStreetMap";
-"password_8_chars_min" = "Парола (поне 8 символа)";
-"invalid_username_or_password" = "Невалидно потребителско име или парола.";
-"login" = "Вход";
-"login_osm" = "Влезте в OpenStreetMap";
-"forgot_password" = "Забравили сте паролата си?";
-"osm_account" = "OSM Акаунт";
-"logout" = "Изход";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Картографски данни от OpenStreetMap";
+"osm_mapdata_explanation %@" = "Създадени от общността данни от картата към *%@*. Научете повече за това как да редактирате и актуализирате картата в [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Повече за OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Bg:About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Профил в OpenStreetMap";
+"osm_profile_promt" = "Създайте акаунт в OpenStreetMap или влезте в него, за да публикувате своите редакции на картата в света.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) е общностен проект за създаване на безплатна и отворена карта. Той е основният източник на картографски данни в CoMaps и работи подобно на Wikipedia. Можете да добавяте или редактирате места и те стават достъпни за милиони потребители по целия свят. \nПрисъединете се към общността и помогнете за създаването на по-добра карта за всички!";
+"osm_profile_login" = "Влизане в акаунт в OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Акаунтът в OpenStreetMap е прекъснат от това приложение";
+"osm_profile_reauthorize" = "Свързване отново с OpenStreetMap";
+"osm_profile_remove_promt" = "Ако не можете или не искате да свържете отново акаунта си, можете просто да го премахнете от това приложение";
+"osm_profile_remove" = "Премахване на акаунт в OpenStreetMap";
+"osm_profile_register_promt" = "Нямате акаунт в OpenStreetMap?";
+"osm_profile_register" = "Регистриране в OpenStreetMap";
+"osm_profile_verfied_changes" = "Потвърдени промени";
+"osm_profile_logout" = "Излизане от акаунт в OpenStreetMap";
+"osm_profile_delete" = "Изтриване на акаунт в OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Последно качване";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Смяна на местоположение";
 "message_invalid_feature_position" = "Тук не може да бъде намерен обект";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Създадени от общността данни от OpenStreetMap към %@. Научете повече за това как да редактирате и актуализирате картата в OpenStreetMap.org";
-"login_to_make_edits_visible" = "Създайте акаунт в OpenStreetMap или влезте в него, за да публикувате своите редакции на картата в света.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "За изтегляне ви е необходимо повече място. Моля, изтрийте всички ненужни данни.";
-"editor_sharing_title" = "Подобрих картите на Organic Maps";
+"editor_sharing_title" = "Подобрих картите на CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d от %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Забележка към доброволците на OpenStreetMap (по избор)";
 "editor_detailed_description_hint" = "Подробен коментар";
-"editor_detailed_description" = "Предложените от вас промени по картата ще бъдат изпратени до общността на OpenStreetMap. Опишете всички допълнителни подробности, които не могат да бъдат въведени в Organic Maps.";
+"editor_detailed_description" = "Предложените от вас промени по картата ще бъдат изпратени до общността на OpenStreetMap. Опишете всички допълнителни подробности, които не могат да бъдат въведени в CoMaps.";
 "editor_more_about_osm" = "Повече за OpenStreetMap";
 "editor_operator" = "Оператор";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Оператор: %@";
 "editor_category_unsuitable_title" = "Не можете да намерите подходяща категория?";
-"editor_category_unsuitable_text" = "Organic Maps позволява да се добавят само прости категории точки, т.е. без градове, пътища, езера, очертания на сгради и т.н. Моля, добавяйте такива категории директно в <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Вижте нашето <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">ръководство</a> за подробни инструкции стъпка по стъпка.";
+"editor_category_unsuitable_text" = "CoMaps позволява да се добавят само прости категории точки, т.е. без градове, пътища, езера, очертания на сгради и т.н. Моля, добавяйте такива категории директно в <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Вижте нашето <a href=\"https://www.comaps.app/support/advanced-map-editing/\">ръководство</a> за подробни инструкции стъпка по стъпка.";
 "downloader_no_downloaded_maps_title" = "Не сте изтеглили никакви карти";
 "downloader_no_downloaded_maps_message" = "Изтеглете картите, от които се нуждаете, за да намирате места и да навигирате без интернет.";
 "current_location_unknown_error_title" = "Настоящото местоположение е неизвестно.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Изберете Privacy";
 "location_services_disabled_on_device_3" = "3. Изберете Услуги за местоположение";
 "location_services_disabled_on_device_4" = "4. Включете услугите за местоположение";
-"location_services_disabled_on_device_additional_message" = "Или продължете да използвате Organic Maps без местоположение";
+"location_services_disabled_on_device_additional_message" = "Или продължете да използвате CoMaps без местоположение";
 
 /* abbreviation for meters */
 "m" = "м";
@@ -624,28 +656,19 @@
 "km" = "км";
 
 /* abbreviation for kilometers per hour */
-"kilometers_per_hour" = "km/h";
+"kilometers_per_hour" = "км/ч";
 
 /* abbreviation for mile(s) */
 "mi" = "ми";
 
 /* A unit of measure */
 "ft" = "фут";
-"miles_per_hour" = "mph";
+"miles_per_hour" = "мили/ч";
 "hour" = "ч";
 "minute" = "мин";
 "day" = "д";
 "placepage_more_button" = "Още";
 "book_button" = "Резервиране";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Снимки, отзиви, резервация";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Полученият бонус за всяка резервация чрез тази връзка отива за развитието на Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Подробности в Kayak";
 "placepage_call_button" = "Обаждане";
 "placepage_edit_bookmark_button" = "Редакция на отметка";
 "placepage_bookmark_name_hint" = "Име на отметка";
@@ -673,7 +696,7 @@
 /* Dialog before publishing the modifications to the public map. */
 "editor_share_to_all_dialog_message_1" = "Уверете се, че не сте въвели никакви лични данни.";
 "editor_share_to_all_dialog_message_2" = "Редакторите на OpenStreetMap ще проверят промените и ще се свържат с вас, ако имат въпроси.";
-"navigation_stop_button" = "Stop";
+"navigation_stop_button" = "Спри";
 
 /* iOS dialog for the case when recent track recording is on and the app comes back from background */
 "recent_track_background_dialog_title" = "Деактивиране на записването на последния ви маршрут?";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Виж";
-"recent_track_background_dialog_message" = "Organic Maps използва геопозицията ви във фонов режим за записване на последния ви маршрут.";
+"recent_track_background_dialog_message" = "CoMaps използва геопозицията ви във фонов режим за записване на последния ви маршрут.";
 "general_settings" = "Общи настройки";
 
 /* For the first routing */
@@ -709,7 +732,7 @@
 "traffic_data_unavailable" = "Няма налични данни за трафика";
 "enable_logging" = "Активиране на запис на дневник";
 "log_file_size" = "Размер на регистрационния файл: %@";
-"transliteration_title" = "Латинска транслитерация";
+"transliteration_title" = "Изпиши на латиница";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Изход";
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "Плъзнете тук, за да премахнете";
 "placepage_add_stop" = "Добавяне на спирка";
 "start_from_my_position" = "Start from";
+
+/* Title for button when a route was saved. */
+"saved" = "Запазено";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Моля, влезте в OpenStreetMap, за да качвате автоматично всичките си редакции на картата. Научете повече";
@@ -803,8 +829,8 @@
 "unable_to_calc_alert_subtitle" = "За съжаление не успяхме да намерим маршрут, вероятно поради избраните от вас параметри. Моля, променете настройките и опитайте отново.";
 "define_to_avoid_btn" = "Определяне пътищата, които да се избягват";
 "change_driving_options_btn" = "Разрешени опции за маршрутизиране";
-"toll_road" = "Toll road";
-"unpaved_road" = "Unpaved road";
+"toll_road" = "Път с винетка";
+"unpaved_road" = "Път без настилка";
 "ferry_crossing" = "Ferry crossing";
 "trip_start" = "Let's go";
 "pick_destination" = "Destination";
@@ -830,7 +856,7 @@
 
 /* To indicate the network of ATMs, bicycle rentals, electric vehicle charging stations... */
 "network" = "Мрежа: %@";
-"trip_finished" = "You have arrived!";
+"trip_finished" = "Пристигнахте!";
 "keyboard_availability_alert" = "Keyboard is not available while driving";
 "dialog_routing_change_start_carplay" = "Unable to build a route from your current location";
 "dialog_routing_change_end_carplay" = "Unable to find a route to your destination. Please choose another end point";
@@ -857,28 +883,28 @@
 "sort_distance" = "Sort by distance";
 "sort_date" = "Sort by date";
 "sort_name" = "Сортиране по име";
-"week_ago_sorttype" = "A week ago";
-"month_ago_sorttype" = "A month ago";
-"moremonth_ago_sorttype" = "More than a month ago";
-"moreyear_ago_sorttype" = "More than a year ago";
-"near_me_sorttype" = "Near me";
-"others_sorttype" = "Others";
-"food_places" = "Food";
-"tourist_places" = "Sights";
-"museums" = "Museums";
-"parks" = "Parks";
-"swim_places" = "Swim";
-"mountains" = "Mountains";
-"animals" = "Animals";
-"hotels" = "Hotels";
-"buildings" = "Buildings";
-"money" = "Money";
-"shops" = "Shops";
-"parkings" = "Parking";
-"fuel_places" = "Gas Stations";
-"medicine" = "Medicine";
+"week_ago_sorttype" = "Преди седмица";
+"month_ago_sorttype" = "Преди месец";
+"moremonth_ago_sorttype" = "Преди повече от месец";
+"moreyear_ago_sorttype" = "Преди повече от година";
+"near_me_sorttype" = "На близо";
+"others_sorttype" = "Други";
+"food_places" = "Храна";
+"tourist_places" = "Забележителности";
+"museums" = "Музеи";
+"parks" = "Паркове";
+"swim_places" = "Плуване";
+"mountains" = "Планини";
+"animals" = "Животни";
+"hotels" = "Хотели";
+"buildings" = "Сгради";
+"money" = "Пари";
+"shops" = "Магазини";
+"parkings" = "Паркинги";
+"fuel_places" = "Бензиностанции";
+"medicine" = "Лечение";
 "search_in_the_list" = "Търсене в списъка";
-"religious_places" = "Religious places";
+"religious_places" = "Храмове";
 "transit_not_found" = "Навигацията за метро все още не е налична в региона";
 "dialog_pedestrian_route_is_long_header" = "Не е открит маршрут за метро";
 "dialog_pedestrian_route_is_long_message" = "Моля, изберете начална или крайна точка по-близо до метростанция";
@@ -895,7 +921,7 @@
 "elevation_profile_max_elevation" = "Макс. височина";
 "isolines_toast_zooms_1_10" = "Увеличете мащаба, за да разгледате изолиниите";
 "downloader_updating_ios" = "Updating";
-"downloader_loading_ios" = "Downloading";
+"downloader_loading_ios" = "Изтегляне";
 
 /* Autoupdate dialog on start */
 "whats_new_auto_update_title" = "Актуализиране на изтеглените карти";
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Пътека";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Bg:About";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Благодарим ви, че използвате нашите карти, създадени от общността!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "Нашата основна цел е да създаваме бързи, фокусирани върху поверителността, лесни за използване карти, които ще харесате.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Вече използвате Organic Maps на екрана на телефона";
+"car_used_on_the_phone_screen" = "Вече използвате CoMaps на екрана на телефона";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Вече използвате Organic Maps на екрана на автомобила";
+"car_used_on_the_car_screen" = "Вече използвате CoMaps на екрана на автомобила";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Продължете в телефона";
@@ -995,7 +1012,10 @@
 "website_menu" = "Връзка към менюто";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Искате ли да изпратите доклад за грешка на разработчиците?\nРазчитаме на нашите потребители, тъй като Organic Maps не събира информация за грешки автоматично. Благодарим ви предварително, че подкрепяте Organic Maps!";
+"bugreport_alert_message" = "Искате ли да изпратите доклад за грешка на разработчиците?\nРазчитаме на нашите потребители, тъй като CoMaps не събира информация за грешки автоматично. Благодарим ви предварително, че подкрепяте CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Активиране на синхронизацията с iCloud";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Маршрутът е празен - няма какво да запазвате";
 "edit_track" = "Редактиране на маршрут";
+"osm_profile_view_notes" = "Преглед на бележки";
+"osm_profile_view_edit_history" = "Преглед на историята на промените";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

@@ -10,16 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.os.ParcelCompat;
 
-import app.organicmaps.Framework;
-import app.organicmaps.routing.RoutePointInfo;
+import app.organicmaps.sdk.routing.RoutePointInfo;
 import app.organicmaps.sdk.search.Popularity;
-import app.organicmaps.util.Utils;
 import app.organicmaps.widget.placepage.PlacePageData;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -178,7 +174,7 @@ public class MapObject implements PlacePageData
     if (getClass() != other.getClass())
       return false;
 
-    if (mFeatureId != FeatureId.EMPTY && other.getFeatureId() != FeatureId.EMPTY)
+    if (mFeatureId.isRealId() && other.getFeatureId().isRealId())
       return mFeatureId.equals(other.getFeatureId());
 
     return Double.doubleToLongBits(mLon) == Double.doubleToLongBits(other.mLon) &&
@@ -280,19 +276,6 @@ public class MapObject implements PlacePageData
       return website.substring(start, end);
     }
     return website;
-  }
-
-  @NonNull
-  public String getKayakUrl()
-  {
-    final String uri = getMetadata(Metadata.MetadataType.FMD_EXTERNAL_URI);
-    if (TextUtils.isEmpty(uri))
-      return "";
-    final Instant firstDay = Instant.now();
-    final long firstDaySec = firstDay.getEpochSecond();
-    final long lastDaySec = firstDay.plus(1, ChronoUnit.DAYS).getEpochSecond();
-    final String res = Framework.nativeGetKayakHotelLink(Utils.getCountryCode(), uri, firstDaySec, lastDaySec);
-    return res == null ? "" : res;
   }
 
   public String getApiId()

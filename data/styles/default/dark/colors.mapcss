@@ -26,7 +26,8 @@
 
 /* 1.BASEMAP */
 
-@background: #000000;
+@background0: #000000;
+@background1: #000000;
 
 /* 2.BOUNDARY */
 
@@ -40,8 +41,15 @@
 @glacier: #111111;
 @water: #002222;
 @water_bad: #00261e;
-@river: #062026;
-@wetland: #001919;
+@wetland_tidal: #001919;
+@wetland_tidal_saltmarsh: #001919;
+@wetland_saltmarsh: #001919;
+@wetland_marsh: #001919;
+@wetland_fen: #001919;
+@wetland_bog: #001919;
+@wetland_reedbed: #001919;
+@wetland_swamp: #001919;
+@wetland_mangrove: #001919;
 @beach: #28281A;
 @barerock: #302A2A;
 @scree: #242020;
@@ -49,28 +57,58 @@
 
 /*3.2 Vegetation*/
 
-@forest: #141C00;
-@green0: #0F1400;
-@green1: #131900;
-@green1b: #141C00;
-@green2: #141C00;
-@green3: #141C00;
-@green4: #141C00;
-@green5: #141C00;
-@green6: #2F4000;
+@residential_garden: #000000;
+@residential_garden_13: #000000;
+@residential_garden_12: #000000;
+@park: #000000;
+@park_13: #000000;
+@park_12: #000000;
+@park_11: #000000;
+@park_10: #000000;
+@heath: #141C00;
+@heath_13: #141C00;
+@heath_12: #141C00;
+@heath_11: #141C00;
+@grass: #141C00;
+@grass_13: #141C00;
+@grass_12: #141C00;
+@grass_11: #141C00;
 @flowers: #141C00;
+@golf: #141C00;
+@golf_13: #141C00;
+@golf_12: #141C00;
+@allotments: #141C00;
+@allotments_13: #141C00;
+@allotments_12: #141C00;
+@scrubs: #141C00;
+@scrubs_13: #141C00;
+@scrubs_12: #141C00;
+@scrubs_11: #141C00;
+@woods: #161F00;
+@woods_13: #161F00;
+@woods_12: #161F00;
+@woods_11: #161F00;
+@woods_10: #161F00;
+
+@protected_nature: #2F4000;
+
 
 /* 4.LANDUSE */
 /*4.1 Main landuse*/
 
+@general_area: #000000;
 @pedestrian_area: #262222;
 @pedestrian_area_light: #262222;
+@railway_platform: #262222;
 @university: #261F13;
+@retail: #130C11;
 @hospital: #261916;
 @industrial: #191419;
+@construction_area: #191419;
 @sport0: #21211B;
 @sport1: #262620;
 @sport2: #2A2A24;
+@playground: #2A2A24;
 @parking: #1F1B1B;
 @military: #B71C1C;
 @prison: #7f7f7f;
@@ -97,10 +135,13 @@
 @building1: #424242;
 @building_border0: #616161;
 @building_border1: #696969;
+@historic_wall: #696969;
 
 /* 5.ROADS */
 /* 5.1 All roads */
 
+@motorway0: #3B2015;
+@motorway1: #3B2015;
 @trunk0: #49291B;
 @trunk1: #49291B;
 @primary0: #593323;
@@ -126,6 +167,8 @@
 
 /* 5.3 Tunnels */
 
+@motorway_tunnel: #24140D;
+@motorway_tunnel_casing: #000000;
 @trunk_tunnel: #381F14;
 @trunk_tunnel_casing: #000000;
 @primary_tunnel: #4C2A1B;

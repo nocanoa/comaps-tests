@@ -43,16 +43,10 @@
 "country_status_download_failed" = "It-tniżżil falla";
 
 /* Text in About screen */
-"about_headline" = "B' xejn għal kulħadd, magħmul bl-imħabba";
+"about_proposition_1" = "Offline, veloċi u faċli biex tużah";
 
 /* Text in About screen */
-"about_proposition_1" = "• Bla reklami, bla traċċar, bla kollezjoni ta' data";
-
-/* Text in About screen */
-"about_proposition_2" = "• Bla ħela ta' batterija, jaħdem offline";
-
-/* Text in About screen */
-"about_proposition_3" = "• Malajr, minimalista, żvillupat mill-komunità";
+"about_proposition_2" = "Iffukat fuq il-privatezza u mingħajr reklami";
 "close" = "Ġħalaq";
 "download" = "Niżżel";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Faċilitajiet tal-RV";
-"share_bookmarks_email_body" = "Helow!\n\nMehmuża huma il-bookmarks; iftaħhom ġo Organic Maps. Jekk mhuwiex installat tista tniżżlu min hawn: https://omaps.app/get?kmz\n\nĦu pjaċir ivvjaġġa ġo Organic Maps!";
+"share_bookmarks_email_body" = "Helow!\n\nMehmuża huma il-bookmarks; iftaħhom ġo CoMaps. Jekk mhuwiex installat tista tniżżlu min hawn: https://www.comaps.app/download/\n\nĦu pjaċir ivvjaġġa ġo CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Tgħobijja tal-bookmarks";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Il-lokażżjoni tiegħek mhuwiex determinat s'issa";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Merħba, ara il-pin tiegħi fuq Organic Maps!";
+"bookmark_share_email_subject" = "Merħba, ara il-pin tiegħi fuq CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Merħba, ara il-lokażżjoni kurrenti tiegħi fuq il-mappa ta'Organic Maps!";
+"my_position_share_email_subject" = "Merħba, ara il-lokażżjoni kurrenti tiegħi fuq il-mappa ta'CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-mejl";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Ikkopja lejn il-Klipboard";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Ikkupjat fil-klibbord: %@";
@@ -190,7 +187,9 @@
 "done" = "Lest";
 
 /* Prints version number in About dialog */
-"version" = "Verżjoni ta' Organic Maps: %@";
+"version" = "Verżjoni ta' CoMaps: %@";
+"version %@ (%@)" = "Verżjoni %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Verżjoni: %@ (%@)\nData tal-Mappa: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Korsa";
@@ -200,6 +199,7 @@
 "share_my_location" = "Ixxerja l-post tiegħi";
 "prefs_group_route" = "Navigazzjoni";
 "pref_zoom_title" = "Buttuni taż-żum";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Dehra";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Dark";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Itfi";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Il-binjiet 3D huma mitfigħin fil-mod tal-iffrankar tal-enerġija";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Istruzzjonijiet tal-vuċi";
+"pref_tts_title" = "Istruzzjonijiet tal-vuċi";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Ħabbar l-ismijiet tat-toroq";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Websajt";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Aħbarijiet";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Imejl";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Ritratt Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Għati rata lill-app";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Donazzjoni";
-
-/* Tex label above the Donate button */
-"donate_description" = "Agħti donazzjoni biex tibni l-aħjar mapep flimkien!";
-"already_donated" = "Ġa mogħtija id-donazzjoni";
-"remind_me_later" = "Fakkar aktar tard";
-"support_organic_maps" = "Appoġġja lill-Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Drittijiet tal-awtur";
@@ -298,7 +322,7 @@
 "volunteer" = "Voluntier";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Segwi u kkuntattjana:";
+"follow_us" = "Segwi u kkuntattjana";
 
 /* Alert text */
 "email_error_body" = "Il-klijent tal-posta elettronika ma ġiex ikkonfigurat. Jekk jogħġbok ikkonfiguraha jew ikkuntattjana fuq %@";
@@ -510,15 +534,26 @@
 "closes_in" = "Closes in %@";
 "closed" = "Magħluq";
 "add_opening_hours" = "Add opening hours";
-"no_osm_account" = "M’ għandekx kont ta’ OpenStreetMap?";
-"register_at_openstreetmap" = "Irreġistra f’ OpenStreetMap";
-"password_8_chars_min" = "Password (8 characters minimum)";
-"invalid_username_or_password" = "Invalid username or password.";
-"login" = "Illoggja";
-"login_osm" = "Illoggja f’ OpenStreetMap";
-"forgot_password" = "Insejt il-password tiegħek?";
-"osm_account" = "OSM Account";
-"logout" = "Oħroġ";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Dejta tal-mappa minn OpenStreetMap";
+"osm_more_about" = "Aktar dwar OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Profil ta’ OpenStreetMap";
+"osm_profile_promt" = "Oħloq kont OpenStreetMap jew idħol biex tippubblika l-editjar tal-mapep tiegħek fid-dinja.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) huwa proġett komunitarju biex tinbena mappa ħielsa u miftuħa. Huwa s-sors ewlieni tad-dejta tal-mapep fil-CoMaps u xogħlijiet simili għall-Wikipedija. Tista ’żżid jew teditja postijiet u dawn isiru disponibbli għal miljuni ta’ utenti madwar id-dinja kollha. \nIngħaqad mal-komunita’ u għen biex issir mappa aħjar għal kulħadd!";
+"osm_profile_login" = "Idħol fil-kont ta' OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Il-kont ta' OpenStreetMap ġie skonnettjat minn din l-app";
+"osm_profile_reauthorize" = "Erġa' qabbad ma' OpenStreetMap";
+"osm_profile_remove_promt" = "Jekk ma tistax jew ma tridx terġa' tikkonnettja l-kont tiegħek, tista' sempliċement tneħħih minn din l-app";
+"osm_profile_remove" = "Neħħi l-kont ta' OpenStreetMap";
+"osm_profile_register_promt" = "M’ għandekx kont ta’ OpenStreetMap?";
+"osm_profile_register" = "Irreġistra f’ OpenStreetMap";
+"osm_profile_verfied_changes" = "Bidliet Ivverifikati";
+"osm_profile_logout" = "Oħroġ mill-kont ta' OpenStreetMap";
+"osm_profile_delete" = "Ħassar il-kont ta' OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Last upload";
@@ -567,13 +602,9 @@
 "dialog_incorrect_feature_position" = "Change location";
 "message_invalid_feature_position" = "Ebda oġġett ma jista' jinstab hawn";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Community-created OpenStreetMap data as of %@. Learn more about how to edit and update the map at OpenStreetMap.org";
-"login_to_make_edits_visible" = "Oħloq kont OpenStreetMap jew idħol biex tippubblika l-editjar tal-mapep tiegħek fid-dinja.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "To download, you need more space. Please delete any unnecessary data.";
-"editor_sharing_title" = "I improved the Organic Maps maps";
+"editor_sharing_title" = "I improved the CoMaps maps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d ta' %2$d";
@@ -593,14 +624,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Nota lill-voluntiera ta’ OpenStreetMap (fakultattiva)";
 "editor_detailed_description_hint" = "Detailed comment";
-"editor_detailed_description" = "Your suggested map changes will be sent to the OpenStreetMap community. Please describe any additional details that cannot be edited in Organic Maps.";
+"editor_detailed_description" = "Your suggested map changes will be sent to the OpenStreetMap community. Please describe any additional details that cannot be edited in CoMaps.";
 "editor_more_about_osm" = "Aktar dwar OpenStreetMap";
 "editor_operator" = "Operatur";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operator: %@";
 "editor_category_unsuitable_title" = "Ma tistax isib kategorija adattata?";
-"editor_category_unsuitable_text" = "Organic Maps jippermetti li jiżdiedu kategoriji punti sempliċi biss, li jfisser l-ebda bliet, toroq, lagi, linji ġenerali tal-bini, eċċ. Jekk jogħġbok żid dawn il-kategoriji direttament mal-<a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Iċċekkja l-<a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">gwida</a> tagħna għal struzzjonijiet dettaljati.";
+"editor_category_unsuitable_text" = "CoMaps jippermetti li jiżdiedu kategoriji punti sempliċi biss, li jfisser l-ebda bliet, toroq, lagi, linji ġenerali tal-bini, eċċ. Jekk jogħġbok żid dawn il-kategoriji direttament mal-<a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Iċċekkja l-<a href=\"https://www.comaps.app/support/advanced-map-editing/\">gwida</a> tagħna għal struzzjonijiet dettaljati.";
 "downloader_no_downloaded_maps_title" = "Ma niżżilt l-ebda mapep";
 "downloader_no_downloaded_maps_message" = "Niżżel mapep biex tfittex u tinnaviga mingħajr l-użu tal-Internet.";
 "current_location_unknown_error_title" = "Il-post attwali mhux magħruf.";
@@ -615,7 +646,7 @@
 "location_services_disabled_on_device_2" = "2. Select Privacy";
 "location_services_disabled_on_device_3" = "3. Select Location Services";
 "location_services_disabled_on_device_4" = "4. Turn on Location Services";
-"location_services_disabled_on_device_additional_message" = "Or continue using Organic Maps without Location";
+"location_services_disabled_on_device_additional_message" = "Or continue using CoMaps without Location";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +668,6 @@
 "day" = "d";
 "placepage_more_button" = "Aktar";
 "book_button" = "Book";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Ritratti, reċensjonijiet, ibbukkjar";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Ir-referral bonus li wieħed jirċievi għal kull booking permezz ta’ din il-link imur għall-iżvilupp ta’ Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Dettalji dwar Kayak";
 "placepage_call_button" = "Call";
 "placepage_edit_bookmark_button" = "Editja l-Bookmark";
 "placepage_bookmark_name_hint" = "Bookmark Name";
@@ -681,7 +703,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Check out";
-"recent_track_background_dialog_message" = "Organic Maps uses your location in the background to record your recently travelled route.";
+"recent_track_background_dialog_message" = "CoMaps uses your location in the background to record your recently travelled route.";
 "general_settings" = "General settings";
 
 /* For the first routing */
@@ -725,6 +747,9 @@
 "planning_route_remove_title" = "Drag here to remove";
 "placepage_add_stop" = "Żid Waqfa";
 "start_from_my_position" = "Start from";
+
+/* Title for button when a route was saved. */
+"saved" = "Salvat";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
@@ -924,17 +949,8 @@
 /* edit track screen title */
 "track_title" = "Track";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Grazzi talli użajtu l-mapep tagħna mibnija mill-komunita’!";
@@ -967,10 +983,10 @@
 "app_tip_09" = "L-għan ewlieni tagħna huwa li nibnu mapep veloċi, iffukati fuq il-privatezza, u faċli biex jintużaw li se jinħabbu.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Issa qed tuża Organic Maps fuq l-iskrin tat-telefown";
+"car_used_on_the_phone_screen" = "Issa qed tuża CoMaps fuq l-iskrin tat-telefown";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Issa qed tuża Organic Maps fuq l-iskrin tal-karozza";
+"car_used_on_the_car_screen" = "Issa qed tuża CoMaps fuq l-iskrin tal-karozza";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Kompli fuq il-mowbajl";
@@ -995,7 +1011,10 @@
 "website_menu" = "Link tal-menu";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Would you like to send a bug report to the developers?\nWe rely on our users as Organic Maps doesn't collect any error information automatically. Thank you in advance for supporting Organic Maps!";
+"bugreport_alert_message" = "Would you like to send a bug report to the developers?\nWe rely on our users as CoMaps doesn't collect any error information automatically. Thank you in advance for supporting CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Enable iCloud Syncronization";
@@ -1069,3 +1088,9 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Il-Korsija hija vojta - xejn x’ tissejvja";
 "edit_track" = "Editja l-Korsija";
+"osm_profile_view_notes" = "Ara n-noti";
+"osm_profile_view_edit_history" = "Ara l-istorja tal-modifiki";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"osm_mapdata_explanation %@" = "Community-created map data as of *%@*. Learn more about how to edit and update the map at [OpenStreetMap.org](https://openstreetmap.org).";
+"pref_mapappearance_title" = "Map Appearance";

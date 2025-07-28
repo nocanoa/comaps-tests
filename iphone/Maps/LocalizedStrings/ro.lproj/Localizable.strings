@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Descărcarea a eșuat";
 
 /* Text in About screen */
-"about_headline" = "Gratuit pentru toată lumea, făcut cu dragoste";
+"about_proposition_1" = "Offline, rapid și ușor de utilizat";
 
 /* Text in About screen */
-"about_proposition_1" = "• Fără reclame, fără urmărire, fără colectare de date";
-
-/* Text in About screen */
-"about_proposition_2" = "• Nu consumă baterie, funcționează offline";
-
-/* Text in About screen */
-"about_proposition_3" = "• Rapid, minimalist, dezvoltat de comunitate";
+"about_proposition_2" = "Concentrat pe confidențialitate și fără reclame";
 "close" = "Închide";
 "download" = "Descarcă";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Pentru rulote";
-"share_bookmarks_email_body" = "Bună!\n\nȚi-am atașat locurile mele preferate din aplicația Organic Maps. Deschide-le dacă ai instalată Organic Maps. Dacă nu, o poți descărca pentru iOS sau Android de aici: https://organicmaps.app/";
+"share_bookmarks_email_body" = "Bună!\n\nȚi-am atașat locurile mele preferate din aplicația CoMaps. Deschide-le dacă ai instalată CoMaps. Dacă nu, o poți descărca pentru iOS sau Android de aici: https://www.comaps.app/";
 
 /* message title of loading file */
 "load_kmz_title" = "Se încarcă locurile preferate";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Poziția ta nu a fost stabilită încă";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Poți vedea locul meu preferat pe harta Organic Maps!";
+"bookmark_share_email_subject" = "Poți vedea locul meu preferat pe harta CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Poți vedea poziția mea pe harta Organic Maps!";
+"my_position_share_email_subject" = "Poți vedea poziția mea pe harta CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-mail";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Copiați în clipboard";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Copiat în notițe: %@";
@@ -190,7 +187,9 @@
 "done" = "Gata";
 
 /* Prints version number in About dialog */
-"version" = "Versiunea Organic Maps: %@";
+"version" = "Versiunea CoMaps: %@";
+"version %@ (%@)" = "Versiunea %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versiunea: %@ (%@)\nDate cartografice: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Trasee";
@@ -200,6 +199,7 @@
 "share_my_location" = "Trimite poziția mea";
 "prefs_group_route" = "Navigare";
 "pref_zoom_title" = "Butoane zoom";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Aspect";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Întunecat";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Oprit";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Clădirile 3D sunt oprite în modul de economisire a energiei";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Instrucțiuni vocale";
+"pref_tts_title" = "Instrucțiuni vocale";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Anunțați numele străzilor";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Site web";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Știri";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-Mail";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Imagine Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Evaluează aplicația";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Donează";
-
-/* Tex label above the Donate button */
-"donate_description" = "Donează pentru a construi împreună cele mai bune hărți!";
-"already_donated" = "Deja donat";
-"remind_me_later" = "Amintește mai târziu";
-"support_organic_maps" = "Susține Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Drepturi de autor";
@@ -298,7 +322,7 @@
 "volunteer" = "Pentru a fi voluntar";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Urmăriți-ne și contactați-ne:";
+"follow_us" = "Urmăriți-ne și contactați-ne";
 
 /* Alert text */
 "email_error_body" = "Aplicația de email nu a fost stabilită. Stabilește-o sau utilizează alt mod de a ne contacta la %@.";
@@ -510,15 +534,27 @@
 "closes_in" = "Închide în %@";
 "closed" = "Închis";
 "add_opening_hours" = "Adaugă orele de funcționare";
-"no_osm_account" = "Nu ai un cont OpenStreetMap?";
-"register_at_openstreetmap" = "Înscrie-te";
-"password_8_chars_min" = "Parola (minim 8 caractere)";
-"invalid_username_or_password" = "Nume de utilizator sau parolă incorecte.";
-"login" = "Autentificare";
-"login_osm" = "Conectați-vă la OpenStreetMap";
-"forgot_password" = "Ai uitat parola?";
-"osm_account" = "Cont OSM";
-"logout" = "Deconectare";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Datele hărții de la OpenStreetMap";
+"osm_mapdata_explanation %@" = "Date cartografice create de comunitate la data de *%@*. Aflați mai multe despre cum să editați și să actualizați harta la [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Mai multe despre OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Profil OpenStreetMap";
+"osm_profile_promt" = "Creați un cont OpenStreetMap sau conectați-vă pentru a vă publica edițiile de hartă în întreaga lume.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) este un proiect comunitar pentru construirea unei hărți libere și deschise. Este principala sursă de date cartografice în CoMaps și funcționează similar cu Wikipedia. Puteți adăuga sau edita locuri, iar acestea devin disponibile pentru milioane de utilizatori din întreaga lume. \nAlăturați-vă comunității și ajutați la crearea unei hărți mai bune pentru toată lumea!";
+"osm_profile_login" = "Conectează-te la contul OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Contul OpenStreetMap a fost deconectat de la această aplicație";
+"osm_profile_reauthorize" = "Reconectează-te cu OpenStreetMap";
+"osm_profile_remove_promt" = "Dacă nu puteți sau nu doriți să vă reconectați contul, îl puteți elimina din această aplicație";
+"osm_profile_remove" = "Elimină contul OpenStreetMap";
+"osm_profile_register_promt" = "Nu ai un cont OpenStreetMap?";
+"osm_profile_register" = "Înregistrați-vă la OpenStreetMap";
+"osm_profile_verfied_changes" = "Modificări confirmate";
+"osm_profile_logout" = "Deconectează-te de la contul OpenStreetMap";
+"osm_profile_delete" = "Șterge contul OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Ultima încărcare";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Schimbă poziția";
 "message_invalid_feature_position" = "Niciun obiect nu poate fi poziționat aici";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Date OpenStreetMap create de comunitate la data de %@. Aflați mai multe despre cum să editați și să actualizați harta la OpenStreetMap.org";
-"login_to_make_edits_visible" = "Creați un cont OpenStreetMap sau conectați-vă pentru a vă publica edițiile de hartă în întreaga lume.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Ai nevoie de mai mult spațiu pentru a descărca. Șterge datele care nu sunt necesare.";
-"editor_sharing_title" = "Am îmbunătățit hărțile Organic Maps";
+"editor_sharing_title" = "Am îmbunătățit hărțile CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d din %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Notă pentru voluntarii OpenStreetMap (opțional)";
 "editor_detailed_description_hint" = "Comentariu detaliat";
-"editor_detailed_description" = "Modificările aduse hărții, sugerate de tine, vor fi trimise comunității OpenStreetMap. Descrie orice detalii suplimentare care nu pot fi modificate în Organic Maps.";
+"editor_detailed_description" = "Modificările aduse hărții, sugerate de tine, vor fi trimise comunității OpenStreetMap. Descrie orice detalii suplimentare care nu pot fi modificate în CoMaps.";
 "editor_more_about_osm" = "Mai multe despre OpenStreetMap";
 "editor_operator" = "Operator";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operator: %@";
 "editor_category_unsuitable_title" = "Nu găsiți o categorie potrivită?";
-"editor_category_unsuitable_text" = "Organic Maps permite adăugarea doar a unor categorii de puncte simple, ceea ce înseamnă că nu există orașe, drumuri, lacuri, contururi de clădiri, etc. Vă rugăm să adăugați astfel de categorii direct la <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Consultați <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">ghidul nostru</a> pentru instrucțiuni detaliate pas cu pas.";
+"editor_category_unsuitable_text" = "CoMaps permite adăugarea doar a unor categorii de puncte simple, ceea ce înseamnă că nu există orașe, drumuri, lacuri, contururi de clădiri, etc. Vă rugăm să adăugați astfel de categorii direct la <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Consultați <a href=\"https://www.comaps.app/support/advanced-map-editing/\">ghidul nostru</a> pentru instrucțiuni detaliate pas cu pas.";
 "downloader_no_downloaded_maps_title" = "Nu ai descărcat nicio hartă";
 "downloader_no_downloaded_maps_message" = "Descarcă hărți pentru a căuta un loc și a naviga fără conectare la internet.";
 "current_location_unknown_error_title" = "Poziția actuală este necunoscută.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Selectează Intimitate și securitate";
 "location_services_disabled_on_device_3" = "3. Selectează Servicii de localizare";
 "location_services_disabled_on_device_4" = "4. Activează Servicii de localizare";
-"location_services_disabled_on_device_additional_message" = "Sau continuă să folosești Organic Maps fără Locație";
+"location_services_disabled_on_device_additional_message" = "Sau continuă să folosești CoMaps fără Locație";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +669,6 @@
 "day" = "z";
 "placepage_more_button" = "Mai mult";
 "book_button" = "Rezervare";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Fotografii, comentarii, rezervări";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Bonusul de recomandare primit pentru fiecare rezervare prin acest link este destinat dezvoltării Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Detalii pe Kayak";
 "placepage_call_button" = "Apelează";
 "placepage_edit_bookmark_button" = "Modifică locul preferat";
 "placepage_bookmark_name_hint" = "Numele locului preferat";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Verifică";
-"recent_track_background_dialog_message" = "Organic Maps folosește poziția ta geografică pentru a înregistra cel mai recent traseu urmat.";
+"recent_track_background_dialog_message" = "CoMaps folosește poziția ta geografică pentru a înregistra cel mai recent traseu urmat.";
 "general_settings" = "Opțiuni generale";
 
 /* For the first routing */
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "Trage aici pentru a elimina";
 "placepage_add_stop" = "Adaugă oprire";
 "start_from_my_position" = "Pornește de la";
+
+/* Title for button when a route was saved. */
+"saved" = "Salvat";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Vă rugăm să vă conectați la OpenStreetMap pentru a încărca automat toate modificările aduse hărții. Aflați mai multe";
@@ -845,7 +871,7 @@
 "ok" = "Bine";
 "speedcams_alert_title_carplay_1" = "Radare";
 "speedcams_alert_title_carplay_2" = "Info radare";
-"download_map_carplay" = "Descarcă hărțile în aplicația Organic Maps din dispozitivul tău";
+"download_map_carplay" = "Descarcă hărțile în aplicația CoMaps din dispozitivul tău";
 "carplay_roundabout_exit" = "%@ ieșire";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Traseu";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Vă mulțumim că utilizați hărțile create de comunitatea noastră!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "Scopul nostru principal este să construim hărți rapide, axate pe confidențialitate și ușor de utilizat, care să vă placă.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Acum utilizați Organic Maps pe ecranul telefonului";
+"car_used_on_the_phone_screen" = "Acum utilizați CoMaps pe ecranul telefonului";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Acum utilizați Organic Maps pe ecranul mașinii";
+"car_used_on_the_car_screen" = "Acum utilizați CoMaps pe ecranul mașinii";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Continuați în telefon";
@@ -995,7 +1012,10 @@
 "website_menu" = "Legătura de meniu";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Doriți să trimiteți un raport de eroare dezvoltatorilor?\nNe bazăm pe utilizatorii noștri, deoarece Organic Maps nu colectează automat nicio informație privind erorile. Vă mulțumim anticipat pentru susținerea Organic Maps!";
+"bugreport_alert_message" = "Doriți să trimiteți un raport de eroare dezvoltatorilor?\nNe bazăm pe utilizatorii noștri, deoarece CoMaps nu colectează automat nicio informație privind erorile. Vă mulțumim anticipat pentru susținerea CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Activați Sincronizarea iCloud";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Traseul este gol - nu este nimic de salvat";
 "edit_track" = "Editează traseul";
+"osm_profile_view_edit_history" = "Vizualizați istoricul modificărilor";
+"osm_profile_view_notes" = "Vizualizați notițe";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

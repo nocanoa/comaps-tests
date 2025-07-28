@@ -1,6 +1,6 @@
 protocol BottomTabBarInteractorProtocol: AnyObject {
   func openSearch()
-  func openHelp()
+  func openLeftButton()
   func openFaq()
   func openBookmarks()
   func openMenu()
@@ -26,16 +26,37 @@ extension BottomTabBarInteractor: BottomTabBarInteractorProtocol {
     searchManager.isSearching ? searchManager.close() : searchManager.startSearching(isRouting: false)
   }
   
-  func openHelp() {
-    MapViewController.shared()?.navigationController?.pushViewController(AboutController(), animated: true)
+  func openLeftButton() {
+    switch Settings.leftButtonType {
+      case .addPlace:
+        if let delegate = controlsManager as? BottomMenuDelegate {
+          delegate.addPlace()
+        }
+      case .settings:
+        mapViewController?.openSettings()
+      case .recordTrack:
+        let mapViewController = MapViewController.shared()!
+        let trackRecorder: TrackRecordingManager = .shared
+        switch trackRecorder.recordingState {
+        case .active:
+          mapViewController.showTrackRecordingPlacePage()
+        case .inactive:
+          trackRecorder.start { result in
+            switch result {
+            case .success:
+              mapViewController.showTrackRecordingPlacePage()
+            case .failure:
+              break
+            }
+          }
+        }
+      default:
+        mapViewController?.openAbout()
+    }
   }
   
   func openFaq() {
-    guard let navigationController = MapViewController.shared()?.navigationController else { return }
-    let aboutController = AboutController(onDidAppearCompletionHandler: {
-      navigationController.pushViewController(FaqController(), animated: true)
-    })
-    navigationController.pushViewController(aboutController, animated: true)
+      mapViewController?.openAbout()
   }
   
   func openBookmarks() {

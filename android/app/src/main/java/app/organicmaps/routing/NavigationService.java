@@ -13,6 +13,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -27,12 +28,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
 
 import app.organicmaps.Framework;
 import app.organicmaps.MwmActivity;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
+import app.organicmaps.sdk.routing.RoutingInfo;
 import app.organicmaps.sound.MediaPlayerWrapper;
 import app.organicmaps.location.LocationHelper;
 import app.organicmaps.location.LocationListener;
@@ -152,7 +155,7 @@ public class NavigationService extends Service implements LocationListener
         .setOngoing(true)
         .setShowWhen(false)
         .setOnlyAlertOnce(true)
-        .setSmallIcon(R.drawable.ic_splash)
+        .setSmallIcon(R.drawable.ic_logo_small)
         .setContentIntent(pendingIntent)
         .addAction(0, context.getString(R.string.navigation_stop_button), exitPendingIntent)
         .setColorized(isColorizedSupported())
@@ -201,7 +204,7 @@ public class NavigationService extends Service implements LocationListener
       return START_NOT_STICKY;
     }
 
-    if (!MwmApplication.from(this).arePlatformAndCoreInitialized())
+    if (!MwmApplication.from(this).getOrganicMaps().arePlatformAndCoreInitialized())
     {
       // The system restarts the service if the app's process has crashed or been stopped. It would be nice to
       // automatically restore the last route and resume navigation. Unfortunately, the current implementation of
@@ -223,20 +226,25 @@ public class NavigationService extends Service implements LocationListener
       return START_NOT_STICKY; // The service will be stopped by stopSelf().
     }
 
-    Logger.i(TAG, "Starting foreground");
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+    Logger.i(TAG, "Starting Navigation Foreground service");
+
+    try
     {
-      try
-      {
-        startForeground(NavigationService.NOTIFICATION_ID, getNotificationBuilder(this).build());
-      } catch (ForegroundServiceStartNotAllowedException e)
-      {
-        Logger.e(TAG, "Oops! ForegroundService is not allowed", e);
-      }
+      int type = 0;
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        type = ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION;
+      ServiceCompat.startForeground(this, NavigationService.NOTIFICATION_ID, getNotificationBuilder(this).build(), type);
     }
-    else
+    catch (Exception e)
     {
-      startForeground(NavigationService.NOTIFICATION_ID, getNotificationBuilder(this).build());
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+          e instanceof ForegroundServiceStartNotAllowedException)
+      {
+        // App not in a valid state to start foreground service (e.g started from bg)
+        Logger.e(TAG, "Not in a valid state to start foreground service", e);
+      }
+      else
+        Logger.e(TAG, "Failed to promote the service to foreground", e);
     }
 
     final LocationHelper locationHelper = LocationHelper.from(this);

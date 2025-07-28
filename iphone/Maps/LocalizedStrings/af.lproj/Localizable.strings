@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Aflaai het misluk";
 
 /* Text in About screen */
-"about_headline" = "Gratis vir almal, gemaak met liefde";
+"about_proposition_1" = "Vanlyn, vinnig en maklik om te gebruik";
 
 /* Text in About screen */
-"about_proposition_1" = "• Geen advertensies, geen nasporing, geen dataversameling";
-
-/* Text in About screen */
-"about_proposition_2" = "• Geen battery dreineer, werk vanlyn";
-
-/* Text in About screen */
-"about_proposition_3" = "• Vinnig, minimalisties, ontwikkel deur die gemeenskap";
+"about_proposition_2" = "Privaatheidsgerig en advertensievry";
 "close" = "Sluit";
 "download" = "Laai af";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Karavaanfasiliteite";
-"share_bookmarks_email_body" = "Hallo!\n\nMy boekmerke is aangeheg; open dit asb. in Organic Maps. Indien dit nie geïnstalleer is nie, kan u dit hier aflaai: https://omaps.app/get?kmz\n\nGeniet dit om met Organic Maps te reis!";
+"share_bookmarks_email_body" = "Hallo!\n\nMy boekmerke is aangeheg; open dit asb. in CoMaps. Indien dit nie geïnstalleer is nie, kan u dit hier aflaai: https://www.comaps.app/download/\n\nGeniet dit om met CoMaps te reis!";
 
 /* message title of loading file */
 "load_kmz_title" = "Laai tans boekmerke";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "U ligging is nog nie vasgestel nie";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hallo, kyk my liggingmerker in Organic Maps!";
+"bookmark_share_email_subject" = "Hallo, kyk my liggingmerker in CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hallo, sien my huidige ligging op die Organic Maps-toep!";
+"my_position_share_email_subject" = "Hallo, sien my huidige ligging op die CoMaps-toep!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-pos";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Kopieer na knipbord";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Na knipbord gekopieer: %@";
@@ -190,7 +187,9 @@
 "done" = "Gereed";
 
 /* Prints version number in About dialog */
-"version" = "Organic Maps weergawe: %@";
+"version" = "CoMaps weergawe: %@";
+"version %@ (%@)" = "Weergawe %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Weergawe: %@ (%@)\nKaartdata: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Paaie";
@@ -200,6 +199,7 @@
 "share_my_location" = "Deel my ligging";
 "prefs_group_route" = "Navigasie";
 "pref_zoom_title" = "Zoemknoppe";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Appearance";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Dark";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Off";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D-geboue is gedeaktiveer in batterybesparingsmodus";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Steminstruksies";
+"pref_tts_title" = "Steminstruksies";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Announce Street Names";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Webwerf";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Nuus";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-pos";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax-prent";
+
 /* Text in menu */
 "rate_the_app" = "Gradeer die toep";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Skenk";
-
-/* Tex label above the Donate button */
-"donate_description" = "Skenk om saam die beste kaarte te bou!";
-"already_donated" = "Reeds geskenk";
-"remind_me_later" = "Herinner later";
-"support_organic_maps" = "Ondersteun Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Kopiereg";
@@ -298,7 +322,7 @@
 "volunteer" = "Om vrywillig te wees";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Volg en kontak ons:";
+"follow_us" = "Volg en kontak ons";
 
 /* Alert text */
 "email_error_body" = "Die e-posleser is nie opgestel nie. Stel dit asb. op of kontak ons by %@";
@@ -510,15 +534,26 @@
 "closes_in" = "Sluit oor %@";
 "closed" = "Gesluit";
 "add_opening_hours" = "Voeg besigheidsure toe";
-"no_osm_account" = "Het u nie ’n OpenStreetMap-rekening nie?";
-"register_at_openstreetmap" = "Registreer by OpenStreetMap";
-"password_8_chars_min" = "Wagwoord (ten minste 8 karakters)";
-"invalid_username_or_password" = "Ongeldige gebruikersnaam of wagwoord.";
-"login" = "OpenStreetMap-aantekening";
-"login_osm" = "Teken aan op OpenStreetMap";
-"forgot_password" = "Het u u wagwoord vergeet?";
-"osm_account" = "OSM-rekening";
-"logout" = "Teken af";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Kaartdata van OpenStreetMap";
+"osm_mapdata_explanation %@" = "Gemeenskap-geskepte kaartdata vanaf *%@*. Kom meer te wete oor hoe om die kaart te redigeer en op te dateer by [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Meer oor OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMap-profiel";
+"osm_profile_promt" = "Skep 'n OpenStreetMap-rekening of meld aan om jou kaartwysigings aan die wêreld te publiseer.";
+"osm_profile_login" = "Meld aan by OpenStreetMap-rekening";
+"osm_profile_reauthorize_promt" = "Die OpenStreetMap-rekening is van hierdie toepassing ontkoppel";
+"osm_profile_reauthorize" = "Verbind weer met OpenStreetMap";
+"osm_profile_remove_promt" = "As jy nie jou rekening kan of wil herkoppel nie, kan jy dit bloot van hierdie toepassing verwyder";
+"osm_profile_remove" = "Verwyder OpenStreetMap-rekening";
+"osm_profile_register_promt" = "Het u nie ’n OpenStreetMap-rekening nie?";
+"osm_profile_register" = "Registreer by OpenStreetMap";
+"osm_profile_verfied_changes" = "Bevestigde veranderinge";
+"osm_profile_logout" = "Meld af van OpenStreetMap-rekening";
+"osm_profile_delete" = "Vee OpenStreetMap-rekening uit";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Laaste oplaai";
@@ -567,13 +602,9 @@
 "dialog_incorrect_feature_position" = "Verander ligging";
 "message_invalid_feature_position" = "Geen voorwerp kan hier geplaas word nie";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Gemeenskap-geskepte OpenStreetMap-data vanaf %@. Kom meer te wete oor hoe om die kaart te redigeer en op te dateer by OpenStreetMap.org";
-"login_to_make_edits_visible" = "Skep 'n OpenStreetMap-rekening of meld aan om jou kaartwysigings aan die wêreld te publiseer.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "U benodig meer spasie om af te laai. Skrap asb. enige onnodige data.";
-"editor_sharing_title" = "Ek het Organic Maps verbeter";
+"editor_sharing_title" = "Ek het CoMaps verbeter";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d van %2$d";
@@ -593,14 +624,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Nota aan OpenStreetMap-vrywilligers (opsioneel)";
 "editor_detailed_description_hint" = "Gedetailleerde kommentaar";
-"editor_detailed_description" = "U het kaartveranderinge voorgestel wat na die OpenStreetMap-gemeenskap gestuur sal word. Beskryf asb. enige bykomende detail wat nie in Organic Maps gewysig kan word nie.";
+"editor_detailed_description" = "U het kaartveranderinge voorgestel wat na die OpenStreetMap-gemeenskap gestuur sal word. Beskryf asb. enige bykomende detail wat nie in CoMaps gewysig kan word nie.";
 "editor_more_about_osm" = "Meer oor OpenStreetMap";
 "editor_operator" = "Operateur";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operateur: %@";
 "editor_category_unsuitable_title" = "Kan u nie 'n geskikte kategorie vind nie?";
-"editor_category_unsuitable_text" = "Organiese kaarte laat toe om slegs eenvoudige puntkategorieë by te voeg, dit beteken geen dorpe, paaie, mere, gebouomlynings, ens. Voeg asseblief sulke kategorieë direk by <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Gaan ons <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">gids</a> na vir gedetailleerde stap-vir-stap-instruksies.";
+"editor_category_unsuitable_text" = "CoMaps laat toe om slegs eenvoudige puntkategorieë by te voeg, dit beteken geen dorpe, paaie, mere, gebouomlynings, ens. Voeg asseblief sulke kategorieë direk by <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Gaan ons <a href=\"https://www.comaps.app/support/advanced-map-editing/\">gids</a> na vir gedetailleerde stap-vir-stap-instruksies.";
 "downloader_no_downloaded_maps_title" = "U het geen kaarte afgelaai nie";
 "downloader_no_downloaded_maps_message" = "Laai kaarte af om die ligging te soek en vanlyn te navigeer.";
 "current_location_unknown_error_title" = "Huidige ligging is onbekend.";
@@ -615,7 +646,7 @@
 "location_services_disabled_on_device_2" = "2. Kies Privaatheid";
 "location_services_disabled_on_device_3" = "3. Kies Liggingdienste";
 "location_services_disabled_on_device_4" = "4. Skakel Liggingdienste aan";
-"location_services_disabled_on_device_additional_message" = "Of gaan voort om Organic Maps sonder ligging te gebruik";
+"location_services_disabled_on_device_additional_message" = "Of gaan voort om CoMaps sonder ligging te gebruik";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +668,6 @@
 "day" = "d";
 "placepage_more_button" = "Meer";
 "book_button" = "Bespreek";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Photos, reviews, booking";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "The referral bonus received for each booking through this link goes towards the development of Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Details on Kayak";
 "placepage_call_button" = "Bel";
 "placepage_edit_bookmark_button" = "Wysig boekmerk";
 "placepage_bookmark_name_hint" = "Boekmerknaam";
@@ -672,7 +694,7 @@
 
 /* Dialog before publishing the modifications to the public map. */
 "editor_share_to_all_dialog_message_1" = "Maak seker u het geen privaat of persoonlike data ingevoer nie.";
-"editor_share_to_all_dialog_message_2" = "OpenStraatMap-redigeerders sal die verandeirnge nagaan en u kontak indien hulle vrae het.";
+"editor_share_to_all_dialog_message_2" = "OpenStreetMap-redigeerders sal die verandeirnge nagaan en u kontak indien hulle vrae het.";
 "navigation_stop_button" = "Stop";
 
 /* iOS dialog for the case when recent track recording is on and the app comes back from background */
@@ -681,7 +703,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Bekyk";
-"recent_track_background_dialog_message" = "Organic Maps gebruik u ligging in die agtergrond om u onlangs berese roete op te neem.";
+"recent_track_background_dialog_message" = "CoMaps gebruik u ligging in die agtergrond om u onlangs berese roete op te neem.";
 "general_settings" = "Algemene instellings";
 
 /* For the first routing */
@@ -725,6 +747,9 @@
 "planning_route_remove_title" = "Sleep hier om te verwyder";
 "placepage_add_stop" = "Voeg tussenstop toe";
 "start_from_my_position" = "Begin vanaf";
+
+/* Title for button when a route was saved. */
+"saved" = "Gestoor";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Meld asseblief aan by OpenStreetMap om al jou kaartwysigings outomaties op te laai. Kom meer te wete";
@@ -924,17 +949,8 @@
 /* edit track screen title */
 "track_title" = "Trajek";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Thank you for using our community-built maps!";
@@ -967,10 +983,10 @@
 "app_tip_09" = "Our main goal is to build fast, privacy-focused, easy-to-use maps that you will love.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "You are now using Organic Maps on the phone screen";
+"car_used_on_the_phone_screen" = "You are now using CoMaps on the phone screen";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "You are now using Organic Maps on the car screen";
+"car_used_on_the_car_screen" = "You are now using CoMaps on the car screen";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Continue on the phone";
@@ -995,7 +1011,10 @@
 "website_menu" = "Kieslys skakel";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Wil jy 'n foutverslag aan die ontwikkelaars stuur?\nOns maak staat op ons gebruikers aangesien Organic Maps nie outomaties enige foutinligting insamel nie. By voorbaat dankie vir die ondersteuning van Organic Maps!";
+"bugreport_alert_message" = "Wil jy 'n foutverslag aan die ontwikkelaars stuur?\nOns maak staat op ons gebruikers aangesien CoMaps nie outomaties enige foutinligting insamel nie. By voorbaat dankie vir die ondersteuning van CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Aktiveer iCloud-sinchronisasie";
@@ -1069,3 +1088,9 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Roete is leeg - niks om te red nie";
 "edit_track" = "Wysig Roete";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) is 'n gemeenskapsprojek om 'n gratis en oop kaart te bou. Dit is die hoofbron van kaartdata in CoMaps en werk soortgelyk aan Wikipedia. Jy kan plekke byvoeg of wysig en hulle word beskikbaar vir miljoene gebruikers regoor die wêreld. \nSluit aan by die gemeenskap en help om 'n beter kaart vir almal te maak!";
+"osm_profile_view_notes" = "Bekyk notas";
+"osm_profile_view_edit_history" = "Bekyk wysigingsgeskiedenis";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

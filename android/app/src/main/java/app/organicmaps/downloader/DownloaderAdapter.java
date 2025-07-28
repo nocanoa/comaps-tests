@@ -11,7 +11,6 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -28,6 +27,7 @@ import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetFragment;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetItem;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -362,10 +362,10 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
   private class ItemViewHolder extends BaseInnerViewHolder<CountryItem>
   {
     private final DownloaderStatusIcon mStatusIcon;
-    private final TextView mName;
-    private final TextView mSubtitle;
-    private final TextView mFoundName;
-    private final TextView mSize;
+    private final MaterialTextView mName;
+    private final MaterialTextView mSubtitle;
+    private final MaterialTextView mFoundName;
+    private final MaterialTextView mSize;
 
     private void processClick(boolean clickOnStatus)
     {
@@ -380,10 +380,7 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
           else
             processLongClick();
         }
-        case CountryItem.STATUS_FAILED ->
-        {
-          MapManager.warn3gAndRetry(mActivity, mItem.id, null);
-        }
+        case CountryItem.STATUS_FAILED -> MapManager.warn3gAndRetry(mActivity, mItem.id, null);
         case CountryItem.STATUS_UPDATABLE ->
             MapManager.warnOn3gUpdate(mActivity, mItem.id, () -> MapManager.startUpdate(mItem.id));
         default -> throw new IllegalArgumentException("Inappropriate item status: " + mItem.status);
@@ -483,6 +480,13 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
 
       UiUtils.showIf(mSearchResultsMode && !TextUtils.isEmpty(found), mFoundName);
 
+      long size = getMapDisplaySize();
+      mSize.setText(StringUtils.getFileSizeString(mFragment.requireContext(), size));
+      mStatusIcon.update(mItem);
+    }
+
+    private long getMapDisplaySize()
+    {
       long size;
       if (mItem.status == CountryItem.STATUS_ENQUEUED ||
           mItem.status == CountryItem.STATUS_PROGRESS ||
@@ -490,20 +494,23 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
       {
         size = mItem.enqueuedSize;
       }
+      else if (mItem.status == CountryItem.STATUS_FAILED ||
+          mItem.status == CountryItem.STATUS_DOWNLOADABLE)
+      {
+        size = mItem.totalSize;
+      }
       else
       {
         size = ((!mSearchResultsMode && mMyMapsMode) ? mItem.size : mItem.totalSize);
       }
-
-      mSize.setText(StringUtils.getFileSizeString(mFragment.requireContext(), size));
-      mStatusIcon.update(mItem);
+      return size;
     }
   }
 
   static class HeaderViewHolder extends BaseInnerViewHolder<String>
   {
     @NonNull
-    private final TextView mTitle;
+    private final MaterialTextView mTitle;
 
     HeaderViewHolder(@NonNull View frame)
     {

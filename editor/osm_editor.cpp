@@ -38,7 +38,7 @@ using std::make_shared, std::string;
 
 namespace
 {
-constexpr char const * kXmlRootNode = "omaps";
+constexpr char const * kXmlRootNode = "comaps";
 constexpr char const * kXmlMwmNode = "mwm";
 constexpr char const * kDeleteSection = "delete";
 constexpr char const * kModifySection = "modify";
@@ -168,9 +168,6 @@ void Editor::LoadEdits()
   auto loadedFeatures = make_shared<FeaturesContainer>();
 
   auto rootNode = doc.child(kXmlRootNode);
-  // Migrate clients with an old root node.
-  if (!rootNode)
-    rootNode = doc.child("mapsme");
   // TODO: Empty rootNode is an OK case for the current logic and unit tests. Check if there is a better way to do it.
   for (auto const & mwm : rootNode.children(kXmlMwmNode))
   {
@@ -1147,7 +1144,7 @@ void Editor::CreateNote(ms::LatLon const & latLon, FeatureID const & fid,
   {
   case NoteProblemType::PlaceDoesNotExist:
   {
-    sstr << "The place has gone or never existed. A user of Organic Maps application has reported "
+    sstr << "The place has gone or never existed. A CoMaps user reported "
             "that the POI was visible on the map (see snapshot date below), but was not found "
             "on the ground.\n";
     auto const features = m_features.Get();

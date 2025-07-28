@@ -1,8 +1,10 @@
-• New OpenStreetMap data as of February 27
-• Ability to manually arrange intermediate route points
-• Share a single selected track from the list
-• Improved routing for bicycles
-• Display a system notification when downloading maps and don't interrupt background downloads
-• Added a Track Recording indicator on the main screen
+Introducing CoMaps logo!
 
-…more details at omaps.org/news
+• upgrade altitude contour lines for many regions to 20 or 50 meters step
+• add Panoramax Picture links to selected POIs
+• OpenStreetMap data as of July 13
+• add color fills to many features and display fills earlier for existing features
+• display opening hours state when selecting a POI
+• split all wetlands into several distinct types
+• update vegetation and other map colors, update some map icons
+• outdoors: bolder altitude contour lines

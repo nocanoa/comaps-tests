@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bX8-ZQ-XDA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bX8-ZQ-XDA">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,8 +13,8 @@
         <!--Place Page View Controller-->
         <scene sceneID="6YW-kA-w2N">
             <objects>
-                <viewController id="bX8-ZQ-XDA" customClass="PlacePageViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WOB-EV-vjA" customClass="TouchTransparentView" customModule="Organic_Maps" customModuleProvider="target">
+                <viewController id="bX8-ZQ-XDA" customClass="PlacePageViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WOB-EV-vjA" customClass="TouchTransparentView" customModule="CoMaps" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -25,7 +25,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="PPBackgroundView"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ0-97-CDh" customClass="PlacePageScrollView" customModule="Organic_Maps" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ0-97-CDh" customClass="PlacePageScrollView" customModule="CoMaps" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="bsv-S8-EiF">
@@ -114,7 +114,7 @@
         <!--Place Page Preview View Controller-->
         <scene sceneID="3hX-xL-LxX">
             <objects>
-                <viewController storyboardIdentifier="PlacePagePreviewViewController" id="76G-o4-sUY" customClass="PlacePagePreviewViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlacePagePreviewViewController" id="76G-o4-sUY" customClass="PlacePagePreviewViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1x8-x0-W3C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,18 +176,15 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="regular14:blackSecondaryText"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <view hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jaa-Yj-XQR" customClass="PlacePageDirectionView" customModule="Organic_Maps" customModuleProvider="target">
+                                            <view hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jaa-Yj-XQR" customClass="PlacePageDirectionView" customModule="CoMaps" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="50"/>
                                                 <subviews>
-                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_direction_light" translatesAutoresizingMaskIntoConstraints="NO" id="4kK-Rj-36V">
+                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Place Page/Direction Indicator" translatesAutoresizingMaskIntoConstraints="NO" id="4kK-Rj-36V">
                                                         <rect key="frame" x="0.0" y="16" width="18" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="Qm8-G4-Oet"/>
                                                             <constraint firstAttribute="width" constant="18" id="tvq-rS-gWf"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="mwm_name" value="img_direction"/>
-                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="300 m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-Ik-tcS" userLabel="Distance">
                                                         <rect key="frame" x="20" y="0.0" width="49.5" height="50"/>
@@ -242,18 +239,15 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="regular14:blackPrimaryText"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <view hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="y54-Rh-kGm" customClass="PlacePageDirectionView" customModule="Organic_Maps" customModuleProvider="target">
+                                            <view hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="y54-Rh-kGm" customClass="PlacePageDirectionView" customModule="CoMaps" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="50"/>
                                                 <subviews>
-                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_direction_light" translatesAutoresizingMaskIntoConstraints="NO" id="cGR-t8-OJR">
+                                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Place Page/Direction Indicator" translatesAutoresizingMaskIntoConstraints="NO" id="cGR-t8-OJR">
                                                         <rect key="frame" x="0.0" y="16" width="18" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="18" id="GK9-CU-jlz"/>
                                                             <constraint firstAttribute="height" constant="18" id="haG-OJ-lWB"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="mwm_name" value="img_direction"/>
-                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="300 m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5Y-rz-Slv" userLabel="Distance">
                                                         <rect key="frame" x="20" y="0.0" width="49.5" height="50"/>
@@ -330,7 +324,7 @@
         <!--Wiki Description View Controller-->
         <scene sceneID="xL3-C9-3Pb">
             <objects>
-                <viewController storyboardIdentifier="WikiDescriptionViewController" id="WSQ-QR-4WY" customClass="WikiDescriptionViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WikiDescriptionViewController" id="WSQ-QR-4WY" customClass="WikiDescriptionViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="99j-36-7TK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,7 +385,7 @@
         <!--Place Page Info View Controller-->
         <scene sceneID="qdz-ee-nO9">
             <objects>
-                <viewController storyboardIdentifier="PlacePageInfoViewController" id="Ey0-wy-VrR" customClass="PlacePageInfoViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlacePageInfoViewController" id="Ey0-wy-VrR" customClass="PlacePageInfoViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uyH-Qn-86F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,7 +419,7 @@
         <!--Action Bar View Controller-->
         <scene sceneID="MOc-50-GOI">
             <objects>
-                <viewController storyboardIdentifier="ActionBarViewController" id="idq-Vs-dIh" customClass="ActionBarViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActionBarViewController" id="idq-Vs-dIh" customClass="ActionBarViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Odt-s0-pOf" customClass="SolidTouchView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -458,7 +452,7 @@
         <!--Place Page Buttons View Controller-->
         <scene sceneID="ogi-1N-syw">
             <objects>
-                <viewController storyboardIdentifier="PlacePageButtonsViewController" id="4Am-Sa-65S" customClass="PlacePageButtonsViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlacePageButtonsViewController" id="4Am-Sa-65S" customClass="PlacePageButtonsViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uEh-Ml-VWK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -521,84 +515,10 @@
             </objects>
             <point key="canvasLocation" x="929" y="655"/>
         </scene>
-        <!--Info Item View Controller-->
-        <scene sceneID="f7X-K7-lgf">
-            <objects>
-                <viewController storyboardIdentifier="InfoItemViewController" id="cJQ-4x-NFc" customClass="InfoItemViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oz0-2o-icQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-fA-r9c">
-                                <rect key="frame" x="0.0" y="0.0" width="367" height="44"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_operator" translatesAutoresizingMaskIntoConstraints="NO" id="l7d-ck-nSv">
-                                        <rect key="frame" x="0.0" y="8" width="56" height="28"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="dbx-It-HsN"/>
-                                            <constraint firstAttribute="width" constant="56" id="uhV-yT-jBd"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="coloring" value="MWMBlack"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eU-Fj-XRv" customClass="CopyLabel" customModule="Organic_Maps" customModuleProvider="target">
-                                        <rect key="frame" x="56" y="10" width="267" height="24"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="regular16:blackPrimaryText"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7B8-M6-Hae" userLabel="Accessory Button">
-                                        <rect key="frame" x="323" y="0.0" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="cKy-lg-gNZ"/>
-                                            <constraint firstAttribute="width" constant="44" id="g6o-VG-fZY"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Dzf-g4-a7d"/>
-                                    <constraint firstAttribute="bottom" secondItem="8eU-Fj-XRv" secondAttribute="bottom" constant="10" id="Oju-fx-VZb"/>
-                                    <constraint firstItem="8eU-Fj-XRv" firstAttribute="top" secondItem="LQd-fA-r9c" secondAttribute="top" constant="10" id="iCj-QI-o3i"/>
-                                    <constraint firstItem="l7d-ck-nSv" firstAttribute="centerY" secondItem="LQd-fA-r9c" secondAttribute="centerY" id="srg-qZ-iXx"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="xdh-hy-Bxo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LQd-fA-r9c" secondAttribute="trailing" constant="8" id="Foi-HR-gnE"/>
-                            <constraint firstItem="LQd-fA-r9c" firstAttribute="top" secondItem="oz0-2o-icQ" secondAttribute="top" id="K4k-Mo-mLZ"/>
-                            <constraint firstAttribute="bottom" secondItem="LQd-fA-r9c" secondAttribute="bottom" id="dC0-Xu-45b"/>
-                            <constraint firstItem="LQd-fA-r9c" firstAttribute="leading" secondItem="oz0-2o-icQ" secondAttribute="leading" id="ggJ-Q6-6Ir"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <size key="freeformSize" width="375" height="44"/>
-                    <connections>
-                        <outlet property="accessoryButton" destination="7B8-M6-Hae" id="Idt-3q-OmT"/>
-                        <outlet property="imageView" destination="l7d-ck-nSv" id="Llp-U6-qLx"/>
-                        <outlet property="infoLabel" destination="8eU-Fj-XRv" id="72o-pM-iKo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4nU-eg-9AS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1565.5999999999999" y="-315.74212893553226"/>
-        </scene>
         <!--Opening Hours View Controller-->
         <scene sceneID="txO-kw-ZRm">
             <objects>
-                <viewController storyboardIdentifier="OpeningHoursViewController" id="zV1-F6-GqX" customClass="OpeningHoursViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpeningHoursViewController" id="zV1-F6-GqX" customClass="OpeningHoursViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QE6-Lg-X0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -628,7 +548,7 @@
         <!--Opening Hours Today View Controller-->
         <scene sceneID="YRt-yX-ZY6">
             <objects>
-                <viewController storyboardIdentifier="OpeningHoursTodayViewController" id="0Mj-uY-vPG" customClass="OpeningHoursTodayViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpeningHoursTodayViewController" id="0Mj-uY-vPG" customClass="OpeningHoursTodayViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2IW-oU-HLV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -756,7 +676,7 @@
         <!--Catalog Single Item View Controller-->
         <scene sceneID="HJX-eR-h7W">
             <objects>
-                <viewController storyboardIdentifier="CatalogSingleItemViewController" id="Uqa-lN-kxa" customClass="CatalogSingleItemViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CatalogSingleItemViewController" id="Uqa-lN-kxa" customClass="CatalogSingleItemViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="8M2-fC-tzU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -985,7 +905,7 @@
         <!--Catalog Gallery View Controller-->
         <scene sceneID="2SQ-Cj-ThU">
             <objects>
-                <viewController storyboardIdentifier="CatalogGalleryViewController" id="JgS-R4-vTi" customClass="CatalogGalleryViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CatalogGalleryViewController" id="JgS-R4-vTi" customClass="CatalogGalleryViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="VPS-rm-qWf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1012,7 +932,7 @@
                                     <inset key="sectionInset" minX="8" minY="0.0" maxX="16" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscoveryGuideCell" id="IN7-Mv-bq7" customClass="CatalogPromoItemCell" customModule="Organic_Maps" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscoveryGuideCell" id="IN7-Mv-bq7" customClass="CatalogPromoItemCell" customModule="CoMaps" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.5" width="160" height="194"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1124,14 +1044,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vg-3k-GS4">
                                                     <rect key="frame" x="0.0" y="55" width="160" height="84"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-2J-LW2">
-                                                            <rect key="frame" x="52" y="0.0" width="56" height="56"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.forward.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-2J-LW2">
+                                                            <rect key="frame" x="52" y="0.5" width="56" height="55"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="56" id="NDQ-ud-eh3"/>
                                                                 <constraint firstAttribute="height" constant="56" id="qBt-XP-S5F"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="mwm_name" value="btn_float_more"/>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="coloring" value="MWMOther"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
@@ -1201,56 +1120,39 @@
         <!--Place Page Edit Bookmark Or Track View Controller-->
         <scene sceneID="clb-tD-Svo">
             <objects>
-                <viewController storyboardIdentifier="PlacePageEditBookmarkOrTrackViewController" id="cB4-oj-3Tv" customClass="PlacePageEditBookmarkOrTrackViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlacePageEditBookmarkOrTrackViewController" id="cB4-oj-3Tv" customClass="PlacePageEditBookmarkOrTrackViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bRD-Uv-Uak">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iB6-kj-Bi1">
-                                <rect key="frame" x="16" y="16" width="343" height="184"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5nz-eA-gNS" customClass="ExpandableLabel" customModule="Organic_Maps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="140"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wB7-XJ-Nck">
-                                        <rect key="frame" x="0.0" y="140" width="343" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XR5-Np-W07">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                                <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="9" maxY="0.0"/>
-                                                <state key="normal" title="Edit bookmark"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="FlatNormalTransButtonBig"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="onEdit:" destination="cB4-oj-3Tv" eventType="touchUpInside" id="1TN-b8-s90"/>
-                                                </connections>
-                                            </button>
-                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OUV-mg-G9u">
-                                                <rect key="frame" x="153.5" y="4" width="36" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="BVc-KM-8Hg"/>
-                                                    <constraint firstAttribute="width" constant="36" id="ngt-Z5-4pT"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wB7-XJ-Nck" userLabel="Edit View" customClass="InfoItemView" customModule="CoMaps" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="OUV-mg-G9u" firstAttribute="centerY" secondItem="wB7-XJ-Nck" secondAttribute="centerY" id="4vr-RY-Khl"/>
-                                            <constraint firstItem="XR5-Np-W07" firstAttribute="leading" secondItem="wB7-XJ-Nck" secondAttribute="leading" id="B2T-Yo-3vW"/>
                                             <constraint firstAttribute="height" constant="44" id="Dh1-Jl-owY"/>
-                                            <constraint firstAttribute="bottom" secondItem="XR5-Np-W07" secondAttribute="bottom" id="MeL-ju-0XR"/>
-                                            <constraint firstAttribute="trailing" secondItem="XR5-Np-W07" secondAttribute="trailing" id="WgB-Yd-xBS"/>
-                                            <constraint firstItem="XR5-Np-W07" firstAttribute="top" secondItem="wB7-XJ-Nck" secondAttribute="top" id="Wll-QX-ljL"/>
-                                            <constraint firstItem="OUV-mg-G9u" firstAttribute="centerX" secondItem="wB7-XJ-Nck" secondAttribute="centerX" id="wyh-oj-4AU"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
-                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GV-eD-5Hj" userLabel="Expandable Label Container">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="156"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5nz-eA-gNS" customClass="ExpandableLabel" customModule="CoMaps" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="8" width="343" height="140"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="5nz-eA-gNS" secondAttribute="bottom" constant="8" id="7cq-aw-oEp"/>
+                                            <constraint firstAttribute="trailing" secondItem="5nz-eA-gNS" secondAttribute="trailing" constant="16" id="8bV-Qg-RLL"/>
+                                            <constraint firstItem="5nz-eA-gNS" firstAttribute="top" secondItem="6GV-eD-5Hj" secondAttribute="top" constant="8" id="beB-db-IK0"/>
+                                            <constraint firstItem="5nz-eA-gNS" firstAttribute="leading" secondItem="6GV-eD-5Hj" secondAttribute="leading" constant="16" id="vKl-QO-4lm"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -1258,10 +1160,10 @@
                         <viewLayoutGuide key="safeArea" id="mWF-en-dQX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iB6-kj-Bi1" firstAttribute="top" secondItem="bRD-Uv-Uak" secondAttribute="top" constant="16" id="Afw-Mq-NV9"/>
+                            <constraint firstItem="iB6-kj-Bi1" firstAttribute="top" secondItem="bRD-Uv-Uak" secondAttribute="top" id="Afw-Mq-NV9"/>
                             <constraint firstAttribute="bottom" secondItem="iB6-kj-Bi1" secondAttribute="bottom" id="QQY-yn-M6D"/>
-                            <constraint firstItem="iB6-kj-Bi1" firstAttribute="leading" secondItem="bRD-Uv-Uak" secondAttribute="leading" constant="16" id="tLm-VN-6Uh"/>
-                            <constraint firstAttribute="trailing" secondItem="iB6-kj-Bi1" secondAttribute="trailing" constant="16" id="wOt-k9-l2q"/>
+                            <constraint firstItem="iB6-kj-Bi1" firstAttribute="leading" secondItem="bRD-Uv-Uak" secondAttribute="leading" id="tLm-VN-6Uh"/>
+                            <constraint firstAttribute="trailing" secondItem="iB6-kj-Bi1" secondAttribute="trailing" id="wOt-k9-l2q"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
@@ -1269,11 +1171,10 @@
                     </view>
                     <size key="freeformSize" width="375" height="200"/>
                     <connections>
-                        <outlet property="editButton" destination="XR5-Np-W07" id="cUN-mD-Fth"/>
+                        <outlet property="editView" destination="wB7-XJ-Nck" id="iPO-d0-Pw4"/>
                         <outlet property="expandableLabel" destination="5nz-eA-gNS" id="iui-Iu-EiB"/>
-                        <outlet property="spinner" destination="OUV-mg-G9u" id="7Og-Ix-dr7"/>
+                        <outlet property="expandableLabelContainer" destination="6GV-eD-5Hj" id="JFo-mK-5MC"/>
                         <outlet property="stackView" destination="iB6-kj-Bi1" id="CSH-xH-X4b"/>
-                        <outlet property="topConstraint" destination="Afw-Mq-NV9" id="Oth-ao-05T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcE-Xu-odc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1283,7 +1184,7 @@
         <!--Opening Hours Day View Controller-->
         <scene sceneID="4L0-Kt-il9">
             <objects>
-                <viewController storyboardIdentifier="OpeningHoursDayViewController" id="3bP-Zj-z8s" customClass="OpeningHoursDayViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpeningHoursDayViewController" id="3bP-Zj-z8s" customClass="OpeningHoursDayViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bn7-Ag-wuu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1364,12 +1265,12 @@
         <!--Place Page Header View Controller-->
         <scene sceneID="qX4-pw-H2p">
             <objects>
-                <viewController storyboardIdentifier="PlacePageHeaderViewController" id="aB1-Yk-7p4" customClass="PlacePageHeaderViewController" customModule="Organic_Maps" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xTs-NP-HcT" customClass="PlacePageHeaderView" customModule="Organic_Maps" customModuleProvider="target">
+                <viewController storyboardIdentifier="PlacePageHeaderViewController" id="aB1-Yk-7p4" customClass="PlacePageHeaderViewController" customModule="CoMaps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xTs-NP-HcT" customClass="PlacePageHeaderView" customModule="CoMaps" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spW-XI-KSY" customClass="PlacePageHeaderView" customModule="Organic_Maps" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spW-XI-KSY" customClass="PlacePageHeaderView" customModule="CoMaps" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="62" width="375" height="10"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1379,7 +1280,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="PPNavigationShadowView"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqh-H3-eji" customClass="PlacePageHeaderView" customModule="Organic_Maps" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqh-H3-eji" customClass="PlacePageHeaderView" customModule="CoMaps" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdy-g5-gbM">
@@ -1406,7 +1307,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-ea-Kac" userLabel="Close Buton" customClass="CircleImageButton" customModule="Organic_Maps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-ea-Kac" userLabel="Close Buton" customClass="CircleImageButton" customModule="CoMaps" customModuleProvider="target">
                                         <rect key="frame" x="331" y="16" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="28" id="IYz-Cb-KoJ"/>
@@ -1418,7 +1319,7 @@
                                             <action selector="onCloseButtonPressed:" destination="aB1-Yk-7p4" eventType="touchUpInside" id="uaQ-Fr-c1K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apG-SB-14M" userLabel="Share Button" customClass="CircleImageButton" customModule="Organic_Maps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apG-SB-14M" userLabel="Share Button" customClass="CircleImageButton" customModule="CoMaps" customModuleProvider="target">
                                         <rect key="frame" x="293" y="16" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="28" id="BGG-zy-6QM"/>
@@ -1498,11 +1399,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Place Page/Direction Indicator" width="32" height="32"/>
+        <image name="arrow.forward.circle.fill" catalog="system" width="128" height="123"/>
         <image name="dialog_btn_press" width="280" height="44"/>
         <image name="ic_arrow_gray_down" width="28" height="28"/>
-        <image name="ic_operator" width="28" height="28"/>
         <image name="ic_placepage_open_hours" width="28" height="28"/>
-        <image name="img_direction_light" width="32" height="32"/>
         <systemColor name="separatorColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

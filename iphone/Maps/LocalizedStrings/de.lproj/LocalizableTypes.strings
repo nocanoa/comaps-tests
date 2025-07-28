@@ -9,10 +9,10 @@
 "type.aerialway.mixed_lift" = "Kombibahn";
 "type.aerialway.station" = "Liftstation";
 "type.aeroway" = "Luftverkehr";
-"type.aeroway.aerodrome" = "Flugplatz";
-"type.aeroway.aerodrome.international" = "Flughafen";
+"type.aeroway.aerodrome" = "Flughafen";
+"type.aeroway.aerodrome.international" = "Internationaler Flughafen";
 "type.aeroway.apron" = "Vorfeld";
-"type.aeroway.gate" = "Tor";
+"type.aeroway.gate" = "Gate";
 "type.aeroway.helipad" = "Hubschrauberlandeplatz";
 "type.aeroway.runway" = "Start-/Landebahn";
 "type.aeroway.taxiway" = "Rollweg";
@@ -41,7 +41,7 @@
 "type.leisure.adult_gaming_centre" = "Gaming-Zentrum für Erwachsene";
 "type.leisure.amusement_arcade" = "Arkade";
 "type.amenity.charging_station" = "Ladestation";
-"type.amenity.charging_station.bicycle" = "Fahrrad Ladestation";
+"type.amenity.charging_station.bicycle" = "Fahrrad-Ladestation";
 "type.amenity.charging_station.motorcar" = "Kfz-Ladestation";
 "type.amenity.childcare" = "Kindertagesstätte";
 "type.amenity.cinema" = "Kino";
@@ -660,7 +660,7 @@
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Straßenknotenpunkt";
-"type.junction.circular" = "Kreisverkehr";
+"type.junction.circular" = "Kreisförmige Kreuzung";
 "type.junction.roundabout" = "Kreisverkehr";
 "type.landuse" = "Landnutzung";
 "type.landuse.allotments" = "Kleingarten";
@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Friedhof";
-"type.landuse.churchyard" = "Kirchhof";
+"type.landuse.religious" = "Religiöses Land";
 "type.landuse.commercial" = "Gewerbegebiet";
 "type.landuse.construction" = "Baustelle";
 "type.landuse.education" = "Bildungseinrichtung";
@@ -736,7 +736,7 @@
 "type.leisure.track" = "Laufbahn";
 "type.leisure.track.area" = "Laufbahn";
 "type.leisure.water_park" = "Aquapark";
-"type.leisure.beach_resort" = "Beach Resort";
+"type.leisure.beach_resort" = "Badestrand";
 "type.man_made" = "künstliche Anlage";
 "type.man_made.breakwater" = "Wellenbrecher";
 "type.man_made.cairn" = "Steinmännchen";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "Brunnen";
 "type.man_made.windmill" = "Windmühle";
 "type.man_made.works" = "Fabrik";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Militärisches Objekt";
 "type.military.bunker" = "Bunker";
@@ -826,7 +826,7 @@
 "type.natural.water" = "Wasserfläche";
 "type.natural.wetland" = "Feuchtgebiet";
 "type.natural.wetland.bog" = "Moor";
-"type.natural.wetland.marsh" = "Sumpf";
+"type.natural.wetland.marsh" = "Marsch";
 "type.noexit" = "Sackgasse";
 "type.office" = "Büro";
 "type.office.company" = "Firmenbüro";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "Wasserkraftwerk";
 "type.power.plant.solar" = "Solarkraftwerk";
 "type.power.plant.wind" = "Windkraftanlage";
-"type.power.station" = "Umspannwerk";
 "type.power.substation" = "Umspannwerk";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -935,8 +934,8 @@
 "type.railway.preserved.bridge" = "Museumsbahnbrücke";
 "type.railway.preserved.tunnel" = "Museumsbahntunnel";
 "type.railway.rail" = "Eisenbahn";
-"type.railway.rail.highspeed" = "Hochgeschwindigkeits-eisenbahn";
-"type.railway.rail.tourism" = "Touristische eisenbahn";
+"type.railway.rail.highspeed" = "Hochgeschwindigkeits-Eisenbahn";
+"type.railway.rail.tourism" = "Touristische Eisenbahn";
 "type.railway.rail.main" = "Eisenbahn";
 
 /* Includes ordinary railway=rail w/o more specific usage= and service= tags. */
@@ -1431,8 +1430,8 @@
 "type.waterway.river" = "Fluss";
 "type.waterway.river.tunnel" = "Fluss";
 "type.waterway.stream" = "Bach";
-"type.waterway.stream.ephemeral" = "Bach";
-"type.waterway.stream.intermittent" = "Bach";
+"type.waterway.stream.ephemeral" = "Vorübergehender Bach";
+"type.waterway.stream.intermittent" = "Zeitweiliger Bach";
 "type.waterway.stream.tunnel" = "Bach";
 "type.waterway.waterfall" = "Wasserfall";
 "type.waterway.weir" = "Wehr";
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sporthalle";
+"type.amenity.love_hotel" = "Stundenhotel";
+"type.barrier.guard_rail" = "Leitplanke";
+"type.highway.ladder" = "Leiter";
+"type.landuse.plant_nursery" = "Gartenbau";
+"type.leisure.firepit" = "Feuerstelle";
+"type.amenity.studio" = "Studio";
+"type.sport.diving" = "Turmspringen";
+"type.man_made.crane" = "Kran";
+"type.railway.station.subway.qingdao" = "U-Bahn-Station";
+"type.natural.wetland.saltmarsh" = "Salzmarsch";
+"type.natural.wetland.saltmarsh.tidal" = "Gezeitenabhängige Salzmarsch";
+"type.natural.wetland.fen" = "Fenn";
+"type.natural.wetland.reedbed" = "Schilfgürtel";
+"type.natural.wetland.swamp" = "Sumpf";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.natural.wetland.tidalflat" = "Watt";

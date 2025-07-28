@@ -1,185 +1,163 @@
-<div align="center">
-  <img src="qt/res/logo.png" height="100"/>
+<!-- Navigation Bar -->
+<p align="center">
+  <a href="https://codeberg.org/comaps#comaps">Project Intro</a> |
+  <a href="https://codeberg.org/comaps/Governance#comaps-project-governance-docs">Governance</a> |
+  <a href="https://codeberg.org/comaps/Governance/src/branch/main/FAQ.md">FAQ</a> |
+  <a href="#contributing">Contribute</a> |
+  <a href="https://www.comaps.app/donate">Donate</a> |
+  <a href="https://codeberg.org/comaps#keep-connected">Keep Connected</a>
+</p>
+
+<div align="center" >
+<img src="docs/badges/logo.svg" width="150">
 </div>
-<h1 align="center"">Organic Maps</h1>
 
-[Organic Maps](https://organicmaps.app) is a free Android & iOS offline maps app for travellers, tourists, drivers, hikers, and cyclists.
-It uses crowd-sourced [OpenStreetMap](https://www.openstreetmap.org) data and is developed with love by the creators of **MapsWithMe** (later renamed to **Maps.Me**) and by our community.
-No ads, no tracking, no data collection, no crapware. Your [donations](https://organicmaps.app/donate/) and positive reviews motivate and inspire us, thanks ❤️!
 
-[<img src="docs/badges/apple-appstore.png" alt="App Store" width="160">](https://apps.apple.com/app/organic-maps/id1567437057)
-[<img src="docs/badges/google-play.png" alt="Google Play" width="160">](https://play.google.com/store/apps/details?id=app.organicmaps)
-[<img src="docs/badges/huawei-appgallery.png" alt="AppGallery" width="160">](https://appgallery.huawei.com/#/app/C104325611)
-[<img src="docs/badges/obtainium.png" alt="Obtainium" width="160">](https://github.com/organicmaps/organicmaps/wiki/Installing-Organic-Maps-from-GitHub-using-Obtainium)
-[<img src="docs/badges/fdroid.png" alt="F-Droid" width="160">](https://f-droid.org/en/packages/app.organicmaps/)
+<div align="center">
+<h1><a href="https://comaps.app/">CoMaps</a></h1>
+<h2>Hike, Bike, Drive Offline - Easy Map Navigation with Privacy</h2>
+</div>
+<div align="center">
+  <p align="center">
+    <a href="https://codeberg.org/comaps/comaps/releases">
+      <img src="https://img.shields.io/github/license/comaps/comaps?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=588157" alt="License" style="width: 90%; max-width: 150px;"/>
+    </a>
+    <a href="https://github.com/comaps/comaps/actions/workflows/android-check.yaml">
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/android-check.yaml?label=Android%20Build&logo=android&logoColor=white&style=for-the-badge&color=588157" alt="Android Build Status" style="width: 90%; max-width: 170px;"/>
+    </a>
+    <a href="https://github.com/comaps/comaps/actions/workflows/ios-check.yaml">
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/ios-check.yaml?label=iOS%20Build&logo=apple&logoColor=white&style=for-the-badge&color=588157" alt="iOS Build Status" style="width: 90%; max-width: 145px;"/>
+    </a>
+    <a href="https://opencollective.com/comaps">
+      <img src="https://img.shields.io/opencollective/all/comaps?label=Open%20Collective%20Donors&logo=opencollective&logoColor=white&style=for-the-badge&color=588157" alt="Open Collective Donors" style="width: 90%; max-width: 191px;"/>
+    </a>
+    <a href="https://liberapay.com/CoMaps">
+      <img src="https://img.shields.io/liberapay/patrons/CoMaps.svg?label=Liberapay%20Patrons&logo=liberapay&logoColor=white&style=for-the-badge&color=588157" alt="Liberapay Patrons" style="width: 90%; max-width: 160px;"/>
+    </a>
+  </p>
+</div>
 
-<p float="left">
-  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/1.jpg" width="400" />
-  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/2.jpg" width="400" />
-  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/3.jpg" width="400" />
-  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/4.jpg" width="400" />
+---
+
+A community-led free & open source maps app based on [OpenStreetMap](https://www.openstreetmap.org), built for transparency, privacy, and not-for-profit values. A fork of Organic Maps, originally based on Maps.ME.
+
+**Available for:** Android, iOS, ARM macOS, and alpha Linux/macOS desktop builds (also usable on Linux phones).
+
+<p align="center">
+  <a href="https://apps.apple.com/app/comaps/id6747180809">
+    <img src="docs/badges/apple-appstore.png" alt="App Store" width="160"/>
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=app.comaps.google">
+    <img src="docs/badges/google-play.png" alt="Google Play" width="160"/>
+  </a>
+  <a href="https://f-droid.org/en/packages/app.comaps.fdroid/">
+    <img src="docs/badges/fdroid.png" alt="F-Droid" width="160"/>
+  </a>
+  <a href="https://codeberg.org/comaps/comaps/releases">
+    <img src="docs/badges/codeberg.png" alt="Codeberg" width="160"/>
+  </a>
 </p>
 
-## Features
 
-Organic Maps is the ultimate companion app for travellers, tourists, hikers, and cyclists:
-
-- Detailed offline maps with places that don't exist on other maps, thanks to [OpenStreetMap](https://openstreetmap.org)
-- Cycling routes, hiking trails, and walking paths
-- Contour lines, elevation profiles, peaks, and slopes
-- Turn-by-turn walking, cycling, and car navigation with voice guidance
-- Fast offline search on the map
-- Bookmarks and tracks import and export in KML, KMZ & GPX formats
-- Dark Mode to protect your eyes
-- Countries and regions don't take a lot of space
-- Free and open-source
-
-## Why Organic?
-
-Organic Maps is pure and organic, made with love:
-
-- Respects your privacy
-- Saves your battery
-- No unexpected mobile data charges
-
-Organic Maps is free from trackers and other bad stuff:
-
-- No ads
-- No tracking
-- No data collection
-- No phoning home
-- No annoying registration
-- No mandatory tutorials
-- No noisy email spam
-- No push notifications
-- No crapware
-- ~~No pesticides~~ Purely organic!
-
-The Android application is verified by the <a href="https://reports.exodus-privacy.eu.org/en/reports/app.organicmaps/latest/">Exodus Privacy Project:
-
-<img src="docs/privacy/exodus.png" width="400">
-</a>
-
-The iOS application is verified by <a href="https://ios.trackercontrol.org/analysis/app.organicmaps">TrackerControl for iOS:
-
-<img src="docs/privacy/trackercontrol-ios.png" width="400">
-</a>
-
-<br/>
-
-Organic Maps doesn't request excessive permissions to spy on you:
-
-<p float="left">
-  <img src="docs/privacy/om.jpg" width="400">
-  <img src="docs/privacy/mm.jpg" width="400">
+<!-- Screenshots -->
+<p align="center">
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/1.png" width="180" />
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/2.png" width="180" />
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/3.png" width="180" />
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/4.png" width="180" />
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/5.png" width="180" />
+  <img src="android/app/src/fdroid/play/listings/en-US/graphics/phone-screenshots/6.png" width="180" />
 </p>
 
-At Organic Maps, we believe that privacy is a fundamental human right:
+---
 
-- Organic Maps is an indie community-driven open-source project
-- We protect your privacy from Big Tech's prying eyes
-- Stay safe no matter where you are
+## ⚡️ Highlights
 
-Reject surveillance - embrace your freedom.
+- **Offline-first**: Navigate without a connection
+- **Privacy-respecting**: No tracking, Ads or data collection
+- **Lightweight**: Battery- and space-efficient
+- **Simple**: Polished, user-focused interface
+- **Community-built**: Free, open source, and collaborative
+- **Transparent**: Open finances and governance
 
-[**Give Organic Maps a try!**](#install)
+---
 
-## Who is paying for the development?
+## 🚀 Main Features
 
-The app is free for everyone, so we rely on donations. Please donate at [organicmaps.app/donate](https://organicmaps.app/donate) to support us!
+- Downloadable detailed maps with places which are not available with Google Maps
 
-Beloved institutional sponsors below have provided targeted grants to cover some infrastructure costs and fund development of new selected features:
+- Outdoor mode with highlighted hiking trails, campsites, water sources, peaks, contour lines, etc
 
-<table>
-  <tr>
-    <td>
-      <a href="https://nlnet.nl/"><img src="docs/sponsors/nlnet.svg" alt="The NLnet Foundation" width="200px"></a>
-    </td>
-    <td>
-      <a href="https://github.com/organicmaps/organicmaps/milestone/7">The Search & Fonts improvement project</a> has been <a href="https://nlnet.nl/project/OrganicMaps/">funded</a> through NGI0 Entrust Fund. <a href="https://nlnet.nl/entrust/">NGI0 Entrust Fund</a> is established by the <a href="https://nlnet.nl/">NLnet Foundation</a> with financial support from the European Commission's <a href="https://www.ngi.eu/">Next Generation Internet programme</a>, under the aegis of DG Communications Networks, Content and Technology under grant agreement No 101069594.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://summerofcode.withgoogle.com/"><img src="docs/sponsors/gsoc.svg" alt="Google Summer of Code" width="200px"></a>
-    </td>
-    <td>
-      <a href="https://summerofcode.withgoogle.com/">Google</a> backed 5 student's projects in the Google Summer of Code program during <a href="https://summerofcode.withgoogle.com/programs/2022/organizations/organic-maps">2022</a> and <a href="https://summerofcode.withgoogle.com/programs/2023/organizations/organic-maps">2023</a> programs. Noteworthy projects included Android Auto and Wikipedia Dump Extractor.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://www.mythic-beasts.com/"><img src="docs/sponsors/mythic-beasts.png" alt="Mythic Beasts" width="200px"></a>
-    </td>
-    <td>
-      <a href="https://www.mythic-beasts.com/">Mythic Beasts</a> ISP <a href="https://www.mythic-beasts.com/blog/2021/10/06/improving-the-world-bit-by-expensive-bit/">provides us</a> two virtual servers with 400 TB/month of free bandwidth to host and serve maps downloads and updates.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://44plus.vn"><img src="docs/sponsors/44plus.svg" alt="44+ Technologies" width="200px"></a>
-    </td>
-    <td>
-      <a href="https://44plus.vn">44+ Technologies</a> is <a href="https://44plus.vn/organicmaps">providing us </a>with a free dedicated server worth around $12,000/year to serve maps across Vietnam & Southeast Asia.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://futo.org"><img src="docs/sponsors/futo.svg" alt="FUTO" width="200px"></a>
-    </td>
-    <td>
-      <a href="https://futo.org">FUTO</a> has <a href="https://www.youtube.com/watch?v=fJJclgBHrEw">awarded $1000 micro-grant</a> to Organic Maps in February 2023.
-    </td>
-  </tr>
-</table>
+- Walking paths and cycleways
 
-The majority of all expenses have been funded by founders of the project since its inception. The project is far from achieving any sort of financial sustainability. The current level of voluntary donations falls significantly short of covering efforts needed to sustain the app. Any new developments of features are beyond the scope of possibility due to the absence of the necessary financial resources.
+- Points of interest like restaurants, gas stations, hotels, shops, sightseeings and many more
 
-Please consider [donating](https://organicmaps.app/donate) if you want to see this open-source project thriving, not dying. There are [other ways how to support the project](#contributing). No coding skills required.
+- Search by name or an address or by point of interest category
 
-## Copyrights
+- Navigation with voice announcements for walking, cycling, or driving
 
-Licensed under the Apache License, Version 2.0. See
-[LICENSE](https://github.com/organicmaps/organicmaps/blob/master/LICENSE),
-[NOTICE](https://github.com/organicmaps/organicmaps/blob/master/NOTICE)
-and [data/copyright.html](http://htmlpreview.github.io/?https://github.com/organicmaps/organicmaps/blob/master/data/copyright.html)
-for more information.
+- Bookmark your favorite places with a single tap
 
-## Governance
+- Offline Wikipedia articles
 
-See [docs/GOVERNANCE.md](docs/GOVERNANCE.md).
+- Subway transit layer and directions
 
-<a name="contributing">
+- Track recording
 
-## Contributing
+- Export and import bookmarks and tracks in KML, KMZ, GPX formats
 
-If you want to build the project, check [docs/INSTALL.md](docs/INSTALL.md). If you want to help the project,
-see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md). You can [help in many ways](https://organicmaps.app/support-us/), the ability to code is not necessary.
+- A dark mode to use during the night
 
-## Beta
+- Improve map data for everyone using a basic built-in editor
 
-Please join our beta program, suggest your features, and report bugs:
+- Android Auto and CarPlay support
 
-- [iOS Beta (TestFlight)](https://testflight.apple.com/join/lrKCl08I)
-- [Android Beta (Firebase)](https://appdistribution.firebase.dev/i/2f0fee463107b137)
+ ***Freedom Is Here – Navigate the world with privacy and community at the forefront.***
 
-## Feedback
+---
 
-- **Rate us on the [App Store](https://apps.apple.com/app/organic-maps/id1567437057)
-and [Google Play](https://play.google.com/store/apps/details?id=app.organicmaps)**.
-- **Star us on Forgejo**.
-- Report bugs or issues to [the issue tracker](https://git.omaps.dev/organicmaps/organicmaps/issues).
-- Subscribe to our [Telegram Channel](https://t.me/OrganicMapsApp) or to the [[matrix] space](https://matrix.to/#/#organicmaps:matrix.org) for updates.
-- Join our [Telegram Group](https://t.me/OrganicMaps) to discuss with other users.
-  - Присоединяйтесь к нашей [русскоязычной группе в Telegram](https://t.me/OrganicMapsRu) для обратной связи и помощи.
-  - Diğer kullanıcılarla tartışmak için [Telegram Grubumuza](https://t.me/OrganicMapsTR) katılın.
-  - Rejoignez notre groupe [Telegram](https://t.me/OrganicMapsFR) pour obtenir de l'aide.
-- Contact us by [email](mailto:hello@organicmaps.app).
-- Follow our updates in
-[Mastodon](https://fosstodon.org/@organicmaps),
-[Facebook](https://facebook.com/OrganicMaps),
-[X (Twitter)](https://x.com/OrganicMapsApp),
-[Instagram](https://instagram.com/organicmaps.app/).
-  - Güncellemelerimizi [Instagram](https://instagram.com/organicmapstr/) üzerinden takip edin.
+## 🤝 Contributing
 
-The Organic Maps community abides by the CNCF [code of conduct](https://github.com/organicmaps/organicmaps/blob/master/docs/CODE_OF_CONDUCT.md).
+You can help by donating, contributing code, translating, or by telling others about it. To build the best maps app there is a need for software development, design, product, community development, and other areas. Reach out to us and let us know how you want to help.
+
+- Build instructions: [docs/INSTALL.md](docs/INSTALL.md)  
+- Contribution guide: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
+> [!NOTE]  
+> Some docs might be outdated, contain broken links or old references to Organic Maps, etc. Its a work in progress and help is much appreciated!
+
+There is a dedicated Zulip chat for active contributors: [Zulip](https://comaps.zulipchat.com)
+
+---
+
+## 💬 Feedback
+
+- Rate us on [App Store](https://apps.apple.com/app/comaps/id6747180809) and [Google Play](https://play.google.com/store/apps/details?id=app.comaps.google)
+- Star our repos on Codeberg 
+- Report bugs or request features on the [issue tracker](https://codeberg.org/comaps/comaps/issues)
+
+---
+
+## 💸 Funding
+
+CoMaps is free. To stay that way, it relies on your support.  
+Donate via [OpenCollective](https://opencollective.com/comaps/donate) or [Liberapay](https://liberapay.com/CoMaps).  
+The project's financial information is completely open and transparent at [our Open Collective](https://opencollective.com/comaps).
+
+---
+
+## 🔒 Privacy
+
+The Android app has been reviewed by [Exodus Privacy](https://reports.exodus-privacy.eu.org/en/reports/app.comaps.google/latest/).
+
+To [verify](https://developer.android.com/studio/command-line/apksigner#usage-verify) the APK, use the following signing certificate fingerprints:
+```
+SHA-256: 4894e8e6963627ef660031d8593fe77297f835acb4e23810003e926135023b4c
+SHA-1: 8b7b5739f917e9f7c681671ced0c9c8562123ade
+MD5: 9cce0ffea281dc2f0e0a154d6d2e281e
+```
+---
+
+## ⚖️ License
+
+Licensed under the Apache License 2.0.  
+See [LICENSE](LICENSE), [NOTICE](NOTICE), and [data/copyright.html](data/copyright.html). 

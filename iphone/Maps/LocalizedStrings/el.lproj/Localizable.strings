@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Η λήψη απέτυχε";
 
 /* Text in About screen */
-"about_headline" = "Δωρεάν για όλους, φτιαγμένα με αγάπη";
+"about_proposition_1" = "Εκτός σύνδεσης, γρήγορο και εύχρηστο";
 
 /* Text in About screen */
-"about_proposition_1" = "• Χωρίς διαφημίσεις, χωρίς tracking, χωρίς συλλογή δεδομένων";
-
-/* Text in About screen */
-"about_proposition_2" = "• Δεν εξαντλεί τη μπαταρία, λειτουργεί εκτός σύνδεσης";
-
-/* Text in About screen */
-"about_proposition_3" = "• Γρήγορο, μινιμαλιστικό, αναπτυγμένο από την κοινότητα";
+"about_proposition_2" = "Εστιασμένο στην ιδιωτικότητα και χωρίς διαφημίσεις";
 "close" = "Κλείσιμο";
 "download" = "Λήψη";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Για RV";
-"share_bookmarks_email_body" = "Γειa!\n\nΣου επισυνάπτω τα αγαπημένα μου. Παρακαλώ άνοιξέ τα με το Organic Maps. Αν δεν το έχεις εγκαταστήσει, μπορείς να το κατεβάσεις από εδώ: https://omaps.app/get?kmz\n\nΚαλή διασκέδαση ταξιδεύοντας με το Organic Maps!";
+"share_bookmarks_email_body" = "Γειa!\n\nΣου επισυνάπτω τα αγαπημένα μου. Παρακαλώ άνοιξέ τα με το CoMaps. Αν δεν το έχεις εγκαταστήσει, μπορείς να το κατεβάσεις από εδώ: https://www.comaps.app/download/\n\nΚαλή διασκέδαση ταξιδεύοντας με το CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Φορτώνονται τα αγαπημένα";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Η τοποθεσία σας δεν έχει προσδιοριστεί ακόμη";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Γεια, δες τις τοποθεσίες που έχω καρφιτσώσει στο Organic Maps!";
+"bookmark_share_email_subject" = "Γεια, δες τις τοποθεσίες που έχω καρφιτσώσει στο CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Γεια, δες την τρέχουσα τοποθεσία μου στο χάρτη του Organic Maps!";
+"my_position_share_email_subject" = "Γεια, δες την τρέχουσα τοποθεσία μου στο χάρτη του CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Email";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Αντιγραφή στο πρόχειρο";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Αντιγράφηκε στο Πρόχειρο: %@";
@@ -190,7 +187,9 @@
 "done" = "Ολοκλήρωση";
 
 /* Prints version number in About dialog */
-"version" = "Έκδοση Organic Maps: %@";
+"version" = "Έκδοση CoMaps: %@";
+"version %@ (%@)" = "Έκδοση %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Έκδοση: %@ (%@)\nΔεδομένα χάρτη: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Διαδρομές";
@@ -200,6 +199,7 @@
 "share_my_location" = "Κοινοποίηση της τοποθεσίας μου";
 "prefs_group_route" = "Πλοήγηση";
 "pref_zoom_title" = "Πλήκτρα μεγέθυνσης";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Εμφάνιση";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Σκουρόχρωμη";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Απενεργ.";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Τα τρισδιάστατα κτίρια είναι απενεργοποιημένα σε λειτουργία εξοικονόμησης ενέργειας";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Φωνητικές οδηγίες";
+"pref_tts_title" = "Φωνητικές οδηγίες";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Ανακοινώστε ονόματα οδών";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Ιστότοπος";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Νέα";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Ηλεκτρονικό ταχυδρομείο";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "εικόνα Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Βαθμολογήστε την εφαρμογή";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Δωρεά";
-
-/* Tex label above the Donate button */
-"donate_description" = "Κάντε δωρεά για να φτιάξουμε μαζί τους καλύτερους χάρτες!";
-"already_donated" = "Ήδη δωρεά";
-"remind_me_later" = "Υπενθύμισε αργότερα";
-"support_organic_maps" = "Υποστήριξε το Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Πνευματικά δικαιώματα";
@@ -298,7 +322,7 @@
 "volunteer" = "Γίνετε εθελοντής";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Ακολουθήστε και επικοινωνήστε μαζί μας:";
+"follow_us" = "Ακολουθήστε και επικοινωνήστε μαζί μας";
 
 /* Alert text */
 "email_error_body" = "Το πρόγραμμα ηλεκτρονικού ταχυδρομείου δεν έχει ρυθμιστεί. Ρυθμίστε το ή χρησιμοποιήστε άλλο τρόπο να επικοινωνήσετε μαζί μας στη διεύθυνση %@";
@@ -310,7 +334,7 @@
 "pref_calibration_title" = "Καλιμπράρισμα πυξίδας";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "Πατήστε ξανά παρατεταμένα στο χάρτη για να δείτε το περιβάλλον εργασίας.";
+"long_tap_toast" = "Πατήστε ξανά παρατεταμένα στο χάρτη για να δείτε το περιβάλλον εργασίας";
 
 /* Update all button text */
 "downloader_update_all_button" = "Ενημέρωση όλων";
@@ -411,9 +435,9 @@
 /* blue gray color */
 "blue_gray" = "Γκρίζο μπλε";
 "dialog_routing_disclaimer_title" = "Όταν ακολουθείτε την διαδρομή, να θυμάστε:";
-"dialog_routing_disclaimer_priority" = "— Οι οδικές συνθήκες, ο κώδικας οδικής κυκλοφορίας και οι σημάνσεις στο δρόμο έχουν πάντα μεγαλύτερη προτεραιότητα από τις συμβουλές πλοήγησης,";
-"dialog_routing_disclaimer_precision" = "— Ο Χάρτης μπορεί να είναι ανακριβής, και η προτεινόμενη διαδρομή μπορεί να μην είναι πάντα ο βέλτιστος τρόπος να φτάσετε στον προορισμό,";
-"dialog_routing_disclaimer_recommendations" = "— Οι προτεινόμενες διαδρομές πρέπει να ερμηνεύονται μόνο ως συστάσεις·";
+"dialog_routing_disclaimer_priority" = "- Οι οδικές συνθήκες, οι κανόνες οδικής κυκλοφορίας και οι πινακίδες έχουν πάντα προτεραιότητα έναντι των συμβουλών πλοήγησης;";
+"dialog_routing_disclaimer_precision" = "— Ο Χάρτης μπορεί να είναι ανακριβής, και η προτεινόμενη διαδρομή μπορεί να μην είναι πάντα ο βέλτιστος τρόπος να φτάσετε στον προορισμό;";
+"dialog_routing_disclaimer_recommendations" = "— Οι προτεινόμενες διαδρομές πρέπει να ερμηνεύονται μόνο ως συστάσεις;";
 "dialog_routing_disclaimer_borders" = "— Προσέξτε τις διαδρομές στις παραμεθόριες περιοχές: οι διαδρομές που δημιουργούνται από την εφαρμογή μας μπορεί μερικές φορές να διαπερνούν τα εθνικά σύνορα σε απαγορευμένες περιοχές.";
 "dialog_routing_disclaimer_beware" = "Να είστε πάντα σε εγρήγορση και να οδηγείτε με ασφάλεια στους δρόμους!";
 "dialog_routing_check_gps" = "Ελέγξτε το σήμα GPS";
@@ -467,7 +491,7 @@
 "read_in_wikipedia" = "Βικιπέδια";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Κοινά της Wikimedia";
 "p2p_your_location" = "Η τοποθεσία σας";
 "p2p_start" = "Έναρξη";
 "p2p_from_here" = "Διαδρομή από";
@@ -510,15 +534,27 @@
 "closes_in" = "Κλείνει σε %@";
 "closed" = "Κλειστό";
 "add_opening_hours" = "Προσθέστε ώρες λειτουργίας";
-"no_osm_account" = "Δεν έχετε λογαριασμό OpenStreetMap;";
-"register_at_openstreetmap" = "Εγγραφή στο OpenStreetMap";
-"password_8_chars_min" = "Κωδικός πρόσβασης (τουλάχιστον 8 χαρακτήρες)";
-"invalid_username_or_password" = "Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης.";
-"login" = "Σύνδεση";
-"login_osm" = "Συνδεθείτε στο OpenStreetMap";
-"forgot_password" = "Ξαχάσατε τον κωδικό πρόσβασης;";
-"osm_account" = "Λογαριασμός OSM";
-"logout" = "Αποσύνδεση";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Δεδομένα χάρτη από το OpenStreetMap";
+"osm_mapdata_explanation %@" = "Δεδομένα χαρτών που δημιουργήθηκαν από την κοινότητα στις *%@*. Μάθετε περισσότερα για τον τρόπο επεξεργασίας και ενημέρωσης του χάρτη στο [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Περισσότερα σχετικά με το OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/El:Σχετικά_με_το_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Προφίλ OpenStreetMap";
+"osm_profile_promt" = "Δημιουργήστε έναν λογαριασμό OpenStreetMap ή συνδεθείτε για να δημοσιεύσετε τις επεξεργασίες του χάρτη σας στον κόσμο.";
+"osm_profile_explanation" = "Το [OpenStreetMap.org](https://openstreetmap.org) (OSM) είναι ένα κοινοτικό έργο για τη δημιουργία ενός ελεύθερου και ανοικτού χάρτη. Είναι η κύρια πηγή δεδομένων χάρτη στους CoMaps και λειτουργεί παρόμοια με τη Wikipedia. Μπορείτε να προσθέσετε ή να επεξεργαστείτε τοποθεσίες και αυτές γίνονται διαθέσιμες σε εκατομμύρια χρήστες σε όλο τον κόσμο. \nΕνταχθείτε στην κοινότητα και βοηθήστε να φτιάξουμε έναν καλύτερο χάρτη για όλους!";
+"osm_profile_login" = "Σύνδεση στον λογαριασμό OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Ο λογαριασμός OpenStreetMap αποσυνδέθηκε από αυτήν την εφαρμογή";
+"osm_profile_reauthorize" = "Επανασύνδεση με το OpenStreetMap";
+"osm_profile_remove_promt" = "Αν δεν μπορείτε ή δεν θέλετε να επανασυνδέσετε τον λογαριασμό σας, μπορείτε απλά να τον καταργήσετε από αυτήν την εφαρμογή";
+"osm_profile_remove" = "Κατάργηση λογαριασμού OpenStreetMap";
+"osm_profile_register_promt" = "Δεν έχετε λογαριασμό OpenStreetMap;";
+"osm_profile_register" = "Εγγραφή στο OpenStreetMap";
+"osm_profile_verfied_changes" = "Επαληθευμένες αλλαγές";
+"osm_profile_logout" = "Αποσύνδεση από τον λογαριασμό OpenStreetMap";
+"osm_profile_delete" = "Διαγραφή λογαριασμού OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Τελευταία μεταφόρτωση";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Αλλαγή τοποθεσίας";
 "message_invalid_feature_position" = "Δε μπορεί να τοποθετηθεί αντικείμενο εδώ";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Δεδομένα OpenStreetMap που δημιουργήθηκαν από την κοινότητα στις %@. Μάθετε περισσότερα για τον τρόπο επεξεργασίας και ενημέρωσης του χάρτη στο OpenStreetMap.org";
-"login_to_make_edits_visible" = "Δημιουργήστε έναν λογαριασμό OpenStreetMap ή συνδεθείτε για να δημοσιεύσετε τις επεξεργασίες του χάρτη σας στον κόσμο.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Για να το κατεβάσετε, χρειάζεστε περισσότερο χώρο. Διαγράψτε μη απαραίτητα δεδομένα.";
-"editor_sharing_title" = "Βελτίωσα τους χάρτες Organic Maps";
+"editor_sharing_title" = "Βελτίωσα τους χάρτες CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d/%2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Σημείωση για τους εθελοντές του OpenStreetMap (προαιρετική)";
 "editor_detailed_description_hint" = "Λεπτομερές σχόλιο";
-"editor_detailed_description" = "Οι προτεινόμενες αλλαγές θα σταλούν στην Κοινότητα του OpenStreetMap. Περιγράψτε τυχόν πρόσθετα στοιχεία που δεν μπορείτε να επεξεργαστείτε στο Organic Maps.";
+"editor_detailed_description" = "Οι προτεινόμενες αλλαγές θα σταλούν στην Κοινότητα του OpenStreetMap. Περιγράψτε τυχόν πρόσθετα στοιχεία που δεν μπορείτε να επεξεργαστείτε στο CoMaps.";
 "editor_more_about_osm" = "Περισσότερα σχετικά με το OpenStreetMap";
 "editor_operator" = "Χειριστής";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Χειριστής: %@";
 "editor_category_unsuitable_title" = "Δεν μπορείτε να βρείτε την κατάλληλη κατηγορία;";
-"editor_category_unsuitable_text" = "Οι Οργανικοί Χάρτες επιτρέπουν την προσθήκη απλών κατηγοριών σημείων μόνο, δηλαδή όχι πόλεων, δρόμων, λιμνών, περιγραμμάτων κτιρίων κ.λπ. Παρακαλούμε προσθέστε τέτοιες κατηγορίες απευθείας στο <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Ελέγξτε τον <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">οδηγό μας</a> για λεπτομερείς οδηγίες βήμα προς βήμα.";
+"editor_category_unsuitable_text" = "Οι CoMaps επιτρέπουν την προσθήκη απλών κατηγοριών σημείων μόνο, δηλαδή όχι πόλεων, δρόμων, λιμνών, περιγραμμάτων κτιρίων κ.λπ. Παρακαλούμε προσθέστε τέτοιες κατηγορίες απευθείας στο <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Ελέγξτε τον <a href=\"https://www.comaps.app/support/advanced-map-editing/\">οδηγό μας</a> για λεπτομερείς οδηγίες βήμα προς βήμα.";
 "downloader_no_downloaded_maps_title" = "Δεν έχετε κατεβάσει χάρτες";
 "downloader_no_downloaded_maps_message" = "Κατεβάστε χάρτες για να αναζητήσετε μια τοποθεσία και να χρησιμοποιήσετε την πλοήγησης χωρίς σύνδεση.";
 "current_location_unknown_error_title" = "Η τρέχουσα τοποθεσία είναι άγνωστη.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Επιλέξτε Απόρρητο";
 "location_services_disabled_on_device_3" = "3. Επιλέξτε Υπηρεσίες τοποθεσίας";
 "location_services_disabled_on_device_4" = "4. Ενεργοποιήστε τις Υπηρεσίες τοποθεσίας";
-"location_services_disabled_on_device_additional_message" = "Ή συνεχίστε να χρησιμοποιείτε το Organic Maps χωρίς Τοποθεσία";
+"location_services_disabled_on_device_additional_message" = "Ή συνεχίστε να χρησιμοποιείτε το CoMaps χωρίς Τοποθεσία";
 
 /* abbreviation for meters */
 "m" = "μ";
@@ -632,20 +664,11 @@
 /* A unit of measure */
 "ft" = "πόδια";
 "miles_per_hour" = "mph";
-"hour" = "h";
-"minute" = "min";
-"day" = "d";
+"hour" = "Ωρα";
+"minute" = "λπτ";
+"day" = "Μέρα";
 "placepage_more_button" = "Περισσότερα";
 "book_button" = "Κράτηση";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Φωτογραφίες, κριτικές, κράτηση";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Το μπόνους παραπομπής που λαμβάνετε για κάθε κράτηση μέσω αυτού του συνδέσμου πηγαίνει στην ανάπτυξη του Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Λεπτομέρειες στο Kayak";
 "placepage_call_button" = "Κλήση";
 "placepage_edit_bookmark_button" = "Επεξεργασία αγαπημένου";
 "placepage_bookmark_name_hint" = "Όνομα αγαπημένου";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Τσέκαρε";
-"recent_track_background_dialog_message" = "Το Organic Maps χρησιμοποιεί την τοποθεσία σας στο παρασκήνιο για την καταγραφή των πρόσφατων διαδρομών σας.";
+"recent_track_background_dialog_message" = "Το CoMaps χρησιμοποιεί την τοποθεσία σας στο παρασκήνιο για την καταγραφή των πρόσφατων διαδρομών σας.";
 "general_settings" = "Γενικές ρυθμίσεις";
 
 /* For the first routing */
@@ -692,7 +715,7 @@
 "mobile_data_dialog" = "Θέλετε να χρησιμοποιήσετε το δίκτυο κινητής τηλεφωνίας για να εμφανίσετε αναλυτικές πληροφορίες;";
 "mobile_data_option_always" = "Να χρησιμοποιείται πάντα";
 "mobile_data_option_today" = "Μόνο σήμερα";
-"mobile_data_option_not_today" = "Να μην χρησιμοποιηθεί σήμερα";
+"mobile_data_option_not_today" = "Να Μην χρησιμοποιηθεί σήμερα";
 "mobile_data" = "Ίντερνετ μέσω δικτύου κινητής";
 
 /* NOTE to translators: please synchronize your translation with the English one. */
@@ -709,7 +732,7 @@
 "traffic_data_unavailable" = "Οι πληροφορίες για την κίνηση δεν είναι διαθέσιμες";
 "enable_logging" = "Ενεργοποίηση δυνατότητας καταγραφής";
 "log_file_size" = "Μέγεθος αρχείου καταγραφής: %@";
-"transliteration_title" = "Μεταγραφή στα Λατινικά";
+"transliteration_title" = "Μεταγραφή στο λατινικό αλφάβητο";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Έξοδος";
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "Σύρετε εδώ για αφαίρεση";
 "placepage_add_stop" = "Προσθήκη στάσης";
 "start_from_my_position" = "Έναρξη από";
+
+/* Title for button when a route was saved. */
+"saved" = "Αποθηκεύτηκε";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Παρακαλούμε συνδεθείτε στο OpenStreetMap για να ανεβάσετε αυτόματα όλες τις επεξεργασίες του χάρτη σας. Μάθετε περισσότερα";
@@ -787,7 +813,7 @@
 "power_managment_setting_never" = "Ποτέ";
 "power_managment_setting_auto" = "Αυτόματα";
 "power_managment_setting_manual_max" = "Πάντα";
-"enable_logging_warning_message" = "Αυτή η λειτουργία είναι ενεργοποιημένη για την καταγραφή ενεργειών για διαγνωστικούς σκοπούς. Αυτό βοηθά την ομάδα να εντοπίζει προβλήματα με την εφαρμογή. Να ενεργοποιείτε τη λειτουργία μόνο κατόπιν αιτήματος της υποστήριξης του Organic Maps.";
+"enable_logging_warning_message" = "Αυτή η λειτουργία είναι ενεργοποιημένη για την καταγραφή ενεργειών για διαγνωστικούς σκοπούς. Αυτό βοηθά την ομάδα να εντοπίζει προβλήματα με την εφαρμογή. Να ενεργοποιείτε τη λειτουργία μόνο κατόπιν αιτήματος της υποστήριξης του CoMaps.";
 "driving_options_title" = "Ρυθμίσεις δρομολόγησης";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -849,7 +875,7 @@
 "carplay_roundabout_exit" = "%@ έξοδος";
 
 /* max. 10 symbols, both iOS and Android */
-"sort" = "Ταξινόμηση";
+"sort" = "Ταξινόμηση…";
 
 /* iOS */
 "sort_default" = "Ταξινόμηση κατά προεπιλογή";
@@ -880,7 +906,7 @@
 "search_in_the_list" = "Αναζήτηση στη λίστα";
 "religious_places" = "Χώροι Λατρείας";
 "transit_not_found" = "Η πλοήγηση με μετρό γι' αυτή την περιοχή δεν είναι ακόμα διαθέσιμη";
-"dialog_pedestrian_route_is_long_header" = "Δεν βρέθηκε διαδρομή μετρό";
+"dialog_pedestrian_route_is_long_header" = "Δεν βρέθηκε διαδρομή του μετρό";
 "dialog_pedestrian_route_is_long_message" = "Επιλέξτε το σημείο εκκίνησης ή τέλους διαδρομής πιο κοντά στο σταθμό του μετρό";
 "button_layer_isolines" = "Υψομετρικά";
 "isolines_activation_error_dialog" = "Για να χρησιμοποιήσετε υψομετρικές γραμμές, ενημερώστε ή κατεβάστε τον χάρτη της επιθυμητής περιοχής";
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Διαδρομή";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/El:About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Σας ευχαριστούμε που χρησιμοποιείτε τους χάρτες μας που δημιουργήθηκαν από την κοινότητα!";
@@ -967,16 +984,16 @@
 "app_tip_09" = "Ο κύριος στόχος μας είναι να δημιουργήσουμε γρήγορους, εύχρηστους και με σεβασμό στην ιδιωτικότητα χάρτες που θα λατρέψετε.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Αυτή τη στιγμή το Organic Maps βρίσκεται στην οθόνη του κινητού";
+"car_used_on_the_phone_screen" = "Αυτή τη στιγμή το CoMaps βρίσκεται στην οθόνη του κινητού";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Αυτή τη στιγμή το Organic Maps βρίσκεται στην οθόνη του αυτοκινήτου.";
+"car_used_on_the_car_screen" = "Αυτή τη στιγμή το CoMaps βρίσκεται στην οθόνη του αυτοκινήτου";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Συνέχεια στο κινητό";
 
 /* Displayed on the Android Auto or CarPlay screen. Button to display maps on the car screen instead of a phone. Must be no more than 18 symbols! */
-"car_continue_in_the_car" = "Προς οθόνη αυτοκ.";
+"car_continue_in_the_car" = "Στην οθόνη του αυτοκινήτου";
 
 /* Outdoors/hiking map style (activity) name in the Styles and Layers dialog */
 "button_layer_outdoor" = "Πεζοπορία";
@@ -995,7 +1012,10 @@
 "website_menu" = "Σύνδεσμος μενού";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Θα θέλατε να στείλετε μια αναφορά σφάλματος στους προγραμματιστές;\nΒασιζόμαστε στους χρήστες μας, καθώς οι Organic Maps δεν συλλέγουν αυτόματα καμία πληροφορία σφάλματος. Σας ευχαριστούμε εκ των προτέρων για την υποστήριξη των Organic Maps!";
+"bugreport_alert_message" = "Θα θέλατε να στείλετε μια αναφορά σφάλματος στους προγραμματιστές;\nΒασιζόμαστε στους χρήστες μας, καθώς οι CoMaps δεν συλλέγουν αυτόματα καμία πληροφορία σφάλματος. Σας ευχαριστούμε εκ των προτέρων για την υποστήριξη των CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Ενεργοποίηση συγχρονισμού iCloud";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Η διαδρομή είναι άδεια - δεν υπάρχει τίποτα να αποθηκεύσετε";
 "edit_track" = "Επεξεργασία διαδρομής";
+"osm_profile_view_notes" = "Προβολή σημειώσεων";
+"osm_profile_view_edit_history" = "Προβολή ιστορικού επεξεργασιών";
+"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Open project powered by the community";
+"pref_mapappearance_title" = "Map Appearance";

@@ -27,7 +27,7 @@
 "type.amenity.bicycle_parking" = "חניית אופניים";
 "type.amenity.bicycle_rental" = "השכרת אופניים";
 "type.amenity.bicycle_repair_station" = "תחנת תיקון אופניים";
-"type.amenity.biergarten" = "ביר גרדן";
+"type.amenity.biergarten" = "גן בירה";
 "type.amenity.brothel" = "בית בושת";
 "type.amenity.bureau_de_change" = "המרת מטבע חוץ";
 "type.amenity.bus_station" = "תחנת אוטובוס";
@@ -672,7 +672,7 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "בית קברות נוצרי";
-"type.landuse.churchyard" = "חצר כנסיה";
+"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "אזור מסחרי";
 "type.landuse.construction" = "אתר בניה";
 "type.landuse.education" = "קריית חינוך";
@@ -749,7 +749,7 @@
 "type.man_made.pier" = "מזח";
 "type.man_made.pipeline" = "צינור";
 "type.man_made.pipeline.overground" = "צינור עילי";
-"type.man_made.silo" = "סילו";
+"type.man_made.silo" = "ממגורה";
 "type.man_made.storage_tank" = "מיכל איחסון";
 "type.man_made.surveillance" = "מצלמת מעקב";
 "type.man_made.tower" = "מגדל";
@@ -773,7 +773,7 @@
 "type.man_made.water_well.drinking_water_no" = "באר מים";
 "type.man_made.windmill" = "טחנת רוח";
 "type.man_made.works" = "עבודות תעשיה";
-"type.mapswithme" = "mapswithme";
+"type.mapswithme" = "MapsWithMe";
 "type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "צבאי";
 "type.military.bunker" = "בונקר צבאי";
@@ -891,7 +891,6 @@
 "type.power.plant.hydro" = "תחנת כוח הידרואלקטרית";
 "type.power.plant.solar" = "תחנת כוח סולארית";
 "type.power.plant.wind" = "תחנת כוח רוח";
-"type.power.station" = "תחנת כוח";
 "type.power.substation" = "תחנת כוח משנית";
 
 /* A tower or pylon carrying high voltage electricity cables. */
@@ -1484,3 +1483,19 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "אולם ספורט";
+"type.highway.ladder" = "Ladder";
+"type.leisure.firepit" = "Firepit";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.sport.diving" = "High Diving";
+"type.natural.wetland.swamp" = "Swamp";
+"type.man_made.crane" = "Crane";
+"type.natural.wetland.saltmarsh" = "Salt Marsh";
+"type.natural.wetland.mangrove" = "Mangrove";
+"type.barrier.guard_rail" = "Guard Rail";
+"type.amenity.studio" = "Studio";
+"type.natural.wetland.fen" = "Fen";
+"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
+"type.natural.wetland.reedbed" = "Reed Bed";
+"type.railway.station.subway.qingdao" = "Subway Station";
+"type.landuse.plant_nursery" = "Plant Nursery";
+"type.amenity.love_hotel" = "Love Hotel";

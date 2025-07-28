@@ -218,6 +218,8 @@ PlacePageDialogUser::PlacePageDialogUser(QWidget * parent, place_page::Info cons
       addSocialNetworkWidget("Twitter", feature::Metadata::EType::FMD_CONTACT_TWITTER);
       addSocialNetworkWidget("VK", feature::Metadata::EType::FMD_CONTACT_VK);
       addSocialNetworkWidget("Line", feature::Metadata::EType::FMD_CONTACT_LINE);
+      addSocialNetworkWidget("Mastodon", feature::Metadata::EType::FMD_CONTACT_FEDIVERSE);
+      addSocialNetworkWidget("Bluesky", feature::Metadata::EType::FMD_CONTACT_BLUESKY);
     }
 
     if (auto wikimedia_commons = info.GetMetadata(feature::Metadata::EType::FMD_WIKIMEDIA_COMMONS); !wikimedia_commons.empty())
@@ -225,6 +227,17 @@ PlacePageDialogUser::PlacePageDialogUser(QWidget * parent, place_page::Info cons
       data->addWidget(new QLabel("Wikimedia Commons"), row, 0);
 
       QLabel * value = new QLabel(QString::fromStdString("<a href='" + feature::Metadata::ToWikimediaCommonsURL(std::string(wikimedia_commons)) + "'>Wikimedia Commons</a>"));
+      value->setOpenExternalLinks(true);
+      value->setTextInteractionFlags(Qt::TextBrowserInteraction);
+
+      data->addWidget(value, row++, 1);
+    }
+
+    if (auto panoramax = info.GetMetadata(feature::Metadata::EType::FMD_PANORAMAX); !panoramax.empty())
+    {
+      data->addWidget(new QLabel("Panoramax Picture"), row, 0);
+
+      QLabel * value = new QLabel(QString::fromStdString("<a href='https://api.panoramax.xyz/?pic=" + std::string(panoramax) + "'>Panoramax Image</a>"));
       value->setOpenExternalLinks(true);
       value->setTextInteractionFlags(Qt::TextBrowserInteraction);
 

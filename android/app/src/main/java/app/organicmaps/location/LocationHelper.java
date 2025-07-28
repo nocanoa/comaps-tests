@@ -25,7 +25,7 @@ import app.organicmaps.Map;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.bookmarks.data.FeatureId;
 import app.organicmaps.bookmarks.data.MapObject;
-import app.organicmaps.routing.JunctionInfo;
+import app.organicmaps.sdk.routing.JunctionInfo;
 import app.organicmaps.routing.RoutingController;
 import app.organicmaps.util.Config;
 import app.organicmaps.util.LocationUtils;
@@ -36,7 +36,7 @@ public class LocationHelper implements BaseLocationProvider.Listener
 {
   private static final long INTERVAL_FOLLOW_MS = 0;
   private static final long INTERVAL_NOT_FOLLOW_MS = 3000;
-  private static final long INTERVAL_NAVIGATION_MS = 0;
+  private static final long INTERVAL_NAVIGATION_MS = 1000;
   private static final long INTERVAL_TRACK_RECORDING = 0;
 
   private static final long AGPS_EXPIRATION_TIME_MS = 16 * 60 * 60 * 1000; // 16 hours
@@ -213,7 +213,7 @@ public class LocationHelper implements BaseLocationProvider.Listener
 
     if (mSavedLocation != null)
     {
-      if (!LocationUtils.isFromFusedProvider(location) && !LocationUtils.isLocationBetterThanLast(location, mSavedLocation))
+      if (!LocationUtils.isLocationBetterThanLast(location, mSavedLocation))
       {
         Logger.d(TAG, "The new " + location + " is worse than the last " + mSavedLocation);
         return;

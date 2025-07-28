@@ -2,10 +2,11 @@ package app.organicmaps.location;
 
 import android.content.Context;
 import android.location.Location;
+import android.os.SystemClock;
 
 import androidx.annotation.NonNull;
 
-import app.organicmaps.routing.JunctionInfo;
+import app.organicmaps.sdk.routing.JunctionInfo;
 import app.organicmaps.util.LocationUtils;
 import app.organicmaps.util.concurrency.UiThread;
 import app.organicmaps.util.log.Logger;
@@ -57,6 +58,7 @@ class RouteSimulationProvider extends BaseLocationProvider
     location.setLatitude(mPoints[mCurrentPoint].mLat);
     location.setLongitude(mPoints[mCurrentPoint].mLon);
     location.setAccuracy(1.0f);
+    location.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
     mListener.onLocationChanged(location);
     mCurrentPoint += 1;
     UiThread.runLater(this::nextPoint, INTERVAL_MS);

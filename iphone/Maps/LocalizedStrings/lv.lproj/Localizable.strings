@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Lejupielāde neizdevās";
 
 /* Text in About screen */
-"about_headline" = "Bezmaksas, pieejama visiem un veidota ar mīlestību";
+"about_proposition_1" = "Bezsaistē, ātri un ērti lietojams";
 
 /* Text in About screen */
-"about_proposition_1" = "• Nesatur reklāmas, izsekošanu un nevāc datus";
-
-/* Text in About screen */
-"about_proposition_2" = "• Neizlādē bateriju, darbojas bez interneta pieslēguma";
-
-/* Text in About screen */
-"about_proposition_3" = "• Ātra, minimālistiska un kopienas izstrādāta";
+"about_proposition_2" = "Konfidencialitātei orientēts un bez reklāmām";
 "close" = "Aizvērt";
 "download" = "Lejupielādēt";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Dzīvojamo auto labierīcības";
-"share_bookmarks_email_body" = "Sveiki!\n\nPielikumā ir grāmatzīmes. Lūdzu, atveriet tās „Organic Maps“ lietotnē. Ja Jums tā nav instalēta, instalējiet to te: https://omaps.app/get?kmz\n\nBaudiet ceļošanu ar „Oranic Maps“!";
+"share_bookmarks_email_body" = "Sveiki!\n\nPielikumā ir grāmatzīmes. Lūdzu, atveriet tās „CoMaps“ lietotnē. Ja Jums tā nav instalēta, instalējiet to te: https://www.comaps.app/download/\n\nBaudiet ceļošanu ar „Oranic Maps“!";
 
 /* message title of loading file */
 "load_kmz_title" = "Ielādē grāmatzīmes";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Jūsu atrašanās vieta vēl nav noteikta";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hei, apskatiet manu grāmatzīmi Organic Maps kartē!";
+"bookmark_share_email_subject" = "Hei, apskatiet manu grāmatzīmi CoMaps kartē!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hei, apskati manu atrašanās vietu „Oganic Maps“ kartē!";
+"my_position_share_email_subject" = "Hei, apskati manu atrašanās vietu „CoMaps“ kartē!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-pasts";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Ievietot starpliktuvē";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Nokopēts starpliktuvē: %@";
@@ -190,7 +187,9 @@
 "done" = "Pabeigts";
 
 /* Prints version number in About dialog */
-"version" = "„Organic Maps“ versija: %@";
+"version" = "„CoMaps“ versija: %@";
+"version %@ (%@)" = "%@ (%@) versija";
+"version: %@ (%@)\nmap data: %@" = "Versija: %@ (%@)\nKartes dati: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Ceļi";
@@ -200,6 +199,7 @@
 "share_my_location" = "Kopīgot manu atrašanās vietu";
 "prefs_group_route" = "Navigācija";
 "pref_zoom_title" = "Tālummaiņas pogas";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Izskats";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tumšs";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Izslēgts";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Energotaupības režīmā 3D ēkas ir izslēgtas";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Balss instrukcijas";
+"pref_tts_title" = "Balss instrukcijas";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Izrunāt ielu nosaukumus";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Tīmekļa vietne";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Jaunumi";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-pasts";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax attēls";
+
 /* Text in menu */
 "rate_the_app" = "Novērtējiet lietotni";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Ziedot";
-
-/* Tex label above the Donate button */
-"donate_description" = "Ziedojiet, lai kopā varam veidot vislabākās kartes!";
-"already_donated" = "Jau esmu ziedojis/usi";
-"remind_me_later" = "Atgādināt vēlāk";
-"support_organic_maps" = "Atbalstīt Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Autortiesības";
@@ -298,7 +322,7 @@
 "volunteer" = "Brīvprātīgi palīdzēt";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Sekojiet un sazinieties ar mums:";
+"follow_us" = "Sekojiet un sazinieties ar mums";
 
 /* Alert text */
 "email_error_body" = "E-pasta klients nav sagatavots darbam. Konfigurējiet to vai sazinieties ar mums: %@";
@@ -510,15 +534,27 @@
 "closes_in" = "Slēgts pēc %@";
 "closed" = "Slēgts";
 "add_opening_hours" = "Pievienot darba laiku";
-"no_osm_account" = "Vai jums nav „OpenStreetMap“ konta?";
-"register_at_openstreetmap" = "Reģistrējieties „OpenStreetMap“";
-"password_8_chars_min" = "Parole (vismaz 8 simboli)";
-"invalid_username_or_password" = "Nederīgs lietotājvārds vai parole.";
-"login" = "Ierakstīties";
-"login_osm" = "Ierakstīties OpenStreetMap";
-"forgot_password" = "Vai aizmirsāt paroli?";
-"osm_account" = "OSM konts";
-"logout" = "Izrakstīties";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Kartes dati no OpenStreetMap";
+"osm_mapdata_explanation %@" = "Kopienas veidoti karšu dati, *%@*. Uzziniet vairāk par to, kā piedalīties kartes rediģēšanā un uzlabošanā vietnē „[OpenStreetMap.org](https://openstreetmap.org)“.";
+"osm_more_about" = "Vairāk par „OpenStreetMap“";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "„OpenStreetMap“ profils";
+"osm_profile_promt" = "Izveidojiet OpenStreetMap kontu vai piesakieties, lai publicētu savas kartes rediģējumus visā pasaulē.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) ir kopienas projekts, kura mērķis ir izveidot atvērtajos datos balstītu karti, kura ir pieejama bez maksas. Tas ir CoMaps galvenais karšu datu avots un darbojas līdzīgi kā Vikipēdija. Jūs varat pievienot vai rediģēt vietas, un tās kļūst pieejamas miljoniem lietotāju visā pasaulē.\nPievienojieties kopienai, lai palīdzētu izveidot labāku karti visiem!";
+"osm_profile_login" = "Pieslēgties OpenStreetMap kontam";
+"osm_profile_reauthorize_promt" = "OpenStreetMap konts tika atvienots no šīs lietotnes";
+"osm_profile_reauthorize" = "Atkārtoti izveidot savienojumu ar OpenStreetMap";
+"osm_profile_remove_promt" = "Ja nevarat vai nevēlaties atkārtoti pievienot savu kontu, varat to vienkārši noņemt no šīs lietotnes";
+"osm_profile_remove" = "Noņemt OpenStreetMap kontu";
+"osm_profile_register_promt" = "Vai jums nav „OpenStreetMap“ konta?";
+"osm_profile_register" = "Reģistrējieties „OpenStreetMap“";
+"osm_profile_verfied_changes" = "Apstiprinātas izmaiņas";
+"osm_profile_logout" = "Atteikties no OpenStreetMap konta";
+"osm_profile_delete" = "Dzēst OpenStreetMap kontu";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Pēdējo reizi augšupielādēja";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Mainīt atrašanās vietu";
 "message_invalid_feature_position" = "Šeit objekti nevar atrasties";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Kopienas veidotie „OpenStreetMap“ dati, %@. Uzziniet vairāk par to, kā piedalīties kartes rediģēšanā un uzlabošanā vietnē „OpenStreetMap.org“.";
-"login_to_make_edits_visible" = "Izveidojiet OpenStreetMap kontu vai piesakieties, lai publicētu savas kartes rediģējumus visā pasaulē.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Lejupielādei nepieciešams vairāk vietas. Izdzēsiet liekos datus.";
-"editor_sharing_title" = "Es uzlaboju „Organic Maps“ kartes";
+"editor_sharing_title" = "Es uzlaboju „CoMaps“ kartes";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d no %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Piezīme OpenStreetMap brīvprātigajiem (nav obligāts)";
 "editor_detailed_description_hint" = "Sīkāks komentārs";
-"editor_detailed_description" = "Jūsu izmaiņu priekšlikumu nosūtīsim „OpenStreetMap“ kopienai. Lūdzu, sniedziet jebkādu papildu informāciju, ko nevarat norādīt „Organic Maps“ lietotnē.";
+"editor_detailed_description" = "Jūsu izmaiņu priekšlikumu nosūtīsim „OpenStreetMap“ kopienai. Lūdzu, sniedziet jebkādu papildu informāciju, ko nevarat norādīt „CoMaps“ lietotnē.";
 "editor_more_about_osm" = "Vairāk par „OpenStreetMap“";
 "editor_operator" = "Saimniekotājs";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operators: %@";
 "editor_category_unsuitable_title" = "Vai neatrodat atbilstošu kategoriju?";
-"editor_category_unsuitable_text" = "„Organic Maps“ ļauj pievienot tikai vienkāršu punktu kategorijas, proti, nevarat pievienot pilsētas, ceļus, ezerus, ēku aprises u.tml. Šādas kategorijas lūdzam pievienot tiešā veidā <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Lai uzzinātu, kā to izdarīt, sekojiet norādēm <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">rokasgrāmatā</a>.";
+"editor_category_unsuitable_text" = "„CoMaps“ ļauj pievienot tikai vienkāršu punktu kategorijas, proti, nevarat pievienot pilsētas, ceļus, ezerus, ēku aprises u.tml. Šādas kategorijas lūdzam pievienot tiešā veidā <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Lai uzzinātu, kā to izdarīt, sekojiet norādēm <a href=\"https://www.comaps.app/support/advanced-map-editing/\">rokasgrāmatā</a>.";
 "downloader_no_downloaded_maps_title" = "Ierīcē nav lejupielādētu karšu";
 "downloader_no_downloaded_maps_message" = "Lai darbotos nesaistes navigācija un meklēšana, lejupielādējiet kartes.";
 "current_location_unknown_error_title" = "Pašreizējā vieta nav zināma.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Atlasiet „Privātums“";
 "location_services_disabled_on_device_3" = "3. Atlasiet atrašanās vietas pakalpojumus";
 "location_services_disabled_on_device_4" = "4. Ieslēdziet atrašanāš vietas noteikšanas pakalpojumus";
-"location_services_disabled_on_device_additional_message" = "Vai turpiniet izmantot „Organic Maps“ bez vietas";
+"location_services_disabled_on_device_additional_message" = "Vai turpiniet izmantot „CoMaps“ bez vietas";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +669,6 @@
 "day" = "d";
 "placepage_more_button" = "Vairāk";
 "book_button" = "Rezervēt";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Foto, atsauksmes, rezervācija";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "No ieteikuma saites saņemtais bonuss par katru rezervāciju nonāk „Organic Maps“ attīstīšanai.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Informācija par „Kayak“";
 "placepage_call_button" = "Zvanīt";
 "placepage_edit_bookmark_button" = "Rediģēt grāmatzīmi";
 "placepage_bookmark_name_hint" = "Grāmatzīmes nosaukums";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Paskaties";
-"recent_track_background_dialog_message" = "„Organic Maps“ fonā izmantos ierīces atrašanās vietas datus, lai reģistrētu pēdējo noieto vai nobraukto maršrutu.";
+"recent_track_background_dialog_message" = "„CoMaps“ fonā izmantos ierīces atrašanās vietas datus, lai reģistrētu pēdējo noieto vai nobraukto maršrutu.";
 "general_settings" = "Pamata iestatījumi";
 
 /* For the first routing */
@@ -726,6 +749,9 @@
 "placepage_add_stop" = "Pievienot starppunktu";
 "start_from_my_position" = "Sākt no";
 
+/* Title for button when a route was saved. */
+"saved" = "Saglabāts";
+
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Ierakstieties „OpenStreetMap“, lai automātiski augšupielādētu visus kartes rediģējumus. Uzziniet vairāk";
 
@@ -765,8 +791,8 @@
 "subway_data_unavailable" = "Metro karte nav pieejama";
 "title_error_downloading_bookmarks" = "Notika kļūda";
 "popular_place" = "Populāras";
-"export_file" = "Eksportēt KMZ";
-"export_file_gpx" = "GPX eksportēšana";
+"export_file" = "Izgūt KMZ formātā";
+"export_file_gpx" = "Izgūt GPX formātā";
 "delete_list" = "Dzēst sarakstu";
 "hide_from_map" = "Slēpt kartē";
 "tags_loading_error_subtitle" = "Kļūda, ielādējot birkas. Mēģiniet vēlreiz.";
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Ceļš";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
 "app_tip_00" = "Paldies, ka izmantojat mūsu kopienas veidotās kartes!";
@@ -943,7 +960,7 @@
 "app_tip_01" = "Ar jūsu ziedojumiem un atbalstu varam izveidot pasaulē labākās kartes!";
 
 /* App tip #02 */
-"app_tip_02" = "Vai jums patīk mūsu lietotne? Lūdzam ziedot tās attīstībai! Varbūt tā nepatīk? Tādā gadījumā lūdzam mums pastāstīt, kas tajā nepatīk, lai varam „Organic Maps“ uzlabot!";
+"app_tip_02" = "Vai jums patīk mūsu lietotne? Lūdzam ziedot tās attīstībai! Varbūt tā nepatīk? Tādā gadījumā lūdzam mums pastāstīt, kas tajā nepatīk, lai varam „CoMaps“ uzlabot!";
 
 /* App tip #03 */
 "app_tip_03" = "Ja pazīstat kādu programmatūras izstrādātāju, varat viņam vai viņai palūgt ieviest funkciju, kas jums pietrūkst.";
@@ -967,10 +984,10 @@
 "app_tip_09" = "Mūsu mērķis ir izveidot viegli lietojamas kartes, kas respektē jūsu privātumu un kuras jums patiks.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Tagad „Organic Maps“ izmantojat tālruņa ekrānā";
+"car_used_on_the_phone_screen" = "Tagad „CoMaps“ izmantojat tālruņa ekrānā";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Tagad „Organic Maps“ izmantojat automobiļa ekrānā";
+"car_used_on_the_car_screen" = "Tagad „CoMaps“ izmantojat automobiļa ekrānā";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Turpināt tālrunī";
@@ -982,7 +999,7 @@
 "button_layer_outdoor" = "Aktīvā atpūta";
 
 /* Bookmark categories screen, button that opens share dialog to export all bookmarks and tracks */
-"bookmarks_export" = "Eksportēt visas grāmatzīmes un ceļus";
+"bookmarks_export" = "Izgūt visus ceļus un grāmatzīmes";
 
 /* Text for the editing the Track's color button. */
 "change_color" = "Mainīt krāsu";
@@ -995,7 +1012,10 @@
 "website_menu" = "Saite uz ēdienkarti";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Vai vēlaties izstrādātājiem nosūtīt ziņojumu par kļūdu?\nMēs paļaujamies uz šiem ziņojumiem, jo „Organic Maps“ automātiski nevāc nekādus datus par kļūdām. Jau iepriekš pateicamies par „Organic Maps“ atbalstīšanu!";
+"bugreport_alert_message" = "Vai vēlaties izstrādātājiem nosūtīt ziņojumu par kļūdu?\nMēs paļaujamies uz šiem ziņojumiem, jo „CoMaps“ automātiski nevāc nekādus datus par kļūdām. Jau iepriekš pateicamies par „CoMaps“ atbalstīšanu!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Ieslēgta „iCloud“ sinhronizācija";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Ceļš ir tukšs – nav ko saglabāt";
 "edit_track" = "Labot ceļu";
+"osm_profile_view_edit_history" = "Skatīt labojumu vēsturi";
+"osm_profile_view_notes" = "Skatīt piezīmes";
+"about_headline" = "Open project powered by the community";
+"about_proposition_3" = "Transparent and not for profit";
+"pref_mapappearance_title" = "Map Appearance";

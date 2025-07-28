@@ -43,16 +43,16 @@
 "country_status_download_failed" = "Ошибка загрузки";
 
 /* Text in About screen */
-"about_headline" = "Бесплатно для всех, сделано с любовью";
+"about_headline" = "Открытый проект создаваемый сообществом";
 
 /* Text in About screen */
-"about_proposition_1" = "• Без рекламы, без трекинга, без слежки";
+"about_proposition_1" = "Автономный, быстрый и просто в использовании";
 
 /* Text in About screen */
-"about_proposition_2" = "• Не разряжает батарею, работает в автономном режиме";
+"about_proposition_2" = "Ориентированный на конфиденциальность и без рекламы";
 
 /* Text in About screen */
-"about_proposition_3" = "• Быстрые, минималистичные, разработанные сообществом";
+"about_proposition_3" = "Прозрачный и некоммерческий";
 "close" = "Закрыть";
 "download" = "Загрузить";
 
@@ -154,7 +154,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Для автодомов";
-"share_bookmarks_email_body" = "Здравствуйте!\n\nВ прикреплённом файле мои метки из офлайновых карт Organic Maps. Для того чтобы открыть этот файл, вам потребуется приложение Organic Maps, которое можно установить по ссылке: https://omaps.app/get?kmz\n\nСпасибо!";
+"share_bookmarks_email_body" = "Здравствуйте!\n\nВ прикреплённом файле мои метки из офлайновых карт CoMaps. Для того чтобы открыть этот файл, вам потребуется приложение CoMaps, которое можно установить по ссылке: https://www.comaps.app/download/\n\nСпасибо!";
 
 /* message title of loading file */
 "load_kmz_title" = "Загрузка меток";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "Ваше местоположение ещё не определено";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Смотри мою метку на карте Organic Maps";
+"bookmark_share_email_subject" = "Проверь мою метку на карте CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Посмотри на карте Organic Maps, где я сейчас нахожусь";
+"my_position_share_email_subject" = "Проверь моё текущее местоположение на карте CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Email";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Скопировать в буфер обмена";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Скопировано в буфер обмена: %@";
@@ -190,7 +193,9 @@
 "done" = "Готово";
 
 /* Prints version number in About dialog */
-"version" = "Версия Organic Maps: %@";
+"version" = "Версия CoMaps: %@";
+"version %@ (%@)" = "Версия %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Версия: %@ (%@)\nКартографические данные: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Треки";
@@ -200,6 +205,7 @@
 "share_my_location" = "Поделиться местоположением";
 "prefs_group_route" = "Навигация";
 "pref_zoom_title" = "Кнопки масштаба";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Оформление";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Темное";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Выключен";
@@ -223,13 +232,16 @@
 "pref_map_3d_title" = "Перспективный вид";
 
 /* Settings «Map» category: «3D buildings» title */
-"pref_map_3d_buildings_title" = "3D здания";
+"pref_map_3d_buildings_title" = "3D-здания";
 
 /* A message in Settings/Preferences explaining why is it not possible to enable 3D buildings when max power saving mode is enabled */
 "pref_map_3d_buildings_disabled_summary" = "3D-здания отключаются в режиме энергосбережения";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Голосовые инструкции";
+"pref_tts_title" = "Голосовые инструкции";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Проговаривать названия улиц";
@@ -241,19 +253,31 @@
 "pref_tts_language_title" = "Язык подсказок";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Проверить голосовые подсказки (TTS, Text-To-Speech).";
+"pref_tts_test_voice_title" = "Протестировать голосовые подсказки (TTS, Text-To-Speech)";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Другой";
-"pref_map_auto_zoom" = "Автозум";
+"pref_map_auto_zoom" = "Автомасштабирование";
 "placepage_distance" = "Расстояние";
 "search_show_on_map" = "Посмотреть на карте";
 
 /* Text in menu */
 "website" = "Вебсайт";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Новости";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Электронная почта";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +291,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramax Фото";
+
 /* Text in menu */
 "rate_the_app" = "Оценить приложение";
 
@@ -278,12 +314,6 @@
 
 /* Button in the main menu */
 "donate" = "Поддержать деньгами";
-
-/* Tex label above the Donate button */
-"donate_description" = "Поддержать деньгами, чтобы вместе создавать лучшие карты!";
-"already_donated" = "Уже пожертвовано";
-"remind_me_later" = "Напомнить позже";
-"support_organic_maps" = "Поддержать Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Копирайт";
@@ -298,10 +328,10 @@
 "volunteer" = "Cтать волонтёром";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Подписывайтесь и пишите нам:";
+"follow_us" = "Подписывайтесь и пишите нам";
 
 /* Alert text */
-"email_error_body" = "Почтовый клиент не настроен. Настройте его или используйте другие способы для связи. Наш адрес - %@.";
+"email_error_body" = "Почтовый клиент не настроен. Настройте его или используйте другие способы для связи. Наш адрес - %@";
 
 /* Alert title */
 "email_error_title" = "Ошибка при отправлении письма";
@@ -411,10 +441,10 @@
 /* blue gray color */
 "blue_gray" = "Серо-голубой";
 "dialog_routing_disclaimer_title" = "При движении по маршруту помните:";
-"dialog_routing_disclaimer_priority" = "— Дорожная обстановка, ПДД и знаки приоритетнее советов приложения;";
+"dialog_routing_disclaimer_priority" = "— Дорожная обстановка, ПДД и дорожные знаки приоритетнее подсказок навигатора;";
 "dialog_routing_disclaimer_precision" = "— Карта может быть неточной, а предложенный маршрут не всегда оптимален;";
 "dialog_routing_disclaimer_recommendations" = "— Предлагаемые маршруты — лишь рекомендации;";
-"dialog_routing_disclaimer_borders" = "— Будьте внимательны с маршрутами в приграничных зонах: в построенных программой маршрутах иногда возможны пересечения границ в неположенных местах;";
+"dialog_routing_disclaimer_borders" = "— Будьте внимательны с маршрутами в приграничных зонах: маршруты, построенные нашей программой иногда могут пересекать границы в неположенных местах.";
 "dialog_routing_disclaimer_beware" = "Будьте внимательны на дорогах и берегите себя!";
 "dialog_routing_check_gps" = "Проверьте сигнал GPS";
 "dialog_routing_error_location_not_found" = "Маршрут не построен. Текущая геопозиция не определена.";
@@ -467,7 +497,7 @@
 "read_in_wikipedia" = "Википедия";
 
 /* Place Page link to Wikimedia Commons. */
-"wikimedia_commons" = "Wikimedia Commons";
+"wikimedia_commons" = "Викисклад";
 "p2p_your_location" = "Ваше местоположение";
 "p2p_start" = "Начать";
 "p2p_from_here" = "Отсюда";
@@ -510,15 +540,27 @@
 "closes_in" = "Закроется через %@";
 "closed" = "Закрыто";
 "add_opening_hours" = "Добавить время работы";
-"no_osm_account" = "Не зарегистрированы в OpenStreetMap?";
-"register_at_openstreetmap" = "Зарегистрироваться";
-"password_8_chars_min" = "Пароль (минимум 8 символов)";
-"invalid_username_or_password" = "Неверное имя пользователя или пароль.";
-"login" = "Войти";
-"login_osm" = "Войти в OpenStreetMap";
-"forgot_password" = "Забыли пароль?";
-"osm_account" = "OSM Аккаунт";
-"logout" = "Выйти";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Картографические данные из OpenStreetMap";
+"osm_mapdata_explanation %@" = "Созданные сообществом картографические данные по состоянию на *%@*. Узнайте больше о том, как редактировать и обновлять карту, на сайте [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Подробнее об OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/RU:О_проекте";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Профиль OpenStreetMap";
+"osm_profile_promt" = "Создайте учетную запись OpenStreetMap или войдите в нее, чтобы опубликовать свои правки на карте для всего мира.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) - это открытый проект сообщества по созданию бесплатной карты. Он является основным источником картографических данных в CoMaps и работает как Википедия. Кто угодно может добавлять или редактировать места, которые позже увидят миллионы пользователей по всему миру. \nПрисоединяйтесь к сообществу и помогите сделать лучшую карту для всех!";
+"osm_profile_login" = "Войти в аккаунт OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Аккаунт OpenStreetMap был отключен от этого приложения";
+"osm_profile_reauthorize" = "Подключиться снова к OpenStreetMap";
+"osm_profile_remove_promt" = "Если вы не можете или не хотите повторно подключать свой аккаунт, вы можете просто Убрать его из этого приложения";
+"osm_profile_remove" = "Убрать аккаунт OpenStreetMap";
+"osm_profile_register_promt" = "Не зарегистрированы в OpenStreetMap?";
+"osm_profile_register" = "Зарегистрироваться";
+"osm_profile_verfied_changes" = "Учтённые правки";
+"osm_profile_logout" = "Выйти из аккаунта OpenStreetMap";
+"osm_profile_delete" = "Удалить аккаунт OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Последняя отправка";
@@ -567,13 +609,9 @@
 "dialog_incorrect_feature_position" = "Измените местоположение";
 "message_invalid_feature_position" = "Объект не может находиться в этом месте";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Созданные сообществом данные OpenStreetMap по состоянию на %@. Узнайте больше о том, как редактировать и обновлять карту, на сайте OpenStreetMap.org.";
-"login_to_make_edits_visible" = "Создайте учетную запись OpenStreetMap или войдите в нее, чтобы опубликовать свои правки на карте для всего мира.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Для загрузки требуется больше свободного места. Пожалуйста, удалите ненужные данные.";
-"editor_sharing_title" = "Я улучшил карты Organic Maps";
+"editor_sharing_title" = "Я улучшил карты CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d из %2$d";
@@ -593,20 +631,20 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Примечание для волонтеров OpenStreetMap (необязательно)";
 "editor_detailed_description_hint" = "Подробный комментарий";
-"editor_detailed_description" = "Предложенные вами изменения на карте будут отправлены в OpenStreetMap. Опишите дополнительные сведения об объекте, которые Organic Maps не позволяет отредактировать.";
+"editor_detailed_description" = "Предложенные вами изменения на карте будут отправлены в OpenStreetMap. Опишите дополнительные сведения об объекте, которые CoMaps не позволяет отредактировать.";
 "editor_more_about_osm" = "Подробнее об OpenStreetMap";
 "editor_operator" = "Оператор";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Оператор: %@";
 "editor_category_unsuitable_title" = "Нет подходящей категории?";
-"editor_category_unsuitable_text" = "Organic Maps позволяет добавлять на карту только простые типы объектов, то есть никаких городов, дорог, озер, контуров зданий. Пожалуйста, добавляйте такие категории на сайте <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Также рекомендуем ознакомиться с нашими <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">подробными пошаговыми инструкциями и другими приложениями для редактирования карты</a>.";
+"editor_category_unsuitable_text" = "CoMaps позволяет добавлять на карту только простые типы объектов, то есть никаких городов, дорог, озер, контуров зданий. Пожалуйста, добавляйте такие категории на сайте <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Также рекомендуем ознакомиться с нашими <a href=\"https://www.comaps.app/support/advanced-map-editing/\">подробными пошаговыми инструкциями и другими приложениями для редактирования карты</a>.";
 "downloader_no_downloaded_maps_title" = "У вас нет загруженных карт";
 "downloader_no_downloaded_maps_message" = "Загрузите необходимые карты, чтобы находить места и пользоваться навигацией без интернета.";
 "current_location_unknown_error_title" = "Местоположение не найдено.";
 "current_location_unknown_error_message" = "При поиске местоположения произошла неизвестная ошибка. Проверьте работоспособность устройства и попробуйте найти местоположение позднее.";
 "location_services_disabled_header" = "Определение местоположения отключено";
-"location_services_disabled_message" = "Разрешите доступ к геопозиции в настройках устройства.";
+"location_services_disabled_message" = "Разрешите доступ к геопозиции в настройках устройства";
 "location_services_disabled_1" = "1. Откройте Настройки";
 "location_services_disabled_2" = "2. Нажмите Геопозиция";
 
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2. Выберите Конфидециальность";
 "location_services_disabled_on_device_3" = "3. Выберите Службы геолокации";
 "location_services_disabled_on_device_4" = "4. Включите Службы геолокации";
-"location_services_disabled_on_device_additional_message" = "Или продолжите использование Organic Maps без определения местоположения";
+"location_services_disabled_on_device_additional_message" = "Или продолжите использование CoMaps без определения местоположения";
 
 /* abbreviation for meters */
 "m" = "м";
@@ -637,15 +675,6 @@
 "day" = "д";
 "placepage_more_button" = "Ещё";
 "book_button" = "Забронировать";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Фотографии, отзывы, бронирование";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Реферальный бонус, полученный за каждое бронирование по этой ссылке, идёт на разработку Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Подробнее на Kayak";
 "placepage_call_button" = "Позвонить";
 "placepage_edit_bookmark_button" = "Редактировать метку";
 "placepage_bookmark_name_hint" = "Название метки";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Посмотри";
-"recent_track_background_dialog_message" = "Organic Maps использует вашу геопозицию в фоновом режиме для записи недавно пройденного пути.";
+"recent_track_background_dialog_message" = "CoMaps использует вашу геопозицию в фоновом режиме для записи недавно пройденного пути.";
 "general_settings" = "Общие настройки";
 
 /* For the first routing */
@@ -692,7 +721,7 @@
 "mobile_data_dialog" = "Загружать дополнительную информацию через мобильный интернет?";
 "mobile_data_option_always" = "Всегда";
 "mobile_data_option_today" = "Только сегодня";
-"mobile_data_option_not_today" = "Не сегодня";
+"mobile_data_option_not_today" = "Не использовать сегодня";
 "mobile_data" = "Мобильный интернет";
 
 /* NOTE to translators: please synchronize your translation with the English one. */
@@ -709,7 +738,7 @@
 "traffic_data_unavailable" = "Данные о пробках недоступны";
 "enable_logging" = "Включить запись логов";
 "log_file_size" = "Размер файла логов: %@";
-"transliteration_title" = "Латинская транслитерация";
+"transliteration_title" = "Транслитерировать в Латинский алфавит";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Выход";
@@ -725,6 +754,9 @@
 "planning_route_remove_title" = "Перетяните сюда, чтобы удалить";
 "placepage_add_stop" = "Добавить остановку";
 "start_from_my_position" = "Начать от";
+
+/* Title for button when a route was saved. */
+"saved" = "Сохранено";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Пожалуйста войдите в аккаунт OpenStreetMap.org, чтобы публиковать ваши изменения карты. Подробности по";
@@ -783,7 +815,7 @@
 /* Speed camera settings menu option - Never warn (about speedcams) */
 "pref_tts_speedcams_never" = "Никогда не предупреждать";
 "power_managment_title" = "Режим энергосбережения";
-"power_managment_description" = "Если режим энергосбережения включён, приложение будет отключать энергозатратные функции в зависимости от текущего заряда телефона";
+"power_managment_description" = "Попробовать уменьшить потребление заряда аккумулятора за счёт отключения некоторых функций.";
 "power_managment_setting_never" = "Никогда";
 "power_managment_setting_auto" = "Авто";
 "power_managment_setting_manual_max" = "Максимальное энергосбережение";
@@ -794,13 +826,13 @@
 "avoid_tolls" = "Избегать платных дорог";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
-"avoid_unpaved" = "Избегать грунтовые дороги";
+"avoid_unpaved" = "Избегать грунтовых дорог";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
-"avoid_ferry" = "Избегать паромы";
-"avoid_motorways" = "Избегать автомагистрали";
+"avoid_ferry" = "Избегать паромов";
+"avoid_motorways" = "Избегать автомагистралей";
 "unable_to_calc_alert_title" = "Невозможно построить маршрут";
-"unable_to_calc_alert_subtitle" = "К сожалению, мы не смогли построить маршрут с выбранными опциями. Измените настройки и повторите попытку";
+"unable_to_calc_alert_subtitle" = "Маршрут не найден. Это могло быть спровоцировано вашими настройками прокладки маршрута или неполными данными OpenStreetMap. Пожалуйта, измените ваши настройки прокладки маршрута и попробуйте снова.";
 "define_to_avoid_btn" = "Настроить пути объезда";
 "change_driving_options_btn" = "Настройки объезда включены";
 "toll_road" = "Платная дорога";
@@ -845,7 +877,7 @@
 "ok" = "Ок";
 "speedcams_alert_title_carplay_1" = "Камеры";
 "speedcams_alert_title_carplay_2" = "Инфо о камерах";
-"download_map_carplay" = "Скачайте карты в приложении Organic Maps на своём устройстве";
+"download_map_carplay" = "Скачайте карты в приложении CoMaps на своём устройстве";
 "carplay_roundabout_exit" = "%@ съезд";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +956,8 @@
 /* edit track screen title */
 "track_title" = "Трек";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsRu";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/ru/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/RU:О_проекте";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/ru/";
 
 /* App Tip #00 */
 "app_tip_00" = "Спасибо, что пользуетесь нашими картами, созданными сообществом!";
@@ -967,10 +990,10 @@
 "app_tip_09" = "Наша главная цель — создать быстрые, конфиденциальные и простые в использовании карты, которые вам понравятся.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Сейчас Вы используете Organic Maps на экране телефона";
+"car_used_on_the_phone_screen" = "Сейчас Вы используете CoMaps на экране телефона";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Сейчас Вы используете Organic Maps на экране автомобиля";
+"car_used_on_the_car_screen" = "Сейчас Вы используете CoMaps на экране автомобиля";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Продолжить в телефоне";
@@ -995,7 +1018,10 @@
 "website_menu" = "Ссылка на меню";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Хотите отправить разработчикам сообщение об ошибке?\nМы полагаемся на наших пользователей, так как Organic Maps не собирает информацию об ошибках автоматически. Заранее спасибо за поддержку Organic Maps!";
+"bugreport_alert_message" = "Хотите отправить разработчикам сообщение об ошибке?\nМы полагаемся на наших пользователей, так как CoMaps не собирает информацию об ошибках автоматически. Заранее спасибо за поддержку CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "Синхронизация с iCloud (бета)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Включить синхронизацию с iCloud";
@@ -1068,4 +1094,7 @@
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Трек пуст - нечего сохранять";
-"edit_track" = "Редактировать трек";
+"edit_track" = "Редактировать маршрут";
+"osm_profile_view_edit_history" = "История правок";
+"osm_profile_view_notes" = "Заметки";
+"pref_mapappearance_title" = "Map Appearance";

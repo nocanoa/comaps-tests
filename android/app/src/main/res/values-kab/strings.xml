@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">Uɣal ɣer deffir</string>
+    <string name="cancel">Sefsex</string>
+    <string name="delete">Kkes</string>
+    <string name="downloading">Asader…</string>
+    <string name="later">Ticki</string>
+    <string name="search">Nadi</string>
+    <string name="try_again">Ɛreḍ tikkelt niḍen</string>
+    <string name="copyright">Izerfan n usuffeɣ</string>
+    <string name="app_site_url">https://comaps.app/</string>
+    <string name="close">Mdel</string>
+    <string name="download">Zdem</string>
+    <string name="pause">Seṛǧu</string>
+    <string name="continue_button">Kemmel</string>
+    <string name="name">Isem</string>
+    <string name="address">Tansa</string>
+    <string name="list">Tabdart</string>
+    <string name="settings">Iɣewwaren</string>
+    <string name="telegram_url">https://t.me/CoMapsApp/</string>
+    <string name="translated_om_site_url">https://comaps.app/</string>
+    <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
+    <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
+    <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
+    <string name="self_service">Aseqdec n yiman</string>
+    <string name="panoramax">Tugna n Panoramax</string>
+    <string name="editor_line_social_network">LINE</string>
+    <string name="kilometres">ⴽⵉⵍⵓⵎⵉⵜⵔⴻⵏ</string>
+    <string name="saved">Yettwasekles</string>
+    <string name="about_proposition_3">• Yezmer ad yaweḍ berra i usmel, s tɣawla yerna d ameẓyan</string>
+</resources>

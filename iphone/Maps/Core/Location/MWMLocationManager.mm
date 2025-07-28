@@ -10,6 +10,10 @@
 
 #include "map/gps_tracker.hpp"
 
+#if TARGET_OS_SIMULATOR
+#include "MountainElevationGenerator.hpp"
+#endif
+
 namespace
 {
 using Observer = id<MWMLocationObserver>;
@@ -472,6 +476,25 @@ void setShowLocationAlert(BOOL needShow) {
   if (location.horizontalAccuracy < 0.)
     return;
 
+#if TARGET_OS_SIMULATOR
+  // There is no simulator < 15.0 in the new XCode.
+  if (@available(iOS 15.0, *))
+  {
+    // iOS Simulator doesn't provide any elevation in its locations. Mock it.
+    static MountainElevationGenerator generator;
+    location = [[CLLocation alloc] initWithCoordinate:location.coordinate
+                                             altitude:generator.NextElevation()
+                                   horizontalAccuracy:location.horizontalAccuracy
+                                     verticalAccuracy:location.horizontalAccuracy
+                                               course:location.course
+                                       courseAccuracy:location.courseAccuracy
+                                                speed:location.speed
+                                        speedAccuracy:location.speedAccuracy
+                                            timestamp:location.timestamp
+                                           sourceInfo:location.sourceInformation];
+  }
+#endif
+
   self.lastLocationStatus = MWMLocationStatusNoError;
   self.locationSource = location::EAppleNative;
   [self processLocationUpdate:location];
@@ -486,10 +509,10 @@ void setShowLocationAlert(BOOL needShow) {
 
 // Delegate's method didChangeAuthorizationStatus is used to handle the authorization status when the application finishes launching
 // or user changes location access in the application settings.
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager
 {
-  LOG(LWARNING, ("CLLocationManagerDelegate: Authorization status has changed to", DebugPrint(status)));
-  switch (status) {
+  LOG(LWARNING, ("CLLocationManagerDelegate: Authorization status has changed to", DebugPrint(manager.authorizationStatus)));
+  switch (manager.authorizationStatus) {
     case kCLAuthorizationStatusAuthorizedWhenInUse:
     case kCLAuthorizationStatusAuthorizedAlways:
       [self startUpdatingLocationFor:manager];
@@ -556,7 +579,7 @@ void setShowLocationAlert(BOOL needShow) {
   if ([CLLocationManager locationServicesEnabled])
   {
     CLLocationManager * locationManager = self.locationManager;
-    switch (CLLocationManager.authorizationStatus)
+    switch (locationManager.authorizationStatus)
     {
       case kCLAuthorizationStatusAuthorizedWhenInUse:
       case kCLAuthorizationStatusAuthorizedAlways:

@@ -43,16 +43,10 @@
 "country_status_download_failed" = "Sedang Mengunduh telah gagal";
 
 /* Text in About screen */
-"about_headline" = "Gratis untuk semua orang, dibuat dengan cinta";
+"about_proposition_1" = "Offline, cepat dan mudah digunakan";
 
 /* Text in About screen */
-"about_proposition_1" = "• Tidak ada iklan, tidak ada pelacakan, tidak ada pengumpulan data";
-
-/* Text in About screen */
-"about_proposition_2" = "• Tidak menguras baterai, bekerja secara offline";
-
-/* Text in About screen */
-"about_proposition_3" = "• Cepat, minimalis, dikembangkan oleh komunitas";
+"about_proposition_2" = "Berfokus pada privasi dan bebas iklan";
 "close" = "Tutup";
 "download" = "Unduh";
 
@@ -154,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Untuk RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in Organic Maps. If you don't have it installed you can download it here: https://omaps.app/get?kmz\n\nEnjoy travelling with Organic Maps!";
+"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Memuat Penanda";
@@ -172,13 +166,16 @@
 "unknown_current_position" = "Lokasi Anda belum ditentukan";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hei, lihat pinku di peta Organic Maps";
+"bookmark_share_email_subject" = "Hei, lihat pinku di CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hei, lihat lokasiku saat ini di peta Organic Maps!";
+"my_position_share_email_subject" = "Hei, lihat lokasiku saat ini di peta CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Surel";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Salin ke papan klip";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Telah Disalin ke Papan Klip: %@";
@@ -190,7 +187,9 @@
 "done" = "Selesai";
 
 /* Prints version number in About dialog */
-"version" = "Versi Organic Maps: %@";
+"version" = "Versi CoMaps: %@";
+"version %@ (%@)" = "Versi %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versi: %@ (%@)\nData Peta: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Jalur";
@@ -200,6 +199,7 @@
 "share_my_location" = "Bagikan Lokasi Saya";
 "prefs_group_route" = "Navigasi";
 "pref_zoom_title" = "Tombol perbesaran";
+"pref_left_button_type" = "Left Main Button";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Tampilan";
@@ -209,6 +209,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Gelap";
+
+/* Generic «Disabled» string */
+"disabled" = "Disabled";
 
 /* Generic «Off» string */
 "off" = "Tidak Aktif";
@@ -229,7 +232,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Bangunan 3D dimatikan dalam mode hemat daya";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Petunjuk Suara";
+"pref_tts_title" = "Petunjuk Suara";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Enable Voice Instructions";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Umumkan Nama Jalan";
@@ -252,8 +258,20 @@
 /* Text in menu */
 "website" = "Situs Web";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Berita";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "Alamat surel";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +285,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Gambar Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Beri nilai aplikasi";
 
@@ -278,12 +308,6 @@
 
 /* Button in the main menu */
 "donate" = "Menyumbangkan";
-
-/* Tex label above the Donate button */
-"donate_description" = "Donasi untuk membangun peta terbaik bersama-sama!";
-"already_donated" = "Sudah disumbang";
-"remind_me_later" = "Ingatkan nanti";
-"support_organic_maps" = "Mendukung Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Hak cipta";
@@ -298,7 +322,7 @@
 "volunteer" = "Untuk Menjadi Relawan";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Ikuti dan hubungi kami:";
+"follow_us" = "Ikuti dan hubungi kami";
 
 /* Alert text */
 "email_error_body" = "Surel pelanggan belum diatur. Mohon konfigurasikan atau gunakan cara lain untuk menghubungi kami di %@";
@@ -510,15 +534,27 @@
 "closes_in" = "Closes in %@";
 "closed" = "Tutup";
 "add_opening_hours" = "Tambah jam kerja";
-"no_osm_account" = "Tidak ada akun di OpenStreetMap?";
-"register_at_openstreetmap" = "Mendaftar";
-"password_8_chars_min" = "Kata Sandi (minimal 8 karakter)";
-"invalid_username_or_password" = "Nama pengguna dan Kata sandi tidak valid.";
-"login" = "Masuk";
-"login_osm" = "Masuk ke OpenStreetMap";
-"forgot_password" = "Lupa kata sandi?";
-"osm_account" = "Akun OSM";
-"logout" = "Keluar";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Data peta dari OpenStreetMap";
+"osm_mapdata_explanation %@" = "Data peta yang dibuat oleh komunitas pada tanggal *%@*. Pelajari lebih lanjut mengenai cara mengedit dan memperbarui peta di [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Selengkapnya tentang OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Profil OpenStreetMap";
+"osm_profile_promt" = "Buat akun OpenStreetMap atau masuk untuk mempublikasikan hasil editan peta Anda ke seluruh dunia.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) adalah sebuah proyek komunitas untuk membuat sebuah peta yang bebas dan terbuka. OSM merupakan sumber utama data peta di CoMaps dan berfungsi mirip dengan Wikipedia. Anda dapat menambahkan atau mengedit tempat dan tempat tersebut tersedia untuk jutaan pengguna di seluruh Dunia. \nBergabunglah dengan komunitas dan bantu membuat peta yang lebih baik untuk semua orang!";
+"osm_profile_login" = "Masuk ke akun OpenStreetMap";
+"osm_profile_reauthorize_promt" = "Akun OpenStreetMap terputus dari aplikasi ini";
+"osm_profile_reauthorize" = "Hubungkan kembali dengan OpenStreetMap";
+"osm_profile_remove_promt" = "Jika Anda tidak dapat atau tidak ingin menghubungkan kembali akun Anda, Anda dapat menghapusnya dari aplikasi ini";
+"osm_profile_remove" = "Hapus memori akun OpenStreetMap dari aplikasi ini";
+"osm_profile_register_promt" = "Tidak ada akun di OpenStreetMap?";
+"osm_profile_register" = "Daftar di OpenStreetMap";
+"osm_profile_verfied_changes" = "Perubahan Terverifikasi";
+"osm_profile_logout" = "Keluar dari akun OpenStreetMap";
+"osm_profile_delete" = "Hapus akun OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Pengunggahan terakhir";
@@ -567,13 +603,9 @@
 "dialog_incorrect_feature_position" = "Ubah lokasi";
 "message_invalid_feature_position" = "Objek tidak dapat diletakkan di sini";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Data OpenStreetMap yang dibuat oleh komunitas pada tanggal %@. Pelajari lebih lanjut mengenai cara mengedit dan memperbarui peta di OpenStreetMap.org";
-"login_to_make_edits_visible" = "Buat akun OpenStreetMap atau masuk untuk mempublikasikan hasil editan peta Anda ke seluruh dunia.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Untuk mengunduh, Anda perlu ruang lebih banyak. Harap menghapus data yang tidak diperlukan.";
-"editor_sharing_title" = "Saya meningkatkan peta Organic Maps";
+"editor_sharing_title" = "Saya meningkatkan peta CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d dari %2$d";
@@ -593,14 +625,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Catatan untuk relawan OpenStreetMap (opsional)";
 "editor_detailed_description_hint" = "Komentar mendetail";
-"editor_detailed_description" = "Saran perubahan Anda akan dikirimkan ke komunitas OpenStreetMap. Jelaskan detail yang tidak dapat diedit di Organic Maps.";
+"editor_detailed_description" = "Saran perubahan Anda akan dikirimkan ke komunitas OpenStreetMap. Jelaskan detail yang tidak dapat diedit di CoMaps.";
 "editor_more_about_osm" = "Selengkapnya tentang OpenStreetMap";
 "editor_operator" = "Operator";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operator: %@";
 "editor_category_unsuitable_title" = "Tidak dapat menemukan kategori yang sesuai?";
-"editor_category_unsuitable_text" = "Organic Maps hanya memungkinkan untuk menambahkan kategori titik sederhana, yang berarti tidak ada kota, jalan, danau, garis besar bangunan, dll. Silahkan tambahkan kategori tersebut secara langsung ke <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Lihat <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">panduan</a> kami untuk petunjuk langkah demi langkah yang terperinci.";
+"editor_category_unsuitable_text" = "CoMaps hanya memungkinkan untuk menambahkan kategori titik sederhana, yang berarti tidak ada kota, jalan, danau, garis besar bangunan, dll. Silahkan tambahkan kategori tersebut secara langsung ke <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Lihat <a href=\"https://www.comaps.app/support/advanced-map-editing/\">panduan</a> kami untuk petunjuk langkah demi langkah yang terperinci.";
 "downloader_no_downloaded_maps_title" = "Tidak ada peta apa pun yang diunduh";
 "downloader_no_downloaded_maps_message" = "Unduh peta untuk menemukan lokasi dan bernavigasi secara offline.";
 "current_location_unknown_error_title" = "Lokasi saat ini tidak diketahui.";
@@ -615,7 +647,7 @@
 "location_services_disabled_on_device_2" = "2. Pilih Privasi";
 "location_services_disabled_on_device_3" = "3. Pilih Layanan Lokasi";
 "location_services_disabled_on_device_4" = "4. Aktifkan Layanan Lokasi";
-"location_services_disabled_on_device_additional_message" = "Atau lanjutkan menggunakan Organic Maps tanpa Lokasi";
+"location_services_disabled_on_device_additional_message" = "Atau lanjutkan menggunakan CoMaps tanpa Lokasi";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +669,6 @@
 "day" = "hr";
 "placepage_more_button" = "Lainnya";
 "book_button" = "Pesan";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Foto, ulasan, pemesanan";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Bonus rujukan yang diterima untuk setiap pemesanan melalui tautan ini digunakan untuk pengembangan Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Perincian di Kayak";
 "placepage_call_button" = "Hubungi";
 "placepage_edit_bookmark_button" = "Edit Bookmark";
 "placepage_bookmark_name_hint" = "Nama Bookmark";
@@ -681,7 +704,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Lihat";
-"recent_track_background_dialog_message" = "Organic Maps menggunakan geoposisi di latar belakang untuk merekam rute yang baru Anda lalui.";
+"recent_track_background_dialog_message" = "CoMaps menggunakan geoposisi di latar belakang untuk merekam rute yang baru Anda lalui.";
 "general_settings" = "Setelan umum";
 
 /* For the first routing */
@@ -725,6 +748,9 @@
 "planning_route_remove_title" = "Seret ke sini untuk menghapus";
 "placepage_add_stop" = "Tambah perhentian";
 "start_from_my_position" = "Mulai dari";
+
+/* Title for button when a route was saved. */
+"saved" = "Disimpan";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Silahkan login ke OpenStreetMap untuk mengupload semua hasil edit peta Anda secara otomatis. Pelajari lebih lanjut";
@@ -787,7 +813,7 @@
 "power_managment_setting_never" = "Jangan pernah";
 "power_managment_setting_auto" = "Otomatis";
 "power_managment_setting_manual_max" = "Hemat daya maksimum";
-"enable_logging_warning_message" = "Opsi ini mengaktifkan pencatatan untuk tujuan diagnostik. Bisa amat membantu bagi staf dukungan kami yang memecahkan masalah dalam aplikasi. Aktifkan opsi ini hanya saat diminta oleh dukungan Organic Maps.";
+"enable_logging_warning_message" = "Opsi ini mengaktifkan pencatatan untuk tujuan diagnostik. Bisa amat membantu bagi staf dukungan kami yang memecahkan masalah dalam aplikasi. Aktifkan opsi ini hanya saat diminta oleh dukungan CoMaps.";
 "driving_options_title" = "Pilihan berkendara";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +871,7 @@
 "ok" = "Oke";
 "speedcams_alert_title_carplay_1" = "Speedcam";
 "speedcams_alert_title_carplay_2" = "Info kecepatan";
-"download_map_carplay" = "Silakan unduh peta di apl Organic Maps pada perangkat Anda";
+"download_map_carplay" = "Silakan unduh peta di apl CoMaps pada perangkat Anda";
 "carplay_roundabout_exit" = "Jalan keluar ke %@";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +950,8 @@
 /* edit track screen title */
 "track_title" = "Trek";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/id/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/id/";
 
 /* App Tip #00 */
 "app_tip_00" = "Terima kasih telah menggunakan peta buatan komunitas kami!";
@@ -967,10 +984,10 @@
 "app_tip_09" = "Tujuan utama kami adalah membuat peta yang cepat, berfokus pada privasi, dan mudah digunakan yang akan Anda sukai.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Anda sekarang menggunakan Organic Maps pada layar ponsel";
+"car_used_on_the_phone_screen" = "Anda sekarang menggunakan CoMaps pada layar ponsel";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Anda sekarang menggunakan Organic Maps pada layar mobil";
+"car_used_on_the_car_screen" = "Anda sekarang menggunakan CoMaps pada layar mobil";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Lanjutkan di telepon";
@@ -995,7 +1012,10 @@
 "website_menu" = "Tautan menu";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Apakah Anda ingin mengirim laporan bug ke pengembang?\nKami mengandalkan pengguna kami karena Organic Maps tidak mengumpulkan informasi kesalahan secara otomatis. Terima kasih sebelumnya karena telah mendukung Peta Organik!";
+"bugreport_alert_message" = "Apakah Anda ingin mengirim laporan bug ke pengembang?\nKami mengandalkan pengguna kami karena CoMaps tidak mengumpulkan informasi kesalahan secara otomatis. Terima kasih sebelumnya karena telah mendukung CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "iCloud Syncronization (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Mengaktifkan Sinkronisasi iCloud";
@@ -1069,3 +1089,8 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Jalur kosong - tidak ada yang bisa disimpan";
 "edit_track" = "Edit Jalur";
+"osm_profile_view_notes" = "Lihat catatan";
+"osm_profile_view_edit_history" = "Lihat riwayat suntingan";
+"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Open project powered by the community";
+"pref_mapappearance_title" = "Map Appearance";

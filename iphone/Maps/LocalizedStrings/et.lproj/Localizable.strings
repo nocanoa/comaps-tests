@@ -43,16 +43,13 @@
 "country_status_download_failed" = "Allalaadimine ei õnnestunud";
 
 /* Text in About screen */
-"about_headline" = "Tasuta ja vaba kõigi jaoks, tehtud armastusega";
+"about_headline" = "Avatud projekt, mida toetab toimekas kogukond";
 
 /* Text in About screen */
-"about_proposition_1" = "• Pole reklaame, jälitamist ega andmekogumist";
+"about_proposition_1" = "Töötab ilma võrguühenduseta, kiire ja hõlpsasti kasutatav";
 
 /* Text in About screen */
-"about_proposition_2" = "• Ei tühjenda akut, töötab võrguühenduseta";
-
-/* Text in About screen */
-"about_proposition_3" = "• Kiire, minimalistlik, kogukonna poolt väljatöötatud";
+"about_proposition_2" = "Privaatsusele orienteeritud ja reklaamivaba";
 "close" = "Sulge";
 "download" = "Laadi alla";
 
@@ -154,7 +151,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Haagiselamud";
-"share_bookmarks_email_body" = "Tere!\n\nManuses on minu järjehoidjad rakendusest Organic Maps. Palun ava need kui Sul on Organic Maps paigaldatud. Või kui ei ole, laadi rakendus alla oma iOS või Android seadmesse, järgides seda linki: https:omaps.appget?kmz\n\nNaudi reisimist Organic Mapsiga!";
+"share_bookmarks_email_body" = "Tere!\n\nManuses on minu järjehoidjad rakendusest CoMaps. Palun ava need kui Sul on CoMaps paigaldatud. Või kui ei ole, laadi rakendus alla oma iOS või Android seadmesse, järgides seda linki: https:omaps.appget?kmz\n\nNaudi reisimist CoMapsiga!";
 
 /* message title of loading file */
 "load_kmz_title" = "Järjehoidjate laadimine";
@@ -172,13 +169,16 @@
 "unknown_current_position" = "Sinu asukoht ei ole veel tuvastatud";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hei, vaata minu asukoha märget Organic Mapsi kaardil!";
+"bookmark_share_email_subject" = "Hei, vaata minu asukoha märget CoMapsi kaardil!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Hei, vaata minu praegust asukohta Organic Mapsi kaardil!";
+"my_position_share_email_subject" = "Hei, vaata minu praegust asukohta CoMapsi kaardil!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-post";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Kopeeri lõikelauale";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Kopeeritud lõikelauale: %@";
@@ -190,7 +190,9 @@
 "done" = "Valmis";
 
 /* Prints version number in About dialog */
-"version" = "Organic Mapsi versioon: %@";
+"version" = "CoMapsi versioon: %@";
+"version %@ (%@)" = "Versioon %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versioon: %@ (%@)\nKaardiandmed: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Rajad";
@@ -200,6 +202,7 @@
 "share_my_location" = "Jaga minu asukohta";
 "prefs_group_route" = "Tee juhatamine";
 "pref_zoom_title" = "Suuminupud";
+"pref_left_button_type" = "Vasak põhinupp";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Välimus";
@@ -209,6 +212,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Tume kujundus";
+
+/* Generic «Disabled» string */
+"disabled" = "pole kasutusel";
 
 /* Generic «Off» string */
 "off" = "Väljas";
@@ -229,7 +235,10 @@
 "pref_map_3d_buildings_disabled_summary" = "3D-vaated lülitatakse energiasäästurežiimis välja";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Hääljuhised";
+"pref_tts_title" = "Hääljuhised";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Lülita hääljuhised sisse";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Teata tänavanimesid";
@@ -252,8 +261,20 @@
 /* Text in menu */
 "website" = "Veebisait";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Uudised";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-kiri";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +288,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Panoramaxi pilt";
+
 /* Text in menu */
 "rate_the_app" = "Hinda rakendust";
 
@@ -278,12 +311,6 @@
 
 /* Button in the main menu */
 "donate" = "Anneta";
-
-/* Tex label above the Donate button */
-"donate_description" = "Anneta, et luua koos parimaid kaarte!";
-"already_donated" = "Juba annetasin";
-"remind_me_later" = "Meenuta hiljem";
-"support_organic_maps" = "Toeta Organic Mapsi";
 
 /* Button in the main Help dialog */
 "copyright" = "Autoriõigused";
@@ -298,7 +325,7 @@
 "volunteer" = "Vabatahtlik kaastöö";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Jälgi ja võta meiega ühendust:";
+"follow_us" = "Võta meiega ühendust";
 
 /* Alert text */
 "email_error_body" = "E-posti klienti ei ole seadistatud. Palun seadista see või kasuta mõnda muud võimalust meiega ühenduse võtmiseks aadressil %@";
@@ -510,15 +537,28 @@
 "closes_in" = "Suletakse %@ jooksul";
 "closed" = "Suletud";
 "add_opening_hours" = "Lisa tööaeg";
-"no_osm_account" = "Sul puudub OpenStreetMapi konto?";
-"register_at_openstreetmap" = "Registreeru OpenStreetMapis";
-"password_8_chars_min" = "Salasõna (vähemalt 8 märki)";
-"invalid_username_or_password" = "Vigane kasutajanimi või salasõna.";
-"login" = "Logi sisse";
-"login_osm" = "Logi sisse OpenStreetMappi";
-"forgot_password" = "Unustasid oma salasõna?";
-"osm_account" = "OSMi kasutajakonto";
-"logout" = "Logi välja";
+
+/* OpenStreetMap */
+"osm_mapdata" = "OpenStreetMapi kaardiandmed";
+"osm_mapdata_explanation %@" = "Kogukonna loodud kaardiandmed seisuga *%@*. Lisateavet kaardi muutmise ja uuendamise kohta leiad [OpenStreetMap.org](https://openstreetmap.org) saidist.";
+"osm_more_about" = "Lisateave OpenStreetMapi kohta";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "OpenStreetMapi profiil";
+"osm_profile_promt" = "Loo OpenStreetMapi konto või logi sisse, et avaldada oma kaardimuudatused kogu maailmale.";
+"osm_profile_explanation" = "[OpenStreetMap.org](https://openstreetmap.org) (OSM) on kogukonna projekt, mille eesmärk on luua tasuta ja avatud kaart. See on CoMapsi peamine kaardiandmete allikas ja toimib sarnaselt Vikipeediaga. Saad lisada või muuta kohti ja need muutuvad kättesaadavaks miljonitele kasutajatele üle kogu maailma.\nLiitu kogukonnaga ja aita luua kõigi jaoks paremat kaarti!";
+"osm_profile_login" = "Logi sisse OpenStreetMapi kasutajakontole";
+"osm_profile_reauthorize_promt" = "OpenStreetMap kasutajakonto ühendus on siit rakendusest katkestatud";
+"osm_profile_reauthorize" = "Loo uuesti ühendus OpenStreetMapiga";
+"osm_profile_remove_promt" = "Kui sa ei saa või ei taha ühendust uuesti luua, siis võid kasutajakonto rakendusest eemaldada";
+"osm_profile_remove" = "Eemalda OpenStreetMapi kasutajakonto";
+"osm_profile_register_promt" = "Sul puudub OpenStreetMapi konto?";
+"osm_profile_register" = "Registreeru OpenStreetMapis";
+"osm_profile_verfied_changes" = "Kinnitatud muudatused";
+"osm_profile_view_edit_history" = "Vaata muudatuste ajalugu";
+"osm_profile_logout" = "Logi OpenStreetMapi kasutajakonto välja";
+"osm_profile_delete" = "Kustuta OpenStreetMapi kasutajakonto";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Viimane üleslaadimine";
@@ -567,13 +607,9 @@
 "dialog_incorrect_feature_position" = "Muuda asukohta";
 "message_invalid_feature_position" = "Ükski objekt ei saa siin asuda";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Kogukonna loodud OpenStreetMapi andmed seisuga %@. Lisateavet kaardi muutmise ja uuendamise kohta leiad OpenStreetMap.org saidist";
-"login_to_make_edits_visible" = "Loo OpenStreetMapi konto või logi sisse, et avaldada oma kaardimuudatused kogu maailmale.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "Allalaadimiseks vajad rohkem andmeruumi. Palun kustuta ebavajalikke andmeid.";
-"editor_sharing_title" = "Parandasin Organic Maps kaarte";
+"editor_sharing_title" = "Parandasin CoMaps kaarte";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d/%2$d";
@@ -593,14 +629,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Märkus OpenStreetMapi vabatahtlikele (valikuline)";
 "editor_detailed_description_hint" = "Üksikasjalik kommentaar";
-"editor_detailed_description" = "Sinu soovitatud kaardimuudatused saadetakse OpenStreetMapi kogukonnale. Kirjelda kõiki täiendavaid üksikasju, mida ei saa Organic Mapsis muuta.";
+"editor_detailed_description" = "Sinu soovitatud kaardimuudatused saadetakse OpenStreetMapi kogukonnale. Kirjelda kõiki täiendavaid üksikasju, mida ei saa CoMapsis muuta.";
 "editor_more_about_osm" = "Lisateave OpenStreetMapi kohta";
 "editor_operator" = "Käitaja";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Käitaja: %@";
 "editor_category_unsuitable_title" = "Ei leia sobivat kategooriat?";
-"editor_category_unsuitable_text" = "Organic Maps võimaldab lisada ainult lihtsaid huvipunkte, see tähendab, et ei mingeid linnu, teid, järvi, hoonete piirjooni jne. Palun lisa sellised kategooriad otse <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> saidis. Vaata meie <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">juhendit</a> üksikasjalike samm-sammuliste juhiste saamiseks.";
+"editor_category_unsuitable_text" = "CoMaps võimaldab lisada ainult lihtsaid huvipunkte, see tähendab, et ei mingeid linnu, teid, järvi, hoonete piirjooni jne. Palun lisa sellised kategooriad otse <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> saidis. Vaata meie <a href=\"https://www.comaps.app/support/advanced-map-editing/\">juhendit</a> üksikasjalike samm-sammuliste juhiste saamiseks.";
 "downloader_no_downloaded_maps_title" = "Sa ei ole kaarte alla laadinud";
 "downloader_no_downloaded_maps_message" = "Laadi alla kaardid asukoha otsimiseks ja võrguühenduseta tee juhatamiseks.";
 "current_location_unknown_error_title" = "Hetkeasukoht on teadmata.";
@@ -615,7 +651,7 @@
 "location_services_disabled_on_device_2" = "2. Vali „Privaatsus“";
 "location_services_disabled_on_device_3" = "3. Vali „Asukohateenused“";
 "location_services_disabled_on_device_4" = "4. Lülita sisse asukohateenused";
-"location_services_disabled_on_device_additional_message" = "Või jätka Organic Mapsi kasutamist ilma asukohata";
+"location_services_disabled_on_device_additional_message" = "Või jätka CoMapsi kasutamist ilma asukohata";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +673,6 @@
 "day" = "p";
 "placepage_more_button" = "Veel";
 "book_button" = "Reserveeri";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Fotod, arvustused, broneerimine";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "Iga selle lingi kaudu tehtud broneeringu eest saadav viitamistasu läheb Organic Mapsi arendamiseks.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Üksikasjad Kayaki kohta";
 "placepage_call_button" = "Helista";
 "placepage_edit_bookmark_button" = "Muuda järjehoidjat";
 "placepage_bookmark_name_hint" = "Järjehoidja nimi";
@@ -681,7 +708,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Vaata järele";
-"recent_track_background_dialog_message" = "Organic Maps kasutab Sinu geograafilist asukohta taustal Sinu hiljuti läbitud teekonna salvestamiseks.";
+"recent_track_background_dialog_message" = "CoMaps kasutab Sinu geograafilist asukohta taustal Sinu hiljuti läbitud teekonna salvestamiseks.";
 "general_settings" = "Üldseadistused";
 
 /* For the first routing */
@@ -707,7 +734,7 @@
 
 /* "traffic" as in "road congestion" */
 "traffic_data_unavailable" = "Liiklusinfo ei ole saadaval";
-"enable_logging" = "Luba logimine";
+"enable_logging" = "Lülita logimine sisse";
 "log_file_size" = "Logifaili suurus: %@";
 "transliteration_title" = "Transliteratsioon ladina tähestikku";
 
@@ -725,6 +752,9 @@
 "planning_route_remove_title" = "Eemaldamiseks lohista siia";
 "placepage_add_stop" = "Lisa peatus";
 "start_from_my_position" = "Alusta kohast";
+
+/* Title for button when a route was saved. */
+"saved" = "Salvestatud";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Oma kaardimuudatuste automaatseks üleslaadimiseks palun logi sisse OpenStreetMappi. Lisateave";
@@ -845,7 +875,7 @@
 "ok" = "Sobib";
 "speedcams_alert_title_carplay_1" = "Kiiruskaamerad";
 "speedcams_alert_title_carplay_2" = "Kiiruse hoiatused";
-"download_map_carplay" = "Palun laadi alla kaardid oma nutiseadme Organic Maps rakenduses";
+"download_map_carplay" = "Palun laadi alla kaardid oma nutiseadme CoMaps rakenduses";
 "carplay_roundabout_exit" = "%@ ärapööre";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +954,8 @@
 /* edit track screen title */
 "track_title" = "Rada";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/et/";
 
 /* App Tip #00 */
 "app_tip_00" = "Aitäh, et kasutad meie kogukonna koostatud kaarte!";
@@ -967,10 +988,10 @@
 "app_tip_09" = "Meie põhieesmärk on luua kiireid, privaatsusele keskenduvaid ja hõlpsasti kasutatavaid kaarte, mis sulle meeldivad.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Nüüd kasutad telefoni ekraanil Organic Mapsi";
+"car_used_on_the_phone_screen" = "Nüüd kasutad telefoni ekraanil CoMapsi";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Nüüd kasutad auto ekraanil Organic Mapsi";
+"car_used_on_the_car_screen" = "Nüüd kasutad auto ekraanil CoMapsi";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Jätka telefonis";
@@ -995,7 +1016,10 @@
 "website_menu" = "Menüü link";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Kas soovid saata arendajatele veateate?\nMe toetume oma kasutajatele, kuna Organic Maps ei kogu automaatselt mingit veateavet. Täname sind juba ette Organic Mapsi toetamise eest!";
+"bugreport_alert_message" = "Kas soovid saata arendajatele veateate?\nMe toetume oma kasutajatele, kuna CoMaps ei kogu automaatselt mingit veateavet. Täname sind juba ette CoMapsi toetamise eest!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "Sünkroonimine iCloudiga (Beeta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Luba iCloudi sünkroniseerimine";
@@ -1069,3 +1093,6 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "Rada on tühi - ei ole midagi salvestada";
 "edit_track" = "Muuda rada";
+"osm_profile_view_notes" = "Vaata märkused";
+"about_proposition_3" = "Läbipaistev ja kasumit mittetaotlev";
+"pref_mapappearance_title" = "Kaardi välimus";

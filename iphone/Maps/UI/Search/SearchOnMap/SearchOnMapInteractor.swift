@@ -4,7 +4,6 @@ final class SearchOnMapInteractor: NSObject {
   private let searchManager: SearchManager.Type
   private let routeManager: MWMRouter.Type
   private var isUpdatesDisabled = false
-  private var showResultsOnMap: Bool = false
 
   var routingTooltipSearch: SearchOnMapRoutingTooltipSearch = .none
 
@@ -31,30 +30,44 @@ final class SearchOnMapInteractor: NSObject {
     switch event {
     case .openSearch:
       return .showHistoryAndCategory
+
     case .hideSearch:
       return .setSearchScreenHidden(true)
+
     case .didStartDraggingSearch:
       return .setIsTyping(false)
+
     case .didStartTyping:
       return .setIsTyping(true)
+
     case .didType(let searchText):
       return processTypedText(searchText)
+
     case .clearButtonDidTap:
       return processClearButtonDidTap()
-    case .didSelectText(let searchText, let isCategory):
-      return processSelectedText(searchText, isCategory: isCategory)
+
+    case .didSelect(let searchText):
+      return processSelectedText(searchText)
+
     case .searchButtonDidTap(let searchText):
       return processSearchButtonDidTap(searchText)
-    case .didSelectResult(let result, let searchText):
-      return processSelectedResult(result, searchText: searchText)
+
+    case .didSelectResult(let result, let query):
+      return processSelectedResult(result, query: query)
+
     case .didSelectPlaceOnMap:
-      return isIPad ? .none : .setSearchScreenHidden(true)
+      return isiPad ? .none : .setSearchScreenHidden(true)
+
     case .didDeselectPlaceOnMap:
       return deselectPlaceOnMap()
+
     case .didStartDraggingMap:
       return .setSearchScreenCompact
+
     case .didUpdatePresentationStep(let step):
+      searchManager.setSearchMode(searchModeForPresentationStep(step))
       return .updatePresentationStep(step)
+
     case .closeSearch:
       return closeSearch()
     }
@@ -66,64 +79,57 @@ final class SearchOnMapInteractor: NSObject {
     return .clearSearch
   }
 
-  private func processSearchButtonDidTap(_ searchText: SearchOnMap.SearchText) -> SearchOnMap.Response {
-    searchManager.saveQuery(searchText.text,
-                            forInputLocale: searchText.locale)
-    showResultsOnMap = true
-    searchManager.showEverywhereSearchResultsOnMap()
+  private func processSearchButtonDidTap(_ query: SearchQuery) -> SearchOnMap.Response {
+    searchManager.save(query)
     return .showOnTheMap
   }
 
-  private func processTypedText(_ searchText: SearchOnMap.SearchText) -> SearchOnMap.Response {
+  private func processTypedText(_ query: SearchQuery) -> SearchOnMap.Response {
     isUpdatesDisabled = false
-    searchManager.searchQuery(searchText.text,
-                              forInputLocale: searchText.locale,
-                              withCategory: false)
+    searchManager.searchQuery(query)
     return .startSearching
   }
 
-  private func processSelectedText(_ searchText: SearchOnMap.SearchText, isCategory: Bool) -> SearchOnMap.Response {
+  private func processSelectedText(_ query: SearchQuery) -> SearchOnMap.Response {
     isUpdatesDisabled = false
-    searchManager.saveQuery(searchText.text,
-                            forInputLocale: searchText.locale)
-    searchManager.searchQuery(searchText.text,
-                              forInputLocale: searchText.locale,
-                              withCategory: isCategory)
-    showResultsOnMap = true
-    return .selectText(searchText.text)
+    if query.source != .history {
+      searchManager.save(query)
+    }
+    searchManager.searchQuery(query)
+    return .selectQuery(query)
   }
 
-  private func processSelectedResult(_ result: SearchResult, searchText: SearchOnMap.SearchText) -> SearchOnMap.Response {
+  private func processSelectedResult(_ result: SearchResult, query: SearchQuery) -> SearchOnMap.Response {
     switch result.itemType {
     case .regular:
-      searchManager.saveQuery(searchText.text,
-                              forInputLocale:searchText.locale)
+      searchManager.save(query)
       switch routingTooltipSearch {
       case .none:
         searchManager.showResult(at: result.index)
       case .start:
         let point = MWMRoutePoint(cgPoint: result.point,
-                               title: result.titleText,
-                               subtitle: result.addressText,
-                               type: .start,
-                               intermediateIndex: 0)
+                                  title: result.titleText,
+                                  subtitle: result.addressText,
+                                  type: .start,
+                                  intermediateIndex: 0)
         routeManager.build(from: point, bestRouter: false)
       case .finish:
         let point = MWMRoutePoint(cgPoint: result.point,
-                               title: result.titleText,
-                               subtitle: result.addressText,
-                               type: .finish,
-                               intermediateIndex: 0)
+                                  title: result.titleText,
+                                  subtitle: result.addressText,
+                                  type: .finish,
+                                  intermediateIndex: 0)
         routeManager.build(to: point, bestRouter: false)
       @unknown default:
         fatalError("Unsupported routingTooltipSearch")
       }
-      return isIPad ? .none : .setSearchScreenHidden(true)
+      return isiPad ? .none : .setSearchScreenHidden(true)
     case .suggestion:
-      searchManager.searchQuery(result.suggestion,
-                                forInputLocale: searchText.locale,
-                                withCategory: result.isPureSuggest)
-      return .selectText(result.suggestion)
+      let suggestionQuery = SearchQuery(result.suggestion,
+                                        locale: query.locale,
+                                        source: result.isPureSuggest ? .suggestion : .typedText)
+      searchManager.searchQuery(suggestionQuery)
+      return .selectQuery(suggestionQuery)
     @unknown default:
       fatalError("Unsupported result type")
     }
@@ -131,33 +137,38 @@ final class SearchOnMapInteractor: NSObject {
 
   private func deselectPlaceOnMap() -> SearchOnMap.Response {
     routingTooltipSearch = .none
-    searchManager.showViewportSearchResultsOnMap()
     return .setSearchScreenHidden(false)
   }
 
   private func closeSearch() -> SearchOnMap.Response {
     routingTooltipSearch = .none
     isUpdatesDisabled = true
-    showResultsOnMap = false
     searchManager.clear()
     return .close
+  }
+
+  private func searchModeForPresentationStep(_ step: ModalPresentationStep) -> SearchMode {
+    switch step {
+    case .fullScreen:
+      return isiPad ? .everywhereAndViewport : .everywhere
+    case .halfScreen, .compact:
+      return  .everywhereAndViewport
+    case .hidden:
+      return  .viewport
+    }
   }
 }
 
 // MARK: - MWMSearchObserver
 extension SearchOnMapInteractor: MWMSearchObserver {
   func onSearchCompleted() {
-    guard !isUpdatesDisabled else { return }
+    guard !isUpdatesDisabled, searchManager.searchMode() != .viewport else { return }
     let results = searchManager.getResults()
-    if showResultsOnMap && !results.isEmpty {
-      searchManager.showEverywhereSearchResultsOnMap()
-      showResultsOnMap = false
-    }
     presenter.process(.showResults(SearchOnMap.SearchResults(results), isSearchCompleted: true))
   }
 
   func onSearchResultsUpdated() {
-    guard !isUpdatesDisabled else { return }
+    guard !isUpdatesDisabled, searchManager.searchMode() != .viewport else { return }
     let results = searchManager.getResults()
     guard !results.isEmpty else { return }
     presenter.process(.showResults(SearchOnMap.SearchResults(results), isSearchCompleted: false))

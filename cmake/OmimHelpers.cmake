@@ -1,5 +1,3 @@
-include(OmimConfig)
-
 # Functions for using in subdirectories
 function(omim_add_executable executable)
   add_executable(${executable} ${ARGN})
@@ -82,25 +80,9 @@ function(omim_add_pybindings_subdirectory subdir)
   endif()
 endfunction()
 
-function(omim_link_platform_deps target)
-  if ("${ARGN}" MATCHES "platform")
-    if (PLATFORM_MAC)
-      target_link_libraries(
-        ${target}
-        "-framework CFNetwork"
-        "-framework Foundation"
-        "-framework IOKit"
-        "-framework SystemConfiguration"
-        "-framework Security"
-      )
-    endif()
-  endif()
-endfunction()
-
 function(omim_link_libraries target)
   if (TARGET ${target})
     target_link_libraries(${target} ${ARGN} ${CMAKE_THREAD_LIBS_INIT})
-    omim_link_platform_deps(${target} ${ARGN})
   else()
     message("~> Skipping linking the libraries to the target ${target} as it"
             " does not exist")

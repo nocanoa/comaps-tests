@@ -1,7 +1,6 @@
 #import "MapViewController.h"
 #import <CoreApi/MWMBookmarksManager.h>
 #import "EAGLView.h"
-#import "MWMAuthorizationCommon.h"
 #import "MWMAutoupdateController.h"
 #import "MWMEditorViewController.h"
 #import "MWMFrameworkListener.h"
@@ -41,6 +40,7 @@ NSString *const kEditorSegue = @"Map2EditorSegue";
 NSString *const kUDViralAlertWasShown = @"ViralAlertWasShown";
 NSString *const kPP2BookmarkEditingSegue = @"PP2BookmarkEditing";
 NSString *const kSettingsSegue = @"Map2Settings";
+NSString *const kAboutSegue = @"Map2About";
 }  // namespace
 
 @interface NSValueWrapper : NSObject
@@ -76,6 +76,7 @@ NSString *const kSettingsSegue = @"Map2Settings";
 
 @property(nonatomic, readwrite) MWMMapViewControlsManager *controlsManager;
 @property(nonatomic, readwrite) SearchOnMapManager *searchManager;
+@property(nonatomic, readwrite) TrackRecordingManager *trackRecordingManager;
 
 @property(nonatomic) BOOL disableStandbyOnLocationStateMode;
 
@@ -116,7 +117,7 @@ NSString *const kSettingsSegue = @"Map2Settings";
   return [MapsAppDelegate theApp].mapViewController;
 }
 
-#pragma mark - Map Navigation
+#pragma mark - PlacePage
 
 - (void)showOrUpdatePlacePage:(PlacePageData *)data {
   if (self.searchManager.isSearching)
@@ -124,9 +125,10 @@ NSString *const kSettingsSegue = @"Map2Settings";
 
   self.controlsManager.trafficButtonHidden = YES;
   if (self.placePageVC != nil) {
-    [PlacePageBuilder update:(PlacePageViewController *)self.placePageVC with:data];
+    [PlacePageBuilder update:self.placePageVC with:data];
     return;
   }
+
   [self showPlacePageFor:data];
 }
 
@@ -204,6 +206,7 @@ NSString *const kSettingsSegue = @"Map2Settings";
 }
 
 - (void)hideRegularPlacePage {
+  [self stopObservingTrackRecordingUpdates];
   [self.placePageVC closeAnimatedWithCompletion:^{
     [self.placePageVC.view removeFromSuperview];
     [self.placePageVC willMoveToParentViewController:nil];
@@ -247,6 +250,7 @@ NSString *const kSettingsSegue = @"Map2Settings";
     return;
   }
   PlacePageData * data = [[PlacePageData alloc] initWithLocalizationProvider:[[OpeinigHoursLocalization alloc] init]];
+  [self stopObservingTrackRecordingUpdates];
   [self showOrUpdatePlacePage:data];
 }
 
@@ -421,9 +425,8 @@ NSString *const kSettingsSegue = @"Map2Settings";
   if ([MWMNavigationDashboardManager sharedManager].state == MWMNavigationDashboardStateHidden)
     self.controlsManager.menuState = self.controlsManager.menuRestoreState;
 
-  // Added in https://github.com/organicmaps/organicmaps/pull/7333
-  // After all users migrate to OAuth2 we can remove next code
-  [self migrateOAuthCredentials];
+  if (self.trackRecordingManager.isActive)
+    [self showTrackRecordingPlacePage];
 
   /// @todo: Uncomment update dialog when will be ready to handle big traffic bursts.
   /*
@@ -492,8 +495,7 @@ NSString *const kSettingsSegue = @"Map2Settings";
 - (void)showViralAlertIfNeeded {
   NSUserDefaults *ud = NSUserDefaults.standardUserDefaults;
 
-  using namespace osm_auth_ios;
-  if (!AuthorizationIsNeedCheck() || [ud objectForKey:kUDViralAlertWasShown] || !AuthorizationHaveCredentials())
+  if (!Profile.needsReauthorization || [ud objectForKey:kUDViralAlertWasShown] || Profile.isExisting)
     return;
 
   if (osm::Editor::Instance().GetStats().m_edits.size() < 2)
@@ -527,14 +529,6 @@ NSString *const kSettingsSegue = @"Map2Settings";
 
 - (void)updateStatusBarStyle {
   [self setNeedsStatusBarAppearanceUpdate];
-}
-
-- (void)migrateOAuthCredentials {
-  if (osm_auth_ios::AuthorizationHaveOAuth1Credentials())
-  {
-    osm_auth_ios::AuthorizationClearOAuth1Credentials();
-    [self.alertController presentOsmReauthAlert];
-  }
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -591,6 +585,10 @@ NSString *const kSettingsSegue = @"Map2Settings";
   [self performSegueWithIdentifier:kSettingsSegue sender:nil];
 }
 
+- (void)openAbout {
+  [self performSegueWithIdentifier:kAboutSegue sender:nil];
+}
+
 - (void)openMapsDownloader:(MWMMapDownloaderMode)mode {
   [self performSegueWithIdentifier:kDownloaderSegue sender:@(mode)];
 }
@@ -612,14 +610,8 @@ NSString *const kSettingsSegue = @"Map2Settings";
   [self.navigationController pushViewController:descriptionViewController animated:YES];
 }
 
-- (void)searchText:(NSString *)text {
-  [self.controlsManager searchText:text forInputLocale:[[AppInfo sharedInfo] languageId]];
-}
-
 - (void)openDrivingOptions {
-  UIStoryboard *sb = [UIStoryboard instance:MWMStoryboardDrivingOptions];
-  UIViewController *vc = [sb instantiateInitialViewController];
-  [self.navigationController pushViewController:vc animated:YES];
+  [self presentViewController:BridgeControllers.routingOptions animated:YES completion:nil];
 }
 
 - (void)processMyPositionStateModeEvent:(MWMMyPositionMode)mode {
@@ -658,13 +650,12 @@ NSString *const kSettingsSegue = @"Map2Settings";
 #pragma mark - Authorization
 
 - (void)checkAuthorization {
-  using namespace osm_auth_ios;
-  BOOL const isAfterEditing = AuthorizationIsNeedCheck() && !AuthorizationHaveCredentials();
+  BOOL const isAfterEditing = Profile.needsReauthorization && !Profile.isExisting;
   if (isAfterEditing) {
-    AuthorizationSetNeedCheck(NO);
+    [Profile requestReauthorizationWithShouldReauthorize:NO];
     if (!Platform::IsConnected())
       return;
-    [self.alertController presentOsmAuthAlert];
+    [self presentViewController:BridgeControllers.profileAsAlert animated:YES completion:nil];
   }
 }
 
@@ -674,11 +665,11 @@ NSString *const kSettingsSegue = @"Map2Settings";
   [self.navigationController popToRootViewControllerAnimated:NO];
   if (self.isViewLoaded) {
     [MWMRouter stopRouting];
-    if ([action isEqualToString:@"app.organicmaps.3daction.bookmarks"])
+    if ([action isEqualToString:@"app.comaps.3daction.bookmarks"])
       [self.bookmarksCoordinator open];
-    else if ([action isEqualToString:@"app.organicmaps.3daction.search"])
+    else if ([action isEqualToString:@"app.comaps.3daction.search"])
       [self.searchManager startSearchingWithIsRouting:NO];
-    else if ([action isEqualToString:@"app.organicmaps.3daction.route"])
+    else if ([action isEqualToString:@"app.comaps.3daction.route"])
       [self.controlsManager onRoutePrepare];
   } else {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -746,6 +737,12 @@ NSString *const kSettingsSegue = @"Map2Settings";
   return _searchManager;
 }
 
+- (TrackRecordingManager *)trackRecordingManager {
+  if (!_trackRecordingManager)
+    _trackRecordingManager = TrackRecordingManager.shared;
+  return _trackRecordingManager;
+}
+
 - (UIView * _Nullable)searchViewAvailableArea {
   return self.searchManager.viewController.availableAreaView;
 }
@@ -763,9 +760,6 @@ NSString *const kSettingsSegue = @"Map2Settings";
 - (void)setPlacePageTopBound:(CGFloat)bound duration:(double)duration {
   self.visibleAreaBottom.constant = bound;
   self.sideButtonsAreaBottom.constant = bound;
-  [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-    [self.view layoutIfNeeded];
-  } completion:nil];
 }
 
 + (void)setViewport:(double)lat lon:(double)lon zoomLevel:(int)zoomLevel {
@@ -828,19 +822,14 @@ NSString *const kSettingsSegue = @"Map2Settings";
 
 - (NSArray *)keyCommands {
   NSArray *commands = @[
-    [UIKeyCommand keyCommandWithInput:UIKeyInputDownArrow modifierFlags:0 action:@selector(zoomOut)], // Alternative, not shown when holding CMD
-    [UIKeyCommand keyCommandWithInput:@"-" modifierFlags:UIKeyModifierCommand action:@selector(zoomOut) discoverabilityTitle:@"Zoom Out"],
-    [UIKeyCommand keyCommandWithInput:UIKeyInputUpArrow modifierFlags:0 action:@selector(zoomIn)], // Alternative, not shown when holding CMD
-    [UIKeyCommand keyCommandWithInput:@"=" modifierFlags:UIKeyModifierCommand action:@selector(zoomIn)], // Alternative, not shown when holding CMD
-    [UIKeyCommand keyCommandWithInput:@"+" modifierFlags:UIKeyModifierCommand action:@selector(zoomIn) discoverabilityTitle:@"Zoom In"],
-    [UIKeyCommand keyCommandWithInput:UIKeyInputEscape modifierFlags:0 action:@selector(goBack) discoverabilityTitle:@"Go Back"],
-    [UIKeyCommand keyCommandWithInput:@"0" modifierFlags:UIKeyModifierCommand action:@selector(switchPositionMode) discoverabilityTitle:@"Switch position mode"]
+  [UIKeyCommand commandWithTitle:@"Zoom Out" image:[UIImage systemImageNamed: @"minus.magnifyingglass"] action:@selector(zoomOut) input:@"-" modifierFlags:UIKeyModifierCommand propertyList:nil],
+  [UIKeyCommand commandWithTitle:@"Zoom In" image:[UIImage systemImageNamed: @"plus.magnifyingglass"] action:@selector(zoomIn) input:@"+" modifierFlags:UIKeyModifierCommand propertyList:nil],
+  [UIKeyCommand commandWithTitle:@"Go Back" image:nil action:@selector(goBack) input:UIKeyInputEscape modifierFlags:0 propertyList:nil],
+  [UIKeyCommand commandWithTitle:@"Switch position mode" image:nil action:@selector(switchPositionMode) input:@"0" modifierFlags:UIKeyModifierCommand propertyList:nil]
   ];
 
-  if (@available(iOS 15, *)) {
-    for (UIKeyCommand *command in commands) {
-      command.wantsPriorityOverSystemBehavior = YES;
-    }
+  for (UIKeyCommand *command in commands) {
+    command.wantsPriorityOverSystemBehavior = YES;
   }
 
   return commands;
@@ -863,6 +852,50 @@ NSString *const kSettingsSegue = @"Map2Settings";
   if (backURL != nil) {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: backURL] options:@{} completionHandler:nil];
   }
+}
+
+// MARK: - Track Recording Place Page
+
+- (void)showTrackRecordingPlacePage {
+  if ([self.trackRecordingManager contains:self]) {
+    [self dismissPlacePage];
+    return;
+  }
+  PlacePageData * placePageData = [[PlacePageData alloc] initWithTrackInfo:self.trackRecordingManager.trackRecordingInfo
+                                                             elevationInfo:self.trackRecordingManager.trackRecordingElevationProfileData];
+  [self.controlsManager setTrackRecordingButtonState:TrackRecordingButtonStateHidden];
+  [self showOrUpdatePlacePage:placePageData];
+  [self startObservingTrackRecordingUpdatesForPlacePageData:placePageData];
+}
+
+- (void)startObservingTrackRecordingUpdatesForPlacePageData:(PlacePageData *)placePageData {
+  __weak __typeof(self) weakSelf = self;
+  [self.trackRecordingManager addObserver:self
+        recordingIsActiveDidChangeHandler:^(TrackRecordingState state,
+                                            TrackInfo * _Nonnull trackInfo,
+                                            ElevationProfileData * _Nonnull (^ _Nullable elevationData) ()) {
+    __strong __typeof(weakSelf) self = weakSelf;
+    if (!self) return;
+    switch (state) {
+      case TrackRecordingStateInactive:
+        [self stopObservingTrackRecordingUpdates];
+        [self.controlsManager setTrackRecordingButtonState:TrackRecordingButtonStateClosed];
+        break;
+      case TrackRecordingStateActive:
+        if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive)
+          return;
+        [self.controlsManager setTrackRecordingButtonState:TrackRecordingButtonStateHidden];
+        [placePageData updateWithTrackInfo:trackInfo
+                             elevationInfo:elevationData()];
+        break;
+    }
+  }];
+}
+
+- (void)stopObservingTrackRecordingUpdates {
+  [self.trackRecordingManager removeObserver:self];
+  if (self.trackRecordingManager.isActive)
+    [self.controlsManager setTrackRecordingButtonState:TrackRecordingButtonStateVisible];
 }
 
 // MARK: - Handle macOS trackpad gestures

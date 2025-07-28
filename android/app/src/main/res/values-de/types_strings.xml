@@ -12,8 +12,8 @@
     <string name="type.aerialway.mixed_lift">Kombibahn</string>
     <string name="type.aerialway.station">Liftstation</string>
     <string name="type.aeroway">Luftverkehr</string>
-    <string name="type.aeroway.aerodrome">Flugplatz</string>
-    <string name="type.aeroway.aerodrome.international">Flughafen</string>
+    <string name="type.aeroway.aerodrome">Flughafen</string>
+    <string name="type.aeroway.aerodrome.international">Internationaler Flughafen</string>
     <string name="type.aeroway.apron">Vorfeld</string>
     <string name="type.aeroway.helipad">Hubschrauberlandeplatz</string>
     <string name="type.aeroway.runway">Start-/Landebahn</string>
@@ -41,7 +41,7 @@
     <string name="type.leisure.adult_gaming_centre">Gaming-Zentrum für Erwachsene</string>
     <string name="type.leisure.amusement_arcade">Arkade</string>
     <string name="type.amenity.charging_station">Ladestation</string>
-    <string name="type.amenity.charging_station.bicycle">Fahrrad Ladestation</string>
+    <string name="type.amenity.charging_station.bicycle">Fahrrad-Ladestation</string>
     <string name="type.amenity.charging_station.motorcar">Kfz-Ladestation</string>
     <string name="type.amenity.childcare">Kindertagesstätte</string>
     <string name="type.amenity.cinema">Kino</string>
@@ -567,7 +567,7 @@
     <string name="type.historic.wayside_shrine">Bildstock</string>
     <string name="type.historic.wreck">Schiffswrack</string>
     <string name="type.junction">Straßenknotenpunkt</string>
-    <string name="type.junction.circular">Kreisverkehr</string>
+    <string name="type.junction.circular">Kreisförmige Kreuzung</string>
     <string name="type.junction.roundabout">Kreisverkehr</string>
     <string name="type.landuse">Landnutzung</string>
     <string name="type.landuse.allotments">Kleingarten</string>
@@ -577,13 +577,11 @@
     <string name="type.landuse.cemetery">Friedhof</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
     <string name="type.landuse.cemetery.christian">Friedhof</string>
-    <string name="type.landuse.churchyard">Kirchhof</string>
     <string name="type.landuse.commercial">Gewerbegebiet</string>
     <string name="type.landuse.construction">Baustelle</string>
     <string name="type.landuse.education">Bildungseinrichtung</string>
     <string name="type.landuse.farmland">Agrarland</string>
     <string name="type.landuse.farmyard">Bauernhof</string>
-    <string name="type.landuse.field">Feld</string>
     <string name="type.landuse.flowerbed">Blumenbeet</string>
     <string name="type.landuse.forest">Wald</string>
     <string name="type.landuse.forest.coniferous">Nadelwald</string>
@@ -717,7 +715,7 @@
     <string name="type.natural.water">Wasserfläche</string>
     <string name="type.natural.wetland">Feuchtgebiet</string>
     <string name="type.natural.wetland.bog">Moor</string>
-    <string name="type.natural.wetland.marsh">Sumpf</string>
+    <string name="type.natural.wetland.marsh">Marsch</string>
     <string name="type.office">Büro</string>
     <string name="type.office.company">Firmenbüro</string>
     <string name="type.office.estate_agent">Immobilienmakler</string>
@@ -778,7 +776,6 @@
     <string name="type.power.plant.hydro">Wasserkraftwerk</string>
     <string name="type.power.plant.solar">Solarkraftwerk</string>
     <string name="type.power.plant.wind">Windkraftanlage</string>
-    <string name="type.power.station">Umspannwerk</string>
     <string name="type.power.substation">Umspannwerk</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Hochspannungsmast</string>
@@ -809,8 +806,8 @@
     <string name="type.railway.preserved.bridge">Museumsbahnbrücke</string>
     <string name="type.railway.preserved.tunnel">Museumsbahntunnel</string>
     <string name="type.railway.rail">Eisenbahn</string>
-    <string name="type.railway.rail.highspeed">Hochgeschwindigkeits-eisenbahn</string>
-    <string name="type.railway.rail.tourism">Touristische eisenbahn</string>
+    <string name="type.railway.rail.highspeed">Hochgeschwindigkeits-Eisenbahn</string>
+    <string name="type.railway.rail.tourism">Touristische Eisenbahn</string>
     <string name="type.railway.rail.main">Eisenbahn</string>
     <!-- Includes ordinary railway=rail w/o more specific usage= and service= tags. -->
     <string name="type.railway.rail.branch">Sekundärbahn</string>
@@ -1295,8 +1292,8 @@
     <string name="type.waterway.river">Fluss</string>
     <string name="type.waterway.river.tunnel">Fluss</string>
     <string name="type.waterway.stream">Bach</string>
-    <string name="type.waterway.stream.ephemeral">Bach</string>
-    <string name="type.waterway.stream.intermittent">Bach</string>
+    <string name="type.waterway.stream.ephemeral">Vorübergehender Bach</string>
+    <string name="type.waterway.stream.intermittent">Zeitweiliger Bach</string>
     <string name="type.waterway.stream.tunnel">Bach</string>
     <string name="type.waterway.waterfall">Wasserfall</string>
     <string name="type.waterway.weir">Wehr</string>
@@ -1376,15 +1373,15 @@
     <string name="type.highway.world_level">highway-world_level</string>
     <string name="type.hwtag.nobicycle">hwtag-nobicycle</string>
     <string name="type.hwtag.nocar">hwtag-nocar</string>
-    <string name="type.mapswithme">mapswithme</string>
+    <string name="type.mapswithme">MapsWithMe</string>
     <string name="type.psurface.paved_good">psurface-paved_good</string>
-    <string name="type.leisure.beach_resort">Beach Resort</string>
+    <string name="type.leisure.beach_resort">Badestrand</string>
     <string name="type.amenity.food_court">Food Court</string>
     <string name="type.highway.world_towns_level">highway-world_towns_level</string>
     <string name="type.fee.yes">$</string>
     <string name="type.man_made.utility_pole">Versorgungsmast</string>
     <string name="type.cuisine.bubble_tea">Bubble Tea</string>
-    <string name="type.aeroway.gate">Tor</string>
+    <string name="type.aeroway.gate">Gate</string>
     <string name="type.amenity.biergarten">Biergarten</string>
     <string name="type.amenity.kindergarten">Kindergarten</string>
     <string name="type.public_transport.platform">Plattform</string>
@@ -1392,4 +1389,21 @@
     <string name="type.boundary.administrative.3">Regionale Grenze</string>
     <string name="type.power.pole">Strommast</string>
     <string name="type.man_made.pipeline.overground">Oberirdische Rohrleitung</string>
+    <string name="type.sport.diving">Turmspringen</string>
+    <string name="type.amenity.love_hotel">Stundenhotel</string>
+    <string name="type.landuse.plant_nursery">Gartenbau</string>
+    <string name="type.leisure.firepit">Feuerstelle</string>
+    <string name="type.barrier.guard_rail">Leitplanke</string>
+    <string name="type.highway.ladder">Leiter</string>
+    <string name="type.amenity.studio">Studio</string>
+    <string name="type.man_made.crane">Kran</string>
+    <string name="type.railway.station.subway.qingdao">U-Bahn-Station</string>
+    <string name="type.landuse.religious">Religiöses Land</string>
+    <string name="type.natural.wetland.saltmarsh">Salzmarsch</string>
+    <string name="type.natural.wetland.saltmarsh.tidal">Gezeitenabhängige Salzmarsch</string>
+    <string name="type.natural.wetland.fen">Fenn</string>
+    <string name="type.natural.wetland.reedbed">Schilfgürtel</string>
+    <string name="type.natural.wetland.swamp">Sumpf</string>
+    <string name="type.natural.wetland.mangrove">Mangrove</string>
+    <string name="type.natural.wetland.tidalflat">Watt</string>
 </resources>

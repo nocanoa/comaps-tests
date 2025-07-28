@@ -8,8 +8,6 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.DrawableRes;
@@ -22,8 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.Framework;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmFragment;
@@ -46,7 +47,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 {
   final static String LAST_INDEX_OF_NAMES_ARRAY = "LastIndexOfNamesArray";
 
-  private TextView mCategory;
+  private MaterialTextView mCategory;
   private View mCardName;
   private View mCardAddress;
   private View mCardDetails;
@@ -89,20 +90,20 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   };
 
   private MultilanguageAdapter mNamesAdapter;
-  private TextView mNamesCaption;
-  private TextView mAddLanguage;
-  private TextView mMoreLanguages;
+  private MaterialTextView mNamesCaption;
+  private MaterialTextView mAddLanguage;
+  private MaterialTextView mMoreLanguages;
 
-  private TextView mStreet;
+  private MaterialTextView mStreet;
   private TextInputEditText mHouseNumber;
   private TextInputEditText mBuildingLevels;
 
   // Define Metadata entries, that have more tricky logic, separately.
-  private TextView mPhone;
-  private TextView mEditPhoneLink;
-  private TextView mCuisine;
+  private MaterialTextView mPhone;
+  private MaterialTextView mEditPhoneLink;
+  private MaterialTextView mCuisine;
   private SwitchCompat mWifi;
-  private TextView mSelfService;
+  private MaterialTextView mSelfService;
   private SwitchCompat mOutdoorSeating;
 
   // Default Metadata entries.
@@ -132,12 +133,12 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private TextInputLayout mInputBuildingLevels;
 
   private View mEmptyOpeningHours;
-  private TextView mOpeningHours;
+  private MaterialTextView mOpeningHours;
   private View mEditOpeningHours;
   private TextInputEditText mDescription;
   private final Map<Metadata.MetadataType, View> mDetailsBlocks = new HashMap<>();
   private final Map<Metadata.MetadataType, View> mSocialMediaBlocks = new HashMap<>();
-  private TextView mReset;
+  private MaterialTextView mReset;
 
   private EditorHostFragment mParent;
 
@@ -189,11 +190,14 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     initMetadataEntry(Metadata.MetadataType.FMD_WEBSITE, R.string.error_enter_correct_web);
     initMetadataEntry(Metadata.MetadataType.FMD_WEBSITE_MENU, R.string.error_enter_correct_web);
     initMetadataEntry(Metadata.MetadataType.FMD_EMAIL, R.string.error_enter_correct_email);
+    initMetadataEntry(Metadata.MetadataType.FMD_LEVEL, R.string.error_enter_correct_level);
+    initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_FEDIVERSE, R.string.error_enter_correct_fediverse_page);
     initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_FACEBOOK, R.string.error_enter_correct_facebook_page);
     initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_INSTAGRAM, R.string.error_enter_correct_instagram_page);
     initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_TWITTER, R.string.error_enter_correct_twitter_page);
     initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_VK, R.string.error_enter_correct_vk_page);
     initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_LINE, R.string.error_enter_correct_line_page);
+    initMetadataEntry(Metadata.MetadataType.FMD_CONTACT_BLUESKY, R.string.error_enter_correct_bluesky_page);
 
     mCuisine.setText(Editor.nativeGetFormattedCuisine());
     String selfServiceMetadata = Editor.nativeGetMetadata(Metadata.MetadataType.FMD_SELF_SERVICE.toInt());
@@ -429,8 +433,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
     // Details
     View mBlockLevels = view.findViewById(R.id.block_levels);
-    mBuildingLevels = findInputAndInitBlock(mBlockLevels, R.drawable.ic_floor,
-        getString(R.string.editor_storey_number, Editor.nativeGetMaxEditableBuildingLevels()));
+    mBuildingLevels = findInputAndInitBlock(mBlockLevels, R.drawable.ic_floor, R.string.editor_building_levels);
     mBuildingLevels.setInputType(InputType.TYPE_CLASS_NUMBER);
     mInputBuildingLevels = mBlockLevels.findViewById(R.id.custom_input);
     View blockPhone = view.findViewById(R.id.block_phone);
@@ -444,6 +447,10 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
             R.drawable.ic_website_menu, R.string.website_menu, InputType.TYPE_TEXT_VARIATION_URI);
     View emailBlock = initBlock(view, Metadata.MetadataType.FMD_EMAIL, R.id.block_email,
             R.drawable.ic_email, R.string.email, InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+    View levelBlock = initBlock(view, Metadata.MetadataType.FMD_LEVEL, R.id.block_level,
+            R.drawable.ic_level_white, R.string.editor_level, InputType.TYPE_CLASS_NUMBER);
+    View fediverseContactBlock = initBlock(view, Metadata.MetadataType.FMD_CONTACT_FEDIVERSE, R.id.block_fediverse,
+            R.drawable.ic_mastodon_white, R.string.mastodon, InputType.TYPE_TEXT_VARIATION_URI);
     View facebookContactBlock = initBlock(view, Metadata.MetadataType.FMD_CONTACT_FACEBOOK, R.id.block_facebook,
             R.drawable.ic_facebook_white, R.string.facebook, InputType.TYPE_TEXT_VARIATION_URI);
     View instagramContactBlock = initBlock(view, Metadata.MetadataType.FMD_CONTACT_INSTAGRAM, R.id.block_instagram,
@@ -454,6 +461,8 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
             R.drawable.ic_vk_white, R.string.vk, InputType.TYPE_TEXT_VARIATION_URI);
     View lineContactBlock = initBlock(view, Metadata.MetadataType.FMD_CONTACT_LINE, R.id.block_line,
             R.drawable.ic_line_white, R.string.editor_line_social_network, InputType.TYPE_TEXT_VARIATION_URI);
+    View blueskyContactBlock = initBlock(view, Metadata.MetadataType.FMD_CONTACT_BLUESKY, R.id.block_bluesky,
+            R.drawable.ic_bluesky_white, R.string.bluesky, InputType.TYPE_TEXT_VARIATION_URI);
     View operatorBlock = initBlock(view, Metadata.MetadataType.FMD_OPERATOR, R.id.block_operator,
             R.drawable.ic_operator, R.string.editor_operator, 0);
 
@@ -481,7 +490,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     mOpeningHours.setOnClickListener(this);
     final View cardMore = view.findViewById(R.id.cv__more);
     mDescription = findInput(cardMore);
-    TextView osmInfo = view.findViewById(R.id.osm_info);
+    MaterialTextView osmInfo = view.findViewById(R.id.osm_info);
     osmInfo.setMovementMethod(LinkMovementMethod.getInstance());
     mReset = view.findViewById(R.id.reset);
     mReset.setOnClickListener(this);
@@ -497,13 +506,16 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     mDetailsBlocks.put(Metadata.MetadataType.FMD_WEBSITE, websiteBlock);
     mDetailsBlocks.put(Metadata.MetadataType.FMD_WEBSITE_MENU, websiteMenuBlock);
     mDetailsBlocks.put(Metadata.MetadataType.FMD_EMAIL, emailBlock);
+    mDetailsBlocks.put(Metadata.MetadataType.FMD_LEVEL, levelBlock);
     mDetailsBlocks.put(Metadata.MetadataType.FMD_OPERATOR, operatorBlock);
 
+    mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_FEDIVERSE, fediverseContactBlock);
     mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_FACEBOOK, facebookContactBlock);
     mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_INSTAGRAM, instagramContactBlock);
     mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_TWITTER, twitterContactBlock);
     mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_VK, vkContactBlock);
     mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_LINE, lineContactBlock);
+    mSocialMediaBlocks.put(Metadata.MetadataType.FMD_CONTACT_BLUESKY, blueskyContactBlock);
   }
 
   private static TextInputEditText findInput(View blockWithInput)
@@ -518,7 +530,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
   private static TextInputEditText findInputAndInitBlock(View blockWithInput, @DrawableRes int icon, String hint)
   {
-    ((ImageView) blockWithInput.findViewById(R.id.icon)).setImageResource(icon);
+    ((ShapeableImageView) blockWithInput.findViewById(R.id.icon)).setImageResource(icon);
     final TextInputLayout input = blockWithInput.findViewById(R.id.custom_input);
     input.setHint(hint);
     return input.findViewById(R.id.input);

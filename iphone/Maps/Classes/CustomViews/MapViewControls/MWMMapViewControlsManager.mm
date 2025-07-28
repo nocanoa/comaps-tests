@@ -28,15 +28,15 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
 
 @interface MWMMapViewControlsManager () <BottomMenuDelegate>
 
-@property(nonatomic) MWMSideButtons *sideButtons;
-@property(nonatomic) MWMTrafficButtonViewController *trafficButton;
-@property(nonatomic) UIButton *promoButton;
-@property(nonatomic) UIViewController *menuController;
+@property(nonatomic) MWMSideButtons * sideButtons;
+@property(nonatomic) MWMTrafficButtonViewController * trafficButton;
+@property(nonatomic) UIButton * promoButton;
+@property(nonatomic) UIViewController * menuController;
 @property(nonatomic) id<MWMPlacePageProtocol> placePageManager;
-@property(nonatomic) MWMNavigationDashboardManager *navigationManager;
-@property(nonatomic) SearchOnMapManager *searchManager;
+@property(nonatomic) MWMNavigationDashboardManager * navigationManager;
+@property(nonatomic) SearchOnMapManager * searchManager;
 
-@property(weak, nonatomic) MapViewController *ownerController;
+@property(weak, nonatomic) MapViewController * ownerController;
 
 @property(nonatomic) BOOL disableStandbyOnRouteFollowing;
 @property(nonatomic) BOOL isAddingPlace;
@@ -63,15 +63,8 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
   self.menuState = MWMBottomMenuStateInactive;
   self.menuRestoreState = MWMBottomMenuStateInactive;
   self.isAddingPlace = NO;
-  [TrackRecordingManager.shared addObserver:self recordingIsActiveDidChangeHandler:^(TrackRecordingState state, TrackInfo * trackInfo) {
-    [self setTrackRecordingButtonHidden:state == TrackRecordingStateInactive];
-  }];
   self.searchManager = controller.searchManager;
   return self;
-}
-
-- (void)dealloc {
-  [TrackRecordingManager.shared removeObserver:self];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -104,19 +97,19 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
 
 #pragma mark - MWMPlacePageViewManager
 
-- (void)searchTextOnMap:(NSString *)text forInputLocale:(NSString *)locale {
-  if (![self searchText:text forInputLocale:locale])
+- (void)searchOnMap:(SearchQuery *)query {
+  if (![self search:query])
     return;
 
   [self.searchManager startSearchingWithIsRouting:NO];
 }
 
-- (BOOL)searchText:(NSString *)text forInputLocale:(NSString *)locale {
-  if (text.length == 0)
+- (BOOL)search:(SearchQuery *)query {
+  if (query.text.length == 0)
     return NO;
 
   [self.searchManager startSearchingWithIsRouting:NO];
-  [self.searchManager searchText:text locale:locale isCategory:NO];
+  [self.searchManager searchText:query];
   return YES;
 }
 
@@ -280,17 +273,15 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
   self.trafficButton.hidden = self.hidden || _trafficButtonHidden;
 }
 
-- (void)setTrackRecordingButtonHidden:(BOOL)trackRecordingButtonHidden {
-  if (trackRecordingButtonHidden && _trackRecordingButton) {
-    [self.trackRecordingButton closeWithCompletion:^{
-      [MWMMapWidgetsHelper updateLayoutForAvailableArea];
-    }];
-    _trackRecordingButton = nil;
+- (void)setTrackRecordingButtonState:(TrackRecordingButtonState)state {
+  if (!_trackRecordingButton) {
+    _trackRecordingButton = [[TrackRecordingButtonViewController alloc] init];
   }
-  else if (!trackRecordingButtonHidden && !_trackRecordingButton) {
-    _trackRecordingButton = [[TrackRecordingViewController alloc] init];
+  [self.trackRecordingButton setState:state completion:^{
     [MWMMapWidgetsHelper updateLayoutForAvailableArea];
-  }
+  }];
+  if (state == TrackRecordingButtonStateClosed)
+    _trackRecordingButton = nil;
 }
 
 - (void)setMenuState:(MWMBottomMenuState)menuState {

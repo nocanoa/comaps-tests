@@ -1,5 +1,7 @@
 package app.organicmaps.settings;
 
+import static app.organicmaps.leftbutton.LeftButtonsHolder.DISABLE_BUTTON_CODE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +27,9 @@ import app.organicmaps.editor.data.Language;
 import app.organicmaps.help.HelpActivity;
 import app.organicmaps.location.LocationHelper;
 import app.organicmaps.location.LocationProviderFactory;
-import app.organicmaps.routing.RoutingOptions;
+import app.organicmaps.sdk.routing.RoutingOptions;
+import app.organicmaps.leftbutton.LeftButton;
+import app.organicmaps.leftbutton.LeftButtonsHolder;
 import app.organicmaps.util.Config;
 import app.organicmaps.util.NetworkPolicy;
 import app.organicmaps.util.PowerManagment;
@@ -36,6 +40,11 @@ import app.organicmaps.util.log.LogsManager;
 import app.organicmaps.sdk.search.SearchRecents;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Locale;
 
 public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements LanguagesFragment.Listener
@@ -69,9 +78,57 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     initPowerManagementPrefsCallbacks();
     initPlayServicesPrefsCallbacks();
     initSearchPrivacyPrefsCallbacks();
-    initDisplayKayakPrefsCallbacks();
     initScreenSleepEnabledPrefsCallbacks();
     initShowOnLockScreenPrefsCallbacks();
+    initLeftButtonPrefs();
+  }
+
+  private void initLeftButtonPrefs()
+  {
+    final String leftButtonPreferenceKey = getString(R.string.pref_left_button);
+    final ListPreference pref = getPreference(leftButtonPreferenceKey);
+    LeftButtonsHolder holder = LeftButtonsHolder.getInstance(requireContext());
+
+    LeftButton currentButton = holder.getActiveButton();
+    Collection<LeftButton> buttons = holder.getAllButtons();
+
+    List<String> entryList = new ArrayList<>(buttons.size());
+    List<String> valueList = new ArrayList<>(buttons.size());
+
+    for (LeftButton button : buttons)
+    {
+      entryList.add(button.getPrefsName());
+      valueList.add(button.getCode());
+    }
+
+    pref.setEntries(entryList.toArray(new CharSequence[0]));
+    pref.setEntryValues(valueList.toArray(new CharSequence[0]));
+
+    if (currentButton != null)
+    {
+      pref.setSummary(currentButton.getPrefsName());
+      pref.setValue(currentButton.getCode());
+    }
+    else
+    {
+      pref.setSummary(R.string.pref_left_button_disable);
+      pref.setValue(DISABLE_BUTTON_CODE);
+    }
+
+    pref.setOnPreferenceChangeListener((preference, newValue) -> {
+      int index = pref.findIndexOfValue(newValue.toString());
+      if (index >= 0)
+      {
+        pref.setSummary(pref.getEntries()[index]);
+      }
+
+      Intent intent = new Intent();
+      intent.putExtra(leftButtonPreferenceKey, newValue.toString());
+
+      requireActivity().setResult(-1, intent);
+
+      return true;
+    });
   }
 
   private void updateVoiceInstructionsPrefsSummary()
@@ -141,14 +198,14 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
       {
         getSettingsActivity().stackFragment(VoiceInstructionsSettingsFragment.class, getString(R.string.pref_tts_enable_title), null);
       }
-      else if (key.equals(getString(R.string.pref_help)))
-      {
-        startActivity(new Intent(requireActivity(), HelpActivity.class));
-      }
       else if (key.equals(getString(R.string.pref_map_locale)))
       {
         LanguagesFragment langFragment = (LanguagesFragment)getSettingsActivity().stackFragment(LanguagesFragment.class, getString(R.string.change_map_locale), null);
         langFragment.setListener(this);
+      }
+      else if (key.equals(getString(R.string.pref_backup)))
+      {
+        getSettingsActivity().stackFragment(BackupSettingsFragment.class, getString(R.string.pref_backup_title), null);
       }
     }
     return super.onPreferenceTreeClick(preference);
@@ -348,21 +405,6 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     });
   }
 
-  private void initDisplayKayakPrefsCallbacks()
-  {
-    final TwoStatePreference pref = getPreference(getString(R.string.pref_display_kayak));
-
-    pref.setChecked(Config.isKayakDisplayEnabled());
-    pref.setOnPreferenceChangeListener((preference, newValue) -> {
-      final boolean oldVal = Config.isKayakDisplayEnabled();
-      final boolean newVal = (Boolean) newValue;
-      if (oldVal != newVal)
-        Config.setKayakDisplay(newVal);
-
-      return true;
-    });
-  }
-
   private void init3dModePrefsCallbacks()
   {
     final TwoStatePreference pref = getPreference(getString(R.string.pref_3d_buildings));
@@ -377,7 +419,9 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     disableOrEnable3DBuildingsForPowerMode(powerManagementValue);
 
     pref.setOnPreferenceChangeListener((preference, newValue) -> {
-      Framework.nativeSet3dMode(_3d.enabled, (Boolean)newValue);
+      Framework.Params3dMode current = new Framework.Params3dMode();
+      Framework.nativeGet3dMode(current);
+      Framework.nativeSet3dMode(current.enabled, (Boolean)newValue);
       return true;
     });
   }
@@ -416,7 +460,9 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     pref.setChecked(_3d.enabled);
 
     pref.setOnPreferenceChangeListener((preference, newValue) -> {
-      Framework.nativeSet3dMode((Boolean) newValue, _3d.buildings);
+      Framework.Params3dMode current = new Framework.Params3dMode();
+      Framework.nativeGet3dMode(current);
+      Framework.nativeSet3dMode((Boolean) newValue, current.buildings);
       return true;
     });
   }

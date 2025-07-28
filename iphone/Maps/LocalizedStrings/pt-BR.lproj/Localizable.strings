@@ -43,16 +43,16 @@
 "country_status_download_failed" = "O download falhou";
 
 /* Text in About screen */
-"about_headline" = "Grátis para todos, feito com amor";
+"about_headline" = "Um projeto aberto, movido pela comunidade";
 
 /* Text in About screen */
-"about_proposition_1" = "• Sem anúncios, rastreamento ou coleta de dados";
+"about_proposition_1" = "Não precisa de conexão à internet, rápido e fácil de usar";
 
 /* Text in About screen */
-"about_proposition_2" = "• Sem consumo de bateria, funciona off-line";
+"about_proposition_2" = "Focado na privacidade e livre de anúncios";
 
 /* Text in About screen */
-"about_proposition_3" = "• Rápido, minimalista, desenvolvido pela comunidade";
+"about_proposition_3" = "Transparente e sem fins lucrativos";
 "close" = "Fechar";
 "download" = "Baixar";
 
@@ -154,7 +154,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Para trailers";
-"share_bookmarks_email_body" = "Olá!\n\nSegue em anexo meus favoritos do app Organic Maps. Se tiver instalado o Organic Maps, pode abri-los agora. Caso não tenha, baixe o app para o seu dispositivo iOS ou Android via o link https://omaps.app/get?kmz\n\nDisfrute viajar com o Organic Maps!";
+"share_bookmarks_email_body" = "Olá!\n\nSegue em anexo meus favoritos do app CoMaps. Se tiver instalado o CoMaps, pode abri-los agora. Caso não tenha, baixe o app para o seu dispositivo iOS ou Android via o link https://www.comaps.app/download/\n\nDisfrute viajar com o CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Carregando favoritos";
@@ -172,13 +172,16 @@
 "unknown_current_position" = "A sua localização ainda não foi determinada";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Veja o meu marcador no mapa do Organic Maps!";
+"bookmark_share_email_subject" = "Veja o meu marcador no mapa do CoMaps!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Veja no mapa a minha localização atual via Organic Maps!";
+"my_position_share_email_subject" = "Veja no mapa a minha localização atual via CoMaps!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "Email";
+
+/* Text for message to copy something */
+"copy_to_clipboard" = "Copiar para área de transferência";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Copiado para a área de transferência: %@";
@@ -190,7 +193,9 @@
 "done" = "Feito";
 
 /* Prints version number in About dialog */
-"version" = "Versão do Organic Maps: %@";
+"version" = "Versão do CoMaps: %@";
+"version %@ (%@)" = "Versão %@ (%@)";
+"version: %@ (%@)\nmap data: %@" = "Versão: %@ (%@)\nDados do Mapa: %@";
 
 /* Title for tracks category in bookmarks manager */
 "tracks_title" = "Trilhas";
@@ -200,6 +205,7 @@
 "share_my_location" = "Compartilhar a minha localização";
 "prefs_group_route" = "Navegação";
 "pref_zoom_title" = "Botões de zoom";
+"pref_left_button_type" = "Botão esquerdo principal";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Aparência";
@@ -209,6 +215,9 @@
 
 /* Settings "Appearance" category: "Dark" title, should be consistent with the pref_appearance_title translation. */
 "pref_appearance_dark" = "Escura";
+
+/* Generic «Disabled» string */
+"disabled" = "Desativado";
 
 /* Generic «Off» string */
 "off" = "Desligado";
@@ -229,7 +238,10 @@
 "pref_map_3d_buildings_disabled_summary" = "Os edifícios 3D são desativados no modo de economia de energia";
 
 /* Settings «Route» category: «Tts enabled» title */
-"pref_tts_enable_title" = "Orientação por voz";
+"pref_tts_title" = "Orientação por voz";
+
+/* Settings «Route» category: «Tts enable» title */
+"pref_tts_enable_title" = "Habilitar orientação por voz";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Anunciar nomes de ruas";
@@ -241,7 +253,7 @@
 "pref_tts_language_title" = "Idioma da voz";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testar instruções de voz (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testar orientação por voz (TTS, Text-To-Speech)";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Outro";
@@ -252,8 +264,20 @@
 /* Text in menu */
 "website" = "Site";
 
-/* Text in About menu, opens Organic Maps news website */
+/* Text in About menu, opens CoMaps news website */
 "news" = "Notícias";
+
+/* Text in the about screen */
+"social_codeberg" = "Codeberg";
+"social_mastodon" = "Mastodon";
+"social_lemmy" = "Lemmy";
+"social_matrix" = "Matrix";
+"social_bluesky" = "Bluesky";
+"social_pixelfed" = "Pixelfed";
+"social_email" = "E-Mail";
+
+/* Text in the editor */
+"fediverse" = "Mastodon";
 
 /* Text in menu */
 "facebook" = "Facebook";
@@ -267,6 +291,18 @@
 /* Text in the editor */
 "vk" = "VK";
 
+/* Text in the editor */
+"line" = "Line";
+
+/* Text in the editor */
+"bluesky" = "Bluesky";
+
+/* Text in menu */
+"panoramax" = "Panoramax";
+
+/* Text in menu */
+"panoramax_picture" = "Imagem Panoramax";
+
 /* Text in menu */
 "rate_the_app" = "Avaliar o aplicativo";
 
@@ -278,12 +314,6 @@
 
 /* Button in the main menu */
 "donate" = "Doar";
-
-/* Tex label above the Donate button */
-"donate_description" = "Doe para criarmos juntos os melhores mapas!";
-"already_donated" = "Já doei";
-"remind_me_later" = "Lembre-me mais tarde";
-"support_organic_maps" = "Apoie o Organic Maps";
 
 /* Button in the main Help dialog */
 "copyright" = "Direitos autorais";
@@ -298,7 +328,7 @@
 "volunteer" = "Voluntarie-se";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Siga-nos e entre em contato conosco:";
+"follow_us" = "Conecte-se conosco";
 
 /* Alert text */
 "email_error_body" = "O cliente de email não está configurado. Por favor, configure-o ou utilize qualquer outro modo para nos contatar através de %@";
@@ -510,15 +540,27 @@
 "closes_in" = "Fecha em %@";
 "closed" = "Fechado";
 "add_opening_hours" = "Adicionar horário de funcionamento";
-"no_osm_account" = "Sem conta no OpenStreetMap?";
-"register_at_openstreetmap" = "Abra uma conta no OpenStreetMap";
-"password_8_chars_min" = "Senha (mínimo de 8 caracteres)";
-"invalid_username_or_password" = "Nome de usuário ou senha inválida.";
-"login" = "Login";
-"login_osm" = "Entrar no OpenStreetMap";
-"forgot_password" = "Esqueceu sua senha?";
-"osm_account" = "Conta OSM";
-"logout" = "Encerrar sessão";
+
+/* OpenStreetMap */
+"osm_mapdata" = "Dados de mapa do OpenStreetMap";
+"osm_mapdata_explanation %@" = "Dados de mapas criados pela comunidade até *%@*. Saiba mais sobre como editar e atualizar o mapa em [OpenStreetMap.org](https://openstreetmap.org).";
+"osm_more_about" = "Mais sobre OpenStreetMap";
+"osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Pt:Sobre_o_OpenStreetMap";
+
+/* OpenStreetMap Profile */
+"osm_profile" = "Conta OpenStreetMap";
+"osm_profile_promt" = "Crie uma conta no OpenStreetMap ou faça login para publicar suas edições de mapas para o mundo.";
+"osm_profile_explanation" = "O [OpenStreetMap.org](https://openstreetmap.org) (OSM) é um projeto comunitário aberto para construir um mapa gratuito. O OSM é a principal fonte de dados de mapas do CoMaps e funciona de forma semelhante à Wikipédia. Você pode adicionar ou editar lugares e eles ficam disponíveis para milhões de usuários no mundo todo. \nJunte-se à comunidade e ajude a criar um mapa melhor para todos!";
+"osm_profile_login" = "Entrar na conta do OpenStreetMap";
+"osm_profile_reauthorize_promt" = "A conta OpenStreetMap foi desconectada deste aplicativo";
+"osm_profile_reauthorize" = "Reconectar ao OpenStreetMap";
+"osm_profile_remove_promt" = "Se você não pode ou não deseja reconectar sua conta, você pode removê-la deste aplicativo";
+"osm_profile_remove" = "Remover conta OpenStreetMap";
+"osm_profile_register_promt" = "Sem conta no OpenStreetMap?";
+"osm_profile_register" = "Abra uma conta no OpenStreetMap";
+"osm_profile_verfied_changes" = "Alterações verificadas";
+"osm_profile_logout" = "Desconectar conta OpenStreetMap";
+"osm_profile_delete" = "Excluir conta OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
 "last_upload" = "Último upload";
@@ -567,13 +609,9 @@
 "dialog_incorrect_feature_position" = "Mudar local";
 "message_invalid_feature_position" = "Nenhum objeto pode ser posicionado aqui";
 
-/* Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. */
-"osm_presentation" = "Dados do OpenStreetMap criados pela comunidade a partir de %@. Saiba mais sobre como editar e atualizar o mapa em OpenStreetMap.org";
-"login_to_make_edits_visible" = "Crie uma conta no OpenStreetMap ou faça login para publicar suas edições de mapas para o mundo.";
-
 /* Error dialog no space */
 "migration_no_space_message" = "É necessário mais espaço para baixar. Por favor, elimine dados desnecessários.";
-"editor_sharing_title" = "Eu melhorei os mapas do Organic Maps";
+"editor_sharing_title" = "Eu melhorei os mapas do CoMaps";
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d de %2$d";
@@ -593,14 +631,14 @@
 /* Title for OSM note section in the editor */
 "editor_other_info" = "Nota para os voluntários do OpenStreetMap (opcional)";
 "editor_detailed_description_hint" = "Comentário detalhado";
-"editor_detailed_description" = "Suas sugestões de mudança serão enviadas para a comunidade OpenStreetMap. Descreva em detalhes o que não pode ser editado com o Organic Maps.";
+"editor_detailed_description" = "Suas sugestões de mudança serão enviadas para a comunidade OpenStreetMap. Descreva em detalhes o que não pode ser editado com o CoMaps.";
 "editor_more_about_osm" = "Mais sobre OpenStreetMap";
 "editor_operator" = "Operador";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operador: %@";
 "editor_category_unsuitable_title" = "Você não encontra uma categoria adequada?";
-"editor_category_unsuitable_text" = "O Organic Maps permite que você adicione apenas categorias de pontos simples, o que significa que não há cidades, estradas, lagos, contornos de edifícios etc. Por favor, adicione essas categorias diretamente no <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Consulte nosso <a href=\"https://organicmaps.app/faq/editing/advanced-map-editing\">guia</a> para obter instruções detalhadas passo a passo.";
+"editor_category_unsuitable_text" = "O CoMaps permite que você adicione apenas categorias de pontos simples, o que significa que não há cidades, estradas, lagos, contornos de edifícios etc. Por favor, adicione essas categorias diretamente no <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Consulte nosso <a href=\"https://www.comaps.app/support/advanced-map-editing/\">guia</a> para obter instruções detalhadas passo a passo.";
 "downloader_no_downloaded_maps_title" = "Você não fez o download de nenhum mapa";
 "downloader_no_downloaded_maps_message" = "Baixe mapas para pesquisar locais e usar navegação offline.";
 "current_location_unknown_error_title" = "A localização atual é desconhecida.";
@@ -615,7 +653,7 @@
 "location_services_disabled_on_device_2" = "2. Selecione “Privacidade e Segurança“";
 "location_services_disabled_on_device_3" = "3. Selecione “Serviços de Localização“";
 "location_services_disabled_on_device_4" = "4. Ative “Serviços de Localização“";
-"location_services_disabled_on_device_additional_message" = "Ou continue usando o Organic Maps sem localização";
+"location_services_disabled_on_device_additional_message" = "Ou continue usando o CoMaps sem localização";
 
 /* abbreviation for meters */
 "m" = "m";
@@ -637,15 +675,6 @@
 "day" = "dia";
 "placepage_more_button" = "Mais";
 "book_button" = "Reservar";
-
-/* A referral link on the place page for some hotels */
-"more_on_kayak" = "Fotos, avaliações, reservas";
-
-/* An explanation dialog shown when clicking on more_on_kayak link. */
-"dialog_kayak_disclaimer" = "O bônus de indicação recebido por cada reserva feita por meio deste link é destinado ao desenvolvimento do Organic Maps.";
-
-/* A confirmation button text in the explanation dialog that opens hotel details page on Kayak website. */
-"dialog_kayak_button" = "Detalhes em Kayak";
 "placepage_call_button" = "Ligar";
 "placepage_edit_bookmark_button" = "Editar favorito";
 "placepage_bookmark_name_hint" = "Nome do favorito";
@@ -681,7 +710,7 @@
 
 /* For sharing via SMS and so on */
 "sharing_call_action_look" = "Procure";
-"recent_track_background_dialog_message" = "O Organic Maps usa sua localização geográfica em segundo plano para gravar a sua rota recente.";
+"recent_track_background_dialog_message" = "O CoMaps usa sua localização geográfica em segundo plano para gravar a sua rota recente.";
 "general_settings" = "Definições gerais";
 
 /* For the first routing */
@@ -707,7 +736,7 @@
 
 /* "traffic" as in "road congestion" */
 "traffic_data_unavailable" = "Não existem dados de tráfego";
-"enable_logging" = "Ativar o histórico";
+"enable_logging" = "Ativar registros de execução";
 "log_file_size" = "Tamanho do arquivo de registro: %@";
 "transliteration_title" = "Transliterar para alfabeto latino";
 
@@ -725,6 +754,9 @@
 "planning_route_remove_title" = "Arraste aqui para remover";
 "placepage_add_stop" = "Adicionar parada";
 "start_from_my_position" = "Iniciar a partir de";
+
+/* Title for button when a route was saved. */
+"saved" = "Salvo";
 
 /* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
 "alert_reauth_message_ios" = "Faça login no OpenStreetMap para carregar automaticamente todas as edições de mapas que você fizer. Saiba mais";
@@ -787,7 +819,7 @@
 "power_managment_setting_never" = "Nunca";
 "power_managment_setting_auto" = "Automático";
 "power_managment_setting_manual_max" = "Máxima economia de energia";
-"enable_logging_warning_message" = "A opção ativa logging para realizar diagnósticos. Pode ser útil para nossa equipe de suporte que estão solucionando problemas com o aplicativo. Ative esta opção apenas ao ser solicitado pelo suporte do Organic Maps.";
+"enable_logging_warning_message" = "Ative esta opção temporariamente para criar registros de execução e manualmente nos enviar registros diagnósticos detalhados sobre seu problema usando \"Relatar um problema\" no diálogo de Ajuda. Registros de execução podem conter dados de localização.";
 "driving_options_title" = "Opções de trajeto";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -845,7 +877,7 @@
 "ok" = "Tudo bem";
 "speedcams_alert_title_carplay_1" = "Radares";
 "speedcams_alert_title_carplay_2" = "Alertas de velocidade";
-"download_map_carplay" = "Por favor, baixe mapas no app Organic Maps em seu dispositivo";
+"download_map_carplay" = "Por favor, baixe mapas no app CoMaps em seu dispositivo";
 "carplay_roundabout_exit" = "%@ saída";
 
 /* max. 10 symbols, both iOS and Android */
@@ -924,17 +956,8 @@
 /* edit track screen title */
 "track_title" = "Trilha";
 
-/* Telegram group url for the "?" About page */
-"telegram_url" = "https://t.me/OrganicMapsApp";
-
-/* Instagram account url for the "?" About page */
-"instagram_url" = "https://www.instagram.com/organicmaps.app";
-
-/* Translated Organic Maps site, add new translations here: https://github.com/organicmaps/organicmaps.github.io/tree/master/content */
-"translated_om_site_url" = "https://organicmaps.app/pt-BR/";
-
-/* Link to OSM wiki for Editor, Profile and About pages */
-"osm_wiki_about_url" = "https://wiki.openstreetmap.org/wiki/Pt:Sobre_o_OpenStreetMap";
+/* Translated CoMaps site */
+"translated_om_site_url" = "https://www.comaps.app/pt-BR/";
 
 /* App Tip #00 */
 "app_tip_00" = "Obrigado por você usar nossos mapas criados pela comunidade!";
@@ -967,10 +990,10 @@
 "app_tip_09" = "Nosso principal objetivo é construir mapas rápidos, focados na privacidade e fáceis de usar que você vai adorar.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Agora você está usando o Organic Maps na tela do telefone";
+"car_used_on_the_phone_screen" = "Agora você está usando o CoMaps na tela do telefone";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Agora você está usando o Organic Maps na tela do carro";
+"car_used_on_the_car_screen" = "Agora você está usando o CoMaps na tela do carro";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Continuar no celular";
@@ -995,7 +1018,10 @@
 "website_menu" = "Link do cardápio";
 
 /* Message for the bug report alert. */
-"bugreport_alert_message" = "Você gostaria de enviar um relatório de bug para os desenvolvedores?\nDependemos de nossos usuários, pois o Organic Maps não coleta nenhuma informação de erro automaticamente. Agradecemos antecipadamente por você apoiar o Organic Maps!";
+"bugreport_alert_message" = "Você gostaria de enviar um relatório de bug para os desenvolvedores?\nDependemos de nossos usuários, pois o CoMaps não coleta nenhuma informação de erro automaticamente. Agradecemos antecipadamente por você apoiar o CoMaps!";
+
+/* Title for the iCloud syncronization setting */
+"icloud_sync" = "Sincronização no iCloud (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Ativar a sincronização do iCloud";
@@ -1069,3 +1095,6 @@
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "A trilha está vazia - não há nada para salvar";
 "edit_track" = "Editar trilha";
+"osm_profile_view_edit_history" = "Ver histórico de edições";
+"osm_profile_view_notes" = "Ver notas";
+"pref_mapappearance_title" = "Aparência do mapa";

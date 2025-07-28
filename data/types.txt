@@ -216,7 +216,7 @@ mapswithme
 *sport|table_tennis
 *sport|beachvolleyball
 *sport|volleyball
-*power|station
+mapswithme
 *sport|swimming
 *leisure|track
 *sport|skateboard
@@ -315,7 +315,7 @@ highway|path
 *aeroway|gate
 *railway|preserved
 *highway|path|horse
-*landuse|field
+mapswithme
 *hwtag|nocycleway
 *leisure|water_park
 *natural|wetland|bog
@@ -476,7 +476,7 @@ mapswithme
 *emergency|mountain_rescue
 *aerialway|platter
 *man_made|flare
-mapswithme
+*highway|ladder
 *railway|preserved|tunnel
 *boundary|protected_area|1
 *boundary|protected_area|2
@@ -548,10 +548,10 @@ mapswithme
 mapswithme
 mapswithme
 *waterway|lock_gate
-mapswithme
-mapswithme
-mapswithme
-mapswithme
+*leisure|firepit
+*barrier|guard_rail
+*amenity|studio
+*amenity|love_hotel
 highway|path|expert
 mapswithme
 mapswithme
@@ -655,13 +655,13 @@ mapswithme
 mapswithme
 mapswithme
 mapswithme
-mapswithme
-mapswithme
-mapswithme
-mapswithme
-mapswithme
-mapswithme
-mapswithme
+*natural|wetland|saltmarsh
+*natural|wetland|saltmarsh|tidal
+*natural|wetland|fen
+*natural|wetland|reedbed
+*natural|wetland|swamp
+*natural|wetland|mangrove
+*natural|wetland|tidalflat
 mapswithme
 mapswithme
 mapswithme
@@ -691,7 +691,7 @@ mapswithme
 mapswithme
 *man_made|cross
 landuse|orchard
-mapswithme
+*landuse|plant_nursery
 mapswithme
 mapswithme
 mapswithme
@@ -896,7 +896,7 @@ railway|subway|tunnel
 *historic|gallows
 *historic|pillory
 *amenity|money_transfer
-mapswithme
+*man_made|crane
 railway|subway|tunnel
 mapswithme
 railway|subway|tunnel
@@ -1327,7 +1327,7 @@ tourism|attraction
 *amenity|parking_space|underground
 *amenity|parking_space|private
 *amenity|parking_space|permissive
-*landuse|churchyard
+*landuse|religious
 *isoline|step_1000
 *isoline|step_500
 *isoline|step_100
@@ -1620,3 +1620,5 @@ amenity|recycling|container
 *railway|station|subway|shenzhen
 *railway|subway_entrance|shenzhen
 *shop|hearing_aids
+*railway|station|subway|qingdao
+*railway|subway_entrance|qingdao

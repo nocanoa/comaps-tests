@@ -4,6 +4,7 @@ enum GlobalStyleSheet: String, CaseIterable {
   case tableViewCell = "MWMTableViewCell"
   case defaultTableViewCell
   case tableViewHeaderFooterView = "TableViewHeaderFooterView"
+  case defaultSearchBar
   case searchBar = "SearchBar"
   case navigationBar = "NavigationBar"
   case navigationBarItem = "NavigationBarItem"
@@ -23,7 +24,6 @@ enum GlobalStyleSheet: String, CaseIterable {
   case trackRecordingWidgetButton = "TrackRecordingWidgetButton"
   case blackOpaqueBackground = "BlackOpaqueBackground"
   case blueBackground = "BlueBackground"
-  case toastBackground = "ToastBackground"
   case fadeBackground = "FadeBackground"
   case errorBackground = "ErrorBackground"
   case blackStatusBarBackground = "BlackStatusBarBackground"
@@ -62,6 +62,8 @@ enum GlobalStyleSheet: String, CaseIterable {
   case grabber
   case modalSheetBackground
   case modalSheetContent
+  case toastBackground
+  case toastLabel
 }
 
 extension GlobalStyleSheet: IStyleSheet {
@@ -93,6 +95,14 @@ extension GlobalStyleSheet: IStyleSheet {
       return .add { s in
         s.font = fonts.medium14
         s.fontColor = colors.blackSecondaryText
+      }
+    case .defaultSearchBar:
+      return .add { s in
+        s.backgroundColor = colors.pressBackground
+        s.barTintColor = colors.clear
+        s.fontColor = colors.blackPrimaryText
+        s.fontColorDetailed = UIColor.white
+        s.tintColor = colors.blackSecondaryText
       }
     case .searchBar:
       return .add { s in
@@ -126,7 +136,7 @@ extension GlobalStyleSheet: IStyleSheet {
       }
     case .switch:
       return .add { s in
-        s.onTintColor = colors.linkBlue
+        s.onTintColor = UIColor.accent
       }
     case .pageControl:
       return .add { s in
@@ -188,6 +198,7 @@ extension GlobalStyleSheet: IStyleSheet {
     case .trackRecordingWidgetButton:
       return .addFrom(Self.bottomTabBarButton) { s in
         s.cornerRadius = .custom(23)
+        s.coloring = .red
       }
     case .blackOpaqueBackground:
       return .add { s in
@@ -196,10 +207,6 @@ extension GlobalStyleSheet: IStyleSheet {
     case .blueBackground:
       return .add { s in
         s.backgroundColor = colors.linkBlue
-      }
-    case .toastBackground:
-      return .add { s in
-        s.backgroundColor = colors.toastBackground
       }
     case .fadeBackground:
       return .add { s in
@@ -227,10 +234,11 @@ extension GlobalStyleSheet: IStyleSheet {
       }
     case .tabView:
       return .add { s in
-        s.backgroundColor = colors.pressBackground
-        s.barTintColor = colors.primary
-        s.tintColor = colors.white
-        s.fontColor = colors.whitePrimaryText
+        s.backgroundColor = colors.white
+        s.barTintColor = colors.white
+        s.tintColor = colors.linkBlue
+        s.fontColor = colors.blackSecondaryText
+        s.fontColorHighlighted = colors.linkBlue
         s.font = fonts.medium14
       }
     case .dialogView:
@@ -445,12 +453,23 @@ extension GlobalStyleSheet: IStyleSheet {
         s.shadowRadius = 6
         s.cornerRadius = .modalSheet
         s.clip = false
-        s.maskedCorners = isIPad ? [] : [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        s.maskedCorners = isiPad ? [] : [.layerMinXMinYCorner, .layerMaxXMinYCorner]
       }
     case .modalSheetContent:
       return .addFrom(Self.modalSheetBackground) { s in
         s.backgroundColor = colors.clear
         s.clip = true
+      }
+    case .toastBackground:
+      return .add { s in
+        s.cornerRadius = .modalSheet
+        s.clip = true
+      }
+    case .toastLabel:
+      return .add { s in
+        s.font = fonts.regular16
+        s.fontColor = colors.whitePrimaryText
+        s.textAlignment = .center
       }
     }
   }

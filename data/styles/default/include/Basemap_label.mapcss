@@ -471,19 +471,13 @@ area|z18-[leisure=park][!name]
 area|z18-[leisure=garden][garden:type!=residential][!name]
 {text: none; icon-image: garden-m.svg;}
 
-
 area|z15-[landuse=farmland],
 area|z15-[landuse=farmyard],
 area|z15-[landuse=allotments],
 area|z15-[landuse=recreation_ground],
 area|z15-[landuse=orchard],
 area|z15-[landuse=vineyard],
-node|z17-[landuse=farmland],
-node|z17-[landuse=farmyard],
-node|z17-[landuse=allotments],
-node|z17-[landuse=recreation_ground],
-node|z17-[landuse=orchard],
-node|z17-[landuse=vineyard],
+area|z17-[landuse=plant_nursery],
 {text: name;font-size: 10;text-color: @poi_label;}
 
 /* 5.2 Beach, Glacier, Desert, etc. */
