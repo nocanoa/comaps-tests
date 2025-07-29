@@ -75,6 +75,7 @@
 #include "std/target_os.hpp"
 
 #include "defines.hpp"
+#include "private.h"
 
 #include <algorithm>
 
@@ -2628,7 +2629,7 @@ std::string Framework::LoadTrafficHttpUrl()
 {
   std::string url;
   if (!settings::Get(kTrafficHttpUrlKey, url))
-    url = "";
+    url = TRAFFIC_HTTP_URL_DEFAULT;
   return url;
 }
 

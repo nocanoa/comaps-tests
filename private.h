@@ -8,5 +8,7 @@
 #define METASERVER_URL "https://cdn-us-1.comaps.app/servers"
 #define DEFAULT_URLS_JSON "[ \"https://cdn-us-2.comaps.tech/\", \"https://comaps.firewall-gateway.de/\", \"https://cdn-us-1.comaps.app/\", \"https://cdn-fi-1.comaps.app/\", \"https://comaps-cdn.s3-website.cloud.ru/\" ]"
 #define DEFAULT_CONNECTION_CHECK_IP "151.101.195.52"  // For now the IP of comaps.app (Fastly CDN)
+// TODO temporary URL, replace with final one once we have a server
+#define TRAFFIC_HTTP_URL_DEFAULT "http://traff:8080/subscription-manager"
 #define USER_BINDING_PKCS12 ""
 #define USER_BINDING_PKCS12_PASSWORD ""
