@@ -51,9 +51,9 @@ echo "region = auto" >> ~/.config/rclone/rclone.conf
 echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
 # S3_BUCKET is used below during uploading
 
-echo "<$(date +%T)> Running ./configure.sh ..."
-cd ~/OM/organicmaps
-./configure.sh --skip-map-download --skip-generate-symbols
+export SKIP_MAP_DOWNLOAD=1
+export SKIP_GENERATE_SYMBOLS=1
+export SKIP_GENERATE_DRULES=1
 
 echo "<$(date +%T)> Compiling tools..."
 cd ~/OM/organicmaps
