@@ -34,6 +34,9 @@ on:
       - track_generator/**
       - xcode/**
 
+env:
+  JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+
 jobs:
   lint:
     name: Android Lint
