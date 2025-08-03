@@ -37,13 +37,17 @@ on:
 jobs:
   lint:
     name: Android Lint
+    container:
+      image: runmymind/docker-android-sdk:latest
     runs-on: ubuntu-latest
     container:
       image: runmymind/docker-android-sdk:latest
     steps:
-      - name: Parallel submodules checkout
+      - name: Install Node.JS
         shell: bash
-        run: apt-get install
+        run: |
+          apt-get update -y
+          apt-get install -y nodejs
 
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -83,7 +87,7 @@ jobs:
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y cmake ninja-build
+          apt-get install -y cmake ninja-build nodejs
 
       - name: Checkout sources
         uses: https://github.com/actions/checkout@v4
