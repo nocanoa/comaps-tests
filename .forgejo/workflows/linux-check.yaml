@@ -53,6 +53,7 @@ jobs:
           apt update -y
           apt install -y \
               ninja-build \
+              cmake \
               libgl1-mesa-dev \
               libglvnd-dev \
               libharfbuzz-dev \

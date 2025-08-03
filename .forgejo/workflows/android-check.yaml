@@ -38,8 +38,6 @@ jobs:
   lint:
     name: Android Lint
     runs-on: ubuntu-latest
-    container:
-      image: runmymind/docker-android-sdk:latest
     steps:
       - name: Checkout sources
         uses: https://github.com/actions/checkout@v4
@@ -51,6 +49,8 @@ jobs:
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
 
       - name: Lint
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: ./gradlew -Pandroidauto=true lint
@@ -79,7 +79,7 @@ jobs:
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y ninja-build
+          apt-get install -y cmake ninja-build
 
       - name: Checkout sources
         uses: https://github.com/actions/checkout@v4
@@ -96,6 +96,8 @@ jobs:
           key: ${{ github.workflow }}-${{ matrix.flavor }}
 
       - name: Compile ${{ matrix.flavor }}
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         env:

@@ -10,8 +10,6 @@ jobs:
   tag:
     name: Tag
     runs-on: ubuntu-latest
-    container:
-      image: runmymind/docker-android-sdk:latest
     environment: production
     steps:
       - name: Checkout sources
@@ -74,7 +72,7 @@ jobs:
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y ninja-build
+          apt-get install -y cmake ninja-build
 
       - name: Checkout sources
         uses: https://github.com/actions/checkout@v4
@@ -123,6 +121,8 @@ jobs:
         run: echo "sdk.dir=$ANDROID_SDK_ROOT" > android/local.properties
 
       - name: Compile and upload to Google Play
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: |
@@ -130,6 +130,8 @@ jobs:
         if: ${{ matrix.flavor == 'google' }}
 
       - name: Compile and upload to Huawei AppGallery
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: |
@@ -138,6 +140,8 @@ jobs:
         if: ${{ matrix.flavor == 'huawei' }}
 
       - name: Compile universal APK
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: |

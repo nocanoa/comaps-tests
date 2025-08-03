@@ -36,15 +36,13 @@ jobs:
   android-google-beta:
     name: Android Google Beta
     runs-on: ubuntu-latest
-    container:
-      image: runmymind/docker-android-sdk:latest
     environment: beta
     steps:
       - name: Install build tools and dependencies
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y ninja-build
+          apt-get install -y cmake ninja-build
 
       - name: Checkout sources
         uses: https://github.com/actions/checkout@v4
@@ -71,6 +69,8 @@ jobs:
           RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
 
       - name: Compile
+        container:
+          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: |
