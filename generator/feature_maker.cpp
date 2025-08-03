@@ -51,7 +51,12 @@ std::optional<m2::PointD> FeatureMakerSimple::GetOrigin(OsmElement const & e) co
   }
   else
   {
-    CHECK(!e.m_members.empty(), (e.m_id));
+    if (e.m_members.empty())
+    {
+      LOG(LWARNING, ("Invalid relation with no members", e.m_id));
+      return {};
+    }
+    //CHECK(!e.m_members.empty(), (e.m_id));
     for (auto const & m : e.m_members)
     {
       if (m.m_type == OsmElement::EntityType::Node)
