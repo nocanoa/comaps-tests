@@ -49,7 +49,7 @@ jobs:
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
 
       - name: Lint
-        uses: docker://docker.io/runmymind/docker-android-sdk:latest 
+        uses: docker://runmymind/docker-android-sdk:latest 
         shell: bash
         working-directory: android
         run: ./gradlew -Pandroidauto=true lint
@@ -93,7 +93,7 @@ jobs:
           key: ${{ github.workflow }}-${{ matrix.flavor }}
 
       - name: Compile ${{ matrix.flavor }}
-        uses: docker://docker.io/runmymind/docker-android-sdk:latest
+        uses: docker://runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         env:
