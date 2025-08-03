@@ -1,5 +1,6 @@
 name: Validate appstream metadata xml
 on:
+  workflow_dispatch: # Manual trigger
   pull_request:
     paths:
       - packaging/app.comaps.desktop.metainfo.xml
