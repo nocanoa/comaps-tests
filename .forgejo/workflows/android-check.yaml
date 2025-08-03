@@ -88,7 +88,7 @@ jobs:
           apt-get install -y cmake ninja-build nodejs
 
       - name: Checkout sources
-        uses: https://github.com/actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 200 # enough to get all commits for the current day
 
