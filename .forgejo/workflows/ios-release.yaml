@@ -1,6 +1,5 @@
 name: iOS Release
 on:
-  workflow_dispatch: # Manual trigger
 
 jobs:
   ios-release:

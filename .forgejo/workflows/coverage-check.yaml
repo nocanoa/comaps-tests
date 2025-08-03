@@ -1,6 +1,5 @@
 name: Coverage Report
 on:
-  workflow_dispatch: # Manual trigger
   pull_request:
     types:
       - opened
@@ -53,7 +52,6 @@ jobs:
           fi
       - name: Check if manually triggered
         id: manually-triggered
-        if: github.event_name == 'workflow_dispatch'
         run: echo "manually-triggered=true" >> $GITHUB_OUTPUT
 
   coverage:

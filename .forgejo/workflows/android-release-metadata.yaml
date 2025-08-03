@@ -1,6 +1,5 @@
 name: Android Release Metadata
 on:
-  workflow_dispatch: # Manual trigger
 
 jobs:
   android-release-metadata:

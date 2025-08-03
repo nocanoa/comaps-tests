@@ -1,6 +1,5 @@
 name: Linux Check
 on:
-  workflow_dispatch: # Manual trigger
   push:
     branches:
       - main

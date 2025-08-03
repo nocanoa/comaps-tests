@@ -1,6 +1,5 @@
 name: iOS Check metadata
 on:
-  workflow_dispatch: # Manual trigger
   pull_request:
     paths:
       - .forgejo/workflows/ios-check-metadata.yaml  # Run check on self change

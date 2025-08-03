@@ -1,6 +1,5 @@
 name: Android Release
 on:
-  workflow_dispatch:  # Manual trigger
 
 env:
   RELEASE_NOTES: android/app/src/google/play/release-notes/en-US/default.txt
