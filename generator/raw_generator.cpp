@@ -81,7 +81,7 @@ private:
 
 RawGenerator::RawGenerator(feature::GenerateInfo & genInfo, size_t threadsCount, size_t chunkSize)
   : m_genInfo(genInfo)
-  , m_threadsCount(threadsCount)
+  , m_threadsCount(1) //pastk
   , m_chunkSize(chunkSize)
   , m_cache(std::make_shared<generator::cache::IntermediateData>(m_intermediateDataObjectsCache, genInfo))
   , m_queue(std::make_shared<FeatureProcessorQueue>())
@@ -162,6 +162,7 @@ bool RawGenerator::Execute()
   m_queue.reset();
   m_intermediateDataObjectsCache.Clear();
 
+  LOG(LINFO, ("Start final processing..."));
   while (!m_finalProcessors.empty())
   {
     auto const finalProcessor = m_finalProcessors.top();
@@ -244,11 +245,18 @@ bool RawGenerator::GenerateFilteredFeatures()
   }
   CHECK(sourceProcessor, ());
 
+  // create translators threads
   TranslatorsPool translators(m_translators, m_threadsCount);
-  RawGeneratorWriter rawGeneratorWriter(m_queue, m_genInfo.m_tmpDir);
-  rawGeneratorWriter.Run();
+  // separate chained translators for countries and world
+  // they run in threads and process chunks of source data
+  // translators determine e.g. feature type and then pass features to processors (a chain of them)
+  // the final processor writes to a processed queue
 
-  Stats stats(100 * m_threadsCount /* logCallCountThreshold */);
+  RawGeneratorWriter rawGeneratorWriter(m_queue, m_genInfo.m_tmpDir);
+  rawGeneratorWriter.Run(); // and an extra thread to write!
+  // pops from the processed queue and writes to per-country files
+
+  Stats stats(1 /* logCallCountThreshold */); //thread-safe?
 
   bool isEnd = false;
   do
@@ -268,9 +276,10 @@ bool RawGenerator::GenerateFilteredFeatures()
   } while (!isEnd);
 
   LOG(LINFO, ("Input was processed."));
-  if (!translators.Finish())
+  if (!translators.Finish()) // long time between those two logs outputs
     return false;
 
+  LOG(LINFO, ("rawGeneratorWriter.ShutdownAndJoin();"));
   rawGeneratorWriter.ShutdownAndJoin();
   m_names = rawGeneratorWriter.GetNames();
   /// @todo: compare to the input list of countries loaded in borders::LoadCountriesList().

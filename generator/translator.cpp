@@ -39,6 +39,12 @@ void Translator::SetFilter(std::shared_ptr<FilterInterface> const & filter) { m_
 
 void Translator::Emit(OsmElement const & src)
 {
+  if (!src.IsRelation()) // pastk
+    return;
+
+  if (src.m_members.size() > 1000) //pastk
+    LOG(LINFO, ("Relation: ", src.m_id, " members: ", src.m_members.size(), " tags: ", src.m_tags.size()));
+
   // Make a copy because it will be modified below.
   OsmElement element(src);
 

@@ -92,7 +92,10 @@ OSM_TOOLS_PATH = os.path.join(_WORK_PATH, "osmctools")
 
 # Generator tool section:
 USER_RESOURCE_PATH = os.path.join(OMIM_PATH, "data")
-NODE_STORAGE = "mem" if total_virtual_memory() / 10 ** 9 >= 64 else "map"
+# Use "mem" for 64GB of mem or more
+# TODO: actually the choice should depend on the source planet size
+# e.g. "map" is not suitble and doesn't make sense for the whole world
+NODE_STORAGE = "mem" if total_virtual_memory() / 1024 ** 3 >= 64 else "map"
 
 # Stages section:
 NEED_PLANET_UPDATE = False

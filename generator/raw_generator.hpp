@@ -20,7 +20,7 @@ class RawGenerator
 {
 public:
   explicit RawGenerator(feature::GenerateInfo & genInfo, size_t threadsCount = 1,
-                        size_t chunkSize = 1024);
+                        size_t chunkSize = 1024); // increase?
 
   void GenerateCountries(bool isTests = false);
   void GenerateWorld(bool cutBordersByWater = true);

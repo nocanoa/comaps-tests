@@ -114,8 +114,10 @@ public:
     uint64_t const fileSize = m_fileReader.Size();
     CHECK_EQUAL(fileSize % sizeof(LatLon), 0, ("Node's coordinates file is broken"));
 
+    LOG(LINFO, ("Start reading nodes storage from", name));
     m_data.resize(fileSize / sizeof(LatLon));
     m_fileReader.Read(0, m_data.data(), fileSize);
+    LOG(LINFO, ("Finished reading nodes storage"));
   }
 
   // PointStorageReaderInterface overrides:
