@@ -4,14 +4,14 @@ on:
 jobs:
   android-release-metadata:
     name: Upload Google Play metadata
-    runs-on: codeberg-tiny
+    runs-on: ubuntu-latest
     container:
       image: runmymind/docker-android-sdk:latest
     environment: production
     steps:
       - name: Checkout sources
         # TODO: use shallow (and sparse?) checkout
-        uses: actions/checkout@v4
+        uses: https://github.com/actions/checkout@v4
 
 #      - name: Parallel submodules checkout
 #        shell: bash

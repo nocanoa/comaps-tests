@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: https://github.com/actions/checkout@v4
         with:
           fetch-depth: 100 # enough to get all commits for the current day
 
@@ -49,8 +49,8 @@ jobs:
       - name: Install build tools and dependencies
         shell: bash
         run: |
-          sudo apt update -y
-          sudo apt install -y \
+          apt update -y
+          apt install -y \
               ninja-build \
               libgl1-mesa-dev \
               libglvnd-dev \
@@ -102,7 +102,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: https://github.com/actions/checkout@v4
 
       - name: Parallel submodules checkout
         shell: bash
@@ -111,8 +111,8 @@ jobs:
       - name: Install build tools and dependencies
         shell: bash
         run: |
-          sudo apt update -y
-          sudo apt install -y \
+          apt update -y
+          apt install -y \
               ninja-build \
               libgl1-mesa-dev \
               libglvnd-dev \
@@ -163,13 +163,13 @@ jobs:
           # world_feed_integration_tests - https://github.com/organicmaps/organicmaps/issues/215
           CTEST_EXCLUDE_REGEX: "generator_integration_tests|opening_hours_integration_tests|opening_hours_supported_features_tests|routing_benchmarks|routing_integration_tests|routing_quality_tests|search_quality_tests|storage_integration_tests|shaders_tests|world_feed_integration_tests"
         run: |
-          sudo locale-gen en_US
-          sudo locale-gen en_US.UTF-8
-          sudo locale-gen es_ES
-          sudo locale-gen es_ES.UTF-8
-          sudo locale-gen fr_FR
-          sudo locale-gen fr_FR.UTF-8
-          sudo locale-gen ru_RU
-          sudo locale-gen ru_RU.UTF-8
-          sudo update-locale
+          locale-gen en_US
+          locale-gen en_US.UTF-8
+          locale-gen es_ES
+          locale-gen es_ES.UTF-8
+          locale-gen fr_FR
+          locale-gen fr_FR.UTF-8
+          locale-gen ru_RU
+          locale-gen ru_RU.UTF-8
+          update-locale
           ctest -L "omim-test" -E "$CTEST_EXCLUDE_REGEX" --output-on-failure

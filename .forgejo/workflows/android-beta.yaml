@@ -42,11 +42,11 @@ jobs:
       - name: Install build tools and dependencies
         shell: bash
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y ninja-build
+          apt-get update -y
+          apt-get install -y ninja-build
 
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: https://github.com/actions/checkout@v4
         with:
           fetch-depth: 100 # enough to get all commits for the current day
 

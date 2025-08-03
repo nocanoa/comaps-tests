@@ -44,7 +44,7 @@ jobs:
         shell: bash
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: https://github.com/actions/checkout@v4
         with:
           fetch-depth: 100 # enough to get all commits for the current day
 
