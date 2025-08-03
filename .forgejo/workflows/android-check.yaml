@@ -37,8 +37,6 @@ on:
 jobs:
   lint:
     name: Android Lint
-    container:
-      image: runmymind/docker-android-sdk:latest
     runs-on: ubuntu-latest
     container:
       image: runmymind/docker-android-sdk:latest
