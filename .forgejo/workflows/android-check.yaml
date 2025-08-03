@@ -110,5 +110,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: android-${{ matrix.flavor }}
-          path: android/app/build/outputs/apk/**/OrganicMaps-*.apk
+          path: android/app/build/outputs/apk/**/CoMaps-*.apk
           if-no-files-found: error
