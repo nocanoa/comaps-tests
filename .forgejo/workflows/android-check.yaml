@@ -38,9 +38,15 @@ jobs:
   lint:
     name: Android Lint
     runs-on: ubuntu-latest
+    container:
+      image: runmymind/docker-android-sdk:latest
     steps:
+      - name: Parallel submodules checkout
+        shell: bash
+        run: apt-get install
+
       - name: Checkout sources
-        uses: https://github.com/actions/checkout@v4
+        uses: docker://github.com/actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -49,8 +55,6 @@ jobs:
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
 
       - name: Lint
-        container:
-          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         run: ./gradlew -Pandroidauto=true lint
@@ -96,8 +100,6 @@ jobs:
           key: ${{ github.workflow }}-${{ matrix.flavor }}
 
       - name: Compile ${{ matrix.flavor }}
-        container:
-          image: runmymind/docker-android-sdk:latest
         shell: bash
         working-directory: android
         env:
