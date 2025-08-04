@@ -2,14 +2,14 @@
 FROM ubuntu:noble
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC 
+ENV TZ=Etc/UTC
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
     curl \
     osmctools \
     rclone \
-    sftp \
+    openssh-client \
     sshpass \
     vim \
     wget \
@@ -20,6 +20,7 @@ RUN apt-get update -qq \
     python3 \
     python3-pip \
     python3.12-venv \
+    python3-protobuf \
     qt6-base-dev \
     qt6-positioning-dev \
     libc++-dev \
@@ -50,6 +51,6 @@ RUN mkdir /home/planet
 WORKDIR /root/OM/organicmaps
 
 # For debugging
-#CMD /bin/bash 
+#CMD /bin/bash
 
 CMD /root/OM/organicmaps/tools/unix/docker_maps_generator.sh
