@@ -74,6 +74,7 @@ class StageCoastline(Stage):
         coasts_geom = "WorldCoasts.geom"
         coasts_rawgeom = "WorldCoasts.rawgeom"
         try:
+            raise BadExitStatusError("Force fallback to known good coasts")
             coastline.make_coastline(env)
         except BadExitStatusError as e:
             if not use_old_if_fail:
