@@ -9,7 +9,7 @@ RUN apt-get update -qq \
     curl \
     osmctools \
     rclone \
-    sftp \
+    openssh-client \
     sshpass \
     vim \
     wget \
