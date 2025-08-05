@@ -6,6 +6,7 @@ import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static app.organicmaps.leftbutton.LeftButtonsHolder.BUTTON_ADD_PLACE_CODE;
 import static app.organicmaps.leftbutton.LeftButtonsHolder.BUTTON_HELP_CODE;
+import static app.organicmaps.leftbutton.LeftButtonsHolder.BUTTON_MAP_LAYER_CODE;
 import static app.organicmaps.leftbutton.LeftButtonsHolder.BUTTON_RECORD_TRACK_CODE;
 import static app.organicmaps.leftbutton.LeftButtonsHolder.BUTTON_SETTINGS_CODE;
 import static app.organicmaps.sdk.location.LocationState.FOLLOW;
@@ -941,6 +942,42 @@ public class MwmActivity extends BaseMwmFragmentActivity
       public void onClick(FloatingActionButton left)
       {
         onTrackRecordingOptionSelected();
+        drawIcon(left);
+      }
+    });
+
+    buttonsHolder.registerButton(new LeftToggleButton() {
+      //TODO: hide layers button
+      private boolean isLayerActive = false; //TODO: hook up
+
+      @Override
+      public void setChecked(boolean checked)
+      {
+        isLayerActive = checked;
+      }
+
+      @Override
+      public String getCode()
+      {
+        return BUTTON_MAP_LAYER_CODE;
+      }
+
+      @Override
+      public String getPrefsName()
+      {
+        return getString(R.string.layers_title);
+      }
+
+      @Override
+      public void drawIcon(FloatingActionButton imageView)
+      {
+        imageView.setImageResource(isLayerActive ? R.drawable.ic_layers : R.drawable.ic_layers_clear);
+      }
+
+      @Override
+      public void onClick(FloatingActionButton left)
+      {
+        toggleMapLayerBottomSheet();
         drawIcon(left);
       }
     });

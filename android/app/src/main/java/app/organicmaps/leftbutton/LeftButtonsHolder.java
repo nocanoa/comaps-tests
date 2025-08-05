@@ -19,6 +19,7 @@ public class LeftButtonsHolder
   public static final String BUTTON_SETTINGS_CODE = "settings";
   public static final String BUTTON_ADD_PLACE_CODE = "add-place";
   public static final String BUTTON_RECORD_TRACK_CODE = "record-track";
+  public static final String BUTTON_MAP_LAYER_CODE = "map-layer";
   private static final String DEFAULT_BUTTON_CODE = BUTTON_HELP_CODE;
 
   private final String leftButtonPreferenceKey;
