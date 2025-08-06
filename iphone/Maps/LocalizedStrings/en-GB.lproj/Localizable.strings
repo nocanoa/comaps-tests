@@ -696,6 +696,13 @@
 "editor_place_doesnt_exist" = "Place does not exist";
 "text_more_button" = "…more";
 
+/* Live traffic data */
+"traffic_http" = "Live Traffic";
+"traffic_http_enabled" = "Enable live traffic data";
+"traffic_http_enabled_description" = "When enabled, the app will periodically retrieve traffic information from the configured URL.";
+"traffic_http_url" = "Traffic service URL";
+"traffic_http_url_not_set" = "Not set";
+
 /* Phone number error message */
 "error_enter_correct_phone" = "Enter a valid phone number";
 "error_enter_correct_web" = "Enter a valid web address";

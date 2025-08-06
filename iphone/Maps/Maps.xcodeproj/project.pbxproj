@@ -15,6 +15,7 @@
 		272F1F3B2E0EE0A300FA52EF /* NoExistingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */; };
 		272F1F3D2E0EE0C800FA52EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */; };
 		272F1F462E0EEF9400FA52EF /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F452E0EEF8B00FA52EF /* SafariView.swift */; };
+		2747205A2E439FBA00C516DF /* libtraffxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 274720592E439FBA00C516DF /* libtraffxml.a */; };
 		2765D1D02E13F9C20005CA2B /* BridgeControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2765D1CD2E13F9BC0005CA2B /* BridgeControllers.swift */; };
 		27697F742E25177600FBD913 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27697F732E25177300FBD913 /* AboutView.swift */; };
 		27697F7F2E254A5500FBD913 /* CopyrightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27697F7C2E254A5000FBD913 /* CopyrightView.swift */; };
@@ -774,6 +775,7 @@
 		272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExistingProfileView.swift; sourceTree = "<group>"; };
 		272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		272F1F452E0EEF8B00FA52EF /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		274720592E439FBA00C516DF /* libtraffxml.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libtraffxml.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2765D1CD2E13F9BC0005CA2B /* BridgeControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeControllers.swift; sourceTree = "<group>"; };
 		27697F732E25177300FBD913 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		27697F7C2E254A5000FBD913 /* CopyrightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightView.swift; sourceTree = "<group>"; };
@@ -1813,6 +1815,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2747205A2E439FBA00C516DF /* libtraffxml.a in Frameworks */,
 				FAF9DDA32A86DC54000D7037 /* libharfbuzz.a in Frameworks */,
 				FA456C3C26BDC6AD00B83C20 /* Chart.framework in Frameworks */,
 				FA853BF326BC5DE50026D455 /* libshaders.a in Frameworks */,
@@ -2046,6 +2049,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				274720592E439FBA00C516DF /* libtraffxml.a */,
 				FAF9DDA22A86DC54000D7037 /* libharfbuzz.a */,
 				FA456C3B26BDC6AD00B83C20 /* Chart.framework */,
 				FA853BF226BC5DE50026D455 /* libshaders.a */,

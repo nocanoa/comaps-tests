@@ -158,6 +158,9 @@
       location = "container:traffic/traffic.xcodeproj">
    </FileRef>
    <FileRef
+      location = "container:traffxml/traffxml.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:transit/transit.xcodeproj">
    </FileRef>
    <FileRef

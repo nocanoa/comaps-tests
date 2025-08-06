@@ -26,6 +26,40 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 
 @implementation MWMSettings
 
++ (BOOL)liveTrafficEnabled;
+{
+  return GetFramework().LoadTrafficHttpEnabled();
+}
+
++ (void)setLiveTrafficEnabled:(BOOL)liveTrafficEnabled;
+{
+  auto &f = GetFramework();
+  f.SaveTrafficHttpEnabled(liveTrafficEnabled);
+  f.SetTrafficHttpEnabled(liveTrafficEnabled);
+}
+
++ (NSURL *)liveTrafficUrl;
+{
+  NSString * link = @(GetFramework().LoadTrafficHttpUrl().c_str());
+  if ([link length] == 0) {
+    return nil;
+  } else {
+    return [NSURL URLWithString:link];
+  }
+}
+
++ (void)setLiveTrafficUrl:(NSURL *)liveTrafficUrl;
+{
+  auto &f = GetFramework();
+  if (liveTrafficUrl == nil) {
+    f.SaveTrafficHttpUrl(@"".UTF8String);
+    f.SetTrafficHttpUrl(@"".UTF8String);
+  } else {
+    f.SaveTrafficHttpUrl(liveTrafficUrl.absoluteString.UTF8String);
+    f.SetTrafficHttpUrl(liveTrafficUrl.absoluteString.UTF8String);
+  }
+}
+
 + (BOOL)buildings3dViewEnabled;
 {
   bool _ = true, on = true;
