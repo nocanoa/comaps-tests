@@ -29,6 +29,7 @@ static NSString *didChangeOutdoorMapStyle = @"didChangeOutdoorMapStyle";
   if (self) {
     _observers = [NSHashTable weakObjectsHashTable];
     GetFramework().GetTrafficManager().SetStateListener([self](TrafficManager::TrafficState state) {
+      [NSNotificationCenter.defaultCenter postNotificationName:@"LayersChanged" object:nil];
       for (id<MWMMapOverlayManagerObserver> observer in self.observers) {
         if ([observer respondsToSelector:@selector(onTrafficStateUpdated)]) {
           [observer onTrafficStateUpdated];
@@ -36,6 +37,7 @@ static NSString *didChangeOutdoorMapStyle = @"didChangeOutdoorMapStyle";
       }
     });
     GetFramework().GetTransitManager().SetStateListener([self](TransitReadManager::TransitSchemeState state) {
+      [NSNotificationCenter.defaultCenter postNotificationName:@"LayersChanged" object:nil];
       for (id<MWMMapOverlayManagerObserver> observer in self.observers) {
         if ([observer respondsToSelector:@selector(onTransitStateUpdated)]) {
           [observer onTransitStateUpdated];
@@ -43,6 +45,7 @@ static NSString *didChangeOutdoorMapStyle = @"didChangeOutdoorMapStyle";
       }
     });
     GetFramework().GetIsolinesManager().SetStateListener([self](IsolinesManager::IsolinesState state) {
+      [NSNotificationCenter.defaultCenter postNotificationName:@"LayersChanged" object:nil];
       for (id<MWMMapOverlayManagerObserver> observer in self.observers) {
         if ([observer respondsToSelector:@selector(onIsoLinesStateUpdated)]) {
           [observer onIsoLinesStateUpdated];
@@ -50,6 +53,7 @@ static NSString *didChangeOutdoorMapStyle = @"didChangeOutdoorMapStyle";
       }
     });
     [NSNotificationCenter.defaultCenter addObserverForName:didChangeOutdoorMapStyle object:nil queue:nil usingBlock:^(NSNotification * _Nonnull notification) {
+      [NSNotificationCenter.defaultCenter postNotificationName:@"LayersChanged" object:nil];
       for (id<MWMMapOverlayManagerObserver> observer in self.observers) {
         if ([observer respondsToSelector:@selector(onOutdoorStateUpdated)]) {
           [observer onOutdoorStateUpdated];

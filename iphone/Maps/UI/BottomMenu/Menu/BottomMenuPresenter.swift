@@ -78,17 +78,17 @@ extension BottomMenuPresenter {
     case .layers:
       return 1
     case .items:
-      let leftButtonType = Settings.leftButtonType
+      let leftMainButtonKind = Settings.leftMainButtonKind
       menuCells = CellType.allCases.filter { cell in
         if cell == .donate {
           return false
-        } else if leftButtonType == .addPlace, cell == .addPlace {
+        } else if leftMainButtonKind == .addPlace, cell == .addPlace {
           return false
-        } else if leftButtonType == .recordTrack, cell == .recordTrack {
+        } else if leftMainButtonKind == .recordTrack, cell == .recordTrack {
           return false
-        } else if leftButtonType == .help, cell == .help {
+        } else if leftMainButtonKind == .help, cell == .help {
           return false
-        } else if leftButtonType == .settings, cell == .settings {
+        } else if leftMainButtonKind == .settings, cell == .settings {
           return false
         }
 

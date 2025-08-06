@@ -3,7 +3,6 @@
 #import "MWMNavigationDashboardManager.h"
 
 @class MapViewController;
-@class BottomTabBarViewController;
 @class TrackRecordingButtonViewController;
 @class SearchQuery;
 
@@ -26,7 +25,7 @@ typedef NS_ENUM(NSUInteger, TrackRecordingButtonState) {
 @property(nonatomic) MWMBottomMenuState menuState;
 @property(nonatomic) MWMBottomMenuState menuRestoreState;
 @property(nonatomic) BOOL isDirectionViewHidden;
-@property(nonatomic) BottomTabBarViewController * tabBarController;
+@property(nonatomic) UIViewController * tabBarController;
 @property(nonatomic) TrackRecordingButtonViewController * trackRecordingButton;
 
 - (instancetype)init __attribute__((unavailable("init is not available")));

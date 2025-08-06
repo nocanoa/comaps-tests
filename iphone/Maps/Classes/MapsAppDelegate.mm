@@ -299,10 +299,8 @@ void InitLocalizedStrings() {
 - (void)updateApplicationIconBadgeNumber {
   auto const number = [self badgeNumber];
 
-  // Delay init because BottomTabBarViewController.controller is null here.
   dispatch_async(dispatch_get_main_queue(), ^{
     [UIApplication.sharedApplication setApplicationIconBadgeNumber:number];
-    BottomTabBarViewController.controller.isApplicationBadgeHidden = (number == 0);
   });
 }
 

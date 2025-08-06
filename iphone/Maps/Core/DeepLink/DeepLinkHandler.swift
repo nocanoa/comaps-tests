@@ -121,8 +121,8 @@
       }
       return true
     case .menu:
-      MapsAppDelegate.theApp().mapViewController.openMenu()
-      return true
+      // Not supported on iOS.
+      return false
     case .settings:
       MapsAppDelegate.theApp().mapViewController.openSettings()
       return true

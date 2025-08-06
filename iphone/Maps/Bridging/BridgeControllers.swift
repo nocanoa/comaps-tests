@@ -16,6 +16,13 @@ import UIKit
         routinOptionsBridgeController.view.backgroundColor = .systemGroupedBackground
         return routinOptionsBridgeController
     }
+    
+    /// The `ControlsView` for presentation in an alert
+    @objc static func mapControls() -> UIViewController {
+        let controlsBridgeController = UIHostingController(rootView: ControlsView())
+        controlsBridgeController.view.backgroundColor = .clear
+        return controlsBridgeController
+    }
 }
 
 

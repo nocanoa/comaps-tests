@@ -1,6 +1,8 @@
 import UIKit
 
 class BottomTabBarButton: MWMButton {
+  let kExtendedTabBarTappableMargin: CGFloat = -15
+  
   @objc override func applyTheme() {
     if styleName.isEmpty {
       setStyle(.bottomTabBarButton)

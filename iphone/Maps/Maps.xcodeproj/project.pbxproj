@@ -30,9 +30,10 @@
 		27697F902E257EDA00FBD913 /* AboutCoMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27697F8F2E257ED800FBD913 /* AboutCoMapsView.swift */; };
 		27697F922E257EED00FBD913 /* ApoutOpenStreetMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27697F912E257EE600FBD913 /* ApoutOpenStreetMapView.swift */; };
 		27768FDB2E20199A0086784A /* RoutingOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27768FD92E20199A0086784A /* RoutingOptionsView.swift */; };
-		27768FE02E201BE60086784A /* LeftButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27768FDF2E201BE60086784A /* LeftButtonType.swift */; };
 		279367562E1BE16300AA5C3D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279367552E1BE16300AA5C3D /* Settings.swift */; };
 		2793675A2E1BE17300AA5C3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279367592E1BE17300AA5C3D /* SettingsView.swift */; };
+		279387C42E4C8EB7009FDF8B /* MapPositionButtonMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279387C12E4C8EB6009FDF8B /* MapPositionButtonMode.swift */; };
+		279387C62E4C918A009FDF8B /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279387C52E4C9187009FDF8B /* Controls.swift */; };
 		27AF184C2E1D5B2D00CD41E2 /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF184B2E1D5A2700CD41E2 /* SettingsNavigationView.swift */; };
 		27AF18502E1DB61600CD41E2 /* VoiceRoutingLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF184F2E1DB61500CD41E2 /* VoiceRoutingLanguage.swift */; };
 		27AF18522E1DB62000CD41E2 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF18512E1DB61F00CD41E2 /* DistanceUnit.swift */; };
@@ -40,6 +41,18 @@
 		27AF18562E1DB63000CD41E2 /* PowerSavingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF18552E1DB62F00CD41E2 /* PowerSavingMode.swift */; };
 		27AF18582E1DB63A00CD41E2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF18572E1DB63900CD41E2 /* Appearance.swift */; };
 		27AF185A2E1DB64500CD41E2 /* AnnouncingSpeedTrapsWhileVoiceRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF18592E1DB64400CD41E2 /* AnnouncingSpeedTrapsWhileVoiceRouting.swift */; };
+		27BDA4862E4366AC00C478B8 /* MapLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4852E4366A600C478B8 /* MapLayerButton.swift */; };
+		27BDA4882E4366C600C478B8 /* MapPositionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4872E4366B600C478B8 /* MapPositionButton.swift */; };
+		27BDA48A2E4366F400C478B8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4892E4366EC00C478B8 /* MainButton.swift */; };
+		27BDA48C2E43670300C478B8 /* MapZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA48B2E4366FB00C478B8 /* MapZoomButton.swift */; };
+		27BDA4902E436A1B00C478B8 /* MapZoomButtonKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA48F2E436A1600C478B8 /* MapZoomButtonKind.swift */; };
+		27BDA4A22E436D1900C478B8 /* MainButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4A12E436D1100C478B8 /* MainButtonType.swift */; };
+		27BDA4A62E437B5200C478B8 /* BottomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4A52E437B5200C478B8 /* BottomTabBarButton.swift */; };
+		27BDA4A82E437F9800C478B8 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4A72E437F8E00C478B8 /* ControlsView.swift */; };
+		27BDA4AA2E437FEF00C478B8 /* MapTrackRecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BDA4A92E437FE400C478B8 /* MapTrackRecordingButton.swift */; };
+		27E5CAAD2E4B644100FA3597 /* FloatingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E5CAAA2E4B643A00FA3597 /* FloatingButtonStyle.swift */; };
+		27E5CAAF2E4B6CBC00FA3597 /* Controls.h in Sources */ = {isa = PBXBuildFile; fileRef = 27E5CAAE2E4B6CB800FA3597 /* Controls.h */; };
+		27E5CAB12E4B6D0300FA3597 /* Controls.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27E5CAB02E4B6CFC00FA3597 /* Controls.mm */; };
 		3304306D21D4EAFB00317CA3 /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3304306C21D4EAFB00317CA3 /* SearchCategoryCell.swift */; };
 		33046832219C57180041F3A8 /* CategorySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33046831219C57180041F3A8 /* CategorySettingsViewController.swift */; };
 		337F98A621D37B7400C8AC27 /* SearchTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F98A521D37B7400C8AC27 /* SearchTabViewController.swift */; };
@@ -115,7 +128,6 @@
 		349A13831DEC138C00C7DB60 /* MWMMobileInternetAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A13801DEC138C00C7DB60 /* MWMMobileInternetAlert.m */; };
 		349A13851DEC138C00C7DB60 /* MWMMobileInternetAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349A13811DEC138C00C7DB60 /* MWMMobileInternetAlert.xib */; };
 		349D1AD51E2E325B004A2006 /* BottomMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349D1AC61E2E325B004A2006 /* BottomMenuItemCell.xib */; };
-		349D1AE11E2E325C004A2006 /* BottomTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349D1ACD1E2E325B004A2006 /* BottomTabBarViewController.xib */; };
 		349D1CE41E3F836900A878FD /* UIViewController+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D1CE21E3F836900A878FD /* UIViewController+Hierarchy.swift */; };
 		34AB39C21D2BD8310021857D /* MWMStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AB39C01D2BD8310021857D /* MWMStopButton.m */; };
 		34AB66051FC5AA320078E451 /* MWMNavigationDashboardManager+Entity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34AB65C51FC5AA320078E451 /* MWMNavigationDashboardManager+Entity.mm */; };
@@ -326,11 +338,6 @@
 		8C4FB9C72BEFEFF400D44877 /* CarPlayWindowScaleAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4FB9C62BEFEFF400D44877 /* CarPlayWindowScaleAdjuster.swift */; };
 		8CB13C3B2BF1276A004288F2 /* CarplayPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB13C3A2BF1276A004288F2 /* CarplayPlaceholderView.swift */; };
 		99012847243F0D6900C72B10 /* UIViewController+alternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99012846243F0D6900C72B10 /* UIViewController+alternative.swift */; };
-		9901284F244732DB00C72B10 /* BottomTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99012849244732DB00C72B10 /* BottomTabBarPresenter.swift */; };
-		99012851244732DB00C72B10 /* BottomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9901284B244732DB00C72B10 /* BottomTabBarViewController.swift */; };
-		99012852244732DB00C72B10 /* BottomTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9901284C244732DB00C72B10 /* BottomTabBarBuilder.swift */; };
-		99012853244732DB00C72B10 /* BottomTabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9901284D244732DB00C72B10 /* BottomTabBarInteractor.swift */; };
-		990128562449A82500C72B10 /* BottomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990128552449A82400C72B10 /* BottomTabBarView.swift */; };
 		9917D17F2397B1D600A7E06E /* IPadModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9917D17E2397B1D600A7E06E /* IPadModalPresentationController.swift */; };
 		991FCA2423B11E61009AD684 /* BookmarksStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991FCA2323B11E61009AD684 /* BookmarksStyleSheet.swift */; };
 		993DF0B523F6B2EF00AC231A /* PlacePageTrackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993DF0B423F6B2EF00AC231A /* PlacePageTrackLayout.swift */; };
@@ -479,7 +486,6 @@
 		ED2D74662D1435A600660FBF /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D742D2D14337500660FBF /* LiveActivityManager.swift */; };
 		ED2E328E2D10500900807A08 /* TrackRecordingButtonArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46DD922D06F804007CACD6 /* TrackRecordingButtonArea.swift */; };
 		ED2E32912D10501700807A08 /* TrackRecordingButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED49D76F2CF0E3A8004AF27E /* TrackRecordingButtonViewController.swift */; };
-		ED3EAC202B03C88100220A4A /* BottomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3EAC1F2B03C88100220A4A /* BottomTabBarButton.swift */; };
 		ED43B8BD2C12063500D07BAA /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED43B8BC2C12063500D07BAA /* DocumentPicker.swift */; };
 		ED46DDCE2D098A0B007CACD6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED46DDCD2D098A0B007CACD6 /* WidgetKit.framework */; };
 		ED46DDD02D098A0B007CACD6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED46DDCF2D098A0B007CACD6 /* SwiftUI.framework */; };
@@ -779,9 +785,10 @@
 		27697F8F2E257ED800FBD913 /* AboutCoMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoMapsView.swift; sourceTree = "<group>"; };
 		27697F912E257EE600FBD913 /* ApoutOpenStreetMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoutOpenStreetMapView.swift; sourceTree = "<group>"; };
 		27768FD92E20199A0086784A /* RoutingOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingOptionsView.swift; sourceTree = "<group>"; };
-		27768FDF2E201BE60086784A /* LeftButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftButtonType.swift; sourceTree = "<group>"; };
 		279367552E1BE16300AA5C3D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		279367592E1BE17300AA5C3D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = UI/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		279387C12E4C8EB6009FDF8B /* MapPositionButtonMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPositionButtonMode.swift; sourceTree = "<group>"; };
+		279387C52E4C9187009FDF8B /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
 		27AF184B2E1D5A2700CD41E2 /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
 		27AF184F2E1DB61500CD41E2 /* VoiceRoutingLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRoutingLanguage.swift; sourceTree = "<group>"; };
 		27AF18512E1DB61F00CD41E2 /* DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
@@ -789,6 +796,18 @@
 		27AF18552E1DB62F00CD41E2 /* PowerSavingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSavingMode.swift; sourceTree = "<group>"; };
 		27AF18572E1DB63900CD41E2 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		27AF18592E1DB64400CD41E2 /* AnnouncingSpeedTrapsWhileVoiceRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncingSpeedTrapsWhileVoiceRouting.swift; sourceTree = "<group>"; };
+		27BDA4852E4366A600C478B8 /* MapLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLayerButton.swift; sourceTree = "<group>"; };
+		27BDA4872E4366B600C478B8 /* MapPositionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPositionButton.swift; sourceTree = "<group>"; };
+		27BDA4892E4366EC00C478B8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		27BDA48B2E4366FB00C478B8 /* MapZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButton.swift; sourceTree = "<group>"; };
+		27BDA48F2E436A1600C478B8 /* MapZoomButtonKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButtonKind.swift; sourceTree = "<group>"; };
+		27BDA4A12E436D1100C478B8 /* MainButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonType.swift; sourceTree = "<group>"; };
+		27BDA4A52E437B5200C478B8 /* BottomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarButton.swift; sourceTree = "<group>"; };
+		27BDA4A72E437F8E00C478B8 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		27BDA4A92E437FE400C478B8 /* MapTrackRecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackRecordingButton.swift; sourceTree = "<group>"; };
+		27E5CAAA2E4B643A00FA3597 /* FloatingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonStyle.swift; sourceTree = "<group>"; };
+		27E5CAAE2E4B6CB800FA3597 /* Controls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controls.h; sourceTree = "<group>"; };
+		27E5CAB02E4B6CFC00FA3597 /* Controls.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Controls.mm; sourceTree = "<group>"; };
 		28A0AB4B0D9B1048005BE974 /* Maps_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Maps_Prefix.pch; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; indentWidth = 2; path = main.mm; sourceTree = "<group>"; tabWidth = 2; };
 		30034C5C2B3F0B74005D961A /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -929,7 +948,6 @@
 		349A35781B53D4C9009677EE /* MWMCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMCircularProgressView.h; sourceTree = "<group>"; tabWidth = 2; };
 		349A35791B53D4C9009677EE /* MWMCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = MWMCircularProgressView.m; sourceTree = "<group>"; tabWidth = 2; };
 		349D1AC61E2E325B004A2006 /* BottomMenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomMenuItemCell.xib; sourceTree = "<group>"; };
-		349D1ACD1E2E325B004A2006 /* BottomTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomTabBarViewController.xib; sourceTree = "<group>"; };
 		349D1CE21E3F836900A878FD /* UIViewController+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Hierarchy.swift"; sourceTree = "<group>"; };
 		34AB39BF1D2BD8310021857D /* MWMStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMStopButton.h; sourceTree = "<group>"; tabWidth = 2; };
 		34AB39C01D2BD8310021857D /* MWMStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = MWMStopButton.m; sourceTree = "<group>"; tabWidth = 2; };
@@ -1218,11 +1236,6 @@
 		978D4A30199A11E600D72CA7 /* faq.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = faq.html; path = ../../data/faq.html; sourceTree = "<group>"; };
 		97A5967E19B9CD47007A963F /* copyright.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = copyright.html; path = ../../data/copyright.html; sourceTree = "<group>"; };
 		99012846243F0D6900C72B10 /* UIViewController+alternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alternative.swift"; sourceTree = "<group>"; };
-		99012849244732DB00C72B10 /* BottomTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarPresenter.swift; sourceTree = "<group>"; };
-		9901284B244732DB00C72B10 /* BottomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarViewController.swift; sourceTree = "<group>"; };
-		9901284C244732DB00C72B10 /* BottomTabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarBuilder.swift; sourceTree = "<group>"; };
-		9901284D244732DB00C72B10 /* BottomTabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarInteractor.swift; sourceTree = "<group>"; };
-		990128552449A82400C72B10 /* BottomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarView.swift; sourceTree = "<group>"; };
 		9917D17E2397B1D600A7E06E /* IPadModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPadModalPresentationController.swift; sourceTree = "<group>"; };
 		991FCA2323B11E61009AD684 /* BookmarksStyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksStyleSheet.swift; sourceTree = "<group>"; };
 		993DF0B423F6B2EF00AC231A /* PlacePageTrackLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePageTrackLayout.swift; sourceTree = "<group>"; };
@@ -1421,7 +1434,6 @@
 		ED2D74352D14337500660FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED2D74362D14337500660FBF /* CoMapsWidgetExtensionBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoMapsWidgetExtensionBundle.swift; sourceTree = "<group>"; };
 		ED2D745D2D1433DE00660FBF /* TrackRecordingActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecordingActivityManager.swift; sourceTree = "<group>"; };
-		ED3EAC1F2B03C88100220A4A /* BottomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarButton.swift; sourceTree = "<group>"; };
 		ED43B8BC2C12063500D07BAA /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		ED46DD922D06F804007CACD6 /* TrackRecordingButtonArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecordingButtonArea.swift; sourceTree = "<group>"; };
 		ED46DDCC2D098A0B007CACD6 /* CoMapsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoMapsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1904,6 +1916,9 @@
 				27697F822E254A9900FBD913 /* EmbeddedSafariView.swift */,
 				27697F842E255B6300FBD913 /* EmbeddedSafariViewCoordinator.swift */,
 				27697F862E255B7C00FBD913 /* EmbeddedSafariViewContent.swift */,
+				27E5CAAE2E4B6CB800FA3597 /* Controls.h */,
+				27E5CAB02E4B6CFC00FA3597 /* Controls.mm */,
+				279387C52E4C9187009FDF8B /* Controls.swift */,
 			);
 			path = Bridging;
 			sourceTree = "<group>";
@@ -1963,7 +1978,6 @@
 				2752B6CD2E3121D800887CC4 /* Language.swift */,
 				2752B6C92E31197000887CC4 /* MapLanguage.swift */,
 				27AF184F2E1DB61500CD41E2 /* VoiceRoutingLanguage.swift */,
-				27768FDF2E201BE60086784A /* LeftButtonType.swift */,
 				27AF18512E1DB61F00CD41E2 /* DistanceUnit.swift */,
 				27AF18532E1DB62600CD41E2 /* MobileDataPolicy.swift */,
 				27AF18552E1DB62F00CD41E2 /* PowerSavingMode.swift */,
@@ -1971,6 +1985,19 @@
 				27AF18592E1DB64400CD41E2 /* AnnouncingSpeedTrapsWhileVoiceRouting.swift */,
 			);
 			path = "Settings Types";
+			sourceTree = "<group>";
+		};
+		27BDA4952E436C2D00C478B8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				27BDA4852E4366A600C478B8 /* MapLayerButton.swift */,
+				27BDA4A92E437FE400C478B8 /* MapTrackRecordingButton.swift */,
+				27BDA4872E4366B600C478B8 /* MapPositionButton.swift */,
+				279387C12E4C8EB6009FDF8B /* MapPositionButtonMode.swift */,
+				27BDA48B2E4366FB00C478B8 /* MapZoomButton.swift */,
+				27BDA48F2E436A1600C478B8 /* MapZoomButtonKind.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* Maps */ = {
@@ -2505,8 +2532,8 @@
 			children = (
 				99AAEA72244DA59E0039D110 /* Presentation */,
 				998927312449E5ED00260CE2 /* Menu */,
-				99012848244732C200C72B10 /* TabBar */,
 				995F1610244F07F90060631D /* MWMBottomMenuState.h */,
+				27BDA4A52E437B5200C478B8 /* BottomTabBarButton.swift */,
 			);
 			path = BottomMenu;
 			sourceTree = "<group>";
@@ -2845,20 +2872,6 @@
 				99536112235DB86C008B218F /* InsetsLabel.swift */,
 			);
 			name = "Custom Views";
-			sourceTree = "<group>";
-		};
-		99012848244732C200C72B10 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				99012849244732DB00C72B10 /* BottomTabBarPresenter.swift */,
-				9901284B244732DB00C72B10 /* BottomTabBarViewController.swift */,
-				9901284C244732DB00C72B10 /* BottomTabBarBuilder.swift */,
-				9901284D244732DB00C72B10 /* BottomTabBarInteractor.swift */,
-				349D1ACD1E2E325B004A2006 /* BottomTabBarViewController.xib */,
-				990128552449A82400C72B10 /* BottomTabBarView.swift */,
-				ED3EAC1F2B03C88100220A4A /* BottomTabBarButton.swift */,
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		993DF0C223F6BD0600AC231A /* ElevationDetails */ = {
@@ -3583,6 +3596,11 @@
 		F6E2FBFB1E097B9F0083EBEC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				27BDA4A72E437F8E00C478B8 /* ControlsView.swift */,
+				27BDA4892E4366EC00C478B8 /* MainButton.swift */,
+				27BDA4A12E436D1100C478B8 /* MainButtonType.swift */,
+				27BDA4952E436C2D00C478B8 /* New Group */,
+				27E5CAAA2E4B643A00FA3597 /* FloatingButtonStyle.swift */,
 				27768FDA2E20199A0086784A /* Routing */,
 				ED9857022C4ECFFC00694F6C /* MailComposer */,
 				ED43B8B92C12061600D07BAA /* DocumentPicker */,
@@ -4209,7 +4227,6 @@
 				4761BE2B252D3DB900EE2DE4 /* SubgroupCell.xib in Resources */,
 				99F9A0E72462CA1700AE21E0 /* DownloadAllView.xib in Resources */,
 				349D1AD51E2E325B004A2006 /* BottomMenuItemCell.xib in Resources */,
-				349D1AE11E2E325C004A2006 /* BottomTabBarViewController.xib in Resources */,
 				34D3B01E1E389D05004100F9 /* MWMButtonCell.xib in Resources */,
 				9959C75624582DA2008FD4FD /* DirectionView.xib in Resources */,
 				6741A98B1BF340DE002C974C /* MWMCircularProgress.xib in Resources */,
@@ -4348,7 +4365,6 @@
 				34845DB71E166084003D55B9 /* Common.swift in Sources */,
 				47F4F21323A6EC420022FD56 /* DownloadMapsViewController.swift in Sources */,
 				99A906F623FA9C010005872B /* InsetsLabelRenderer.swift in Sources */,
-				99012853244732DB00C72B10 /* BottomTabBarInteractor.swift in Sources */,
 				6741A9A31BF340DE002C974C /* main.mm in Sources */,
 				34D3B04F1E38A20C004100F9 /* Bundle+Init.swift in Sources */,
 				34AB666E1FC5AA330078E451 /* TransportTransitStepsCollectionView.swift in Sources */,
@@ -4422,6 +4438,8 @@
 				3D15ACEE2155117000F725D5 /* MWMObjectsCategorySelectorDataSource.mm in Sources */,
 				9977E6A32480F9BF0073780C /* BottomMenuLayerButtonRenderer.swift in Sources */,
 				272F1F392E0EE09000FA52EF /* ExistingProfileView.swift in Sources */,
+				27E5CAAD2E4B644100FA3597 /* FloatingButtonStyle.swift in Sources */,
+				27BDA4862E4366AC00C478B8 /* MapLayerButton.swift in Sources */,
 				3454D7D11E07F045004AF2AD /* UIImage+RGBAData.m in Sources */,
 				6741A9B71BF340DE002C974C /* EAGLView.mm in Sources */,
 				6741A9B81BF340DE002C974C /* MapViewController.mm in Sources */,
@@ -4449,6 +4467,7 @@
 				F6E2FEE51E097BA00083EBEC /* MWMSearchNoResults.m in Sources */,
 				ED5E02142D8B17B600A5CC7B /* ModalPresentationStepsController.swift in Sources */,
 				4715273524907F8200E91BBA /* BookmarkColorViewController.swift in Sources */,
+				279387C62E4C918A009FDF8B /* Controls.swift in Sources */,
 				47E3C7292111E614008B3B27 /* FadeInAnimatedTransitioning.swift in Sources */,
 				ED79A5D42BDF8D6100952D1F /* MetadataItem.swift in Sources */,
 				34AB667D1FC5AA330078E451 /* MWMRoutePreview.mm in Sources */,
@@ -4472,6 +4491,7 @@
 				F6E2FDA11E097BA00083EBEC /* MWMEditorAdditionalNamesTableViewController.mm in Sources */,
 				4767CDA620AB1F6200BD8166 /* LeftAlignedIconButton.swift in Sources */,
 				3454D7D41E07F045004AF2AD /* UIImageView+Coloring.m in Sources */,
+				27BDA4882E4366C600C478B8 /* MapPositionButton.swift in Sources */,
 				993DF11D23F6BDB100AC231A /* UIToolbarRenderer.swift in Sources */,
 				99A906E923F6F7030005872B /* WikiDescriptionViewController.swift in Sources */,
 				ED79A5D62BDF8D6100952D1F /* CloudDirectoryMonitor.swift in Sources */,
@@ -4505,6 +4525,7 @@
 				99C9642B2428C0F700E41723 /* PlacePageHeaderViewController.swift in Sources */,
 				F6FE3C391CC50FFD00A73196 /* MWMPlaceDoesntExistAlert.m in Sources */,
 				F6E2FDFE1E097BA00083EBEC /* MWMOpeningHoursClosedSpanTableViewCell.mm in Sources */,
+				27BDA4A62E437B5200C478B8 /* BottomTabBarButton.swift in Sources */,
 				34B846A12029DCC10081ECCD /* BMCCategoriesHeader.swift in Sources */,
 				99A906F123FA946E0005872B /* DifficultyViewRenderer.swift in Sources */,
 				F6E2FD5F1E097BA00083EBEC /* MWMMapDownloaderLargeCountryTableViewCell.m in Sources */,
@@ -4525,7 +4546,6 @@
 				EDB71E002D8B0338004A6A7F /* ModalPresentationAnimator.swift in Sources */,
 				F6E2FD8C1E097BA00083EBEC /* MWMNoMapsView.m in Sources */,
 				34D3B0361E389D05004100F9 /* MWMEditorSelectTableViewCell.m in Sources */,
-				990128562449A82500C72B10 /* BottomTabBarView.swift in Sources */,
 				F6E2FD711E097BA00083EBEC /* MWMMapDownloaderTableViewCell.m in Sources */,
 				F6E2FE4F1E097BA00083EBEC /* MWMActionBarButton.m in Sources */,
 				47F86CFF20C936FC00FEE291 /* TabView.swift in Sources */,
@@ -4554,9 +4574,9 @@
 				34AB66081FC5AA320078E451 /* MWMNavigationDashboardManager.mm in Sources */,
 				3404F490202898CC0090E401 /* BMCModels.swift in Sources */,
 				F6E2FD561E097BA00083EBEC /* MWMMapDownloaderButtonTableViewCell.m in Sources */,
-				9901284F244732DB00C72B10 /* BottomTabBarPresenter.swift in Sources */,
 				CDB4D5002231412900104869 /* MapTemplateBuilder.swift in Sources */,
 				34AB66171FC5AA320078E451 /* MWMiPhoneRoutePreview.m in Sources */,
+				27BDA4A82E437F9800C478B8 /* ControlsView.swift in Sources */,
 				99A906EA23F6F7030005872B /* PlacePageInfoViewController.swift in Sources */,
 				993DF11723F6BDB100AC231A /* UINavigationBarRenderer.swift in Sources */,
 				6741A9E71BF340DE002C974C /* MWMCircularProgressView.m in Sources */,
@@ -4607,8 +4627,9 @@
 				34AB66111FC5AA320078E451 /* NavigationTurnsView.swift in Sources */,
 				475ED78624C7C7300063ADC7 /* ValueStepperViewRenderer.swift in Sources */,
 				3490D2E11CE9DD2500D0B838 /* MWMSideButtonsView.mm in Sources */,
+				27BDA4AA2E437FEF00C478B8 /* MapTrackRecordingButton.swift in Sources */,
+				279387C42E4C8EB7009FDF8B /* MapPositionButtonMode.swift in Sources */,
 				47F4F21523A6F06F0022FD56 /* AvailableMapsDataSource.swift in Sources */,
-				99012852244732DB00C72B10 /* BottomTabBarBuilder.swift in Sources */,
 				99012847243F0D6900C72B10 /* UIViewController+alternative.swift in Sources */,
 				995739062355CAC40019AEE7 /* ImageViewCrossDisolve.swift in Sources */,
 				ED83880F2D54DEB3002A0536 /* UIImage+FilledWithColor.swift in Sources */,
@@ -4616,6 +4637,7 @@
 				47A13CAD24BE9AA500027D4F /* DatePickerViewRenderer.swift in Sources */,
 				ED2E328E2D10500900807A08 /* TrackRecordingButtonArea.swift in Sources */,
 				F6E2FE7C1E097BA00083EBEC /* MWMPlacePageOpeningHoursCell.mm in Sources */,
+				27BDA48C2E43670300C478B8 /* MapZoomButton.swift in Sources */,
 				340E1EFB1E2F614400CE49BF /* Storyboard.swift in Sources */,
 				34E776331F15FAC2003040B3 /* MWMPlacePageManagerHelper.mm in Sources */,
 				462452E92BD052C0004C85E1 /* MWMEditorSegmentedTableViewCell.mm in Sources */,
@@ -4647,6 +4669,7 @@
 				F6E2FE821E097BA00083EBEC /* MWMPlacePageOpeningHoursDayView.m in Sources */,
 				F6E2FD6B1E097BA00083EBEC /* MWMMapDownloaderSubplaceTableViewCell.m in Sources */,
 				CDCA27842245090900167D87 /* ListenerContainer.swift in Sources */,
+				27E5CAAF2E4B6CBC00FA3597 /* Controls.h in Sources */,
 				27AF18582E1DB63A00CD41E2 /* Appearance.swift in Sources */,
 				47E3C7252111E41B008B3B27 /* DimmedModalPresentationController.swift in Sources */,
 				3472B5CB200F43EF00DC6CD5 /* BackgroundFetchScheduler.swift in Sources */,
@@ -4725,12 +4748,12 @@
 				270C9C282E16AB6F00ABA688 /* Profile.swift in Sources */,
 				ED9857082C4ED02D00694F6C /* MailComposer.swift in Sources */,
 				99F8B4C623B644A6009FF0B4 /* MapStyleSheet.swift in Sources */,
-				99012851244732DB00C72B10 /* BottomTabBarViewController.swift in Sources */,
 				993DF10623F6BDB100AC231A /* UIColor+rgba.swift in Sources */,
 				EDC3573B2B7B5029001AE9CA /* CALayer+SetCorner.swift in Sources */,
 				ED914AB22D35063A00973C45 /* TextColorStyleSheet.swift in Sources */,
 				47E3C7332111F4D8008B3B27 /* CoverVerticalDismissalAnimator.swift in Sources */,
 				471AB99423ABA3BD00F56D49 /* SearchMapsDataSource.swift in Sources */,
+				27BDA4A22E436D1900C478B8 /* MainButtonType.swift in Sources */,
 				47CA68F1250B54AF00671019 /* BookmarksListCell.swift in Sources */,
 				471A7BC02481C82500A0D4C1 /* BookmarkTitleCell.swift in Sources */,
 				47F67D1521CAB21B0069754E /* MWMImageCoder.m in Sources */,
@@ -4763,7 +4786,6 @@
 				471A7BBE2481A3D000A0D4C1 /* EditBookmarkViewController.swift in Sources */,
 				993DF0C923F6BD0600AC231A /* ElevationDetailsBuilder.swift in Sources */,
 				674A7E301C0DB10B003D48E1 /* MWMMapWidgets.mm in Sources */,
-				27768FE02E201BE60086784A /* LeftButtonType.swift in Sources */,
 				34AB66291FC5AA330078E451 /* RouteManagerViewController.swift in Sources */,
 				3404754D1E081A4600C92850 /* MWMKeyboard.m in Sources */,
 				993DF10C23F6BDB100AC231A /* MWMTableViewCellRenderer.swift in Sources */,
@@ -4773,11 +4795,12 @@
 				47E3C7312111F4C2008B3B27 /* CoverVerticalPresentationAnimator.swift in Sources */,
 				99E2B0122368A8C700FFABC5 /* MWMCategory+PlacesCountTitle.swift in Sources */,
 				F6D67CDC2062B9C00032FD38 /* BCCreateCategoryAlert.swift in Sources */,
+				27E5CAB12E4B6D0300FA3597 /* Controls.mm in Sources */,
 				F6E2FE2B1E097BA00083EBEC /* MWMStreetEditorEditTableViewCell.m in Sources */,
 				34AB66891FC5AA330078E451 /* NavigationControlView.swift in Sources */,
+				27BDA48A2E4366F400C478B8 /* MainButton.swift in Sources */,
 				479EE94A2292FB03009DEBA6 /* ActivityIndicator.swift in Sources */,
 				27697F872E255B8500FBD913 /* EmbeddedSafariViewContent.swift in Sources */,
-				ED3EAC202B03C88100220A4A /* BottomTabBarButton.swift in Sources */,
 				47B9065321C7FA400079C85E /* MWMImageCache.m in Sources */,
 				F6FEA82E1C58F108007223CC /* MWMButton.m in Sources */,
 				34B924431DC8A29C0008D971 /* MWMMailViewController.m in Sources */,
@@ -4807,6 +4830,7 @@
 				F6A2184A1CA3F26800BE2CC6 /* MWMEditorViralActivityItem.mm in Sources */,
 				993DF10923F6BDB100AC231A /* IFonts.swift in Sources */,
 				47699A0821F08E37009E6585 /* NSDate+TimeDistance.m in Sources */,
+				27BDA4902E436A1B00C478B8 /* MapZoomButtonKind.swift in Sources */,
 				34845DB31E165E24003D55B9 /* SearchNoResultsViewController.swift in Sources */,
 				47E3C72B2111E62A008B3B27 /* FadeOutAnimatedTransitioning.swift in Sources */,
 				471A7BC4248471BE00A0D4C1 /* BookmarkUIUtils.swift in Sources */,

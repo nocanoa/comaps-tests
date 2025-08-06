@@ -228,6 +228,7 @@ extension TrackRecordingManager: TrackRecordingObservable {
 
   @objc
   private func notifyObservers() {
+    NotificationCenter.default.post(name: Controls.changeChangeTrackRecordingNotificationName, object: nil)
     observations.removeAll { $0.observer == nil }
     observations.forEach {
       $0.recordingStateDidChangeHandler?(recordingState, trackRecordingInfo, { self.trackRecordingElevationProfileData })

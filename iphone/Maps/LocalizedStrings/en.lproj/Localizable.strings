@@ -288,6 +288,10 @@
 "placepage_distance" = "Distance";
 "search_show_on_map" = "View on map";
 
+/* Button title */
+"zoom_in" = "Zoom In";
+"zoom_out" = "Zoom Out";
+
 /* Text in menu */
 "website" = "Website";
 

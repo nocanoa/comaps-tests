@@ -64,6 +64,9 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
   self.menuRestoreState = MWMBottomMenuStateInactive;
   self.isAddingPlace = NO;
   self.searchManager = controller.searchManager;
+  
+  [self tabBarController];
+  
   return self;
 }
 
@@ -220,13 +223,20 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
   return _trafficButton;
 }
 
-- (BottomTabBarViewController *)tabBarController {
+- (UIViewController *)tabBarController {
   if (!_tabBarController) {
     MapViewController * ownerController = _ownerController;
-    _tabBarController = [BottomTabBarBuilder buildWithMapViewController:ownerController controlsManager:self];
+    _tabBarController = [BridgeControllers mapControls];
     [ownerController addChildViewController:_tabBarController];
     UIView * tabBarViewSuperView = ownerController.controlsView;
     [tabBarViewSuperView addSubview:_tabBarController.view];
+    _tabBarController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [tabBarViewSuperView.topAnchor constraintEqualToAnchor:_tabBarController.view.topAnchor],
+        [tabBarViewSuperView.leadingAnchor constraintEqualToAnchor:_tabBarController.view.leadingAnchor],
+        [tabBarViewSuperView.bottomAnchor constraintEqualToAnchor:_tabBarController.view.bottomAnchor],
+        [tabBarViewSuperView.trailingAnchor constraintEqualToAnchor:_tabBarController.view.trailingAnchor]
+    ]];
   }
 
   return _tabBarController;
@@ -289,7 +299,7 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
   MapViewController * ownerController = _ownerController;
   switch (_menuState) {
     case MWMBottomMenuStateActive:
-      _tabBarController.isHidden = NO;
+      _tabBarController.view.hidden = NO;
       if (_menuController == nil) {
         _menuController = [BottomMenuBuilder buildMenuWithMapViewController:ownerController
                                                             controlsManager:self
@@ -298,7 +308,7 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
       }
       break;
     case MWMBottomMenuStateLayers:
-      _tabBarController.isHidden = NO;
+      _tabBarController.view.hidden = NO;
       if (_menuController == nil) {
         _menuController = [BottomMenuBuilder buildLayersWithMapViewController:ownerController
                                                               controlsManager:self
@@ -307,14 +317,14 @@ NSString *const kMapToCategorySelectorSegue = @"MapToCategorySelectorSegue";
       }
       break;
     case MWMBottomMenuStateInactive:
-      _tabBarController.isHidden = NO;
+      _tabBarController.view.hidden = NO;
       if (_menuController != nil) {
         [_menuController dismissViewControllerAnimated:YES completion:nil];
         _menuController = nil;
       }
       break;
     case MWMBottomMenuStateHidden:
-      _tabBarController.isHidden = YES;
+      _tabBarController.view.hidden = YES;
       if (_menuController != nil) {
         [_menuController dismissViewControllerAnimated:YES completion:nil];
         _menuController = nil;

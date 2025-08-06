@@ -574,10 +574,6 @@ NSString *const kAboutSegue = @"Map2About";
 }
 
 #pragma mark - Open controllers
-- (void)openMenu {
-  [self.controlsManager.tabBarController onMenuButtonPressed:self];
-}
-
 - (void)openSettings {
   [self performSegueWithIdentifier:kSettingsSegue sender:nil];
 }
@@ -636,6 +632,7 @@ NSString *const kAboutSegue = @"Map2About";
       self.disableStandbyOnLocationStateMode = YES;
       break;
   }
+  [NSNotificationCenter.defaultCenter postNotificationName:Controls.switchPositionModeNotificationName object:nil];
 }
 
 #pragma mark - MWMFrameworkDrapeObserver

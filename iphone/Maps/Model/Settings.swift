@@ -14,7 +14,7 @@ import AVFoundation
     
     
     /// Key for storing the type of action used for the bottom left main interface button in the user defaults
-    static private let userDefaultsKeyLeftButtonType = "LeftButtonType"
+    static private let userDefaultsKeyLeftMainButtonKind = "LeftMainButtonKind"
     
     
     /// Key for storing the map appearance in the user defaults
@@ -52,16 +52,16 @@ import AVFoundation
     
     
     /// The type of action used for the bottom left main interface button
-    static var leftButtonType: LeftButtonType {
+    static var leftMainButtonKind: MainButton.Kind {
         get {
-            if let leftButtonTypeRawValue = UserDefaults.standard.string(forKey: userDefaultsKeyLeftButtonType), let leftButtonType = LeftButtonType(rawValue: leftButtonTypeRawValue) {
-                return leftButtonType
+            if let leftMainButtonKindRawValue = UserDefaults.standard.string(forKey: userDefaultsKeyLeftMainButtonKind), let leftMainButtonKind = MainButton.Kind(rawValue: leftMainButtonKindRawValue) {
+                return leftMainButtonKind
             }
             
             return .help
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: userDefaultsKeyLeftButtonType)
+            UserDefaults.standard.set(newValue.rawValue, forKey: userDefaultsKeyLeftMainButtonKind)
         }
     }
     

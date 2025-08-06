@@ -17,7 +17,7 @@ struct SettingsView: View {
     
     
     /// The selected left button type
-    @State private var selectedLeftButtonType: Settings.LeftButtonType = .help
+    @State private var selectedLeftMainButtonKind: MainButton.Kind = .help
     
     
     /// If 3D buildings should be displayed
@@ -112,9 +112,9 @@ struct SettingsView: View {
                     Toggle("pref_zoom_title", isOn: $hasZoomButtons)
                         .tint(.accent)
                     
-                    Picker(selection: $selectedLeftButtonType) {
-                        ForEach(Settings.LeftButtonType.allCases) { leftButtonType in
-                            Text(leftButtonType.description)
+                    Picker(selection: $selectedLeftMainButtonKind) {
+                        ForEach(MainButton.Kind.configurableCases) { leftMainButtonKind in
+                            Text(leftMainButtonKind.description)
                         }
                     } label: {
                         Text("pref_left_button_type")
@@ -291,7 +291,7 @@ struct SettingsView: View {
         .onAppear {
             selectedDistanceUnit = Settings.distanceUnit
             hasZoomButtons = Settings.hasZoomButtons
-            selectedLeftButtonType = Settings.leftButtonType
+            selectedLeftMainButtonKind = Settings.leftMainButtonKind
             has3dBuildings = Settings.has3dBuildings
             hasAutomaticDownload = Settings.hasAutomaticDownload
             hasIncreasedFontsize = Settings.hasIncreasedFontsize
@@ -311,8 +311,8 @@ struct SettingsView: View {
         .onChange(of: hasZoomButtons) { changedHasZoomButtons in
             Settings.hasZoomButtons = changedHasZoomButtons
         }
-        .onChange(of: selectedLeftButtonType) { changedSelectedLeftButtonType in
-            Settings.leftButtonType = changedSelectedLeftButtonType
+        .onChange(of: selectedLeftMainButtonKind) { changedSelectedLeftMainButtonKind in
+            Settings.leftMainButtonKind = changedSelectedLeftMainButtonKind
         }
         .onChange(of: has3dBuildings) { changedHas3dBuildings in
             Settings.has3dBuildings = changedHas3dBuildings
