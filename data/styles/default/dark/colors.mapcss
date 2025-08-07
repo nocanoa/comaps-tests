@@ -226,6 +226,13 @@
 @poi_label: #8C8C8C;
 @subway_label: #9E9E9E;
 @indigenous_label: #6A512F;
+@shop_label: #8C5F93;
+@food_label: #BB9342;
+@culture_label: #7F5933;
+@hotel_label: #6D544C;
+@healthcare_label: #C15746;
+@industry_label: #717065;
+@public_transport_label: #2F6499;
 
 /* 6.4 Road labels */
 
