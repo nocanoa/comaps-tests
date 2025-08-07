@@ -1,10 +1,10 @@
-Introducing CoMaps logo!
+Hotfix: solved app crashing at launch on Android 5-7
 
-• upgrade altitude contour lines for many regions to 20 or 50 meters step
+Introducing CoMaps logo!
+• upgrade altitude contour lines for many regions to 20 or 50 meter steps
 • add Panoramax Picture links to selected POIs
 • OpenStreetMap data as of July 13
 • add color fills to many features and display fills earlier for existing features
 • display opening hours state when selecting a POI
 • split all wetlands into several distinct types
-• update vegetation and other map colors, update some map icons
 • outdoors: bolder altitude contour lines
