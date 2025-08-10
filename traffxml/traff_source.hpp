@@ -440,6 +440,7 @@ public:
    * @brief Creates a new `HttpTraffSource` instance and registers it with the traffic manager.
    *
    * @param manager The traffic manager to register the new instance with
+   * @param url The URL for the TraFF service API.
    */
   static void Create(TraffSourceManager & manager, std::string const & url);
 
