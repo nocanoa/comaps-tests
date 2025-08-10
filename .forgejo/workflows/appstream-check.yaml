@@ -21,11 +21,12 @@ jobs:
       - name: Install appstream validator and flatpak Builder
         shell: bash
         run: |
-          sudo apt update -y
-          sudo apt install -y \
-              flatpak
-          sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak install -y org.flatpak.Builder
+          apt-get update
+          apt-get install -y flatpak dbus --no-install-recommends
+          mkdir /run/dbus
+          dbus-daemon --system
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install -y org.flatpak.Builder
 
       - name: Lint appstream data with flatpak Builder
         shell: bash
