@@ -529,15 +529,6 @@ private:
   void OnPollResponse(TraffResponse & response);
 
   /**
-   * @brief Event loop for the worker thread.
-   *
-   * This method runs an event loop, which blocks until woken up. When woken up, it processes the
-   * request (subscribe, change subscription, poll or unsubscribe) and its result, then blocks
-   * again until woken up for the next request.
-   */
-  void ThreadRoutine();
-
-  /**
    * @brief The update interval, 5 minutes.
    */
   static auto constexpr m_updateInterval = std::chrono::minutes(5);
