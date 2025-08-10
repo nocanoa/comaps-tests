@@ -168,6 +168,8 @@ public:
     Unknown
   };
 
+  virtual ~TraffSource() {}
+
   /**
    * @brief Ensures we have a subscription covering the MWMs indicated.
    *
