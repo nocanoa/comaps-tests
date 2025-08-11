@@ -41,14 +41,14 @@ mkdir -p /home/planet/postcodes/us-postcodes/
 mkdir -p /home/planet/SRTM-patched-europe/
 mkdir -p /home/planet/subway
 
-echo "Writing rclone config..."
-echo "[r2]" > ~/.config/rclone/rclone.conf
-echo "type = s3" >> ~/.config/rclone/rclone.conf
-echo "provider = Cloudflare" >> ~/.config/rclone/rclone.conf
-echo "access_key_id = $S3_KEY_ID" >> ~/.config/rclone/rclone.conf
-echo "secret_access_key = $S3_SECRET_KEY" >> ~/.config/rclone/rclone.conf
-echo "region = auto" >> ~/.config/rclone/rclone.conf
-echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
+#echo "Writing rclone config..."
+#echo "[r2]" > ~/.config/rclone/rclone.conf
+#echo "type = s3" >> ~/.config/rclone/rclone.conf
+#echo "provider = Cloudflare" >> ~/.config/rclone/rclone.conf
+#echo "access_key_id = $S3_KEY_ID" >> ~/.config/rclone/rclone.conf
+#echo "secret_access_key = $S3_SECRET_KEY" >> ~/.config/rclone/rclone.conf
+#echo "region = auto" >> ~/.config/rclone/rclone.conf
+#echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
 # S3_BUCKET is used below during uploading
 
 export SKIP_MAP_DOWNLOAD=1
@@ -91,12 +91,12 @@ fi
 #curl -OL https://download.geofabrik.de/north-america/us-west-latest.osm.pbf
 #curl -OL https://download.geofabrik.de/north-america/us-west-latest.osm.pbf.md5
 # (rename us-west-latest to planet-latest and edit the md5 file accordingly)
-if [ ! -f planet.o5m ]; then
+#if [ ! -f planet.o5m ]; then
   echo "<$(date +%T)> Converting planet-latest.osm.pbf to planet.o5m..."
   ~/OM/osmctools/osmconvert planet-latest.osm.pbf -o=planet.o5m
-else
-  echo "<$(date +%T)> planet.o5m exists, not converting..."
-fi
+#else
+#  echo "<$(date +%T)> planet.o5m exists, not converting..."
+#fi
 # (currently unused:) ~/OM/organicmaps/tools/unix/update_planet.sh planet.o5m
 
 
@@ -109,6 +109,13 @@ cd ~/OM/organicmaps/tools/python
 #/tmp/venv/bin/python -m maps_generator --countries="World, WorldCoasts, US_Oregon_*, US_California_*, US_Washington_*" --production
 #/tmp/venv/bin/python -m maps_generator --countries="US_Oregon_Portland" --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --countries="Macedonia" --skip="MwmDiffs"
+
+echo "<$(date +%T)> DONE, skipping upload"
+exit 0
+
+###
+###
+###
 
 shopt -s nullglob
 buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
