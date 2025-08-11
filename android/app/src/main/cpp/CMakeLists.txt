@@ -17,6 +17,7 @@ set(SRC
   app/organicmaps/opengl/gl3stub.h
   app/organicmaps/platform/GuiThread.hpp
   app/organicmaps/platform/AndroidPlatform.hpp
+  app/organicmaps/traffxml/AndroidTraffSource.hpp
   app/organicmaps/util/Distance.hpp
   app/organicmaps/util/FeatureIdBuilder.hpp
   app/organicmaps/vulkan/android_vulkan_context_factory.hpp
@@ -71,6 +72,8 @@ set(SRC
   app/organicmaps/platform/PThreadImpl.cpp
   app/organicmaps/platform/SecureStorage.cpp
   app/organicmaps/platform/SocketImpl.cpp
+  app/organicmaps/traffxml/AndroidTraffSource.cpp
+  app/organicmaps/traffxml/SourceImpl.cpp
   app/organicmaps/util/Config.cpp
   app/organicmaps/util/GeoUtils.cpp
   app/organicmaps/util/HttpClient.cpp
