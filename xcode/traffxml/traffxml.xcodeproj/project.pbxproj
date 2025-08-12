@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2747204F2E439E3000C516DF /* traff_decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2747203F2E439DDE00C516DF /* traff_decoder.cpp */; };
+		274720502E439E3000C516DF /* traff_source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 274720452E439DDE00C516DF /* traff_source.cpp */; };
+		274720512E439E3000C516DF /* traff_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 274720412E439DDE00C516DF /* traff_model.cpp */; };
+		274720522E439E3000C516DF /* traff_model_xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 274720432E439DDE00C516DF /* traff_model_xml.cpp */; };
+		274720532E439E3000C516DF /* traff_storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 274720472E439DDE00C516DF /* traff_storage.cpp */; };
+		274720542E439E3000C516DF /* traff_decoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2747203E2E439DDE00C516DF /* traff_decoder.hpp */; };
+		274720552E439E3000C516DF /* traff_model.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 274720402E439DDE00C516DF /* traff_model.hpp */; };
+		274720562E439E3000C516DF /* traff_storage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 274720462E439DDE00C516DF /* traff_storage.hpp */; };
+		274720572E439E3000C516DF /* traff_source.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 274720442E439DDE00C516DF /* traff_source.hpp */; };
+		274720582E439E3000C516DF /* traff_model_xml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 274720422E439DDE00C516DF /* traff_model_xml.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2747203E2E439DDE00C516DF /* traff_decoder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = traff_decoder.hpp; sourceTree = "<group>"; };
+		2747203F2E439DDE00C516DF /* traff_decoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traff_decoder.cpp; sourceTree = "<group>"; };
+		274720402E439DDE00C516DF /* traff_model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = traff_model.hpp; sourceTree = "<group>"; };
+		274720412E439DDE00C516DF /* traff_model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traff_model.cpp; sourceTree = "<group>"; };
+		274720422E439DDE00C516DF /* traff_model_xml.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = traff_model_xml.hpp; sourceTree = "<group>"; };
+		274720432E439DDE00C516DF /* traff_model_xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traff_model_xml.cpp; sourceTree = "<group>"; };
+		274720442E439DDE00C516DF /* traff_source.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = traff_source.hpp; sourceTree = "<group>"; };
+		274720452E439DDE00C516DF /* traff_source.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traff_source.cpp; sourceTree = "<group>"; };
+		274720462E439DDE00C516DF /* traff_storage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = traff_storage.hpp; sourceTree = "<group>"; };
+		274720472E439DDE00C516DF /* traff_storage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traff_storage.cpp; sourceTree = "<group>"; };
+		67BECB4A1DDA43AF00FC4E99 /* libtraffxml.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtraffxml.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BECB581DDA43FB00FC4E99 /* common-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "common-debug.xcconfig"; path = "../common-debug.xcconfig"; sourceTree = "<group>"; };
+		67BECB591DDA440100FC4E99 /* common-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "common-release.xcconfig"; path = "../common-release.xcconfig"; sourceTree = "<group>"; };
+		FAFD413F26BBE3FC00D1DE1B /* libbase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libbase.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414126BBE3FC00D1DE1B /* libcoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414326BBE88000D1DE1B /* libplatform.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libplatform.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414526BBE88700D1DE1B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		FAFD414926BBE98B00D1DE1B /* libindexer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libindexer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414B26BBE9BB00D1DE1B /* libicu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libicu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414D26BBE9C300D1DE1B /* libgeometry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgeometry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD414F26BBE9C800D1DE1B /* libprotobuf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libprotobuf.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD415126BBE9E000D1DE1B /* librouting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librouting.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD415326BBE9E800D1DE1B /* libsuccinct.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsuccinct.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFD415526BBEA5600D1DE1B /* librouting_common.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librouting_common.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67BECB471DDA43AF00FC4E99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67BECB411DDA43AF00FC4E99 = {
+			isa = PBXGroup;
+			children = (
+				67BECB581DDA43FB00FC4E99 /* common-debug.xcconfig */,
+				67BECB591DDA440100FC4E99 /* common-release.xcconfig */,
+				67BECB5A1DDA449C00FC4E99 /* traffxml */,
+				67BECB4B1DDA43AF00FC4E99 /* Products */,
+				67BECB831DDA474400FC4E99 /* Frameworks */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		67BECB4B1DDA43AF00FC4E99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67BECB4A1DDA43AF00FC4E99 /* libtraffxml.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67BECB5A1DDA449C00FC4E99 /* traffxml */ = {
+			isa = PBXGroup;
+			children = (
+				2747203E2E439DDE00C516DF /* traff_decoder.hpp */,
+				2747203F2E439DDE00C516DF /* traff_decoder.cpp */,
+				274720402E439DDE00C516DF /* traff_model.hpp */,
+				274720412E439DDE00C516DF /* traff_model.cpp */,
+				274720422E439DDE00C516DF /* traff_model_xml.hpp */,
+				274720432E439DDE00C516DF /* traff_model_xml.cpp */,
+				274720442E439DDE00C516DF /* traff_source.hpp */,
+				274720452E439DDE00C516DF /* traff_source.cpp */,
+				274720462E439DDE00C516DF /* traff_storage.hpp */,
+				274720472E439DDE00C516DF /* traff_storage.cpp */,
+			);
+			name = traffxml;
+			path = ../../traffxml;
+			sourceTree = "<group>";
+		};
+		67BECB831DDA474400FC4E99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFD415526BBEA5600D1DE1B /* librouting_common.a */,
+				FAFD415326BBE9E800D1DE1B /* libsuccinct.a */,
+				FAFD415126BBE9E000D1DE1B /* librouting.a */,
+				FAFD414F26BBE9C800D1DE1B /* libprotobuf.a */,
+				FAFD414D26BBE9C300D1DE1B /* libgeometry.a */,
+				FAFD414B26BBE9BB00D1DE1B /* libicu.a */,
+				FAFD414926BBE98B00D1DE1B /* libindexer.a */,
+				FAFD414526BBE88700D1DE1B /* libz.tbd */,
+				FAFD414326BBE88000D1DE1B /* libplatform.a */,
+				FAFD413F26BBE3FC00D1DE1B /* libbase.a */,
+				FAFD414126BBE3FC00D1DE1B /* libcoding.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		67BECB481DDA43AF00FC4E99 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274720542E439E3000C516DF /* traff_decoder.hpp in Headers */,
+				274720552E439E3000C516DF /* traff_model.hpp in Headers */,
+				274720562E439E3000C516DF /* traff_storage.hpp in Headers */,
+				274720572E439E3000C516DF /* traff_source.hpp in Headers */,
+				274720582E439E3000C516DF /* traff_model_xml.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		67BECB491DDA43AF00FC4E99 /* traffxml */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67BECB551DDA43B000FC4E99 /* Build configuration list for PBXNativeTarget "traffxml" */;
+			buildPhases = (
+				67BECB461DDA43AF00FC4E99 /* Sources */,
+				67BECB471DDA43AF00FC4E99 /* Frameworks */,
+				67BECB481DDA43AF00FC4E99 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = traffxml;
+			productName = traffxml;
+			productReference = 67BECB4A1DDA43AF00FC4E99 /* libtraffxml.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67BECB421DDA43AF00FC4E99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					67BECB491DDA43AF00FC4E99 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 67BECB451DDA43AF00FC4E99 /* Build configuration list for PBXProject "traffxml" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67BECB411DDA43AF00FC4E99;
+			productRefGroup = 67BECB4B1DDA43AF00FC4E99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67BECB491DDA43AF00FC4E99 /* traffxml */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67BECB461DDA43AF00FC4E99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2747204F2E439E3000C516DF /* traff_decoder.cpp in Sources */,
+				274720502E439E3000C516DF /* traff_source.cpp in Sources */,
+				274720512E439E3000C516DF /* traff_model.cpp in Sources */,
+				274720522E439E3000C516DF /* traff_model_xml.cpp in Sources */,
+				274720532E439E3000C516DF /* traff_storage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		67BECB531DDA43B000FC4E99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67BECB581DDA43FB00FC4E99 /* common-debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		67BECB541DDA43B000FC4E99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67BECB591DDA440100FC4E99 /* common-release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		67BECB561DDA43B000FC4E99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(OMIM_ROOT)/3party/pugixml/pugixml/src",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67BECB571DDA43B000FC4E99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(OMIM_ROOT)/3party/pugixml/pugixml/src",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67BECB451DDA43AF00FC4E99 /* Build configuration list for PBXProject "traffxml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67BECB531DDA43B000FC4E99 /* Debug */,
+				67BECB541DDA43B000FC4E99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67BECB551DDA43B000FC4E99 /* Build configuration list for PBXNativeTarget "traffxml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67BECB561DDA43B000FC4E99 /* Debug */,
+				67BECB571DDA43B000FC4E99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67BECB421DDA43AF00FC4E99 /* Project object */;
+}

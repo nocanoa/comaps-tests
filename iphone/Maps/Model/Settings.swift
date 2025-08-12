@@ -373,6 +373,28 @@ import Combine
     }
     
     
+    /// If live traffic data should be used
+    @objc static var hasLiveTraffic: Bool {
+        get {
+            return SettingsBridge.liveTrafficEnabled()
+        }
+        set {
+            SettingsBridge.setLiveTrafficEnabled(newValue)
+        }
+    }
+    
+    
+    /// The url of the live traffic data server
+    @objc static var liveTrafficServerUrl: URL? {
+        get {
+            return SettingsBridge.liveTrafficUrl()
+        }
+        set {
+            SettingsBridge.setLiveTrafficUrl(newValue)
+        }
+    }
+    
+    
     
     // MARK: Methods
     
