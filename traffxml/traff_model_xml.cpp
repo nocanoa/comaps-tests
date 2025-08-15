@@ -4,6 +4,7 @@
 #include "base/logging.hpp"
 
 #include <cstring>
+#include <iomanip>
 #include <optional>
 #include <regex>
 #include <type_traits>
@@ -557,7 +558,10 @@ void PointToXml(Point const & point, std::string name, pugi::xml_node & parentNo
   if (point.m_junctionRef)
     node.append_attribute("junction_ref").set_value(point.m_junctionRef.value());
 
-  node.text() = std::format("{0:+.5f} {1:+.5f}", point.m_coordinates.m_lat, point.m_coordinates.m_lon);
+  std::ostringstream coord_ss;
+  coord_ss << std::fixed << std::setprecision(5)
+           << std::showpos << point.m_coordinates.m_lat << " " << point.m_coordinates.m_lon;
+  node.text() = coord_ss.str().c_str();
 }
 
 /**
@@ -761,7 +765,15 @@ void EventToXml(TraffEvent const & event, pugi::xml_node & node)
     node.append_attribute("probability").set_value(event.m_probability.value());
 
   if (event.m_qDurationMins)
-    node.append_attribute("q_duration").set_value(std::format("{:%H:%M}", std::chrono::minutes(event.m_qDurationMins.value())));
+  {
+    auto mins = event.m_qDurationMins.value();
+    auto hours = mins / 60;
+    auto remaining_mins = mins % 60;
+    std::ostringstream duration_ss;
+    duration_ss << std::setfill('0') << std::setw(2) << hours << ":" 
+                << std::setw(2) << remaining_mins;
+    node.append_attribute("q_duration").set_value(duration_ss.str().c_str());
+  }
 
   // TODO other quantifiers (not yet implemented in struct)
 
@@ -1159,11 +1171,10 @@ std::string FiltersToXml(std::vector<m2::RectD> & bboxRects)
 {
   std::ostringstream os;
   for (auto rect : bboxRects)
-    os << std::format("<filter bbox=\"{} {} {} {}\"/>\n",
-                      mercator::YToLat(rect.minY()),
-                      mercator::XToLon(rect.minX()),
-                      mercator::YToLat(rect.maxY()),
-                      mercator::XToLon(rect.maxX()));
+    os << "<filter bbox=\"" << mercator::YToLat(rect.minY()) << " "
+       << mercator::XToLon(rect.minX()) << " "
+       << mercator::YToLat(rect.maxY()) << " "
+       << mercator::XToLon(rect.maxX()) << "\"/>\n";
   return os.str();
 }
 

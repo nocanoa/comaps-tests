@@ -2,6 +2,7 @@
 
 #include "base/logging.hpp"
 
+#include <iomanip>
 #include <regex>
 
 using namespace std;
@@ -174,7 +175,14 @@ void IsoTime::Shift(IsoTime nowRef)
 
 std::string IsoTime::ToString() const
 {
-  return std::format("{0:%F}T{0:%T}{0:%Ez}", time_point_cast<std::chrono::seconds>(m_tp));
+  auto const tp_seconds = time_point_cast<std::chrono::seconds>(m_tp);
+  auto const time_t = std::chrono::system_clock::to_time_t(tp_seconds);
+  std::tm tm = *std::gmtime(&time_t);
+  
+  std::ostringstream ss;
+  ss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S");
+  ss << "Z";
+  return ss.str();
 }
 
 bool IsoTime::operator< (IsoTime & rhs)
@@ -346,7 +354,9 @@ std::string DebugPrint(IsoTime time)
   std::ostringstream os;
   //os << std::put_time(&time.m_tm, "%Y-%m-%d %H:%M:%S %z");
   // %FT%T%z
-  os << std::format("{0:%F} {0:%T} {0:%z}", time.m_tp);
+  auto const time_t = std::chrono::system_clock::to_time_t(time.m_tp);
+  std::tm tm = *std::gmtime(&time_t);
+  os << std::put_time(&tm, "%Y-%m-%d %H:%M:%S UTC");
   return os.str();
 }
 
@@ -542,7 +552,9 @@ std::string DebugPrint(TraffEvent event)
   os << "probability: " << (event.m_probability ? std::to_string(event.m_probability.value()) : "nullopt") << ", ";
   os << "q_duration: "
      << (event.m_qDurationMins
-         ? std::format("{:1d}:{:02d}", event.m_qDurationMins.value() / 60, event.m_qDurationMins.value() % 60)
+         ? (std::to_string(event.m_qDurationMins.value() / 60) + ":" + 
+             (event.m_qDurationMins.value() % 60 < 10 ? "0" : "") + 
+             std::to_string(event.m_qDurationMins.value() % 60))
          : "nullopt")
      << ", ";
   // TODO other quantifiers
