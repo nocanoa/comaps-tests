@@ -119,18 +119,6 @@
         app:singleLineTitle="false"
         android:persistent="false"
         android:order="19"/>
-    <SwitchPreferenceCompat
-      android:key="@string/pref_traffic_http_enabled"
-      android:title="@string/traffic_http_enabled"
-      app:singleLineTitle="false"
-      android:summary="@string/traffic_http_enabled_description"
-      android:defaultValue="true"
-      android:order="20"/>
-    <EditTextPreference
-      android:key="@string/pref_traffic_http_url"
-      android:title="@string/traffic_http_url"
-      app:singleLineTitle="false"
-      android:order="21"/>
   </androidx.preference.PreferenceCategory>
 
   <androidx.preference.PreferenceCategory
@@ -172,6 +160,36 @@
       </intent>
     </PreferenceScreen>
   </androidx.preference.PreferenceCategory>
+  <androidx.preference.PreferenceCategory
+    android:key="@string/pref_traffic"
+    android:title="@string/prefs_group_traffic"
+    android:order="4">
+    <SwitchPreferenceCompat
+      android:key="@string/pref_traffic_http_enabled"
+      android:title="@string/traffic_http_enabled"
+      app:singleLineTitle="false"
+      android:summary="@string/traffic_http_enabled_description"
+      android:defaultValue="true"
+      android:order="1"/>
+    <EditTextPreference
+      android:key="@string/pref_traffic_http_url"
+      android:title="@string/traffic_http_url"
+      app:singleLineTitle="false"
+      android:order="2"/>
+    <MultiSelectListPreference
+      android:key="@string/pref_traffic_apps"
+      android:title="@string/traffic_apps"
+      app:singleLineTitle="false"
+      android:order="3"/>
+    <SwitchPreferenceCompat
+      android:key="@string/pref_traffic_legacy_enabled"
+      android:title="@string/traffic_legacy_enabled"
+      app:singleLineTitle="false"
+      android:summary="@string/traffic_legacy_enabled_description"
+      android:defaultValue="true"
+      android:order="4"/>
+  </androidx.preference.PreferenceCategory>
+
   <androidx.preference.PreferenceCategory
     android:key="@string/pref_privacy"
     android:title="@string/privacy"

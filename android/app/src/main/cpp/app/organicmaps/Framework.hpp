@@ -122,6 +122,8 @@ namespace android
       return m_work.GetRoutingManager().GetLastUsedRouter();
     }
 
+    TrafficManager & GetTrafficManager() { return m_work.GetTrafficManager(); }
+
     void Resize(JNIEnv * env, jobject jSurface, int w, int h);
 
     struct Finger

@@ -1,6 +1,7 @@
 #include "app/organicmaps/Framework.hpp"
 
 #include "app/organicmaps/platform/AndroidPlatform.hpp"
+#include "app/organicmaps/traffxml/AndroidTraffSource.hpp"
 
 #include "app/organicmaps/core/jni_helper.hpp"
 
@@ -33,8 +34,28 @@ JNIEXPORT void JNICALL Java_app_organicmaps_sdk_OrganicMaps_nativeInitFramework(
       [onComplete = jni::make_global_ref(onComplete)]()
       {
         JNIEnv * env = jni::GetEnv();
-        jmethodID const methodId = jni::GetMethodID(env, *onComplete, "run", "()V");
-        env->CallVoidMethod(*onComplete, methodId);
+        jmethodID const runId = jni::GetMethodID(env, *onComplete, "run", "()V");
+        env->CallVoidMethod(*onComplete, runId);
+
+        ASSERT(g_framework, ("g_framework must be non-null"));
+
+        /*
+         * Add traffic sources for Android.
+         */
+        jclass configClass = env->FindClass("app/organicmaps/util/Config");
+        jmethodID const getTrafficLegacyEnabledId = jni::GetStaticMethodID(env, configClass,
+                                                                           "getTrafficLegacyEnabled", "()Z");
+        jmethodID const applyTrafficLegacyEnabledId = jni::GetStaticMethodID(env, configClass,
+                                                                             "applyTrafficLegacyEnabled", "(Z)V");
+        jmethodID const getTrafficAppsId = jni::GetStaticMethodID(env, configClass,
+                                                                  "getTrafficApps", "()[Ljava/lang/String;");
+        jmethodID const applyTrafficAppsId = jni::GetStaticMethodID(env, configClass,
+                                                                    "applyTrafficApps", "([Ljava/lang/String;)V");
+
+        env->CallStaticVoidMethod(configClass, applyTrafficLegacyEnabledId,
+                                  env->CallStaticBooleanMethod(configClass, getTrafficLegacyEnabledId));
+        env->CallStaticVoidMethod(configClass, applyTrafficAppsId,
+                                  (jobjectArray)env->CallStaticObjectMethod(configClass, getTrafficAppsId));
       });
   }
 }

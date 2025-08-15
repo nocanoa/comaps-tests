@@ -944,6 +944,17 @@ void TrafficManager::SetHttpTraffSource(bool enabled, std::string url)
     traffxml::HttpTraffSource::Create(*this, url);
 }
 
+void TrafficManager::RemoveTraffSourceIf(const std::function<bool(traffxml::TraffSource *)> &pred)
+{
+  std::lock_guard<std::mutex> lock(m_trafficSourceMutex);
+
+  for (auto it = m_trafficSources.begin(); it != m_trafficSources.end(); )
+    if (pred(it->get()))
+      m_trafficSources.erase(it);
+    else
+      ++it;
+}
+
 bool TrafficManager::IsInvalidState() const
 {
   return m_state == TrafficState::NetworkError;

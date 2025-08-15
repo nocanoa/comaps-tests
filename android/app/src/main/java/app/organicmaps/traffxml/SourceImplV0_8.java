@@ -54,6 +54,12 @@ public class SourceImplV0_8 extends SourceImpl
     }
 
     context.registerReceiver(this, filter);
+    
+    Bundle extras = new Bundle();
+    extras.putString(AndroidTransport.EXTRA_PACKAGE, context.getPackageName());
+    extras.putString(AndroidTransport.EXTRA_FILTER_LIST, filterList);
+    AndroidConsumer.sendTraffIntent(context, AndroidTransport.ACTION_TRAFF_SUBSCRIBE, null,
+        extras, packageName, Manifest.permission.ACCESS_COARSE_LOCATION, this);
   }
 
   /**
@@ -114,6 +120,8 @@ public class SourceImplV0_8 extends SourceImpl
           else
             Logger.e(this.getClass().getSimpleName(), String.format("subscription failed, %s",
                       AndroidTransport.formatTraffError(this.getResultCode())));
+          if (this.getResultCode() == AndroidTransport.RESULT_INTERNAL_ERROR)
+            Logger.e(this.getClass().getSimpleName(), "Make sure the TraFF source app has at least coarse location permission, even when running in background");
           return;
       }
       Bundle extras = this.getResultExtras(true);

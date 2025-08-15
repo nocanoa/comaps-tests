@@ -3,8 +3,11 @@ package app.organicmaps.settings;
 import static app.organicmaps.leftbutton.LeftButtonsHolder.DISABLE_BUTTON_CODE;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.TwoStatePreference;
@@ -38,6 +42,8 @@ import app.organicmaps.util.ThemeSwitcher;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.log.LogsManager;
 import app.organicmaps.sdk.search.SearchRecents;
+import app.organicmaps.traffxml.AndroidTransport;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
@@ -46,6 +52,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements LanguagesFragment.Listener
 {
@@ -69,6 +76,8 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     initTransliterationPrefsCallbacks();
     initTrafficHttpEnabledPrefsCallbacks();
     initTrafficHttpUrlPrefsCallbacks();
+    initTrafficAppsPrefs();
+    initTrafficLegacyEnabledPrefsCallbacks();
     init3dModePrefsCallbacks();
     initPerspectivePrefsCallbacks();
     initAutoZoomPrefsCallbacks();
@@ -154,6 +163,36 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
       pref.setSummary(summary);
   }
 
+  private void updateTrafficAppsSummary()
+  {
+    final MultiSelectListPreference pref = getPreference(getString(R.string.pref_traffic_apps));
+    /*
+     * If the preference is disabled, it has not been initialized. This is the case if no TraFF
+     * apps were found. The code below would crash when trying to access the entries, and there
+     * is no need to update the summary if the setting cannot be changed.
+     */
+    if (!pref.isEnabled())
+      return;
+    String[] apps = Config.getTrafficApps();
+    if (apps.length == 0)
+      pref.setSummary(R.string.traffic_apps_none_selected);
+    else
+    {
+      String summary = "";
+      for (int i = 0; i < apps.length; i++)
+      {
+        if (i > 0)
+          summary = summary + ", ";
+        int index = pref.findIndexOfValue(apps[i]);
+        if (i >= 0)
+          summary = summary + pref.getEntries()[index];
+        else
+          summary = summary + apps[i];
+      }
+      pref.setSummary(summary);
+    }
+  }
+
   private void updateRoutingSettingsPrefsSummary()
   {
     final Preference pref = getPreference(getString(R.string.prefs_routing));
@@ -182,6 +221,7 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     updateRoutingSettingsPrefsSummary();
     updateMapLanguageCodeSummary();
     updateTrafficHttpUrlSummary();
+    updateTrafficAppsSummary();
   }
 
   @Override
@@ -266,6 +306,61 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
       final String newVal = (String) newValue;
       if (!oldVal.equals(newVal))
         Config.setTrafficHttpUrl(newVal);
+
+      return true;
+    });
+  }
+
+  private void initTrafficAppsPrefs()
+  {
+    final MultiSelectListPreference pref = getPreference(getString(R.string.pref_traffic_apps));
+    
+    PackageManager pm = getContext().getPackageManager();
+    List<ResolveInfo> receivers = pm.queryBroadcastReceivers(new Intent(AndroidTransport.ACTION_TRAFF_GET_CAPABILITIES), 0);
+    
+    if (receivers == null || receivers.isEmpty())
+    {
+      pref.setSummary(R.string.traffic_apps_not_available);
+      pref.setEnabled(false);
+      return;
+    }
+    
+    pref.setEnabled(true);
+
+    List<String> entryList = new ArrayList<>(receivers.size());
+    List<String> valueList = new ArrayList<>(receivers.size());
+
+    for (ResolveInfo receiver : receivers)
+    {
+      // friendly name
+      entryList.add(receiver.loadLabel(pm).toString());
+      // actual value (we just need the package name, broadcasts are sent to any receiver in the package)
+      valueList.add(receiver.activityInfo.applicationInfo.packageName);
+    }
+    
+    pref.setEntries(entryList.toArray(new CharSequence[0]));
+    pref.setEntryValues(valueList.toArray(new CharSequence[0]));
+    
+    pref.setOnPreferenceChangeListener((preference, newValue) -> {
+      // newValue is a Set<String>, each item is a package ID
+      String[] apps = ((Set<String>)newValue).toArray(new String[0]);
+      Config.setTrafficApps(apps);
+      updateTrafficAppsSummary();
+
+      return true;
+    });
+  }
+
+  private void initTrafficLegacyEnabledPrefsCallbacks()
+  {
+    final Preference pref = getPreference(getString(R.string.pref_traffic_legacy_enabled));
+
+    ((TwoStatePreference)pref).setChecked(Config.getTrafficLegacyEnabled());
+    pref.setOnPreferenceChangeListener((preference, newValue) -> {
+      final boolean oldVal = Config.getTrafficLegacyEnabled();
+      final boolean newVal = (Boolean) newValue;
+      if (oldVal != newVal)
+        Config.setTrafficLegacyEnabled(newVal);
 
       return true;
     });

@@ -234,6 +234,7 @@
     <!-- Settings information group in settings screen -->
     <string name="prefs_group_information">Information</string>
     <string name="prefs_group_route">Navigation</string>
+    <string name="prefs_group_traffic">Traffic information</string>
     <string name="pref_zoom_title">Zoom buttons</string>
     <string name="pref_zoom_summary">Display on the map</string>
     <!-- Settings «Map» category: «Night style» title -->
@@ -838,6 +839,16 @@
     <string name="traffic_http_url">Traffic service URL</string>
     <!-- Status message indicating that user did not set a traffic URL yet. -->
     <string name="traffic_http_url_not_set">Not set</string>
+    <!-- TraFF 0.8 apps from which to receive data (title) -->
+    <string name="traffic_apps">Use data from TraFF applications</string>
+    <!-- Status message indicating that no TraFF 0.8 apps are installed -->
+    <string name="traffic_apps_not_available">No apps installed</string>
+    <!-- Status message indicating that no TraFF 0.8 apps are currently selected -->
+    <string name="traffic_apps_none_selected">No apps salected</string>
+    <!-- Enable traffic data from TraFF 0.7 apps (title) -->
+    <string name="traffic_legacy_enabled">Use data from legacy TraFF applications</string>
+    <!-- Enable traffic data from TraFF 0.7 apps (description) -->
+    <string name="traffic_legacy_enabled_description">When enabled, the app will receive and process traffic data from legacy TraFF applications.</string>
     <!-- OpenStreetMap text on splash screen -->
     <string name="splash_subtitle">Map data from OpenStreetMap</string>
     <!-- Telegram group url for the "?" About page -->

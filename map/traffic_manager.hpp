@@ -191,6 +191,22 @@ public:
   void SetHttpTraffSource(bool enabled, std::string url);
 
   /**
+   * @brief Removes all `TraffSource` instances which satisfy a predicate.
+   *
+   * This method iterates over all currently configured `TraffSource` instances and calls the
+   * caller-suppplied predicate function `pred` on each of them. If `pred` returns true, the source
+   * is removed, else it is kept.
+   *
+   * @todo For now, `pred` deliberately takes a non-const argument so we can do cleanup inside
+   * `pred`. If we manage to move any such cleanup into the destructor of the `TraffSource` subclass
+   * and get rid of any `Close()` methods in subclasses (which is preferable for other reasons as
+   * well), the argument can be made const.
+   *
+   * @param pred The predicate function, see description.
+   */
+  void RemoveTraffSourceIf(const std::function<bool(traffxml::TraffSource*)>& pred);
+
+  /**
    * @brief Starts the traffic manager.
    *
    */

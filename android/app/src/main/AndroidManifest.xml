@@ -62,6 +62,21 @@
       <category android:name="android.intent.category.BROWSABLE" />
       <data android:scheme="https" />
     </intent>
+    <intent>
+      <action android:name="org.traffxml.traff.GET_CAPABILITIES"/>
+    </intent>
+    <intent>
+      <action android:name="org.traffxml.traff.POLL"/>
+    </intent>
+    <intent>
+      <action android:name="org.traffxml.traff.SUBSCRIBE"/>
+    </intent>
+    <intent>
+      <action android:name="org.traffxml.traff.SUBSCRIPTION_CHANGE"/>
+    </intent>
+    <intent>
+      <action android:name="org.traffxml.traff.UNSUBSCRIBE"/>
+    </intent>
   </queries>
 
   <supports-screens

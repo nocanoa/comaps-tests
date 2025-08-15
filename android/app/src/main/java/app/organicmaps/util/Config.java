@@ -55,6 +55,16 @@ public final class Config
    * True if the first start animation has been seen.
    */
   private static final String KEY_MISC_FIRST_START_DIALOG_SEEN = "FirstStartDialogSeen";
+  
+  /**
+   * Whether feeds from legacy TraFF applications (TraFF 0.7, Android transport) are enabled.
+   */
+  private static final String KEY_TRAFFIC_LEGACY_ENABLED = "TrafficLegacyEnabled";
+
+  /**
+   * TraFF (0.8+) applications from which to request traffic data.
+   */
+  private static final String KEY_TRAFFIC_APPS = "TrafficApps";
 
   private Config() {}
 
@@ -338,6 +348,38 @@ public final class Config
   {
     nativeSetTrafficHttpUrl(value);
   }
+  
+  public static String[] getTrafficApps()
+  {
+    String appString = getString(KEY_TRAFFIC_APPS, "");
+    if (appString.length() == 0)
+      return new String[0];
+    return appString.split(",");
+  }
+  
+  public static void setTrafficApps(String[] value)
+  {
+    String valueString = "";
+    for (int i = 0; i < value.length; i++)
+    {
+      valueString = valueString + value[i];
+      if ((i + 1) < value.length)
+        valueString = valueString + ",";
+    }
+    setString(KEY_TRAFFIC_APPS, valueString);
+    applyTrafficApps(value);
+  }
+
+  public static boolean getTrafficLegacyEnabled()
+  {
+    return getBool(KEY_TRAFFIC_LEGACY_ENABLED, false);
+  }
+
+  public static void setTrafficLegacyEnabled(boolean value)
+  {
+    setBool(KEY_TRAFFIC_LEGACY_ENABLED, value);
+    applyTrafficLegacyEnabled(value);
+  }
 
   public static boolean isNY()
   {
@@ -496,4 +538,6 @@ public final class Config
   private static native void nativeSetTrafficHttpEnabled(boolean value);
   private static native String nativeGetTrafficHttpUrl();
   private static native void nativeSetTrafficHttpUrl(String value);
+  private static native void applyTrafficApps(String[] value);
+  private static native void applyTrafficLegacyEnabled(boolean value);
 }
