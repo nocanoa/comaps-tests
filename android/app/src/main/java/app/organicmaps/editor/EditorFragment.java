@@ -128,6 +128,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     });
   }
 
+  private TextInputLayout mInputStreet;
   private TextInputLayout mInputHouseNumber;
   private TextInputLayout mInputBuildingLevels;
 
@@ -246,10 +247,29 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   {
     if (Editor.nativeIsAddressEditable())
     {
+      // For a new address, street and house number are mandatory.
+      if (mParent.addingNewObject() && Editor.nativeIsAddress())
+      {
+        if (TextUtils.isEmpty(mStreet.getText()))
+        {
+          UiUtils.setInputError(mInputStreet, R.string.error_select_street);
+          mCardAddress.getParent().requestChildFocus(mCardAddress, mCardAddress);
+          return false;
+        }
+
+        if (TextUtils.isEmpty(mHouseNumber.getText()))
+        {
+          UiUtils.setInputError(mInputHouseNumber, R.string.error_enter_house_number);
+          mHouseNumber.requestFocus();
+          InputUtils.showKeyboard(mHouseNumber);
+          return false;
+        }
+      }
+
+      // This general validation runs for both new and existing objects.
       if (!Editor.nativeIsHouseValid(mHouseNumber.getText().toString()))
       {
         mHouseNumber.requestFocus();
-        UiUtils.setInputError(mInputHouseNumber, R.string.error_enter_correct_house_number);
         InputUtils.showKeyboard(mHouseNumber);
         return false;
       }
@@ -423,7 +443,9 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     initNamesView(view);
 
     // Address
-    view.findViewById(R.id.block_street).setOnClickListener(this);
+    View blockStreet = view.findViewById(R.id.block_street);
+    blockStreet.setOnClickListener(this);
+    mInputStreet = blockStreet.findViewById(R.id.custom_input);
     mStreet = view.findViewById(R.id.street);
     View blockHouseNumber = view.findViewById(R.id.block_building);
     mHouseNumber = findInputAndInitBlock(blockHouseNumber, R.drawable.ic_building, R.string.house_number);
