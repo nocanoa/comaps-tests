@@ -251,6 +251,12 @@ Java_app_organicmaps_editor_Editor_nativeIsPointType(JNIEnv * env, jclass clazz)
 }
 
 JNIEXPORT jboolean JNICALL
+Java_app_organicmaps_editor_Editor_nativeIsAddress(JNIEnv * env, jclass clazz)
+{
+  return g_editableMapObject.IsAddress();
+}
+
+JNIEXPORT jboolean JNICALL
 Java_app_organicmaps_editor_Editor_nativeIsBuilding(JNIEnv * env, jclass clazz)
 {
   return g_editableMapObject.IsBuilding();
