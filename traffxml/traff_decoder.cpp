@@ -29,6 +29,8 @@
 
 namespace traffxml
 {
+// Only needed for OpenlrTraffDecoder, see below
+#if 0
 // Number of worker threads for the OpenLR decoder
 /*
  * TODO how to determine the best number of worker threads?
@@ -37,6 +39,7 @@ namespace traffxml
  * Otherwise there is little to be gained, as we decode messages one at a time.
  */
 auto constexpr kNumDecoderThreads = 1;
+#endif
 
 // Timeout for the router in seconds, used by RoutingTraffDecoder
 // TODO set to a sensible value

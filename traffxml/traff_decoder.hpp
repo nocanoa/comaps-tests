@@ -41,6 +41,8 @@ public:
                const CountryParentNameGetterFn & countryParentNameGetter,
                std::map<std::string, traffxml::TraffMessage> & messageCache);
 
+  virtual ~TraffDecoder() {}
+
   /**
    * @brief Decodes a single message to its segments and their speed groups.
    *

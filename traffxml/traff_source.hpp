@@ -26,6 +26,8 @@ class TraffSource;
 class TraffSourceManager
 {
 public:
+  virtual ~TraffSourceManager() {}
+
   /**
    * @brief Retrieves all currently active MWMs.
    *

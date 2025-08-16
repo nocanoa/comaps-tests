@@ -826,8 +826,9 @@ bool SegmentFromXml(pugi::xml_node const & node,
                std::map<traffic::TrafficInfo::RoadSegmentId, traffic::SpeedGroup> & coloring)
 {
   uint32_t fid;
-  uint16_t idx;
-  uint8_t dir;
+  // initialize to get rid of compiler warnings (which are false alerts)
+  uint16_t idx = 0;
+  uint8_t dir = 0;
   if (IntegerFromXml(node.attribute("fid"), fid)
       && IntegerFromXml(node.attribute("idx"), idx)
       && IntegerFromXml(node.attribute("dir"), dir))
