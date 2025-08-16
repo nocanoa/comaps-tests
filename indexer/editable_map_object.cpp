@@ -198,6 +198,37 @@ bool EditableMapObject::CanUseAsDefaultName(int8_t const lang, vector<int8_t> co
 
 void EditableMapObject::SetMercator(m2::PointD const & center) { m_mercator = center; }
 
+bool EditableMapObject::HasName() const
+{
+  std::string_view name;
+  m_name.GetString(StringUtf8Multilang::kDefaultCode, name);
+  return !name.empty();
+}
+
+bool EditableMapObject::IsCreated() const
+{
+  if (m_journal.GetJournal().empty())
+    return false;
+
+  return m_journal.GetJournal().front().journalEntryType == JournalEntryType::ObjectCreated;
+}
+
+bool EditableMapObject::IsAddress() const
+{
+  return m_types.Has(classif().GetTypeByReadableObjectName("building-address"));
+}
+
+bool EditableMapObject::HasValuableData() const
+{
+  // Address point should have at least a street and a house number to be created.
+  if (IsAddress())
+    return !GetStreet().m_defaultName.empty() && !GetHouseNumber().empty();
+
+  // For other new objects, at least one name is required.
+  // For existing objects any changed field is enough to save.
+  return IsCreated() ? HasName() : true;
+}
+
 void EditableMapObject::SetType(uint32_t featureType)
 {
   if (m_types.GetGeomType() == feature::GeomType::Undefined)
@@ -390,7 +421,8 @@ bool EditableMapObject::ValidateBuildingLevels(string const & buildingLevels)
 
 bool EditableMapObject::DynamicValidateHouseNumber(string const & houseNumber)
 {
-  if (houseNumber.empty() && m_types.Has(classif().GetTypeByReadableObjectName("building-address")))
+  // House number is mandatory for the address type. For other types it's optional.
+  if (houseNumber.empty() && IsAddress())
     return false;
 
   return ValidateHouseNumber(houseNumber);
