@@ -215,6 +215,26 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
     return;
   }
 
+  if (m_mapObject.IsCreated() && !m_mapObject.HasValuableData())
+  {
+    if (m_mapObject.IsAddress())
+    {
+      UIAlertController * alert = [UIAlertController
+          alertControllerWithTitle:L(@"editor_address_point_must_have_street_and_house_number_title")
+                           message:L(@"editor_address_point_must_have_street_and_house_number_message")
+                    preferredStyle:UIAlertControllerStyleAlert];
+
+      UIAlertAction * okAction = [UIAlertAction actionWithTitle:L(@"ok")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:nil];
+      [alert addAction:okAction];
+      [self presentViewController:alert animated:YES completion:nil];
+
+      return;
+    }
+    return;
+  }
+
   if (self.invalidCells.count)
   {
     NSIndexPath * ip = self.invalidCells.firstObject;
