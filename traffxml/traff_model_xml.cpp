@@ -635,10 +635,10 @@ void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
     node.append_attribute("origin").set_value(location.m_origin.value());
   EnumToXml(location.m_ramps, "ramps", node, kRampsMap);
   if (location.m_roadClass)
-    EnumToXml(location.m_roadClass.value(), "roadClass", node, kRoadClassMap);
+    EnumToXml(location.m_roadClass.value(), "road_class", node, kRoadClassMap);
   // TODO roadIsUrban (disabled for now)
   if (location.m_roadRef)
-    node.append_attribute("roadRef").set_value(location.m_roadRef.value());
+    node.append_attribute("road_ref").set_value(location.m_roadRef.value());
   if (location.m_roadName)
     node.append_attribute("roadName").set_value(location.m_roadName.value());
   if (location.m_territory)
