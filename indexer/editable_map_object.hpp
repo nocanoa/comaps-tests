@@ -72,6 +72,10 @@ public:
 
   bool IsNameEditable() const;
   bool IsAddressEditable() const;
+  bool IsAddress() const;
+  bool IsCreated() const;
+  bool HasValuableData() const;
+  bool HasName() const;
 
   /// @todo Can implement polymorphic approach here and store map<MetadataID, MetadataEntryIFace>.
   /// All store/load/valid operations will be via MetadataEntryIFace interface instead of switch-case.
