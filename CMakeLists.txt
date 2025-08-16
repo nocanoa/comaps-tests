@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.22.1)
+
 project(omim C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -47,6 +48,8 @@ if (APPLE AND NOT ("${CMAKE_SYSTEM_NAME}" STREQUAL Android))
   set(CMAKE_OBJCXX_FLAGS -fobjc-arc)
   set(CMAKE_OBJCXX_VISIBILITY_PRESET hidden)
 endif()
+
+execute_process(COMMAND "./configure.sh" WORKING_DIRECTORY ${OMIM_ROOT})
 
 message(STATUS "Using compiler ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -103,10 +106,27 @@ if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 elseif (${CMAKE_BUILD_TYPE} MATCHES "Rel")
   add_definitions(-DRELEASE)
   if (NOT MSVC)
-    add_compile_options(-Ofast)  # Also enables -ffast-math
+    add_compile_options(-O3 $<$<CXX_COMPILER_ID:GNU>:-flto=auto>)
   endif()
 else()
   message(FATAL_ERROR "Unknown build type: " ${CMAKE_BUILD_TYPE})
+endif()
+
+if (${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebInfo")
+  add_compile_options(-fno-omit-frame-pointer)
+endif()
+
+# Linux GCC LTO plugin fix.
+if (PLATFORM_LINUX AND (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") AND (CMAKE_BUILD_TYPE MATCHES "^Rel"))
+  # To force errors if LTO was not enabled.
+  add_compile_options(-fno-fat-lto-objects)
+  # To fix ar and ranlib "plugin needed to handle lto object".
+  string(REGEX MATCH "[0-9]+" GCC_MAJOR_VERSION ${CMAKE_CXX_COMPILER_VERSION})
+  file(GLOB_RECURSE plugin /usr/lib/gcc/*/${GCC_MAJOR_VERSION}/liblto_plugin.so)
+  set(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
+  set(CMAKE_C_ARCHIVE_FINISH "<CMAKE_RANLIB> --plugin ${plugin} <TARGET>")
+  set(CMAKE_CXX_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
+  set(CMAKE_CXX_ARCHIVE_FINISH "<CMAKE_RANLIB> --plugin ${plugin} <TARGET>")
 endif()
 
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
@@ -243,11 +263,15 @@ if (PLATFORM_DESKTOP)
     add_subdirectory(qt)
     omim_add_tool_subdirectory(skin_generator)
   endif()
+  if (GENERATOR_TOOL)
+    add_compile_options(-march=native -mtune=native)
+    message(STATUS "target CPU optimizations enabled, produced binaries will NOT work on a different CPU")
+  endif()
   add_subdirectory(dev_sandbox)
 endif()
 
 omim_add_test_subdirectory(qt_tstfrm)
 
 if (PLATFORM_ANDROID)
-  add_subdirectory(android/app/src/main/cpp)
+  add_subdirectory(android/sdk/src/main/cpp)
 endif()

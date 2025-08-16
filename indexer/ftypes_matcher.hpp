@@ -319,6 +319,15 @@ public:
   uint32_t GetType() const { return m_types[0]; }
 };
 
+class IsCheckDateChecker : public BaseChecker
+{
+  IsCheckDateChecker();
+public:
+  DECLARE_CHECKER_INSTANCE(IsCheckDateChecker);
+
+  uint32_t GetType() const { return m_types[0]; }
+};
+
 class AttractionsChecker : public BaseChecker
 {
   size_t m_additionalTypesStart;
@@ -650,6 +659,9 @@ enum class HighwayClass
    * Service, track, busway and `man_made=pier`.
    */
   Service,
+  // OSM highway=service type is widely used even for _significant_ roads.
+  // Adding a new type to distinguish mapped driveway or parking_aisle.
+  ServiceMinor,
   /**
    * Anything not intended for motorized traffic: pedestrian, footway, bridleway, steps, cycleway,
    * path and also `highway=construction`.

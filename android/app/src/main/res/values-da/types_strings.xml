@@ -1356,7 +1356,6 @@
     <string name="type.piste_type.sled.area">Kælkebane</string>
     <string name="type.piste_type.downhill.novice.area">Meget let pist</string>
     <string name="type.railway.tram.bridge">Sporvejsbro</string>
-    <string name="type.mapswithme">MapsWithMe</string>
     <string name="type.landuse.plant_nursery">Planteskole</string>
     <string name="type.leisure.firepit">Bålplads</string>
     <string name="type.man_made.crane">Kran</string>
@@ -1369,4 +1368,17 @@
     <string name="type.power.line">Strømledning</string>
     <string name="type.highway.ladder">Stige</string>
     <string name="type.amenity.love_hotel">Kærlighedshotel</string>
+    <string name="type.amenity.bicycle_parking.covered">Overdækket cykelparkering</string>
+    <string name="type.post_office.post_partner">Postpartner</string>
+    <string name="type.natural.wetland.swamp">Sump</string>
+    <string name="type.amenity.luggage_locker">Bagageboks</string>
+    <string name="type.natural.wetland.saltmarsh">Strandeng</string>
+    <string name="type.natural.wetland.saltmarsh.tidal">Tidevandspåvirket strandeng</string>
+    <string name="type.natural.wetland.mangrove">Mangrove</string>
+    <string name="type.natural.wetland.tidalflat">Tidevandsflade</string>
+    <string name="type.man_made.utility_pole">Lygtepæl</string>
+    <string name="type.leisure.escape_game">Escape Room</string>
+    <string name="type.landuse.religious">Religiøs jord</string>
+    <string name="type.power.pole">Elmast</string>
+    <string name="type.railway.station.subway.qingdao">Undergrundsstation</string>
 </resources>

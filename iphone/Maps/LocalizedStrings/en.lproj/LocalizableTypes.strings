@@ -29,6 +29,7 @@
 "type.amenity.bbq" = "Barbecue Grill";
 "type.amenity.bench" = "Bench";
 "type.amenity.bicycle_parking" = "Bicycle Parking";
+"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.amenity.bicycle_rental" = "Bicycle Rental";
 "type.amenity.bicycle_repair_station" = "Bicycle Repair Station";
 "type.amenity.biergarten" = "Biergarten";
@@ -87,6 +88,7 @@
 "type.amenity.kindergarten" = "Kindergarten";
 "type.amenity.library" = "Library";
 "type.amenity.loading_dock" = "Loading Dock";
+"type.amenity.luggage_locker" = "Luggage Locker";
 "type.amenity.marketplace" = "Marketplace";
 "type.amenity.motorcycle_parking" = "Motorcycle Parking";
 "type.amenity.nightclub" = "Nightclub";
@@ -131,6 +133,7 @@
 "type.amenity.police" = "Police";
 "type.amenity.post_box" = "Mailbox";
 "type.amenity.post_office" = "Post Office";
+"type.post_office.post_partner" = "Post Partner";
 "type.amenity.prison" = "Prison";
 "type.amenity.pub" = "Pub";
 "type.amenity.public_bookcase" = "Book Exchange";
@@ -612,8 +615,6 @@
 "type.area_highway.track" = "Track";
 "type.area_highway.trunk" = "Trunk Road";
 "type.area_highway.unclassified" = "Minor Road";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 
 
 /********** Types: Historic **********/
@@ -664,19 +665,6 @@
 "type.historic.wayside_cross" = "Wayside Cross";
 "type.historic.wayside_shrine" = "Wayside Shrine";
 "type.historic.wreck" = "Shipwreck";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Junction";
@@ -726,6 +714,7 @@
 "type.leisure" = "Leisure";
 "type.leisure.common" = "Public Land";
 "type.leisure.dog_park" = "Dog Park";
+"type.leisure.escape_game" = "Escape Room";
 "type.leisure.fitness_centre" = "Fitness Centre";
 "type.leisure.fitness_station" = "Fitness Station";
 "type.leisure.dance" = "Dance Hall";
@@ -796,8 +785,6 @@
 "type.man_made.water_well.drinking_water_no" = "Water Well";
 "type.man_made.windmill" = "Windmill";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Bunker";
 "type.mountain_pass" = "Mountain Pass";
@@ -931,11 +918,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Utility Pole";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Public Transport";
 "type.public_transport.platform" = "Platform";
 "type.railway" = "Railway";
@@ -1238,7 +1220,6 @@
 "type.railway.tram_stop" = "Tram Stop";
 "type.route" = "Route";
 "type.route.ferry" = "Ferry";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Shop";
 "type.shop.alcohol" = "Liquor Shop";
 "type.shop.bakery" = "Bakery";
@@ -1296,7 +1277,7 @@
 "type.shop.laundry" = "Laundry";
 "type.shop.mall" = "Mall";
 "type.shop.massage" = "Massage Salon";
-"type.shop.mobile_phone" = "Cell Phone Store";
+"type.shop.mobile_phone" = "Mobile Phone Store";
 "type.shop.money_lender" = "Money Lender";
 "type.shop.motorcycle" = "Motorcycle Shop";
 "type.shop.motorcycle_repair" = "Motorcycle Repair";
@@ -1433,6 +1414,7 @@
 "type.tourism.information.map" = "Tourist Map";
 "type.tourism.information.office" = "Tourist Office";
 "type.tourism.information.visitor_centre" = "Visitor Centre";
+"type.amenity.ranger_station" = "Ranger Station";
 "type.tourism.motel" = "Motel";
 "type.tourism.museum" = "Museum";
 "type.tourism.picnic_site" = "Picnic Site";

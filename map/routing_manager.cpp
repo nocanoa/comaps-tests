@@ -289,7 +289,7 @@ drape_ptr<df::Subroute> CreateDrapeSubroute(vector<RouteSegment> const & segment
     // To prevent visual artefacts, in the case when all head segments are real
     // m_headFakeDistance must be less than 0.0.
     auto const headLen = (firstReal > 0) ? segments[firstReal - 1].GetDistFromBeginningMerc() - baseDistance : 0.0;
-    if (base::AlmostEqualAbs(headLen, 0.0, kEps))
+    if (AlmostEqualAbs(headLen, 0.0, kEps))
       subroute->m_headFakeDistance = -kBias;
     else
       subroute->m_headFakeDistance = headLen;
@@ -298,7 +298,7 @@ drape_ptr<df::Subroute> CreateDrapeSubroute(vector<RouteSegment> const & segment
     // m_tailFakeDistance must be greater than the length of the subroute.
     auto const subrouteLen = segments.back().GetDistFromBeginningMerc() - baseDistance;
     auto const tailLen = segments[lastReal].GetDistFromBeginningMerc() - baseDistance;
-    if (base::AlmostEqualAbs(tailLen, subrouteLen, kEps))
+    if (AlmostEqualAbs(tailLen, subrouteLen, kEps))
       subroute->m_tailFakeDistance = subrouteLen + kBias;
     else
       subroute->m_tailFakeDistance = tailLen;
@@ -315,6 +315,7 @@ RoutingManager::RoutingManager(Callbacks && callbacks, Delegate & delegate)
   , m_extrapolator(
         [this](location::GpsInfo const & gpsInfo) { this->OnExtrapolatedLocationUpdate(gpsInfo); })
 {
+  m_extrapolator.Enable(true); // Keeps smooth arrow movement whether routing or not
   m_routingSession.Init(
 #ifdef SHOW_ROUTE_DEBUG_MARKS
                         [this](m2::PointD const & pt) {
@@ -767,9 +768,6 @@ void RoutingManager::FollowRoute()
 
   m_transitReadManager->BlockTransitSchemeMode(true /* isBlocked */);
 
-  // Switching on the extrapolator only for following mode in car and bicycle navigation.
-  m_extrapolator.Enable(m_currentRouterType == RouterType::Vehicle ||
-                        m_currentRouterType == RouterType::Bicycle);
   m_delegate.OnRouteFollow(m_currentRouterType);
 
   m_bmManager->GetEditSession().ClearGroup(UserMark::Type::ROAD_WARNING);
@@ -781,7 +779,6 @@ void RoutingManager::FollowRoute()
 
 void RoutingManager::CloseRouting(bool removeRoutePoints)
 {
-  m_extrapolator.Enable(false);
   // Hide preview.
   HidePreviewSegments();
 
@@ -1098,18 +1095,28 @@ static std::string GetNameFromPoint(RouteMarkData const & rmd)
   return rmd.m_title;
 }
 
-void RoutingManager::SaveRoute()
+kml::TrackId RoutingManager::SaveRoute()
 {
-  auto points = GetRoutePolyline().GetPolyline().GetPoints();
+  std::vector<geometry::PointWithAltitude> junctions;
+  RoutingSession().GetRouteJunctionPoints(junctions);
+
+  junctions.erase(
+    std::unique(
+      junctions.begin(),
+      junctions.end(),
+      [](const geometry::PointWithAltitude & p1, const geometry::PointWithAltitude & p2)
+      {
+        return AlmostEqualAbs(p1, p2, kMwmPointAccuracy);
+      }
+    ),
+    junctions.end()
+  );
+
   auto const routePoints = GetRoutePoints();
   std::string const from = GetNameFromPoint(routePoints.front());
   std::string const to = GetNameFromPoint(routePoints.back());
-  // remove equal sequential points
-  points.erase(
-      std::unique(points.begin(), points.end(), [](const m2::PointD & p1, const m2::PointD & p2) { return AlmostEqualAbs(p1, p2, kMwmPointAccuracy); }),
-      points.end());
 
-  m_bmManager->SaveRoute(points, from, to);
+  return m_bmManager->SaveRoute(junctions, from, to);
 }
 
 bool RoutingManager::DisableFollowMode()
@@ -1265,7 +1272,7 @@ void RoutingManager::DistanceAltitude::Simplify(double altitudeDeviation)
 //                      eps, distFn, AccumulateSkipSmallTrg(distFn, out, eps));
 
   // 2. Default square distance from segment.
-  SimplifyDefault(IterT(*this, true), IterT(*this, false), base::Pow2(altitudeDeviation), out);
+  SimplifyDefault(IterT(*this, true), IterT(*this, false), math::Pow2(altitudeDeviation), out);
 
   size_t const count = out.size();
   m_distances.resize(count);

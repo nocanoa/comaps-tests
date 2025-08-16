@@ -107,6 +107,8 @@ std::string GenerateGeoUri(double lat, double lon, double zoom, std::string cons
 {
   std::ostringstream oss;
   oss << "geo:" << std::fixed << std::setprecision(7) << lat << ',' << lon << "?z=" << std::setprecision(1) << zoom;
+  // For Google Maps compatibility, otherwise it doesn't select the point on the map, only shows the area.
+  oss << "&q=" << std::setprecision(7) << lat << ',' << lon;
 
   if (!name.empty())
     oss << '(' << url::UrlEncode(name) << ')';
@@ -131,7 +133,7 @@ int LatToInt(double lat, int maxValue)
   //       000111111222222...LLLLLMMMM
 
   double const x = (lat + 90.0) / 180.0 * maxValue;
-  return x < 0 ? 0 : (x > maxValue ? maxValue : static_cast<int>(x + 0.5));
+  return x < 0 ? 0 : (x > maxValue ? maxValue : std::lround(x));
 }
 
 // Make lon in [-180, 180)

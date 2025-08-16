@@ -3,54 +3,47 @@
 
 #include "routing/routing_helpers.hpp"
 
-#include "indexer/altitude_loader.hpp"
 #include "indexer/feature.hpp"
+#include "indexer/feature_altitude.hpp"
 #include "indexer/feature_data.hpp"
 #include "indexer/feature_processor.hpp"
 
 #include "coding/files_container.hpp"
-#include "coding/internal/file_data.hpp"
-#include "coding/read_write_utils.hpp"
-#include "coding/reader.hpp"
 #include "coding/succinct_mapper.hpp"
-#include "coding/varint.hpp"
-
-#include "geometry/latlon.hpp"
 
 #include "base/assert.hpp"
 #include "base/checked_cast.hpp"
-#include "base/file_name_utils.hpp"
 #include "base/logging.hpp"
 #include "base/scope_guard.hpp"
 #include "base/stl_helpers.hpp"
-#include "base/string_utils.hpp"
 
 #include "defines.hpp"
 
-#include <algorithm>
-#include <type_traits>
-#include <utility>
-#include <vector>
-
 #include "3party/succinct/elias_fano.hpp"
-#include "3party/succinct/mapper.hpp"
 #include "3party/succinct/rs_bit_vector.hpp"
 
+namespace routing
+{
 using namespace feature;
+using namespace geometry;
 
 namespace
 {
-using namespace routing;
-
 class SrtmGetter : public AltitudeGetter
 {
 public:
   explicit SrtmGetter(std::string const & srtmDir) : m_srtmManager(srtmDir) {}
 
   // AltitudeGetter overrides:
-  geometry::Altitude GetAltitude(m2::PointD const & p) override
+  Altitude GetAltitude(m2::PointD const & p) override
   {
-    return m_srtmManager.GetHeight(mercator::ToLatLon(p));
+    return m_srtmManager.GetAltitude(mercator::ToLatLon(p));
+  }
+
+  void PrintStatsAndPurge() override
+  {
+    LOG(LINFO, ("Srtm tiles number (x26Mb):", m_srtmManager.GeTilesNumber()));
+    m_srtmManager.Purge();
   }
 
 private:
@@ -62,39 +55,24 @@ class Processor
 public:
   struct FeatureAltitude
   {
-    FeatureAltitude() : m_featureId(0) {}
-    FeatureAltitude(uint32_t featureId, Altitudes const & altitudes)
-      : m_featureId(featureId), m_altitudes(altitudes)
+    FeatureAltitude(uint32_t featureId, geometry::Altitudes && altitudes)
+      : m_featureId(featureId), m_altitudes(std::move(altitudes))
     {
     }
 
     uint32_t m_featureId;
-    Altitudes m_altitudes;
+    feature::Altitudes m_altitudes;
   };
 
-  using TFeatureAltitudes = std::vector<FeatureAltitude>;
-
   explicit Processor(AltitudeGetter & altitudeGetter)
-    : m_altitudeGetter(altitudeGetter), m_minAltitude(geometry::kInvalidAltitude)
+    : m_minAltitude(geometry::kInvalidAltitude), m_altitudeGetter(altitudeGetter)
   {
   }
 
-  TFeatureAltitudes const & GetFeatureAltitudes() const { return m_featureAltitudes; }
-
-  succinct::bit_vector_builder & GetAltitudeAvailabilityBuilder()
+  void operator()(FeatureType & f, uint32_t id)
   {
-    return m_altitudeAvailabilityBuilder;
-  }
-
-  geometry::Altitude GetMinAltitude() const { return m_minAltitude; }
-
-  void operator()(FeatureType & f, uint32_t const & id)
-  {
-    if (id != m_altitudeAvailabilityBuilder.size())
-    {
-      LOG(LERROR, ("There's a gap in feature id order."));
-      return;
-    }
+    CHECK_EQUAL(f.GetID().m_index, id, ());
+    CHECK_EQUAL(id, m_altitudeAvailabilityBuilder.size(), ());
 
     bool hasAltitude = false;
     SCOPE_GUARD(altitudeAvailabilityBuilding,
@@ -109,12 +87,19 @@ public:
       return;
 
     geometry::Altitudes altitudes;
-    geometry::Altitude minFeatureAltitude = geometry::kInvalidAltitude;
+    altitudes.reserve(pointsCount);
+    Altitude minFeatureAltitude = geometry::kInvalidAltitude;
     for (size_t i = 0; i < pointsCount; ++i)
     {
-      geometry::Altitude const a = m_altitudeGetter.GetAltitude(f.GetPoint(i));
+      auto const & pt = f.GetPoint(i);
+      Altitude const a = m_altitudeGetter.GetAltitude(pt);
       if (a == geometry::kInvalidAltitude)
       {
+        // Print warning for missing altitude point (if not a ferry or so).
+        auto const type = CarModel::AllLimitsInstance().GetHighwayType(feature::TypesHolder(f));
+        if (type && *type != HighwayType::RouteFerry && *type != HighwayType::RouteShuttleTrain)
+          LOG(LWARNING, ("Invalid altitude at:", mercator::ToLatLon(pt)));
+
         // One invalid point invalidates the whole feature.
         return;
       }
@@ -128,7 +113,7 @@ public:
     }
 
     hasAltitude = true;
-    m_featureAltitudes.emplace_back(id, Altitudes(std::move(altitudes)));
+    m_featureAltitudes.emplace_back(id, std::move(altitudes));
 
     if (m_minAltitude == geometry::kInvalidAltitude)
       m_minAltitude = minFeatureAltitude;
@@ -138,22 +123,15 @@ public:
 
   bool HasAltitudeInfo() const { return !m_featureAltitudes.empty(); }
 
-  bool IsFeatureAltitudesSorted()
-  {
-    return std::is_sorted(m_featureAltitudes.begin(), m_featureAltitudes.end(),
-                          base::LessBy(&Processor::FeatureAltitude::m_featureId));
-  }
-
-private:
-  AltitudeGetter & m_altitudeGetter;
-  TFeatureAltitudes m_featureAltitudes;
+public:
+  std::vector<FeatureAltitude> m_featureAltitudes;
   succinct::bit_vector_builder m_altitudeAvailabilityBuilder;
-  geometry::Altitude m_minAltitude;
+  Altitude m_minAltitude;
+
+  AltitudeGetter & m_altitudeGetter;
 };
 }  // namespace
 
-namespace routing
-{
 void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGetter)
 {
   try
@@ -161,28 +139,27 @@ void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGe
     // Preparing altitude information.
     Processor processor(altitudeGetter);
     feature::ForEachFeature(mwmPath, processor);
+    processor.m_altitudeGetter.PrintStatsAndPurge();
 
     if (!processor.HasAltitudeInfo())
     {
-      LOG(LINFO, ("No altitude information for road features of mwm:", mwmPath));
+      // Possible for small islands like Bouvet or Willis.
+      LOG(LWARNING, ("No altitude information for road features of mwm:", mwmPath));
       return;
     }
-
-    CHECK(processor.IsFeatureAltitudesSorted(), ());
 
     FilesContainerW cont(mwmPath, FileWriter::OP_WRITE_EXISTING);
     auto w = cont.GetWriter(ALTITUDES_FILE_TAG);
 
     AltitudeHeader header;
-    header.m_minAltitude = processor.GetMinAltitude();
+    header.m_minAltitude = processor.m_minAltitude;
 
     auto const startOffset = w->Pos();
     header.Serialize(*w);
     {
       // Altitude availability serialization.
       coding::FreezeVisitor<Writer> visitor(*w);
-      succinct::bit_vector_builder & builder = processor.GetAltitudeAvailabilityBuilder();
-      succinct::rs_bit_vector(&builder).map(visitor);
+      succinct::rs_bit_vector(&processor.m_altitudeAvailabilityBuilder).map(visitor);
     }
     header.m_featureTableOffset = base::checked_cast<uint32_t>(w->Pos() - startOffset);
 
@@ -191,8 +168,7 @@ void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGe
     {
       // Altitude info serialization to memory.
       MemWriter<std::vector<uint8_t>> writer(deltas);
-      Processor::TFeatureAltitudes const & featureAltitudes = processor.GetFeatureAltitudes();
-      for (auto const & a : featureAltitudes)
+      for (auto const & a : processor.m_featureAltitudes)
       {
         offsets.push_back(base::checked_cast<uint32_t>(writer.Pos()));
         a.m_altitudes.Serialize(header.m_minAltitude, writer);
@@ -200,8 +176,7 @@ void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGe
     }
     {
       // Altitude offsets serialization.
-      CHECK(std::is_sorted(offsets.begin(), offsets.end()), ());
-      CHECK(adjacent_find(offsets.begin(), offsets.end()) == offsets.end(), ());
+      CHECK(base::IsSortedAndUnique(offsets.begin(), offsets.end()), ());
 
       succinct::elias_fano::elias_fano_builder builder(offsets.back(), offsets.size());
       for (uint32_t offset : offsets)
@@ -221,9 +196,10 @@ void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGe
     w->Seek(startOffset);
     header.Serialize(w);
     w->Seek(endOffset);
+
     LOG(LINFO, (ALTITUDES_FILE_TAG, "section is ready. The size is", header.m_endOffset));
     if (processor.HasAltitudeInfo())
-      LOG(LINFO, ("Min altitude is", processor.GetMinAltitude()));
+      LOG(LINFO, ("Min altitude is", processor.m_minAltitude));
     else
       LOG(LINFO, ("Min altitude isn't defined."));
   }

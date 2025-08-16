@@ -5,15 +5,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmRecyclerFragment;
 import app.organicmaps.dialog.EditTextDialogFragment;
-import app.organicmaps.editor.data.LocalizedStreet;
+import app.organicmaps.sdk.editor.Editor;
+import app.organicmaps.sdk.editor.data.LocalizedStreet;
 
 public class StreetFragment extends BaseMwmRecyclerFragment<StreetAdapter>
 {
@@ -67,7 +66,8 @@ public class StreetFragment extends BaseMwmRecyclerFragment<StreetAdapter>
   @NonNull
   public static EditTextDialogFragment.Validator getStreetValidator()
   {
-    return (activity, text) -> {
+    return (activity, text) ->
+    {
       if (TextUtils.isEmpty(text))
         return activity.getString(R.string.empty_street_name_error);
       else

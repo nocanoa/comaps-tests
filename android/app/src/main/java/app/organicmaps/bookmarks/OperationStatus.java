@@ -2,12 +2,10 @@ package app.organicmaps.bookmarks;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.Nullable;
 import androidx.core.os.ParcelCompat;
-
-import app.organicmaps.bookmarks.data.Error;
-import app.organicmaps.bookmarks.data.Result;
+import app.organicmaps.sdk.bookmarks.data.Error;
+import app.organicmaps.sdk.bookmarks.data.Result;
 
 public class OperationStatus implements Parcelable
 {
@@ -28,8 +26,7 @@ public class OperationStatus implements Parcelable
     mError = ParcelCompat.readParcelable(in, Error.class.getClassLoader(), Error.class);
   }
 
-  public static final Creator<OperationStatus> CREATOR = new Creator<>()
-  {
+  public static final Creator<OperationStatus> CREATOR = new Creator<>() {
     @Override
     public OperationStatus createFromParcel(Parcel in)
     {
@@ -59,9 +56,7 @@ public class OperationStatus implements Parcelable
   @Override
   public String toString()
   {
-    return "OperationStatus{" +
-           "mResult=" + mResult +
-           ", mError=" + mError +
-           '}';
+    return "OperationStatus{"
+  + "mResult=" + mResult + ", mError=" + mError + '}';
   }
 }

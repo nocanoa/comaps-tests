@@ -1,10 +1,9 @@
 package app.organicmaps.backup;
 
+import static app.organicmaps.sdk.util.StorageUtils.isFolderWritable;
 import static app.organicmaps.settings.BackupSettingsFragment.MAX_BACKUPS_DEFAULT_COUNT;
 import static app.organicmaps.settings.BackupSettingsFragment.MAX_BACKUPS_KEY;
-import static app.organicmaps.util.StorageUtils.isFolderWritable;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,30 +12,23 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
-
 import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import app.organicmaps.R;
+import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.sdk.util.log.Logger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import app.organicmaps.R;
-import app.organicmaps.util.UiUtils;
-import app.organicmaps.util.log.Logger;
-
 public class BackupUtils
 {
   private static final String BACKUP_PREFIX = "backup_";
   private static final String BACKUP_EXTENSION = ".kmz";
-  private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss").withLocale(Locale.US);
+  private static final DateTimeFormatter DATE_FORMATTER =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss").withLocale(Locale.US);
   private static final String TAG = BackupUtils.class.getSimpleName();
 
   public static CharSequence formatReadableFolderPath(Context context, @NonNull Uri uri)
@@ -63,8 +55,10 @@ public class BackupUtils
       volumeName = context.getString(R.string.maps_storage_removable);
 
     SpannableStringBuilder sb = new SpannableStringBuilder();
-    sb.append(volumeName + ": \n", new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_3)), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    sb.append("/" + subPath, new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_4)), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    sb.append(volumeName + ": \n", new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_3)),
+              Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    sb.append("/" + subPath, new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_4)),
+              Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     return sb;
   }
 
@@ -74,12 +68,14 @@ public class BackupUtils
     try
     {
       return Integer.parseInt(rawValue);
-    } catch (NumberFormatException e)
+    }
+    catch (NumberFormatException e)
     {
-      Logger.e(TAG, "Failed to parse max backups count, raw value: " + rawValue + " set to default: " + MAX_BACKUPS_DEFAULT_COUNT, e);
-      prefs.edit()
-          .putString(MAX_BACKUPS_KEY, String.valueOf(MAX_BACKUPS_DEFAULT_COUNT))
-          .apply();
+      Logger.e(
+          TAG,
+          "Failed to parse max backups count, raw value: " + rawValue + " set to default: " + MAX_BACKUPS_DEFAULT_COUNT,
+          e);
+      prefs.edit().putString(MAX_BACKUPS_KEY, String.valueOf(MAX_BACKUPS_DEFAULT_COUNT)).apply();
       return MAX_BACKUPS_DEFAULT_COUNT;
     }
   }

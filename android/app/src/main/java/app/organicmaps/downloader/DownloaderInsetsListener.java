@@ -3,19 +3,17 @@ package app.organicmaps.downloader;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
 import androidx.core.view.OnApplyWindowInsetsListener;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import app.organicmaps.R;
-import app.organicmaps.util.UiUtils;
+import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.WindowInsetUtils;
 
 final class DownloaderInsetsListener implements OnApplyWindowInsetsListener
 {
-
   @NonNull
   private final Context mContext;
   @NonNull
@@ -81,11 +79,8 @@ final class DownloaderInsetsListener implements OnApplyWindowInsetsListener
   {
     int bottomInset = isAnyButtonVisible ? 0 : insets.bottom;
 
-    mRecyclerView.setPadding(
-        mRecyclerView.getPaddingLeft(),
-        mRecyclerView.getPaddingTop(),
-        mRecyclerView.getPaddingRight(),
-        bottomInset);
+    mRecyclerView.setPadding(mRecyclerView.getPaddingLeft(), mRecyclerView.getPaddingTop(),
+                             mRecyclerView.getPaddingRight(), bottomInset);
 
     final ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mRecyclerView.getLayoutParams();
     layoutParams.rightMargin = insets.right;

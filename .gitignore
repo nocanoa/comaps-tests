@@ -14,12 +14,10 @@ stxxl.errlog
 stxxl.log
 screenlog.0
 
-data/styles/*/*/out/*
-data/resources-*_design/*
+data/symbols/*/design/
 # symbols png/sdf are now generated at build
-data/resources-*_*/symbols.png
-data/resources-*_*/symbols.sdf
-data/drules_proto_default_design.bin
+data/symbols/**/symbols.png
+data/symbols/**/symbols.sdf
 data/colors_design.txt
 data/patterns_design.txt
 data/bookmarks
@@ -27,6 +25,14 @@ data/edits.xml
 data/traffic.xml
 data/World.mwm
 data/WorldCoasts.mwm
+data/world_mwm/*
+data/*_hash
+data/drules_proto*
+data/classificator.txt
+data/types.txt
+data/visibility.txt
+data/colors.txt
+data/patterns.txt
 
 # Compiled Python
 *.pyc
@@ -47,8 +53,7 @@ omim.sdf
 *.rc
 !qt/res/windows.rc
 *.pdb
-out/*
-qt/mapswithme.log
+out/
 
 # XCode
 xcode/keys/*

@@ -23,7 +23,7 @@
 #elif defined(OMIM_OS_LINUX)
   #include <cstdlib>
 #elif defined(OMIM_OS_ANDROID)
-  /// Body for this function is inside android/app/src/main/cpp sources
+  /// Body for this function is inside android/sdk/src/main/cpp sources
   std::string GetAndroidSystemLanguage();
 #else
   #error "Define language preferences for your platform"
@@ -186,6 +186,27 @@ std::string GetCurrentMapLanguage()
     return std::string(StringUtf8Multilang::GetLangByCode(StringUtf8Multilang::kDefaultCode));
   }
   return languageCode;
+}
+
+std::vector<int8_t> GetPreferredLangIndexes()
+{
+  std::vector<int8_t> langs = {};
+  
+  auto const mapLang = StringUtf8Multilang::GetLangIndex(languages::GetCurrentMapLanguage());
+  if (mapLang != StringUtf8Multilang::kUnsupportedLanguageCode)
+    langs.push_back(mapLang);
+  
+  for (auto const & systemLanguage : GetSystemPreferred())
+  {
+    auto normalizedLang = Normalize(systemLanguage);
+    int8_t lang = StringUtf8Multilang::GetLangIndex(normalizedLang);
+    if (lang != StringUtf8Multilang::kUnsupportedLanguageCode
+           && find(langs.begin(), langs.end(), lang) == langs.end())
+    {
+      langs.push_back(lang);
+    }
+  }
+  return langs;
 }
 
 std::string GetTwine(std::string const & lang)

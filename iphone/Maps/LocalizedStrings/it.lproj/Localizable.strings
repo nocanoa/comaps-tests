@@ -241,7 +241,7 @@
 "pref_tts_title" = "Istruzioni vocali";
 
 /* Settings «Route» category: «Tts enable» title */
-"pref_tts_enable_title" = "Enable Voice Instructions";
+"pref_tts_enable_title" = "Abilita istruzioni vocali";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Annunciare i nomi delle strade";
@@ -253,7 +253,7 @@
 "pref_tts_language_title" = "Lingua per la voce";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Prova le indicazioni vocali (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Prova le indicazioni vocali";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Altro";
@@ -328,7 +328,7 @@
 "volunteer" = "Per fare il volontario";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Seguici e contattaci";
+"follow_us" = "Contattaci";
 
 /* Alert text */
 "email_error_body" = "Il client di posta elettronica non è stato configurato. Per favore, configuralo o contattaci all'indirizzo %@";
@@ -524,7 +524,7 @@
 "autodownload" = "Scaricamento automatico";
 
 /* Place Page opening hours text */
-"closed_now" = "Ora chiuso";
+"closed_now" = "Chiuso adesso";
 
 /* Place Page opening hours text */
 "daily" = "Tutti i giorni";
@@ -1097,4 +1097,7 @@
 "osm_profile_delete" = "Elimina account OpenStreetMap";
 "osm_profile_reauthorize" = "Riconnettiti a OpenStreetMap";
 "osm_profile_view_notes" = "Visualizza note";
-"pref_mapappearance_title" = "Map Appearance";
+"pref_mapappearance_title" = "Aspetto della mappa";
+"pref_maplanguage_title" = "Map Language";
+"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
+"pref_maplanguage_local" = "Local Language";

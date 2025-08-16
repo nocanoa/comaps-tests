@@ -1,7 +1,8 @@
 package app.organicmaps.widget.placepage;
 
-import android.content.Context;
+import static app.organicmaps.sdk.widget.placepage.PlacePageButtonFactory.nativeHasRecentlyDeletedBookmark;
 
+import android.content.Context;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -13,8 +14,10 @@ public class PlacePageButtonFactory
 {
   static PlacePageButton createButton(PlacePageButtons.ButtonType buttonType, @NonNull Context context)
   {
-    @StringRes int titleId = 0;
-    @DrawableRes int iconId = switch (buttonType)
+    @StringRes
+    int titleId = 0;
+    @DrawableRes
+    int iconId = switch (buttonType)
     {
       case BACK ->
       {
@@ -72,8 +75,6 @@ public class PlacePageButtonFactory
         yield R.drawable.ic_more;
       }
     };
-    return new PlacePageButton(titleId, iconId, buttonType);
+        return new PlacePageButton(titleId, iconId, buttonType);
   }
-
-  private native static boolean nativeHasRecentlyDeletedBookmark();
 }

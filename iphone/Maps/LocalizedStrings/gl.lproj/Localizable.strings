@@ -109,7 +109,7 @@
 "pref_tts_street_names_description" = "Cando se activa, o nome da rúa ou a saída para virar pronunciarase en voz alta.";
 "pref_tts_language_title" = "Idioma de voz";
 "pref_tts_street_names_title" = "Anunciar nomes de rúas";
-"pref_tts_test_voice_title" = "Probar indicacións de voz (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Probar indicacións por voz";
 "pref_tts_other_section_title" = "Outro";
 "pref_map_auto_zoom" = "Zum automático";
 "placepage_distance" = "Distancia";
@@ -128,7 +128,7 @@
 "report_a_bug" = "Informar dun fallo";
 "report_incorrect_map_bug" = "Informar ou corrixir datos de mapa incorrectos";
 "volunteer" = "Voluntariado";
-"follow_us" = "Síganos e póñase en contacto connosco";
+"follow_us" = "Contacta con nós";
 "email_error_body" = "Non se configurou o cliente de correo electrónico. Configúreo ou @contáctar en %@";
 "email_error_title" = "Erro de envío de correo";
 "pref_calibration_title" = "Calibración do compás";
@@ -496,7 +496,7 @@
 "placepage_track_name_hint" = "Nome do traxecto";
 "move" = "Mover";
 "track_title" = "Traxecto";
-"translated_om_site_url" = "https://www.comaps.app/";
+"translated_om_site_url" = "https://www.comaps.app/gl/";
 "app_tip_00" = "Grazas por utilizar os nosos mapas creados pola comunidade!";
 "app_tip_01" = "Coas súas doazóns e apoio, podemos crear os mellores mapas do mundo!";
 "app_tip_02" = "Gústalle a nosa aplicación? Por favor doe para apoiar o seu desenvolvemento! Aínda non lle gusta? Díganos por que e arranxarémolo!";
@@ -586,3 +586,6 @@
 "osm_mapdata_explanation %@" = "Community-created map data as of *%@*. Learn more about how to edit and update the map at [OpenStreetMap.org](https://openstreetmap.org).";
 "social_pixelfed" = "Pixelfed";
 "pref_mapappearance_title" = "Map Appearance";
+"pref_maplanguage_title" = "Map Language";
+"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
+"pref_maplanguage_local" = "Local Language";

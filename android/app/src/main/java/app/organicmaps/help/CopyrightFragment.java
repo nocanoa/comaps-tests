@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.Nullable;
-
 import androidx.core.view.ViewCompat;
 import app.organicmaps.R;
 import app.organicmaps.WebContainerDelegate;
 import app.organicmaps.base.BaseMwmFragment;
-import app.organicmaps.util.Constants;
+import app.organicmaps.sdk.util.Constants;
 import app.organicmaps.util.WindowInsetUtils;
 
 public class CopyrightFragment extends BaseMwmFragment
@@ -26,8 +24,7 @@ public class CopyrightFragment extends BaseMwmFragment
 
     ViewCompat.setOnApplyWindowInsetsListener(root, WindowInsetUtils.PaddingInsetsListener.excludeTop());
 
-    mDelegate = new WebContainerDelegate(root, Constants.Url.COPYRIGHT)
-    {
+    mDelegate = new WebContainerDelegate(root, Constants.Url.COPYRIGHT) {
       @Override
       protected void doStartActivity(Intent intent)
       {

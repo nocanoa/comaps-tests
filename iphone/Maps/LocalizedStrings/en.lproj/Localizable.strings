@@ -219,6 +219,12 @@
 "pref_zoom_title" = "Zoom buttons";
 "pref_left_button_type" = "Left Main Button";
 
+/* Settings «Map» category: «Map Language» title */
+"pref_maplanguage_title" = "Map Language";
+
+/* Settings «Map» category: «Map Language» local value */
+"pref_maplanguage_local" = "Local Language";
+
 /* Settings «Map» category: «Map Appearance» title */
 "pref_mapappearance_title" = "Map Appearance";
 
@@ -268,7 +274,7 @@
 "pref_tts_language_title" = "Voice Language";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Test Voice Directions (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Test Voice Directions";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Other";
@@ -647,8 +653,8 @@
 
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
 "error_enter_correct_storey_number" = "The number of floors must non exceed %d";
-"editor_zip_code" = "ZIP Code";
-"error_enter_correct_zip_code" = "Enter a valid ZIP code";
+"editor_zip_code" = "Postal Code";
+"error_enter_correct_zip_code" = "Enter a valid postal code";
 
 /* Place Page title for long tap */
 "core_placepage_unknown_place" = "Map Point";
@@ -771,6 +777,7 @@
 "enable_logging" = "Enable logging";
 "log_file_size" = "Log file size: %@";
 "transliteration_title" = "Transliterate into Latin alphabet";
+"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Exit";

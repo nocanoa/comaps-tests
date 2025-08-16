@@ -320,7 +320,7 @@ SessionState RoutingSession::OnLocationPositionChanged(GpsInfo const & info)
     auto const & lastGoodPoint = m_route->GetFollowedPolyline().GetCurrentIter().m_pt;
     double const dist = mercator::DistanceOnEarth(lastGoodPoint,
                                                   mercator::FromLatLon(info.m_latitude, info.m_longitude));
-    if (base::AlmostEqualAbs(dist, m_lastDistance, kRunawayDistanceSensitivityMeters))
+    if (AlmostEqualAbs(dist, m_lastDistance, kRunawayDistanceSensitivityMeters))
       return m_state;
 
     if (!info.HasSpeed() || info.m_speed < m_routingSettings.m_minSpeedForRouteRebuildMpS)
@@ -570,7 +570,7 @@ void RoutingSession::MatchLocationToRoadGraph(location::GpsInfo & location)
   m2::PointD const direction = m_positionAccumulator.GetDirection();
 
   static auto constexpr kEps = 1e-5;
-  if (base::AlmostEqualAbs(direction, m2::PointD::Zero(), kEps))
+  if (AlmostEqualAbs(direction, m2::PointD::Zero(), kEps))
     return;
 
   EdgeProj proj;
@@ -592,10 +592,10 @@ void RoutingSession::MatchLocationToRoadGraph(location::GpsInfo & location)
   {
     if (m_route->GetCurrentRoutingSettings().m_matchRoute)
     {
-      if (!base::AlmostEqualAbs(m_proj.m_point, proj.m_point, kEps))
+      if (!AlmostEqualAbs(m_proj.m_point, proj.m_point, kEps))
       {
         location.m_bearing =
-            location::AngleToBearing(base::RadToDeg(ang::AngleTo(m_proj.m_point, proj.m_point)));
+            location::AngleToBearing(math::RadToDeg(ang::AngleTo(m_proj.m_point, proj.m_point)));
       }
     }
 
@@ -808,7 +808,7 @@ bool RoutingSession::IsRouteValid() const
   return m_route && m_route->IsValid();
 }
 
-bool RoutingSession::GetRouteJunctionPoints(std::vector<m2::PointD> & routeJunctionPoints) const
+bool RoutingSession::GetRouteJunctionPoints(std::vector<geometry::PointWithAltitude> & routeJunctionPoints) const
 {
   CHECK_THREAD_CHECKER(m_threadChecker, ());
   ASSERT(m_route, ());
@@ -822,7 +822,7 @@ bool RoutingSession::GetRouteJunctionPoints(std::vector<m2::PointD> & routeJunct
   for (size_t i = 0; i < segments.size(); ++i)
   {
     auto const & junction = segments[i].GetJunction();
-    routeJunctionPoints.push_back(junction.GetPoint());
+    routeJunctionPoints.push_back(junction);
   }
 
   ASSERT_EQUAL(routeJunctionPoints.size(), routeJunctionPoints.size(), ());

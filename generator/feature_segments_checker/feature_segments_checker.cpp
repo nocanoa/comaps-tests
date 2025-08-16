@@ -97,7 +97,7 @@ bool LinearLeastSquaresFactors(std::vector<double> const & xs, std::vector<doubl
     mx2 += xs[i] * xs[i] / n;
   }
 
-  if (base::AlmostEqualAbs(mx * mx, mx2, kEpsilon))
+  if (AlmostEqualAbs(mx * mx, mx2, kEpsilon))
     return false;
 
   k = (my * mx - mxy) / (mx * mx - mx2);
@@ -188,7 +188,7 @@ public:
     for (uint32_t i = 0; i < numPoints; ++i)
     {
       // Feature segment altitude.
-      geometry::Altitude altitude = m_srtmManager.GetHeight(mercator::ToLatLon(f.GetPoint(i)));
+      geometry::Altitude altitude = m_srtmManager.GetAltitude(mercator::ToLatLon(f.GetPoint(i)));
       pointAltitudes[i] = altitude == geometry::kInvalidAltitude ? 0 : altitude;
       if (i == 0)
       {

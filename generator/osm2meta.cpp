@@ -18,7 +18,6 @@
 #include <cstdlib>
 #include <optional>
 #include <regex>
-#include <unordered_map>
 #include <unordered_set>
 
 namespace
@@ -36,7 +35,7 @@ void RemoveDuplicatesAndKeepOrder(std::vector<T> & vec)
   std::unordered_set<T> seen;
   auto const predicate = [&seen](T const & value)
   {
-    if (seen.find(value) != seen.end())
+    if (seen.contains(value))
       return true;
     seen.insert(value);
     return false;
@@ -79,7 +78,7 @@ bool Prefix2Double(std::string const & str, double & d)
   char const * s = str.c_str();
   // TODO: Replace with a faster and locale-ignored double conversion.
   d = std::strtod(s, &stop);
-  return (s != stop && strings::is_finite(d));
+  return (s != stop && math::is_finite(d));
 }
 
 }  // namespace
@@ -146,6 +145,28 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_phone(std::string const 
 std::string MetadataTagProcessorImpl::ValidateAndFormat_opening_hours(std::string const & v)
 {
   return v;
+}
+
+std::string MetadataTagProcessorImpl::ValidateAndFormat_date(std::string const & v)
+{
+  // Check if the date is in the format YYYY-MM-DD, and that it parses to a valid date.
+  std::regex const dateRegex(R"(^(\d{4})-(\d{2})-(\d{2})$)");
+  std::smatch match;
+  if (std::regex_match(v, match, dateRegex))
+  {
+    int year = std::stoi(match[1]);
+    int month = std::stoi(match[2]);
+    int day = std::stoi(match[3]);
+
+    std::tm tm = {};
+    std::istringstream ss(v);
+    ss >> std::get_time(&tm, "%Y-%m-%d");
+    if (!ss.fail() && tm.tm_year + 1900 == year && tm.tm_mon + 1 == month && tm.tm_mday == day)
+      return v;
+  }
+
+  LOG(LDEBUG, ("Invalid check_date tag value:", v));
+  return {};
 }
 
 std::string MetadataTagProcessorImpl::ValidateAndFormat_ele(std::string const & v) const
@@ -389,7 +410,7 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
     return {};
 
   auto const format = [](double hours) -> std::string {
-    if (base::AlmostEqualAbs(hours, 0.0, 1e-5))
+    if (AlmostEqualAbs(hours, 0.0, 1e-5))
       return {};
 
     std::stringstream ss;
@@ -444,8 +465,7 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
         return {};
 
       char const type = v[pos];
-      auto const addHours = convert(type, *op);
-      if (addHours)
+      if (auto const addHours = convert(type, *op))
         hours += *addHours;
       else
         return {};
@@ -532,10 +552,24 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
   if (!Metadata::TypeFromString(k, mdType))
     return;
 
+  auto const & types = m_params.m_types;
+
   std::string valid;
   switch (mdType)
   {
   case Metadata::FMD_OPEN_HOURS: valid = ValidateAndFormat_opening_hours(v); break;
+  case Metadata::FMD_CHECK_DATE:
+    if (ftypes::IsCheckDateChecker::Instance()(types))
+      valid = ValidateAndFormat_date(v);
+    else
+      return;
+    break;
+  case Metadata::FMD_CHECK_DATE_OPEN_HOURS:
+    if (ftypes::IsCheckDateChecker::Instance()(types))
+      valid = ValidateAndFormat_date(v);
+    else
+      return;
+    break;
   case Metadata::FMD_FAX_NUMBER:  // The same validator as for phone.
   case Metadata::FMD_PHONE_NUMBER: valid = ValidateAndFormat_phone(v); break;
   case Metadata::FMD_STARS: valid = ValidateAndFormat_stars(v); break;

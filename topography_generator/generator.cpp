@@ -9,11 +9,10 @@
 
 #include "geometry/mercator.hpp"
 
-#include "base/scope_guard.hpp"
-#include "base/string_utils.hpp"
 #include "base/thread_pool_computational.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <fstream>
 #include <set>
 #include <vector>
@@ -102,30 +101,33 @@ public:
   }
 
 private:
-  Altitude GetValueImpl(ms::LatLon const & pos)
+  Altitude GetValueImpl(ms::LatLon pos)
   {
     if (m_preferredTile != nullptr)
     {
+      using mercator::kPointEqualityEps;
+
       // Each SRTM tile overlaps the top row in the bottom tile and the right row in the left tile.
       // Try to prevent loading a new tile if the position can be found in the loaded one.
       auto const latDist = pos.m_lat - m_leftBottomOfPreferredTile.m_lat;
       auto const lonDist = pos.m_lon - m_leftBottomOfPreferredTile.m_lon;
-      if (latDist > -mercator::kPointEqualityEps && latDist < 1.0 + mercator::kPointEqualityEps && lonDist > -mercator::kPointEqualityEps && lonDist < 1.0 + mercator::kPointEqualityEps)
+      if (latDist > -kPointEqualityEps && latDist < 1.0 + kPointEqualityEps &&
+          lonDist > -kPointEqualityEps && lonDist < 1.0 + kPointEqualityEps)
       {
-        ms::LatLon innerPos = pos;
         if (latDist < 0.0)
-          innerPos.m_lat += mercator::kPointEqualityEps;
+          pos.m_lat += kPointEqualityEps;
         else if (latDist >= 1.0)
-          innerPos.m_lat -= mercator::kPointEqualityEps;
+          pos.m_lat -= kPointEqualityEps;
         if (lonDist < 0.0)
-          innerPos.m_lon += mercator::kPointEqualityEps;
+          pos.m_lon += kPointEqualityEps;
         else if (lonDist >= 1.0)
-          innerPos.m_lon -= mercator::kPointEqualityEps;
-        return m_preferredTile->GetHeight(innerPos);
+          pos.m_lon -= kPointEqualityEps;
+
+        return m_preferredTile->GetAltitude(pos);
       }
     }
 
-    return m_srtmManager.GetHeight(pos);
+    return m_srtmManager.GetAltitude(pos);
   }
 
   Altitude GetMedianValue(ms::LatLon const & pos)
@@ -179,14 +181,16 @@ public:
     , m_bottomLat(bottomLat)
   {}
 
+  /// @todo Should we use the same approach as in SrtmTile::GetTriangleHeight/GetBilinearHeight?
+  /// This function is used in ASTER filter only.
   Altitude GetValue(ms::LatLon const & pos) override
   {
     double ln = pos.m_lon - m_leftLon;
     double lt = pos.m_lat - m_bottomLat;
     lt = 1 - lt;  // From North to South, the same direction as inside the SRTM tiles.
 
-    auto const row = static_cast<size_t>(std::round(kArcSecondsInDegree * lt));
-    auto const col = static_cast<size_t>(std::round(kArcSecondsInDegree * ln));
+    auto const row = std::lround(kArcSecondsInDegree * lt);
+    auto const col = std::lround(kArcSecondsInDegree * ln);
 
     auto const ix = row * (kArcSecondsInDegree + 1) + col;
     CHECK(ix < m_values.size(), (pos));
@@ -240,7 +244,7 @@ class TileIsolinesTask
 public:
   TileIsolinesTask(int left, int bottom, int right, int top, std::string const & srtmDir,
                    TileIsolinesParams const * params, bool forceRegenerate)
-    : m_strmDir(srtmDir)
+    : m_srtmDir(srtmDir)
     , m_srtmProvider(srtmDir)
     , m_params(params)
     , m_forceRegenerate(forceRegenerate)
@@ -251,7 +255,7 @@ public:
 
   TileIsolinesTask(int left, int bottom, int right, int top, std::string const & srtmDir,
                    TileIsolinesProfileParams const * profileParams, bool forceRegenerate)
-    : m_strmDir(srtmDir)
+    : m_srtmDir(srtmDir)
     , m_srtmProvider(srtmDir)
     , m_profileParams(profileParams)
     , m_forceRegenerate(forceRegenerate)
@@ -296,8 +300,9 @@ private:
         return;
       }
     }
-
-    if (!GetPlatform().IsFileExistsByFullPath(generator::SrtmTile::GetPath(m_strmDir, tileName)))
+    auto const & pl = GetPlatform();
+    if (!pl.IsFileExistsByFullPath(base::JoinPath(m_srtmDir, tileName + ".hgt")) &&
+        !pl.IsFileExistsByFullPath(generator::SrtmTile::GetPath(m_srtmDir, tileName)))
     {
       LOG(LINFO, ("SRTM tile", tileName, "doesn't exist, skip processing."));
       return;
@@ -373,11 +378,10 @@ private:
                                 ValuesProvider<Altitude> & altProvider,
                                 Contours<Altitude> & contours)
   {
-    auto const avoidSeam = lat == kAsterTilesLatTop || (lat == kAsterTilesLatBottom - 1);
-    if (avoidSeam)
+    // Avoid seam between SRTM and ASTER.
+    if ((lat == kAsterTilesLatTop) || (lat == kAsterTilesLatBottom - 1))
     {
-      m_srtmProvider.SetPrefferedTile(ms::LatLon(lat == kAsterTilesLatTop ? lat - 0.5 : lat + 0.5,
-                                                 lon));
+      m_srtmProvider.SetPrefferedTile(ms::LatLon(lat == kAsterTilesLatTop ? lat - 0.5 : lat + 0.5, lon));
       SeamlessAltitudeProvider seamlessAltProvider(m_srtmProvider, altProvider,
           [](ms::LatLon const & pos)
           {
@@ -413,7 +417,7 @@ private:
   int m_bottom;
   int m_right;
   int m_top;
-  std::string m_strmDir;
+  std::string m_srtmDir;
   SrtmProvider m_srtmProvider;
   TileIsolinesParams const * m_params = nullptr;
   TileIsolinesProfileParams const * m_profileParams = nullptr;
@@ -435,14 +439,14 @@ void RunGenerateIsolinesTasks(int left, int bottom, int right, int top,
   int tilesRowPerTask = top - bottom;
   int tilesColPerTask = right - left;
 
-  if (tilesRowPerTask * tilesColPerTask <= threadsCount)
+  if (tilesRowPerTask * tilesColPerTask <= static_cast<long>(threadsCount))
   {
     tilesRowPerTask = 1;
     tilesColPerTask = 1;
   }
   else
   {
-    while (tilesRowPerTask * tilesColPerTask > maxCachedTilesPerThread)
+    while (tilesRowPerTask * tilesColPerTask > static_cast<long>(maxCachedTilesPerThread))
     {
       if (tilesRowPerTask > tilesColPerTask)
         tilesRowPerTask = (tilesRowPerTask + 1) / 2;
@@ -493,8 +497,9 @@ void Generator::GenerateIsolines(int left, int bottom, int right, int top,
 
 void Generator::GenerateIsolinesForCountries()
 {
-  if (!GetPlatform().IsFileExistsByFullPath(m_isolinesTilesOutDir) &&
-      !GetPlatform().MkDirRecursively(m_isolinesTilesOutDir))
+  auto const & pl = GetPlatform();
+  if (!pl.IsFileExistsByFullPath(m_isolinesTilesOutDir) &&
+      !pl.MkDirRecursively(m_isolinesTilesOutDir))
   {
     LOG(LERROR, ("Can't create directory", m_isolinesTilesOutDir));
     return;
@@ -508,8 +513,8 @@ void Generator::GenerateIsolinesForCountries()
       continue;
     checkedProfiles.insert(profileName);
     auto const profileTilesDir = GetTilesDir(m_isolinesTilesOutDir, profileName);
-    if (!GetPlatform().IsFileExistsByFullPath(profileTilesDir) &&
-        !GetPlatform().MkDirChecked(profileTilesDir))
+    if (!pl.IsFileExistsByFullPath(profileTilesDir) &&
+        !pl.MkDirChecked(profileTilesDir))
     {
       LOG(LERROR, ("Can't create directory", profileTilesDir));
       return;
@@ -519,7 +524,7 @@ void Generator::GenerateIsolinesForCountries()
   auto const tmpTileProfilesDir = GetTileProfilesDir(m_isolinesTilesOutDir);
 
   Platform::RmDirRecursively(tmpTileProfilesDir);
-  if (!GetPlatform().MkDirChecked(tmpTileProfilesDir))
+  if (!pl.MkDirChecked(tmpTileProfilesDir))
   {
     LOG(LERROR, ("Can't create directory", tmpTileProfilesDir));
     return;
@@ -533,7 +538,7 @@ void Generator::GenerateIsolinesForCountries()
 
     auto const countryFile = GetIsolinesFilePath(countryId, m_isolinesCountriesOutDir);
 
-    if (!m_forceRegenerate && GetPlatform().IsFileExistsByFullPath(countryFile))
+    if (!m_forceRegenerate && pl.IsFileExistsByFullPath(countryFile))
     {
       LOG(LINFO, ("Isolines for", countryId, "are ready, skip processing."));
       continue;
@@ -693,9 +698,8 @@ void Generator::InitCountryInfoGetter(std::string const & dataDir)
 
   GetPlatform().SetResourceDir(dataDir);
 
-  m_infoGetter = storage::CountryInfoReader::CreateCountryInfoReader(GetPlatform());
-  CHECK(m_infoGetter, ());
-  m_infoReader = static_cast<storage::CountryInfoReader *>(m_infoGetter.get());
+  m_infoReader = storage::CountryInfoReader::CreateCountryInfoReader(GetPlatform());
+  CHECK(m_infoReader, ());
 }
 
 void Generator::InitProfiles(std::string const & isolinesProfilesFileName,
@@ -760,6 +764,8 @@ void Generator::GetCountryRegions(storage::CountryId const & countryId, m2::Rect
   }
   CHECK_LESS(id, m_infoReader->GetCountries().size(), ());
 
+  /// @todo Refactor using Memory[Mapped] reader for countries.
+  std::lock_guard guard(m_infoMutex);
   m_infoReader->LoadRegionsFromDisk(id, countryRegions);
 }
 }  // namespace topography_generator

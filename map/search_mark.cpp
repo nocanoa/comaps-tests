@@ -47,6 +47,7 @@ enum SearchMarkPoint::SearchMarkType : uint8_t
   Playground,
   Bank,
   Fuel,
+  ChargingStation,
   ShopAlcohol,
   ShopButcher,
   ShopClothes,
@@ -71,6 +72,9 @@ enum SearchMarkPoint::SearchMarkType : uint8_t
   Pharmacy,
   DrinkingWater,
   DrinkingWaterNo,
+  BicycleParking,
+  BicycleParkingCovered,
+  BicycleRental,
 
   NotFound,  // Service value used in developer tools.
   Count
@@ -116,6 +120,7 @@ std::array<std::string, SearchMarkType::Count> const kSymbols = {
     "search-result-playground",             // Playground.
     "search-result-bank",                   // Bank.
     "search-result-fuel",                   // Fuel.
+    "search-result-charging_station",       // ChargingStation.
     "search-result-shop-alcohol",           // ShopAlcohol.
     "search-result-shop-butcher",           // ShopButcher.
     "search-result-shop-clothes",           // ShopClothes.
@@ -140,6 +145,9 @@ std::array<std::string, SearchMarkType::Count> const kSymbols = {
     "search-result-pharmacy",               // Pharmacy.
     "search-result-drinking-water",         // DrinkingWater.
     "search-result-drinking-water-no",      // DrinkingWaterNo.
+    "search-result-bicycle_parking",        // BicycleParking.
+    "search-result-bicycle_parking-covered",// BicycleParkingCovered.
+    "search-result-bicycle_rental",         // BicycleRental.
 
     
     "non-found-search-result",  // NotFound.
@@ -184,8 +192,8 @@ private:
       {{"amenity", "pub"},           SearchMarkType::Pub},
       {{"amenity", "biergarten"},    SearchMarkType::Pub},
       {{"amenity", "restaurant"},    SearchMarkType::Restaurant},
+      {{"amenity", "food_court"},    SearchMarkType::Restaurant},
       {{"amenity", "fast_food"},     SearchMarkType::FastFood},
-      {{"amenity", "food_court"},    SearchMarkType::FastFood},
       {{"amenity", "casino"},        SearchMarkType::Casino},
       {{"shop", "bookmaker"},        SearchMarkType::Lottery},
       {{"shop", "lottery"},          SearchMarkType::Lottery},
@@ -221,6 +229,9 @@ private:
       {{"amenity", "bank"},          SearchMarkType::Bank},
       {{"shop", "money_lender"},     SearchMarkType::Bank},
       {{"amenity", "fuel"},          SearchMarkType::Fuel},
+      {{"amenity", "charging_station"},                 SearchMarkType::ChargingStation},
+      {{"amenity", "charging_station", "bicycle"},      SearchMarkType::ChargingStation},
+      {{"amenity", "charging_station", "motorcar"},     SearchMarkType::ChargingStation},
       {{"shop", "alcohol"},          SearchMarkType::ShopAlcohol},
       {{"shop", "beverages"},        SearchMarkType::ShopAlcohol},
       {{"shop", "wine"},             SearchMarkType::ShopAlcohol},
@@ -279,6 +290,9 @@ private:
       {{"man_made", "water_tap", "drinking_water_no"},      SearchMarkType::DrinkingWaterNo},
       {{"man_made", "water_well", "drinking_water_no"},     SearchMarkType::DrinkingWaterNo},
       {{"natural", "spring", "drinking_water_no"},          SearchMarkType::DrinkingWaterNo},
+      {{"amenity", "bicycle_parking"},                      SearchMarkType::BicycleParking},
+      {{"amenity", "bicycle_parking", "covered"},           SearchMarkType::BicycleParkingCovered},
+      {{"amenity", "bicycle_rental"},                       SearchMarkType::BicycleRental},
     };
 
     m_searchMarkTypes.reserve(std::size(table));

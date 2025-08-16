@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import app.organicmaps.base.BaseMwmRecyclerFragment;
-import app.organicmaps.bookmarks.data.Metadata;
+import app.organicmaps.sdk.bookmarks.data.Metadata;
+import app.organicmaps.sdk.editor.Editor;
 
 public class SelfServiceFragment extends BaseMwmRecyclerFragment<SelfServiceAdapter>
 {

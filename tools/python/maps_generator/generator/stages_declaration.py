@@ -12,15 +12,15 @@ import os
 import shutil
 import tarfile
 from collections import defaultdict
-from multiprocessing.pool import ThreadPool
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import AnyStr
 from typing import Type
 
 import maps_generator.generator.diffs as diffs
 import maps_generator.generator.stages_tests as st
-from descriptions.descriptions_downloader import check_and_get_checker
-from descriptions.descriptions_downloader import download_from_wikidata_tags
-from descriptions.descriptions_downloader import download_from_wikipedia_tags
+# from descriptions.descriptions_downloader import check_and_get_checker
+# from descriptions.descriptions_downloader import download_from_wikidata_tags
+# from descriptions.descriptions_downloader import download_from_wikipedia_tags
 from maps_generator.generator import coastline
 from maps_generator.generator import settings
 from maps_generator.generator import steps
@@ -140,10 +140,10 @@ class StageFeatures(Stage):
 
 
 @outer_stage
-@production_only
 @helper_stage_for("StageDescriptions")
 class StageDownloadDescriptions(Stage):
     def apply(self, env: Env):
+        """
         run_gen_tool(
             env.gen_tool,
             out=env.get_subprocess_out(),
@@ -157,7 +157,8 @@ class StageDownloadDescriptions(Stage):
             threads_count=settings.THREADS_COUNT,
         )
 
-        langs = ("en", "ru", "es", "fr", "de")
+        # https://en.wikipedia.org/wiki/Wikipedia:Multilingual_statistics
+        langs = ("en", "de", "fr", "es", "ru", "tr")
         checker = check_and_get_checker(env.paths.popularity_path)
         download_from_wikipedia_tags(
             env.paths.wiki_url_path, env.paths.descriptions_path, langs, checker
@@ -165,6 +166,20 @@ class StageDownloadDescriptions(Stage):
         download_from_wikidata_tags(
             env.paths.id_to_wikidata_path, env.paths.descriptions_path, langs, checker
         )
+        """
+
+        src = "/home/planet/descriptions"
+        dest = env.paths.descriptions_path
+        # Empty folder "descriptions" can be already created.
+        try:
+            if os.path.isdir(dest):
+                shutil.rmtree(dest)
+            else:
+                os.remove(dest)
+        except OSError as e:
+            print("rmtree error: %s - %s" % (e.filename, e.strerror))
+
+        os.symlink(src, dest)
 
 
 @outer_stage
@@ -174,11 +189,10 @@ class StageMwm(Stage):
         tmp_mwm_names = env.get_tmp_mwm_names()
         if len(tmp_mwm_names):
             logger.info(f'Number of feature data .mwm.tmp country files to process: {len(tmp_mwm_names)}')
-            with ThreadPool(settings.THREADS_COUNT) as pool:
+            with ThreadPoolExecutor(settings.THREADS_COUNT) as pool:
                 pool.map(
                     lambda c: StageMwm.make_mwm(c, env),
-                    tmp_mwm_names,
-                    chunksize=1,
+                    tmp_mwm_names
                 )
         else:
             # TODO: list all countries that were not found?
@@ -292,7 +306,6 @@ class StageIsolinesInfo(Stage):
 
 
 @country_stage
-@production_only
 class StageDescriptions(Stage):
     def apply(self, env: Env, country, **kwargs):
         steps.step_description(env, country, **kwargs)

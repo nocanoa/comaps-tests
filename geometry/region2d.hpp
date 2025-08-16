@@ -25,18 +25,16 @@ struct DefEqualFloat
   template <typename Point>
   bool EqualPoints(Point const & p1, Point const & p2) const
   {
-    static_assert(std::is_floating_point<typename Point::value_type>::value, "");
-
-    return base::AlmostEqualAbs(p1.x, p2.x, static_cast<typename Point::value_type>(kPrecision)) &&
-           base::AlmostEqualAbs(p1.y, p2.y, static_cast<typename Point::value_type>(kPrecision));
+    static_assert(std::is_floating_point<typename Point::value_type>::value);
+    return AlmostEqualAbs(p1, p2, kPrecision);
   }
 
   template <typename Coord>
   bool EqualZeroSquarePrecision(Coord val) const
   {
-    static_assert(std::is_floating_point<Coord>::value, "");
+    static_assert(std::is_floating_point<Coord>::value);
 
-    return base::AlmostEqualAbs(val, 0.0, kPrecision * kPrecision);
+    return ::AlmostEqualAbs(val, 0.0, kPrecision * kPrecision);
   }
   // Determines if value of a val lays between a p1 and a p2 values with some precision.
   bool IsAlmostBetween(double val, double p1, double p2) const
@@ -157,6 +155,7 @@ public:
   }
 
   Container const & Data() const { return m_points; }
+  Container & MutableData() { return m_points; }
 
   template <typename EqualFn>
   static bool IsIntersect(Coord const & x11, Coord const & y11, Coord const & x12,
@@ -322,7 +321,7 @@ public:
       area += CrossProduct(prev, curr);
       prev = curr;
     }
-    area = base::Abs(area) / 2;
+    area = math::Abs(area) / 2;
 
     return area;
   }

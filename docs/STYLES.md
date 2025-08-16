@@ -2,16 +2,15 @@
 
 Here is the basic workflow to update styles:
 1. Edit the styles file you want, e.g. [`Roads.mapcss`](../data/styles/default/include/Roads.mapcss)
-2. Run the `tools/unix/generate_drules.sh` script
+2. Rebuild the app or run the `tools/unix/generate_drules.sh` script
 3. Test how your changes look in the app
-4. Commit your edits and files changed by the script
+4. Commit your edits
 5. Send a pull request!
 
 Please prepend `[styles]` to your commit message and add [Developers Certificate of Origin](CONTRIBUTING.md#legal-requirements) to it.
-Files changed by the script should be added as a separate `[styles] Regenerated` commit.
 
-Please check [a list of current styling issues](https://codeberg.org/comaps/comaps/issues?q=is%3Aopen+is%3Aissue+label%3AStyles)
-and ["icons wanted" issues](https://codeberg.org/comaps/comaps/issues?q=is%3Aopen+is%3Aissue+label%3AIcons+label%3A%22Good+first+issue%22).
+Please check [a list of current styling issues](https://codeberg.org/comaps/comaps/issues?q=&type=all&sort=&labels=410439)
+and ["icons" issues](https://codeberg.org/comaps/comaps/issues?q=&type=all&sort=&labels=446883).
 
 An overview of currently used icons can be found in the [Wiki](https://codeberg.org/comaps/comaps/wiki/Icons).
 
@@ -58,8 +57,8 @@ Icons are stored in [`data/styles/default/light/symbols/`](../data/styles/defaul
 1. Add an svg icon to `data/styles/default/light/symbols/` (and to `dark` too)
 preferably look for icons in [collections CoMaps uses already](../data/copyright.html#icons)
 2. Add icon rendering/visibility rules into `data/styles/default/include/Icons.mapcss` and to "navigation style" `data/styles/vehicle/include/Icons.mapcss`
-3. Run `tools/unix/generate_symbols.sh` to add new icons into skin files
-4. Run `tools/unix/generate_drules.sh` to generate drawing rules for the new icons
+3. Rebuild the app
+    * Or run `tools/unix/generate_symbols.sh` to add new icons into skin files and `tools/unix/generate_drules.sh` to generate drawing rules for the new icons
 5. [Test](#testing-your-changes) your changes
 
 ## How to add a new map feature / POI type
@@ -69,12 +68,12 @@ preferably look for icons in [collections CoMaps uses already](../data/copyright
 3. Define a priority for the new feature type in e.g. [`priorities_4_overlays.prio.txt`](../data/styles/default/include/priorities_4_overlays.prio.txt) and/or other priorities files
 4. Add a new icon (see [above](#how-to-add-a-new-icon)) and/or other styling (area, line..)
 5. If a new POI should be OSM-addable/editable then add it to `data/editor.config`
-6. Add new type translation into `data/strings/types_strings.txt`
+6. Add the English string (and optionally translations e.g. for your native language) into iOS and Android type strings
+e strings
 7. Add search keywords into `data/categories.txt`
-8. Run `tools/unix/generate_localizations.sh` to validate and distribute translations into iOS and Android
-9. Add new or fix current classifier tests at `/generator/generator_tests/osm_type_tests.cpp` if you can
-10. [Test](#testing-your-changes) your changes
-11. Relax and wait for the next maps update :)
+8. Add new or fix current classifier tests at `generator/generator_tests/osm_type_tests.cpp` if you can
+9. [Test](#testing-your-changes) your changes
+10. Relax and wait for the next maps update :)
 
 ## Testing your changes
 
@@ -85,7 +84,7 @@ by rebuilding styles and symbols quickly, but it's broken as of now, please help
 To test on Android or iOS device either re-build the app or put
 the compiled style files (e.g. `drules_proto_default_light.bin`) into
 a `styles/` subfolder of maps directory on the device
-(e.g. `Android/data/app.organicmaps/files/styles/`).
+(e.g. `Android/data/app.comaps/files/styles/`).
 
 Changing display zoom level for features (e.g. from z16- to z14-) might
 not take effect until map's visibility/scale index is rebuilt:

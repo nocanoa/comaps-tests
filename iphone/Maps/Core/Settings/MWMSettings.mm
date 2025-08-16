@@ -13,6 +13,7 @@ namespace
 char const * kAutoDownloadEnabledKey = "AutoDownloadEnabled";
 char const * kZoomButtonsEnabledKey = "ZoomButtonsEnabled";
 char const * kCompassCalibrationEnabledKey = "CompassCalibrationEnabled";
+char const * kMapLanguageCode = "MapLanguageCode";
 char const * kRoutingDisclaimerApprovedKey = "IsDisclaimerApproved";
 
 // TODO(igrechuhin): Remove outdated kUDAutoNightModeOff
@@ -236,6 +237,37 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
   GetFramework().SetLargeFontsSize(static_cast<bool>(largeFontSize));
 }
 
++ (NSDictionary<NSString *, NSString *> *)availableMapLanguages;
+{
+  NSMutableDictionary<NSString *, NSString *> *availableLanguages = [[NSMutableDictionary alloc] init];
+  auto const & v = StringUtf8Multilang::GetSupportedLanguages(false);
+  for (auto i: v) {
+    [availableLanguages setObject:@(std::string(i.m_name).c_str()) forKey:@(std::string(i.m_code).c_str())];
+  }
+  return availableLanguages;
+}
+
++ (NSString *)mapLanguageCode;
+{
+  std::string mapLanguageCode;
+  bool hasMapLanguageCode = settings::Get(kMapLanguageCode, mapLanguageCode);
+  if (hasMapLanguageCode) {
+    return @(mapLanguageCode.c_str());
+  }
+
+  return @"auto";
+}
+
++ (void)setMapLanguageCode:(NSString *)mapLanguageCode;
+{
+  auto &f = GetFramework();
+  if ([mapLanguageCode isEqual: @"auto"]) {
+    f.ResetMapLanguageCode();
+  } else {
+    f.SetMapLanguageCode(std::string([mapLanguageCode UTF8String]));
+  }
+}
+
 + (BOOL)transliteration { return GetFramework().LoadTransliteration(); }
 + (void)setTransliteration:(BOOL)transliteration
 {
@@ -260,12 +292,6 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 {
   std::string url;
   return settings::Get(settings::kDonateUrl, url) ? @(url.c_str()) : nil;
-}
-
-+ (BOOL)isNY
-{
-  bool isNY;
-  return settings::Get("NY", isNY) ? isNY : false;
 }
 
 + (BOOL)iCLoudSynchronizationEnabled

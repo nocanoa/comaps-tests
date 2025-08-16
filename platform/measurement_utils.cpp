@@ -7,7 +7,6 @@
 #include "base/assert.hpp"
 #include "base/bits.hpp"
 #include "base/logging.hpp"
-#include "base/macros.hpp"
 #include "base/math.hpp"
 #include "base/string_utils.hpp"
 
@@ -114,7 +113,7 @@ std::string FormatLatLonAsDMSImpl(double value, char positive, char negative, in
   // Seconds
   d = d * 60.0;
   if (dac == 0)
-    d = SignedRound(d);
+    d = std::round(d);
 
   d = std::modf(d, &i);
   sstream << std::setw(2) << i;
@@ -125,7 +124,7 @@ std::string FormatLatLonAsDMSImpl(double value, char positive, char negative, in
   sstream << "″";
 
   // This condition is too heavy for production purposes (but more correct).
-  //if (base::SignedRound(value * 3600.0 * pow(10, dac)) != 0)
+  //if (std::round(value * 3600.0 * pow(10, dac)) != 0)
   if (!AlmostEqualULPs(value, 0.0))
   {
     char postfix = positive;
@@ -193,15 +192,15 @@ double MpsToUnits(double metersPerSecond, Units units)
 {
   switch (units)
   {
-  case Units::Imperial: return KmphToMiph(MpsToKmph(metersPerSecond)); break;
-  case Units::Metric: return MpsToKmph(metersPerSecond); break;
+  case Units::Imperial: return KmphToMiph(MpsToKmph(metersPerSecond));
+  case Units::Metric: return MpsToKmph(metersPerSecond);
   }
   UNREACHABLE();
 }
 
 int FormatSpeed(double metersPerSecond, Units units)
 {
-  return static_cast<int>(std::round(MpsToUnits(metersPerSecond, units)));
+  return std::lround(MpsToUnits(metersPerSecond, units));
 }
 
 std::string FormatSpeedNumeric(double metersPerSecond, Units units)
@@ -215,8 +214,8 @@ std::string FormatOsmLink(double lat, double lon, int zoom)
 
   // Same as (lon + 180) / 360 * 1UL << 32, but without warnings.
   double constexpr factor = (1 << 30) / 90.0;
-  uint32_t const x = round((lon + 180.0) * factor);
-  uint32_t const y = round((lat + 90.0) * factor * 2.0);
+  uint32_t const x = std::lround((lon + 180.0) * factor);
+  uint32_t const y = std::lround((lat + 90.0) * factor * 2.0);
   uint64_t const code = bits::BitwiseMerge(y, x);
   std::string osmUrl = "https://osm.org/go/";
 
@@ -229,14 +228,12 @@ std::string FormatOsmLink(double lat, double lon, int zoom)
 
   for (int i = 0; i < (zoom + 8) % 3; ++i)
     osmUrl += "-";
-  // ?m tells OSM to display a marker 
+  // ?m tells OSM to display a marker
   return osmUrl + "?m";
 }
 
 bool OSMDistanceToMeters(std::string const & osmRawValue, double & outMeters)
 {
-  using strings::is_finite;
-
   char * stop;
   char const * s = osmRawValue.c_str();
   outMeters = strtod(s, &stop);
@@ -245,7 +242,7 @@ bool OSMDistanceToMeters(std::string const & osmRawValue, double & outMeters)
   if (s == stop)
     return false;
 
-  if (!is_finite(outMeters))
+  if (!math::is_finite(outMeters))
     return false;
 
   switch (*stop)
@@ -259,7 +256,7 @@ bool OSMDistanceToMeters(std::string const & osmRawValue, double & outMeters)
       outMeters = FeetToMeters(outMeters);
       s = stop + 1;
       double const inches = strtod(s, &stop);
-      if (s != stop && *stop == '"' && is_finite(inches))
+      if (s != stop && *stop == '"' && math::is_finite(inches))
         outMeters += InchesToMeters(inches);
 
       return true;
@@ -273,7 +270,7 @@ bool OSMDistanceToMeters(std::string const & osmRawValue, double & outMeters)
     {
       s = stop + 1;
       double const newValue = strtod(s, &stop);
-      if (s != stop && is_finite(newValue))
+      if (s != stop && math::is_finite(newValue))
         outMeters = newValue;
     }
     break;

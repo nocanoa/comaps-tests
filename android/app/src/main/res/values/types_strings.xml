@@ -28,6 +28,7 @@
     <string name="type.amenity.bbq">Barbecue Grill</string>
     <string name="type.amenity.bench">Bench</string>
     <string name="type.amenity.bicycle_parking">Bicycle Parking</string>
+    <string name="type.amenity.bicycle_parking.covered">Covered Bicycle Parking</string>
     <string name="type.amenity.bicycle_rental">Bicycle Rental</string>
     <string name="type.amenity.bicycle_repair_station">Bicycle Repair Station</string>
     <string name="type.amenity.biergarten">Biergarten</string>
@@ -84,6 +85,7 @@
     <string name="type.amenity.kindergarten">Kindergarten</string>
     <string name="type.amenity.library">Library</string>
     <string name="type.amenity.loading_dock">Loading Dock</string>
+    <string name="type.amenity.luggage_locker">Luggage Locker</string>
     <string name="type.amenity.marketplace">Marketplace</string>
     <string name="type.amenity.motorcycle_parking">Motorcycle Parking</string>
     <string name="type.amenity.nightclub">Nightclub</string>
@@ -128,6 +130,7 @@
     <string name="type.amenity.police">Police</string>
     <string name="type.amenity.post_box">Mailbox</string>
     <string name="type.amenity.post_office">Post Office</string>
+    <string name="type.post_office.post_partner">Post Partner</string>
     <string name="type.amenity.prison">Prison</string>
     <string name="type.amenity.pub">Pub</string>
     <string name="type.amenity.public_bookcase">Book Exchange</string>
@@ -541,8 +544,6 @@
     <string name="type.area_highway.track">Track</string>
     <string name="type.area_highway.trunk">Trunk Road</string>
     <string name="type.area_highway.unclassified">Minor Road</string>
-    <string name="type.highway.world_level">highway-world_level</string>
-    <string name="type.highway.world_towns_level">highway-world_towns_level</string>
     <!-- SECTION: Types: Historic -->
     <string name="type.historic">Historic Object</string>
     <string name="type.historic.aircraft">Historic Aircraft</string>
@@ -588,19 +589,6 @@
     <string name="type.historic.wayside_cross">Wayside Cross</string>
     <string name="type.historic.wayside_shrine">Wayside Shrine</string>
     <string name="type.historic.wreck">Shipwreck</string>
-    <string name="type.hwtag">hwtag</string>
-    <string name="type.hwtag.bidir_bicycle">hwtag-bidir_bicycle</string>
-    <string name="type.hwtag.onedir_bicycle">hwtag-onedir_bicycle</string>
-    <string name="type.hwtag.lit">hwtag-lit</string>
-    <string name="type.hwtag.nobicycle">hwtag-nobicycle</string>
-    <string name="type.hwtag.nocar">hwtag-nocar</string>
-    <string name="type.hwtag.nofoot">hwtag-nofoot</string>
-    <string name="type.hwtag.oneway">hwtag-oneway</string>
-    <string name="type.hwtag.private">hwtag-private</string>
-    <string name="type.hwtag.toll">hwtag-toll</string>
-    <string name="type.hwtag.yesbicycle">hwtag-yesbicycle</string>
-    <string name="type.hwtag.yescar">hwtag-yescar</string>
-    <string name="type.hwtag.yesfoot">hwtag-yesfoot</string>
     <string name="type.internet_access">Internet</string>
     <string name="type.internet_access.wlan">Internet</string>
     <string name="type.junction">Junction</string>
@@ -647,6 +635,7 @@
     <string name="type.leisure">Leisure</string>
     <string name="type.leisure.common">Public Land</string>
     <string name="type.leisure.dog_park">Dog Park</string>
+    <string name="type.leisure.escape_game">Escape Room</string>
     <string name="type.leisure.fitness_centre">Fitness Centre</string>
     <string name="type.leisure.fitness_station">Fitness Station</string>
     <string name="type.leisure.dance">Dance Hall</string>
@@ -713,8 +702,6 @@
     <string name="type.man_made.water_well.drinking_water_no">Water Well</string>
     <string name="type.man_made.windmill">Windmill</string>
     <string name="type.man_made.works">Industrial Works</string>
-    <string name="type.mapswithme">mapswithme</string>
-    <string name="type.mapswithme.grid">mapswithme-grid</string>
     <string name="type.military">Military</string>
     <string name="type.military.bunker">Bunker</string>
     <string name="type.mountain_pass">Mountain Pass</string>
@@ -839,11 +826,6 @@
     <string name="type.power.pole">Power Pole</string>
     <!-- A single pole supporting various public utilities, such as lighting or telephony. -->
     <string name="type.man_made.utility_pole">Utility Pole</string>
-    <string name="type.psurface">psurface</string>
-    <string name="type.psurface.paved_bad">psurface-paved_bad</string>
-    <string name="type.psurface.paved_good">psurface-paved_good</string>
-    <string name="type.psurface.unpaved_bad">psurface-unpaved_bad</string>
-    <string name="type.psurface.unpaved_good">psurface-unpaved_good</string>
     <string name="type.public_transport">Public Transport</string>
     <string name="type.public_transport.platform">Platform</string>
     <string name="type.railway">Railway</string>
@@ -1143,7 +1125,6 @@
     <string name="type.railway.tram_stop">Tram Stop</string>
     <string name="type.route">Route</string>
     <string name="type.route.ferry">Ferry</string>
-    <string name="type.route.shuttle_train">route-shuttle_train</string>
     <string name="type.shop">Shop</string>
     <string name="type.shop.alcohol">Liquor Shop</string>
     <string name="type.shop.bakery">Bakery</string>
@@ -1201,7 +1182,7 @@
     <string name="type.shop.laundry">Laundry</string>
     <string name="type.shop.mall">Mall</string>
     <string name="type.shop.massage">Massage Salon</string>
-    <string name="type.shop.mobile_phone">Cell Phone Store</string>
+    <string name="type.shop.mobile_phone">Mobile Phone Store</string>
     <string name="type.shop.money_lender">Money Lender</string>
     <string name="type.shop.motorcycle">Motorcycle Shop</string>
     <string name="type.shop.motorcycle_repair">Motorcycle Repair</string>
@@ -1334,6 +1315,7 @@
     <string name="type.tourism.information.map">Tourist Map</string>
     <string name="type.tourism.information.office">Tourist Office</string>
     <string name="type.tourism.information.visitor_centre">Visitor Centre</string>
+    <string name="type.amenity.ranger_station">Ranger Station</string>
     <string name="type.tourism.motel">Motel</string>
     <string name="type.tourism.museum">Museum</string>
     <string name="type.tourism.picnic_site">Picnic Site</string>

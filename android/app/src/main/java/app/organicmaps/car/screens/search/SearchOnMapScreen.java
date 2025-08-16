@@ -1,7 +1,6 @@
 package app.organicmaps.car.screens.search;
 
 import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
@@ -16,18 +15,18 @@ import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.LifecycleOwner;
-
+import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
-import app.organicmaps.bookmarks.data.MapObject;
 import app.organicmaps.car.SurfaceRenderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.util.UiHelpers;
-import app.organicmaps.location.LocationHelper;
-import app.organicmaps.sdk.search.SearchListener;
+import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.search.SearchEngine;
+import app.organicmaps.sdk.search.SearchListener;
 import app.organicmaps.sdk.search.SearchRecents;
 import app.organicmaps.sdk.search.SearchResult;
-import app.organicmaps.util.Language;
+import app.organicmaps.sdk.util.Config;
+import app.organicmaps.sdk.util.Language;
 
 public class SearchOnMapScreen extends BaseMapScreen implements SearchListener
 {
@@ -114,7 +113,8 @@ public class SearchOnMapScreen extends BaseMapScreen implements SearchListener
       }
 
       builder.setOnClickListener(() -> {
-        SearchRecents.add(title, getCarContext());
+        if (Config.isSearchHistoryEnabled())
+          SearchRecents.add(title, getCarContext());
         SearchEngine.INSTANCE.cancel();
         SearchEngine.INSTANCE.showResult(resultIndex);
       });
@@ -123,8 +123,12 @@ public class SearchOnMapScreen extends BaseMapScreen implements SearchListener
     {
       builder.setBrowsable(true);
       builder.setTitle(result.suggestion);
-      builder.setImage(new CarIcon.Builder(IconCompat.createWithResource(getCarContext(), R.drawable.ic_search)).build());
-      builder.setOnClickListener(() -> getScreenManager().push(new Builder(getCarContext(), getSurfaceRenderer()).setQuery(result.suggestion).build()));
+      builder.setImage(
+          new CarIcon.Builder(IconCompat.createWithResource(getCarContext(), R.drawable.ic_search)).build());
+      builder.setOnClickListener(
+          ()
+              -> getScreenManager().push(
+                  new Builder(getCarContext(), getSurfaceRenderer()).setQuery(result.suggestion).build()));
     }
     return builder.build();
   }
@@ -140,12 +144,13 @@ public class SearchOnMapScreen extends BaseMapScreen implements SearchListener
   {
     SearchEngine.INSTANCE.cancel();
 
-    final MapObject location = LocationHelper.from(getCarContext()).getMyPosition();
+    final MapObject location = MwmApplication.from(getCarContext()).getLocationHelper().getMyPosition();
     final boolean hasLocation = location != null;
     final double lat = hasLocation ? location.getLat() : 0;
     final double lon = hasLocation ? location.getLon() : 0;
 
-    SearchEngine.INSTANCE.searchInteractive(mQuery, mIsCategory, mLocale, System.nanoTime(), true /* isMapAndTable */, hasLocation, lat, lon);
+    SearchEngine.INSTANCE.searchInteractive(mQuery, mIsCategory, mLocale, System.nanoTime(), true /* isMapAndTable */,
+                                            hasLocation, lat, lon);
   }
 
   @Override

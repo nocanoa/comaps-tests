@@ -154,7 +154,7 @@
 "share_bookmarks_email_body" = "Tere!\n\nManuses on minu järjehoidjad rakendusest CoMaps. Palun ava need kui Sul on CoMaps paigaldatud. Või kui ei ole, laadi rakendus alla oma iOS või Android seadmesse, järgides seda linki: https:omaps.appget?kmz\n\nNaudi reisimist CoMapsiga!";
 
 /* message title of loading file */
-"load_kmz_title" = "Järjehoidjate laadimine";
+"load_kmz_title" = "Laadin järjehoidjaid";
 
 /* Kmz file successful loading */
 "load_kmz_successful" = "Järjehoidjad edukalt laaditud! Leiad need kaardil või järjehoidjate halduri vaates.";
@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Hääljuhiste keel";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testi hääljuhised (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testi hääljuhised";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Muu";
@@ -325,7 +325,7 @@
 "volunteer" = "Vabatahtlik kaastöö";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Võta meiega ühendust";
+"follow_us" = "Suhtle meiega";
 
 /* Alert text */
 "email_error_body" = "E-posti klienti ei ole seadistatud. Palun seadista see või kasuta mõnda muud võimalust meiega ühenduse võtmiseks aadressil %@";
@@ -1096,3 +1096,6 @@
 "osm_profile_view_notes" = "Vaata märkused";
 "about_proposition_3" = "Läbipaistev ja kasumit mittetaotlev";
 "pref_mapappearance_title" = "Kaardi välimus";
+"pref_maplanguage_title" = "Kaardi keel";
+"transliteration_title_disabled_summary" = "Kui kaardil on alati kasutusel kohalik keel, siis see eelistus on välja lülitatud";
+"pref_maplanguage_local" = "Kohalik keel";

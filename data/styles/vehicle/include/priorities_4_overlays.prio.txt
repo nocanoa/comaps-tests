@@ -239,9 +239,10 @@ amenity-parking-underground                         # icon z15- (also has captio
 amenity-parking-underground-fee                     # icon z15- (also has caption(optional) z16-)
 === 2550
 
-amenity-motorcycle_parking                          # icon z17-
+amenity-motorcycle_parking                          # icon z17- (also has area z17-)
 amenity-parking_entrance                            # icon z16-
 amenity-parking_entrance-permissive                 # icon z16-
+landuse-garages                                     # caption z16- (also has area z13-)
 === 2530
 
 amenity-parking-lane                                # icon z17- (also has area z15-)
@@ -723,6 +724,7 @@ amenity-parcel_locker                               # icon z17- (also has captio
 amenity-police                                      # icon z17-
 amenity-post_office                                 # icon z17- (also has caption(optional) z17-)
 amenity-toilets                                     # icon z17- (also has caption(optional) z17-)
+post_office-post_partner                            # icon z18- (also has caption(optional) z18-)
 shop-motorcycle                                     # icon z17-
 === 200
 
@@ -1204,6 +1206,7 @@ entrance-main                                       # icon z18- (also has captio
 # amenity-parcel_locker                             # caption(optional) z17- (also has icon z17-)
 # amenity-post_office                               # caption(optional) z17- (also has icon z17-)
 # amenity-toilets                                   # caption(optional) z17- (also has icon z17-)
+# post_office-post_partner                          # caption(optional) z18- (also has icon z18-)
 # === -9800
 
 # leisure-park-no-access                            # caption(optional) z14- (also has icon z14-, area z10-)

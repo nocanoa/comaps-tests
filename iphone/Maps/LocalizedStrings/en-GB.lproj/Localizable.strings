@@ -53,7 +53,6 @@
 
 /* Text in About screen */
 "about_proposition_3" = "Transparent and not for profit";
-
 "close" = "Close";
 "download" = "Download";
 
@@ -209,6 +208,12 @@
 "pref_zoom_title" = "Zoom buttons";
 "pref_left_button_type" = "Left Main Button";
 
+/* Settings «Map» category: «Map Language» title */
+"pref_maplanguage_title" = "Map Language";
+
+/* Settings «Map» category: «Map Language» local value */
+"pref_maplanguage_local" = "Local Language";
+
 /* Settings «Map» category: «Map Appearance» title */
 "pref_mapappearance_title" = "Map Appearance";
 
@@ -258,7 +263,7 @@
 "pref_tts_language_title" = "Voice Language";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Test Voice Directions (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Test Voice Directions";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Other";
@@ -753,6 +758,7 @@
 "enable_logging" = "Enable logging";
 "log_file_size" = "Log file size: %@";
 "transliteration_title" = "Transliterate into Latin alphabet";
+"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Exit";

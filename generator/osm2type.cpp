@@ -1016,6 +1016,7 @@ void PreprocessElement(OsmElement * p, CalculateOriginFnT const & calcOrg)
     if (value != "province")
       return;
 
+    ///@todo(pastk) some invalid relations might be empty so this might fail.
     CHECK(calcOrg, ());
     auto const org = calcOrg(p);
     if (org && s_countriesChecker.IsTransformToState(*org))
@@ -1140,7 +1141,22 @@ void PostprocessElement(OsmElement * p, FeatureBuilderParams & params)
 // And most of this junctions are assumed to be oneway.
           {"junction", "circular", [&addOneway] { addOneway = true; }},
           {"junction", "roundabout", [&addOneway] { addOneway = true; }},
-
+// Add faux oneways as access keys don't support forward/backward modifiers
+// Bicycles are not motor vehicles, so don't add oneways for them.
+          {"motor_vehicle:backward", "no", [&addOneway] { addOneway = true; }},
+          {"vehicle:backward", "no", [&addOneway] { addOneway = true; }},
+          {"motor_vehicle:forward", "no",
+           [&addOneway, &params] {
+             addOneway = true;
+             params.SetReversedGeometry(true);
+           }},
+          {"vehicle:forward", "no",
+           [&addOneway, &params] {
+             addOneway = true;
+             params.SetReversedGeometry(true);
+           }},
+          {"motor_vehicle:backward", "no", [&AddParam] { AddParam(CachedTypes::BicycleBidir); }},
+          {"motor_vehicle:forward", "no", [&AddParam] { AddParam(CachedTypes::BicycleBidir); }},
           {"access", "private", [&AddParam] { AddParam(CachedTypes::Private); }},
           {"access", "!", [&AddParam] { AddParam(CachedTypes::Private); }},
 
@@ -1392,7 +1408,7 @@ void GetNameAndType(OsmElement * p, FeatureBuilderParams & params,
           // atoi error value (0) should match empty layer constant.
           static_assert(feature::LAYER_EMPTY == 0);
           params.layer = atoi(v.c_str());
-          params.layer = base::Clamp(params.layer, int8_t{feature::LAYER_LOW}, int8_t{feature::LAYER_HIGH});
+          params.layer = math::Clamp(params.layer, int8_t{feature::LAYER_LOW}, int8_t{feature::LAYER_HIGH});
         }
       }},
   });
@@ -1456,6 +1472,7 @@ void GetNameAndType(OsmElement * p, FeatureBuilderParams & params,
 
       static CityBBox s_cityBBox;
 
+      ///@todo(pastk) some invalid relations might be empty so this might fail.
       CHECK(calcOrg, ());
       auto const org = calcOrg(p);
       if (org && s_cityBBox.IsInside(*org))

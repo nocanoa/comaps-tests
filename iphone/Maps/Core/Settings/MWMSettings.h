@@ -43,6 +43,10 @@ NS_SWIFT_NAME(SettingsBridge)
 + (BOOL)largeFontSize;
 + (void)setLargeFontSize:(BOOL)largeFontSize;
 
++ (NSDictionary<NSString *, NSString *> *)availableMapLanguages;
++ (NSString *)mapLanguageCode;
++ (void)setMapLanguageCode:(NSString *)mapLanguageCode;
+
 + (BOOL)transliteration;
 + (void)setTransliteration:(BOOL)transliteration;
 
@@ -50,7 +54,6 @@ NS_SWIFT_NAME(SettingsBridge)
 + (void)setTrackWarningAlertShown:(BOOL)shown;
 
 + (NSString *)donateUrl;
-+ (BOOL)isNY;
 
 + (BOOL)iCLoudSynchronizationEnabled;
 + (void)setICLoudSynchronizationEnabled:(BOOL)iCLoudSyncEnabled;

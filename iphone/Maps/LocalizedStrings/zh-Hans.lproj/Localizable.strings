@@ -241,7 +241,7 @@
 "pref_tts_title" = "语音指导";
 
 /* Settings «Route» category: «Tts enable» title */
-"pref_tts_enable_title" = "Enable Voice Instructions";
+"pref_tts_enable_title" = "启用语音指导";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "播报街道名称";
@@ -253,7 +253,7 @@
 "pref_tts_language_title" = "语音语言";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "测试语音指令（TTS，文本转语音系统）";
+"pref_tts_test_voice_title" = "测试语音指令";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "其他";
@@ -328,7 +328,7 @@
 "volunteer" = "志愿者";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "关注并联系我们";
+"follow_us" = "联系我们";
 
 /* Alert text */
 "email_error_body" = "尚未设置电子邮件客户端。请进行配置或通过 %@ 联系我们";
@@ -623,7 +623,7 @@
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
 "error_enter_correct_storey_number" = "最多可编辑 %d 层的建筑";
 "editor_zip_code" = "邮政编码";
-"error_enter_correct_zip_code" = "输入正确的邮政编码";
+"error_enter_correct_zip_code" = "输入有效的邮政编码";
 
 /* Place Page title for long tap */
 "core_placepage_unknown_place" = "地图点";
@@ -1097,4 +1097,7 @@
 "edit_track" = "编辑轨迹";
 "osm_profile_view_edit_history" = "查看编辑历史";
 "osm_profile_view_notes" = "查看注记";
-"pref_mapappearance_title" = "Map Appearance";
+"pref_mapappearance_title" = "地图外观";
+"pref_maplanguage_title" = "地图语言";
+"transliteration_title_disabled_summary" = "地图始终使用本地语言时禁用";
+"pref_maplanguage_local" = "本地语言";

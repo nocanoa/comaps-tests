@@ -39,10 +39,10 @@
 /* 3.1 Main natural */
 
 @glacier: #FFFFFF;
-@water: #9EE4F2;
-@water_bad: #9CD7DE;
-@wetland_tidal: #BBE5E8;
-@wetland_tidal_saltmarsh: #A6E0D6;
+@water: #89CDDC;
+@water_bad: #8FCDD3;
+@wetland_tidal: #9FD2DB;
+@wetland_tidal_saltmarsh: #A0DAD1;
 @wetland_saltmarsh: #AADEC4;
 @wetland_marsh: #ABDDC2;
 @wetland_fen: #B6DEC5;
@@ -80,35 +80,33 @@
 @allotments: #D5D395;
 @allotments_13: #D6D498;
 @allotments_12: #D8D59B;
-@scrubs: #B1C765;
-@scrubs_13: #B4C96B;
-@scrubs_12: #B8CB71;
-@scrubs_11: #BCCC76;
-@woods: #A4BD4F;
-@woods_13: #A8BE55;
-@woods_12: #ACC25C;
-@woods_11: #B1C462;
-@woods_10: #B4C469;
+@scrubs: #ACC261;
+@scrubs_13: #AFC467;
+@scrubs_12: #B3C66D;
+@scrubs_11: #B7C873;
+@woods: #A2BA4E;
+@woods_13: #A6BD55;
+@woods_12: #AABF5C;
+@woods_11: #AFC162;
+@woods_10: #B3C369;
 
 @protected_nature: #7B8F35;
 
 /* 4.LANDUSE */
 /*4.1 Main landuse*/
 
-@general_area: #FAEFE1;
-@pedestrian_area: #FCF2E4;
-@pedestrian_area_light: #FCF3E6;
+@general_area: #E8E1D5;
+@pedestrian_area: #FCF3E6;
 @railway_platform: #ECE3D6;
 @university: #F5DFBC;
-@retail: #EFE1DB;
 @hospital: #FFDAD6;
-@industrial: #E5E5E4;
+@industrial: #E8E8E8;
 @construction_area: #E4E3E6;
 @sport0: #F5EED3;
 @sport1: #E8E8C3;
 @sport2: #D4E796;
 @playground: #E4E7A2;
-@parking: #E8EFEC;
+@parking: #EBF0EF;
 @military: #DE2D28;
 @prison: #727272;
 @farmland: #E3DEAC;
@@ -211,7 +209,7 @@
 
 /* 6.2 Natural labels */
 
-@water_label: #278FA2;
+@water_label: #207A8F;
 @park_label: #3A7921;
 @halo_park_label: #FFFFFF;
 

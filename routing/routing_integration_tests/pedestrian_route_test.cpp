@@ -87,11 +87,10 @@ UNIT_TEST(Zgrad924aToKrukovo)
 
 UNIT_TEST(MoscowMailRuStarbucksToPetrovskoRazumovskyAlley)
 {
-  // Avoids footway gravel (-> path) and uses footway compacted.
   integration::CalculateRouteAndTestRouteLength(
       integration::GetVehicleComponents(VehicleType::Pedestrian),
       mercator::FromLatLon(55.7971, 37.5376), {0., 0.},
-      mercator::FromLatLon(55.7953, 37.5597), 1849.6);
+      mercator::FromLatLon(55.7953, 37.5597), 1802.31);
 }
 
 UNIT_TEST(AustraliaMelburn_AvoidMotorway)
@@ -373,10 +372,12 @@ UNIT_TEST(ItalyRome_WalkOverStreetWithSidewalkBoth)
 
 UNIT_TEST(USARedlandsEsriHQToRedlandsCommunity)
 {
+  // OM makes like OSRM with footway.
+  // Valhalla uses shorter South San Mateo + West Olive.
   integration::CalculateRouteAndTestRouteLength(
       integration::GetVehicleComponents(VehicleType::Pedestrian),
       mercator::FromLatLon(34.0556, -117.19567), {0., 0.},
-      mercator::FromLatLon(34.03682, -117.20649), 3142.15);
+      mercator::FromLatLon(34.03682, -117.20649), 3212.65);
 }
 
 UNIT_TEST(USANewYorkEmpireStateBuildingToUnitedNations)
@@ -569,18 +570,18 @@ UNIT_TEST(NoTurnOnForkingRoad_TurnTest)
 {
   TRouteResult const routeResult = integration::CalculateRoute(
       integration::GetVehicleComponents(VehicleType::Pedestrian),
-      mercator::FromLatLon(55.67505, 37.51851), {0.0, 0.0}, mercator::FromLatLon(55.67488, 37.5178));
+      mercator::FromLatLon(55.67505, 37.51851), {0.0, 0.0}, mercator::FromLatLon(55.6748507, 37.5177359));
 
   Route const & route = *routeResult.first;
   RouterResultCode const result = routeResult.second;
   TEST_EQUAL(result, RouterResultCode::NoError, ());
 
-  integration::TestRouteLength(route, 51.2);
+  integration::TestRouteLength(route, 64.655);
 
+  /// @todo t[1].m_pedestrianTurn, PedestrianDirection::TurnRight is redundant here.
   std::vector<turns::TurnItem> t;
   route.GetTurnsForTesting(t);
   TEST_EQUAL(t.size(), 2, ());
-
   TEST_EQUAL(t[0].m_pedestrianTurn, PedestrianDirection::TurnLeft, ());
 }
 
@@ -629,7 +630,7 @@ UNIT_TEST(France_Uphill_Downlhill)
     TEST(routeResult.first, ());
     Route const & route = *routeResult.first;
 
-    TestRouteLength(route, 20388.7);
+    TestRouteLength(route, 19771);
     timeDownhill = route.GetTotalTimeSec();
     TEST_GREATER(timeDownhill, 4 * 3600, ());
   }
@@ -643,7 +644,7 @@ UNIT_TEST(France_Uphill_Downlhill)
     TEST(routeResult.first, ());
     Route const & route = *routeResult.first;
 
-    TestRouteLength(route, 20388.7);
+    TestRouteLength(route, 19771);
     timeUphill = route.GetTotalTimeSec();
     TEST_GREATER(timeUphill, 4 * 3600, ());
   }

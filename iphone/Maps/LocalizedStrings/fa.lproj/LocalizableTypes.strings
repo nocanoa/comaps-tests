@@ -1,14 +1,14 @@
 "type.addr_interpolation" = "آدرس/بلاک";
 "type.addr_interpolation.even" = "آدرس/بلاک";
 "type.addr_interpolation.odd" = "آدرس/بلاک";
-"type.aerialway" = "Aerialway";
-"type.aerialway.cable_car" = "Cable Car";
+"type.aerialway" = "راه هوایی";
+"type.aerialway.cable_car" = "ماشین کابلی";
 "type.aerialway.chair_lift" = "Chair Lift";
 "type.aerialway.drag_lift" = "Drag Lift";
 "type.aerialway.gondola" = "Gondola";
 "type.aerialway.mixed_lift" = "Mixed Lift";
-"type.aerialway.station" = "Aerialway Station";
-"type.aeroway" = "Airspace Infrastructure";
+"type.aerialway.station" = "ایستگاه راه هوایی";
+"type.aeroway" = "­زیرساخت هوا و فضا";
 "type.aeroway.aerodrome" = "فرودگاه";
 "type.aeroway.aerodrome.international" = "فرودگاه";
 "type.aeroway.apron" = "Apron";
@@ -125,7 +125,7 @@
 "type.amenity.police" = "کلانتری";
 "type.amenity.post_box" = "صندوق پست";
 "type.amenity.post_office" = "دفتر پست";
-"type.amenity.prison" = "زندا   ن";
+"type.amenity.prison" = "زندان";
 "type.amenity.pub" = "میکده";
 "type.amenity.public_bookcase" = "Book Exchange";
 "type.amenity.recycling.centre" = "مرکز بازیافت";
@@ -596,8 +596,6 @@
 "type.area_highway.track" = "جاده";
 "type.area_highway.trunk" = "جاده";
 "type.area_highway.unclassified" = "جاده";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "شیء تاریخی";
 "type.historic.aircraft" = "هواپیمای تاریخی";
 "type.historic.anchor" = "لنگر تاریخی";
@@ -644,19 +642,6 @@
 "type.historic.wayside_cross" = "صلیب کنار راه";
 "type.historic.wayside_shrine" = "حرم کنار راه";
 "type.historic.wreck" = "غرق کشتی";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "وای فای";
 "type.internet_access.wlan" = "وای فای";
 "type.junction" = "Junction";
@@ -773,8 +758,6 @@
 "type.man_made.water_well.drinking_water_no" = "چاه اب";
 "type.man_made.windmill" = "توربین بادی";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "پناهگاه";
 "type.mountain_pass" = "Mountain Pass";
@@ -901,11 +884,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Utility Pole";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Public Transport";
 "type.public_transport.platform" = "Platform";
 "type.railway" = "Railway";
@@ -1207,7 +1185,6 @@
 "type.railway.tram_stop" = "ایستگاه قطار";
 "type.route" = "Route";
 "type.route.ferry" = "Ferry";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "فروشگاه";
 "type.shop.alcohol" = "فروشگاه";
 "type.shop.bakery" = "فروشگاه";
@@ -1499,3 +1476,8 @@
 "type.railway.station.subway.qingdao" = "Subway Station";
 "type.landuse.plant_nursery" = "Plant Nursery";
 "type.amenity.love_hotel" = "Love Hotel";
+"type.leisure.escape_game" = "Escape Room";
+"type.amenity.luggage_locker" = "Luggage Locker";
+"type.amenity.ranger_station" = "Ranger Station";
+"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.post_office.post_partner" = "Post Partner";

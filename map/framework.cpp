@@ -936,7 +936,7 @@ void Framework::ShowTrack(kml::TrackId trackId)
   es.SetIsVisible(track->GetGroupId(), true /* visible */);
 
   if (m_drapeEngine)
-    m_drapeEngine->SetModelViewCenter(rect.Center(), scales::GetScaleLevel(rect), true /* isAnim */, true /* trackVisibleViewport */);
+    m_drapeEngine->SetModelViewRect(rect, true, scales::GetScaleLevel(rect), true /* isAnim */, true /* trackVisibleViewport */);
 
   ActivateMapSelection();
 }
@@ -1407,67 +1407,40 @@ void Framework::ShowSearchResult(search::Result const & res, bool animation)
   SelectSearchResult(res, animation);
 }
 
-size_t Framework::ShowSearchResults(search::Results const & results)
+void Framework::UpdateViewport(search::Results const & results)
 {
-  using namespace search;
-
-  size_t count = results.GetCount();
-  if (count == 0)
-    return 0;
-
-  if (count == 1)
-  {
-    Result const & r = results[0];
-    if (!r.IsSuggest())
-      ShowSearchResult(r);
-    else
-      return 0;
-  }
-
-  FillSearchResultsMarks(true /* clear */, results);
-
   // Setup viewport according to results.
   m2::AnyRectD viewport = m_currentModelView.GlobalRect();
   m2::PointD const center = viewport.Center();
 
   double minDistance = numeric_limits<double>::max();
-  int minInd = -1;
-  for (size_t i = 0; i < count; ++i)
+  search::Result const * res = nullptr;
+  for (auto const & r : results)
   {
-    Result const & r = results[i];
     if (r.HasPoint())
     {
       double const dist = center.SquaredLength(r.GetFeatureCenter());
       if (dist < minDistance)
       {
         minDistance = dist;
-        minInd = static_cast<int>(i);
+        res = &r;
       }
     }
   }
 
-  if (minInd != -1)
+  if (res)
   {
-    m2::PointD const pt = results[minInd].GetFeatureCenter();
-
-    if (m_currentModelView.isPerspective())
-    {
-      StopLocationFollow();
-      SetViewportCenter(pt);
-      return count;
-    }
-
+    m2::PointD const pt = res->GetFeatureCenter();
     if (!viewport.IsPointInside(pt))
     {
       viewport.SetSizesToIncludePoint(pt);
+      double constexpr factor = 0.05;
+      viewport.Inflate(viewport.GetLocalRect().SizeX() * factor, viewport.GetLocalRect().SizeY() * factor);
+
       StopLocationFollow();
+      ShowRect(viewport);
     }
   }
-
-  // Graphics engine can be recreated (on Android), so we always set up viewport here.
-  ShowRect(viewport);
-
-  return count;
 }
 
 void Framework::FillSearchResultsMarks(bool clear, search::Results const & results)
@@ -1595,7 +1568,7 @@ void Framework::CreateDrapeEngine(ref_ptr<dp::GraphicsContextFactory> contextFac
       params.m_isChoosePositionMode, params.m_isChoosePositionMode, GetSelectedFeatureTriangles(),
       m_routingManager.IsRoutingActive() && m_routingManager.IsRoutingFollowing(),
       isAutozoomEnabled, simplifiedTrafficColors, std::nullopt /* arrow3dCustomDecl */,
-      std::move(overlaysShowStatsFn), std::move(onGraphicsContextInitialized), 
+      std::move(overlaysShowStatsFn), std::move(onGraphicsContextInitialized),
       std::move(params.m_renderInjectionHandler));
 
   m_drapeEngine = make_unique_dp<df::DrapeEngine>(std::move(p));
@@ -1807,7 +1780,8 @@ bool Framework::IsTrackRecordingEnabled() const
 
 void Framework::SaveRoute()
 {
-  m_routingManager.SaveRoute();
+  auto const trackId = m_routingManager.SaveRoute();
+  ShowTrack(trackId);
 }
 
 void Framework::OnUpdateGpsTrackPointsCallback(vector<pair<size_t, location::GpsInfo>> && toAdd,
@@ -2088,14 +2062,14 @@ void Framework::DeactivateMapSelection()
     m_currentPlacePageInfo = {};
 
     if (m_drapeEngine != nullptr)
-      m_drapeEngine->DeselectObject();
+      m_drapeEngine->DeselectObject(true);
   }
 }
 
-void Framework::DeactivateMapSelectionCircle()
+void Framework::DeactivateMapSelectionCircle(bool restoreViewport)
 {
     if (m_drapeEngine != nullptr)
-        m_drapeEngine->DeselectObject();
+        m_drapeEngine->DeselectObject(restoreViewport);
 }
 
 void Framework::SwitchFullScreen()
@@ -2419,7 +2393,7 @@ void Framework::PredictLocation(double & lat, double & lon, double accuracy,
                                 double bearing, double speed, double elapsedSeconds)
 {
   double offsetInM = speed * elapsedSeconds;
-  double angle = base::DegToRad(90.0 - bearing);
+  double angle = math::DegToRad(90.0 - bearing);
 
   m2::PointD mercatorPt = mercator::MetersToXY(lon, lat, accuracy).Center();
   mercatorPt = mercator::GetSmPoint(mercatorPt, offsetInM * cos(angle), offsetInM * sin(angle));
@@ -2528,6 +2502,16 @@ void Framework::SetMapLanguageCode(std::string const & langCode)
 
   if (m_searchAPI)
     m_searchAPI->SetLocale(langCode);
+}
+
+void Framework::ResetMapLanguageCode()
+{
+  settings::Delete(settings::kMapLanguageCode);
+  if (m_drapeEngine)
+    ApplyMapLanguageCode(languages::GetCurrentMapLanguage());
+
+  if (m_searchAPI)
+    m_searchAPI->SetLocale(languages::GetCurrentMapLanguage());
 }
 
 void Framework::ApplyMapLanguageCode(std::string const & langCode)
@@ -3423,8 +3407,7 @@ void Framework::FillDescription(FeatureType & ft, place_page::Info & info) const
   if (!ft.GetID().m_mwmId.IsAlive())
     return;
   auto const & regionData = ft.GetID().m_mwmId.GetInfo()->GetRegionData();
-  auto const deviceLang = StringUtf8Multilang::GetLangIndex(languages::GetCurrentMapLanguage());
-  auto const langPriority = feature::GetDescriptionLangPriority(regionData, deviceLang);
+  auto const langPriority = feature::GetDescriptionLangPriority(regionData);
 
   std::string wikiDescription = m_descriptionsLoader->GetWikiDescription(ft.GetID(), langPriority);
   if (!wikiDescription.empty())

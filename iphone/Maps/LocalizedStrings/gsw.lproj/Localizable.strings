@@ -153,7 +153,7 @@
 "pref_tts_street_names_title" = "Strassenäme aakündige";
 "pref_tts_street_names_description" = "Wenn aktiviert, wird de Name vo de Strass oder Uusfahrt, wo abboge wird, luut aakündigt.";
 "pref_tts_language_title" = "Sprach für d Sprachfüehrig";
-"pref_tts_test_voice_title" = "Teste d Sprachaawisige (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Test d Sprachaawisige";
 "pref_map_auto_zoom" = "Auto-Zoom";
 "placepage_distance" = "Entfernig";
 "search_show_on_map" = "Uf de Charte aaluege";
@@ -405,7 +405,7 @@
 "app_tip_01" = "Mit dinere Spend und dinere Unterstützig chönd mir die beste Charte vo de Welt erstelle!";
 "capacity" = "Kapazität: %@";
 "network" = "Netzwerk: %@";
-"translated_om_site_url" = "https://www.comaps.app/de/";
+"translated_om_site_url" = "https://www.comaps.app/gsw/";
 "app_tip_02" = "Gfallt dir eusi App? Bitte spend, zum d Entwicklig z unterstütze! Gfallts dir nonig? Bitte lass es eus wüsse und mir werded s Problem behebe!";
 "app_tip_03" = "Wenn du en Softwareentwickler kennsch, chasch du ihn oder sie bitte, e Funktion z implementiere, wo du bruuchsch.";
 "app_tip_04" = "Tipp irgendwo uf d Charte, zum öppis uuszwähle. Tipp lang, zum d Oberflächi uus- und wieder iizblende.";
@@ -586,3 +586,6 @@
 "social_mastodon" = "Mastodon";
 "social_pixelfed" = "Pixelfed";
 "pref_mapappearance_title" = "Chartedarstellig";
+"pref_maplanguage_title" = "Charte-Spraach";
+"transliteration_title_disabled_summary" = "Bi de Nutzig vo de lokale Spraach für d Charte uusgschaltet";
+"pref_maplanguage_local" = "Lokali Spraach";

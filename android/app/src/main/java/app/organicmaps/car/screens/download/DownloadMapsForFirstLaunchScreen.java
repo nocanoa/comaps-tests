@@ -2,15 +2,13 @@ package app.organicmaps.car.screens.download;
 
 import android.location.Location;
 import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
 import androidx.car.app.model.Action;
 import androidx.lifecycle.LifecycleOwner;
-
+import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
-import app.organicmaps.downloader.CountryItem;
-import app.organicmaps.downloader.MapManager;
-import app.organicmaps.location.LocationHelper;
+import app.organicmaps.sdk.downloader.CountryItem;
+import app.organicmaps.sdk.downloader.MapManager;
 
 class DownloadMapsForFirstLaunchScreen extends DownloadMapsScreen
 {
@@ -25,8 +23,9 @@ class DownloadMapsForFirstLaunchScreen extends DownloadMapsScreen
   @Override
   public void onResume(@NonNull LifecycleOwner owner)
   {
-    // Attempting to streamline initial download by including the current country in the list of missing maps for simultaneous retrieval.
-    final Location location = LocationHelper.from(getCarContext()).getSavedLocation();
+    // Attempting to streamline initial download by including the current country in the list of missing maps for
+    // simultaneous retrieval.
+    final Location location = MwmApplication.from(getCarContext()).getLocationHelper().getSavedLocation();
     if (location == null)
       return;
     final String countryId = MapManager.nativeFindCountry(location.getLatitude(), location.getLongitude());

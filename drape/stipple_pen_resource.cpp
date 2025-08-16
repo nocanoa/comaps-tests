@@ -5,6 +5,7 @@
 #include "base/logging.hpp"
 #include "base/shared_buffer_manager.hpp"
 
+#include <cmath>
 #include <cstring>
 #include <iomanip>
 #include <numeric>
@@ -122,7 +123,7 @@ void StipplePenRasterizator::RasterizeTriangle(uint8_t * pixels) const
 
   while (trgH > 0)
   {
-    uint8_t const base = std::round(trgH * tan);
+    uint8_t const base = std::lround(trgH * tan);
     uint32_t const left = (m_patternLength - base) / 2;
     memset(pixels + 1, 0, left);
     memset(pixels + left + 1, 255, base);
@@ -195,7 +196,7 @@ void StipplePenIndex::UploadResources(ref_ptr<dp::GraphicsContext> context, ref_
   for (auto const & n : pendingNodes)
     height += n.second.GetSize().y;
 
-  uint32_t const reserveBufferSize = base::NextPowOf2(height * kMaxStipplePenLength);
+  uint32_t const reserveBufferSize = math::NextPowOf2(height * kMaxStipplePenLength);
 
   SharedBufferManager & mng = SharedBufferManager::instance();
   SharedBufferManager::shared_buffer_ptr_t ptr = mng.reserveSharedBuffer(reserveBufferSize);

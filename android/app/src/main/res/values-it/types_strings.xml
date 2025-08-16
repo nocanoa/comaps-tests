@@ -594,7 +594,7 @@
     <string name="type.landuse.flowerbed">Aiuola</string>
     <string name="type.landuse.forest">Foresta</string>
     <string name="type.landuse.forest.coniferous">Foresta di conifere</string>
-    <string name="type.landuse.forest.deciduous">Foresta de cidua</string>
+    <string name="type.landuse.forest.deciduous">Foresta decidua</string>
     <string name="type.landuse.forest.mixed">Foresta mista</string>
     <string name="type.landuse.garages">Garage</string>
     <string name="type.landuse.grass">Prato erboso</string>
@@ -784,7 +784,6 @@
     <string name="type.power.substation">Sottostazione elettrica</string>
     <!-- A tower or pylon carrying high voltage electricity cables. -->
     <string name="type.power.tower">Pilone elettrico</string>
-    <string name="type.psurface">Superficie</string>
     <string name="type.public_transport">Trasporto pubblico</string>
     <string name="type.railway">Ferrovia</string>
     <string name="type.railway.abandoned">Ferrovia abbandonata</string>
@@ -830,7 +829,7 @@
     <string name="type.railway.station.light_rail.london">Stazione ferroviaria</string>
     <string name="type.railway.station.light_rail.porto">Stazione ferroviaria</string>
     <string name="type.railway.station.monorail">Stazione ferroviaria</string>
-    <string name="type.railway.station.subway">Stazione metropolitana</string>
+    <string name="type.railway.station.subway">Stazione Metropolitana</string>
     <string name="type.railway.station.subway.adana">Stazione metropolitana</string>
     <string name="type.railway.station.subway.algiers">Stazione metropolitana</string>
     <string name="type.railway.station.subway.almaty">Stazione metropolitana</string>
@@ -885,7 +884,7 @@
     <string name="type.railway.station.subway.lille">Stazione metropolitana</string>
     <string name="type.railway.station.subway.lima">Stazione metropolitana</string>
     <string name="type.railway.station.subway.lisboa">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.london">Stazione metropolitana</string>
+    <string name="type.railway.station.subway.london">Stazione Metropolitana di Londra</string>
     <string name="type.railway.station.subway.lyon">Stazione metropolitana</string>
     <string name="type.railway.station.subway.madrid">Stazione metropolitana</string>
     <string name="type.railway.station.subway.malaga">Stazione metropolitana</string>
@@ -900,12 +899,12 @@
     <string name="type.railway.station.subway.montreal">Stazione metropolitana</string>
     <string name="type.railway.station.subway.moscow">Stazione metropolitana</string>
     <string name="type.railway.station.subway.munchen">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.nagoya">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.newyork">Stazione metropolitana</string>
+    <string name="type.railway.station.subway.nagoya">Stazione metropolitana di Nagoya</string>
+    <string name="type.railway.station.subway.newyork">Stazione metropolitana di New York</string>
     <string name="type.railway.station.subway.nnov">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.novosibirsk">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.osaka">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.oslo">Stazione metropolitana</string>
+    <string name="type.railway.station.subway.novosibirsk">Stazione metropolitana di Novosibirsk</string>
+    <string name="type.railway.station.subway.osaka">Stazione metropolitana di Osaka</string>
+    <string name="type.railway.station.subway.oslo">Stazione metropolitana di Oslo</string>
     <string name="type.railway.station.subway.palma">Stazione metropolitana</string>
     <string name="type.railway.station.subway.panama">Stazione metropolitana</string>
     <string name="type.railway.station.subway.paris">Stazione metropolitana</string>
@@ -1235,7 +1234,7 @@
     <string name="type.attraction.water_slide">Scivolo d\'acqua</string>
     <string name="type.tourism.attraction.specified">Attrattiva</string>
     <string name="type.tourism.camp_site">Campeggio</string>
-    <string name="type.tourism.caravan_site">Area per campeggiatori</string>
+    <string name="type.tourism.caravan_site">Area camper</string>
     <!-- A rentable countryside vacation house. -->
     <string name="type.tourism.chalet">Cottage per le vacanze</string>
     <string name="type.tourism.gallery">Galleria</string>
@@ -1338,8 +1337,6 @@
     <string name="type.man_made.cairn">Tumulo</string>
     <string name="type.railway.funicular.tunnel">Galleria funicolare</string>
     <string name="type.leisure.hackerspace">Hackerspace</string>
-    <string name="type.mapswithme">MapsWithMe</string>
-    <string name="type.mapswithme.grid">mapswithme-grid</string>
     <string name="type.internet_access.wlan">Internet</string>
     <string name="type.leisure.recreation_ground">Area divertimento</string>
     <string name="type.railway.subway.bridge">Ponte della metropolitana</string>
@@ -1370,30 +1367,10 @@
     <string name="type.piste_type.downhill.freeride">Pista da sci fuoripista</string>
     <string name="type.amenity.shelter.lean_to">Riparo a capanna</string>
     <string name="type.aerialway.j.bar">Sciovia ad ancora a J</string>
-    <string name="type.hwtag.bidir_bicycle">hwtag-bidir_bicycle</string>
     <string name="type.leisure.firepit">Braciere</string>
-    <string name="type.route.shuttle_train">route-shuttle_train</string>
-    <string name="type.highway.world_level">highway-world_level</string>
-    <string name="type.hwtag">hwtag</string>
-    <string name="type.hwtag.yescar">hwtag-yescar</string>
     <string name="type.amenity.studio">Studio</string>
-    <string name="type.highway.world_towns_level">highway-world_towns_level</string>
-    <string name="type.hwtag.onedir_bicycle">hwtag-onedir_bicycle</string>
-    <string name="type.hwtag.lit">hwtag-lit</string>
-    <string name="type.hwtag.nobicycle">hwtag-nobicycle</string>
-    <string name="type.hwtag.nocar">hwtag-nocar</string>
-    <string name="type.hwtag.nofoot">hwtag-nofoot</string>
-    <string name="type.hwtag.oneway">hwtag-oneway</string>
-    <string name="type.hwtag.private">hwtag-private</string>
-    <string name="type.hwtag.toll">hwtag-toll</string>
-    <string name="type.hwtag.yesbicycle">hwtag-yesbicycle</string>
-    <string name="type.hwtag.yesfoot">hwtag-yesfoot</string>
     <string name="type.landuse.plant_nursery">Vivaio</string>
     <string name="type.man_made.cutline">Cutline</string>
-    <string name="type.psurface.paved_bad">psurface-paved_bad</string>
-    <string name="type.psurface.paved_good">psurface-paved_good</string>
-    <string name="type.psurface.unpaved_bad">psurface-unpaved_bad</string>
-    <string name="type.psurface.unpaved_good">psurface-unpaved_good</string>
     <string name="type.amenity.love_hotel">Love hotel</string>
     <string name="type.highway.ladder">Scala a pioli</string>
     <string name="type.sport.diving">Tuffi dalle grandi altezze</string>
@@ -1402,4 +1379,13 @@
     <string name="type.railway.station.subway.qingdao">Stazione metropolitana</string>
     <string name="type.natural.wetland.swamp">Palude</string>
     <string name="type.natural.wetland.mangrove">Mangrovie</string>
+    <string name="type.amenity.luggage_locker">Deposito Bagagli</string>
+    <string name="type.amenity.bicycle_parking.covered">Parcheggio Biciclette Coperto</string>
+    <string name="type.post_office.post_partner">Partner Postale</string>
+    <string name="type.natural.wetland.saltmarsh">Palude Salmastra</string>
+    <string name="type.natural.wetland.saltmarsh.tidal">Palude Salmastra di Marea</string>
+    <string name="type.natural.wetland.reedbed">Giunco</string>
+    <string name="type.natural.wetland.tidalflat">Piana di Marea</string>
+    <string name="type.natural.wetland.fen">Palude</string>
+    <string name="type.leisure.escape_game">Escape Room</string>
 </resources>

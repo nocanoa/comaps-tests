@@ -596,8 +596,6 @@
 "type.area_highway.track" = "Via";
 "type.area_highway.trunk" = "Strada";
 "type.area_highway.unclassified" = "Via";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Oggetto storico";
 "type.historic.aircraft" = "Aerei storici";
 "type.historic.anchor" = "Ancora storica";
@@ -644,19 +642,6 @@
 "type.historic.wayside_cross" = "Crocifisso";
 "type.historic.wayside_shrine" = "Edicola votiva";
 "type.historic.wreck" = "Naufragio";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Incrocio";
@@ -672,7 +657,6 @@
 
 /* In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. */
 "type.landuse.cemetery.christian" = "Cimitero cristiano";
-"type.landuse.religious" = "Religious Land";
 "type.landuse.commercial" = "Area commerciale";
 "type.landuse.construction" = "Cantiere";
 "type.landuse.education" = "Strutture didattiche";
@@ -682,7 +666,7 @@
 "type.landuse.flowerbed" = "Aiuola";
 "type.landuse.forest" = "Foresta";
 "type.landuse.forest.coniferous" = "Foresta di conifere";
-"type.landuse.forest.deciduous" = "Foresta de cidua";
+"type.landuse.forest.deciduous" = "Foresta decidua";
 "type.landuse.forest.mixed" = "Foresta mista";
 "type.landuse.garages" = "Garage";
 "type.landuse.grass" = "Prato erboso";
@@ -773,8 +757,6 @@
 "type.man_made.water_well.drinking_water_no" = "Pozzo d'acqua";
 "type.man_made.windmill" = "Mulino a vento";
 "type.man_made.works" = "Fabbrica";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Forze armate";
 "type.military.bunker" = "Bunker";
 "type.mountain_pass" = "Passo";
@@ -901,11 +883,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Palo di servizio";
-"type.psurface" = "Superficie";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Trasporto pubblico";
 "type.public_transport.platform" = "Banchina";
 "type.railway" = "Ferrovia";
@@ -969,7 +946,7 @@
 "type.railway.station.light_rail.london" = "Stazione ferroviaria";
 "type.railway.station.light_rail.porto" = "Stazione ferroviaria";
 "type.railway.station.monorail" = "Stazione ferroviaria";
-"type.railway.station.subway" = "Stazione metropolitana";
+"type.railway.station.subway" = "Stazione Metropolitana";
 "type.railway.station.subway.adana" = "Stazione metropolitana";
 "type.railway.station.subway.algiers" = "Stazione metropolitana";
 "type.railway.station.subway.almaty" = "Stazione metropolitana";
@@ -1024,7 +1001,7 @@
 "type.railway.station.subway.lille" = "Stazione metropolitana";
 "type.railway.station.subway.lima" = "Stazione metropolitana";
 "type.railway.station.subway.lisboa" = "Stazione metropolitana";
-"type.railway.station.subway.london" = "Stazione metropolitana di Londra";
+"type.railway.station.subway.london" = "Stazione Metropolitana di Londra";
 "type.railway.station.subway.lyon" = "Stazione metropolitana";
 "type.railway.station.subway.madrid" = "Stazione metropolitana";
 "type.railway.station.subway.malaga" = "Stazione metropolitana";
@@ -1206,7 +1183,6 @@
 "type.railway.tram_stop" = "Fermata del tram";
 "type.route" = "Percorso";
 "type.route.ferry" = "Traghetto";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Negozio";
 "type.shop.alcohol" = "Negozio di alcolici";
 "type.shop.bakery" = "Panetteria";
@@ -1385,7 +1361,7 @@
 "type.attraction.water_slide" = "Scivolo d'acqua";
 "type.tourism.attraction.specified" = "Attrattiva";
 "type.tourism.camp_site" = "Campeggio";
-"type.tourism.caravan_site" = "Area per campeggiatori";
+"type.tourism.caravan_site" = "Area camper";
 
 /* A rentable countryside vacation house. */
 "type.tourism.chalet" = "Cottage per le vacanze";
@@ -1494,8 +1470,14 @@
 "type.railway.station.subway.qingdao" = "Stazione metropolitana di Qingdao";
 "type.natural.wetland.swamp" = "Palude";
 "type.natural.wetland.mangrove" = "Mangrovie";
-"type.natural.wetland.tidalflat" = "Tidal Flat";
-"type.natural.wetland.saltmarsh" = "Salt Marsh";
-"type.natural.wetland.fen" = "Fen";
-"type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
-"type.natural.wetland.reedbed" = "Reed Bed";
+"type.natural.wetland.tidalflat" = "Piana di Marea";
+"type.natural.wetland.saltmarsh" = "Palude Salmastra";
+"type.natural.wetland.fen" = "Palude";
+"type.natural.wetland.saltmarsh.tidal" = "Palude Salmastra di Marea";
+"type.natural.wetland.reedbed" = "Giunco";
+"type.leisure.escape_game" = "Escape Room";
+"type.amenity.luggage_locker" = "Deposito Bagagli";
+"type.amenity.ranger_station" = "Ranger Station";
+"type.amenity.bicycle_parking.covered" = "Parcheggio Biciclette Coperto";
+"type.post_office.post_partner" = "Partner Postale";
+"type.landuse.religious" = "Religious Land";

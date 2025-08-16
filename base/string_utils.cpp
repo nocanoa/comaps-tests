@@ -1,6 +1,7 @@
 #include "base/string_utils.hpp"
 
 #include "base/assert.hpp"
+#include "base/math.hpp"
 #include "base/stl_helpers.hpp"
 
 #include <algorithm>
@@ -10,7 +11,6 @@
 #include <iterator>
 
 #include <boost/algorithm/string/trim.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
 #include <fast_double_parser.h>
 
 namespace strings
@@ -35,26 +35,21 @@ double RealConverter<double>(char const * start, char ** stop)
 }
 
 template <typename T>
-bool IsFinite(T t)
-{
-  return boost::math::isfinite(t);
-}
-
-template <typename T>
 bool ToReal(char const * start, T & result)
 {
   // Try faster implementation first.
   double d;
+  // TODO(AB): replace with more robust dependency that doesn't use std::is_finite in the implementation.
   char const * endptr = fast_double_parser::parse_number(start, &d);
   if (endptr == nullptr)
   {
     // Fallback to our implementation, it supports numbers like "1."
     char * stop;
     result = RealConverter<T>(start, &stop);
-    if (*stop == 0 && start != stop && IsFinite(result))
+    if (*stop == 0 && start != stop && math::is_finite(result))
       return true;
   }
-  else if (*endptr == 0 && IsFinite(d))
+  else if (*endptr == 0 && math::is_finite(d))
   {
     result = static_cast<T>(d);
     return true;
@@ -114,11 +109,6 @@ bool to_float(char const * start, float & f)
 bool to_double(char const * start, double & d)
 {
   return ToReal(start, d);
-}
-
-bool is_finite(double d)
-{
-  return IsFinite(d);
 }
 
 UniString MakeLowerCase(UniString s)
@@ -483,15 +473,66 @@ bool AlmostEqual(std::string const & str1, std::string const & str2, size_t mism
   return false;
 }
 
-void ParseCSVRow(std::string const & s, char const delimiter, std::vector<std::string> & target)
+namespace
+{
+// Trim, unquote the string, and unescape two double quotes.
+std::string & UnescapeCSVColumn(std::string & s)
+{
+  Trim(s);
+
+  if (s.size() < 2)
+    return s;
+
+  if (*s.begin() == '"' && *s.rbegin() == '"')
+    s = s.substr(1, s.size() - 2);
+
+  for (size_t i = 1; i < s.size(); ++i)
+    if (s[i] == '"' && s[i - 1] == '"')
+      s.erase(i, 1);
+
+  return s;
+}
+}  // namespace
+
+void ParseCSVRow(std::string const & row, char const delimiter, std::vector<std::string> & target)
 {
   target.clear();
-  TokenizeIterator<SimpleDelimiter, std::string::const_iterator, true /* KeepEmptyTokens */> it(s.begin(), s.end(), delimiter);
-  for (; it; ++it)
+
+  std::string prevColumns;
+  for (TokenizeIterator<SimpleDelimiter, std::string::const_iterator, true /* KeepEmptyTokens */> it {row.begin(), row.end(), delimiter}; it; ++it)
   {
-    std::string column(*it);
-    Trim(column);
-    target.push_back(std::move(column));
+    std::string_view column = *it;
+    size_t const quotesCount = std::count(column.begin(), column.end(), '"');
+    bool const evenQuotes = quotesCount % 2 == 0;
+    if (prevColumns.empty())
+    {
+      if (evenQuotes)
+      {
+        if (quotesCount == 0)
+          target.emplace_back(column);
+        else
+        {
+          std::string strColumn {column};
+          target.push_back(UnescapeCSVColumn(strColumn));
+        }
+      }
+      else
+      {
+        prevColumns = column;
+        prevColumns.push_back(',');
+      }
+    }
+    else
+    {
+      prevColumns.append(column);
+      if (evenQuotes)
+        prevColumns.push_back(',');
+      else
+      {
+        target.push_back(UnescapeCSVColumn(prevColumns));
+        prevColumns.clear();
+      }
+    }
   }
 
   // Special case: if the string is empty, return an empty array instead of {""}.
