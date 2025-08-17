@@ -26,7 +26,7 @@
 class QItemSelection;
 class Selection;
 
-DECLARE_EXCEPTION(TrafficModeError, RootException);
+DECLARE_EXCEPTION(TrafficModelError, RootException);
 
 namespace traffxml
 {
@@ -62,13 +62,13 @@ private:
 
 /// This class is used to map sample ids to real data
 /// and change sample evaluations.
-class TrafficMode : public QAbstractTableModel
+class TrafficModel : public QAbstractTableModel
 {
   Q_OBJECT
 
 public:
   // TODO(mgsergio): Check we are on the right mwm. I.e. right mwm version and everything.
-  TrafficMode(std::string const & dataFileName, DataSource const & dataSource,
+  TrafficModel(std::string const & dataFileName, DataSource const & dataSource,
               std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
               std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
               QObject * parent = Q_NULLPTR);

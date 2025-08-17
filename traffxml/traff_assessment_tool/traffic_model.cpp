@@ -1,4 +1,4 @@
-#include "traffic_mode.hpp"
+#include "traffic_model.hpp"
 
 #ifdef openlr_obsolete
 #include "openlr/openlr_model_xml.hpp"
@@ -99,8 +99,8 @@ void RoadPointCandidate::SetActivePoint(FeatureID const & fid)
 }  // namespace impl
 #endif
 
-// TrafficMode -------------------------------------------------------------------------------------
-TrafficMode::TrafficMode(std::string const & dataFileName, DataSource const & dataSource,
+// TrafficModel -------------------------------------------------------------------------------------
+TrafficModel::TrafficModel(std::string const & dataFileName, DataSource const & dataSource,
                          std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
                          std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
                          QObject * parent)
@@ -112,7 +112,7 @@ TrafficMode::TrafficMode(std::string const & dataFileName, DataSource const & da
   // TODO(mgsergio): Collect stat how many segments of each kind were parsed.
   pugi::xml_document doc;
   if (!doc.load_file(dataFileName.data()))
-    MYTHROW(TrafficModeError, ("Can't load file:", strerror(errno)));
+    MYTHROW(TrafficModelError, ("Can't load file:", strerror(errno)));
 
   // Save root node without children.
   {
@@ -141,7 +141,7 @@ TrafficMode::TrafficMode(std::string const & dataFileName, DataSource const & da
       // TODO(mgsergio): Unify error handling interface of openlr_xml_mode and decoded_path parsers.
       auto const partnerSegmentXML = xmlSegment.child("reportSegments");
       if (!openlr::SegmentFromXML(partnerSegmentXML, segment))
-        MYTHROW(TrafficModeError, ("An error occurred while parsing: can't parse segment"));
+        MYTHROW(TrafficModelError, ("An error occurred while parsing: can't parse segment"));
 
       if (auto const route = xmlSegment.child("Route"))
         openlr::PathFromXML(route, m_dataSource, matchedPath);
@@ -182,7 +182,7 @@ TrafficMode::TrafficMode(std::string const & dataFileName, DataSource const & da
   }
   catch (openlr::DecodedPathLoadError const & e)
   {
-    MYTHROW(TrafficModeError, ("An exception occurred while parsing", dataFileName, e.Msg()));
+    MYTHROW(TrafficModelError, ("An exception occurred while parsing", dataFileName, e.Msg()));
   }
 #endif
 
@@ -190,7 +190,7 @@ TrafficMode::TrafficMode(std::string const & dataFileName, DataSource const & da
 }
 
 // TODO(mgsergio): Check if a path was committed, or commit it.
-bool TrafficMode::SaveSampleAs(std::string const & fileName) const
+bool TrafficModel::SaveSampleAs(std::string const & fileName) const
 {
   CHECK(!fileName.empty(), ("Can't save to an empty file."));
 
@@ -230,7 +230,7 @@ bool TrafficMode::SaveSampleAs(std::string const & fileName) const
   return true;
 }
 
-int TrafficMode::rowCount(const QModelIndex & parent) const
+int TrafficModel::rowCount(const QModelIndex & parent) const
 {
 #ifdef openlr_obsolete
   return static_cast<int>(m_segments.size());
@@ -240,9 +240,9 @@ int TrafficMode::rowCount(const QModelIndex & parent) const
 #endif
 }
 
-int TrafficMode::columnCount(const QModelIndex & parent) const { return 4; }
+int TrafficModel::columnCount(const QModelIndex & parent) const { return 4; }
 
-QVariant TrafficMode::data(const QModelIndex & index, int role) const
+QVariant TrafficModel::data(const QModelIndex & index, int role) const
 {
   if (!index.isValid())
     return QVariant();
@@ -270,7 +270,7 @@ QVariant TrafficMode::data(const QModelIndex & index, int role) const
   return QVariant();
 }
 
-QVariant TrafficMode::headerData(int section, Qt::Orientation orientation,
+QVariant TrafficModel::headerData(int section, Qt::Orientation orientation,
                                  int role /* = Qt::DisplayRole */) const
 {
   if (orientation != Qt::Horizontal && role != Qt::DisplayRole)
@@ -286,7 +286,7 @@ QVariant TrafficMode::headerData(int section, Qt::Orientation orientation,
   UNREACHABLE();
 }
 
-void TrafficMode::OnItemSelected(QItemSelection const & selected, QItemSelection const &)
+void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelection const &)
 {
 #ifdef openlr_obsolete
   ASSERT(!selected.empty(), ());
@@ -314,7 +314,7 @@ void TrafficMode::OnItemSelected(QItemSelection const & selected, QItemSelection
 #endif
 }
 
-Qt::ItemFlags TrafficMode::flags(QModelIndex const & index) const
+Qt::ItemFlags TrafficModel::flags(QModelIndex const & index) const
 {
   if (!index.isValid())
     return Qt::ItemIsEnabled;
@@ -323,7 +323,7 @@ Qt::ItemFlags TrafficMode::flags(QModelIndex const & index) const
 }
 
 #ifdef openlr_obsolete
-void TrafficMode::GoldifyMatchedPath()
+void TrafficModel::GoldifyMatchedPath()
 {
   if (!m_currentSegment->HasMatchedPath())
   {
@@ -340,7 +340,7 @@ void TrafficMode::GoldifyMatchedPath()
   m_drawerDelegate->DrawGoldenPath(GetPoints(m_currentSegment->GetGoldenPath()));
 }
 
-void TrafficMode::StartBuildingPath()
+void TrafficModel::StartBuildingPath()
 {
   if (!StartBuildingPathChecks())
     return;
@@ -352,7 +352,7 @@ void TrafficMode::StartBuildingPath()
   m_drawerDelegate->VisualizePoints(m_pointsDelegate->GetAllJunctionPointsInViewport());
 }
 
-void TrafficMode::PushPoint(m2::PointD const & coord, std::vector<FeaturePoint> const & points)
+void TrafficModel::PushPoint(m2::PointD const & coord, std::vector<FeaturePoint> const & points)
 {
   impl::RoadPointCandidate point(points, coord);
   if (!m_goldenPath.empty())
@@ -360,18 +360,18 @@ void TrafficMode::PushPoint(m2::PointD const & coord, std::vector<FeaturePoint> 
   m_goldenPath.push_back(point);
 }
 
-void TrafficMode::PopPoint()
+void TrafficModel::PopPoint()
 {
   CHECK(!m_goldenPath.empty(), ("Attempt to pop point from an empty path."));
   m_goldenPath.pop_back();
 }
 
-void TrafficMode::CommitPath()
+void TrafficModel::CommitPath()
 {
   CHECK(m_currentSegment, ("No segments selected"));
 
   if (!m_buildingPath)
-    MYTHROW(TrafficModeError, ("Path building is not started"));
+    MYTHROW(TrafficModelError, ("Path building is not started"));
 
   SCOPE_GUARD(guard, [this] { emit EditingStopped(); });
 
@@ -412,7 +412,7 @@ void TrafficMode::CommitPath()
   m_goldenPath.clear();
 }
 
-void TrafficMode::RollBackPath()
+void TrafficModel::RollBackPath()
 {
   CHECK(m_currentSegment, ("No segments selected"));
   CHECK(m_buildingPath, ("No path building is in progress."));
@@ -429,7 +429,7 @@ void TrafficMode::RollBackPath()
   emit EditingStopped();
 }
 
-void TrafficMode::IgnorePath()
+void TrafficModel::IgnorePath()
 {
   CHECK(m_currentSegment, ("No segments selected"));
 
@@ -453,23 +453,23 @@ void TrafficMode::IgnorePath()
   emit EditingStopped();
 }
 
-size_t TrafficMode::GetPointsCount() const
+size_t TrafficModel::GetPointsCount() const
 {
   return m_goldenPath.size();
 }
 
-m2::PointD const & TrafficMode::GetPoint(size_t const index) const
+m2::PointD const & TrafficModel::GetPoint(size_t const index) const
 {
   return m_goldenPath[index].GetCoordinate();
 }
 
-m2::PointD const & TrafficMode::GetLastPoint() const
+m2::PointD const & TrafficModel::GetLastPoint() const
 {
   CHECK(!m_goldenPath.empty(), ("Attempt to get point from an empty path."));
   return m_goldenPath.back().GetCoordinate();
 }
 
-std::vector<m2::PointD> TrafficMode::GetGoldenPathPoints() const
+std::vector<m2::PointD> TrafficModel::GetGoldenPathPoints() const
 {
   std::vector<m2::PointD> coordinates;
   for (auto const & roadPoint : m_goldenPath)
@@ -478,7 +478,7 @@ std::vector<m2::PointD> TrafficMode::GetGoldenPathPoints() const
 }
 
 // TODO(mgsergio): Draw the first point when the path size is 1.
-void TrafficMode::HandlePoint(m2::PointD clickPoint, Qt::MouseButton const button)
+void TrafficModel::HandlePoint(m2::PointD clickPoint, Qt::MouseButton const button)
 {
   if (!m_buildingPath)
     return;
@@ -555,12 +555,12 @@ void TrafficMode::HandlePoint(m2::PointD clickPoint, Qt::MouseButton const butto
   }
 }
 
-bool TrafficMode::StartBuildingPathChecks() const
+bool TrafficModel::StartBuildingPathChecks() const
 {
   CHECK(m_currentSegment, ("A segment should be selected before path building is started."));
 
   if (m_buildingPath)
-    MYTHROW(TrafficModeError, ("Path building already in progress."));
+    MYTHROW(TrafficModelError, ("Path building already in progress."));
 
   if (m_currentSegment->HasGoldenPath())
   {

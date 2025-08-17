@@ -8,8 +8,8 @@ set(SRC
   map_widget.hpp
   points_controller_delegate_base.hpp
   traffic_drawer_delegate_base.hpp
-  traffic_mode.cpp
-  traffic_mode.hpp
+  traffic_model.cpp
+  traffic_model.hpp
   traffic_panel.cpp
   traffic_panel.hpp
   trafficmodeinitdlg.cpp

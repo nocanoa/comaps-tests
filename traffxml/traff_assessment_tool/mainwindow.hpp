@@ -12,7 +12,7 @@ class QHBoxLayout;
 namespace traffxml
 {
 class MapWidget;
-class TrafficMode;
+class TrafficModel;
 class WebView;
 }
 
@@ -56,7 +56,7 @@ private:
 
   Framework & m_framework;
 
-  traffxml::TrafficMode * m_trafficMode = nullptr;
+  traffxml::TrafficModel * m_trafficModel = nullptr;
   QDockWidget * m_docWidget = nullptr;
 
 #ifdef openlr_obsolete

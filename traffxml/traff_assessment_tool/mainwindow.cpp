@@ -274,10 +274,10 @@ MainWindow::MainWindow(Framework & framework)
   fileMenu->addSeparator();
 
 #ifdef openlr_obsolete
-  m_goldifyMatchedPathAction = fileMenu->addAction("Goldify", QKeySequence("Ctrl+G"), [this] { m_trafficMode->GoldifyMatchedPath(); });
+  m_goldifyMatchedPathAction = fileMenu->addAction("Goldify", QKeySequence("Ctrl+G"), [this] { m_trafficModel->GoldifyMatchedPath(); });
   m_startEditingAction = fileMenu->addAction("Edit", QKeySequence("Ctrl+E"),
                                              [this] {
-                                               m_trafficMode->StartBuildingPath();
+                                               m_trafficModel->StartBuildingPath();
                                                m_mapWidget->SetMode(MapWidget::Mode::TrafficMarkup);
                                                m_commitPathAction->setEnabled(true /* enabled */);
                                                m_cancelPathAction->setEnabled(true /* enabled */);
@@ -285,19 +285,19 @@ MainWindow::MainWindow(Framework & framework)
   m_commitPathAction = fileMenu->addAction("Accept path",
                                            QKeySequence("Ctrl+A"),
                                            [this] {
-                                             m_trafficMode->CommitPath();
+                                             m_trafficModel->CommitPath();
                                              m_mapWidget->SetMode(MapWidget::Mode::Normal);
                                            });
   m_cancelPathAction = fileMenu->addAction("Revert path",
                                            QKeySequence("Ctrl+R"),
                                            [this] {
-                                             m_trafficMode->RollBackPath();
+                                             m_trafficModel->RollBackPath();
                                              m_mapWidget->SetMode(MapWidget::Mode::Normal);
                                            });
   m_ignorePathAction = fileMenu->addAction("Ignore path",
                                            QKeySequence("Ctrl+I"),
                                            [this] {
-                                             m_trafficMode->IgnorePath();
+                                             m_trafficModel->IgnorePath();
                                              m_mapWidget->SetMode(MapWidget::Mode::Normal);
                                            });
 
@@ -313,22 +313,22 @@ MainWindow::MainWindow(Framework & framework)
 
 void MainWindow::CreateTrafficPanel(std::string const & dataFilePath)
 {
-  m_trafficMode = new TrafficMode(dataFilePath,
+  m_trafficModel = new TrafficModel(dataFilePath,
                                   m_framework.GetDataSource(),
                                   std::make_unique<TrafficDrawerDelegate>(m_framework),
                                   std::make_unique<PointsControllerDelegate>(m_framework));
 
   connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
-          m_trafficMode, &TrafficMode::OnClick);
-  connect(m_trafficMode, &TrafficMode::EditingStopped,
+          m_trafficModel, &TrafficModel::OnClick);
+  connect(m_trafficModel, &TrafficModel::EditingStopped,
           this, &MainWindow::OnPathEditingStop);
-  connect(m_trafficMode, &TrafficMode::SegmentSelected,
+  connect(m_trafficModel, &TrafficModel::SegmentSelected,
           [](int segmentId) { QApplication::clipboard()->setText(QString::number(segmentId)); });
 
   m_docWidget = new QDockWidget(tr("Routes"), this);
   addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, m_docWidget);
 
-  m_docWidget->setWidget(new TrafficPanel(m_trafficMode, m_docWidget));
+  m_docWidget->setWidget(new TrafficPanel(m_trafficModel, m_docWidget));
 
   m_docWidget->adjustSize();
   m_docWidget->setMinimumWidth(400);
@@ -341,8 +341,8 @@ void MainWindow::DestroyTrafficPanel()
   delete m_docWidget;
   m_docWidget = nullptr;
 
-  delete m_trafficMode;
-  m_trafficMode = nullptr;
+  delete m_trafficModel;
+  m_trafficModel = nullptr;
 
   m_mapWidget->SetMode(MapWidget::Mode::Normal);
 }
@@ -392,7 +392,7 @@ void MainWindow::OnOpenTrafficSample()
   {
     CreateTrafficPanel(dlg.GetDataFilePath());
   }
-  catch (TrafficModeError const & e)
+  catch (TrafficModelError const & e)
   {
     QMessageBox::critical(this, "Data loading error", QString("Can't load data file."));
     LOG(LERROR, (e.Msg()));
@@ -453,7 +453,7 @@ void MainWindow::OnSaveTrafficSample()
   document.save_file(fileName.toStdString().data(), "  " /* indent */);
 
 #ifdef openlr_obsolete
-  if (!m_trafficMode->SaveSampleAs(fileName.toStdString()))
+  if (!m_trafficModel->SaveSampleAs(fileName.toStdString()))
   {
     QMessageBox::critical(
         this, "Saving error",
