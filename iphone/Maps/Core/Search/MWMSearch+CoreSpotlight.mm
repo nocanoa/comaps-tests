@@ -1,8 +1,8 @@
+#import <CoreApi/AppInfo.h>
+#import <CoreApi/Framework.h>
+#import <CoreApi/MWMCommon.h>
 #import <CoreSpotlight/CoreSpotlight.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <CoreApi/Framework.h>
-#import <CoreApi/AppInfo.h>
-#import <CoreApi/MWMCommon.h>
 #import "MWMSearch+CoreSpotlight.h"
 #import "MWMSettings.h"
 
@@ -23,14 +23,15 @@
 
   for (auto const & categoryKey : categoriesKeys)
   {
-    CSSearchableItemAttributeSet * attrSet = [[CSSearchableItemAttributeSet alloc]
-        initWithItemContentType: UTTypeItem.identifier];
+    CSSearchableItemAttributeSet * attrSet =
+        [[CSSearchableItemAttributeSet alloc] initWithItemContentType:UTTypeItem.identifier];
 
     NSString * categoryName = nil;
     NSMutableDictionary<NSString *, NSString *> * localizedStrings = [@{} mutableCopy];
 
     categories.ForEachSynonym(categoryKey, [&localizedStrings, &localeLanguageId, &categoryName](
-                                               std::string const & name, std::string const & locale) {
+                                               std::string const & name, std::string const & locale)
+    {
       NSString * nsName = @(name.c_str());
       NSString * nsLocale = @(locale.c_str());
       if ([localeLanguageId isEqualToString:nsLocale])
@@ -43,18 +44,22 @@
     attrSet.displayName = [[CSLocalizedString alloc] initWithLocalizedStrings:localizedStrings];
 
     NSString * categoryKeyString = @(categoryKey.c_str());
-    NSString * imageName = [NSString stringWithFormat:@"Search/Categories/%@", [categoryKeyString stringByReplacingOccurrencesOfString: @"category_" withString:@""]];
-    UIImage * image = [UIImage imageNamed:imageName inBundle:nil compatibleWithTraitCollection:[UITraitCollection traitCollectionWithUserInterfaceStyle: UIUserInterfaceStyleLight]];
+    NSString * imageName = [NSString
+        stringWithFormat:@"Search/Categories/%@", [categoryKeyString stringByReplacingOccurrencesOfString:@"category_"
+                                                                                               withString:@""]];
+    UIImage * image = [UIImage imageNamed:imageName
+                                 inBundle:nil
+            compatibleWithTraitCollection:[UITraitCollection
+                                              traitCollectionWithUserInterfaceStyle:UIUserInterfaceStyleLight]];
     UIGraphicsBeginImageContext(CGSizeMake(360, 360));
     [image drawInRect:CGRectMake(0, 0, 360, 360)];
     UIImage * resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext() ;
+    UIGraphicsEndImageContext();
     attrSet.thumbnailData = UIImagePNGRepresentation(resizedImage);
 
-    CSSearchableItem * item =
-        [[CSSearchableItem alloc] initWithUniqueIdentifier:categoryKeyString
-                                          domainIdentifier:@"comaps.app.categories"
-                                              attributeSet:attrSet];
+    CSSearchableItem * item = [[CSSearchableItem alloc] initWithUniqueIdentifier:categoryKeyString
+                                                                domainIdentifier:@"comaps.app.categories"
+                                                                    attributeSet:attrSet];
     [items addObject:item];
   }
 
@@ -64,8 +69,7 @@
            if (error)
            {
              NSError * err = error;
-             LOG(LERROR,
-                 ("addCategoriesToSpotlight failed: ", err.localizedDescription.UTF8String));
+             LOG(LERROR, ("addCategoriesToSpotlight failed: ", err.localizedDescription.UTF8String));
            }
            else
            {

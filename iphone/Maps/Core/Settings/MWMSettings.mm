@@ -31,16 +31,15 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 {
   bool _ = true, on = true;
   GetFramework().Load3dMode(_, on);
-  if (GetFramework().GetPowerManager().GetScheme() == power_management::Scheme::EconomyMaximum) {
+  if (GetFramework().GetPowerManager().GetScheme() == power_management::Scheme::EconomyMaximum)
     return false;
-  } else {
+  else
     return on;
-  }
 }
 
 + (void)setBuildings3dViewEnabled:(BOOL)buildings3dViewEnabled;
 {
-  auto &f = GetFramework();
+  auto & f = GetFramework();
   bool _ = true, is3dBuildings = true;
   f.Load3dMode(_, is3dBuildings);
   is3dBuildings = static_cast<bool>(buildings3dViewEnabled);
@@ -51,14 +50,14 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 + (BOOL)perspectiveViewEnabled;
 {
   bool _ = true, on = true;
-  auto &f = GetFramework();
+  auto & f = GetFramework();
   f.Load3dMode(on, _);
   return on;
 }
 
 + (void)setPerspectiveViewEnabled:(BOOL)perspectiveViewEnabled;
 {
-  auto &f = GetFramework();
+  auto & f = GetFramework();
   bool is3d = true, _ = true;
   f.Load3dMode(is3d, _);
   is3d = static_cast<bool>(perspectiveViewEnabled);
@@ -73,7 +72,7 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 
 + (void)setAutoZoomEnabled:(BOOL)autoZoomEnabled
 {
-  auto &f = GetFramework();
+  auto & f = GetFramework();
   f.AllowAutoZoom(autoZoomEnabled);
   f.SaveAutoZoom(autoZoomEnabled);
 }
@@ -130,12 +129,14 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 
 + (MWMTheme)theme
 {
-  if ([MWMCarPlayService shared].isCarplayActivated) {
+  if ([MWMCarPlayService shared].isCarplayActivated)
+  {
     UIUserInterfaceStyle style = [[MWMCarPlayService shared] interfaceStyle];
-    switch (style) {
-      case UIUserInterfaceStyleLight: return MWMThemeDay;
-      case UIUserInterfaceStyleDark: return MWMThemeNight;
-      case UIUserInterfaceStyleUnspecified: break;
+    switch (style)
+    {
+    case UIUserInterfaceStyleLight: return MWMThemeDay;
+    case UIUserInterfaceStyleDark: return MWMThemeNight;
+    case UIUserInterfaceStyleUnspecified: break;
     }
   }
   auto ud = NSUserDefaults.standardUserDefaults;
@@ -158,11 +159,10 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 + (NSInteger)powerManagement
 {
   Scheme scheme = GetFramework().GetPowerManager().GetScheme();
-  if (scheme == Scheme::EconomyMaximum) {
+  if (scheme == Scheme::EconomyMaximum)
     return 2;
-  } else if (scheme == Scheme::Auto) {
+  else if (scheme == Scheme::Auto)
     return 1;
-  }
 
   return 0;
 }
@@ -170,11 +170,10 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 + (void)setPowerManagement:(NSInteger)powerManagement
 {
   Scheme scheme = Scheme::Normal;
-  if (powerManagement == 2) {
+  if (powerManagement == 2)
     scheme = Scheme::EconomyMaximum;
-  } else if (powerManagement == 1) {
+  else if (powerManagement == 1)
     scheme = Scheme::Auto;
-  }
   GetFramework().GetPowerManager().SetScheme(scheme);
 }
 
@@ -185,7 +184,10 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
   return enabled;
 }
 
-+ (void)setRoutingDisclaimerApproved { settings::Set(kRoutingDisclaimerApprovedKey, true); }
++ (void)setRoutingDisclaimerApproved
+{
+  settings::Set(kRoutingDisclaimerApprovedKey, true);
+}
 + (NSString *)spotlightLocaleLanguageId
 {
   return [NSUserDefaults.standardUserDefaults stringForKey:kSpotlightLocaleLanguageId];
@@ -197,7 +199,10 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
   [ud setObject:spotlightLocaleLanguageId forKey:kSpotlightLocaleLanguageId];
 }
 
-+ (BOOL)largeFontSize { return GetFramework().LoadLargeFontsSize(); }
++ (BOOL)largeFontSize
+{
+  return GetFramework().LoadLargeFontsSize();
+}
 + (void)setLargeFontSize:(BOOL)largeFontSize
 {
   GetFramework().SetLargeFontsSize(static_cast<bool>(largeFontSize));
@@ -205,11 +210,10 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 
 + (NSDictionary<NSString *, NSString *> *)availableMapLanguages;
 {
-  NSMutableDictionary<NSString *, NSString *> *availableLanguages = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary<NSString *, NSString *> * availableLanguages = [[NSMutableDictionary alloc] init];
   auto const & v = StringUtf8Multilang::GetSupportedLanguages(false);
-  for (auto i: v) {
+  for (auto i : v)
     [availableLanguages setObject:@(std::string(i.m_name).c_str()) forKey:@(std::string(i.m_code).c_str())];
-  }
   return availableLanguages;
 }
 
@@ -217,24 +221,25 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 {
   std::string mapLanguageCode;
   bool hasMapLanguageCode = settings::Get(kMapLanguageCode, mapLanguageCode);
-  if (hasMapLanguageCode) {
+  if (hasMapLanguageCode)
     return @(mapLanguageCode.c_str());
-  }
 
   return @"auto";
 }
 
 + (void)setMapLanguageCode:(NSString *)mapLanguageCode;
 {
-  auto &f = GetFramework();
-  if ([mapLanguageCode isEqual: @"auto"]) {
+  auto & f = GetFramework();
+  if ([mapLanguageCode isEqual:@"auto"])
     f.ResetMapLanguageCode();
-  } else {
+  else
     f.SetMapLanguageCode(std::string([mapLanguageCode UTF8String]));
-  }
 }
 
-+ (BOOL)transliteration { return GetFramework().LoadTransliteration(); }
++ (BOOL)transliteration
+{
+  return GetFramework().LoadTransliteration();
+}
 + (void)setTransliteration:(BOOL)transliteration
 {
   bool const isTransliteration = static_cast<bool>(transliteration);
@@ -268,21 +273,23 @@ NSString * const kUDFileLoggingEnabledKey = @"FileLoggingEnabledKey";
 + (void)setICLoudSynchronizationEnabled:(BOOL)iCLoudSyncEnabled
 {
   [NSUserDefaults.standardUserDefaults setBool:iCLoudSyncEnabled forKey:kiCLoudSynchronizationEnabledKey];
-  [NSNotificationCenter.defaultCenter postNotificationName:NSNotification.iCloudSynchronizationDidChangeEnabledState object:nil];
+  [NSNotificationCenter.defaultCenter postNotificationName:NSNotification.iCloudSynchronizationDidChangeEnabledState
+                                                    object:nil];
 }
 
-+ (void)initializeLogging {
++ (void)initializeLogging
+{
   static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    [self setFileLoggingEnabled:[self isFileLoggingEnabled]];
-  });
+  dispatch_once(&onceToken, ^{ [self setFileLoggingEnabled:[self isFileLoggingEnabled]]; });
 }
 
-+ (BOOL)isFileLoggingEnabled {
++ (BOOL)isFileLoggingEnabled
+{
   return [NSUserDefaults.standardUserDefaults boolForKey:kUDFileLoggingEnabledKey];
 }
 
-+ (void)setFileLoggingEnabled:(BOOL)fileLoggingEnabled {
++ (void)setFileLoggingEnabled:(BOOL)fileLoggingEnabled
+{
   [NSUserDefaults.standardUserDefaults setBool:fileLoggingEnabled forKey:kUDFileLoggingEnabledKey];
   [Logger setFileLoggingEnabled:fileLoggingEnabled];
 }
