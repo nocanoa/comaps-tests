@@ -67,15 +67,23 @@ void TrafficPanel::CreateTable(QAbstractItemModel * trafficModel)
   m_table->setShowGrid(false);
   m_table->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
   m_table->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-  m_table->verticalHeader()->setVisible(false);
-  m_table->horizontalHeader()->setVisible(true);
-  m_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
   m_table->setModel(trafficModel);
   m_table->setItemDelegate(new ComboBoxDelegate());
+
+  // the model must be set before we can set dimensions and headers
+  m_table->verticalHeader()->setVisible(false);
+  m_table->horizontalHeader()->setVisible(true);
+  //m_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  m_table->setColumnWidth(0, 80);
+  m_table->setColumnWidth(1, 300);
 
   connect(m_table->selectionModel(),
           SIGNAL(selectionChanged(QItemSelection const &, QItemSelection const &)),
           trafficModel, SLOT(OnItemSelected(QItemSelection const &, QItemSelection const &)));
+  connect(trafficModel, &QAbstractItemModel::modelReset,
+          m_table, [this]() {
+            m_table->resizeRowsToContents();
+            //m_table->resizeColumnsToContents();
+  });
 }
 }  // namespace traffxml

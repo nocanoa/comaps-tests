@@ -99,94 +99,223 @@ void RoadPointCandidate::SetActivePoint(FeatureID const & fid)
 }  // namespace impl
 #endif
 
+QVariant GetCountryAndRoadRef(TraffMessage const & message)
+{
+  std::string result = "";
+  if (message.m_location)
+  {
+    if (message.m_location.value().m_country)
+      result += message.m_location.value().m_country.value();
+    if (message.m_location.value().m_roadRef)
+    {
+      if (!result.empty())
+        result += '\n';
+      result += message.m_location.value().m_roadRef.value();
+    }
+  }
+  return QString::fromStdString(result);
+}
+
+/**
+ * @brief Returns a descriptive text for a point.
+ *
+ * The result is the junction name (if any), followed by the junction number or kilometric point (if any).
+ *
+ * @param point
+ * @return
+ */
+std::string GetPointDetail(Point const & point)
+{
+  std::string result = point.m_junctionName ? point.m_junctionName.value() : "";
+  std::string junctionRefOrKmp = point.m_junctionRef ? point.m_junctionRef.value() :
+                                                       point.m_distance ? std::format("km {0:.0f}", point.m_distance.value()) : "";
+  if (!junctionRefOrKmp.empty())
+  {
+    if (result.empty())
+      result = junctionRefOrKmp;
+    else
+      result += " (" + junctionRefOrKmp + ")";
+  }
+  return result;
+}
+
+/**
+ * @brief Returns a descriptive text for the location on the road.
+ *
+ * The result is one or two junctions, with an arrow to indicate direction where applicable.
+ *
+ * @param location
+ * @return
+ */
+std::string GetLocationDetail(TraffLocation const & location)
+{
+  if (location.m_at)
+    return GetPointDetail(location.m_at.value());
+
+  std::string nameFrom = location.m_from ? GetPointDetail(location.m_from.value()) : "";
+  std::string nameTo = location.m_from ? GetPointDetail(location.m_to.value()) : "";
+
+  if (nameFrom == nameTo)
+    return nameFrom;
+  else if (!nameFrom.empty())
+  {
+    if (nameTo.empty())
+      return nameFrom + ((location.m_directionality == Directionality::OneDirection) ? " →" : " ↔");
+    else
+      return nameFrom
+          + ((location.m_directionality == Directionality::OneDirection) ? " → " : " ↔ ")
+          + nameTo;
+  }
+  else if (!nameTo.empty())
+    return ((location.m_directionality == Directionality::OneDirection) ? "→ " : "↔ ") + nameTo;
+  else if (location.m_via)
+    return GetPointDetail(location.m_via.value());
+  return "";
+}
+
+/**
+ * @brief Returns a description for the events in the message.
+ *
+ * @param message
+ * @return
+ */
+std::string GetEventText(TraffMessage const & message)
+{
+  std::string result = "";
+  for (auto const & event : message.m_events)
+  {
+    if (!result.empty())
+      result += ", ";
+    result += DebugPrint(event.m_type);
+    // TODO quantifiers (format "q = {}")
+    // TODO supplementary information (not in struct yet)
+    if (event.m_length)
+      result += std::format(" for {0:d} m", event.m_length.value());
+    if (event.m_speed)
+      result += std::format(", speed {0:d} km/h", event.m_speed.value());
+  }
+  return result;
+}
+
+QVariant GetDescription(TraffMessage const & message)
+{
+  std::string result = "";
+  if (message.m_cancellation)
+  {
+    result = "Cancellation";
+  }
+  else
+  {
+    if (message.m_location)
+    {
+      std::string direction = "";
+      if (message.m_location.value().m_directionality == Directionality::BothDirections)
+        direction = "both directions";
+      else
+      {
+        // TODO determine bearing and convert it to a string (northbound, southeastbound etc.)
+        /*
+        std::optional<Point> loc1 = message.m_location.value().m_from;
+        std::optional<Point> loc2 = message.m_location.value().m_to;
+        if (loc2 && !loc1)
+          loc1 = message.m_location.value().m_at;
+        else if (loc1 && !loc2)
+          loc2 = message.m_location.value().m_at;
+        if (loc1 && loc2)
+        {
+          ms::LatLon c1 = loc1.value().m_coordinates;
+          ms::LatLon c2 = loc2.value().m_coordinates;
+          // TODO figure out bearing (as string)
+        }
+         */
+      }
+      if (message.m_location.value().m_roadName)
+      {
+        // roadName, town, direction
+        if (message.m_location.value().m_town)
+          result += message.m_location.value().m_town.value() + ", ";
+        // TODO territory?
+        result += message.m_location.value().m_roadName.value();
+        if (!direction.empty())
+          result += ", " + direction;
+      }
+      else if (message.m_location.value().m_origin && message.m_location.value().m_destination)
+        // origin–destination with arrow
+        result += message.m_location.value().m_origin.value()
+            + ((message.m_location.value().m_directionality == Directionality::BothDirections) ? " ↔ " : " → ")
+            + message.m_location.value().m_destination.value();
+      else if (!message.m_location.value().m_origin && !message.m_location.value().m_destination)
+        // direction, if available
+        result += direction;
+      else if (message.m_location.value().m_directionality == Directionality::OneDirection)
+      {
+        // unidirectional, one endpoint; replacce the other with direction
+        if (message.m_location.value().m_origin)
+          result += message.m_location.value().m_origin.value() + " → " + direction;
+        else
+          result += direction + " → " + message.m_location.value().m_destination.value();
+      }
+      else
+        // direction, if available (no meaningful way to use origin or destination)
+        result += direction;
+
+      auto locationDetail = GetLocationDetail(message.m_location.value());
+      if (!locationDetail.empty())
+      {
+        if (!result.empty())
+          result += "\n";
+        result += locationDetail;
+      }
+    }
+    auto eventText = GetEventText(message);
+    if (!eventText.empty())
+    {
+      if (!result.empty())
+        result += "\n";
+      result += eventText;
+    }
+    // TODO start/end date
+  }
+  if (!result.empty())
+    result += "\n";
+  result += message.m_id.substr(0, message.m_id.find(':'));
+  result += "\t" + DebugPrint(message.m_updateTime);
+  // add an extra line to get bigger rows (default is too small)
+  result += "\n";
+  return QString::fromStdString(result);
+}
+
 // TrafficModel -------------------------------------------------------------------------------------
-TrafficModel::TrafficModel(std::string const & dataFileName, DataSource const & dataSource,
-                         std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
-                         std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
+TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
+                         std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,    // TODO do we need that?
+                         std::unique_ptr<PointsControllerDelegateBase> pointsDelegate, // TODO do we need that?
                          QObject * parent)
   : QAbstractTableModel(parent)
   , m_dataSource(dataSource)
   , m_drawerDelegate(std::move(drawerDelegate))
   , m_pointsDelegate(std::move(pointsDelegate))
 {
-  // TODO(mgsergio): Collect stat how many segments of each kind were parsed.
-  pugi::xml_document doc;
-  if (!doc.load_file(dataFileName.data()))
-    MYTHROW(TrafficModelError, ("Can't load file:", strerror(errno)));
-
-  // Save root node without children.
-  {
-    auto const root = doc.document_element();
-    auto node = m_template.append_child(root.name());
-    for (auto const & attr : root.attributes())
-      node.append_copy(attr);
-  }
-
-  // Select all Segment elements that are direct children of the root.
-  auto const segments = doc.document_element().select_nodes("./Segment");
-
-#ifdef openlr_obsolete
-  try
-  {
-    for (auto const & xpathNode : segments)
+  framework.GetTrafficManager().SetTrafficUpdateCallbackFn([this, &framework](bool final) {
+    /*
+     * If final is true, this indicates the queue has been emptied and no further updates are
+     * imminent. Such updates should always be processed. If final is false, we can optimize by
+     * selectively skipping updates.
+     */
+    GetPlatform().RunTask(Platform::Thread::Gui, [this, &framework]()
     {
-      auto const xmlSegment = xpathNode.node();
+      beginResetModel();
+      auto const messageCache = framework.GetTrafficManager().GetMessageCache();
+      m_messages.clear();
+      m_messages.reserve(messageCache.size());
 
-      openlr::Path matchedPath;
-      openlr::Path fakePath;
-      openlr::Path goldenPath;
+      for (auto & entry : messageCache)
+        m_messages.push_back(std::move(entry.second));
 
-      openlr::LinearSegment segment;
+      endResetModel();
 
-      // TODO(mgsergio): Unify error handling interface of openlr_xml_mode and decoded_path parsers.
-      auto const partnerSegmentXML = xmlSegment.child("reportSegments");
-      if (!openlr::SegmentFromXML(partnerSegmentXML, segment))
-        MYTHROW(TrafficModelError, ("An error occurred while parsing: can't parse segment"));
-
-      if (auto const route = xmlSegment.child("Route"))
-        openlr::PathFromXML(route, m_dataSource, matchedPath);
-      if (auto const route = xmlSegment.child("FakeRoute"))
-        openlr::PathFromXML(route, m_dataSource, fakePath);
-      if (auto const route = xmlSegment.child("GoldenRoute"))
-        openlr::PathFromXML(route, m_dataSource, goldenPath);
-
-      uint32_t positiveOffsetM = 0;
-      uint32_t negativeOffsetM = 0;
-      if (auto const reportSegmentLRC = partnerSegmentXML.child("ReportSegmentLRC"))
-      {
-        if (auto const method = reportSegmentLRC.child("method"))
-        {
-          if (auto const locationReference = method.child("olr:locationReference"))
-          {
-            if (auto const optionLinearLocationReference = locationReference
-                .child("olr:optionLinearLocationReference"))
-            {
-              if (auto const positiveOffset = optionLinearLocationReference.child("olr:positiveOffset"))
-                positiveOffsetM = UintValueFromXML(positiveOffset);
-
-              if (auto const negativeOffset = optionLinearLocationReference.child("olr:negativeOffset"))
-                negativeOffsetM = UintValueFromXML(negativeOffset);
-            }
-          }
-        }
-      }
-
-      m_segments.emplace_back(segment, positiveOffsetM, negativeOffsetM, matchedPath, fakePath,
-                              goldenPath, partnerSegmentXML);
-      if (auto const status = xmlSegment.child("Ignored"))
-      {
-        if (status.text().as_bool())
-          m_segments.back().Ignore();
-      }
-    }
-  }
-  catch (openlr::DecodedPathLoadError const & e)
-  {
-    MYTHROW(TrafficModelError, ("An exception occurred while parsing", dataFileName, e.Msg()));
-  }
-#endif
-
-  LOG(LINFO, (segments.size(), "segments are loaded."));
+      LOG(LINFO, ("Messages:", m_messages.size()));
+    });
+  });
 }
 
 // TODO(mgsergio): Check if a path was committed, or commit it.
@@ -232,15 +361,10 @@ bool TrafficModel::SaveSampleAs(std::string const & fileName) const
 
 int TrafficModel::rowCount(const QModelIndex & parent) const
 {
-#ifdef openlr_obsolete
-  return static_cast<int>(m_segments.size());
-#else
-  // TODO return a meaningful value
-  return 0;
-#endif
+  return static_cast<int>(m_messages.size());
 }
 
-int TrafficModel::columnCount(const QModelIndex & parent) const { return 4; }
+int TrafficModel::columnCount(const QModelIndex & parent) const { return 2; }
 
 QVariant TrafficModel::data(const QModelIndex & index, int role) const
 {
@@ -266,24 +390,39 @@ QVariant TrafficModel::data(const QModelIndex & index, int role) const
   if (index.column() == 3)
     return m_segments[index.row()].GetNegativeOffset();
 #endif
+  switch (index.column())
+  {
+  case 0:
+    return GetCountryAndRoadRef(m_messages[index.row()]);
+  case 1:
+    return GetDescription(m_messages[index.row()]);
+  default:
+    return QVariant();
+  }
 
-  return QVariant();
+  UNREACHABLE();
 }
 
 QVariant TrafficModel::headerData(int section, Qt::Orientation orientation,
                                  int role /* = Qt::DisplayRole */) const
 {
-  if (orientation != Qt::Horizontal && role != Qt::DisplayRole)
+  /*
+   * Qt seems buggy here. Initially, we seem to get called with Qt::Vertical for a horizontal
+   * header, i.e. a row of column headers, and Qt::Horizontal for a vertical header (column of row
+   * headers). Using the intuitively correct value will result in incorrect behavior and a lot of
+   * head-scratching if you use just one type of header.
+   * However, this (presumed) bug does not seem to be consistent, as updates call us with
+   * Qt::Vertical and a row number (which can be beyond the number of columns).
+   */
+  if (orientation == Qt::Horizontal && role != Qt::DisplayRole)
     return QVariant();
 
   switch (section)
   {
-  case 0: return "Segment id"; break;
-  case 1: return "Status code"; break;
-  case 2: return "Positive offset (Meters)"; break;
-  case 3: return "Negative offset (Meters)"; break;
+  case 0: return "Road ref"; break;
+  case 1: return "Description"; break;
   }
-  UNREACHABLE();
+  return QVariant();
 }
 
 void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelection const &)

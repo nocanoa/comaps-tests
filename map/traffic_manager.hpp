@@ -42,6 +42,7 @@ class TrafficManager final : public traffxml::TraffSourceManager
 public:
   using CountryInfoGetterFn = std::function<storage::CountryInfoGetter const &()>;
   using CountryParentNameGetterFn = std::function<std::string(std::string const &)>;
+  using TrafficUpdateCallbackFn = std::function<void(bool)>;
 
   /**
    * @brief Global state of traffic information.
@@ -302,6 +303,15 @@ public:
    * Subscriptions are not changed.
    */
   void Clear();
+
+  /**
+   * @brief Registers a callback function which gets called on traffic updates.
+   *
+   * Intended for testing.
+   *
+   * @param fn The callback function.
+   */
+  void SetTrafficUpdateCallbackFn(TrafficUpdateCallbackFn && fn);
 
 private:
 
@@ -682,6 +692,13 @@ private:
    * thread).
    */
   std::map<MwmSet::MwmId, traffic::TrafficInfo::Coloring> m_allMwmColoring;
+
+  /**
+   * @brief Callback function which gets called on traffic updates.
+   *
+   * Intended for testing.
+   */
+  std::optional<TrafficUpdateCallbackFn> m_trafficUpdateCallbackFn;
 };
 
 extern std::string DebugPrint(TrafficManager::TrafficState state);

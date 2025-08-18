@@ -311,35 +311,42 @@ MainWindow::MainWindow(Framework & framework)
 #endif
 }
 
-void MainWindow::CreateTrafficPanel(std::string const & dataFilePath)
+void MainWindow::CreateTrafficPanel()
 {
-  m_trafficModel = new TrafficModel(dataFilePath,
-                                  m_framework.GetDataSource(),
-                                  std::make_unique<TrafficDrawerDelegate>(m_framework),
-                                  std::make_unique<PointsControllerDelegate>(m_framework));
+  if (!m_trafficModel)
+  {
+    // TODO simplify the call, everything depends on m_framework
+    m_trafficModel = new TrafficModel(m_framework, m_framework.GetDataSource(),
+                                      std::make_unique<TrafficDrawerDelegate>(m_framework),
+                                      std::make_unique<PointsControllerDelegate>(m_framework));
 
-  connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
-          m_trafficModel, &TrafficModel::OnClick);
-  connect(m_trafficModel, &TrafficModel::EditingStopped,
-          this, &MainWindow::OnPathEditingStop);
-  connect(m_trafficModel, &TrafficModel::SegmentSelected,
-          [](int segmentId) { QApplication::clipboard()->setText(QString::number(segmentId)); });
+    connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
+            m_trafficModel, &TrafficModel::OnClick);
+    connect(m_trafficModel, &TrafficModel::EditingStopped,
+            this, &MainWindow::OnPathEditingStop);
+    connect(m_trafficModel, &TrafficModel::SegmentSelected,
+            [](int segmentId) { QApplication::clipboard()->setText(QString::number(segmentId)); });
+  }
 
-  m_docWidget = new QDockWidget(tr("Routes"), this);
-  addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, m_docWidget);
+  if (!m_dockWidget)
+  {
+    m_dockWidget = new QDockWidget(tr("Messages"), this);
+    addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, m_dockWidget);
 
-  m_docWidget->setWidget(new TrafficPanel(m_trafficModel, m_docWidget));
+    m_dockWidget->setWidget(new TrafficPanel(m_trafficModel, m_dockWidget));
 
-  m_docWidget->adjustSize();
-  m_docWidget->setMinimumWidth(400);
-  m_docWidget->show();
+    m_dockWidget->adjustSize();
+    m_dockWidget->setMinimumWidth(400);
+  }
+  m_dockWidget->show();
 }
 
 void MainWindow::DestroyTrafficPanel()
 {
-  removeDockWidget(m_docWidget);
-  delete m_docWidget;
-  m_docWidget = nullptr;
+  LOG(LINFO, ("enter"));
+  removeDockWidget(m_dockWidget);
+  delete m_dockWidget;
+  m_dockWidget = nullptr;
 
   delete m_trafficModel;
   m_trafficModel = nullptr;
@@ -386,19 +393,16 @@ void MainWindow::OnOpenTrafficSample()
     return;
   }
 
-// TODO create traffic panel with TraFF messages
-#if 0
   try
   {
-    CreateTrafficPanel(dlg.GetDataFilePath());
+    CreateTrafficPanel();
   }
   catch (TrafficModelError const & e)
   {
-    QMessageBox::critical(this, "Data loading error", QString("Can't load data file."));
+    QMessageBox::critical(this, "Data loading error", QString("Can't create traffic panel."));
     LOG(LERROR, (e.Msg()));
     return;
   }
-#endif
 
 #ifdef openlr_obsolete
   m_goldifyMatchedPathAction->setEnabled(true /* enabled */);

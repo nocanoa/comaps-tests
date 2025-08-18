@@ -33,7 +33,7 @@ public:
   explicit MainWindow(Framework & framework);
 
 private:
-  void CreateTrafficPanel(std::string const & dataFilePath);
+  void CreateTrafficPanel();
   void DestroyTrafficPanel();
 
   /**
@@ -57,7 +57,7 @@ private:
   Framework & m_framework;
 
   traffxml::TrafficModel * m_trafficModel = nullptr;
-  QDockWidget * m_docWidget = nullptr;
+  QDockWidget * m_dockWidget = nullptr;
 
 #ifdef openlr_obsolete
   QAction * m_goldifyMatchedPathAction = nullptr;

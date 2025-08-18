@@ -170,6 +170,11 @@ void TrafficManager::Clear()
   OnTrafficDataUpdate();
 }
 
+void TrafficManager::SetTrafficUpdateCallbackFn(TrafficUpdateCallbackFn && fn)
+{
+  m_trafficUpdateCallbackFn = std::move(fn);
+}
+
 void TrafficManager::SetDrapeEngine(ref_ptr<df::DrapeEngine> engine)
 {
   m_drapeEngine.Set(engine);
@@ -814,6 +819,9 @@ void TrafficManager::OnTrafficDataUpdate()
 
     m_lastStorageUpdate = steady_clock::now();
   }
+
+  if (m_trafficUpdateCallbackFn)
+    m_trafficUpdateCallbackFn.value()(feedQueueEmpty);
 
   if (!notifyDrape && !notifyObserver)
     return;

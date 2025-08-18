@@ -9,6 +9,7 @@
 #ifdef openlr_obsolete
 #include "openlr/decoded_path.hpp"
 #endif
+#include "traffxml/traff_model.hpp"
 
 #include "indexer/data_source.hpp"
 
@@ -68,7 +69,7 @@ class TrafficModel : public QAbstractTableModel
 
 public:
   // TODO(mgsergio): Check we are on the right mwm. I.e. right mwm version and everything.
-  TrafficModel(std::string const & dataFileName, DataSource const & dataSource,
+  TrafficModel(Framework & framework, DataSource const & dataSource,
               std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
               std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
               QObject * parent = Q_NULLPTR);
@@ -126,6 +127,12 @@ private:
   // Non-owning pointer to an element of m_segments.
   SegmentCorrespondence * m_currentSegment = nullptr;
 #endif
+  std::vector<TraffMessage> m_messages;
+
+  /**
+   * Non-owning pointer to an element of m_messages.
+   */
+  TraffMessage * m_message = nullptr;
 
   std::unique_ptr<TrafficDrawerDelegateBase> m_drawerDelegate;
   std::unique_ptr<PointsControllerDelegateBase> m_pointsDelegate;
