@@ -172,7 +172,7 @@ final class MapTemplateBuilder {
     case .recenter:
       return CPBarButton(title: L("follow_my_position"), handler: action)
     case .settings:
-      return CPBarButton(image: UIImage(named: "ic_carplay_settings")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "gearshape.fill")!, handler: action)
     case .mute:
       return CPBarButton(image: UIImage(named: "ic_carplay_unmuted")!, handler: action)
     case .unmute:

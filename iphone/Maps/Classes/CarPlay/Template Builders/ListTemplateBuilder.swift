@@ -125,9 +125,9 @@ final class ListTemplateBuilder {
   private class func buildBarButton(type: BarButtonType, action: ((CPBarButton) -> Void)?) -> CPBarButton {
     switch type {
     case .bookmarks:
-      return CPBarButton(image: UIImage(named: "ic_carplay_bookmark")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "list.star")!, handler: action)
     case .search:
-      return CPBarButton(image: UIImage(named: "ic_carplay_keyboard")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "keyboard.fill")!, handler: action)
     }
   }
 }
