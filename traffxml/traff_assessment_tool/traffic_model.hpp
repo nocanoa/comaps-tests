@@ -121,6 +121,7 @@ private:
   bool StartBuildingPathChecks() const;
 #endif
 
+  Framework & m_framework;
   DataSource const & m_dataSource;
 #ifdef openlr_obsolete
   std::vector<SegmentCorrespondence> m_segments;

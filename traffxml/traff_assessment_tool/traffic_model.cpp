@@ -4,7 +4,11 @@
 #include "openlr/openlr_model_xml.hpp"
 #endif
 
+#include "drape_frontend/drape_api.hpp"
+
 #include "indexer/data_source.hpp"
+
+#include "map/framework.hpp"
 
 #include "base/assert.hpp"
 #include "base/scope_guard.hpp"
@@ -291,6 +295,7 @@ TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
                          std::unique_ptr<PointsControllerDelegateBase> pointsDelegate, // TODO do we need that?
                          QObject * parent)
   : QAbstractTableModel(parent)
+  , m_framework(framework)
   , m_dataSource(dataSource)
   , m_drawerDelegate(std::move(drawerDelegate))
   , m_pointsDelegate(std::move(pointsDelegate))
@@ -427,30 +432,44 @@ QVariant TrafficModel::headerData(int section, Qt::Orientation orientation,
 
 void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelection const &)
 {
-#ifdef openlr_obsolete
   ASSERT(!selected.empty(), ());
-  ASSERT(!m_segments.empty(), ());
+  ASSERT(!m_messages.empty(), ());
 
   auto const row = selected.front().top();
 
-  CHECK_LESS(static_cast<size_t>(row), m_segments.size(), ());
-  m_currentSegment = &m_segments[row];
+  CHECK_LESS(static_cast<size_t>(row), m_messages.size(), ());
+  auto message = &m_messages[row];
+  if (!message->m_location)
+    return;
 
-  auto const & partnerSegment = m_currentSegment->GetPartnerSegment();
-  auto const & partnerSegmentPoints = partnerSegment.GetMercatorPoints();
-  auto const & viewportCenter = partnerSegmentPoints.front();
+  m2::RectD rect;
+  std::vector<m2::PointD> points;
 
-  m_drawerDelegate->ClearAllPaths();
-  // TODO(mgsergio): Use a better way to set viewport and scale.
-  m_drawerDelegate->SetViewportCenter(viewportCenter);
-  m_drawerDelegate->DrawEncodedSegment(partnerSegmentPoints);
-  if (m_currentSegment->HasMatchedPath())
-    m_drawerDelegate->DrawDecodedSegments(GetPoints(m_currentSegment->GetMatchedPath()));
-  if (m_currentSegment->HasGoldenPath())
-    m_drawerDelegate->DrawGoldenPath(GetPoints(m_currentSegment->GetGoldenPath()));
+  for (auto & coords : {
+       message->m_location.value().m_from,
+       message->m_location.value().m_at,
+       message->m_location.value().m_via,
+       message->m_location.value().m_notVia,
+       message->m_location.value().m_to
+       })
+    if (coords)
+    {
+      auto point = mercator::FromLatLon(coords.value().m_coordinates);
+      rect.Add(point);
+      points.push_back(point);
+    }
 
-  emit SegmentSelected(static_cast<int>(partnerSegment.m_segmentId));
-#endif
+  if (rect.IsValid())
+  {
+    rect.Scale(1.5);
+    m_framework.ShowRect(rect, 15 /* maxScale */, true /* animation */, true /* useVisibleViewport */);
+  }
+
+  auto editSession = m_framework.GetBookmarkManager().GetEditSession();
+  editSession.ClearGroup(UserMark::Type::DEBUG_MARK);
+  editSession.SetIsVisible(UserMark::Type::DEBUG_MARK, true);
+  for (auto const & p : points)
+    editSession.CreateUserMark<DebugMarkPoint>(p);
 }
 
 Qt::ItemFlags TrafficModel::flags(QModelIndex const & index) const
