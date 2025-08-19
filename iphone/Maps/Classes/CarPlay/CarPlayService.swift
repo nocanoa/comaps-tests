@@ -399,24 +399,29 @@ extension CarPlayService: CPMapTemplateDelegate {
     FrameworkHelper.switchMyPositionMode()
   }
 
-  func mapTemplate(_ mapTemplate: CPMapTemplate, panEndedWith direction: CPMapTemplate.PanDirection) {
+  @objc(mapTemplate:panEndedWithDirection:)
+  func mapTemplate(_ mapTemplate: CPMapTemplate, panEndedWith direction: Int) {
     var offset = UIOffset(horizontal: 0.0, vertical: 0.0)
     let offsetStep: CGFloat = 0.25
-    if direction.contains(.up) { offset.vertical -= offsetStep }
-    if direction.contains(.down) { offset.vertical += offsetStep }
-    if direction.contains(.left) { offset.horizontal += offsetStep }
-    if direction.contains(.right) { offset.horizontal -= offsetStep }
+    let panDirection = CPMapTemplate.PanDirection(rawValue: direction)
+    if panDirection.contains(.up) { offset.vertical -= offsetStep }
+    if panDirection.contains(.down) { offset.vertical += offsetStep }
+    if panDirection.contains(.left) { offset.horizontal += offsetStep }
+    if panDirection.contains(.right) { offset.horizontal -= offsetStep }
     FrameworkHelper.moveMap(offset)
     isUserPanMap = true
   }
 
-  func mapTemplate(_ mapTemplate: CPMapTemplate, panWith direction: CPMapTemplate.PanDirection) {
+  
+  @objc(mapTemplate:panWithDirection:)
+  func mapTemplate(_ mapTemplate: CPMapTemplate, panWith direction: Int) {
     var offset = UIOffset(horizontal: 0.0, vertical: 0.0)
     let offsetStep: CGFloat = 0.1
-    if direction.contains(.up) { offset.vertical -= offsetStep }
-    if direction.contains(.down) { offset.vertical += offsetStep }
-    if direction.contains(.left) { offset.horizontal += offsetStep }
-    if direction.contains(.right) { offset.horizontal -= offsetStep }
+    let panDirection = CPMapTemplate.PanDirection(rawValue: direction)
+    if panDirection.contains(.up) { offset.vertical -= offsetStep }
+    if panDirection.contains(.down) { offset.vertical += offsetStep }
+    if panDirection.contains(.left) { offset.horizontal += offsetStep }
+    if panDirection.contains(.right) { offset.horizontal -= offsetStep }
     FrameworkHelper.moveMap(offset)
     isUserPanMap = true
   }
