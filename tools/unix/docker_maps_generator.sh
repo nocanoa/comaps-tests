@@ -51,9 +51,11 @@ mkdir -p /home/planet/subway
 #echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
 # S3_BUCKET is used below during uploading
 
+# Params for configure.sh invoked later via build_omim.sh
+# Only drules are needed for the maps generation
 export SKIP_MAP_DOWNLOAD=1
 export SKIP_GENERATE_SYMBOLS=1
-export SKIP_GENERATE_DRULES=1
+export SKIP_GENERATE_DRULES=0
 
 echo "<$(date +%T)> Compiling tools..."
 cd ~/OM/organicmaps
