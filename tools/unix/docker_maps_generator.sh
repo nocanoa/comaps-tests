@@ -118,20 +118,10 @@ builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | 
 mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
 
 if (( ${#mwmfiles[@]} )); then
-  echo "<$(date +%T)> Uploading maps to sftp..."
+  echo "<$(date +%T)> Uploading subways to sftp..."
   # upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
   # Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
 sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST:$SFTP_PATH <<EOF
-  lcd ~/OM/maps_build/$buildfolder/$builddate
-  mkdir maps/$builddate
-  cd maps/$builddate
-  put countries.txt
-  put World.mwm
-  put WorldCoasts.mwm
-  cd ..
-  rm latest
-  ln -s $builddate latest
-  cd ..
   lcd /home/planet/subway/
   put subway.json
   put subway.log
