@@ -81,26 +81,19 @@ cp var/etc/map_generator.ini.prod var/etc/map_generator.ini
 # (from https://github.com/mapsme/omim/issues/11994)
 
 cd /home/planet/planet
-if [ ! -f planet-latest.osm.pbf ]; then
-  echo "<$(date +%T)> Downloading planet-latest.osm.pbf..."
-  curl -OL https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
-  echo "<$(date +%T)> Downloading planet-latest.osm.pbf.md5..."
-  curl -OL https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf.md5
+if [ ! -f planet.o5m ]; then
+  if [ ! -f planet-latest.osm.pbf ]; then
+    echo "<$(date +%T)> Downloading planet-latest.osm.pbf..."
+    curl -OL https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
+    echo "<$(date +%T)> Downloading planet-latest.osm.pbf.md5..."
+    # TODO: check md5?
+    curl -OL https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf.md5
+  fi
+  echo "<$(date +%T)> Converting planet-latest.osm.pbf to planet.o5m..."
+  ~/OM/osmctools/osmconvert --drop-author --drop-version --hash-memory=4000 planet-latest.osm.pbf -o=planet.o5m
 else
   echo "<$(date +%T)> planet-latest.osm.pbf exists, not downloading..."
 fi
-
-#curl -OL https://download.geofabrik.de/north-america/us-west-latest.osm.pbf
-#curl -OL https://download.geofabrik.de/north-america/us-west-latest.osm.pbf.md5
-# (rename us-west-latest to planet-latest and edit the md5 file accordingly)
-#if [ ! -f planet.o5m ]; then
-  echo "<$(date +%T)> Converting planet-latest.osm.pbf to planet.o5m..."
-  ~/OM/osmctools/osmconvert planet-latest.osm.pbf -o=planet.o5m
-#else
-#  echo "<$(date +%T)> planet.o5m exists, not converting..."
-#fi
-# (currently unused:) ~/OM/organicmaps/tools/unix/update_planet.sh planet.o5m
-
 
 echo "<$(date +%T)> Generating maps..."
 cd ~/OM/organicmaps/tools/python
