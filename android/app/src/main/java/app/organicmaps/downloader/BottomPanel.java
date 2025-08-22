@@ -17,12 +17,12 @@ import app.organicmaps.sdk.downloader.UpdateInfo;
 import app.organicmaps.sdk.util.StringUtils;
 import app.organicmaps.sdk.util.UiUtils;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 class BottomPanel
 {
   private final DownloaderFragment mFragment;
-  private final FloatingActionButton mFab;
+  private final ExtendedFloatingActionButton mFab;
   private final MaterialButton mButton;
 
   private final View.OnClickListener mDownloadListener = new View.OnClickListener() {
