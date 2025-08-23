@@ -43,7 +43,8 @@ final class SearchHistoryViewController: MWMViewController {
     tableView.keyboardDismissMode = .onDrag
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1))
+    let footerHeight = (UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }.first(where: { $0 is UIWindowScene }) as? UIWindowScene)?.keyWindow?.safeAreaInsets.bottom ?? 1
+    tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: footerHeight))
 
     view.addSubview(tableView)
     tableView.translatesAutoresizingMaskIntoConstraints = false
