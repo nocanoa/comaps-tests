@@ -307,7 +307,10 @@ void TrafficManager::Invalidate(MwmSet::MwmId const & mwmId)
     for (auto it = m_messageCache.begin(); it != m_messageCache.end(); )
     {
       if (!it->second.m_location)
+      {
+        it++;
         continue;
+      }
 
       bool isInvalid = false;
 
