@@ -242,6 +242,9 @@ line|z18-[highway=service][service=busway],
 line|z18-[highway=busway],
 {font-size: 12; text-color: @label_medium; text-halo-opacity: 1; text-halo-color: @label_halo_light;}
 
+line|z14-[highway=pedestrian][area?],
+{text: none;}
+
 /* 8.OTHERS ROADS 15-22 ZOOM */
 
 line|z15-[highway=cycleway],
