@@ -675,6 +675,9 @@ public class PlacePageController
     mPlacePageBehavior.addBottomSheetCallback(mDefaultBottomSheetCallback);
     mViewModel.getMapObject().observe(requireActivity(), this);
     mViewModel.getPlacePageDistanceToTop().observe(requireActivity(), mPlacePageDistanceToTopObserver);
+
+    // Re-enable UI when POI tapped if in fullscreen mode
+    UiUtils.setFullscreen(false);
   }
 
   @Override

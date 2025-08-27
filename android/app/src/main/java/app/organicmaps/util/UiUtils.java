@@ -220,6 +220,9 @@ public final class UiUtils
                                           : ContextCompat.getColor(layout.getContext(), R.color.base_red));
   }
 
+  /*
+   * Hide the Android UI elements 
+   */
   public static void setFullscreen(@NonNull Activity activity, boolean fullscreen)
   {
     final Window window = activity.getWindow();
