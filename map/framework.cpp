@@ -443,13 +443,13 @@ void Framework::OnCountryFileDownloaded(storage::CountryId const &,
   m2::RectD rect = mercator::Bounds::FullRect();
 
   if (localFile && localFile->OnDisk(MapFileType::Map))
-  {
-    auto const res = RegisterMap(*localFile);
-    MwmSet::MwmId const & id = res.first;
-    if (id.IsAlive())
-      rect = id.GetInfo()->m_bordersRect;
-    m_trafficManager.Invalidate(id);
-  }
+    m_trafficManager.RunSynchronized([this, localFile, &rect](){
+      auto const res = RegisterMap(*localFile);
+      MwmSet::MwmId const & id = res.first;
+      if (id.IsAlive())
+        rect = id.GetInfo()->m_bordersRect;
+      m_trafficManager.Invalidate(id);
+    });
 
   m_transitManager.Invalidate();
   m_isolinesManager.Invalidate();

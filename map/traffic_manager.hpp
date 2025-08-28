@@ -224,6 +224,9 @@ public:
    * for these locations are discarded and decoded again, ensuring they are based on the new MWM.
    * The TraFF messages themselves remain unchanged.
    *
+   * This method must either be called from a lambda function passed to `RunSynchronized()`,
+   * or the caller must explicitly lock the private `m_mutex` prior to calling this method.
+   *
    * @param mwmId The newly addded MWM.
    */
   void Invalidate(MwmSet::MwmId const & mwmId);
@@ -312,6 +315,19 @@ public:
    * @param fn The callback function.
    */
   void SetTrafficUpdateCallbackFn(TrafficUpdateCallbackFn && fn);
+
+  /**
+   * @brief Runs a function guarded by the traffic manager mutex.
+   *
+   * This locks `m_mutex`, then runs `f` and releases the mutex.
+   *
+   * @param f
+   */
+  void RunSynchronized(std::function<void()> f)
+  {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    f();
+  }
 
 private:
 

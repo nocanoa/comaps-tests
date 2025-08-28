@@ -301,53 +301,49 @@ void TrafficManager::Invalidate(MwmSet::MwmId const & mwmId)
   auto const mwmRect = mwmId.GetInfo()->m_bordersRect; // m2::RectD
   traffxml::TraffFeed invalidated;
 
+  for (auto it = m_messageCache.begin(); it != m_messageCache.end(); )
   {
-    std::lock_guard<std::mutex> lock(m_mutex);
-
-    for (auto it = m_messageCache.begin(); it != m_messageCache.end(); )
+    if (!it->second.m_location)
     {
-      if (!it->second.m_location)
-      {
-        it++;
-        continue;
-      }
-
-      bool isInvalid = false;
-
-      // invalidate if decoded location uses a previous version of the MWM
-      for (auto const & [decodedMwmId, coloring] : it->second.m_decoded)
-        if (decodedMwmId.GetInfo()->GetCountryName() == mwmId.GetInfo()->GetCountryName())
-          isInvalid = true;
-
-      // invalidate if bounding rect of reference points intersects with bounding rect of MWM
-      if (!isInvalid)
-      {
-        m2::RectD locationRect;
-        for (auto const & point : {it->second.m_location.value().m_from,
-                                   it->second.m_location.value().m_via,
-                                   it->second.m_location.value().m_at,
-                                   it->second.m_location.value().m_to})
-          if (point)
-            locationRect.Add(mercator::FromLatLon(point.value().m_coordinates));
-        isInvalid = locationRect.IsIntersect(mwmRect);
-      }
-
-      if (isInvalid)
-      {
-        traffxml::TraffMessage message(it->second);
-        message.m_decoded.clear();
-        invalidated.push_back(message);
-        it = m_messageCache.erase(it);
-      }
-      else
-        ++it;
+      it++;
+      continue;
     }
 
-    if (!invalidated.empty())
+    bool isInvalid = false;
+
+    // invalidate if decoded location uses a previous version of the MWM
+    for (auto const & [decodedMwmId, coloring] : it->second.m_decoded)
+      if (decodedMwmId.GetInfo()->GetCountryName() == mwmId.GetInfo()->GetCountryName())
+        isInvalid = true;
+
+    // invalidate if bounding rect of reference points intersects with bounding rect of MWM
+    if (!isInvalid)
     {
-      m_feedQueue.insert(m_feedQueue.begin(), invalidated);
-      m_condition.notify_one();
+      m2::RectD locationRect;
+      for (auto const & point : {it->second.m_location.value().m_from,
+           it->second.m_location.value().m_via,
+           it->second.m_location.value().m_at,
+           it->second.m_location.value().m_to})
+        if (point)
+          locationRect.Add(mercator::FromLatLon(point.value().m_coordinates));
+      isInvalid = locationRect.IsIntersect(mwmRect);
     }
+
+    if (isInvalid)
+    {
+      traffxml::TraffMessage message(it->second);
+      message.m_decoded.clear();
+      invalidated.push_back(message);
+      it = m_messageCache.erase(it);
+    }
+    else
+      ++it;
+  }
+
+  if (!invalidated.empty())
+  {
+    m_feedQueue.insert(m_feedQueue.begin(), invalidated);
+    m_condition.notify_one();
   }
 }
 
