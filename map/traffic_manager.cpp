@@ -205,6 +205,10 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
   // TODO assert we’re running on the UI thread
   LOG(LINFO, ("Routing session state changed from", previous, "to", current));
   LOG(LINFO, ("Running on thread", std::this_thread::get_id()));
+
+  m_observerInhibited = ((current == routing::SessionState::RouteBuilding)
+                         || (current == routing::SessionState::RouteRebuilding));
+
   /*
    * Filter based on session state (see routing_callbacks.hpp for states and transitions).
    *
@@ -796,11 +800,21 @@ void TrafficManager::OnTrafficDataUpdate()
   {
     auto const currentTime = steady_clock::now();
     auto const drapeAge = currentTime - m_lastDrapeUpdate;
-    auto const observerAge = currentTime - m_lastObserverUpdate;
     auto const storageAge = currentTime - m_lastStorageUpdate;
     notifyDrape = (drapeAge >= kDrapeUpdateInterval);
-    notifyObserver = (observerAge >= kObserverUpdateInterval);
     updateStorage = (storageAge >= kStorageUpdateInterval);
+    if (!m_observerInhibited)
+    {
+      /*
+       * To avoid resetting the route over and over again while building, inhibit periodic updates
+       * to the router while a route is being built. Periodic updates will resume once the route is
+       * fully built. During route calculation, traffic updates are sent only if the queue is empty.
+       * TODO test this with TMC, where messages arrive one by one, or in short bursts, and the
+       * queue may run empty multiple times while a route is being calculated.
+       */
+      auto const observerAge = currentTime - m_lastObserverUpdate;
+      notifyObserver = (observerAge >= kObserverUpdateInterval);
+    }
   }
 
   if (!m_storage || IsTestMode())

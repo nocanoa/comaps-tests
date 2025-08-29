@@ -655,6 +655,19 @@ private:
   std::chrono::time_point<std::chrono::steady_clock> m_lastObserverUpdate;
 
   /**
+   * @brief Whether updates to the observer are currently inhibited.
+   *
+   * Updates are inhibited while a route calculation is in progress. In this state, the observer
+   * receives traffic updates only if the queue has run empty, not if nore locations are waiting
+   * to be decoded.
+   *
+   * Inhibtiting the observer is necessary as traffic updates during route calculation will cause
+   * it to restart from scratch. Once the route has been calculated, updates will trigger a
+   * recalculation, which is much faster (seconds or less).
+   */
+  bool m_observerInhibited = false;
+
+  /**
    * @brief When the cache file was last updated.
    */
   std::chrono::time_point<std::chrono::steady_clock> m_lastStorageUpdate;
