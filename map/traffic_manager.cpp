@@ -844,9 +844,9 @@ void TrafficManager::OnTrafficDataUpdate()
   /*
    * Much of this code is copied and pasted together from old MWM code, with some minor adaptations:
    *
-   * ForEachActiveMwm and the assertion (not the rest of the body) is from RequestTrafficData()
-   * (now RequestTrafficSubscription()), modification: cycle over all MWMs (active or not).
-   * trafficCache lookup is original code.
+   * ForEachMwm (not the body) is from RequestTrafficData() (now RequestTrafficSubscription()),
+   * modification: cycle over all MWMs (active or not).
+   * Handling dead MWMs and traffic cache lookup is original code.
    * TrafficInfo construction is taken fron ThreadRoutine(), with modifications (different constructor).
    * The remainder of the loop is from OnTrafficDataResponse(traffic::TrafficInfo &&), with some modifications
    * (removed CacheEntry logic; deciding whether to notify a component and managing timestamps is original code).
@@ -860,8 +860,14 @@ void TrafficManager::OnTrafficDataUpdate()
 
     MwmSet::MwmId const mwmId(info);
 
-    ASSERT(mwmId.IsAlive(), ());
     auto tcit = m_allMwmColoring.find(mwmId);
+    if (!mwmId.IsAlive())
+    {
+      // MWM was deleted or replaced during decoding
+      if (tcit != m_allMwmColoring.end())
+        m_allMwmColoring.erase(tcit);
+      return;
+    }
     if (tcit != m_allMwmColoring.end())
     {
       traffic::TrafficInfo::Coloring coloring = tcit->second;
