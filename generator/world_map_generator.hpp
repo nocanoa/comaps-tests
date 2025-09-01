@@ -176,6 +176,7 @@ public:
     case feature::GeomType::Area:
     {
       /// @todo Initial area threshold to push area objects into World.mwm
+      // TODO discard small glaciers and deserts?
       auto const & geometry = fb.GetOuterGeometry();
       if (GetPolygonArea(geometry.begin(), geometry.end()) < 0.0025)
         return false;

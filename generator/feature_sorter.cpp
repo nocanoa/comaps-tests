@@ -11,6 +11,7 @@
 
 #include "routing/routing_helpers.hpp"
 
+#include "indexer/classificator.hpp"
 #include "indexer/dat_section_header.hpp"
 #include "indexer/feature_impl.hpp"
 #include "indexer/scales.hpp"
@@ -157,6 +158,10 @@ public:
       Polygons const & polys = fb.GetGeometry();
       bool const isCoast = fb.IsCoastCell();
 
+      static uint32_t const desertType = classif().GetTypeByPath({"natural", "desert"});
+      static uint32_t const glacierType = classif().GetTypeByPath({"natural", "glacier"});
+      bool const isLowDetail = (fb.HasType(desertType, 2) || fb.HasType(glacierType, 2));
+
       int const scalesStart = static_cast<int>(m_header.GetScalesCount()) - 1;
       for (int i = scalesStart; i >= 0; --i)
       {
@@ -171,10 +176,18 @@ public:
           /// @todo Probably, better to keep 3 zooms (skip trg0 with fallback to trg1)?
           if (isCoast)
           {
+            // The adjustments make simplification zooms like {5, 6, 8, 10} instead of {3, 5, 7, 9}
+            // pastk: make it {4, 6, 7, 9}
+            //if (level <= scales::GetUpperWorldScale())
+            //  ++level;
+            if (i == 0 || i == 1)
+              ++level;
+          }
+          if (!IsCountry() && isArea && isLowDetail)
+          {
+            // pastk: reduce detalisation of glaciers and deserts on World map
             if (level <= scales::GetUpperWorldScale())
-              ++level;
-            if (i == 0)
-              ++level;
+              --level;
           }
 
           // Simplify and serialize geometry.
