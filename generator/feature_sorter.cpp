@@ -160,7 +160,7 @@ public:
 
       static uint32_t const desertType = classif().GetTypeByPath({"natural", "desert"});
       static uint32_t const glacierType = classif().GetTypeByPath({"natural", "glacier"});
-      bool const isLowDetail = (fb.HasType(desertType, 2) || fb.HasType(glacierType, 2));
+      bool const isLowDetail = !IsCountry() && isArea && (fb.HasType(desertType, 2) || fb.HasType(glacierType, 2));
 
       int const scalesStart = static_cast<int>(m_header.GetScalesCount()) - 1;
       for (int i = scalesStart; i >= 0; --i)
@@ -183,7 +183,7 @@ public:
             if (i == 0 || i == 1)
               ++level;
           }
-          if (!IsCountry() && isArea && isLowDetail)
+          if (isLowDetail)
           {
             // pastk: reduce detalisation of glaciers and deserts on World map
             if (level <= scales::GetUpperWorldScale())
