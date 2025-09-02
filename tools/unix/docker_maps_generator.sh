@@ -97,7 +97,7 @@ fi
 
 echo "<$(date +%T)> Generating maps..."
 cd ~/OM/organicmaps/tools/python
-/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" -s="World-test" --countries="World*,France_Ile-de-France_Paris,Liechtenstein"
+/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" -s="World-test" --countries="World*,France_Ile-de-France_Paris,Liechtenstein" --continue
 #/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
 #/tmp/venv/bin/python -m maps_generator --countries="Macedonia" --skip="MwmDiffs,Coastline"
 
