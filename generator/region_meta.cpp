@@ -67,6 +67,7 @@ bool ReadRegionDataImpl(std::string const & countryName, RegionData & data)
 
   try
   {
+    LOG(LINFO, ("Reading and parsing ", COUNTRIES_META_FILE));
     auto reader = GetPlatform().GetReader(COUNTRIES_META_FILE);
     std::string buffer;
     reader->ReadAsString(buffer);
