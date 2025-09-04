@@ -173,12 +173,12 @@ public:
                                  scales::PatchMaxDrawableScale(level)))
         {
           // Increment zoom level for coastline polygons (check and simplification)
-          // for better visual quality in the first geometry batch or whole WorldCoasts.
+          // to workaround visual artifacts on low zooms https://github.com/organicmaps/organicmaps/issues/2429
           /// @todo Probably, better to keep 3 zooms (skip trg0 with fallback to trg1)?
-          if (isCoast)
+          if (isCoast && (level <= 1))
           {
-            if (level <= scales::GetUpperWorldScale())
-              ++level;
+            // Effectively change simplification zooms to {5, 6, 7, 8} from {3, 5, 7, 9}
+            ++level;
             if (i == 0)
               ++level;
           }
