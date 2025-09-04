@@ -11,6 +11,7 @@
 
 #include "routing/routing_helpers.hpp"
 
+#include "indexer/classificator.hpp"
 #include "indexer/dat_section_header.hpp"
 #include "indexer/feature_impl.hpp"
 #include "indexer/scales.hpp"
@@ -157,6 +158,11 @@ public:
       Polygons const & polys = fb.GetGeometry();
       bool const isCoast = fb.IsCoastCell();
 
+      static uint32_t const desertType = classif().GetTypeByPath({"natural", "desert"});
+      static uint32_t const glacierType = classif().GetTypeByPath({"natural", "glacier"});
+      // Reduce detalisation of glaciers and deserts on World map.
+      bool const isLowDetail = !IsCountry() && isArea && (fb.HasType(desertType, 2) || fb.HasType(glacierType, 2));
+
       int const scalesStart = static_cast<int>(m_header.GetScalesCount()) - 1;
       for (int i = scalesStart; i >= 0; --i)
       {
@@ -176,6 +182,8 @@ public:
             if (i == 0)
               ++level;
           }
+          if (isLowDetail && (level <= scales::GetUpperWorldScale()))
+            --level;
 
           // Simplify and serialize geometry.
           // The same line simplification algo is used both for lines
