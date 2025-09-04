@@ -52,10 +52,9 @@ mkdir -p /home/planet/subway
 # S3_BUCKET is used below during uploading
 
 # Params for configure.sh invoked later via build_omim.sh
-# Only drules are needed for the maps generation
+# Only drules are needed for the maps generation, hence no SKIP_GENERATE_DRULES
 export SKIP_MAP_DOWNLOAD=1
 export SKIP_GENERATE_SYMBOLS=1
-export SKIP_GENERATE_DRULES=0
 
 echo "<$(date +%T)> Compiling tools..."
 cd ~/OM/organicmaps
