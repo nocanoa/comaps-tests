@@ -12,6 +12,7 @@ RUN apt-get update -qq \
     openssh-client \
     sshpass \
     vim \
+    git \
     wget \
     build-essential \
     clang \

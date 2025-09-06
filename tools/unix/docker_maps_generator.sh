@@ -56,6 +56,10 @@ mkdir -p /home/planet/subway
 export SKIP_MAP_DOWNLOAD=1
 export SKIP_GENERATE_SYMBOLS=1
 
+# Temporary workaround for dubios ownership / permissions
+# build_omim.sh script calls configure.sh which runs git submodule update
+git config --global --add safe.directory /root/OM/organicmaps
+
 echo "<$(date +%T)> Compiling tools..."
 cd ~/OM/organicmaps
 ./tools/unix/build_omim.sh -R generator_tool
