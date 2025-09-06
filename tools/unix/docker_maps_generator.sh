@@ -100,22 +100,9 @@ cd ~/OM/organicmaps/tools/python
 #/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
 #/tmp/venv/bin/python -m maps_generator --countries="Macedonia" --skip="MwmDiffs,Coastline"
 
-echo "<$(date +%T)> DONE, skipping upload"
-exit 0
-
-###
-###
-###
-
-shopt -s nullglob
-buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
-builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
-mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
-
-if (( ${#mwmfiles[@]} )); then
-  echo "<$(date +%T)> Uploading subways to sftp..."
-  # upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
-  # Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
+echo "<$(date +%T)> Uploading subways to cdn-us-1.comaps.app/subway/ ..."
+# upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
+# Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
 sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST:$SFTP_PATH <<EOF
   lcd /home/planet/subway/
   put subway.json
@@ -132,6 +119,19 @@ sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST
   exit
 EOF
 
+echo "<$(date +%T)> DONE, skipping MWMs upload (TODO)"
+exit 0
+
+###
+###
+###
+
+shopt -s nullglob
+buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
+builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
+mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
+
+if (( ${#mwmfiles[@]} )); then
   # upload all files via rclone to Cloudflare (R2)
   echo "<$(date +%T)> Uploading maps to cloudflare..."
   rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
