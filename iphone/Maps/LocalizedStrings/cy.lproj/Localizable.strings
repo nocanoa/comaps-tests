@@ -193,7 +193,6 @@
 "planning_route_remove_title" = "Drag here to remove";
 "p2p_your_location" = "Eich Lleoliad";
 "category_transport" = "Trafnidiaeth";
-"alert_reauth_link_text_ios" = "here";
 "text_more_button" = "…more";
 "downloader_of" = "%1$d o %2$d";
 "mobile_data_option_ask" = "Gofyn Bob Amser";
@@ -256,7 +255,6 @@
 "pref_appearance_light" = "Golau";
 "dialog_routing_change_end" = "Addasu cylchfan";
 "planning_route_manage_route" = "Rheoli Llwybr";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "place_name" = "Enw Lle";
 "navigation_stop_button" = "Stopio";
 "load_kmz_successful" = "Bookmarks loaded successfully! You can find them on the map or on the Bookmarks Manager screen.";
@@ -589,3 +587,5 @@
 "thank_you" = "Diolch";
 "yes_available" = "Ie";
 "osm_profile_reauthorize" = "Reconnect with OpenStreetMap";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

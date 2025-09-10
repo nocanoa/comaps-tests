@@ -24,15 +24,14 @@ import app.organicmaps.sdk.bookmarks.data.Bookmark;
 import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.widget.placepage.EditBookmarkFragment;
 import app.organicmaps.widget.placepage.PlacePageViewModel;
 import com.google.android.material.textview.MaterialTextView;
 
 public class PlacePageBookmarkFragment extends Fragment implements View.OnClickListener, View.OnLongClickListener,
-                                                                   Observer<MapObject>,
-                                                                   EditBookmarkFragment.EditBookmarkListener
+                                                                   Observer<MapObject>, EditBookmarkFragment.EditBookmarkListener
 {
   private View mFrame;
   private MaterialTextView mTvBookmarkNote;

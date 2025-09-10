@@ -15,7 +15,7 @@
     android:layout_width="@dimen/nav_icon_size"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    app:tint="?colorAccent"
+    app:tint="?colorSecondary"
     tools:srcCompat="@drawable/ic_import" />
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/text"
@@ -26,5 +26,5 @@
     tools:text="Some text should go here"
     android:textAllCaps="true"
     android:textAppearance="@style/MwmTextAppearance.Body3"
-    android:textColor="?colorAccent"/>
+    android:textColor="?colorSecondary"/>
 </LinearLayout>

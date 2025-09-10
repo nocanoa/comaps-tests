@@ -122,7 +122,7 @@
       android:layout_width="@dimen/downloader_status_size"
       android:layout_height="@dimen/downloader_status_size"
       android:background="?clickableBackground"
-      wheel:wheelProgressColor="?colorAccent"
+      wheel:wheelProgressColor="?colorSecondary"
       wheel:wheelSecondaryColor="?dividerHorizontal"
       wheel:wheelThickness="@dimen/margin_eighth"/>
   </LinearLayout>

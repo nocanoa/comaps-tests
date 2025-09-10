@@ -184,12 +184,14 @@
 "type.amenity.vehicle_inspection" = "Техосмотр автомобиля";
 "type.amenity.vending_machine.fuel" = "Топливная колонка";
 "type.amenity.veterinary" = "Ветеринарная клиника";
+"type.amenity.animal_shelter" = "Приют для животных";
 "type.amenity.waste_basket" = "Урна";
 "type.amenity.waste_disposal" = "Мусорный контейнер";
 "type.amenity.waste_transfer_station" = "Станция перевалки отходов";
 "type.amenity.water_point" = "Вода для автодомов";
 "type.amenity.water_point.drinking_water_no" = "Вода для автодомов";
 "type.barrier" = "Преграда";
+"type.barrier.yes" = "Преграда";
 "type.barrier.block" = "Блок";
 "type.barrier.bollard" = "Столбик";
 "type.barrier.border_control" = "Погранконтроль";
@@ -208,6 +210,7 @@
 "type.barrier.retaining_wall" = "Поддерживающая стена";
 "type.barrier.stile" = "Перелаз";
 "type.barrier.turnstile" = "Турникет";
+"type.barrier.wicket_gate" = "Калитка";
 "type.barrier.swing_gate" = "Шлагбаум";
 "type.barrier.toll_booth" = "Пункт оплаты";
 "type.barrier.wall" = "Стена";
@@ -1249,7 +1252,7 @@
 "type.shop.laundry" = "Прачечная";
 "type.shop.mall" = "Торговый центр";
 "type.shop.massage" = "Массажный салон";
-"type.shop.mobile_phone" = "Мобильные телефоны";
+"type.shop.mobile_phone" = "Магазин мобильных телефонов";
 "type.shop.money_lender" = "Ростовщик";
 "type.shop.motorcycle" = "Магазин мотоциклов";
 "type.shop.motorcycle_repair" = "Ремонт мотоциклов";
@@ -1476,8 +1479,8 @@
 "type.leisure.firepit" = "Кострище";
 "type.man_made.crane" = "Кран";
 "type.railway.station.subway.qingdao" = "Станция метро";
-"type.leisure.escape_game" = "Escape Room";
-"type.amenity.luggage_locker" = "Luggage Locker";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
-"type.post_office.post_partner" = "Post Partner";
-"type.amenity.ranger_station" = "Ranger Station";
+"type.leisure.escape_game" = "Квест-комната";
+"type.amenity.luggage_locker" = "Камера хранения";
+"type.amenity.bicycle_parking.covered" = "Крытая велосипедная парковка";
+"type.post_office.post_partner" = "Почтовое отделение";
+"type.amenity.ranger_station" = "Пост лесников";

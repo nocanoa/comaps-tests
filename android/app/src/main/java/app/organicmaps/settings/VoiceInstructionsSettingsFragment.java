@@ -26,7 +26,7 @@ import app.organicmaps.sdk.settings.SpeedCameraMode;
 import app.organicmaps.sdk.sound.LanguageData;
 import app.organicmaps.sdk.sound.TtsPlayer;
 import app.organicmaps.sdk.util.Config;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import java.util.Arrays;
 import java.util.Collections;
@@ -326,10 +326,10 @@ public class VoiceInstructionsSettingsFragment extends BaseXmlSettingsFragment
     final String ttsLinkText = getString(R.string.prefs_languages_information_off_link);
     final Spannable link = new SpannableString(ttsLinkText + "↗");
     // Set link color.
-    link.setSpan(
-        new ForegroundColorSpan(ContextCompat.getColor(
-            requireContext(), UiUtils.getStyledResourceId(requireContext(), androidx.appcompat.R.attr.colorAccent))),
-        0, ttsLinkText.length(), 0);
+    link.setSpan(new ForegroundColorSpan(ContextCompat.getColor(
+                     requireContext(),
+                     UiUtils.getStyledResourceId(requireContext(), com.google.android.material.R.attr.colorSecondary))),
+                 0, ttsLinkText.length(), 0);
     ttsLangInfoLink.setSummary(link);
 
     final String ttsInfoUrl = requireActivity().getString(R.string.tts_info_link);

@@ -1,8 +1,8 @@
 #include "generator/osm2meta.hpp"
 
 #include "indexer/classificator.hpp"
-#include "indexer/ftypes_matcher.hpp"
 #include "indexer/editable_map_object.hpp"
+#include "indexer/ftypes_matcher.hpp"
 
 #include "platform/measurement_utils.hpp"
 
@@ -61,6 +61,7 @@ public:
     RemoveDuplicatesAndKeepOrder(m_values);
     return strings::JoinStrings(m_values, kOSMMultivalueDelimiter);
   }
+
 private:
   std::vector<std::string> m_values;
 };
@@ -68,8 +69,8 @@ private:
 bool IsNoNameNoAddressBuilding(FeatureParams const & params)
 {
   static uint32_t const buildingType = classif().GetTypeByPath({"building"});
-  return params.m_types.size() == 1 && params.m_types[0] == buildingType &&
-         params.house.Get().empty() && params.name.IsEmpty();
+  return params.m_types.size() == 1 && params.m_types[0] == buildingType && params.house.Get().empty() &&
+         params.name.IsEmpty();
 }
 
 bool Prefix2Double(std::string const & str, double & d)
@@ -103,10 +104,8 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_operator(std::string con
 {
   using namespace ftypes;
   auto const & t = m_params.m_types;
-  if (IsATMChecker::Instance()(t) ||
-      IsRecyclingCentreChecker::Instance()(t) ||
-      IsRecyclingContainerChecker::Instance()(t) ||
-      IsPostPoiChecker::Instance()(t) ||
+  if (IsATMChecker::Instance()(t) || IsRecyclingCentreChecker::Instance()(t) ||
+      IsRecyclingContainerChecker::Instance()(t) || IsPostPoiChecker::Instance()(t) ||
       IsOperatorOthersPoiChecker::Instance()(t))
   {
     return v;
@@ -134,6 +133,11 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_url(std::string const & 
     return v;
   if (first + 1 == v.size())
     return std::string{v.begin(), --v.end()};
+  return v;
+}
+
+std::string MetadataTagProcessorImpl::ValidateAndFormat_text(std::string const & v)
+{
   return v;
 }
 
@@ -223,7 +227,10 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_email(std::string const 
   return v;
 }
 
-std::string MetadataTagProcessorImpl::ValidateAndFormat_postcode(std::string const & v) { return v; }
+std::string MetadataTagProcessorImpl::ValidateAndFormat_postcode(std::string const & v)
+{
+  return v;
+}
 
 std::string MetadataTagProcessorImpl::ValidateAndFormat_flats(std::string const & v)
 {
@@ -335,16 +342,16 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_panoramax(std::string v)
 {
   static auto const s_panoramaxRegex = std::regex(R"(^([a-z0-9]{8}(-[a-z0-9]{4}){3}-[a-z0-9]{12})$)");
 
-    if (std::regex_match(v, s_panoramaxRegex))
+  if (std::regex_match(v, s_panoramaxRegex))
     return v;
-    url::Url const parsedUrl = url::Url::FromString(v);
-    if (const std::string* paramValue = parsedUrl.GetParamValue("pic"))
-    {
-        if (std::regex_match(*paramValue, s_panoramaxRegex))
-            return v;
-    }
-    LOG(LDEBUG, ("Invalid Panoramax tag value:", v));
-    return {};
+  url::Url const parsedUrl = url::Url::FromString(v);
+  if (std::string const * paramValue = parsedUrl.GetParamValue("pic"))
+  {
+    if (std::regex_match(*paramValue, s_panoramaxRegex))
+      return v;
+  }
+  LOG(LDEBUG, ("Invalid Panoramax tag value:", v));
+  return {};
 }
 
 std::string MetadataTagProcessorImpl::ValidateAndFormat_airport_iata(std::string const & v) const
@@ -409,7 +416,8 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
   if (!ftypes::IsWayWithDurationChecker::Instance()(m_params.m_types))
     return {};
 
-  auto const format = [](double hours) -> std::string {
+  auto const format = [](double hours) -> std::string
+  {
     if (AlmostEqualAbs(hours, 0.0, 1e-5))
       return {};
 
@@ -419,7 +427,8 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
     return ss.str();
   };
 
-  auto const readNumber = [&v](size_t & pos) -> std::optional<uint32_t> {
+  auto const readNumber = [&v](size_t & pos) -> std::optional<uint32_t>
+  {
     uint32_t number = 0;
     size_t const startPos = pos;
     while (pos < v.size() && isdigit(v[pos]))
@@ -435,7 +444,8 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
     return {number};
   };
 
-  auto const convert = [](char type, uint32_t number) -> std::optional<double> {
+  auto const convert = [](char type, uint32_t number) -> std::optional<double>
+  {
     switch (type)
     {
     case 'H': return number;
@@ -508,7 +518,6 @@ std::string MetadataTagProcessorImpl::ValidateAndFormat_duration(std::string con
 
   return format(hours);
 }
-
 
 MetadataTagProcessor::~MetadataTagProcessor()
 {
@@ -613,6 +622,7 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
       return;
     valid = ValidateAndFormat_brand(v);
     break;
+  case Metadata::FMD_BRANCH: valid = ValidateAndFormat_text(v); break;
   case Metadata::FMD_DURATION: valid = ValidateAndFormat_duration(v); break;
   case Metadata::FMD_CAPACITY: valid = ValidateAndFormat_capacity(v); break;
   case Metadata::FMD_LOCAL_REF: valid = ValidateAndFormat_local_ref(v); break;
@@ -622,7 +632,7 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
   case Metadata::FMD_NETWORK: valid = ValidateAndFormat_operator(v); break;
   // Metadata types we do not get from OSM.
   case Metadata::FMD_CUISINE:
-  case Metadata::FMD_DESCRIPTION:   // processed separately
+  case Metadata::FMD_DESCRIPTION:  // processed separately
   case Metadata::FMD_TEST_ID:
   case Metadata::FMD_CUSTOM_IDS:
   case Metadata::FMD_PRICE_RATES:

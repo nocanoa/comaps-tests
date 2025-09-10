@@ -1,0 +1,9 @@
+• Données OSM du 22 août
+• Nouvel indicateur de vitesse et détails des pistes
+• Amélioration du style sombre, ajout de labels colorées
+• Affichage de la date de dernière vérification d'un lieu
+• Support dans le routage des virages, signalisations et restrictions
+• Amélioration de la boussole et de la précision GPS
+• Support des adresses et des notes dans l'éditeur
+• Diverses améliorations d'UI et du style de la carte
+Plus d'informations sur notre Codeberg

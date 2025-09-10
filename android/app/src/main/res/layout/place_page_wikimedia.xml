@@ -11,7 +11,7 @@
     android:id="@+id/iv__place_wikimedia"
     style="@style/PlacePageMetadataIcon"
     app:srcCompat="@drawable/ic_wikimedia_commons_white"
-    app:tint="?colorAccent" />
+    app:tint="?colorSecondary" />
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv__place_wikimedia"

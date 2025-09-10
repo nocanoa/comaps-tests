@@ -63,7 +63,7 @@
 				B7A5517221CAFB2800789B7E /* serdes.hpp */,
 			);
 			name = descriptions;
-			path = ../../descriptions;
+			path = ../../libs/descriptions;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -107,7 +107,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					BBD4571121A6BD0300B0A79C = {
 						CreatedOnToolsVersion = 10.0;

@@ -4,10 +4,10 @@ This document gives some guidelines to write and review PR with essential elemen
 
 ## Writing a Pull Request (PR):
 
-- A PR should have a reasonable size and reflect only one idea, a feature, a bugfix, or a refactoring, to help review and limit regression in the app
-- If a PR implements two different features, refactoring, or bug fixes, we prefer you to split it into several PRs
+- A PR should have a reasonable size and reflect only one idea, a feature, a bugfix, or a refactoring. This helps to review and limit regressions in the app
+- If you want to work on more than one feature/bug/refactoring at once, please create separate PRs for these.
 - New functionality and unit or integration tests for it should be developed in the same PR
-- Every commit of all PRs should be compilable under all platforms. All tests should pass. So if changing of code breaks unit or integration tests these tests should be fixed
+- Every commit of all PRs should be compilable under all platforms and all tests should pass. If changes break unit or integration tests, then these tests should be fixed, ideally before opening a PR. 
 - Every commit should reflect a completed idea and have an understandable comment. Review fixes should be merged into one commit
 - All commits and PR captions should be written in English.
 - We suggest PRs should have prefixes in square brackets depending on the changed subsystem. For example, [routing], [generator], or [android]. Commits may have several prefixes (See `git log --oneline|egrep -o '\[[0-9a-z]*\]'|sort|uniq -c|sort -nr|less` for ideas.)
@@ -20,7 +20,7 @@ This document gives some guidelines to write and review PR with essential elemen
 
 ## Review a Pull Request (PR):
 
-- All comments in PR should be polite and concern the PR
+- We expect all comments to be polite, including for PR reviews. For PRs feedback should also only concern the PR
 - It's better to ask the developer to make the code simpler or add comments to the codebase than to understand the code through the developer's explanation
 - If a developer changes the PR significantly, the reviewers who have already approved the PR should be informed about these changes
 - A reviewer should pay attention not only to the code base but also to the description of the PR and commits
@@ -29,7 +29,38 @@ This document gives some guidelines to write and review PR with essential elemen
 - If a reviewer and a developer cannot find a compromise, a third opinion should be sought
 - A PR which should not be merged after review should be marked as a draft.
 
-## Recommendations:
+### Reviewing pull requests of first-time contributors
+
+First-time contributors are likely to be less familiar with both the project code but also the way CoMaps as a community operates.
+Some of them might also not be too familiar with using git (e.g. for rebasing branches or signing DCOs).
+
+For those reasons they might require more effort from reviewers. 
+At the same time, new contributors are the lifeblood that keeps CoMaps sustainable by ensuring that enough people are contributing code. For that reason, it's important to help those newcomers in their on-boarding.
+
+To help newcomers in feeling welcome and getting onboarded, some suggestions for what to include:
+
+- Thank the contributor for opening a PR (they volunteered time to help the project! And offering code to a new community can be nerve-wrecking.)
+- Where applicable:
+    * Notes on how to sign the DCO/rebase commits
+    * The necessary constructive feedback if there are things that need to be improved before a PR can be merged
+- Give the contributor another thank you for their effort, signal that the community is open for helping further (e.g. on Codeberg and link to Matrix/TG/Zulip)
+
+Here's a small template that can help writing feedback to first-time contributors:
+
+> Thank you so much for this contribution - and welcome to CoMaps!
+> 
+> For CoMaps, we use the [_Developers Certficate of Origin_](https://codeberg.org/comaps/comaps/src/branch/main/docs/DCO.md) for contributors to certify that they wrote/have the right to submit their code to our project. This helps ensure that CoMaps can remain open source as it gives us some legal protection. You can sign it by signing your commit. The easiest way is to amend your existing commit with `git commit -s -m 'your commit message'`. If you are using the Codeberg interface you can also sign your commit by selection _"Add a Signed-off-by trailer by the committer at the end of the commit log message."_. 
+> 
+> If you haven't yet, you could also add yourself to our [CONTRIBUTOR](https://codeberg.org/comaps/comaps/src/branch/main/CONTRIBUTORS) file with your name or pseudonym if you want (that would also give you a chance to sign the commit if needed).
+
+> There are a few things that could help improve your PR/would need to be fixed / I have a few questions about… (the actual PR feedback)
+> 
+> I hope that helps! If anything is unclear, please don't hesitate to get in touch on here, or reach out via our chat channels. You can find most of us [on different Matrix/Telegram channels](https://codeberg.org/comaps/Governance/wiki/Chat-rooms) or [on our contributor Zulip](https://comaps.zulipchat.com/join/e5e3c4zurmfxykrtbiiq6qrw/).
+> 
+> Thanks again for putting this PR together!
+   
+
+## Recommendations for making PRs:
 
 - Functions and methods should not be long. In most cases, it's good if the whole body of a function or method fits on the monitor. It's good to write a function or a method shorter than 60 lines
 - If you are solving a big task it's worth splitting it into subtasks and developing one or several PRs for every subtask.

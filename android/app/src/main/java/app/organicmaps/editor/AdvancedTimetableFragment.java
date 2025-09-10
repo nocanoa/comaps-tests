@@ -14,9 +14,9 @@ import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmFragment;
 import app.organicmaps.sdk.editor.OpeningHours;
 import app.organicmaps.sdk.util.Constants;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.InputUtils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -87,8 +87,8 @@ public class AdvancedTimetableFragment extends BaseMwmFragment implements View.O
   private void setExampleDrawables(@DrawableRes int left, @DrawableRes int right)
   {
     mExamplesTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(
-        Graphics.tint(requireActivity(), left, androidx.appcompat.R.attr.colorAccent), null,
-        Graphics.tint(requireActivity(), right, androidx.appcompat.R.attr.colorAccent), null);
+        Graphics.tint(requireActivity(), left, com.google.android.material.R.attr.colorSecondary), null,
+        Graphics.tint(requireActivity(), right, com.google.android.material.R.attr.colorSecondary), null);
   }
 
   @Override

@@ -304,7 +304,7 @@ waterway|dam;200;
 amenity|charging_station|motorcar;[amenity=charging_station][motorcar?];;name;int_name;201;
 leisure|golf_course;202;
 highway|service|bridge;[highway=service][bridge?];;name;int_name;203;
-deprecated:power|minor_line:01.2017;204;x
+highway|pedestrian|square;[highway=pedestrian][place=square];;name;int_name;204;
 # Marsh 500K usages, wet_meadow 160K
 natural|wetland|marsh;[natural=wetland][wetland=marsh],[natural=wetland][wetland=wet_meadow],[natural=wetland][wetland=dambo];;;;205;
 leisure|stadium;206;
@@ -642,7 +642,8 @@ sport|diving;520;
 #~270k uses.
 man_made|utility_pole;521;
 deprecated:boundary|administrative|suburb:04.2024;[boundary=administrative][border_type=suburb];x;name;int_name;522;
-deprecated|deprecated;523;x
+# Generic unspecified barrier, could be node (50k) or way (100k)
+barrier|yes;523;
 railway|monorail|tunnel;[railway=monorail][tunnel?];;name;int_name;524;
 railway|funicular|bridge;[railway=funicular][bridge?];;name;int_name;525;
 deprecated|deprecated;526;x
@@ -1021,9 +1022,9 @@ historic|pillory;[historic=pillory];;name;int_name;897;
 amenity|money_transfer;898;
 man_made|crane;899;
 railway|subway|darkgreen;[railway=subway][colour=darkgreen];x;name;int_name;900;railway|subway|tunnel
-deprecated|deprecated;901;x
+barrier|wicket_gate;901;
 railway|subway|gray;[railway=subway][colour=gray];x;name;int_name;902;railway|subway|tunnel
-deprecated|deprecated;903;x
+amenity|animal_shelter;903;
 railway|subway|lightblue;[railway=subway][colour=lightblue];x;name;int_name;904;railway|subway|tunnel
 amenity|motorcycle_rental;[amenity=motorcycle_rental],[shop=motorcycle][motorcycle:rental=yes],[shop=motorcycle][rental=yes],[amenity=scooter_rental];;;;905;
 railway|subway|lightgreen;[railway=subway][colour=lightgreen];x;name;int_name;906;railway|subway|tunnel

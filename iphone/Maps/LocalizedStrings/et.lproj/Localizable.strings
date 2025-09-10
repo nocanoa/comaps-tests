@@ -322,7 +322,7 @@
 "report_incorrect_map_bug" = "Paranda vigaseid kaardiandmeid või teata neist";
 
 /* Button in the About screen */
-"volunteer" = "Vabatahtlik kaastöö";
+"volunteer" = "Osale ühistöös CoMapsi täiendamisel";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Suhtle meiega";
@@ -755,12 +755,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvestatud";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Oma kaardimuudatuste automaatseks üleslaadimiseks palun logi sisse OpenStreetMappi. Lisateave";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "kuskil siin";
 "core_entrance" = "Sissepääs";
 "error_enter_correct_name" = "Palun sisesta korrektne nimi";
 "bookmark_lists" = "Loendid";
@@ -1099,3 +1093,5 @@
 "pref_maplanguage_title" = "Kaardi keel";
 "transliteration_title_disabled_summary" = "Kui kaardil on alati kasutusel kohalik keel, siis see eelistus on välja lülitatud";
 "pref_maplanguage_local" = "Kohalik keel";
+"existence_confirmed_time_ago" = "Olemasolu on kontrollitud %@";
+"hours_confirmed_time_ago" = "Kontrollitud %@";

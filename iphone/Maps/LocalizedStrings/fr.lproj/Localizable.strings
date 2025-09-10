@@ -87,7 +87,7 @@
 "measurement_units" = "Unités de mesure";
 
 /* Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! */
-"category_eat" = "Un endroit pour manger";
+"category_eat" = "Où manger";
 
 /* Search category for grocery stores; any changes should be duplicated in categories.txt @category_food! */
 "category_food" = "Épiceries";
@@ -172,7 +172,7 @@
 "unknown_current_position" = "Votre position n'a pas encore été déterminée";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Hé, regardez mon signet sur la carte CoMaps !";
+"bookmark_share_email_subject" = "Hé, regardez ce lieu dans CoMaps !";
 
 /* Subject for emailed position */
 "my_position_share_email_subject" = "Hé, regardez ma position actuelle sur la carte CoMaps !";
@@ -250,7 +250,7 @@
 "pref_tts_street_names_description" = "Quand activé, le nom de la rue ou de la sortie à prendre sera prononcé à haute voix.";
 
 /* Settings «Route» category: «Tts language» title */
-"pref_tts_language_title" = "Langue vocale";
+"pref_tts_language_title" = "Langue des annonces vocales";
 
 /* Settings «Route» category: «Test Voice Directions» title */
 "pref_tts_test_voice_title" = "Tester les instructions vocales";
@@ -262,7 +262,7 @@
 "search_show_on_map" = "Voir sur la carte";
 
 /* Text in menu */
-"website" = "Site internet";
+"website" = "Site web";
 
 /* Text in About menu, opens CoMaps news website */
 "news" = "Nouvelles";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Signaler ou corriger des données cartographiques incorrectes";
 
 /* Button in the About screen */
-"volunteer" = "Se porter volontaire";
+"volunteer" = "Contribuer à CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Rentrez en contact avec nous";
@@ -441,10 +441,10 @@
 /* blue gray color */
 "blue_gray" = "Gris-bleu";
 "dialog_routing_disclaimer_title" = "Lorsque vous suivez l'itinéraire, gardez à l'esprit les points suivants :";
-"dialog_routing_disclaimer_priority" = "— Les conditions de circulation, le code de la route et les panneaux de signalisation ont la priorité sur l'appareil de navigation ;";
-"dialog_routing_disclaimer_precision" = "— La carte peut être imprécise et l'itinéraire proposé n'est pas forcément le plus direct pour arriver à destination ;";
+"dialog_routing_disclaimer_priority" = "— Les conditions de circulation, le code de la route et les panneaux de signalisation ont la priorité sur les conseils de navigation ;";
+"dialog_routing_disclaimer_precision" = "— La carte peut être erronée et l'itinéraire proposé n'est pas forcément optimal pour arriver à destination ;";
 "dialog_routing_disclaimer_recommendations" = "— L'itinéraire proposé doit être considéré comme une simple recommandation ;";
-"dialog_routing_disclaimer_borders" = "— Faites attention aux itinéraires traversant des zones frontalières : les itinéraires générés par l'application peuvent parfois franchir des frontières étatiques dans des zones interdites ;";
+"dialog_routing_disclaimer_borders" = "— Faites attention à proximité des zones frontalières : les itinéraires générés par l'application peuvent parfois franchir les frontières entre états dans des zones interdites ;";
 "dialog_routing_disclaimer_beware" = "Restez vigilants et soyez prudents sur la route !";
 "dialog_routing_check_gps" = "Vérifiez le signal GPS";
 "dialog_routing_error_location_not_found" = "Impossible de créer l'itinéraire. Les coordonnées GPS actuelles n'ont pas pu être déterminées.";
@@ -467,7 +467,7 @@
 "dialog_routing_application_error" = "Impossible de créer l'itinéraire à cause d'une erreur dans l'application.";
 "dialog_routing_try_again" = "Veuillez réessayer";
 "dialog_routing_download_and_build_cross_route" = "Voulez-vous télécharger la carte et créer un itinéraire plus direct s'étendant sur plus d'une carte ?";
-"dialog_routing_download_cross_route" = "Téléchargez des cartes supplémentaires pour créer un itinéraire plus direct sortant des limites de cette carte.";
+"dialog_routing_download_cross_route" = "Téléchargez des cartes supplémentaires pour calculer un meilleur itinéraire sortant des limites de la carte courante.";
 
 /* «Show» context menu */
 "show" = "Afficher";
@@ -683,7 +683,7 @@
 "editor_edits_sent_message" = "Ta note sera envoyée à OpenStreetMap";
 "editor_comment_hint" = "Commentaire…";
 "editor_reset_edits_message" = "Abandonner toutes les modifications locales ?";
-"editor_reset_edits_button" = "Réinitialiser";
+"editor_reset_edits_button" = "Ignorer";
 "editor_remove_place_message" = "Supprimer le lieu ajouté ?";
 "editor_remove_place_button" = "Supprimer";
 "editor_place_doesnt_exist" = "Ce lieu n'existe pas";
@@ -692,7 +692,7 @@
 /* Phone number error message */
 "error_enter_correct_phone" = "Saisissez un numéro de téléphone valide";
 "error_enter_correct_web" = "Saisissez une adresse Internet valide";
-"error_enter_correct_email" = "Saisissez un email valide";
+"error_enter_correct_email" = "Saisissez une adresse de courriel valide";
 "refresh" = "Mettre à jour";
 "placepage_add_place_button" = "Ajouter un lieu sur OpenStreetMap";
 
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Enregistré";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Connecte-toi à OpenStreetMap pour télécharger automatiquement toutes tes modifications de cartes. En savoir plus";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "ici";
 "core_entrance" = "Entrée";
 "error_enter_correct_name" = "Veuillez entrer un nom correct";
 "bookmark_lists" = "Listes";
@@ -832,7 +826,7 @@
 "avoid_ferry" = "Éviter les ferries";
 "avoid_motorways" = "Éviter les autoroutes";
 "unable_to_calc_alert_title" = "Impossible de calculer l'itinéraire";
-"unable_to_calc_alert_subtitle" = "Malheureusement, nous n'avons pas pu créer l'itinéraire avec les options sélectionnées. Modifiez les paramètres et réessayez";
+"unable_to_calc_alert_subtitle" = "Malheureusement, nous n'avons pas pu créer l'itinéraire avec les options sélectionnées. Modifiez les paramètres et réessayez.";
 "define_to_avoid_btn" = "Définissez les routes à éviter";
 "change_driving_options_btn" = "Paramètres d'itinéraire activés";
 "toll_road" = "Route à péage";
@@ -1094,10 +1088,12 @@
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
 "track_recording_toast_nothing_to_save" = "L'itinéraire est vide - il n'y a rien à sauvegarder";
-"edit_track" = "Modifier le trace";
+"edit_track" = "Modifier la trace";
 "osm_profile_view_notes" = "Afficher les notes";
 "osm_profile_view_edit_history" = "Afficher l'historique des modifications";
 "pref_mapappearance_title" = "Apparence de la carte";
 "pref_maplanguage_title" = "Langue de la carte";
 "transliteration_title_disabled_summary" = "Désactivé lorsque la langue locale est toujours utilisée pour la carte";
 "pref_maplanguage_local" = "Langue locale";
+"existence_confirmed_time_ago" = "Existance confirmée %@";
+"hours_confirmed_time_ago" = "Confirmées %@";

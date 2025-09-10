@@ -18,6 +18,8 @@
 extern jclass g_mapObjectClazz;
 extern jclass g_featureIdClazz;
 extern jclass g_bookmarkClazz;
+extern jclass g_trackClazz;
+extern jclass g_trackStatisticsClazz;
 extern jclass g_httpClientClazz;
 extern jclass g_httpParamsClazz;
 extern jclass g_platformSocketClazz;
@@ -41,8 +43,8 @@ jfieldID GetStaticFieldID(JNIEnv * env, jclass clazz, char const * name, char co
 jclass GetGlobalClassRef(JNIEnv * env, char const * s);
 
 std::string ToNativeString(JNIEnv * env, jstring str);
-// Converts UTF-8 array to native UTF-8 string. Result differs from simple GetStringUTFChars call for characters greater than U+10000,
-// since jni uses modified UTF (MUTF-8) for strings.
+// Converts UTF-8 array to native UTF-8 string. Result differs from simple GetStringUTFChars call for characters greater
+// than U+10000, since jni uses modified UTF (MUTF-8) for strings.
 std::string ToNativeString(JNIEnv * env, jbyteArray const & utfBytes);
 jstring ToJavaString(JNIEnv * env, char const * s);
 inline jstring ToJavaString(JNIEnv * env, std::string const & s)
@@ -63,9 +65,11 @@ char const * GetStringClassName();
 
 std::string DescribeException();
 bool HandleJavaException(JNIEnv * env);
-base::LogLevel GetLogLevelForException(JNIEnv * env, const jthrowable & e);
+base::LogLevel GetLogLevelForException(JNIEnv * env, jthrowable const & e);
 
 std::shared_ptr<jobject> make_global_ref(jobject obj);
+std::shared_ptr<jobject> make_global_ref_safe(jobject obj);
+
 using TScopedLocalRef = ScopedLocalRef<jobject>;
 using TScopedLocalClassRef = ScopedLocalRef<jclass>;
 using TScopedLocalObjectArrayRef = ScopedLocalRef<jobjectArray>;
@@ -77,10 +81,10 @@ jobject GetNewParcelablePointD(JNIEnv * env, m2::PointD const & point);
 jobject GetNewPoint(JNIEnv * env, m2::PointD const & point);
 jobject GetNewPoint(JNIEnv * env, m2::PointI const & point);
 
-template<typename TIt, typename TToJavaFn>
+template <typename TIt, typename TToJavaFn>
 jobjectArray ToJavaArray(JNIEnv * env, jclass clazz, TIt begin, TIt end, size_t const size, TToJavaFn && toJavaFn)
 {
-  jobjectArray jArray = env->NewObjectArray((jint) size, clazz, 0);
+  jobjectArray jArray = env->NewObjectArray((jint)size, clazz, 0);
   jint i = 0;
   for (auto it = begin; it != end; ++it)
   {
@@ -92,21 +96,17 @@ jobjectArray ToJavaArray(JNIEnv * env, jclass clazz, TIt begin, TIt end, size_t 
   return jArray;
 }
 
-template<typename TContainer, typename TToJavaFn>
+template <typename TContainer, typename TToJavaFn>
 jobjectArray ToJavaArray(JNIEnv * env, jclass clazz, TContainer const & src, TToJavaFn && toJavaFn)
 {
-  return ToJavaArray(env, clazz, std::begin(src), std::end(src), src.size(),
-                     std::forward<TToJavaFn>(toJavaFn));
+  return ToJavaArray(env, clazz, std::begin(src), std::end(src), src.size(), std::forward<TToJavaFn>(toJavaFn));
 }
 
 template <typename Cont>
 jobjectArray ToJavaStringArray(JNIEnv * env, Cont const & src)
 {
   return ToJavaArray(env, GetStringClass(env), src,
-                     [](JNIEnv * env, std::string const & item)
-                     {
-                       return ToJavaString(env, item.c_str());
-                     });
+                     [](JNIEnv * env, std::string const & item) { return ToJavaString(env, item.c_str()); });
 }
 
 void DumpDalvikReferenceTables();

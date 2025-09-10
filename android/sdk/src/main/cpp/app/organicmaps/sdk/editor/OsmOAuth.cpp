@@ -1,7 +1,7 @@
 #include <jni.h>
 
-#include "app/organicmaps/sdk/core/jni_helper.hpp"
 #include "app/organicmaps/sdk/Framework.hpp"
+#include "app/organicmaps/sdk/core/jni_helper.hpp"
 
 #include "base/logging.hpp"
 #include "base/string_utils.hpp"
@@ -25,17 +25,15 @@ bool LoadOsmUserPreferences(std::string const & oauthToken, UserPreferences & ou
 
 extern "C"
 {
-
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOAuth2Url(JNIEnv * env, jclass)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOAuth2Url(JNIEnv * env, jclass)
 {
   auto const auth = OsmOAuth::ServerAuth();
   return ToJavaString(env, auth.BuildOAuth2Url());
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithPassword(JNIEnv * env, jclass clazz,
-                                                                jstring login, jstring password)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithPassword(JNIEnv * env, jclass clazz,
+                                                                                          jstring login,
+                                                                                          jstring password)
 {
   OsmOAuth auth = OsmOAuth::ServerAuth();
   try
@@ -51,8 +49,8 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithPassword(JNIEnv * env, jc
   return nullptr;
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithOAuth2Code(JNIEnv * env, jclass, jstring oauth2code)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithOAuth2Code(JNIEnv * env, jclass,
+                                                                                            jstring oauth2code)
 {
   OsmOAuth auth = OsmOAuth::ServerAuth();
   try
@@ -60,8 +58,8 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithOAuth2Code(JNIEnv * env, 
     auto token = auth.FinishAuthorization(ToNativeString(env, oauth2code));
     if (!token.empty())
     {
-        auth.SetAuthToken(token);
-        return ToJavaString(env, token);
+      auth.SetAuthToken(token);
+      return ToJavaString(env, token);
     }
     LOG(LWARNING, ("nativeAuthWithOAuth2Code: invalid OAuth2 code", oauth2code));
   }
@@ -72,8 +70,8 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithOAuth2Code(JNIEnv * env, 
   return nullptr;
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmUsername(JNIEnv * env, jclass, jstring oauthToken)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmUsername(JNIEnv * env, jclass,
+                                                                                        jstring oauthToken)
 {
   UserPreferences prefs;
   if (LoadOsmUserPreferences(jni::ToNativeString(env, oauthToken), prefs))
@@ -81,8 +79,8 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmUsername(JNIEnv * env, jcla
   return nullptr;
 }
 
-JNIEXPORT jint JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmChangesetsCount(JNIEnv * env, jclass, jstring oauthToken)
+JNIEXPORT jint JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmChangesetsCount(JNIEnv * env, jclass,
+                                                                                            jstring oauthToken)
 {
   UserPreferences prefs;
   if (LoadOsmUserPreferences(jni::ToNativeString(env, oauthToken), prefs))
@@ -90,8 +88,8 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmChangesetsCount(JNIEnv * en
   return -1;
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmProfilePictureUrl(JNIEnv * env, jclass, jstring oauthToken)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmProfilePictureUrl(JNIEnv * env, jclass,
+                                                                                                 jstring oauthToken)
 {
   UserPreferences prefs;
   if (LoadOsmUserPreferences(jni::ToNativeString(env, oauthToken), prefs))
@@ -99,15 +97,14 @@ Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOsmProfilePictureUrl(JNIEnv * 
   return nullptr;
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetHistoryUrl(JNIEnv * env, jclass, jstring user)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetHistoryUrl(JNIEnv * env, jclass,
+                                                                                       jstring user)
 {
   return jni::ToJavaString(env, OsmOAuth::ServerAuth().GetHistoryURL(jni::ToNativeString(env, user)));
 }
 
-JNIEXPORT jstring JNICALL
-Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetNotesUrl(JNIEnv * env, jclass, jstring user)
+JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetNotesUrl(JNIEnv * env, jclass, jstring user)
 {
   return jni::ToJavaString(env, OsmOAuth::ServerAuth().GetNotesURL(jni::ToNativeString(env, user)));
 }
-} // extern "C"
+}  // extern "C"

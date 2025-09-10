@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Gemt";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Log ind på OpenStreetMap for automatisk at uploade alle dine kortredigeringer. Få mere at vide";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "her";
 "core_entrance" = "Indgang";
 "error_enter_correct_name" = "Angiv et korrekt navn";
 "bookmark_lists" = "Lister";
@@ -1099,3 +1093,5 @@
 "pref_maplanguage_title" = "Kortsprog";
 "transliteration_title_disabled_summary" = "Deaktiveret, når det lokale sprog altid bruges til kortet";
 "pref_maplanguage_local" = "Lokalt sprog";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

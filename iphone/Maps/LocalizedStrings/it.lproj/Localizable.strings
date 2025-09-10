@@ -6,7 +6,7 @@
 "cancel_download" = "Annulla il download";
 
 /* Button which deletes downloaded country */
-"delete" = "Cancella";
+"delete" = "Elimina";
 "download_maps" = "Scarica mappe";
 
 /* Settings/Downloader - info for country which started downloading */
@@ -28,7 +28,7 @@
 "later" = "Più tardi";
 
 /* View and button titles for accessibility, please also edit it in iphone/plist.txt */
-"search" = "Cerca";
+"search" = "Ricerca";
 
 /* Settings/Downloader - 3G download warning dialog confirm button */
 "use_cellular_data" = "Sì";
@@ -43,10 +43,10 @@
 "country_status_download_failed" = "Download fallito";
 
 /* Text in About screen */
-"about_headline" = "Progetto Aperto e sviluppato dalla comunità";
+"about_headline" = "Progetto aperto e sviluppato dalla comunità";
 
 /* Text in About screen */
-"about_proposition_1" = "Usabile senza connessione, veloce e facile da usare";
+"about_proposition_1" = "Utilizzabile senza connessione, veloce e facile da usare";
 
 /* Text in About screen */
 "about_proposition_2" = "Attenta alla privacy e senza pubblicità";
@@ -117,13 +117,13 @@
 "category_entertainment" = "Intrattenimento";
 
 /* Search category for ATMs; any changes should be duplicated in categories.txt @category_atm! */
-"category_atm" = "Bancomat";
+"category_atm" = "Bancomat ATM";
 
 /* Search category for nightclubs/bars; any changes should be duplicated in categories.txt @category_nightlife! */
 "category_nightlife" = "Vita notturna";
 
 /* Search category for water park/disneyland/playground/toys store; any changes should be duplicated in categories.txt @category_children! */
-"category_children" = "Divertimento in famiglia";
+"category_children" = "Vacanza in famiglia";
 
 /* Search category for banks; any changes should be duplicated in categories.txt @category_bank! */
 "category_bank" = "Banca";
@@ -153,7 +153,7 @@
 "category_water" = "Acqua";
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
-"category_rv" = "Per camper";
+"category_rv" = "Struttura per camper";
 "share_bookmarks_email_body" = "Ciao!\n\nIn allegato ci sono i miei luoghi preferiti. Aprili se hai installato CoMaps. Oppure, se non ce l'hai, scarica l'app per iOS o Android seguendo questo link: https://www.comaps.app/\n\nDivertiti a viaggiare con CoMaps!";
 
 /* message title of loading file */
@@ -169,7 +169,7 @@
 "edit" = "Modifica";
 
 /* Warning message when doing search around current position */
-"unknown_current_position" = "La tua posizione non è stata ancora determinata";
+"unknown_current_position" = "La tua posizione non è stata ancora stabilita";
 
 /* Subject for emailed bookmark */
 "bookmark_share_email_subject" = "Dai un'occhiata a questo posto su CoMaps!";
@@ -181,7 +181,7 @@
 "email" = "E-mail";
 
 /* Text for message to copy something */
-"copy_to_clipboard" = "Copia negli Appunti";
+"copy_to_clipboard" = "Copia negli appunti";
 
 /* Text for message when used successfully copied something */
 "copied_to_clipboard" = "Copiato negli appunti: %@";
@@ -205,7 +205,7 @@
 "share_my_location" = "Condividi la mia posizione";
 "prefs_group_route" = "Navigazione";
 "pref_zoom_title" = "Pulsanti per lo zoom";
-"pref_left_button_type" = "Left Main Button";
+"pref_left_button_type" = "Bottone principale di sinistra";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Aspetto";
@@ -217,7 +217,7 @@
 "pref_appearance_dark" = "Scuro";
 
 /* Generic «Disabled» string */
-"disabled" = "Disabled";
+"disabled" = "Disabilitato";
 
 /* Generic «Off» string */
 "off" = "Spento";
@@ -269,7 +269,7 @@
 
 /* Text in the about screen */
 "social_codeberg" = "Codeberg";
-"social_mastodon" = "Mastodon";
+"social_mastodon" = "Social Mastodon";
 "social_lemmy" = "Lemmy";
 "social_matrix" = "Matrix";
 "social_bluesky" = "Bluesky";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Segnala o correggi i dati della mappa non corretti";
 
 /* Button in the About screen */
-"volunteer" = "Per fare il volontario";
+"volunteer" = "Volontariato e migliorare CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Contattaci";
@@ -439,7 +439,7 @@
 "gray" = "Grigio";
 
 /* blue gray color */
-"blue_gray" = "Grigiazzurro";
+"blue_gray" = "Grigio azzurro";
 "dialog_routing_disclaimer_title" = "Quando segui il percorso, ricorda che:";
 "dialog_routing_disclaimer_priority" = "— Le condizioni stradali, il codice della strada e la segnaletica hanno sempre la precedenza sulle indicazioni del navigatore;";
 "dialog_routing_disclaimer_precision" = "— La mappa potrebbe essere imprecisa e il percorso suggerito potrebbe non essere sempre quello ottimale per raggiungere la destinazione;";
@@ -750,12 +750,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvato";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Accedi a OpenStreetMap per caricare automaticamente tutte le tue modifiche alla mappa. Per saperne di più";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "qui";
 "core_entrance" = "Ingresso";
 "error_enter_correct_name" = "Inserire un nome corretto";
 "bookmark_lists" = "Elenchi";
@@ -1014,7 +1008,7 @@
 "bugreport_alert_message" = "Vuoi inviare una segnalazione di bug agli sviluppatori?\nCi affidiamo ai nostri utenti perché CoMaps non raccoglie automaticamente informazioni sugli errori. Ti ringraziamo in anticipo per il supporto a CoMaps!";
 
 /* Title for the iCloud syncronization setting */
-"icloud_sync" = "iCloud Syncronization (Beta)";
+"icloud_sync" = "Sincronizzazione iCloud (Beta)";
 
 /* Title for the "Enable iCloud Syncronization" alert. */
 "enable_icloud_synchronization_title" = "Abilita la sincronizzazione con iCloud";
@@ -1098,6 +1092,8 @@
 "osm_profile_reauthorize" = "Riconnettiti a OpenStreetMap";
 "osm_profile_view_notes" = "Visualizza note";
 "pref_mapappearance_title" = "Aspetto della mappa";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Lingua della mappa";
+"transliteration_title_disabled_summary" = "Disabilitato quando si usa la lingua locale sulla mappa";
+"pref_maplanguage_local" = "Lingua Locale";
+"existence_confirmed_time_ago" = "Esistenza confermata %@";
+"hours_confirmed_time_ago" = "Confermato %@";

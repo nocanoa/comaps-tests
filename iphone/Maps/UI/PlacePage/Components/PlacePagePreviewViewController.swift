@@ -199,8 +199,17 @@ final class PlacePagePreviewViewController: UIViewController {
       let stringTimeInterval = getTimeIntervalString(minutes: minutesUntilOpen)
       let stringTime = stringFromTime(nextTimeOpen)
 
+      var state: String = L("closed_now")
+      var stateColor = UIColor.BaseColors.red
+      
       let details: String?
-      if (minutesUntilOpen < 3 * 60)  // Less than 3 hours
+
+      if (minutesUntilOpen < 15) { // Less than 15 min
+        state = String(format: L("opens_in"), stringTimeInterval)
+        stateColor = UIColor.BaseColors.yellow
+        details = stringTime
+      }
+      else if (minutesUntilOpen < 3 * 60)  // Less than 3 hours
       {
         details = String(format: L("opens_in"), stringTimeInterval) + " • " + stringTime
       }
@@ -222,8 +231,8 @@ final class PlacePagePreviewViewController: UIViewController {
         details = nil
       }
       
-      setScheduleLabel(state: L("closed_now"),
-                       stateColor: UIColor.BaseColors.red,
+      setScheduleLabel(state: state,
+                       stateColor: stateColor,
                        details: details)
       
     @unknown default:
@@ -254,6 +263,7 @@ final class PlacePagePreviewViewController: UIViewController {
                                                           NSAttributedString.Key.foregroundColor: UIColor.blackSecondaryText()])
       attributedString.append(detailsString)
     }
+    
     scheduleLabel.attributedText = attributedString
   }
 }

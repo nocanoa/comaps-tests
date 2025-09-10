@@ -276,7 +276,7 @@
         android:text="@string/editor_time_add_closed"
         android:textAllCaps="true"
         android:textAppearance="@style/MwmTextAppearance.Body1"
-        android:textColor="?colorAccent"/>
+        android:textColor="?colorSecondary"/>
 
     </LinearLayout>
 

@@ -37,12 +37,9 @@
 node|z1-2[place=continent],
 /*
 node|z12-[place=archipelago],
-area|z12-[place=archipelago],
 */
 node|z12-14[place=island],
-area|z12-14[place=island],
 node|z14-[natural=cape],
-area|z14-[natural=cape]
 {text: name;}
 
 node|z1-2[place=continent]
@@ -50,14 +47,11 @@ node|z1-2[place=continent]
 
 /*
 node|z12-[place=archipelago],
-area|z12-[place=archipelago],
 */
 node|z12-14[place=island],
-area|z12-14[place=island]
 {font-size: 9;text-color: @district_label;}
 
 node|z14-[natural=cape],
-area|z14-[natural=cape]
 {font-size: 8;text-color: @poi_label;}
 
 /* 3.COUNTRIES & STATES */
@@ -383,7 +377,6 @@ area|z10-[natural=water][!tunnel][bbox_area>=4000000],
 line|z11-[waterway=river],
 node|z14-[natural=bay],
 node|z16-[natural=wetland],
-area|z16-[natural=wetland],
 {text:name;text-color: @water_label;}
 
 area|z10-[natural=water][!tunnel][bbox_area<4000000],
@@ -487,10 +480,8 @@ area|z17-[landuse=military],
 
 /* 8.BUILDINGS */
 
-area|z18-[building],
 node|z18-[building],
 {text: name; text-color: @building_label; text-position: center;}
-area|z18-[building]::int_name,
 node|z18-[building]::int_name,
 {text: int_name; text-color: @building_label; text-position: center;}
 
@@ -524,16 +515,12 @@ node|z19-[entrance=exit]::flats,
 
 /* 8.2 Building */
 
-area|z18[building],
 node|z18[building],
 {font-size: 13;}
-area|z18[building]::int_name,
 node|z18[building]::int_name,
 {font-size: 12;}
-area|z19-[building],
 node|z19-[building],
 {font-size: 14;}
-area|z19-[building]::int_name,
 node|z19-[building]::int_name,
 {font-size: 13;}
 

@@ -751,12 +751,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "ذخیره شد";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "لطفاً به OpenStreetMap وارد شوید تا به طور خودکار تمام ویرایش های نقشه خود را آپلود کنید. یادگیری بیشتر";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "اینجا";
 "core_entrance" = "ورودی";
 "error_enter_correct_name" = "لطفا نام صحیح را وارد کنید";
 "bookmark_lists" = "لیست‌ها";
@@ -1097,3 +1091,5 @@
 "pref_maplanguage_title" = "زبان نقشه";
 "transliteration_title_disabled_summary" = "زمانی که همیشه از زبان محلی برای نقشه استفاده می کنید غیرفعال است";
 "pref_maplanguage_local" = "زبان محلی";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

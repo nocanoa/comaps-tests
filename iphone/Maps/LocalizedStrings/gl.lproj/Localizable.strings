@@ -366,8 +366,6 @@
 "planning_route_remove_title" = "Arrastre aquí para eliminar";
 "placepage_add_stop" = "Engadir parada";
 "start_from_my_position" = "Empezar desde";
-"alert_reauth_message_ios" = "Inicia sesión en OpenStreetMap para cargar automaticamente todas as túas edicións de mapas. Más información";
-"alert_reauth_link_text_ios" = "aquí";
 "core_entrance" = "Entrada";
 "error_enter_correct_name" = "Por favor, introduza o nome correcto";
 "bookmark_lists" = "Listas";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

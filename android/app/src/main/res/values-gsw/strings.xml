@@ -9,10 +9,7 @@
     <string name="download_has_failed">S Abelade isch fehlgschlage, Tippe zum nomal versueche</string>
     <string name="downloading">Wird abeglade…</string>
     <string name="kilometres">Kilometer</string>
-    <string name="mb">MB</string>
-    <string name="gb">GB</string>
     <string name="miles">Meile</string>
-    <string name="core_my_position">Min Standort</string>
     <string name="later">Spöter</string>
     <string name="search">Suechi</string>
     <string name="search_map">Uf de Charte sueche</string>
@@ -36,14 +33,10 @@
     <string name="login_osm_presentation">OpenStreetMap.org (OSM) isch es Gmeinschaftsprojekt zum Erstelle vonere freie und offene Charte. Es isch d Hauptquelle für Chartedate in CoMaps und funktioniert ähnlich wie Wikipedia. Du chasch Ort hinzuefüege oder bearbeite, wo denn Millione vo Nutzende uf de ganze Welt zur Verfüegig stönd. \nTritt de Gmeinschaft bii und hilf mit, d Charte für alli besser z mache!</string>
     <string name="editor_building_levels">Etage (inkl. Erdgschoss, ohni Dach)</string>
     <string name="error_enter_correct_storey_number">S Gebäude cha nöd meh als %d Etage ha</string>
-    <string name="core_placepage_unknown_place">Chartepunkt</string>
     <string name="editor_osm_history">Din Bearbeitigsverlauf</string>
     <string name="editor_osm_notes">Dini Hiiwiis zu de Chartedate</string>
     <string name="downloader_no_downloaded_maps_message">Lad Charte für d Offline-Suechi und Navigation abe</string>
-    <string name="m">m</string>
-    <string name="km">km</string>
     <string name="kilometers_per_hour">km/h</string>
-    <string name="mi">mi</string>
     <string name="placepage_more_button">Meh</string>
     <string name="error_enter_correct_twitter_page">Gib e gültigi Twitter-Webadresse oder en Benutzername ii</string>
     <string name="feedback_general">Allgemeins Feedback</string>
@@ -53,7 +46,6 @@
     <string name="placepage_add_stop">Stopp hinzuefüege</string>
     <string name="dialog_error_storage_message">De externi Speicher isch nöd verfüegbar, eventuell isch d SD-Charte entfernt worde oder sie isch beschädigt oder s Dateisystem isch schriibgschützt. Überprüef das bitte oder kontaktier eus under support@comaps.app</string>
     <string name="bookmarks_error_title_list_name_already_taken">De Name isch scho vergeh</string>
-    <string name="subway_data_unavailable">D U-Bahncharte staht nöd zur Verfüegig</string>
     <string name="define_to_avoid_btn">Routeoptione iistelle</string>
     <string name="no">Nei</string>
     <string name="by_name">Nach Name</string>
@@ -62,14 +54,12 @@
     <string name="app_tip_03">Wenn du en Softwareentwickler kennsch, chasch du ihn oder sie bitte, e Funktion z implementiere, wo du bruuchsch.</string>
     <string name="continue_recording">Uufnahm fortsetze</string>
     <string name="uri_open_location_failed">Kei App installiert, wo de Speicherort öffne cha</string>
-    <string name="core_exit">Uusgang</string>
     <string name="phone_number">Telefonnummere</string>
     <string name="terms_of_use">Nutzigsbedingige</string>
     <string name="button_layer_traffic">Verchehr</string>
     <string name="export_file">KMZ exportiere</string>
     <string name="export_file_gpx">GPX exportiere</string>
     <string name="delete_list">Lischte lösche</string>
-    <string name="access_rules_author_only">Online bearbeite</string>
     <string name="ferry_crossing">Fährstell</string>
     <string name="by_type">Nach Typ</string>
     <string name="month_ago_sorttype">Vor eim Monet</string>
@@ -81,7 +71,6 @@
     <string name="dialog_report_error_with_logs">Bitte schick eus en Fehlerbricht:\n - i de Iistellige \"Protokollierig aktiviere\"\n - s Problem reproduziere\n - im Bildschirm \"Über &amp; Hilf\" drück de \"App-Fehler melde\"-Chnopf und schicks via E-Mail oder Chat\n - d Protokollierig deaktiviere</string>
     <string name="route_type">Routetyp</string>
     <string name="routing_add_start_point">Nutz d Suechi oder tipp uf d Charte, zum en Routestartpunkt hinzuezfüege</string>
-    <string name="alert_reauth_message">Bitte meld dich vi OpenStreetMap aa, zum all dini Chartebearbeitige automatisch ufezlade. Erfahr <a href="https://github.com/organicmaps/organicmaps/issues/6144">da</a> meh.</string>
     <string name="error_enter_correct_name">Bitte gib en korrekte Name ii</string>
     <string name="bookmark_lists_hide_all">Alli uusblende</string>
     <plurals name="bookmarks_places">
@@ -167,7 +156,6 @@
     <string name="bookmark_set_name">Name vo de Lesezeichelischte</string>
     <string name="bookmarks">Lesezeiche</string>
     <string name="bookmarks_and_tracks">Lesezeiche und Tracks</string>
-    <string name="core_my_places">Miini Ort</string>
     <string name="name">Name</string>
     <string name="address">Adresse</string>
     <string name="list">Lischte</string>
@@ -175,10 +163,6 @@
     <string name="maps_storage">Charte speichere uf</string>
     <string name="maps_storage_summary">Wähl de Speicherot für di abegladne Charte</string>
     <string name="maps_storage_downloaded">Abegladni Charte</string>
-    <string name="maps_storage_internal">Interne persönliche Speicher</string>
-    <string name="maps_storage_shared">Interne gmeinsame Speicher</string>
-    <string name="maps_storage_removable">SD-Charte</string>
-    <string name="maps_storage_external">Externe gmeinsame Speicher</string>
     <string name="move_maps">Charte verschiebe?</string>
     <string name="move_maps_error">Fehler bim Verschiebe vo de Charte</string>
     <string name="wait_several_minutes">Das chan es paar Minute duure. \nBitte warte…</string>
@@ -201,7 +185,6 @@
     <string name="category_pharmacy">Apothek</string>
     <string name="category_hospital">Spital</string>
     <string name="category_police">Polizeistation</string>
-    <string name="category_wifi">WLAN</string>
     <string name="category_recycling">Recycling</string>
     <string name="category_rv">Iirichtige für Wohnmobil</string>
     <string name="description">Notize</string>
@@ -377,7 +360,6 @@
     <string name="twentyfour_seven">24/7</string>
     <string name="day_off_today">Hüt zue</string>
     <string name="day_off">Zue</string>
-    <string name="today">Hüt</string>
     <string name="opens_in">Öffnet i %s</string>
     <string name="closes_in">Schlüüst i %s</string>
     <string name="closed">Zue</string>
@@ -399,7 +381,6 @@
     <string name="empty_street_name_error">Gib en Strassename ii</string>
     <string name="choose_language">E Spraach wähle</string>
     <string name="choose_street">E Strass wähle</string>
-    <string name="postal_code">Postleitzahl</string>
     <string name="cuisine">Chuchi</string>
     <string name="select_cuisine">Chuchi uuswähle</string>
     <string name="editor_add_phone">Telefon hinzuefüege</string>
@@ -484,8 +465,6 @@
         <item quantity="other">%d Tracks</item>
     </plurals>
     <string name="bookmarks_empty_list_title">D Lischte isch leer</string>
-    <string name="limited_access">Limitierte Zuegriff</string>
-    <string name="not_shared">Privat</string>
     <string name="speedcams_alert_title">Blitzer</string>
     <string name="power_managment_title">Stromsparmodus</string>
     <string name="power_managment_description">Versuech, de Stromverbruuch uf Choschte wo einige Funktione z reduziere</string>
@@ -580,7 +559,6 @@
     <string name="downloader_mwm_migration_dialog">Zum e Route erstelle, muesch alli Charte aktualisiere und denn d Route nomal plane.</string>
     <string name="osm_presentation">Vo de Community erstellti OpenStreetMap-Date (Stand: %s). Erfahr meh drüber, wie du d Charte bearbeite und aktualisiere chasch under OpenStreetMap.org</string>
     <string name="editor_zip_code">Postleitzahl</string>
-    <string name="ft">ft</string>
     <string name="miles_per_hour">mph</string>
     <string name="traffic_data_unavailable">Verchehrsdate sind nöd verfüegbar</string>
     <string name="saved">Gspeicheret</string>
@@ -612,7 +590,6 @@
     <string name="mobile_data_dialog">Mobils Internet verwende, zum genaueri Informatione aazzeige?</string>
     <string name="mobile_data_description">Für Benachrichtigunge über Charteaktualisierige und s Ufelade vo Änderige isch e mobili Internetverbindig erforderlich</string>
     <string name="prefs_languages_information_off_link">Wiiteri Informatione findsch i dere Aaleitig</string>
-    <string name="core_entrance">Iigang</string>
     <string name="privacy_policy">Dateschutzerchlärig</string>
     <string name="notification_channel_downloader">Charte-Downloader</string>
     <string name="unable_to_calc_alert_subtitle">Es het kei Route chönne gfunde werde. Das chan a dine Routingoptione oder a unvollständige OpenStreetMap-Date ligge. Bitte änder dini Routingoptione und versuechs nomal.</string>
@@ -628,7 +605,6 @@
     <string name="delete_place_empty_comment_error">Gib bitte de Grund für d Löschig aa</string>
     <string name="prefs_languages_information">Mir verwendet Text-To-Speech-System für Sprachaawiisige. Vieli Android-Grät nutzed Google-TTS, wo du bi Google Play (https://play.google.com/store/apps/details?id=com.google.android.tts) abelade oder aktualisiere chasch</string>
     <string name="transliteration_title">Transliteration is latiinische Alphabet</string>
-    <string name="public_access">Öffentliche Zuegriff</string>
     <string name="pref_tts_speedcams_always">Immer warne</string>
     <string name="avoid_unpaved">Unbefestigti Strasse miide</string>
     <string name="avoid_motorways">Autobahne miide</string>
@@ -639,4 +615,6 @@
     <string name="open_now">Jetzt offe</string>
     <string name="closed_now">Jetzt zue</string>
     <string name="at">am %s</string>
+    <string name="osm_note_hint">Oder hinterlaa alternativ en Hiiwiis für d OpenStreetMap Community, sodass öpper andersch en Ort hinzuefüege oder korrigiere cha.</string>
+    <string name="osm_note_toast">En Hiiwiis wird zu OpenStreetMap gschickt</string>
 </resources>

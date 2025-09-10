@@ -197,12 +197,14 @@
 "type.amenity.vehicle_inspection" = "Vehicle Inspection";
 "type.amenity.vending_machine.fuel" = "Fuel Pump";
 "type.amenity.veterinary" = "Veterinary Doctor";
+"type.amenity.animal_shelter" = "Animal Shelter";
 "type.amenity.waste_basket" = "Trash Bin";
 "type.amenity.waste_disposal" = "Dumpster";
 "type.amenity.waste_transfer_station" = "Waste Transfer Station";
 "type.amenity.water_point" = "Water Tank Refill Point";
 "type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.barrier.block" = "Block";
 "type.barrier.bollard" = "Bollard";
 "type.barrier.border_control" = "Border Control";
@@ -222,6 +224,7 @@
 "type.barrier.retaining_wall" = "Retaining Wall";
 "type.barrier.stile" = "Stile";
 "type.barrier.turnstile" = "Turnstile";
+"type.barrier.wicket_gate" = "Wicket Gate";
 "type.barrier.swing_gate" = "Swing Gate";
 "type.barrier.toll_booth" = "Toll Booth";
 "type.barrier.wall" = "Wall";

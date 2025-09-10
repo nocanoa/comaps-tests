@@ -1,7 +1,9 @@
-• Datos de OpenStreetMap a fecha 2025.08.04
-• Mejora de colores del mapa para agua, bosques, matorrales, servicios, zonas peatonales, etc.
-• Añadidas estaciones de guardabosques, aparcamientos cubiertos de bicis, juegos de escape, consignas y oficinas de correo
-• Nuevas curvas de nivel (20 m) en regiones populares para senderismo
-• Más abreviaturas y alias de búsqueda
-• Iconos de búsqueda y marcadores para comida rápida, bicicletas y estaciones de recarga
-• Más fluidez de la flecha de posición
+• Datos de OSM a 22-08-2025
+• Nuevo indicador de velocidad e información de pista
+• Modo oscuro mejorado y nombres de POI coloreados
+• Indicador de última revisión de lugares y horarios de apertura
+• Rutas mejoradas teniendo en cuenta giros, señales de STOP, semáforos y restricciones
+• Mayor precisión para determinar tu localización y sentido
+• Añade direcciones y notas con el editor
+• Otras mejoras en elementos de la interfaz y estilo del mapa
+Entra en nuestro Codeberg para más cambios!

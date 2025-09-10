@@ -28,10 +28,7 @@ struct UnzipMemDelegate : public ZipFileReader::Delegate
   }
 
   // ZipFileReader::Delegate overrides:
-  void OnBlockUnzipped(size_t size, char const * data) override
-  {
-    m_buffer.insert(m_buffer.end(), data, data + size);
-  }
+  void OnBlockUnzipped(size_t size, char const * data) override { m_buffer.insert(m_buffer.end(), data, data + size); }
 
   void OnStarted() override
   {
@@ -116,7 +113,7 @@ ms::LatLon SrtmTile::GetCoordInSeconds(ms::LatLon const & coord)
     lt += 1;
   lt = 1 - lt;  // from North to South
 
-  return { kArcSecondsInDegree * lt, kArcSecondsInDegree * ln };
+  return {kArcSecondsInDegree * lt, kArcSecondsInDegree * ln};
 }
 
 geometry::Altitude SrtmTile::GetHeight(ms::LatLon const & coord) const
@@ -205,7 +202,8 @@ double SrtmTile::GetBilinearHeight(ms::LatLon const & coord) const
   return (GetHeightRC(p1.y, p1.x) * (p2.x - ll.m_lon) * (p2.y - ll.m_lat) +
           GetHeightRC(p1.y, p2.x) * (ll.m_lon - p1.x) * (p2.y - ll.m_lat) +
           GetHeightRC(p2.y, p1.x) * (p2.x - ll.m_lon) * (ll.m_lat - p1.y) +
-          GetHeightRC(p2.y, p2.x) * (ll.m_lon - p1.x) * (ll.m_lat - p1.y)) / denom;
+          GetHeightRC(p2.y, p2.x) * (ll.m_lon - p1.x) * (ll.m_lat - p1.y)) /
+         denom;
 }
 
 // static

@@ -221,7 +221,7 @@
               android:layout_alignParentEnd="true"
               android:layout_centerVertical="true"
               android:textAppearance="@style/MwmTextAppearance.Body1"
-              android:textColor="?colorAccent"/>
+              android:textColor="?colorSecondary"/>
         </RelativeLayout>
 
         <include

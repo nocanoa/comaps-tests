@@ -2,6 +2,7 @@ package app.organicmaps.widget.placepage;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -25,19 +26,21 @@ import app.organicmaps.MwmActivity;
 import app.organicmaps.R;
 import app.organicmaps.api.Const;
 import app.organicmaps.intent.Factory;
-import app.organicmaps.routing.RoutingController;
+import app.organicmaps.sdk.ChoosePositionMode;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.bookmarks.data.RoadWarningMarkType;
+import app.organicmaps.sdk.bookmarks.data.Track;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.settings.RoadType;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.sdk.util.log.Logger;
-import app.organicmaps.sdk.ChoosePositionMode;
 import app.organicmaps.util.ThemeUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetFragment;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetItem;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.shape.MaterialShapeDrawable;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +77,7 @@ public class PlacePageController
 
   private ValueAnimator mCustomPeekHeightAnimator;
   private PlacePageRouteSettingsListener mPlacePageRouteSettingsListener;
+  private Dialog mAlertDialog;
 
   private final Observer<Integer> mPlacePageDistanceToTopObserver = new Observer<>() {
     private float mPlacePageCornerRadius;
@@ -414,15 +418,16 @@ public class PlacePageController
   {
     switch (item)
     {
-      case BOOKMARK_SAVE, BOOKMARK_DELETE -> onBookmarkBtnClicked();
-      case BACK -> onBackBtnClicked();
-      case ROUTE_FROM -> onRouteFromBtnClicked();
-      case ROUTE_TO -> onRouteToBtnClicked();
-      case ROUTE_ADD -> onRouteAddBtnClicked();
-      case ROUTE_REMOVE -> onRouteRemoveBtnClicked();
-      case ROUTE_AVOID_TOLL -> onAvoidTollBtnClicked();
-      case ROUTE_AVOID_UNPAVED -> onAvoidUnpavedBtnClicked();
-      case ROUTE_AVOID_FERRY -> onAvoidFerryBtnClicked();
+    case BOOKMARK_SAVE, BOOKMARK_DELETE -> onBookmarkBtnClicked();
+    case TRACK_DELETE -> onTrackRemoveClicked();
+    case BACK -> onBackBtnClicked();
+    case ROUTE_FROM -> onRouteFromBtnClicked();
+    case ROUTE_TO -> onRouteToBtnClicked();
+    case ROUTE_ADD -> onRouteAddBtnClicked();
+    case ROUTE_REMOVE -> onRouteRemoveBtnClicked();
+    case ROUTE_AVOID_TOLL -> onAvoidTollBtnClicked();
+    case ROUTE_AVOID_UNPAVED -> onAvoidUnpavedBtnClicked();
+    case ROUTE_AVOID_FERRY -> onAvoidFerryBtnClicked();
     }
   }
 
@@ -437,6 +442,47 @@ public class PlacePageController
       Framework.nativeDeleteBookmarkFromMapObject();
     else
       BookmarkManager.INSTANCE.addNewBookmark(mMapObject.getLat(), mMapObject.getLon());
+  }
+
+  private void onTrackRemoveClicked()
+  {
+    // mMapObject is set to null when the place page closes
+    // We don't want users to interact with the buttons when the PP is closing
+    if (mMapObject == null)
+      return;
+    showTrackDeleteAlertDialog();
+  }
+
+  void showTrackDeleteAlertDialog()
+  {
+    if (mMapObject == null)
+      return;
+    dismissAlertDialog();
+    mViewModel.isAlertDialogShowing = true;
+    if (mAlertDialog != null)
+    {
+      mAlertDialog.show();
+      return;
+    }
+    mAlertDialog = new MaterialAlertDialogBuilder(requireContext(), R.style.MwmTheme_AlertDialog)
+                       .setTitle(requireContext().getString(R.string.delete_track_dialog_title, mMapObject.getTitle()))
+                       .setCancelable(true)
+                       .setNegativeButton(R.string.cancel, null)
+                       .setPositiveButton(R.string.delete,
+                                          (dialog, which) -> {
+                                            BookmarkManager.INSTANCE.deleteTrack(((Track) mMapObject).getTrackId());
+                                            close();
+                                          })
+                       .setOnDismissListener(dialog -> dismissAlertDialog())
+                       .show();
+  }
+
+  void dismissAlertDialog()
+  {
+    if (mAlertDialog == null)
+      return;
+    mAlertDialog.dismiss();
+    mViewModel.isAlertDialogShowing = false;
   }
 
   private void onBackBtnClicked()
@@ -577,8 +623,12 @@ public class PlacePageController
       if (needToShowRoutingButtons && RoutingController.get().isStopPointAllowed())
         buttons.add(PlacePageButtons.ButtonType.ROUTE_ADD);
       else
+      {
         buttons.add(mapObject.isBookmark() ? PlacePageButtons.ButtonType.BOOKMARK_DELETE
                                            : PlacePageButtons.ButtonType.BOOKMARK_SAVE);
+        if (mapObject.isTrack())
+          buttons.add(PlacePageButtons.ButtonType.TRACK_DELETE);
+      }
 
       if (needToShowRoutingButtons)
       {
@@ -610,6 +660,9 @@ public class PlacePageController
       // Place page will automatically open when the bottom sheet content is loaded so we can compute the peek height
       createPlacePageFragments();
       updateButtons(mapObject, showBackButton, !mMapObject.isMyPosition());
+      mAlertDialog = null;
+      if (mViewModel.isAlertDialogShowing)
+        showTrackDeleteAlertDialog();
     }
     else
       close();

@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "取水点";
 "type.amenity.water_point.drinking_water_no" = "取水点";
 "type.barrier" = "障碍物";
+"type.barrier.yes" = "障碍物";
 "type.barrier.block" = "路障";
 "type.barrier.bollard" = "护柱";
 "type.barrier.border_control" = "边境检查站";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "护林站";
 "type.amenity.bicycle_parking.covered" = "有顶棚自行车停车处";
 "type.post_office.post_partner" = "邮政合作点";
+"type.barrier.wicket_gate" = "旁门";
+"type.amenity.animal_shelter" = "动物收容所";

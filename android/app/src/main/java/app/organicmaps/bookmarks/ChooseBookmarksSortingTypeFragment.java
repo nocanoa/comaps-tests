@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmDialogFragment;
 import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 
 public class ChooseBookmarksSortingTypeFragment
     extends BaseMwmDialogFragment implements RadioGroup.OnCheckedChangeListener
@@ -64,10 +64,10 @@ public class ChooseBookmarksSortingTypeFragment
     {
       switch (sortingType)
       {
-        case BookmarkManager.SORT_BY_TYPE: return R.id.sort_by_type;
-        case BookmarkManager.SORT_BY_DISTANCE: return R.id.sort_by_distance;
-        case BookmarkManager.SORT_BY_TIME: return R.id.sort_by_time;
-        case BookmarkManager.SORT_BY_NAME: return R.id.sort_by_name;
+      case BookmarkManager.SORT_BY_TYPE: return R.id.sort_by_type;
+      case BookmarkManager.SORT_BY_DISTANCE: return R.id.sort_by_distance;
+      case BookmarkManager.SORT_BY_TIME: return R.id.sort_by_time;
+      case BookmarkManager.SORT_BY_NAME: return R.id.sort_by_name;
       }
     }
     return R.id.sort_by_default;

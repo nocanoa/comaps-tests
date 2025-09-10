@@ -144,7 +144,7 @@
 "category_police" = "Policie";
 
 /* Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! */
-"category_wifi" = "WiFi";
+"category_wifi" = "Wi-Fi";
 
 /* Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! */
 "category_recycling" = "Recyklace";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Nahlášení nebo oprava nesprávných mapových dat";
 
 /* Button in the About screen */
-"volunteer" = "Dobrovolnictví";
+"volunteer" = "Staňte se dobrovolníkem a vylepšete CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Spojte se s námi";
@@ -448,7 +448,7 @@
 "dialog_routing_disclaimer_beware" = "Na silnici buďte pozorní a chovejte se bezpečně!";
 "dialog_routing_check_gps" = "Zkontrolovat signál GPS";
 "dialog_routing_error_location_not_found" = "Trasu se nepodařilo vytvořit. Nelze zjistit aktuální souřadnice GPS.";
-"dialog_routing_location_turn_wifi" = "Zkontrolujte signál GPS. Povolením připojení WiFi zpřesníte určení vaší polohy.";
+"dialog_routing_location_turn_wifi" = "Zkontrolujte signál GPS. Povolením připojení Wi-Fi zlepšíte přesnost určování vaší polohy.";
 "dialog_routing_location_turn_on" = "Povolit služby určování polohy";
 "dialog_routing_location_unknown_turn_on" = "Aktuální souřadnice GPS se nepodařilo zjistit. Pro výpočet trasy povolte služby určování polohy.";
 "dialog_routing_download_files" = "Stáhnout požadované soubory";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Uloženo";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Přihlaste se do OpenStreetMap, abyste mohli automaticky nahrávat všechny své úpravy mapy. Více informací";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "zde";
 "core_entrance" = "Vstup";
 "error_enter_correct_name" = "Zadejte prosím správný název";
 "bookmark_lists" = "Seznamy";
@@ -1101,3 +1095,5 @@
 "pref_maplanguage_title" = "Jazyk mapy";
 "transliteration_title_disabled_summary" = "Neaktivní, pokud se pro mapu vždy používá místní jazyk";
 "pref_maplanguage_local" = "Místní jazyk";
+"existence_confirmed_time_ago" = "Existence potvrzena %@";
+"hours_confirmed_time_ago" = "Potvrzeno %@";

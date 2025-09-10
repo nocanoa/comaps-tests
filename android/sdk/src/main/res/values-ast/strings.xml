@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="postal_code">Códigu postal</string>
+    <string name="core_my_position">La mio posición</string>
+    <string name="core_my_places">Los mios llugares</string>
+    <string name="subway_data_unavailable">El mapa del metro nun ta disponible</string>
+    <string name="public_access">Accesu públicu</string>
+    <string name="mb">MB</string>
+    <string name="km">km</string>
+    <string name="gb">GB</string>
+    <string name="m">m</string>
+    <string name="today">Güei</string>
+</resources>

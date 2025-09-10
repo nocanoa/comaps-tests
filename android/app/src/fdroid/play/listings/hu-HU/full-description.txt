@@ -1,0 +1,32 @@
+A CoMaps egy közösség által létrehozott, ingyenes és nyílt forráskódú térképalkalmazás, amely az OpenStreetMap térképadatain alapul, és amelyet az átláthatóság, a magánélet védelme és a nonprofit jelleg iránti elkötelezettség erősít. A CoMaps az Organic Maps villája, amely viszont a Maps.ME villája.
+
+A projekt előzményeiről és az irányáról a <b><i>codeberg.org/comaps</i></b> oldalon olvashatsz.
+Csatlakozz ott a közösséghez, és segíts a legjobb térképalkalmazás elkészítésében.
+• Használd az alkalmazást és terjeszd a hírét
+• Adj visszajelzést és jelentsd a problémákat
+• Frissítsd és javítsd a térképadatokat az alkalmazásban vagy az OpenStreetMap weboldalán.
+
+‣ <b>Offline-fókuszú:</b> Tervezd meg és navigáld külföldi útad mobilszolgáltatás nélkül, keress útpontokat egy távoli túra során stb. Az alkalmazás minden funkcióját úgy terveztük, hogy internetkapcsolat nélkül is működjön.
+‣ <b>A magánélet tiszteletben tartása:</b> Az alkalmazás az adatvédelem szem előtt tartásával készült, nem azonosítja az embereket, nem követi nyomon és nem gyűjt személyes adatokat, és reklámmentes.
+‣ <b>Takarékosdik az akkumulátorral és a tárhellyel:</b> Nem meríti le az akkumulátort, mint más navigációs alkalmazások. A jól összeállítot kis méretű térképek értékes helyet takarítanak meg a telefonon.
+‣ <b>Egyszerű és szép grafikus felület,</b> nagyszerű és könnyen használható funkciók, amelyek egyszerűen működnek.
+‣ <b>Ingyenes és a közösség által készített:</b> A hozzád hasonló emberek segítettek az alkalmazás létrehozásában azáltal, hogy hozzáadtak helyeket az OpenStreetMap térképhez, tesztelték és visszajelzést adtak a funkciókról, valamint hozzájárultak a fejlesztői képességeikkel és a pénzükkel.
+‣ <b>Nyílt és átlátható döntéshozatal és pénzügyek, nonprofit és teljesen nyílt forráskódú.</b>
+
+<b>Főbb jellemzők:</b>
+• Letölthető részletes térképek olyan helyekkel, amelyek sok kereskedelmi térképen nem állnak rendelkezésre.
+• Szabadtéri üzemmód kiemelt túraútvonalakkal, táborhelyekkel, vízforrásokkal, csúcsokkal, szintvonalakkal stb.
+• Sétaútvonalak és kerékpárutak
+• Érdekes pontok, mint például éttermek, benzinkutak, szállodák, üzletek, látnivalók és még sok minden más
+• Keresés név, cím vagy az érdekes pontok kategóriája alapján
+• Navigáció hangutasításokkal gyalogláshoz, kerékpározáshoz vagy vezetéshez
+• Kedvenc helyeid könyvjelzővel láthatod el egyetlen érintéssel
+• Wikipedia szócikkek internetkapcsolat nélkül
+• Metró tranzit réteg és irányok
+• Útvonal mentése
+• Könyvjelzők és nyomvonalak exportálása és importálása KML, KMZ, GPX formátumokban
+• Sötét üzemmód az éjszakai használathoz
+• Térképadatok javítása mindenki számára egy alapvető beépített szerkesztő segítségével
+
+<b>Itt van a szabadság</b>
+Fedezd fel az utadat, navigálj a világban úgy, hogy a magánélet és a közösség kerüljön előtérbe!

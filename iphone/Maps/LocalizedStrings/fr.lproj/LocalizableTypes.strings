@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Point d’eau";
 "type.amenity.water_point.drinking_water_no" = "Point d’eau";
 "type.barrier" = "Barrière";
+"type.barrier.yes" = "Barrière";
 "type.barrier.block" = "Bloc";
 "type.barrier.bollard" = "Poteau";
 "type.barrier.border_control" = "Contrôle aux frontières";
@@ -208,7 +209,7 @@
 "type.barrier.retaining_wall" = "Mur de soutènement";
 "type.barrier.stile" = "Échalier";
 "type.barrier.turnstile" = "Tourniquet";
-"type.barrier.swing_gate" = "Barrière tournante";
+"type.barrier.swing_gate" = "Portail Battant";
 "type.barrier.toll_booth" = "Poste de péage";
 "type.barrier.wall" = "Mur";
 "type.boundary" = "Frontière";
@@ -1481,3 +1482,5 @@
 "type.post_office.post_partner" = "Partenaire de publication";
 "type.amenity.ranger_station" = "Poste de garde forestier";
 "type.amenity.bicycle_parking.covered" = "Parking vélo couvert";
+"type.amenity.animal_shelter" = "Abri pour animaux";
+"type.barrier.wicket_gate" = "Portillon";

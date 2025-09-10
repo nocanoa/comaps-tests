@@ -15,7 +15,7 @@ import app.organicmaps.sdk.downloader.CountryItem;
 import app.organicmaps.sdk.downloader.MapManager;
 import app.organicmaps.sdk.downloader.UpdateInfo;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,7 +29,7 @@ class BottomPanel
     @Override
     public void onClick(View v)
     {
-      MapManager.warn3gAndDownload(mFragment.requireActivity(), mFragment.getCurrentRoot(), null);
+      MapManagerHelper.warn3gAndDownload(mFragment.requireActivity(), mFragment.getCurrentRoot(), null);
     }
   };
 
@@ -38,7 +38,10 @@ class BottomPanel
     public void onClick(View v)
     {
       final String country = mFragment.getCurrentRoot();
-      MapManager.warnOn3gUpdate(mFragment.requireActivity(), country, () -> MapManager.startUpdate(country));
+      MapManagerHelper.warnOn3gUpdate(mFragment.requireActivity(), country, () -> {
+        DownloaderService.startForegroundService();
+        MapManagerHelper.startUpdate(country);
+      });
     }
   };
 
@@ -55,7 +58,7 @@ class BottomPanel
     @Override
     public void onClick(View v)
     {
-      MapManager.warn3gAndRetry(mFragment.requireActivity(), mFragment.getCurrentRoot(), null);
+      MapManagerHelper.warn3gAndRetry(mFragment.requireActivity(), mFragment.getCurrentRoot(), null);
     }
   };
 
@@ -115,15 +118,15 @@ class BottomPanel
       {
         switch (status)
         {
-          case STATUS_UPDATABLE ->
-          {
-            UpdateInfo info = MapManager.nativeGetUpdateInfo(root);
-            setUpdateAllState(info);
-          } // Special case for "Countries" node when no maps currently downloaded.
-          case STATUS_DOWNLOADABLE, STATUS_DONE, STATUS_PARTLY -> show = false;
-          case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
-          case STATUS_FAILED -> setRetryFailedStates();
-          default -> throw new IllegalArgumentException("Inappropriate status for \"" + root + "\": " + status);
+        case STATUS_UPDATABLE ->
+        {
+          UpdateInfo info = MapManager.nativeGetUpdateInfo(root);
+          setUpdateAllState(info);
+        } // Special case for "Countries" node when no maps currently downloaded.
+        case STATUS_DOWNLOADABLE, STATUS_DONE, STATUS_PARTLY -> show = false;
+        case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
+        case STATUS_FAILED -> setRetryFailedStates();
+        default -> throw new IllegalArgumentException("Inappropriate status for \"" + root + "\": " + status);
         }
       }
       else
@@ -133,15 +136,15 @@ class BottomPanel
         {
           switch (status)
           {
-            case STATUS_UPDATABLE ->
-            {
-              UpdateInfo info = MapManager.nativeGetUpdateInfo(root);
-              setUpdateAllState(info);
-            }
-            case STATUS_DONE -> show = false;
-            case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
-            case STATUS_FAILED -> setRetryFailedStates();
-            default -> setDownloadAllState();
+          case STATUS_UPDATABLE ->
+          {
+            UpdateInfo info = MapManager.nativeGetUpdateInfo(root);
+            setUpdateAllState(info);
+          }
+          case STATUS_DONE -> show = false;
+          case STATUS_PROGRESS, STATUS_APPLYING, STATUS_ENQUEUED -> setCancelState();
+          case STATUS_FAILED -> setRetryFailedStates();
+          default -> setDownloadAllState();
           }
         }
       }

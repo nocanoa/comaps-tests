@@ -751,12 +751,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "บันทึกแล้ว";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "กรุณาเข้าสู่ระบบ OpenStreetMap เพื่ออัปโหลดการแก้ไขแผนที่ทั้งหมดของคุณโดยอัตโนมัติ เรียนรู้เพิ่มเติม";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "ที่นี่";
 "core_entrance" = "ทางเข้า";
 "error_enter_correct_name" = "กรุณาใส่ชื่อที่ถูกต้อง";
 "bookmark_lists" = "รายการ";
@@ -1097,3 +1091,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

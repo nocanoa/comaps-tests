@@ -19,20 +19,20 @@
 </div>
 <div align="center">
   <p align="center">
-    <a href="https://codeberg.org/comaps/comaps/releases">
-      <img src="https://img.shields.io/github/license/comaps/comaps?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=588157" alt="License" style="width: 90%; max-width: 150px;"/>
+    <a href="https://codeberg.org/comaps/comaps/src/branch/main/LICENSE">
+      <img src="https://img.shields.io/github/license/comaps/comaps?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=588157" alt="License"/>
     </a>
     <a href="https://github.com/comaps/comaps/actions/workflows/android-check.yaml">
-      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/android-check.yaml?label=Android%20Build&logo=android&logoColor=white&style=for-the-badge&color=588157" alt="Android Build Status" style="width: 90%; max-width: 170px;"/>
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/android-check.yaml?label=Android%20Build&logo=android&logoColor=white&style=for-the-badge&color=588157" alt="Android Build Status"/>
     </a>
     <a href="https://github.com/comaps/comaps/actions/workflows/ios-check.yaml">
-      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/ios-check.yaml?label=iOS%20Build&logo=apple&logoColor=white&style=for-the-badge&color=588157" alt="iOS Build Status" style="width: 90%; max-width: 145px;"/>
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/ios-check.yaml?label=iOS%20Build&logo=apple&logoColor=white&style=for-the-badge&color=588157" alt="iOS Build Status"/>
     </a>
     <a href="https://opencollective.com/comaps">
-      <img src="https://img.shields.io/opencollective/all/comaps?label=Open%20Collective%20Donors&logo=opencollective&logoColor=white&style=for-the-badge&color=588157" alt="Open Collective Donors" style="width: 90%; max-width: 191px;"/>
+      <img src="https://img.shields.io/opencollective/all/comaps?label=Open%20Collective%20Donors&logo=opencollective&logoColor=white&style=for-the-badge&color=588157" alt="Open Collective Donors"/>
     </a>
     <a href="https://liberapay.com/CoMaps">
-      <img src="https://img.shields.io/liberapay/patrons/CoMaps.svg?label=Liberapay%20Patrons&logo=liberapay&logoColor=white&style=for-the-badge&color=588157" alt="Liberapay Patrons" style="width: 90%; max-width: 160px;"/>
+      <img src="https://img.shields.io/liberapay/patrons/CoMaps.svg?label=Liberapay%20Patrons&logo=liberapay&logoColor=white&style=for-the-badge&color=588157" alt="Liberapay Patrons"/>
     </a>
   </p>
 </div>
@@ -40,8 +40,6 @@
 ---
 
 A community-led free & open source maps app based on [OpenStreetMap](https://www.openstreetmap.org), built for transparency, privacy, and not-for-profit values. A fork of Organic Maps, originally based on Maps.ME.
-
-**Available for:** Android, iOS, ARM macOS, and alpha Linux/macOS desktop builds (also usable on Linux phones).
 
 <p align="center">
   <a href="https://apps.apple.com/app/comaps/id6747180809">
@@ -77,9 +75,10 @@ A community-led free & open source maps app based on [OpenStreetMap](https://www
 ## ⚡️ Highlights
 
 - **Offline-first**: Navigate without a connection
-- **Privacy-respecting**: No tracking, Ads or data collection
+- **Privacy-respecting**: No tracking, ads or data collection
 - **Lightweight**: Battery- and space-efficient
 - **Simple**: Polished, user-focused interface
+- **Cross-platform**: Available for Android, iOS, MacOS, and Linux.
 - **Community-built**: Free, open source, and collaborative
 - **Transparent**: Open finances and governance
 
@@ -140,7 +139,7 @@ There is a dedicated [Zulip](https://codeberg.org/comaps/Governance/src/branch/m
 
 ## 💸 Funding
 
-CoMaps is free. To stay that way, it relies on your support.  
+CoMaps is free. To fund development, we rely on your voluntary support ♥️
 Donate via [OpenCollective](https://opencollective.com/comaps/donate) or [Liberapay](https://liberapay.com/CoMaps).  
 The project's financial information is completely open and transparent at [our Open Collective](https://opencollective.com/comaps).
 

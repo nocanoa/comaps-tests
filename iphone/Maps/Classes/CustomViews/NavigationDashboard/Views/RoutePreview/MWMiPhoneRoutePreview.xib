@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                     <rect key="frame" x="0.0" y="48" width="320" height="48"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXA-Og-q2I">
-                            <rect key="frame" x="72.5" y="12" width="175" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                             <state key="normal" title="DEFINE ROADS TO AVOID" image="ic_options_warning"/>
                             <connections>
@@ -35,11 +36,13 @@
                     </subviews>
                     <color key="backgroundColor" red="0.12156862745098039" green="0.59999999999999998" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZXA-Og-q2I" secondAttribute="trailing" constant="16" id="9bx-3j-h0U"/>
-                        <constraint firstItem="ZXA-Og-q2I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ib5-qh-Cmo" secondAttribute="leading" constant="16" id="IYq-Pa-Tai"/>
+                        <constraint firstAttribute="trailing" secondItem="ZXA-Og-q2I" secondAttribute="trailing" id="9bx-3j-h0U"/>
+                        <constraint firstItem="ZXA-Og-q2I" firstAttribute="leading" secondItem="Ib5-qh-Cmo" secondAttribute="leading" id="IYq-Pa-Tai"/>
                         <constraint firstItem="ZXA-Og-q2I" firstAttribute="centerX" secondItem="Ib5-qh-Cmo" secondAttribute="centerX" id="Uq2-QA-bWZ"/>
+                        <constraint firstAttribute="bottom" secondItem="ZXA-Og-q2I" secondAttribute="bottom" id="ga1-Mh-GwC"/>
                         <constraint firstItem="ZXA-Og-q2I" firstAttribute="centerY" secondItem="Ib5-qh-Cmo" secondAttribute="centerY" id="l5z-Dg-joz"/>
                         <constraint firstAttribute="height" constant="48" id="l8l-Ii-g5U"/>
+                        <constraint firstItem="ZXA-Og-q2I" firstAttribute="top" secondItem="Ib5-qh-Cmo" secondAttribute="top" id="oca-09-5v4"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="SecondaryBackground"/>

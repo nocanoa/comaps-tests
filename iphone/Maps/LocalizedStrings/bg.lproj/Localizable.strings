@@ -60,7 +60,7 @@
 "bookmark_set_name" = "Име на група";
 
 /* "Bookmark Lists" dialog title */
-"bookmark_sets" = "Bookmark Lists";
+"bookmark_sets" = "Списък с отметки";
 
 /* Should be used in the bookmarks-only context, see bookmarks_and_tracks if tracks are also implied. */
 "bookmarks" = "Отметки";
@@ -148,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "За RV";
-"share_bookmarks_email_body" = "Hello!\n\nAttached are my bookmarks; please open them in CoMaps. If you don't have it installed you can download it here: https://www.comaps.app/download/\n\nEnjoy travelling with CoMaps!";
+"share_bookmarks_email_body" = "Здравей!\n\nПрикачени са отметките ми; моля отвори ги в CoMaps. Ако го нямаш инсталирано, можеш да го изтеглиш тук: https://www.comaps.app/download/\n\nПриятно пътуване с CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Зареждане на отметки";
@@ -199,7 +199,7 @@
 "share_my_location" = "Споделяне на местоположение";
 "prefs_group_route" = "Навигация";
 "pref_zoom_title" = "Мащабни бутони";
-"pref_left_button_type" = "Left Main Button";
+"pref_left_button_type" = "Ляв главен бутон";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "Изглед";
@@ -211,7 +211,7 @@
 "pref_appearance_dark" = "Тъмен";
 
 /* Generic «Disabled» string */
-"disabled" = "Disabled";
+"disabled" = "Изключено";
 
 /* Generic «Off» string */
 "off" = "Изключен";
@@ -235,7 +235,7 @@
 "pref_tts_title" = "Гласови инструкции";
 
 /* Settings «Route» category: «Tts enable» title */
-"pref_tts_enable_title" = "Enable Voice Instructions";
+"pref_tts_enable_title" = "Включи гласовите инструкции";
 
 /* Settings «Route» category: «Tts announce street names» title */
 "pref_tts_street_names_title" = "Обявете имена на улици";
@@ -247,7 +247,7 @@
 "pref_tts_language_title" = "Език на инструкциите";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Тестване на гласови указания (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Тестване на гласови указания";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Друго";
@@ -319,10 +319,10 @@
 "report_incorrect_map_bug" = "Докладване или поправяне на неправилни данни на картата";
 
 /* Button in the About screen */
-"volunteer" = "За доброволчество";
+"volunteer" = "Доброволчество и подобряване на CoMaps";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Следвайте и се свържете с нас";
+"follow_us" = "Свържете се с нас";
 
 /* Alert text */
 "email_error_body" = "Имейл клиентът не е настроен. Моля, конфигурирайте го или използвайте друг начин, за да се свържете с нас на %@";
@@ -343,7 +343,7 @@
 "downloader_downloaded_subtitle" = "Изтеглено";
 
 /* Downloaded maps category */
-"downloader_available_maps" = "Available";
+"downloader_available_maps" = "Налично";
 
 /* Country queued for download */
 "downloader_queued" = "На опашка";
@@ -353,7 +353,7 @@
 "downloader_status_maps" = "Карти";
 "downloader_download_all_button" = "Изтегляне на всичко";
 "downloader_downloading" = "Теглене:";
-"downloader_search_results" = "Found";
+"downloader_search_results" = "Намерено";
 
 /* Status of outdated country in the list */
 "downloader_status_outdated" = "Обновление";
@@ -476,7 +476,7 @@
 "routing_arrive" = "Пристигане в %@";
 
 /* Text for routing::RouterResultCode::FileTooOld dialog. */
-"dialog_routing_download_and_update_maps" = "Download and update all map along the projected path to calculate route.";
+"dialog_routing_download_and_update_maps" = "Изтегли и обнови всичи карти заедно с планирания път за изчисляване на маршрута.";
 "categories" = "Категории";
 "history" = "История";
 "search_not_found" = "За съжаление не са намерени резултати.";
@@ -526,9 +526,9 @@
 "day_off_today" = "Затворено днес";
 "day_off" = "Затворено";
 "today" = "Днес";
-"opens_tomorrow_at" = "Opens tomorrow at %@";
-"opens_dayoftheweek_at" = "Opens %1$@ at %2$@";
-"opens_at" = "Opens at %@";
+"opens_tomorrow_at" = "Отваря утре в %@";
+"opens_dayoftheweek_at" = "Отваря %1$@ в %2$@";
+"opens_at" = "Отваря в %@";
 "opens_in" = "Opens in %@";
 "closes_at" = "Closes at %@";
 "closes_in" = "Closes in %@";
@@ -751,12 +751,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Запазено";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Моля, влезте в OpenStreetMap, за да качвате автоматично всичките си редакции на картата. Научете повече";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "тук";
 "core_entrance" = "Вход";
 "error_enter_correct_name" = "Моля, въведете правилно име";
 "bookmark_lists" = "Списъци";
@@ -1091,9 +1085,11 @@
 "edit_track" = "Редактиране на маршрут";
 "osm_profile_view_notes" = "Преглед на бележки";
 "osm_profile_view_edit_history" = "Преглед на историята на промените";
-"about_headline" = "Open project powered by the community";
-"about_proposition_3" = "Transparent and not for profit";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"about_headline" = "Отворен проект, захранван от общността";
+"about_proposition_3" = "Прозрачен и не за печалба";
+"pref_mapappearance_title" = "Външен вид на картата";
+"pref_maplanguage_title" = "Език на Картата";
+"transliteration_title_disabled_summary" = "Изключено при постоянно използване на локален език за картата";
+"pref_maplanguage_local" = "Локален Език";
+"existence_confirmed_time_ago" = "Наличие потвърдено%@";
+"hours_confirmed_time_ago" = "Потвърдено %@";

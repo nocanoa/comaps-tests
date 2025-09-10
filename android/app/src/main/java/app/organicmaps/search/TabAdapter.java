@@ -92,7 +92,7 @@ class TabAdapter extends FragmentPagerAdapter
       editor.putInt(Config.KEY_PREF_LAST_SEARCHED_TAB, tab.getPosition());
       editor.apply();
       super.onTabSelected(tab);
-      Graphics.tint(mContext, tab.getIcon(), androidx.appcompat.R.attr.colorAccent);
+      Graphics.tint(mContext, tab.getIcon(), com.google.android.material.R.attr.colorSecondary);
     }
 
     @Override

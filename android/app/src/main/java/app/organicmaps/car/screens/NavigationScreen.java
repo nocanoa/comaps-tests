@@ -28,11 +28,11 @@ import app.organicmaps.car.util.RoutingUtils;
 import app.organicmaps.car.util.ThemeUtils;
 import app.organicmaps.car.util.UiHelpers;
 import app.organicmaps.routing.NavigationService;
-import app.organicmaps.routing.RoutingController;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.location.LocationHelper;
 import app.organicmaps.sdk.location.LocationListener;
 import app.organicmaps.sdk.routing.JunctionInfo;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.routing.RoutingInfo;
 import app.organicmaps.sdk.sound.TtsPlayer;
 import app.organicmaps.sdk.util.LocationUtils;
@@ -73,8 +73,7 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
   public Template onGetTemplate()
   {
     final NavigationTemplate.Builder builder = new NavigationTemplate.Builder();
-    builder.setBackgroundColor(ThemeUtils.isNightMode(getCarContext()) ? Colors.NAVIGATION_TEMPLATE_BACKGROUND_NIGHT
-                                                                       : Colors.NAVIGATION_TEMPLATE_BACKGROUND_DAY);
+    builder.setBackgroundColor(Colors.NAVIGATION_TEMPLATE_BACKGROUND);
     builder.setActionStrip(createActionStrip());
     builder.setMapActionStrip(UiHelpers.createMapActionStrip(getCarContext(), getSurfaceRenderer()));
 

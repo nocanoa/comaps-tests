@@ -68,6 +68,6 @@
     android:layout_alignBaseline="@id/region"
     android:layout_below="@id/description"
     android:textAppearance="@style/MwmTextAppearance.Body3"
-    android:textColor="?colorAccent"
+    android:textColor="?colorSecondary"
     tools:text="500 km"/>
 </RelativeLayout>

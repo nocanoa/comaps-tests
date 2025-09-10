@@ -756,12 +756,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "已儲存";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "請登入 OpenStreetMap 以自動上傳您的所有地圖編輯。了解更多";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "這裡";
 "core_entrance" = "入口";
 "error_enter_correct_name" = "請輸入正確的名稱";
 "bookmark_lists" = "列表";
@@ -1101,3 +1095,5 @@
 "pref_maplanguage_title" = "地圖語言";
 "transliteration_title_disabled_summary" = "當在地圖總是使用在地語言時不啟用";
 "pref_maplanguage_local" = "在地語言";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

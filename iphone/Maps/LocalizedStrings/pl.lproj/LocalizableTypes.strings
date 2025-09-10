@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Ujęcie wody";
 "type.amenity.water_point.drinking_water_no" = "Ujęcie wody";
 "type.barrier" = "Bariera";
+"type.barrier.yes" = "Bariera";
 "type.barrier.block" = "Blok";
 "type.barrier.bollard" = "Słupek";
 "type.barrier.border_control" = "Kontrola graniczna";
@@ -1481,3 +1482,5 @@
 "type.amenity.bicycle_parking.covered" = "Zadaszony parking dla rowerów";
 "type.post_office.post_partner" = "Post Partner";
 "type.amenity.ranger_station" = "Ranger Station";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

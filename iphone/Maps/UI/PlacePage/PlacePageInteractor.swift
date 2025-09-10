@@ -1,5 +1,6 @@
 protocol PlacePageInteractorProtocol: AnyObject {
   func viewWillAppear()
+  func viewWillDisappear()
   func updateTopBound(_ bound: CGFloat, duration: TimeInterval)
 }
 
@@ -19,12 +20,11 @@ class PlacePageInteractor: NSObject {
     self.mapViewController = mapViewController
     super.init()
     addToBookmarksManagerObserverList()
-    subscribeOnTrackActivePointUpdates()
+    subscribeOnTrackActivePointUpdatesIfNeeded()
   }
 
   deinit {
     removeFromBookmarksManagerObserverList()
-    unsubscribeFromTrackActivePointUpdates()
   }
 
   private func updatePlacePageIfNeeded() {
@@ -53,7 +53,8 @@ class PlacePageInteractor: NSObject {
     }
   }
 
-  private func subscribeOnTrackActivePointUpdates() {
+  private func subscribeOnTrackActivePointUpdatesIfNeeded() {
+    unsubscribeFromTrackActivePointUpdates()
     guard placePageData.objectType == .track, let trackData = placePageData.trackData else { return }
     bookmarksManager.setElevationActivePointChanged(trackData.trackId) { [weak self] distance in
       self?.trackActivePointPresenter?.updateActivePointDistance(distance)
@@ -65,7 +66,6 @@ class PlacePageInteractor: NSObject {
   }
 
   private func unsubscribeFromTrackActivePointUpdates() {
-    guard placePageData.trackData?.onActivePointChangedHandler != nil else { return }
     bookmarksManager.resetElevationActivePointChanged()
     bookmarksManager.resetElevationMyPositionChanged()
   }
@@ -87,6 +87,10 @@ extension PlacePageInteractor: PlacePageInteractorProtocol {
       return
     }
     updatePlacePageIfNeeded()
+  }
+
+  func viewWillDisappear() {
+    unsubscribeFromTrackActivePointUpdates()
   }
 
   func updateTopBound(_ bound: CGFloat, duration: TimeInterval) {
@@ -215,7 +219,7 @@ extension PlacePageInteractor: PlacePageEditBookmarkOrTrackViewControllerDelegat
     case .bookmark(let bookmarkData):
       let bookmarkColor = BookmarkColor.bookmarkColor(from: color) ?? bookmarkData.color
       MWMPlacePageManagerHelper.updateBookmark(placePageData, color: bookmarkColor, category: category)
-    case .track(let trackData):
+    case .track:
       MWMPlacePageManagerHelper.updateTrack(placePageData, color: color, category: category)
     }
   }

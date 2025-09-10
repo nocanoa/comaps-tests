@@ -146,8 +146,6 @@
 "core_entrance" = "Entrance";
 "bookmarks_import" = "Import Bookmarks and Tracks";
 "bookmark_lists_hide_all" = "Hide all";
-"alert_reauth_link_text_ios" = "here";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "bookmark_lists" = "Lists";
 "bookmarks_create_new_group" = "Create a new list";
 "error_enter_correct_name" = "Please enter a correct name";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

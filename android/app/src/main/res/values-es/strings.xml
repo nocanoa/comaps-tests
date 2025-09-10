@@ -16,8 +16,6 @@
     <string name="kilometres">Kilómetros</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">Millas</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">Mi posición</string>
     <!-- Update maps later button text -->
     <string name="later">Luego</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -75,8 +73,6 @@
     <string name="bookmarks">Marcadores</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
     <string name="bookmarks_and_tracks">Marcadores y trazas</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">Mis lugares</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Nombre</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -91,14 +87,6 @@
     <string name="maps_storage_summary">Seleccione la carpeta donde descargar los mapas</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Mapas descargados</string>
-    <!-- Internal storage type in Maps Storage settings (not accessible by the user) -->
-    <string name="maps_storage_internal">Almacenamiento interno privado</string>
-    <!-- Shared storage type in Maps Storage settings (a primary storage usually) -->
-    <string name="maps_storage_shared">Almacenamiento interno compartido</string>
-    <!-- Removable external storage type in Maps Storage settings, e.g. an SD card -->
-    <string name="maps_storage_removable">Tarjeta SD</string>
-    <!-- Generic external storage type in Maps Storage settings -->
-    <string name="maps_storage_external">Almacenamiento externo compartido</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
     <string name="maps_storage_free_size">%1$s libres de %2$s</string>
     <!-- Question dialog for transferring maps from one storage to another -->
@@ -150,8 +138,6 @@
     <string name="category_post">Oficina de correos</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">Policía</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">Wifi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">Reciclaje</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -427,11 +413,10 @@
     <string name="editor_report_problem_duplicate_place_title">Lugar duplicado</string>
     <string name="autodownload">Descarga automática</string>
     <!-- Place Page opening hours text -->
-    <string name="daily">Diario</string>
+    <string name="daily">Diariamente</string>
     <string name="twentyfour_seven">24/7</string>
     <string name="day_off_today">Cerrado hoy</string>
     <string name="day_off">Cerrado</string>
-    <string name="today">Hoy</string>
     <string name="opens_in">Abre en %s</string>
     <string name="closes_in">Cierra en %s</string>
     <string name="closed">Cerrado</string>
@@ -459,7 +444,6 @@
     <string name="empty_street_name_error">Ingrese un nombre de calle</string>
     <string name="choose_language">Elegir un idioma</string>
     <string name="choose_street">Elije una calle</string>
-    <string name="postal_code">Código postal</string>
     <string name="cuisine">Cocina</string>
     <string name="select_cuisine">Seleccionar cocina</string>
     <!-- login text field -->
@@ -500,8 +484,6 @@
     <string name="error_enter_correct_storey_number">El número de niveles no debe superar %d</string>
     <string name="editor_zip_code">Código postal</string>
     <string name="error_enter_correct_zip_code">Introduzca un código postal válido</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">Punto del mapa</string>
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">Nota para los voluntarios de OpenStreetMap (opcional)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
@@ -519,16 +501,8 @@
     <string name="downloader_no_downloaded_maps_title">No has descargado ningún mapa</string>
     <string name="downloader_no_downloaded_maps_message">Descargue mapas para encontrar la ubicación y navegar sin conexión</string>
     <string name="current_location_unknown_error_title">Se desconoce la ubicación actual</string>
-    <!-- abbreviation for meters -->
-    <string name="m">m</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">km</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/h</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">mi</string>
-    <!-- A unit of measure -->
-    <string name="ft">pie</string>
     <string name="miles_per_hour">mph</string>
     <string name="hour">h</string>
     <string name="minute">min</string>
@@ -565,7 +539,7 @@
     <!-- For the first routing -->
     <string name="accept">Aceptar</string>
     <!-- For the first routing -->
-    <string name="decline">Declinar</string>
+    <string name="decline">Rechazar</string>
     <string name="mobile_data_dialog">¿Usar Internet móvil para mostrar información detallada?</string>
     <string name="mobile_data_option_always">Usar siempre</string>
     <string name="mobile_data_option_today">Sólo hoy</string>
@@ -588,8 +562,6 @@
     <string name="prefs_languages_information_off_link">Para obtener más información, consulta esta guía</string>
     <string name="transliteration_title">Transliteración al alfabeto latino</string>
     <string name="learn_more">Conocer más</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">Salida</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Busca o toca en el mapa para añadir el origen de la ruta</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -598,13 +570,10 @@
     <string name="button_plan">Planificar</string>
     <string name="placepage_remove_stop">Eliminar parada</string>
     <string name="placepage_add_stop">Añadir parada</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Inicia sesión en OpenStreetMap para cargar automáticamente todas tus ediciones de mapas. Más información <a href="https://github.com/organicmaps/organicmaps/issues/6144">aquí</a>.</string>
-    <string name="dialog_error_storage_title">Problema de acceso al almacenamiento</string>
-    <string name="dialog_error_storage_message">El almacenamiento externo no está disponible; puede que se haya quitado o dañado la tarjeta SD, o el sistema de archivos solo permite lectura. Por favor, compruébelo ó escríbanos a support@comaps.app</string>
+    <string name="dialog_error_storage_title">Error de acceso al almacenamiento</string>
+    <string name="dialog_error_storage_message">El almacenamiento externo no está disponible; puede que se haya quitado o dañado la tarjeta SD, o el sistema de archivos solo permite lectura. Por favor, compruébalo ó escríbenos a support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emular almacenamiento dañado</string>
-    <string name="core_entrance">Entrada</string>
-    <string name="error_enter_correct_name">Por favor, introduzca el nombre correcto</string>
+    <string name="error_enter_correct_name">Por favor, introduce un nombre válido</string>
     <string name="bookmark_lists">Listas</string>
     <!-- Do not display all bookmark lists on the map -->
     <string name="bookmark_lists_hide_all">Ocultar todo</string>
@@ -646,16 +615,12 @@
     <string name="button_layer_traffic">Tráfico</string>
     <string name="subway">Metro</string>
     <string name="layers_title">Estilos y capas del mapa</string>
-    <string name="subway_data_unavailable">El mapa del metro no está disponible</string>
     <string name="bookmarks_empty_list_title">Esta lista está vacía</string>
-    <string name="bookmarks_empty_list_message">Para agregar un marcador, toque un lugar en el mapa y después toque el icono de la estrella</string>
+    <string name="bookmarks_empty_list_message">Para agregar un marcador, toca un lugar en el mapa y después toca el icono de la estrella</string>
     <string name="category_desc_more">…más</string>
     <string name="export_file">Exportar KMZ</string>
     <string name="export_file_gpx">Exportar GPX</string>
     <string name="delete_list">Eliminar lista</string>
-    <string name="public_access">Acceso público</string>
-    <string name="limited_access">Acceso limitado</string>
-    <string name="not_shared">Privado</string>
     <string name="speedcams_alert_title">Radares de velocidad</string>
     <string name="place_description_title">Descripción del lugar</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -672,7 +637,6 @@
     <string name="power_managment_setting_auto">Cuando queda poca energía</string>
     <string name="power_managment_setting_manual_max">Siempre</string>
     <string name="enable_logging_warning_message">Activa esta opción temporalmente para grabar y enviar de forma manual registros para diagnosticar defectos mediante la opción «Informar de un fallo» en el diálogo Ayuda. Los registros pueden incluir ubicaciones.</string>
-    <string name="access_rules_author_only">Edición en línea</string>
     <string name="driving_options_title">Opciones de enrutamiento</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">Evitar peajes</string>
@@ -731,10 +695,10 @@
     <string name="mountains">Montañas</string>
     <string name="animals">Animales</string>
     <string name="hotels">Hoteles</string>
-    <string name="buildings">Edificios</string>
+    <string name="buildings">Edificaciones</string>
     <string name="money">Dinero</string>
     <string name="shops">Tiendas</string>
-    <string name="parkings">Estacionamiento</string>
+    <string name="parkings">Aparcamiento</string>
     <string name="fuel_places">Gasolineras</string>
     <string name="medicine">Medicina</string>
     <string name="search_in_the_list">Buscar en la lista</string>
@@ -770,7 +734,7 @@
     <!-- A preference title; keep short! -->
     <string name="enable_show_on_lock_screen">Mostrar en la pantalla de bloqueo</string>
     <!-- Description in preferences -->
-    <string name="enable_show_on_lock_screen_description">Cuando se activa, no tiene que desbloquear el dispositivo para ejecutar la aplicación.</string>
+    <string name="enable_show_on_lock_screen_description">Cuando se activa, no tienes que desbloquear el dispositivo para ejecutar la aplicación.</string>
     <!-- Current language of the map! -->
     <string name="change_map_locale">Idioma del mapa</string>
     <!-- OpenStreetMap text on splash screen -->
@@ -784,27 +748,27 @@
     <!-- App Tip #00 -->
     <string name="app_tip_00">¡Gracias por utilizar nuestros mapas creados por la comunidad!</string>
     <!-- App tip #01 -->
-    <string name="app_tip_01">¡Con sus donaciones y apoyo, podemos crear los mejores mapas del mundo!</string>
+    <string name="app_tip_01">¡Con tus donaciones y apoyo, podemos crear los mejores mapas del mundo!</string>
     <!-- App tip #02 -->
-    <string name="app_tip_02">¿Le gusta nuestra aplicación? ¡Por favor done para apoyar su desarrollo! ¿Todavía no le gusta? ¡Díganos por qué y lo arreglaremos!</string>
+    <string name="app_tip_02">¿Te gusta nuestra aplicación? ¡Por favor dona para apoyar su desarrollo! ¿Todavía no te gusta? ¡Dinos por qué y lo arreglaremos!</string>
     <!-- App tip #03 -->
     <string name="app_tip_03">Si conoce a algún desarrollador o desarrolladora de software, le puede pedir que implemente alguna funcionalidad que usted necesite.</string>
     <!-- App tip #04 -->
-    <string name="app_tip_04">Toque en cualquier lugar del mapa para seleccionar cualquier elemento. Mantenga pulsado para ocultar y volver a mostrar la interfaz.</string>
+    <string name="app_tip_04">Toca en cualquier lugar del mapa para seleccionar cualquier elemento. Manten pulsado para ocultar y volver a mostrar la interfaz.</string>
     <!-- App tip #05 -->
-    <string name="app_tip_05">¿Sabía que su ubicación actual en el mapa se puede seleccionar?</string>
+    <string name="app_tip_05">¿Sabías que tu ubicación actual en el mapa se puede seleccionar?</string>
     <!-- App tip #06 -->
-    <string name="app_tip_06">Puede ayudar a traducir nuestra aplicación a su idioma.</string>
+    <string name="app_tip_06">Puedes ayudar a traducir nuestra aplicación a tu idioma.</string>
     <!-- App tip #07 -->
     <string name="app_tip_07">Nuestra aplicación está desarrollada por unos pocos entusiastas y la comunidad.</string>
     <!-- App tip #08 -->
-    <string name="app_tip_08">Puede arreglar y mejorar fácilmente los datos del mapa.</string>
+    <string name="app_tip_08">Puedes arreglar y mejorar fácilmente los datos del mapa.</string>
     <!-- App tip #09 -->
-    <string name="app_tip_09">Nuestro principal objetivo es crear mapas rápidos, centrados en la privacidad y fáciles de utilizar que le encantarán.</string>
+    <string name="app_tip_09">Nuestro principal objetivo es crear mapas rápidos, centrados en la privacidad y fáciles de utilizar, que te encantarán.</string>
     <!-- Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen -->
-    <string name="car_used_on_the_phone_screen">Ahora usa CoMaps en la pantalla del teléfono</string>
+    <string name="car_used_on_the_phone_screen">Ahora estás usando CoMaps en la pantalla del teléfono</string>
     <!-- Text on the phone placeholder screen that maps are displayed on the car screen -->
-    <string name="car_used_on_the_car_screen">Ahora usa CoMaps en la pantalla del coche</string>
+    <string name="car_used_on_the_car_screen">Ahora estás usando CoMaps en la pantalla del coche</string>
     <!-- Displayed on the phone screen. Android Auto connected -->
     <string name="aa_connected_title">Se ha conectado a Android Auto</string>
     <!-- Displayed on the phone screen. Button to display maps on the phone screen instead of a car -->
@@ -812,9 +776,9 @@
     <!-- Displayed on the Android Auto or CarPlay screen. Button to display maps on the car screen instead of a phone. Must be no more than 18 symbols! -->
     <string name="car_continue_in_the_car">A la pantalla del coche</string>
     <!-- Ask user to grant location permissions -->
-    <string name="aa_location_permissions_request">CoMaps necesita acceder a la ubicación. Cuando sea seguro, compruebe la notificación en el teléfono.</string>
+    <string name="aa_location_permissions_request">CoMaps necesita acceder a la ubicación. Cuando sea seguro, comprueba la notificación en el teléfono.</string>
     <!-- Notification title for permission request from AA. -->
-    <string name="aa_request_permission_notification">Esta aplicación necesita su permiso</string>
+    <string name="aa_request_permission_notification">Esta aplicación necesita tu permiso</string>
     <!-- The text in the activity for location permission request. -->
     <string name="aa_request_permission_activity_text">CoMaps en Android Auto necesita permiso de ubicación para funcionar eficazmente</string>
     <!-- Grant Permissions button. -->
@@ -825,7 +789,7 @@
     <string name="browser_not_available">El navegador web no está disponible</string>
     <string name="volume">Volumen</string>
     <!-- Bookmark categories screen, button that opens share dialog to export all bookmarks and tracks -->
-    <string name="bookmarks_export">Exportar todos los marcadores y trayectos</string>
+    <string name="bookmarks_export">Exportar todos los marcadores y trazas</string>
     <!-- button in (app) TTS settings, to open the system TTS settings. -->
     <string name="pref_tts_open_system_settings">Configuración de síntesis de voz del sistema</string>
     <!-- toast displayed when pressing the "Speech synthesis system settings" button, and the system settings aren't found. -->
@@ -875,8 +839,6 @@
     <string name="github">GitHub</string>
     <string name="twitter">X (Twitter)</string>
     <string name="facebook">Facebook</string>
-    <string name="mb">MB</string>
-    <string name="gb">GB</string>
     <string name="vk">VK</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
@@ -926,4 +888,8 @@
     <string name="open_now">Abierto ahora</string>
     <string name="closed_now">Cerrado ahora</string>
     <string name="at">a las %s</string>
+    <string name="osm_note_hint">O, como alternativa, deja una nota a la comunidad de OpenStreetMap para que alguien lo agregue o arregle.</string>
+    <string name="osm_note_toast">Una nota será enviada a OpenStreetMap</string>
+    <string name="delete_track_dialog_title">Eliminar %s?</string>
+    <string name="existence_confirmed_time_ago">Existencia confirmada %s</string>
 </resources>

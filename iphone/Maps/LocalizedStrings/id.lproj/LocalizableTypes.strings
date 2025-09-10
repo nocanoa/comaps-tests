@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Titik Air";
 "type.amenity.water_point.drinking_water_no" = "Titik Air";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.barrier.block" = "Blok";
 "type.barrier.bollard" = "Pilar";
 "type.barrier.border_control" = "Gerbang perbatasan";
@@ -1481,3 +1482,5 @@
 "type.amenity.luggage_locker" = "Luggage Locker";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

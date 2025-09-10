@@ -1,7 +1,8 @@
-• Dados OSM de 4/08
-• Melhoria nas cores para água, florestas, matagais, serviços, áreas de pedestres, etc.
-• Adição de guarda-florestais, estacionamentos cobertos para bicicletas, jogos de fuga, armários para bagagem e parceiros postais
-• Melhoria na precisão de curvas de nível para 20 m em algumas regiões populares
-• Suporte a mais abreviações para busca
-• Adição de ícones de pesquisa e favoritos para fast food, bicicletas e estações de recarga
-• Movimentos mais suaves para seta de posição
+• Dados OSM de 22/08
+• Novo indicador de velocidade e tela de informações de trilha
+• Melhor estilo de mapa escuro, rótulos coloridos adicionados
+• Exibição da última atualização de locais e horários de funcionamento
+• O roteamento agora considera conversões, PARE, semáforos, e restrições condicionais
+• Preferência por orientação GPS em vez de bússola e aumento da frequência de localização
+• Editor: adição de endereços e notas independentes
+• Melhorias em elementos da interface e estilo de mapa

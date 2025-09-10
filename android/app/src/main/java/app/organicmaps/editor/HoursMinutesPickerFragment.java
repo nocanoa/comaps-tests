@@ -79,8 +79,8 @@ public class HoursMinutesPickerFragment extends BaseMwmDialogFragment
     mTabs.getTabAt(mSelectedTab).select();
 
     @StyleRes
-    final int theme = ThemeUtils.isNightTheme(requireContext()) ? R.style.MwmMain_DialogFragment_TimePicker_Night
-                                                                : R.style.MwmMain_DialogFragment_TimePicker;
+    final int theme = ThemeUtils.isNightTheme() ? R.style.MwmMain_DialogFragment_TimePicker_Night
+                                                : R.style.MwmMain_DialogFragment_TimePicker;
     final AlertDialog dialog = new MaterialAlertDialogBuilder(requireActivity(), theme)
                                    .setView(root)
                                    .setNegativeButton(R.string.cancel, null)
@@ -141,15 +141,15 @@ public class HoursMinutesPickerFragment extends BaseMwmDialogFragment
     MaterialTextView tabView = (MaterialTextView) inflater.inflate(R.layout.tab_timepicker, mTabs, false);
     tabView.setText(getResources().getString(R.string.editor_time_from));
     final ColorStateList textColor = AppCompatResources.getColorStateList(
-        requireContext(), ThemeUtils.isNightTheme(requireContext()) ? R.color.accent_color_selector_night
-                                                                    : R.color.accent_color_selector);
+        requireContext(),
+        ThemeUtils.isNightTheme() ? R.color.accent_color_selector_night : R.color.accent_color_selector);
     tabView.setTextColor(textColor);
     mTabs.addTab(mTabs.newTab().setCustomView(tabView), true);
     tabView = (MaterialTextView) inflater.inflate(R.layout.tab_timepicker, mTabs, false);
     tabView.setText(getResources().getString(R.string.editor_time_to));
     tabView.setTextColor(textColor);
     mTabs.addTab(mTabs.newTab().setCustomView(tabView), true);
-    mTabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+    mTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
       @Override
       public void onTabSelected(TabLayout.Tab tab)
       {

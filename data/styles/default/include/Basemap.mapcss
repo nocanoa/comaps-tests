@@ -487,6 +487,7 @@ area|z14-[amenity=grave_yard]
 
 area|z14-[highway=pedestrian][area?],
 area|z14-[area:highway=pedestrian],
+area|z14-[highway=pedestrian][place=square],
 area|z14-[highway=footway][area?],
 area|z14-[area:highway=footway],
 area|z14-[area:highway=living_street],
@@ -672,12 +673,15 @@ area|z17-[waterway=dam],
 
 line|z16-[barrier=fence],
 line|z16-[barrier=wall],
+line|z16-[barrier=yes],
 {color: @fence; width: 1; opacity: 0.5;}
 line|z17[barrier=fence],
 line|z17[barrier=wall],
+line|z17[barrier=yes],
 {width: 1.3; opacity: 0.6;}
 line|z18-[barrier=fence],
 line|z18-[barrier=wall],
+line|z18-[barrier=yes],
 {width: 1.5; opacity: 0.8;}
 
 line|z17-[barrier=guard_rail],

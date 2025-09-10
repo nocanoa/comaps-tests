@@ -22,7 +22,7 @@ using namespace generator_tests;
 namespace
 {
 auto const kEmptyValidator = [](auto const &) { return true; };
-}
+}  // namespace
 
 UNIT_TEST(MergeCollector_MergeCase1)
 {
@@ -44,10 +44,10 @@ UNIT_TEST(MergeCollector_MergeCase1)
   collector1->Finalize();
 
   std::vector<std::string> const answers = {
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 1 /* id */).GetEncodedId()) + "\t1",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 2 /* id */).GetEncodedId()) + "\t2",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 3 /* id */).GetEncodedId()) + "\t3",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 4 /* id */).GetEncodedId()) + "\t4",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 1 /* id */).GetEncodedId()) + "\t1",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 2 /* id */).GetEncodedId()) + "\t2",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 3 /* id */).GetEncodedId()) + "\t3",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 4 /* id */).GetEncodedId()) + "\t4",
   };
 
   std::ifstream stream;
@@ -80,10 +80,10 @@ UNIT_TEST(MergeCollector_MergeCase2)
   collection1->Finalize();
 
   std::vector<std::string> const answers = {
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 1 /* id */).GetEncodedId()) + "\t1",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 2 /* id */).GetEncodedId()) + "\t2",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 3 /* id */).GetEncodedId()) + "\t3",
-    std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 4 /* id */).GetEncodedId()) + "\t4",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 1 /* id */).GetEncodedId()) + "\t1",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 2 /* id */).GetEncodedId()) + "\t2",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 3 /* id */).GetEncodedId()) + "\t3",
+      std::to_string(GeoObjectId(GeoObjectId::Type::ObsoleteOsmRelation, 4 /* id */).GetEncodedId()) + "\t4",
   };
 
   std::ifstream stream;

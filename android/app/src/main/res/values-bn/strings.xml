@@ -6,12 +6,9 @@
     <string name="cancel">বাতিল</string>
     <string name="miles">মাইল</string>
     <string name="later">পরে</string>
-    <string name="core_my_position">আমার অবস্থান</string>
     <string name="search">খুঁজুন</string>
     <string name="download_has_failed">ডাউনলোড ব্যর্থ। আবার চেষ্টা করতে টিপ দাও।</string>
-    <string name="mb">এমবি</string>
     <string name="search_map">ম্যাপ অনুসন্ধান</string>
-    <string name="gb">জিবি</string>
     <string name="kilometres">কিলোমিটার</string>
     <string name="downloading">ডাউনলোডরত…</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
@@ -53,14 +50,10 @@
     <string name="bookmark_set_name">বুকমার্ক তালিকার নাম</string>
     <string name="bookmarks">বুকমার্কসমূহ</string>
     <string name="bookmarks_and_tracks">বুকমার্ক ও ট্র্যাকসমূহ</string>
-    <string name="core_my_places">আমার স্থানগুলি</string>
     <string name="name">নাম</string>
     <string name="address">ঠিকানা</string>
     <string name="list">তালিকা</string>
     <string name="maps_storage_downloaded">ডাউনলোড করা মানচিত্রসমূহ</string>
-    <string name="maps_storage_internal">অভ্যন্তরীণ প্রাইভেট স্টোরেজ</string>
-    <string name="maps_storage_removable">SD কার্ড</string>
-    <string name="maps_storage_external">বহিরাগত শেয়ার্ড স্টোরেজ</string>
     <string name="maps_storage_free_size">%1$s মধ্যে %2$s ফাঁকা</string>
     <string name="move_maps">মানচিত্রের স্থান সরাবেন?</string>
     <string name="move_maps_error">মানচিত্রের স্থান সরানোর সময়ে সমস্যা হলো</string>
@@ -83,7 +76,6 @@
     <string name="category_toilet">শৌচালয়</string>
     <string name="category_post">ডাক</string>
     <string name="category_police">পুলিশ</string>
-    <string name="category_wifi">ওয়াইফাই</string>
     <string name="category_recycling">রিসাইক্লিং</string>
     <string name="category_water">জল</string>
     <string name="category_rv">আর ভি সুযোগ-সুবিধা</string>
@@ -120,7 +112,6 @@
     <string name="unsupported_phone">এই অ্যাপ চালানোর জন্য হার্ডওয়্যার দ্বারা ত্বরিত OpenGL জরুরি। দুর্ভাগ্যবশত, আপনার ডিভাইস এটি সমর্থন করে না।</string>
     <string name="maps_storage">মানচিত্রগুলি রাখার যায়গা বেছে নিন</string>
     <string name="maps_storage_summary">ফোল্ডার বেছে মানচিত্রগুলি ডাউনলোড করুন</string>
-    <string name="maps_storage_shared">অভ্যন্তরীণ শেয়ার্ড স্টোরেজ</string>
     <string name="share_bookmarks_email_subject">CoMaps-এর বুকমার্কগুলি আপনার দ্বারা শেয়ার করা হলো</string>
     <string name="share_bookmarks_email_body">নমস্কার!\n\nআমি আমার CoMaps-এর বুকমার্কগুলি এখানে দিচ্ছি। যদি আপনার কাছে ইনস্টল না করা থাকি, তাহলে আপনি এখান থেকে ডাউনলোড করতে পারেন: https://www.comaps.app/download/\n\nCoMaps-এর সঙ্গে ভ্রমণ উপভোগ করুন!</string>
     <string name="my_position_share_sms">আমার বর্তমান অবস্থানটি CoMaps-এ দেখুন! %1$s বা %2$s আপনার কাছে অফলাইন মানচিত্র নেই? এইখান থেকে ডাউনলোড করুন: https://www.comaps.app/download/</string>
@@ -249,7 +240,6 @@
     <string name="editor_report_problem_under_construction_title">রক্ষণাবেক্ষণের জন্য বন্ধ</string>
     <string name="editor_report_problem_duplicate_place_title">ডুপ্লিকেট জায়গা</string>
     <string name="day_off_today">আজকে বন্ধ</string>
-    <string name="today">আজকে</string>
     <string name="opens_in">%s-এর মধ্যে খুলবে</string>
     <string name="closes_in">%s-এর মধ্যে বন্ধ হবে</string>
     <string name="no_osm_account">আপনার ওপেনস্ট্রিটম্যাপ অ্যাকাউন্ট নেই?</string>
@@ -314,7 +304,6 @@
     <string name="empty_street_name_error">অনুগ্রহ করে রাস্তার নামটি লিখুন</string>
     <string name="choose_language">একটি ভাষা বেছে নিন</string>
     <string name="choose_street">একটি রাস্তা বেছে নিন</string>
-    <string name="postal_code">ডাক কোড</string>
     <string name="cuisine">রন্ধনপ্রণালী</string>
     <string name="select_cuisine">রন্ধনপ্রণালী নির্বাচন করুন</string>
     <string name="email_or_username">ইমাইল বা ইউইজারনেম</string>

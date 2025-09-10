@@ -16,6 +16,7 @@ public class ChartView: UIView {
   var showPreview: Bool = false // Set true to show the preview
 
   private var tapGR: UITapGestureRecognizer!
+  private var selectedPointDistance: Double = 0
   private var panStartPoint = 0
   private var panGR: UIPanGestureRecognizer!
   private var pinchStartLower = 0
@@ -142,6 +143,8 @@ public class ChartView: UIView {
   }
 
   private func setup() {
+    isUserInteractionEnabled = false
+
     xAxisView.font = font
     xAxisView.textColor = textColor
     yAxisView.font = font
@@ -168,6 +171,8 @@ public class ChartView: UIView {
   }
 
   public func setSelectedPoint(_ x: Double) {
+    guard selectedPointDistance != x else { return }
+    selectedPointDistance = x
     let routeLength = chartData.xAxisValueAt(CGFloat(chartData.pointsCount - 1))
     let upper = chartData.xAxisValueAt(CGFloat(chartPreviewView.maxX))
     var lower = chartData.xAxisValueAt(CGFloat(chartPreviewView.minX))
@@ -244,10 +249,10 @@ public class ChartView: UIView {
     let lower = max(pinchStartLower + dx, 0)
     let upper = min(pinchStartUpper - dx, chartData.labels.count - 1)
 
-    if upper - lower < chartData.labels.count / 10 {
+    guard upper - lower > max(1, chartData.labels.count / 10) else {
       return
     }
-    
+
     chartPreviewView.setX(min: lower, max: upper)
     xAxisView.setBounds(lower: lower, upper: upper)
     updateCharts(animationStyle: .none)

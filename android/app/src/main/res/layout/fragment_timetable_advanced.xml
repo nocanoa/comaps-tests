@@ -60,7 +60,7 @@
           android:padding="@dimen/margin_base"
           android:text="@string/editor_example_values"
           android:textAppearance="@style/MwmTextAppearance.Body3"
-          android:textColor="?colorAccent"/>
+          android:textColor="?colorSecondary"/>
 
         <View
           android:layout_width="match_parent"

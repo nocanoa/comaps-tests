@@ -325,7 +325,7 @@
 "volunteer" = "Frivillig arbeid";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Følg og kontakt oss";
+"follow_us" = "Følg oss";
 
 /* Alert text */
 "email_error_body" = "E-postklienten har ikke blitt konfigurert. Konfigurer den eller bruk en annen måte å kontakte oss på %@";
@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Lagret";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Logg inn på OpenStreetMap for automatisk å laste opp alle kartredigeringene dine. Finn ut mer";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "her";
 "core_entrance" = "Inngang";
 "error_enter_correct_name" = "Skriv inn korrekt navn";
 "bookmark_lists" = "Lister";
@@ -1094,8 +1088,10 @@
 "edit_track" = "Rediger ruten";
 "osm_profile_view_edit_history" = "Vis redigeringshistorikk";
 "osm_profile_view_notes" = "Vis merknader";
-"about_proposition_3" = "Transparent and not for profit";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
+"about_proposition_3" = "Transparent og ikke for profitt";
+"pref_mapappearance_title" = "Kartets Utseende";
+"pref_maplanguage_title" = "Kart Språk";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_local" = "Lokalt Språk";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

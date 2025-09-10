@@ -13,12 +13,13 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.organicmaps.R;
+import app.organicmaps.editor.data.TimeFormatUtils;
 import app.organicmaps.sdk.editor.OpeningHours;
 import app.organicmaps.sdk.editor.data.HoursMinutes;
-import app.organicmaps.editor.data.TimeFormatUtils;
 import app.organicmaps.sdk.editor.data.Timespan;
 import app.organicmaps.sdk.editor.data.Timetable;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.sdk.util.Utils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textview.MaterialTextView;
@@ -224,7 +225,7 @@ class SimpleTimetableAdapter extends RecyclerView.Adapter<SimpleTimetableAdapter
             LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_timetable_closed_hours, closedHost, false);
         closedHost.addView(
             span, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                UiUtils.dimen(closedHost.getContext(), R.dimen.editor_height_closed)));
+                                                Utils.dimen(closedHost.getContext(), R.dimen.editor_height_closed)));
         closedHours[i] = span;
         final int finalI = i;
         span.findViewById(R.id.iv__remove_closed)

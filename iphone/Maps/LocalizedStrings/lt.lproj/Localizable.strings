@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Išsaugota";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Prisijunkite prie „OpenStreetMap“, kad galėtumėte automatiškai įkelti visus savo žemėlapio pakeitimus. Išsamesnė informacija –";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "čia";
 "core_entrance" = "Įėjimas";
 "error_enter_correct_name" = "Įveskite teisingą pavadinimą";
 "bookmark_lists" = "Sąrašai";
@@ -1099,3 +1093,5 @@
 "pref_maplanguage_title" = "Žemėlapio kalba";
 "transliteration_title_disabled_summary" = "Negalima, kai žemėlapyje visuomet naudojama vietos kalba";
 "pref_maplanguage_local" = "Vietos kalba";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

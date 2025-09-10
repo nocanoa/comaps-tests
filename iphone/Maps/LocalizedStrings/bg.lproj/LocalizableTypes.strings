@@ -188,6 +188,7 @@
 "type.amenity.water_point" = "Остановка за пълнене на водни хранилища";
 "type.amenity.water_point.drinking_water_no" = "Остановка за пълнене на водни хранилища";
 "type.barrier" = "Бариера";
+"type.barrier.yes" = "Бариера";
 "type.barrier.block" = "Блокова преграда";
 "type.barrier.bollard" = "Колчета";
 "type.barrier.border_control" = "Гранична остановка";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Станция за рейнджъри";
 "type.amenity.luggage_locker" = "Шкафче за багаж";
 "type.amenity.bicycle_parking.covered" = "Покрит паркинг за колела";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

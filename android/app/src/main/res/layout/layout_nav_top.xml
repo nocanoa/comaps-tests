@@ -124,13 +124,26 @@
       app:lanesEditModeLanesCount="5"
       tools:visibility="visible" />
 
+  <app.organicmaps.widget.CurrentSpeedView
+      android:id="@+id/nav_current_speed"
+      style="@style/MwmWidget.CurrentSpeed"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_margin="@dimen/margin_half"
+      app:layout_constraintEnd_toEndOf="@id/nav_next_turn_container"
+      app:layout_constraintStart_toStartOf="@id/nav_next_turn_container"
+      app:layout_constraintTop_toBottomOf="@id/nav_next_turn_container"/>
+
   <app.organicmaps.widget.SpeedLimitView
     android:id="@+id/nav_speed_limit"
     style="@style/MwmWidget.SpeedLimit"
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
     android:layout_margin="@dimen/margin_half"
     app:layout_constraintEnd_toEndOf="@id/nav_next_turn_container"
     app:layout_constraintStart_toStartOf="@id/nav_next_turn_container"
-    app:layout_constraintTop_toBottomOf="@id/nav_next_turn_container" />
+    app:layout_constraintTop_toBottomOf="@id/nav_current_speed"
+    android:translationY="-23dp"
+    android:translationX="-23dp"
+    android:translationZ="1dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "水箱加水點";
 "type.amenity.water_point.drinking_water_no" = "水箱加水點";
 "type.barrier" = "障礙物";
+"type.barrier.yes" = "障礙物";
 "type.barrier.block" = "街區";
 "type.barrier.bollard" = "柱";
 "type.barrier.border_control" = "邊境管制";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "巡警站";
 "type.amenity.bicycle_parking.covered" = "有遮蓋單車停車場";
 "type.post_office.post_partner" = "郵政代辦所";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

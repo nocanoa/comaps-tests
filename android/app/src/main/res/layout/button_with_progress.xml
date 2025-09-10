@@ -13,12 +13,12 @@
     android:layout_marginStart="@dimen/margin_base"
     android:text="@string/download_country_ask"
     android:textAppearance="?fontBody2"
-    app:buttonTint="?colorAccent"
+    app:buttonTint="?colorSecondary"
     android:visibility="gone"
     tools:visibility="visible"/>
   <com.google.android.material.progressindicator.LinearProgressIndicator
     android:id="@+id/progressbar"
-    style="@style/Widget.MaterialComponents.LinearProgressIndicator"
+    style="@style/Widget.Material3.LinearProgressIndicator"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_base_plus"
@@ -26,7 +26,8 @@
     android:layout_marginEnd="@dimen/margin_base_plus"
     android:layout_marginBottom="@dimen/margin_base"
     android:indeterminate="false"
-    app:indicatorColor="?android:colorAccent"
+    android:progress="1"
+    app:indicatorColor="?colorSecondary"
     app:trackColor="@color/bg_routing_progress"/>
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btn_download_resources"
@@ -37,5 +38,6 @@
     android:layout_marginEnd="@dimen/margin_base_plus"
     android:layout_marginBottom="@dimen/margin_base_plus"
     android:text="@string/download"
-    android:textAppearance="@style/MwmTextAppearance.Body1" />
+    android:textAppearance="@style/MwmTextAppearance.Body1"
+    app:backgroundTint="?colorSecondary"/>
 </LinearLayout>

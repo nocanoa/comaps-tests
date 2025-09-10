@@ -15,6 +15,7 @@
 historic-citywalls                                  # line z15-
 === 280
 
+highway-ladder                                      # line z18-
 highway-steps                                       # line z18-
 highway-steps-bridge                                # line z18-
 hwtag-oneway::arrows                                # line::arrows z15-
@@ -29,6 +30,7 @@ barrier-fence                                       # line z17-
 barrier-guard_rail                                  # line z17-
 barrier-hedge                                       # line z18-
 barrier-wall                                        # line z17-
+barrier-yes                                         # line z17-
 railway-monorail                                    # line z14-
 railway-monorail-bridge                             # line z14-
 railway-monorail-tunnel                             # line z14-
@@ -261,6 +263,7 @@ highway-path-horse                                  # line z17-
 highway-pedestrian                                  # line z18-
 highway-pedestrian-area                             # line z18-
 highway-pedestrian-bridge                           # line z18-
+highway-pedestrian-square                           # line z18-
 highway-track                                       # line z16-
 highway-track-area                                  # line z16-
 highway-track-bridge                                # line z16-

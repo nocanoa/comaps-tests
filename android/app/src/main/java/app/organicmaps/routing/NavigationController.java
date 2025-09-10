@@ -1,5 +1,7 @@
 package app.organicmaps.routing;
 
+import static app.organicmaps.sdk.util.Utils.dimen;
+
 import android.location.Location;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,11 +20,13 @@ import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.Router;
 import app.organicmaps.sdk.maplayer.traffic.TrafficManager;
 import app.organicmaps.sdk.routing.CarDirection;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.routing.RoutingInfo;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils;
+import app.organicmaps.widget.CurrentSpeedView;
 import app.organicmaps.widget.LanesView;
 import app.organicmaps.widget.SpeedLimitView;
 import app.organicmaps.widget.menu.NavMenu;
@@ -48,6 +52,8 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
   private final LanesView mLanesView;
   @NonNull
   private final SpeedLimitView mSpeedLimit;
+  @NonNull
+  private final CurrentSpeedView mCurrentSpeed;
 
   private final MapButtonsViewModel mMapButtonsViewModel;
 
@@ -91,6 +97,7 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
     mLanesView = topFrame.findViewById(R.id.lanes);
 
     mSpeedLimit = topFrame.findViewById(R.id.nav_speed_limit);
+    mCurrentSpeed = topFrame.findViewById(R.id.nav_current_speed);
 
     // Show a blank view below the navbar to hide the menu content
     final View navigationBarBackground = mFrame.findViewById(R.id.nav_bottom_sheet_nav_bar);
@@ -125,7 +132,7 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
 
     mLanesView.setLanes(info.lanes);
 
-    updateSpeedLimit(info);
+    updateSpeedWidgets(info);
   }
 
   private void updatePedestrian(@NonNull RoutingInfo info)
@@ -133,6 +140,7 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
     mNextTurnDistance.setText(Utils.formatDistance(mFrame.getContext(), info.distToTurn));
 
     info.pedestrianTurnDirection.setTurnDrawable(mNextTurnImage);
+    updateSpeedWidgets(info);
   }
 
   public void updateNorth()
@@ -165,7 +173,7 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
     UiUtils.visibleIf(hasStreet, mStreetFrame);
     if (!TextUtils.isEmpty(info.nextStreet))
       mNextStreet.setText(info.nextStreet);
-    int margin = UiUtils.dimen(mFrame.getContext(), R.dimen.nav_frame_padding);
+    int margin = dimen(mFrame.getContext(), R.dimen.nav_frame_padding);
     if (hasStreet)
       margin += mStreetFrame.getHeight();
     mMapButtonsViewModel.setTopButtonsMarginTop(margin);
@@ -258,16 +266,18 @@ public class NavigationController implements TrafficManager.TrafficCallback, Nav
     RoutingController.get().cancel();
   }
 
-  private void updateSpeedLimit(@NonNull final RoutingInfo info)
+  private void updateSpeedWidgets(@NonNull final RoutingInfo info)
   {
     final Location location = MwmApplication.from(mFrame.getContext()).getLocationHelper().getSavedLocation();
     if (location == null)
     {
-      mSpeedLimit.setSpeedLimit(0, false);
+      mSpeedLimit.setSpeedLimit(-1, false);
+      mCurrentSpeed.setCurrentSpeed(-1);
       return;
     }
     final int fSpeedLimit = StringUtils.nativeFormatSpeed(info.speedLimitMps);
     final boolean speedLimitExceeded = fSpeedLimit < StringUtils.nativeFormatSpeed(location.getSpeed());
     mSpeedLimit.setSpeedLimit(fSpeedLimit, speedLimitExceeded);
+    mCurrentSpeed.setCurrentSpeed(location.getSpeed());
   }
 }

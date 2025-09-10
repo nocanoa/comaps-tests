@@ -8,6 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PlacePageInfoData : NSObject
 
 @property(nonatomic, readonly, nullable) NSString *openingHoursString;
+@property(nonatomic, readonly, nullable) NSDate *checkDate;
+@property(nonatomic, readonly, nullable) NSDate *checkDateOpeningHours;
 @property(nonatomic, readonly, nullable) OpeningHours *openingHours;
 @property(nonatomic, readonly) NSArray<PlacePagePhone *> *phones;
 @property(nonatomic, readonly, nullable) NSString *website;
@@ -37,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, nullable) NSString *selfService;
 @property(nonatomic, readonly, nullable) NSString *outdoorSeating;
 @property(nonatomic, readonly, nullable) NSString *network;
+
+- (NSDate * _Nullable)getMostRecentCheckDate;
 
 @end
 

@@ -3,7 +3,10 @@ package app.organicmaps.widget.placepage;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import app.organicmaps.sdk.bookmarks.data.Bookmark;
+import app.organicmaps.sdk.bookmarks.data.ElevationInfo;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
+import app.organicmaps.sdk.bookmarks.data.Track;
 import java.util.List;
 
 public class PlacePageViewModel extends ViewModel
@@ -12,6 +15,7 @@ public class PlacePageViewModel extends ViewModel
   private final MutableLiveData<MapObject> mMapObject = new MutableLiveData<>();
   private final MutableLiveData<Integer> mPlacePageWidth = new MutableLiveData<>();
   private final MutableLiveData<Integer> mPlacePageDistanceToTop = new MutableLiveData<>();
+  public boolean isAlertDialogShowing = false;
 
   public LiveData<List<PlacePageButtons.ButtonType>> getCurrentButtons()
   {

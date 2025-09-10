@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.material.imageview.ShapeableImageView;
-import com.google.android.material.textview.MaterialTextView;
 import app.organicmaps.R;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.routing.RouteMarkData;
 import app.organicmaps.sdk.routing.RouteMarkType;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -63,26 +63,26 @@ public class ManageRouteAdapter extends RecyclerView.Adapter<ManageRouteAdapter.
 
     switch (mRoutePoints.get(position).mPointType)
     {
-      case Start: // Starting point.
-        if (mRoutePoints.get(position).mIsMyPosition)
-          iconId = R.drawable.ic_location_arrow_blue;
-        else
-          iconId = R.drawable.route_point_start;
-        break;
+    case Start: // Starting point.
+      if (mRoutePoints.get(position).mIsMyPosition)
+        iconId = R.drawable.ic_location_arrow_blue;
+      else
+        iconId = R.drawable.route_point_start;
+      break;
 
-      case Intermediate: // Intermediate stop.
-        TypedArray iconArray = mContext.getResources().obtainTypedArray(R.array.route_stop_icons);
-        iconId = iconArray.getResourceId(mRoutePoints.get(position).mIntermediateIndex, R.drawable.route_point_20);
-        iconArray.recycle();
-        break;
+    case Intermediate: // Intermediate stop.
+      TypedArray iconArray = mContext.getResources().obtainTypedArray(R.array.route_stop_icons);
+      iconId = iconArray.getResourceId(mRoutePoints.get(position).mIntermediateIndex, R.drawable.route_point_20);
+      iconArray.recycle();
+      break;
 
-      case Finish: // Destination point.
-        iconId = R.drawable.route_point_finish;
-        break;
+    case Finish: // Destination point.
+      iconId = R.drawable.route_point_finish;
+      break;
 
-      default: // Unknown route type.
-        iconId = R.drawable.warning_icon;
-        break;
+    default: // Unknown route type.
+      iconId = R.drawable.warning_icon;
+      break;
     }
 
     // Set icon widget.
@@ -94,7 +94,7 @@ public class ManageRouteAdapter extends RecyclerView.Adapter<ManageRouteAdapter.
     if (mRoutePoints.get(position).mIsMyPosition)
     {
       // My position point.
-      title = mContext.getString(R.string.core_my_position);
+      title = mContext.getString(app.organicmaps.sdk.R.string.core_my_position);
 
       if (mRoutePoints.get(position).mPointType != RouteMarkType.Start)
         subtitle = mRoutePoints.get(position).mTitle;

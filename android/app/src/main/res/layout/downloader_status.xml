@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?clickableBackground"
-    wheel:wheelProgressColor="?colorAccent"
+    wheel:wheelProgressColor="?colorSecondary"
     wheel:wheelSecondaryColor="?dividerHorizontal"
     wheel:wheelThickness="@dimen/margin_eighth"/>
 

@@ -13,6 +13,7 @@
 "type.natural.water.wastewater" = "Wastewater";
 "type.barrier.bollard" = "Bollard";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.barrier.chain" = "Chain";
 "type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
 "type.barrier.stile" = "Stile";
@@ -1295,3 +1296,5 @@
 "type.place.city" = "City";
 "type.amenity.parking_entrance.permissive" = "Parking Entrance";
 "type.cuisine.italian_pizza" = "Italian, Pizza";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

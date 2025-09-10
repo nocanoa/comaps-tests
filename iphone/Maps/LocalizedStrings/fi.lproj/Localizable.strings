@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Ilmoita tai korjaa virheelliset karttatiedot";
 
 /* Button in the About screen */
-"volunteer" = "Vapaaehtoiseksi";
+"volunteer" = "Ryhdy vapaaehtoiseksi ja auta parantamaan CoMapsia";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Ota yhteyttä";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Tallennettu";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Kirjaudu sisään OpenStreetMapiin, jotta voit ladata kaikki karttamuutoksesi automaattisesti. Lisätietoja";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "täältä";
 "core_entrance" = "Sisäänkäynti";
 "error_enter_correct_name" = "Anna oikea nimi";
 "bookmark_lists" = "Luettelot";
@@ -1101,3 +1095,5 @@
 "pref_maplanguage_title" = "Karttakieli";
 "transliteration_title_disabled_summary" = "Kytke pois käytöstä, jos käytät aina paikallista kieltä kartalle";
 "pref_maplanguage_local" = "Paikallinen kieli";
+"existence_confirmed_time_ago" = "Olemassaolo varmistettu %@";
+"hours_confirmed_time_ago" = "Varmistettu %@";

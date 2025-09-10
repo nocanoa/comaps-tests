@@ -45,6 +45,7 @@ power-line                                          # line z19- (also has line::
 power-line::dash                                    # line::dash z19- (also has line z19-)
 === 340
 
+highway-ladder                                      # line z15- (also has icon z17-, pathtext z17-)
 highway-steps                                       # line z15- (also has pathtext z16-)
 highway-steps-bridge                                # line z15- (also has line::bridgeblack z17-, line::bridgewhite z15-, pathtext z16-)
 highway-steps-tunnel                                # line z15- (also has line::tunnelBackground z17-, line::tunnelCasing z17-, pathtext z16-)
@@ -57,6 +58,7 @@ barrier-fence                                       # line z16-
 barrier-guard_rail                                  # line z17-
 barrier-hedge                                       # line z16-
 barrier-wall                                        # line z16-
+barrier-yes                                         # line z16- (also has icon z16-, caption(optional) z16-)
 railway-funicular                                   # line z12-
 railway-funicular-bridge                            # line z12-
 railway-funicular-tunnel                            # line z12-
@@ -264,6 +266,7 @@ highway-ford                                        # line z13- (also has icon z
 highway-pedestrian                                  # line z13- (also has pathtext z14-)
 highway-pedestrian-area                             # line z13- and area z14- (also has pathtext z14-)
 highway-pedestrian-bridge                           # line z13- (also has line::bridgeblack z14-, line::bridgewhite z13-, pathtext z14-)
+highway-pedestrian-square                           # line z13- and area z14- (also has pathtext z14-)
 highway-pedestrian-tunnel                           # line z13- (also has line(casing) z16-, pathtext z14-)
 === 200
 

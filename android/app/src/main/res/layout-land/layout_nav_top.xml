@@ -118,17 +118,29 @@
       app:layout_constraintTop_toBottomOf="@id/street_frame"
       app:lanesActiveLaneTintColor="?navLaneArrowActiveColor"
       app:lanesInactiveLaneTintColor="?navLaneArrowInactiveColor"
-      app:lanesBackgroundColor="?colorAccent"
+      app:lanesBackgroundColor="?colorSecondary"
       app:lanesCornerRadius="@dimen/margin_quarter"
       app:lanesEditModeLanesCount="10"
       tools:visibility="visible" />
 
+  <app.organicmaps.widget.CurrentSpeedView
+      android:id="@+id/nav_current_speed"
+      style="@style/MwmWidget.CurrentSpeed"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_margin="@dimen/margin_half"
+      app:layout_constraintStart_toEndOf="@id/nav_next_turn_container"
+      app:layout_constraintTop_toBottomOf="@id/street_frame"/>
+
   <app.organicmaps.widget.SpeedLimitView
     android:id="@+id/nav_speed_limit"
     style="@style/MwmWidget.SpeedLimit"
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
     android:layout_margin="@dimen/margin_half"
     app:layout_constraintStart_toEndOf="@id/nav_next_turn_container"
-    app:layout_constraintTop_toBottomOf="@id/street_frame" />
+    app:layout_constraintTop_toBottomOf="@id/nav_current_speed"
+    android:translationY="-21dp"
+    android:translationX="-12dp"
+    android:translationZ="1dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

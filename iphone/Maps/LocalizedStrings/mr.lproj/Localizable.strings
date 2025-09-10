@@ -748,12 +748,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "जतन केले";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "तुमची सर्व नकाशा संपादने स्वयंचलितपणे अपलोड करण्यासाठी कृपया OpenStreetMap वर लॉग इन करा. अधिक जाणून घ्या";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "येथे";
 "core_entrance" = "प्रवेशद्वार";
 "error_enter_correct_name" = "कृपया योग्य नाव प्रविष्ट करा";
 "bookmark_lists" = "याद्या";
@@ -1095,3 +1089,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

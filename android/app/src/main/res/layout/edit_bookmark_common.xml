@@ -20,6 +20,7 @@
       style="?fontBody1"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:hint="@string/name"
       android:textColorHint="?android:textColorSecondary"
       app:endIconMode="custom"
       app:endIconCheckable="false"
@@ -31,7 +32,6 @@
         style="@style/MwmWidget.Editor.CustomTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name"
         android:padding="@dimen/margin_half_double_plus"
         android:textAlignment="viewStart"
         android:inputType="textCapSentences"
@@ -94,6 +94,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/rl__bookmark_set"
     android:layout_margin="@dimen/margin_half"
+    android:hint="@string/placepage_personal_notes_hint"
     android:textColorHint="?android:textColorSecondary">
 
     <com.google.android.material.textfield.TextInputEditText
@@ -102,7 +103,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/margin_half_double_plus"
-      android:hint="@string/placepage_personal_notes_hint"
       android:inputType="textMultiLine"
       android:textAlignment="viewStart" />
   </com.google.android.material.textfield.TextInputLayout>

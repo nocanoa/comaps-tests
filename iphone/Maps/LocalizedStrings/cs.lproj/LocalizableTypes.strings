@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Doplňovací místo vodní nádrže";
 "type.amenity.water_point.drinking_water_no" = "Doplňovací místo vodní nádrže";
 "type.barrier" = "Bariéra";
+"type.barrier.yes" = "Bariéra";
 "type.barrier.block" = "Blok";
 "type.barrier.bollard" = "Sloupek";
 "type.barrier.border_control" = "Pohraniční kontrola";
@@ -280,7 +281,7 @@
 "type.cuisine.beef_bowl" = "Miska hovězího";
 "type.cuisine.brazilian" = "Brazilská kuchyně";
 "type.cuisine.breakfast" = "Snídaně";
-"type.cuisine.bubble_tea" = "Bubble Tea";
+"type.cuisine.bubble_tea" = "Bublinkový čaj";
 "type.cuisine.burger" = "Burger";
 "type.cuisine.buschenschank" = "Buschenschank";
 "type.cuisine.cake" = "Dort";
@@ -1461,7 +1462,7 @@
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sportovní hala";
 "type.amenity.studio" = "Studio";
-"type.amenity.love_hotel" = "Love Hotel";
+"type.amenity.love_hotel" = "Hodinový hotel";
 "type.highway.ladder" = "Žebřík";
 "type.barrier.guard_rail" = "Svodidla";
 "type.landuse.plant_nursery" = "Pěstitelská školka";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Správci parku";
 "type.amenity.bicycle_parking.covered" = "Kryté parkování kol";
 "type.post_office.post_partner" = "Poštovní partner";
+"type.amenity.animal_shelter" = "Útulek pro zvířata";
+"type.barrier.wicket_gate" = "Branka";

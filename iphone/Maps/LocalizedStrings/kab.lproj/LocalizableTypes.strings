@@ -854,6 +854,7 @@
 "type.leisure.fitness_centre" = "Fitness Centre";
 "type.junction.circular" = "Roundabout";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.cuisine.italian" = "Italian";
 "type.shop.erotic" = "Erotic Shop";
 "type.man_made.bridge" = "Bridge";
@@ -1295,3 +1296,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

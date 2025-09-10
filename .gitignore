@@ -14,12 +14,10 @@ stxxl.errlog
 stxxl.log
 screenlog.0
 
-data/symbols/*/design/
 # symbols png/sdf are now generated at build
 data/symbols/**/symbols.png
 data/symbols/**/symbols.sdf
-data/colors_design.txt
-data/patterns_design.txt
+
 data/bookmarks
 data/edits.xml
 data/traffic.xml
@@ -28,11 +26,15 @@ data/WorldCoasts.mwm
 data/world_mwm/*
 data/*_hash
 data/drules_proto*
-data/classificator.txt
-data/types.txt
-data/visibility.txt
-data/colors.txt
-data/patterns.txt
+data/classificator.txt*
+data/types.txt*
+data/visibility.txt*
+data/colors.txt*
+data/patterns.txt*
+# TODO: designer is not used at the moment
+# data/symbols/*/design/
+# data/colors_design.txt
+# data/patterns_design.txt
 
 # Compiled Python
 *.pyc
@@ -51,7 +53,7 @@ omim.sdf
 *.suo
 *.aps
 *.rc
-!qt/res/windows.rc
+!qt/res/windows/windows.rc
 *.pdb
 out/
 

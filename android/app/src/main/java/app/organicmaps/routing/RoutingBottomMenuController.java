@@ -1,5 +1,7 @@
 package app.organicmaps.routing;
 
+import static app.organicmaps.sdk.util.Utils.dimen;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -32,15 +34,19 @@ import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.bookmarks.data.DistanceAndAzimut;
 import app.organicmaps.sdk.routing.RouteMarkData;
 import app.organicmaps.sdk.routing.RouteMarkType;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.routing.RoutingInfo;
 import app.organicmaps.sdk.routing.TransitRouteInfo;
 import app.organicmaps.sdk.routing.TransitStepInfo;
 import app.organicmaps.sdk.util.Distance;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.ThemeUtils;
+import app.organicmaps.util.UiUtils;
+import app.organicmaps.util.Utils;
 import app.organicmaps.widget.recycler.DotDividerItemDecoration;
 import app.organicmaps.widget.recycler.MultilineLayoutManager;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import java.util.LinkedList;
@@ -117,10 +123,11 @@ final class RoutingBottomMenuController implements View.OnClickListener
 
   private RoutingBottomMenuController(@NonNull Activity context, @NonNull View altitudeChartFrame,
                                       @NonNull View timeElevationLine, @NonNull View transitFrame,
-                                      @NonNull MaterialTextView error, @NonNull Button start, @NonNull ImageView altitudeChart,
-                                      @NonNull MaterialTextView time, @NonNull MaterialTextView altitudeDifference,
-                                      @NonNull TextView timeVehicle, @Nullable MaterialTextView arrival,
-                                      @NonNull View actionFrame, @Nullable RoutingBottomMenuListener listener)
+                                      @NonNull MaterialTextView error, @NonNull Button start,
+                                      @NonNull ImageView altitudeChart, @NonNull MaterialTextView time,
+                                      @NonNull MaterialTextView altitudeDifference, @NonNull TextView timeVehicle,
+                                      @Nullable MaterialTextView arrival, @NonNull View actionFrame,
+                                      @Nullable RoutingBottomMenuListener listener)
   {
     mContext = context;
     mAltitudeChartFrame = altitudeChartFrame;
@@ -148,10 +155,10 @@ final class RoutingBottomMenuController implements View.OnClickListener
     mTransitViewDecorator =
         new DotDividerItemDecoration(dividerDrawable, res.getDimensionPixelSize(R.dimen.margin_base),
                                      res.getDimensionPixelSize(R.dimen.margin_half));
-    Button manageRouteButton = altitudeChartFrame.findViewById(R.id.btn__manage_route);
+    MaterialButton manageRouteButton = altitudeChartFrame.findViewById(R.id.btn__manage_route);
     manageRouteButton.setOnClickListener(this);
 
-    Button saveButton = altitudeChartFrame.findViewById(R.id.btn__save);
+    MaterialButton saveButton = altitudeChartFrame.findViewById(R.id.btn__save);
     saveButton.setOnClickListener(this);
   }
 
@@ -163,7 +170,7 @@ final class RoutingBottomMenuController implements View.OnClickListener
       showRouteAltitudeChart();
     showRoutingDetails();
     UiUtils.show(mAltitudeChartFrame);
-    Button saveButton = mAltitudeChartFrame.findViewById(R.id.btn__save);
+    MaterialButton saveButton = mAltitudeChartFrame.findViewById(R.id.btn__save);
     saveButton.setText(R.string.save);
     saveButton.setEnabled(true);
   }
@@ -191,8 +198,7 @@ final class RoutingBottomMenuController implements View.OnClickListener
     scrollToBottom(rv);
 
     MaterialTextView totalTimeView = mTransitFrame.findViewById(R.id.total_time);
-    totalTimeView.setText(
-        RoutingController.formatRoutingTime(mContext, info.getTotalTime(), R.dimen.text_size_routing_number));
+    totalTimeView.setText(Utils.formatRoutingTime(mContext, info.getTotalTime(), R.dimen.text_size_routing_number));
     View dotView = mTransitFrame.findViewById(R.id.dot);
     View pedestrianIcon = mTransitFrame.findViewById(R.id.pedestrian_icon);
     MaterialTextView distanceView = mTransitFrame.findViewById(R.id.total_distance);
@@ -261,9 +267,9 @@ final class RoutingBottomMenuController implements View.OnClickListener
     {
       UiUtils.show(mActionButton);
       Drawable icon = ContextCompat.getDrawable(mContext, R.drawable.ic_location_crosshair);
-      int colorAccent = ContextCompat.getColor(
-          mContext, UiUtils.getStyledResourceId(mContext, androidx.appcompat.R.attr.colorAccent));
-      mActionIcon.setImageDrawable(Graphics.tint(icon, colorAccent));
+      int colorSecondary = ContextCompat.getColor(
+          mContext, UiUtils.getStyledResourceId(mContext, com.google.android.material.R.attr.colorSecondary));
+      mActionIcon.setImageDrawable(Graphics.tint(icon, colorSecondary));
     }
     else
     {
@@ -343,16 +349,17 @@ final class RoutingBottomMenuController implements View.OnClickListener
 
     UiUtils.hide(mTimeVehicle);
 
-    int chartWidth = UiUtils.dimen(mContext, R.dimen.altitude_chart_image_width);
-    int chartHeight = UiUtils.dimen(mContext, R.dimen.altitude_chart_image_height);
+    int chartWidth = dimen(mContext, R.dimen.altitude_chart_image_width);
+    int chartHeight = dimen(mContext, R.dimen.altitude_chart_image_height);
     Framework.RouteAltitudeLimits limits = new Framework.RouteAltitudeLimits();
     Bitmap bm = Framework.generateRouteAltitudeChart(chartWidth, chartHeight, limits);
     if (bm != null)
     {
       mAltitudeChart.setImageBitmap(bm);
       UiUtils.show(mAltitudeChart);
-      final String unit = limits.isMetricUnits ? mAltitudeDifference.getResources().getString(R.string.m)
-                                               : mAltitudeDifference.getResources().getString(R.string.ft);
+      final String unit = limits.isMetricUnits
+                            ? mAltitudeDifference.getResources().getString(app.organicmaps.sdk.R.string.m)
+                            : mAltitudeDifference.getResources().getString(app.organicmaps.sdk.R.string.ft);
       mAltitudeDifference.setText("↗ " + limits.totalAscentString + " " + unit + " ↘ " + limits.totalDescentString + " "
                                   + unit);
       UiUtils.show(mAltitudeDifference);
@@ -382,7 +389,7 @@ final class RoutingBottomMenuController implements View.OnClickListener
 
     if (mArrival != null)
     {
-      String arrivalTime = RoutingController.formatArrivalTime(rinfo.totalTimeInSeconds);
+      String arrivalTime = Utils.formatArrivalTime(rinfo.totalTimeInSeconds);
       mArrival.setText(arrivalTime);
     }
   }
@@ -400,7 +407,7 @@ final class RoutingBottomMenuController implements View.OnClickListener
 
   {
     CharSequence time =
-        RoutingController.formatRoutingTime(context, routingInfo.totalTimeInSeconds, R.dimen.text_size_routing_number);
+        Utils.formatRoutingTime(context, routingInfo.totalTimeInSeconds, R.dimen.text_size_routing_number);
 
     SpannableStringBuilder builder = new SpannableStringBuilder();
     initTimeBuilderSequence(context, time, builder);

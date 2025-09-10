@@ -83,6 +83,7 @@
 "type.amenity.water_point" = "Vatnspóstur";
 "type.amenity.water_point.drinking_water_no" = "Vatnspóstur";
 "type.barrier" = "Hindrun";
+"type.barrier.yes" = "Hindrun";
 "type.barrier.block" = "Lokun";
 "type.barrier.bollard" = "Polli";
 "type.barrier.border_control" = "Landamæraeftirlit";
@@ -1295,3 +1296,5 @@
 "type.amenity.luggage_locker" = "Luggage Locker";
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Su Tankı Yeniden Doldurma Noktası";
 "type.amenity.water_point.drinking_water_no" = "Su Tankı Yeniden Doldurma Noktası";
 "type.barrier" = "Bariyer";
+"type.barrier.yes" = "Bariyer";
 "type.barrier.block" = "Blok";
 "type.barrier.bollard" = "Direk";
 "type.barrier.border_control" = "Sınır Denetimi";
@@ -1355,7 +1356,7 @@
 "type.attraction.amusement_ride" = "Eğlence Sürüşü";
 "type.attraction.animal" = "Hayvan Muhafazası";
 "type.attraction.bumper_car" = "Bumper Car";
-"type.attraction.big_wheel" = "Big Wheel";
+"type.attraction.big_wheel" = "Dönme Dolap";
 "type.attraction.carousel" = "Atlıkarınca";
 "type.attraction.historic" = "Tarihi cazibe merkezi";
 "type.attraction.maze" = "Labirent";
@@ -1461,7 +1462,7 @@
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Spor salonu";
 "type.amenity.studio" = "Stüdyo";
-"type.sport.diving" = "Dalış Sporu";
+"type.sport.diving" = "Yüksek Dalış Alanı";
 "type.highway.ladder" = "Merdiven";
 "type.man_made.crane" = "Vinç";
 "type.leisure.firepit" = "Ateş çukuru";
@@ -1471,13 +1472,15 @@
 "type.natural.wetland.fen" = "Bataklık";
 "type.natural.wetland.saltmarsh" = "Tuz Bataklığı";
 "type.natural.wetland.saltmarsh.tidal" = "Gelgit Tuz Bataklığı";
-"type.railway.station.subway.qingdao" = "Subway Station";
-"type.natural.wetland.tidalflat" = "Tidal Flat";
-"type.natural.wetland.swamp" = "Swamp";
+"type.railway.station.subway.qingdao" = "Metro İstasyonu";
+"type.natural.wetland.swamp" = "Bataklık";
 "type.natural.wetland.mangrove" = "Mangrove";
 "type.natural.wetland.reedbed" = "Reed Bed";
 "type.leisure.escape_game" = "Escape Room";
 "type.amenity.luggage_locker" = "Luggage Locker";
-"type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.bicycle_parking.covered" = "Üstü kapalı bisiklet park alanı";
 "type.post_office.post_partner" = "Post Partner";
+"type.amenity.ranger_station" = "Ranger Station";
+"type.natural.wetland.tidalflat" = "Tidal Flat";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

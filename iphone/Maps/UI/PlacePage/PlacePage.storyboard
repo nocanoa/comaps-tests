@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -391,16 +392,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-HT-I1N">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMf-TU-1P1">
+                                <rect key="frame" x="0.0" y="96" width="375" height="4"/>
+                                <subviews>
+                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIw-cD-4aR">
+                                        <rect key="frame" x="18" y="4" width="339" height="0.0"/>
+                                        <color key="backgroundColor" name="Press Background Color"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Press Background Color"/>
+                                <constraints>
+                                    <constraint firstItem="WIw-cD-4aR" firstAttribute="leading" secondItem="NMf-TU-1P1" secondAttribute="leading" constant="18" id="1c4-qC-r5Q"/>
+                                    <constraint firstItem="WIw-cD-4aR" firstAttribute="top" secondItem="NMf-TU-1P1" secondAttribute="top" constant="4" id="4a9-bg-siG"/>
+                                    <constraint firstItem="WIw-cD-4aR" firstAttribute="top" secondItem="NMf-TU-1P1" secondAttribute="top" priority="750" id="btT-aI-fBS"/>
+                                    <constraint firstAttribute="trailing" secondItem="WIw-cD-4aR" secondAttribute="trailing" constant="18" id="hLS-Zu-Egy"/>
+                                    <constraint firstAttribute="bottom" secondItem="WIw-cD-4aR" secondAttribute="bottom" id="myR-Jq-0zU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g60-e9-U8G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="pmL-HT-I1N" secondAttribute="bottom" id="0Xe-Gp-10C"/>
+                            <constraint firstItem="NMf-TU-1P1" firstAttribute="top" secondItem="pmL-HT-I1N" secondAttribute="bottom" id="7CD-wN-QBE"/>
+                            <constraint firstItem="g60-e9-U8G" firstAttribute="trailing" secondItem="NMf-TU-1P1" secondAttribute="trailing" id="HLm-Xn-oJO"/>
+                            <constraint firstItem="NMf-TU-1P1" firstAttribute="leading" secondItem="g60-e9-U8G" secondAttribute="leading" id="R7d-jc-rKk"/>
                             <constraint firstAttribute="top" secondItem="pmL-HT-I1N" secondAttribute="top" id="THV-MF-4pC"/>
                             <constraint firstItem="pmL-HT-I1N" firstAttribute="leading" secondItem="uyH-Qn-86F" secondAttribute="leading" id="VNA-7u-TMS"/>
                             <constraint firstAttribute="trailing" secondItem="pmL-HT-I1N" secondAttribute="trailing" id="sUb-Fg-UED"/>
+                            <constraint firstAttribute="bottom" secondItem="NMf-TU-1P1" secondAttribute="bottom" id="tde-KC-gmp"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Background"/>
@@ -409,6 +433,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="100"/>
                     <connections>
+                        <outlet property="checkDateLabel" destination="WIw-cD-4aR" id="pKw-Wb-XVW"/>
+                        <outlet property="checkDateLabelLayoutConstraint" destination="4a9-bg-siG" id="wIH-MS-2Ic"/>
                         <outlet property="stackView" destination="pmL-HT-I1N" id="33x-d6-3Lw"/>
                     </connections>
                 </viewController>
@@ -526,18 +552,38 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-5g-RRn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv7-Ig-hWB">
+                                <rect key="frame" x="56" y="100" width="303" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lM2-J8-T6c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="mrt-5g-RRn" secondAttribute="bottom" id="5wi-9V-R6Z"/>
+                            <constraint firstItem="lv7-Ig-hWB" firstAttribute="top" secondItem="mrt-5g-RRn" secondAttribute="bottom" constant="12" id="5wi-9V-R6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="lv7-Ig-hWB" secondAttribute="trailing" constant="16" id="Kit-DZ-e0h"/>
                             <constraint firstItem="mrt-5g-RRn" firstAttribute="leading" secondItem="QE6-Lg-X0g" secondAttribute="leading" id="NO1-zN-EiJ"/>
+                            <constraint firstItem="lv7-Ig-hWB" firstAttribute="top" secondItem="mrt-5g-RRn" secondAttribute="bottom" priority="750" id="hGX-Xp-WTY"/>
+                            <constraint firstAttribute="bottom" secondItem="lv7-Ig-hWB" secondAttribute="bottom" constant="12" id="iva-mv-Z6T"/>
                             <constraint firstAttribute="top" secondItem="mrt-5g-RRn" secondAttribute="top" id="oq2-uJ-EhG"/>
+                            <constraint firstAttribute="bottom" secondItem="lv7-Ig-hWB" secondAttribute="bottom" priority="750" id="vV4-fA-p7B"/>
                             <constraint firstAttribute="trailing" secondItem="mrt-5g-RRn" secondAttribute="trailing" id="wG7-Td-jWS"/>
+                            <constraint firstItem="lv7-Ig-hWB" firstAttribute="leading" secondItem="QE6-Lg-X0g" secondAttribute="leading" constant="56" id="wr7-Os-puB"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="iva-mv-Z6T"/>
+                                <exclude reference="5wi-9V-R6Z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <size key="freeformSize" width="375" height="100"/>
                     <connections>
+                        <outlet property="checkDateLabel" destination="lv7-Ig-hWB" id="d36-WZ-S1Y"/>
+                        <outlet property="checkDateLabelBottomLayoutConstraint" destination="iva-mv-Z6T" id="zmV-xd-yXQ"/>
+                        <outlet property="checkDateLabelTopLayoutConstraint" destination="5wi-9V-R6Z" id="EG8-a3-s5L"/>
                         <outlet property="stackView" destination="mrt-5g-RRn" id="0xW-H9-lLi"/>
                     </connections>
                 </viewController>
@@ -1243,7 +1289,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lIJ-bh-coX" firstAttribute="leading" secondItem="Bn7-Ag-wuu" secondAttribute="leading" constant="56" id="WXv-gZ-ygJ"/>
-                            <constraint firstAttribute="bottom" secondItem="lIJ-bh-coX" secondAttribute="bottom" constant="12" id="Wcq-WA-Qd8"/>
+                            <constraint firstAttribute="bottom" secondItem="lIJ-bh-coX" secondAttribute="bottom" constant="12" id="g7V-FG-sWe"/>
                             <constraint firstAttribute="trailing" secondItem="lIJ-bh-coX" secondAttribute="trailing" constant="16" id="hw3-UC-uCp"/>
                             <constraint firstItem="lIJ-bh-coX" firstAttribute="top" secondItem="Bn7-Ag-wuu" secondAttribute="top" constant="12" id="tpq-hf-4gG"/>
                         </constraints>
@@ -1270,7 +1316,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spW-XI-KSY" customClass="PlacePageHeaderView" customModule="CoMaps" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spW-XI-KSY">
                                 <rect key="frame" x="0.0" y="62" width="375" height="10"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1280,7 +1326,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="PPNavigationShadowView"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqh-H3-eji" customClass="PlacePageHeaderView" customModule="CoMaps" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqh-H3-eji">
                                 <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdy-g5-gbM">
@@ -1404,6 +1450,12 @@
         <image name="dialog_btn_press" width="280" height="44"/>
         <image name="ic_arrow_gray_down" width="28" height="28"/>
         <image name="ic_placepage_open_hours" width="28" height="28"/>
+        <namedColor name="Press Background Color">
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="separatorColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

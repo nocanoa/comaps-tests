@@ -16,8 +16,6 @@
     <string name="kilometres">Quilômetros</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">Milhas</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">Minha posição</string>
     <!-- Update maps later button text -->
     <string name="later">Mais tarde</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -27,7 +25,7 @@
     <!-- Location services are disabled by user alert - message -->
     <string name="location_is_disabled_long_text">No momento, todos os Serviços de Localização deste dispositivo ou aplicativo estão desativados. Ative-os nas Configurações.</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">Para garantir uma navegação precisa, ative a opção \"Melhorar Precisão de local\" nas configurações</string>
+    <string name="precise_location_is_disabled_long_text">Para garantir uma navegação precisa, ative a Localização Precisa nas configurações</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Mostrar no mapa</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
@@ -69,8 +67,6 @@
     <string name="bookmarks">Favoritos</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
     <string name="bookmarks_and_tracks">Favoritos e trilhas</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">Meus locais</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Nome</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -85,14 +81,6 @@
     <string name="maps_storage_summary">Selecione o local para onde os mapas devem ser baixados</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Mapas</string>
-    <!-- Internal storage type in Maps Storage settings (not accessible by the user) -->
-    <string name="maps_storage_internal">Armazenamento interno privado</string>
-    <!-- Shared storage type in Maps Storage settings (a primary storage usually) -->
-    <string name="maps_storage_shared">Armazenamento interno compartilhado</string>
-    <!-- Removable external storage type in Maps Storage settings, e.g. an SD card -->
-    <string name="maps_storage_removable">Cartão SD</string>
-    <!-- Generic external storage type in Maps Storage settings -->
-    <string name="maps_storage_external">Armazenamento externo compartilhado</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
     <string name="maps_storage_free_size">%1$s livre de %2$s</string>
     <!-- Question dialog for transferring maps from one storage to another -->
@@ -144,8 +132,6 @@
     <string name="category_post">Correios</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">Polícia</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">WiFi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">Reciclagem</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -173,9 +159,9 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">A sua localização ainda não foi determinada</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Lamentamos, as configurações do armazenamento do mapa estão desativadas</string>
+    <string name="cant_change_this_setting">Desculpe, as configurações de armazenamento de mapas estão desabilitadas no momento</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">O download do mapa está atualmente em progresso</string>
+    <string name="downloading_is_active">O download do mapa está em andamento</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
     <string name="my_position_share_sms">Veja onde estou agora. Abra o link: %1$s ou %2$s Não tem mapas offline instalados? Baixe aqui: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
@@ -225,7 +211,7 @@
     <!-- Settings «Route» category: «Test Voice Directions» title -->
     <string name="pref_tts_test_voice_title">Testar orientação por voz</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
-    <string name="pref_tts_playing_test_voice">Verifique o volume ou as configurações de conversão de texto em fala do sistema se você não estiver ouvindo a voz agora</string>
+    <string name="pref_tts_playing_test_voice">Verifique o volume ou as configurações do sistema de conversão de texto em fala se você não estiver ouvindo a voz agora</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
     <string name="pref_tts_unavailable">Não disponível</string>
     <string name="pref_map_auto_zoom">Zoom automático</string>
@@ -263,7 +249,7 @@
     <string name="downloader_download_all_button">Baixar tudo</string>
     <string name="downloader_downloading">Baixando:</string>
     <!-- Displayed in a dialog that appears when a user tries to delete a map while the app is in the follow route mode -->
-    <string name="downloader_delete_map_while_routing_dialog">Favor parar a navegação para apagar o mapa</string>
+    <string name="downloader_delete_map_while_routing_dialog">Para apagar o mapa, pare a navegação</string>
     <!-- PointsInDifferentMWM -->
     <string name="routing_failed_cross_mwm_building">Só podem ser criadas rotas que estejam completamente contidas em um único mapa.</string>
     <!-- Context menu item for downloader. -->
@@ -390,7 +376,6 @@
     <string name="twentyfour_seven">24 horas por dia</string>
     <string name="day_off_today">Fechado hoje</string>
     <string name="day_off">Fechado</string>
-    <string name="today">Hoje</string>
     <string name="opens_in">Abre em %s</string>
     <string name="closes_in">Fecha em %s</string>
     <string name="closed">Fechado</string>
@@ -414,7 +399,6 @@
     <string name="empty_street_name_error">Por favor, digite o nome da rua</string>
     <string name="choose_language">Escolher um idioma</string>
     <string name="choose_street">Escolher uma rua</string>
-    <string name="postal_code">CEP</string>
     <string name="cuisine">Culinária</string>
     <string name="select_cuisine">Selecione a culinária</string>
     <!-- login text field -->
@@ -450,28 +434,18 @@
     <string name="error_enter_correct_storey_number">O número de andares não pode ser maior que %d</string>
     <string name="editor_zip_code">CEP</string>
     <string name="error_enter_correct_zip_code">Insira um CEP válido</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">Ponto do mapa</string>
     <!-- Information about OSM at the top of the editing page -->
     <string name="editor_about_osm">As suas edições são enviadas à base de dados pública <a href="https://wiki.openstreetmap.org/wiki/Pt:Sobre_o_OpenStreetMap">OpenStreetMap</a>. Não adicione informações pessoais ou protegidas por direitos autorais.</string>
-    <string name="editor_more_about_osm">Mais sobre OpenStreetMap</string>
+    <string name="editor_more_about_osm">Mais sobre o OpenStreetMap</string>
     <string name="editor_osm_history">Seu histórico de edição</string>
     <string name="editor_osm_notes">Suas notas de dados do mapa</string>
-    <string name="editor_category_unsuitable_title">Você não encontra uma categoria adequada?</string>
+    <string name="editor_category_unsuitable_title">Não encontra uma categoria adequada?</string>
     <string name="editor_category_unsuitable_text">O CoMaps permite que você adicione apenas categorias de pontos simples, o que significa que não há cidades, estradas, lagos, contornos de edifícios etc. Por favor, adicione essas categorias diretamente no <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Consulte nosso <a href="https://www.comaps.app/support/advanced-map-editing/">guia</a> para obter instruções detalhadas passo a passo.</string>
-    <string name="downloader_no_downloaded_maps_title">Você não fez o download de nenhum mapa</string>
+    <string name="downloader_no_downloaded_maps_title">Você não baixou nenhum mapa</string>
     <string name="downloader_no_downloaded_maps_message">Baixe mapas para pesquisar e navegar offline</string>
     <string name="current_location_unknown_error_title">A localização atual é desconhecida</string>
-    <!-- abbreviation for meters -->
-    <string name="m">m</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">km</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/h</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">mi</string>
-    <!-- A unit of measure -->
-    <string name="ft">ft</string>
     <string name="miles_per_hour">mph</string>
     <string name="hour">h</string>
     <string name="minute">min</string>
@@ -524,8 +498,6 @@
     <string name="prefs_languages_information_off_link">Para obter mais informações, consulte este guia</string>
     <string name="transliteration_title">Transliterar para alfabeto latino</string>
     <string name="learn_more">Saber mais</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">Saída</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Use a busca ou toque no mapa para adicionar um ponto de partida da rota</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -534,12 +506,9 @@
     <string name="button_plan">Planejar</string>
     <string name="placepage_remove_stop">Remover parada</string>
     <string name="placepage_add_stop">Adicionar parada</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Faça login no OpenStreetMap para carregar automaticamente todas as edições de mapas que você fizer. Saiba mais <a href="https://github.com/organicmaps/organicmaps/issues/6144">aqui</a>.</string>
     <string name="dialog_error_storage_title">Problema de acesso ao armazenamento</string>
     <string name="dialog_error_storage_message">O armazenamento externo não está disponível, é provável que o cartão SD tenha sido removido, danificado ou o sistema de arquivo seja apenas para leitura. Verifique e entre em contato conosco em support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emular memória ruim</string>
-    <string name="core_entrance">Entrada</string>
     <string name="error_enter_correct_name">Por favor, digite um nome correto</string>
     <string name="bookmark_lists">Listas</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -579,14 +548,10 @@
     <string name="terms_of_use">Termos de uso</string>
     <string name="button_layer_traffic">Tráfego</string>
     <string name="subway">Metrô</string>
-    <string name="subway_data_unavailable">Mapa de metrô está indisponível</string>
     <string name="bookmarks_empty_list_title">Esta lista está vazia</string>
     <string name="bookmarks_empty_list_message">Para adicionar um favorito, toque no mapa e então toque no ícone de estrela</string>
     <string name="category_desc_more">…mais</string>
     <string name="delete_list">Deletar lista</string>
-    <string name="public_access">Acesso público</string>
-    <string name="limited_access">Acesso limitado</string>
-    <string name="not_shared">Privado</string>
     <string name="speedcams_alert_title">Câmeras de trânsito</string>
     <string name="place_description_title">Descrição do lugar</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -601,12 +566,11 @@
     <string name="power_managment_setting_auto">Automático</string>
     <string name="power_managment_setting_manual_max">Máxima economia de energia</string>
     <string name="enable_logging_warning_message">Ative esta opção temporariamente para criar registros de execução e manualmente nos enviar registros diagnósticos detalhados sobre seu problema usando \"Relatar um problema\" no diálogo de Ajuda. Registros de execução podem conter dados de localização.</string>
-    <string name="access_rules_author_only">Edição online</string>
     <string name="driving_options_title">Opções de trajeto</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">Evitar pedágios</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
-    <string name="avoid_unpaved">Evitar não-pavimentadas</string>
+    <string name="avoid_unpaved">Evitar não pavimentadas</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_ferry">Evitar balsas</string>
     <string name="avoid_motorways">Evitar rodovias</string>
@@ -615,7 +579,7 @@
     <string name="define_to_avoid_btn">Definir as estradas a serem evitadas</string>
     <string name="change_driving_options_btn">Opções de direção ativadas</string>
     <string name="toll_road">Pedágio</string>
-    <string name="unpaved_road">Pista não pavimentada</string>
+    <string name="unpaved_road">Via não pavimentada</string>
     <string name="ferry_crossing">Balsa</string>
     <!-- A generic "Yes" button in dialogs -->
     <string name="yes">Sim</string>
@@ -780,8 +744,6 @@
     <string name="about_proposition_3">• Não precisa de conexão à internet, rápido e leve</string>
     <string name="drive_through">Drive-through</string>
     <string name="editor_operator">Operador</string>
-    <string name="mb">MB</string>
-    <string name="gb">GB</string>
     <string name="editor_line_social_network">LINE</string>
     <string name="pref_map_style_title">Modo noturno</string>
     <string name="off">Desativado</string>
@@ -805,7 +767,7 @@
     <string name="app_site_url">https://comaps.app/pt-BR/</string>
     <string name="dialog_routing_change_intermediate">Não foi possível localizar o ponto intermediário</string>
     <string name="editor_time_from">De</string>
-    <string name="how_to_support_us">Apoie o projeto</string>
+    <string name="how_to_support_us">Voluntarie-se e melhore o CoMaps</string>
     <string name="google_play_services">Serviço de localização integrada do Google</string>
     <string name="editor_time_title">Horário de funcionamento</string>
     <string name="long_tap_toast">Dê um toque longo no mapa novamente para ver a interface</string>
@@ -847,7 +809,7 @@
     <string name="social_media">Redes sociais</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="editor_add_phone">Adicionar telefone</string>
-    <string name="outdoor_seating">Assentos ao ar livre</string>
+    <string name="outdoor_seating">Mesas externas</string>
     <string name="capacity">Capacidade: %s</string>
     <string name="editor_correct_mistake">Corrigir erro</string>
     <string name="editor_add_select_location">Selecione a localização</string>
@@ -893,8 +855,15 @@
     <string name="backup_interval_manual_only">Desligado (apenas manual)</string>
     <string name="dialog_report_error_missing_folder">A localização de backup selecionada está indisponível ou não permite escrita. Por favor, selecione outra localização.</string>
     <string name="dialog_report_error_with_logs">Por favor, nos envie um relatório de erro:\n - Habilite \"Ativar registros de execução\" nas configurações\n - reproduza o problema\n - na tela \"Sobre &amp; Ajuda\", pressione o botão \"Relatar um problema\" e envie via email ou chat\n - desative os registros de execução</string>
-    <string name="panoramax">Imagem Panoramax</string>
+    <string name="panoramax">Imagem do Panoramax</string>
     <string name="open_now">Aberto agora</string>
     <string name="closed_now">Fechado agora</string>
     <string name="at">às %s</string>
+    <string name="osm_note_hint">Ou, em vez disso, deixe uma nota para a comunidade do OpenStreetMap para que outra pessoa possa adicionar ou corrigir um lugar aqui.</string>
+    <string name="osm_note_toast">A nota será enviada ao OpenStreetMap</string>
+    <string name="delete_track_dialog_title">Apagar %s?</string>
+    <string name="share_track">Compartilhar trilha</string>
+    <string name="existence_confirmed_time_ago">Existência confirmada %s</string>
+    <string name="hours_confirmed_time_ago">Confirmado %s</string>
+    <string name="pref_tts_no_system_tts_short">Nenhum mecanismo de conversão de texto em voz encontrado, verifique as configurações do aplicativo</string>
 </resources>

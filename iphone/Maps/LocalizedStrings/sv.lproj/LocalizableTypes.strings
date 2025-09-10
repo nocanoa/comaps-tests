@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Vattenpost";
 "type.amenity.water_point.drinking_water_no" = "Vattenpost";
 "type.barrier" = "Hinder";
+"type.barrier.yes" = "Hinder";
 "type.barrier.block" = "Blockering";
 "type.barrier.bollard" = "Stolpe";
 "type.barrier.border_control" = "Gränskontroll";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

@@ -1,5 +1,5 @@
-#include "qt/place_page_dialog_common.hpp"
 #include "qt/place_page_dialog_developer.hpp"
+#include "qt/place_page_dialog_common.hpp"
 
 #include "qt/qt_common/text_dialog.hpp"
 
@@ -117,11 +117,8 @@ PlacePageDialogDeveloper::PlacePageDialogDeveloper(QWidget * parent, place_page:
     case PropID::FMD_CONTACT_BLUESKY:
     case PropID::FMD_WIKIPEDIA:
     case PropID::FMD_WIKIMEDIA_COMMONS:
-    case PropID::FMD_PANORAMAX:
-      isLink = true;
-      break;
-    default:
-      break;
+    case PropID::FMD_PANORAMAX: isLink = true; break;
+    default: break;
     }
 
     addEntry(DebugPrint(id), value, isLink);

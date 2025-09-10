@@ -1,5 +1,5 @@
 protocol PlacePageViewProtocol: AnyObject {
-  var interactor: PlacePageInteractorProtocol! { get set }
+  var interactor: PlacePageInteractorProtocol? { get set }
 
   func setLayout(_ layout: IPlacePageLayout)
   func closeAnimated(completion: (() -> Void)?)
@@ -35,7 +35,7 @@ final class PlacePageScrollView: UIScrollView {
     stackView.distribution = .fill
     return stackView
   }()
-  var interactor: PlacePageInteractorProtocol!
+  var interactor: PlacePageInteractorProtocol?
   var beginDragging = false
   var rootViewController: MapViewController {
     MapViewController.shared()!
@@ -58,13 +58,6 @@ final class PlacePageScrollView: UIScrollView {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    if #available(iOS 13.0, *) {
-      // See https://github.com/organicmaps/organicmaps/issues/6917 for the details.
-    } else if previousTraitCollection == nil {
-      scrollView.contentInset = alternativeSizeClass(iPhone: UIEdgeInsets(top: scrollView.height, left: 0, bottom: 0, right: 0),
-                                                     iPad: UIEdgeInsets.zero)
-      updateSteps()
-    }
     panGesture.isEnabled = alternativeSizeClass(iPhone: false, iPad: true)
     previousTraitCollection = traitCollection
   }
@@ -77,6 +70,11 @@ final class PlacePageScrollView: UIScrollView {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     updatePreviewOffset()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    interactor?.viewWillDisappear()
   }
 
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -165,8 +163,7 @@ final class PlacePageScrollView: UIScrollView {
     actionBarContainerView.layer.setCornerRadius(.modalSheet, maskedCorners: cornersToMask)
     actionBarContainerView.layer.masksToBounds = true
 
-    // See https://github.com/organicmaps/organicmaps/issues/6917 for the details.
-    if #available(iOS 13.0, *), previousTraitCollection == nil {
+    if previousTraitCollection == nil {
       scrollView.contentInset = alternativeSizeClass(iPhone: UIEdgeInsets(top: view.height, left: 0, bottom: 0, right: 0),
                                                      iPad: UIEdgeInsets.zero)
       scrollView.layoutIfNeeded()
@@ -209,14 +206,21 @@ final class PlacePageScrollView: UIScrollView {
       viewController.didMove(toParent: self)
       if showSeparator {
         viewController.view.addSeparator(.top)
-        viewController.view.addSeparator(.bottom)
+        if !(viewController is PlacePageInfoViewController) {
+          viewController.view.addSeparator(.bottom)
+        }
       }
     }
   }
 
   private func cleanupLayout() {
-    layout?.actionBar?.view.removeFromSuperview()
-    layout?.navigationBar?.view.removeFromSuperview()
+    guard let layout else { return }
+    let childViewControllers = [layout.actionBar, layout.navigationBar] + layout.headerViewControllers + layout.bodyViewControllers
+    childViewControllers.forEach {
+      $0?.willMove(toParent: nil)
+      $0?.view.removeFromSuperview()
+      $0?.removeFromParent()
+    }
     headerStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
   }
@@ -288,7 +292,7 @@ final class PlacePageScrollView: UIScrollView {
 
   private func updateTopBound(_ bound: CGFloat, duration: TimeInterval) {
     alternativeSizeClass(iPhone: {
-      interactor.updateTopBound(bound, duration: duration)
+      interactor?.updateTopBound(bound, duration: duration)
     }, iPad: {})
   }
 }
@@ -332,6 +336,7 @@ extension PlacePageViewController: PlacePageViewProtocol {
 
   @objc
   func closeAnimated(completion: (() -> Void)? = nil) {
+    view.isUserInteractionEnabled = false
     alternativeSizeClass(iPhone: {
       self.scrollTo(CGPoint(x: 0, y: -self.scrollView.height + 1),
                     forced: true) {
@@ -361,7 +366,7 @@ extension PlacePageViewController: PlacePageViewProtocol {
 extension PlacePageViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView.contentOffset.y < -scrollView.height + 1 && beginDragging {
-      rootViewController.dismissPlacePage()
+      closeAnimated()
     }
     onOffsetChanged(scrollView.contentOffset.y)
 

@@ -53,7 +53,7 @@ Sometimes it's better to discuss and confirm your vision of the fix or implement
 
 Please [learn how to use `git rebase`](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) (or rebase via any git tool with a graphical interface, e.g. [Fork for Mac](https://git-fork.com/) is quite good) to amend your commits in the PR and maintain a clean logical commit history for your changes/branches.
 
-While we strive to help onboard new developers we don't have enough time to guide everyone step-by-step and explain in detail how everything works (in many cases we have to study the code ourselves). You'll need to be largely self-sufficient, expect to read a lot of code and documentation.
+We strive to help onboard new developers but we don't always have enough time to guide newcomers step-by-step and explain everything in detail. For that reason we might ask you to read lots of the documentation and study the existing code.
 
 - [Pull Request Guide](PR_GUIDE.md).
 - [Directories structure](STRUCTURE.md)

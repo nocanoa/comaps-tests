@@ -17,7 +17,7 @@
     android:layout_centerVertical="true"
     android:layout_marginEnd="@dimen/margin_half"
     android:visibility="gone"
-    app:wheelProgressColor="?colorAccent"
+    app:wheelProgressColor="?colorSecondary"
     app:wheelSecondaryColor="?dividerHorizontal"
     app:wheelThickness="@dimen/margin_eighth"
     app:centerDrawable="@android:color/transparent"

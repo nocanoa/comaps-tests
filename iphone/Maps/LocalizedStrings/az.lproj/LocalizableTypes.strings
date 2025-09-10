@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Karvanlar üçün su nöqtəsi";
 "type.amenity.water_point.drinking_water_no" = "Karvanlar üçün su nöqtəsi";
 "type.barrier" = "Maneə";
+"type.barrier.yes" = "Maneə";
 "type.barrier.block" = "Blok";
 "type.barrier.bollard" = "Birbaşa";
 "type.barrier.border_control" = "Sərhəd Nəzarəti";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

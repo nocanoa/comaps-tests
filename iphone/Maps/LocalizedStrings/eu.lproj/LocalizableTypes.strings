@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Ur iturria";
 "type.amenity.water_point.drinking_water_no" = "Ur iturria";
 "type.barrier" = "Hesia";
+"type.barrier.yes" = "Hesia";
 "type.barrier.block" = "Blokea";
 "type.barrier.bollard" = "Pibotea";
 "type.barrier.border_control" = "Muga kontrola";
@@ -548,13 +549,13 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.tertiary_link.tunnel" = "Tunel";
-"type.highway.track" = "Kalea";
-"type.highway.track.area" = "Kalea";
+"type.highway.track" = "Arrastoa";
+"type.highway.track.area" = "Arrastoa";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.track.bridge" = "Zubia";
-"type.highway.track.grade1" = "Kalea";
-"type.highway.track.no.access" = "Kalea";
+"type.highway.track.grade1" = "Arrastoa";
+"type.highway.track.no.access" = "Arrastoa";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.track.tunnel" = "Tunel";
@@ -593,7 +594,7 @@
 "type.area_highway.service" = "Kalea";
 "type.area_highway.tertiary" = "Kalea";
 "type.area_highway.steps" = "Bidea";
-"type.area_highway.track" = "Kalea";
+"type.area_highway.track" = "Arrastoa";
 "type.area_highway.trunk" = "Kalea";
 "type.area_highway.unclassified" = "Kalea";
 "type.historic" = "Objektu historikoa";
@@ -718,8 +719,8 @@
 "type.leisure.stadium" = "Estadioa";
 "type.leisure.swimming_pool" = "Igerilekua";
 "type.leisure.swimming_pool.private" = "Igerilekua";
-"type.leisure.track" = "Pista";
-"type.leisure.track.area" = "Pista";
+"type.leisure.track" = "Arrastoa";
+"type.leisure.track.area" = "Arrastoa";
 "type.leisure.water_park" = "Ur-parkea";
 "type.leisure.beach_resort" = "Hondartzako oporleku";
 "type.man_made" = "Artifiziala";
@@ -924,7 +925,7 @@
 "type.railway.rail.spur" = "Trenbide-spur";
 
 /* Short service tracks: siding, yard, crossover. */
-"type.railway.rail.service" = "Trenbide laguntzailea";
+"type.railway.rail.service" = "Zerbitzuko trenbidea";
 "type.railway.rail.bridge" = "Trenbide zubia";
 "type.railway.rail.highspeed.bridge" = "Trenbide zubia";
 "type.railway.rail.tourism.bridge" = "Trenbide zubia";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Txirrinduen aparkaleku estalia";
 "type.post_office.post_partner" = "Post Partner";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Wicket gate";

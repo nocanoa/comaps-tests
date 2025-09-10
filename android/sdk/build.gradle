@@ -8,8 +8,11 @@ android {
 
   ndkVersion = '28.2.13676358'
 
-  defaultConfig {
+  buildFeatures {
+    buildConfig = true
+  }
 
+  defaultConfig {
     minSdk = propMinSdkVersion.toInteger()
     targetSdk = propTargetSdkVersion.toInteger()
 
@@ -73,12 +76,12 @@ android {
       jniDebuggable true // Enable jni debug build
     }
     release {
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//      minifyEnabled true
+//      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
     beta {
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//      minifyEnabled true
+//      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
       matchingFallbacks = ['release']
     }
   }
@@ -92,13 +95,37 @@ android {
   }
 
   compileOptions {
+    coreLibraryDesugaringEnabled true
+
     sourceCompatibility JavaVersion.VERSION_17
     targetCompatibility JavaVersion.VERSION_17
+  }
+
+  lint {
+    disable 'MissingTranslation'
+    // https://github.com/organicmaps/organicmaps/issues/3551
+    disable 'MissingQuantity', 'UnusedQuantity'
+    // https://github.com/organicmaps/organicmaps/issues/3550
+    disable 'ByteOrderMark'
+    // https://github.com/organicmaps/organicmaps/issues/1077
+    disable 'CustomSplashScreen'
+    // https://github.com/organicmaps/organicmaps/issues/3610
+    disable 'InsecureBaseConfiguration'
+    abortOnError = true
   }
 }
 
 dependencies {
+  coreLibraryDesugaring libs.android.tools.desugar
 
+  implementation libs.androidx.core
+  implementation libs.androidx.annotation
+  implementation libs.androidx.fragment
+  implementation libs.androidx.lifecycle.process
+  implementation libs.androidx.recyclerview
+  implementation libs.android.material
+
+  testImplementation libs.junit
 }
 
 // TODO: Running lint task triggers native build. Find a better solution.
@@ -112,6 +139,20 @@ project.afterEvaluate {
     }.each { nativeTask ->
       logger.warn("Disabling task ${nativeTask.path} because lint is running.")
       nativeTask.onlyIf { false }
+    }
+  }
+
+  final taskName = gradle.startParameter.taskNames
+
+  if (['assemble', 'bundle', 'compile', 'install'].any{taskName.any{task->task.startsWith(it)}}) {
+    exec {
+      workingDir '../..'
+
+      if (!taskName.toString().contains('Google')) {
+        environment 'SKIP_MAP_DOWNLOAD', '1'
+      }
+
+      commandLine './configure.sh'
     }
   }
 }

@@ -23,6 +23,8 @@ final class SearchCategoriesViewController: MWMTableViewController {
     tableView.setStyle(.background)
     tableView.register(cell: SearchCategoryCell.self)
     tableView.keyboardDismissMode = .onDrag
+    let footerHeight = (UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }.first(where: { $0 is UIWindowScene }) as? UIWindowScene)?.keyWindow?.safeAreaInsets.bottom ?? 1
+    tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: footerHeight))
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

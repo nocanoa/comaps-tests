@@ -31,7 +31,6 @@ import app.organicmaps.sdk.downloader.MapManager;
 import app.organicmaps.sdk.editor.OsmOAuth;
 import app.organicmaps.sdk.editor.data.Language;
 import app.organicmaps.sdk.location.LocationHelper;
-import app.organicmaps.sdk.location.LocationProviderFactory;
 import app.organicmaps.sdk.routing.RoutingOptions;
 import app.organicmaps.sdk.search.SearchRecents;
 import app.organicmaps.sdk.settings.MapLanguageCode;
@@ -41,8 +40,8 @@ import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.NetworkPolicy;
 import app.organicmaps.sdk.util.PowerManagment;
 import app.organicmaps.sdk.util.SharedPropertiesUtils;
-import app.organicmaps.sdk.util.ThemeSwitcher;
 import app.organicmaps.sdk.util.log.LogsManager;
+import app.organicmaps.util.ThemeSwitcher;
 import app.organicmaps.util.Utils;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -448,7 +447,9 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     if (pref == null)
       return;
 
-    if (!LocationProviderFactory.isGoogleLocationAvailable(requireActivity().getApplicationContext()))
+    if (!MwmApplication.from(requireContext())
+             .getLocationProviderFactory()
+             .isGoogleLocationAvailable(requireActivity().getApplicationContext()))
       removePreference(getString(R.string.pref_privacy), pref);
     else
     {
@@ -580,19 +581,19 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
   private void initMapStylePrefsCallbacks()
   {
     final ListPreference pref = getPreference(getString(R.string.pref_map_style));
-
-    String curTheme = Config.getUiThemeSettings(requireContext());
-    pref.setValue(curTheme);
+    pref.setEntryValues(new CharSequence[] {Config.UiTheme.DEFAULT, Config.UiTheme.NIGHT, Config.UiTheme.AUTO,
+                                            Config.UiTheme.NAV_AUTO});
+    pref.setValue(Config.UiTheme.getUiThemeSettings());
     pref.setSummary(pref.getEntry());
     pref.setOnPreferenceChangeListener((preference, newValue) -> {
       final String themeName = (String) newValue;
-      if (!Config.setUiThemeSettings(requireContext(), themeName))
+      if (!Config.UiTheme.setUiThemeSettings(themeName))
         return true;
 
       ThemeSwitcher.INSTANCE.restart(false);
 
-      ThemeMode mode = ThemeMode.getInstance(requireContext().getApplicationContext(), themeName);
-      CharSequence summary = pref.getEntries()[mode.ordinal()];
+      final ThemeMode mode = ThemeMode.getInstance(themeName);
+      final CharSequence summary = pref.getEntries()[mode.ordinal()];
       pref.setSummary(summary);
       return true;
     });
@@ -691,24 +692,25 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
 
   enum ThemeMode
   {
-    DEFAULT(R.string.theme_default),
-    NIGHT(R.string.theme_night),
-    AUTO(R.string.theme_auto),
-    NAV_AUTO(R.string.theme_nav_auto);
+    DEFAULT(Config.UiTheme.DEFAULT),
+    NIGHT(Config.UiTheme.NIGHT),
+    AUTO(Config.UiTheme.AUTO),
+    NAV_AUTO(Config.UiTheme.NAV_AUTO);
 
-    private final int mModeStringId;
+    @NonNull
+    private final String mMode;
 
-    ThemeMode(@StringRes int modeStringId)
+    ThemeMode(@NonNull String mode)
     {
-      mModeStringId = modeStringId;
+      mMode = mode;
     }
 
     @NonNull
-    public static ThemeMode getInstance(@NonNull Context context, @NonNull String src)
+    public static ThemeMode getInstance(@NonNull String src)
     {
       for (ThemeMode each : values())
       {
-        if (context.getResources().getString(each.mModeStringId).equals(src))
+        if (each.mMode.equals(src))
           return each;
       }
       return AUTO;

@@ -76,15 +76,19 @@ It is recommended to add comments directly on Codeberg Translate, as translators
 
 The recommended approach for resolving conflicts is as follows:
 
-1. Commit all changes from the internal database to the internal Git repository:  
-   _Manage → Repository Maintenance → Commit (button)_.
-2. Update the `weblate-comaps-<component>` branch of the Translate's forked Git repository on Codeberg:  
-   _Manage → Repository Maintenance → Push (button)_.
-3. Locally checkout the `weblate-comaps-<component>` branch.
-4. Rebase it onto `main` of the main repository, resolving any conflicts during the process.
-5. Push the branch to Codeberg to update the pull request, then merge the branch or PR into `main`.
-6. Reset Codeberg Translate to sync changes from Codeberg:  
-   _Manage → Repository Maintenance → Reset (button)_.
+1. Make sure [the translations on Weblate are actually locked](https://translate.codeberg.org/projects/comaps/#repository), this ensures that no more changes are done on Weblate while the conflict is being fixed. You will need to have the right Weblate permissions to do this.
+2. Commit all changes from the _Weblate_ internal database to the Weblate-internal Git repository, the steps in the UI are: _Manage → Repository Maintenance → Commit (button)_. This ensures that all existing translations are in the Weblate-internal _Git_ repo. (this also requires the right Weblate permissions)
+3. Now you can add the weblate-internal Git repo as a remote for your local repo: `git remote add weblate https://translate.codeberg.org/git/comaps/android/`. This step only needs to be done the first time you have to resolve a conflict
+4. Make sure that your local main branch is at the latest remote state, e.g. by running `git checkout main; git pull`
+5. Now you can fetch the current state of the _Weblate_ remote: `git fetch weblate`
+6. To be able to rebase the Codeberg `main` into the Weblate one, you need to have an editable branch. You can create it using `git checkout -b resolve_translate weblate/main`. This creates a branch called `resolve_translate` off the Weblate remote, and also switches you to this newly created branch.
+7. You can now run `git rebase main`, to rebase the branch and resolve any conflicts that are between the two. (**Note: Make sure to run this command from your `resolve_translate` branch**)
+8. Once you have resolved the conflicts, you can push the `resolve_translate` branch to Codeberg: `git push` 
+9. Make a PR for merging your conflict-resolution-branch into `main` on Codeberg, and get it reviewed as usual
+10. Once the PR is merged into `main` on Codeberg and the merge conflict is gone, you can now unlock the translations on Weblate again. 
+11. **Optionally if necessary**: If the conflict hasn't resolved through the steps, you can optionally reset the Weblate from the admin backend for the `website` component, this forces the current state from the Codeberg git repo into Weblate: _Manage → Repository Maintenance → Reset (button)_.
+
+Using these steps all existing translations can still be kept and rebased into the repo, without losing work. The important bit is that you need to ensure that all translations are in the Weblate-internal git repository before you rebase, so that they get into the _actual_ Codeberg repo. 
 
 [codeberg_translate]: https://translate.codeberg.org/projects/comaps/
 [contribute]: https://docs.weblate.org/en/latest/workflows.html

@@ -68,6 +68,6 @@
     android:text="@string/edit_opening_hours"
     android:textAllCaps="true"
     android:textAppearance="@style/MwmTextAppearance.Body1"
-    android:textColor="?colorAccent"/>
+    android:textColor="?colorSecondary"/>
 
 </RelativeLayout>

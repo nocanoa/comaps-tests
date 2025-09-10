@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "نقطة إعادة تعبة قنينة المياه";
 "type.amenity.water_point.drinking_water_no" = "نقطة إعادة تعبة قنينة المياه";
 "type.barrier" = "حاجز";
+"type.barrier.yes" = "حاجز";
 "type.barrier.block" = "حاجز";
 "type.barrier.bollard" = "حاجز سيارات";
 "type.barrier.border_control" = "أمن الحدود";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

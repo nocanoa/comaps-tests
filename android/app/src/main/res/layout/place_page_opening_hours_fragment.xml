@@ -3,6 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  tools:visibility="visible"
   style="@style/PlacePageItemFrame">
 
   <com.google.android.material.imageview.ShapeableImageView
@@ -58,6 +59,21 @@
     android:layout_alignStart="@id/oh_nonbusiness_time"
     android:layout_below="@id/oh_nonbusiness_time"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:itemCount="3"
+    tools:listitem="@layout/place_page_opening_hours_item"
     android:layout_marginTop="8dp"/>
 
+  <com.google.android.material.textview.MaterialTextView
+    android:id="@+id/oh_check_date"
+    style="?fontCaption"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignStart="@id/oh_today_label"
+    android:layout_below="@id/rw__full_opening_hours"
+    android:textAppearance="@style/MwmTextAppearance.Body4"
+    android:textAlignment="viewStart"
+    android:visibility="gone"
+    tools:visibility="visible"
+    tools:text="Confirmed 2 months ago"/>
 </RelativeLayout>

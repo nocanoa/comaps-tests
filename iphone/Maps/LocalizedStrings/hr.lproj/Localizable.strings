@@ -270,7 +270,6 @@
 "planning_route_remove_title" = "Drag here to remove";
 "p2p_your_location" = "Your Location";
 "category_transport" = "Transport";
-"alert_reauth_link_text_ios" = "here";
 "text_more_button" = "…more";
 "downloader_of" = "%1$d of %2$d";
 "country_status_download_failed" = "Download has failed";
@@ -315,7 +314,6 @@
 "bookmarks_export" = "Export all Bookmarks and Tracks";
 "dialog_routing_change_end" = "Adjust destination";
 "planning_route_manage_route" = "Manage Route";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "place_name" = "Place Name";
 "navigation_stop_button" = "Stop";
 "load_kmz_successful" = "Bookmarks loaded successfully! You can find them on the map or on the Bookmarks Manager screen.";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

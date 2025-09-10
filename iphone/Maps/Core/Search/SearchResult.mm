@@ -66,13 +66,20 @@
       }
       case osm::No: {
         const int minutes = result.GetMinutesUntilOpen();
-        if (minutes < 60) { // less than 1 hour
+        if (minutes < 15) { // less than 15 minutes
+          _openStatusColor = [UIColor colorNamed:@"Base Colors/Yellow Color"];
           NSString * time = [NSString stringWithFormat:@"%d %@", minutes, L(@"minute")];
           _openStatusText = [NSString stringWithFormat:L(@"opens_in"), time];
-        } else {
+        }
+        else if (minutes < 60) { // less than an hour (but more than 15 mins)
+          _openStatusColor = [UIColor colorNamed:@"Base Colors/Red Color"];
+          NSString * time = [NSString stringWithFormat:@"%d %@", minutes, L(@"minute")];
+          _openStatusText = [NSString stringWithFormat:L(@"opens_in"), time];
+        }
+        else { // opens later or schedule is unknown
+          _openStatusColor = [UIColor colorNamed:@"Base Colors/Red Color"];
           _openStatusText = L(@"closed");
         }
-        _openStatusColor = [UIColor colorNamed:@"Base Colors/Red Color"];
         break;
       }
       case osm::Unknown: {

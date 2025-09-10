@@ -10,31 +10,19 @@ final class ThemeManager: NSObject {
   }
 
   private func update(theme: MWMTheme) {
-    if #available(iOS 13.0, *) {
-      updateSystemUserInterfaceStyle(theme)
-    }
+    updateSystemUserInterfaceStyle(theme)
 
     let actualTheme: MWMTheme = { theme in
-      let isVehicleRouting = MWMRouter.isRoutingActive() && (MWMRouter.type() == .vehicle)
+      let isVehicleRouting = MWMRouter.isRoutingActive() && (MWMRouter.type() == .vehicle) && MWMRouter.hasSavedRoute()
       switch theme {
       case .day: fallthrough
       case .vehicleDay: return isVehicleRouting ? .vehicleDay : .day
       case .night: fallthrough
       case .vehicleNight: return isVehicleRouting ? .vehicleNight : .night
       case .auto:
-        if #available(iOS 13.0, *) {
-          let isDarkModeEnabled = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-          guard isVehicleRouting else { return isDarkModeEnabled ? .night : .day }
-          return isDarkModeEnabled ? .vehicleNight : .vehicleDay
-        } else {
-          guard isVehicleRouting else { return .day }
-          switch FrameworkHelper.daytime(at: LocationManager.lastLocation()) {
-          case .day: return .vehicleDay
-          case .night: return .vehicleNight
-          @unknown default:
-            fatalError()
-          }
-        }
+        let isDarkModeEnabled = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        guard isVehicleRouting else { return isDarkModeEnabled ? .night : .day }
+        return isDarkModeEnabled ? .vehicleNight : .vehicleDay
       @unknown default:
         fatalError()
       }

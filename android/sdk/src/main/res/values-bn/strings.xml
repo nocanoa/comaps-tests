@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="core_my_position">আমার অবস্থান</string>
+    <string name="mb">এমবি</string>
+    <string name="gb">জিবি</string>
+    <string name="core_my_places">আমার স্থানগুলি</string>
+    <string name="maps_storage_internal">অভ্যন্তরীণ প্রাইভেট স্টোরেজ</string>
+    <string name="maps_storage_removable">SD কার্ড</string>
+    <string name="maps_storage_external">বহিরাগত শেয়ার্ড স্টোরেজ</string>
+    <string name="category_wifi">ওয়াইফাই</string>
+    <string name="maps_storage_shared">অভ্যন্তরীণ শেয়ার্ড স্টোরেজ</string>
+    <string name="postal_code">ডাক কোড</string>
+    <string name="today">আজকে</string>
+</resources>

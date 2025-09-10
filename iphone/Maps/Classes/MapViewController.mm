@@ -908,19 +908,29 @@ NSString *const kAboutSegue = @"Map2About";
       CGPoint translation = [recognizer translationInView:self.view];
       if (translation.x == 0 && translation.y == 0 && CGPointEqualToPoint(translation, CGPointZero))
         return;
-      self.userTouchesAction = UserTouchesActionDrag;
-      CGPoint velocity = [recognizer velocityInView:self.view];
-      CGFloat velocityX = ABS(velocity.x * 0.001);
-      velocityX = MAX(1, velocityX);
-      if (velocityX > 2.5) {
-        velocityX = 2.5;
+      
+      BOOL isShiftPressed = [recognizer modifierFlags] & UIKeyModifierShift;
+      
+      if (isShiftPressed) {
+        self.userTouchesAction = UserTouchesActionScale;
+        static const CGFloat kScaleFactor = 0.9;
+        const CGFloat factor = translation.y > 0 ? kScaleFactor : 1 / kScaleFactor;
+        GetFramework().Scale(factor, [self getZoomPoint], false);
+      } else {
+        self.userTouchesAction = UserTouchesActionDrag;
+        CGPoint velocity = [recognizer velocityInView:self.view];
+        CGFloat velocityX = ABS(velocity.x * 0.001);
+        velocityX = MAX(1, velocityX);
+        if (velocityX > 2.5) {
+          velocityX = 2.5;
+        }
+        CGFloat velocityY = ABS(velocity.y * 0.001);
+        velocityY = MAX(1, velocityY);
+        if (velocityY > 2.5) {
+          velocityY = 2.5;
+        }
+        GetFramework().Scroll((translation.x * velocityX) * -1, (translation.y * velocityY) * -1);
       }
-      CGFloat velocityY = ABS(velocity.y * 0.001);
-      velocityY = MAX(1, velocityY);
-      if (velocityY > 2.5) {
-        velocityY = 2.5;
-      }
-      GetFramework().Scroll((translation.x * velocityX) * -1, (translation.y * velocityY) * -1);
       [recognizer setTranslation:CGPointZero inView:self.view];
       break;
     }
@@ -938,7 +948,7 @@ NSString *const kAboutSegue = @"Map2About";
     case UIGestureRecognizerStateChanged:
     {
       CGPoint translation = [recognizer translationInView:self.view];
-      if (translation.x == 0 && CGPointEqualToPoint(translation, CGPointZero))
+      if (translation.y == 0)
         return;
       self.userTouchesAction = UserTouchesActionScale;
       static const CGFloat kScaleFactor = 0.9;

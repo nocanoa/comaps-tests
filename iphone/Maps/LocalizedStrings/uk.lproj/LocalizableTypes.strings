@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Вода для автобудинків";
 "type.amenity.water_point.drinking_water_no" = "Вода для автобудинків";
 "type.barrier" = "Перешкода";
+"type.barrier.yes" = "Перешкода";
 "type.barrier.block" = "Блок";
 "type.barrier.bollard" = "Стовпчик";
 "type.barrier.border_control" = "Прикордонний контроль";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Лісництво";
 "type.amenity.bicycle_parking.covered" = "Критий велосипедний паркінг";
 "type.post_office.post_partner" = "Поштовий партнер";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

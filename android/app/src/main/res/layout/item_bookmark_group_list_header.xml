@@ -31,7 +31,7 @@
     android:paddingTop="@dimen/margin_half_plus"
     android:text="@string/bookmark_lists_hide_all"
     android:textAllCaps="true"
-    android:textColor="?colorAccent"
+    android:textColor="?colorSecondary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

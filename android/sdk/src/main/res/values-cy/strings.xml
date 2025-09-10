@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mb">MB</string>
+    <string name="gb">GB</string>
+    <string name="core_my_position">Fy Lleoliad</string>
+    <string name="category_wifi">WiFi</string>
+    <string name="m">m</string>
+    <string name="mi">mi</string>
+    <string name="ft">ft</string>
+    <string name="core_exit">Allanfa</string>
+    <string name="core_entrance">Mynedfa</string>
+    <string name="not_shared">Preifat</string>
+    <string name="km">km</string>
+    <string name="core_my_places">Fy Lleoliadau</string>
+    <string name="maps_storage_removable">Cerdyn SD</string>
+    <string name="postal_code">Cod Post</string>
+    <string name="core_placepage_unknown_place">Pwynt Map</string>
+    <string name="public_access">Mynediad cyhoeddus</string>
+    <string name="limited_access">Mynediad cyfyngedig</string>
+    <string name="access_rules_author_only">Golygu ar-lein</string>
+    <string name="today">Heddiw</string>
+</resources>

@@ -57,8 +57,8 @@ done
 
 OPT_TARGET=${@:$OPTIND}
 
-CMAKE_CONFIG="${CMAKE_CONFIG:-} -U SKIP_QT_GUI"
-if [ "$OPT_TARGET" != "desktop" -a -z "$OPT_DESIGNER" -a -z "$OPT_STANDALONE"] || [[ "$OPT_TARGET" =~ "generator_tool|topography_generator_tool|world_roads_builder_tool|mwm_diff_tool" ]]; then
+CMAKE_CONFIG="${CMAKE_CONFIG:-} -U SKIP_QT_GUI -U GENERATOR_TOOL"
+if [ "$OPT_TARGET" != "desktop" -a -z "$OPT_DESIGNER" -a -z "$OPT_STANDALONE"]; then
   CMAKE_CONFIG="${CMAKE_CONFIG:-} -DSKIP_QT_GUI=ON"
 fi
 
@@ -68,11 +68,17 @@ if [ -z "$OPT_DEBUG$OPT_RELEASE$OPT_RELEASEDEBUGINFO" ]; then
   OPT_RELEASEDEBUGINFO=1
 fi
 
-if [[ "$OPT_TARGET" =~ "generator_tool|topography_generator_tool|world_roads_builder_tool|mwm_diff_tool" ]]; then
+if [[ "$OPT_TARGET" =~ generator_tool|topography_generator_tool|world_roads_builder_tool|mwm_diff_tool ]]; then
   CMAKE_CONFIG="${CMAKE_CONFIG:-} -DGENERATOR_TOOL=ON"
 fi
 
 OMIM_PATH="$(cd "${OMIM_PATH:-$(dirname "$0")/../..}"; pwd)"
+
+if [ "$OPT_TARGET" == "desktop" ]; then
+  ./configure.sh
+else
+  SKIP_MAP_DOWNLOAD=1 SKIP_GENERATE_SYMBOLS=1 SKIP_GENERATE_DRULES=1 ./configure.sh
+fi
 
 DEVTOOLSET_PATH=/opt/rh/devtoolset-7
 if [ -d "$DEVTOOLSET_PATH" ]; then

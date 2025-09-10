@@ -1,7 +1,8 @@
-• OpenStreetMap-Daten vom 4. August
-• Verbesserte Farben für Wasser, Wälder, Gestrüpp, verschiedene Einrichtungen, Fussgängerbereiche etc.
-• Besucherstationen, überdachte Fahrradparkplätze, Escaperooms, Gepäckschließfächer, und Postpartner hinzugefügt
-• Konturhöhenlinien aktualisiert, bis zu 20m für beliebte Wanderregionen
-• Unterstützung für mehr Such-Abkürzungen und Synonyme
-• Such- und Lesezeichen-Symbole für Fast Food, Rad- und Lade-Stationen
-• Der Positionspfeil bewegt sich gleichmässiger
+• OpenStreetMap-Daten vom 22. August
+• Neue Geschwindigkeitsanzeige & Details aufgezeichneter Strecken
+• Besserer dunkler Modus, neue farbige Labels 
+• Anzeige wann Orte & Öffnungszeiten überprüft wurden
+• Routenplanung berücksichtigt Stoppschilder, Ampeln & bedingte Einschränkungen.
+• GPS-Peilung wird statt Kompass bevorzugt & höhere GPS-Frequenz.
+• Adressen & Notizen im OSM-Editor unterstützt.
+• Mehr Verbesserungen an UI-Elementen & Kartenstil, alle Details in den Codeberg-Versionshinweisen!

@@ -96,14 +96,12 @@ final class ListTemplateBuilder {
                                                           bookmarkId: bookmark.bookmarkId))
       return item
     })
-    if #available(iOS 15.0, *) {
-      let maxItemCount = CPListTemplate.maximumItemCount - 1
-      if items.count >= maxItemCount {
-        items = Array(items.prefix(maxItemCount))
-        let cropWarning = CPListItem(text: L("not_all_shown_bookmarks_carplay"), detailText: L("switch_to_phone_bookmarks_carplay"))
-        cropWarning.isEnabled = false
-        items.append(cropWarning)
-      }
+    let maxItemCount = CPListTemplate.maximumItemCount - 1
+    if items.count >= maxItemCount {
+      items = Array(items.prefix(maxItemCount))
+      let cropWarning = CPListItem(text: L("not_all_shown_bookmarks_carplay"), detailText: L("switch_to_phone_bookmarks_carplay"))
+      cropWarning.isEnabled = false
+      items.append(cropWarning)
     }
     let section = CPListSection(items: items)
     template.updateSections([section])
@@ -125,9 +123,9 @@ final class ListTemplateBuilder {
   private class func buildBarButton(type: BarButtonType, action: ((CPBarButton) -> Void)?) -> CPBarButton {
     switch type {
     case .bookmarks:
-      return CPBarButton(image: UIImage(named: "ic_carplay_bookmark")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "list.star")!, handler: action)
     case .search:
-      return CPBarButton(image: UIImage(named: "ic_carplay_keyboard")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "keyboard.fill")!, handler: action)
     }
   }
 }

@@ -24,43 +24,34 @@ extension UISearchBar {
 class UISearchBarRenderer: UIViewRenderer {
   class func render(_ control: UISearchBar, style: Style) {
     super.render(control, style: style)
-    if #available(iOS 13, *) {
-      let searchTextField = control.searchTextField
-      // Default search bar implementation adds the grey transparent image for background. This code removes it and updates the corner radius. This is not working on iPad designed for mac.
-      if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
-      } else {
-        control.setSearchFieldBackgroundImage(UIImage(), for: .normal)
-      }
-      searchTextField.layer.setCornerRadius(.buttonDefault)
-      searchTextField.layer.masksToBounds = true
-      // Placeholder color
-      if let placeholder = searchTextField.placeholder {
-        searchTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
-      }
-      if let backgroundColor = style.backgroundColor {
-        searchTextField.backgroundColor = backgroundColor
-      }
-      if let font = style.font {
-        searchTextField.font = font
-      }
-      if let fontColor = style.fontColor {
-        searchTextField.textColor = fontColor
-      }
-      if let tintColor = style.tintColor {
-        searchTextField.leftView?.tintColor = tintColor
-        // Placeholder indicator color
-        searchTextField.tintColor = tintColor
-        // Clear button image
-        let clearButtonImage = UIImage(named: "ic_clear")?.withRenderingMode(.alwaysTemplate).withTintColor(tintColor)
-        control.setImage(clearButtonImage, for: .clear, state: .normal)
-      }
-    } else {
-      // Default search bar implementation for iOS12 adds the dark grey transparent image for background. This code removes it and replace with the custom image accordingly to the documentation - see 'setSearchFieldBackgroundImage'.
-      if let backgroundColor = style.backgroundColor {
-        let image = getSearchBarBackgroundImage(color: backgroundColor)
-        control.setSearchFieldBackgroundImage(image, for: .normal)
-        control.searchTextPositionAdjustment = UIOffset(horizontal: 6.0, vertical: 0.0)
-      }
+
+    let searchTextField = control.searchTextField
+    // Default search bar implementation adds the grey transparent image for background. This code removes it and updates the corner radius. This is not working on iPad designed for mac.
+    if !ProcessInfo.processInfo.isiOSAppOnMac {
+      control.setSearchFieldBackgroundImage(UIImage(), for: .normal)
+    }
+    searchTextField.layer.setCornerRadius(.buttonDefault)
+    searchTextField.layer.masksToBounds = true
+    // Placeholder color
+    if let placeholder = searchTextField.placeholder {
+      searchTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
+    }
+    if let backgroundColor = style.backgroundColor {
+      searchTextField.backgroundColor = backgroundColor
+    }
+    if let font = style.font {
+      searchTextField.font = font
+    }
+    if let fontColor = style.fontColor {
+      searchTextField.textColor = fontColor
+    }
+    if let tintColor = style.tintColor {
+      searchTextField.leftView?.tintColor = tintColor
+      // Placeholder indicator color
+      searchTextField.tintColor = tintColor
+      // Clear button image
+      let clearButtonImage = UIImage(named: "ic_clear")?.withRenderingMode(.alwaysTemplate).withTintColor(tintColor)
+      control.setImage(clearButtonImage, for: .clear, state: .normal)
     }
     if let barTintColor = style.barTintColor {
       let position = control.delegate?.position?(for: control) ?? control.barPosition

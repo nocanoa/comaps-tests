@@ -17,11 +17,12 @@ import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.Router;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.routing.RoutingInfo;
 import app.organicmaps.sdk.routing.RoutingOptions;
 import app.organicmaps.sdk.routing.TransitRouteInfo;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.settings.DrivingOptionsActivity;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.WindowInsetUtils.PaddingInsetsListener;
 import app.organicmaps.widget.RoutingToolbarButton;
 import app.organicmaps.widget.ToolbarController;
@@ -140,7 +141,8 @@ public class RoutingPlanController extends ToolbarController
     setupRouterButton(R.id.vehicle, R.drawable.ic_car, this::onVehicleModeSelected);
     setupRouterButton(R.id.pedestrian, R.drawable.ic_pedestrian, this::onPedestrianModeSelected);
     //    setupRouterButton(R.id.taxi, R.drawable.ic_taxi, this::onTaxiModeSelected);
-    setupRouterButton(R.id.transit, R.drawable.ic_route_planning_metro_40px, this::onTransitModeSelected);
+    setupRouterButton(R.id.transit, app.organicmaps.sdk.R.drawable.ic_route_planning_metro_40px,
+                      this::onTransitModeSelected);
     setupRouterButton(R.id.bicycle, R.drawable.ic_bike, this::onBicycleModeSelected);
     setupRouterButton(R.id.ruler, app.organicmaps.sdk.R.drawable.ic_ruler_route, this::onRulerModeSelected);
   }

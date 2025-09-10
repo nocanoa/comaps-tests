@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Water Tank Refill Point";
 "type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
 "type.barrier" = "अडथळा";
+"type.barrier.yes" = "अडथळा";
 "type.barrier.block" = "अडथळा";
 "type.barrier.bollard" = "खांब";
 "type.barrier.border_control" = "सीमा नियंत्रण";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

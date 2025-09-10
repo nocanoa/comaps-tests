@@ -65,7 +65,7 @@
 "type.amenity.fast_food" = "Fast-Food";
 "type.amenity.ferry_terminal" = "Fähranleger";
 "type.amenity.fire_station" = "Feuerwehr";
-"type.amenity.food_court" = "Food Court";
+"type.amenity.food_court" = "Gastronomiebereich";
 "type.amenity.fountain" = "Springbrunnen";
 "type.amenity.fuel" = "Tankstelle";
 
@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Wasseranschluss";
 "type.amenity.water_point.drinking_water_no" = "Wasseranschluss";
 "type.barrier" = "Barriere";
+"type.barrier.yes" = "Barriere";
 "type.barrier.block" = "Block";
 "type.barrier.bollard" = "Poller";
 "type.barrier.border_control" = "Grenzkontrolle";
@@ -790,7 +791,7 @@
 "type.natural.water.lake" = "See";
 "type.natural.water.lock" = "Schleusenkammer";
 "type.natural.water.pond" = "Teich";
-"type.natural.water.reservoir" = "Reservoir";
+"type.natural.water.reservoir" = "Stausee";
 "type.natural.water.basin" = "Wasserbecken";
 "type.natural.water.river" = "Fluss";
 "type.natural.land" = "Land";
@@ -1333,7 +1334,7 @@
 "type.sport.tennis" = "Tennisplatz";
 "type.sport.volleyball" = "Volleyball";
 "type.sport.10pin" = "Bowling";
-"type.sport.9pin" = "Bowling";
+"type.sport.9pin" = "Kegeln";
 "type.sport.padel" = "Padel";
 "type.sport.futsal" = "Futsal";
 "type.sport.ice_hockey" = "Eishockey";
@@ -1380,7 +1381,7 @@
 "type.tourism.motel" = "Motel";
 "type.tourism.museum" = "Museum";
 "type.tourism.picnic_site" = "Picknickplatz";
-"type.leisure.resort" = "Resort";
+"type.leisure.resort" = "Freizeitanlage";
 "type.tourism.theme_park" = "Freizeitpark";
 "type.tourism.viewpoint" = "Aussichtspunkt";
 
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Försterstation";
 "type.amenity.bicycle_parking.covered" = "Überdachter Fahrradparkplatz";
 "type.post_office.post_partner" = "Postpartner";
+"type.barrier.wicket_gate" = "Schlupfpforte";
+"type.amenity.animal_shelter" = "Tierheim";

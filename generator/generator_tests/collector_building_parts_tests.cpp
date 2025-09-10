@@ -21,16 +21,10 @@ using namespace generator::tests_support;
 class TestOSMElementCacheReader : public generator::cache::OSMElementCacheReaderInterface
 {
 public:
-  TestOSMElementCacheReader(std::unordered_map<generator::cache::Key, RelationElement> & m)
-    : m_mapping(m)
-  {
-  }
+  TestOSMElementCacheReader(std::unordered_map<generator::cache::Key, RelationElement> & m) : m_mapping(m) {}
 
   // OSMElementCacheReaderInterface overrides:
-  bool Read(generator::cache::Key /* id */, WayElement & /* value */) override
-  {
-    UNREACHABLE();
-  }
+  bool Read(generator::cache::Key /* id */, WayElement & /* value */) override { UNREACHABLE(); }
 
   bool Read(generator::cache::Key id, RelationElement & value) override
   {
@@ -99,10 +93,7 @@ public:
   }
 
   // IntermediateDataReaderBase overrides:
-  bool GetNode(generator::cache::Key, double &, double &) const override
-  {
-    UNREACHABLE();
-  }
+  bool GetNode(generator::cache::Key, double &, double &) const override { UNREACHABLE(); }
 
   bool GetWay(generator::cache::Key /* id */, WayElement & /* e */) override { UNREACHABLE(); }
 
@@ -199,8 +190,7 @@ UNIT_CLASS_TEST(TestWithClassificator, CollectorBuildingParts_Case1)
     collector.Finish();
     collector.Finalize();
   }
-  TestCollector(file.GetFullPath(), fb, *intermediateReader,
-                IntermediateDataReaderTest::kTopRelationId1);
+  TestCollector(file.GetFullPath(), fb, *intermediateReader, IntermediateDataReaderTest::kTopRelationId1);
 }
 
 UNIT_CLASS_TEST(TestWithClassificator, CollectorBuildingParts_Case2)
@@ -220,8 +210,7 @@ UNIT_CLASS_TEST(TestWithClassificator, CollectorBuildingParts_Case2)
 
   auto intermediateReader = std::make_shared<IntermediateDataReaderTest>();
   {
-    auto collector1 =
-        std::make_shared<generator::BuildingPartsCollector>(file.GetFullPath(), intermediateReader);
+    auto collector1 = std::make_shared<generator::BuildingPartsCollector>(file.GetFullPath(), intermediateReader);
     // We don't clone cache, because it isn't mutable.
     auto collector2 = collector1->Clone(intermediateReader);
 
@@ -235,9 +224,7 @@ UNIT_CLASS_TEST(TestWithClassificator, CollectorBuildingParts_Case2)
     collector1->Finalize();
   }
 
-  TestCollector(file.GetFullPath(), fb1, *intermediateReader,
-                IntermediateDataReaderTest::kTopRelationId1);
-  TestCollector(file.GetFullPath(), fb2, *intermediateReader,
-                IntermediateDataReaderTest::kTopRelationId2);
+  TestCollector(file.GetFullPath(), fb1, *intermediateReader, IntermediateDataReaderTest::kTopRelationId1);
+  TestCollector(file.GetFullPath(), fb2, *intermediateReader, IntermediateDataReaderTest::kTopRelationId2);
 }
 }  // namespace collector_building_parts_tests

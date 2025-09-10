@@ -115,13 +115,13 @@ static std::unordered_map<std::string, routing::SpeedInUnits> const kRoadCategor
     {"SE:trunk", {90, Units::Metric}},
     {"SE:motorway", {110, Units::Metric}},
 
-    {"GB:motorway", {70, Units::Imperial}},   // 70 mph = 112.65408 kmph
-    {"GB:nsl_dual", {70, Units::Imperial}},   // 70 mph = 112.65408 kmph
-    {"GB:nsl_single", {60, Units::Imperial}}, // 60 mph = 96.56064 kmph
+    {"GB:motorway", {70, Units::Imperial}},    // 70 mph = 112.65408 kmph
+    {"GB:nsl_dual", {70, Units::Imperial}},    // 70 mph = 112.65408 kmph
+    {"GB:nsl_single", {60, Units::Imperial}},  // 60 mph = 96.56064 kmph
 
-    {"UK:motorway", {70, Units::Imperial}},   // 70 mph
-    {"UK:nsl_dual", {70, Units::Imperial}},   // 70 mph
-    {"UK:nsl_single", {60, Units::Imperial}}, // 60 mph
+    {"UK:motorway", {70, Units::Imperial}},    // 70 mph
+    {"UK:nsl_dual", {70, Units::Imperial}},    // 70 mph
+    {"UK:nsl_single", {60, Units::Imperial}},  // 60 mph
 
     {"UA:urban", {50, Units::Metric}},
     {"UA:rural", {90, Units::Metric}},
@@ -151,14 +151,14 @@ bool ParseMaxspeedTag(std::string const & maxspeedValue, routing::SpeedInUnits &
   if (maxspeedValue == "none")
   {
     speed.SetSpeed(routing::kNoneMaxSpeed);
-    speed.SetUnits(Units::Metric); // It's dummy value in case of kNoneMaxSpeed
+    speed.SetUnits(Units::Metric);  // It's dummy value in case of kNoneMaxSpeed
     return true;
   }
 
   if (maxspeedValue == "walk")
   {
     speed.SetSpeed(routing::kWalkMaxSpeed);
-    speed.SetUnits(Units::Metric); // It's dummy value in case of kWalkMaxSpeed
+    speed.SetUnits(Units::Metric);  // It's dummy value in case of kWalkMaxSpeed
     return true;
   }
 
@@ -173,7 +173,7 @@ bool ParseMaxspeedTag(std::string const & maxspeedValue, routing::SpeedInUnits &
     speedStr += maxspeedValue[i];
   }
 
-  while (i < maxspeedValue.size() && isspace(maxspeedValue[i]))
+  while (i < maxspeedValue.size() && strings::IsASCIISpace(maxspeedValue[i]))
     ++i;
 
   if (maxspeedValue.size() == i || maxspeedValue.substr(i).starts_with("kmh"))

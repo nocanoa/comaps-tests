@@ -322,7 +322,7 @@
 "report_incorrect_map_bug" = "Comunica ou corrige dados incorretos do mapa";
 
 /* Button in the About screen */
-"volunteer" = "Voluntaria-te";
+"volunteer" = "Voluntaria-te e melhora CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Entra em contacto connosco";
@@ -497,8 +497,8 @@
 "wikimedia_commons" = "Wikimedia Commons";
 "p2p_your_location" = "Localização atual";
 "p2p_start" = "Iniciar";
-"p2p_from_here" = "De";
-"p2p_to_here" = "Itinerário para";
+"p2p_from_here" = "Rota desde";
+"p2p_to_here" = "Rota para";
 "p2p_only_from_current" = "Só é possível navegar a partir da sua localização atual.";
 "p2p_reroute_from_current" = "Quer planear uma rota a partir da sua localização atual?";
 "editor_time_add" = "Adicionar horário";
@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Guardado";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Por favor, faz o login no OpenStreetMap para carregar automaticamente todas as tuas edições de mapas. Sabe mais";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "aqui";
 "core_entrance" = "Entrada";
 "error_enter_correct_name" = "Introduza um nome correto";
 "bookmark_lists" = "Listas";
@@ -1099,3 +1093,5 @@
 "pref_maplanguage_title" = "Idioma do Mapa";
 "transliteration_title_disabled_summary" = "Desativado ao usar sempre o idioma local do mapa";
 "pref_maplanguage_local" = "Idioma Local";
+"hours_confirmed_time_ago" = "Confirmada %@";
+"existence_confirmed_time_ago" = "Existência confirmada %@";

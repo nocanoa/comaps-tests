@@ -14,13 +14,8 @@
     <string name="downloading">درحال دانلود…</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
     <string name="kilometres">کیلومتر</string>
-    <!-- Settings/Downloader - size string, only strings different from English should be translated -->
-    <string name="mb">مگابایت</string>
-    <string name="gb">گیگابایت</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">مایل</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">مکان من</string>
     <!-- Update maps later button text -->
     <string name="later">بعدًا</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -72,8 +67,6 @@
     <string name="bookmarks">نشانه‌ها</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
     <string name="bookmarks_and_tracks">نشانه‌ها و مسیر ها</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">مکان من</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">نام</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -135,8 +128,6 @@
     <string name="category_post">صندوق پست</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">پلیس</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">وای فای</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">بازیافت</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -403,7 +394,6 @@
     <string name="twentyfour_seven">شبانه روزی</string>
     <string name="day_off_today">امروز تعطیل است</string>
     <string name="day_off">تعطیل است</string>
-    <string name="today">امروز</string>
     <string name="closed">تعطیل</string>
     <string name="edit_opening_hours">ویرایش ساعت کاری</string>
     <string name="no_osm_account">آیا حساب OpenStreetMap ندارید؟</string>
@@ -429,7 +419,6 @@
     <string name="empty_street_name_error">نام خیابان را وارد کنید</string>
     <string name="choose_language">انتخاب یک زبان</string>
     <string name="choose_street">انتخاب یک خیابان</string>
-    <string name="postal_code">کد پستی</string>
     <string name="cuisine">غذا‌خوری</string>
     <string name="select_cuisine">انتخاب غذاخوری</string>
     <!-- login text field -->
@@ -469,8 +458,6 @@
     <string name="error_enter_correct_storey_number">تعداد طبقات نباید بیش از %d باشد</string>
     <string name="editor_zip_code">کد پستی</string>
     <string name="error_enter_correct_zip_code">یک کد‌ پستی معتبر وارد کنید</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">نقطه نقشه</string>
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">توجه به داوطلبان OpenStreetMap (اختیاری)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
@@ -488,16 +475,8 @@
     <string name="downloader_no_downloaded_maps_title">شما هیچ نقشه دانلود شده ای ندارید</string>
     <string name="downloader_no_downloaded_maps_message">برای جست وجو یک مکان و استفاده از قابلیت ناوبری، نقشه‌ها را دانلود کنید</string>
     <string name="current_location_unknown_error_title">مکان فعلیتان ناشناس است</string>
-    <!-- abbreviation for meters -->
-    <string name="m">متر</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">کیلومتر</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">کیلومتربرساعت (km/h)</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">مایل</string>
-    <!-- A unit of measure -->
-    <string name="ft">فوت</string>
     <string name="miles_per_hour">مایل بر ساعت (mph)</string>
     <string name="hour">ساعت</string>
     <string name="minute">دقیقه</string>
@@ -550,8 +529,6 @@
     <string name="prefs_languages_information_off_link">برای اطلاعات بیشتر لطفا این راهنما را بررسی کنید</string>
     <string name="transliteration_title">ترجمه به لاتین</string>
     <string name="learn_more">بیشتر بدانید</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">خروج</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">برای افزودن نقطه شروع مسیر، از جستجو استفاده کنید یا روی نقشه ضربه بزنید</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -560,12 +537,9 @@
     <string name="button_plan">برنامه</string>
     <string name="placepage_remove_stop">توقف را حذف کنید</string>
     <string name="placepage_add_stop">اضافه کردن توقف</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">لطفاً به OpenStreetMap وارد شوید تا به طور خودکار تمام ویرایش های نقشه خود را آپلود کنید. <a href="https://github.com/organicmaps/organicmaps/issues/6144">اینجا</a> بیشتر بیاموزید.</string>
     <string name="dialog_error_storage_title">مشکل دسترسی به ذخیره‌سازی</string>
     <string name="dialog_error_storage_message">ذخیره سازی خارجی در دسترس نیست کارت SD ممکن است برداشته شده باشد، آسیب دیده باشد یا سیستم فایل فقط خواندنی باشد. لطفا کارت SD خود را بررسی کنید یا با ما در support@comaps.app تماس بگیرید</string>
     <string name="setting_emulate_bad_storage">شبیه سازی ذخیره سازی بد</string>
-    <string name="core_entrance">ورودی</string>
     <string name="error_enter_correct_name">لطفا نام صحیح را وارد کنید</string>
     <string name="bookmark_lists">لیست‌ها</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -605,16 +579,12 @@
     <string name="button_layer_traffic">ترافیک</string>
     <string name="subway">مترو</string>
     <string name="layers_title">سبک ها و لایه های نقشه</string>
-    <string name="subway_data_unavailable">نقشه مترو موجود نیست</string>
     <string name="bookmarks_empty_list_title">این لیست خالی است</string>
     <string name="bookmarks_empty_list_message">برای افزودن یک نشانه، روی یک مکان روی نقشه ضربه بزنید و سپس روی نماد ستاره ضربه بزنید</string>
     <string name="category_desc_more">بیشتر…</string>
     <string name="export_file">صادرات KMZ</string>
     <string name="export_file_gpx">صادرات GPX</string>
     <string name="delete_list">حذف لیست</string>
-    <string name="public_access">دسترسی عمومی</string>
-    <string name="limited_access">دسترسی محدود</string>
-    <string name="not_shared">خصوصی</string>
     <string name="speedcams_alert_title">دوربین‌های سرعت</string>
     <string name="place_description_title">توضیحات محل</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -631,7 +601,6 @@
     <string name="power_managment_setting_auto">خودکار</string>
     <string name="power_managment_setting_manual_max">حداکثر ذخیره انرژی</string>
     <string name="enable_logging_warning_message">این گزینه ثبت گزارش را برای اهداف تشخیصی فعال می‌کند. برای کارکنان بخش پشتیبانی که مشکلات برنامه را عیب یابی می‌کنند، مفید باشد. این گزینه را تنها در صورت درخواست پشتیبانی CoMaps فعال کنید.</string>
-    <string name="access_rules_author_only">ویرایش آنلاین</string>
     <string name="driving_options_title">گزینه‌های رانندگی</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">از جاده های عوارضی خودداری کنید</string>

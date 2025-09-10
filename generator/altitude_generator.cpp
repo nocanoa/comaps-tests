@@ -35,10 +35,7 @@ public:
   explicit SrtmGetter(std::string const & srtmDir) : m_srtmManager(srtmDir) {}
 
   // AltitudeGetter overrides:
-  Altitude GetAltitude(m2::PointD const & p) override
-  {
-    return m_srtmManager.GetAltitude(mercator::ToLatLon(p));
-  }
+  Altitude GetAltitude(m2::PointD const & p) override { return m_srtmManager.GetAltitude(mercator::ToLatLon(p)); }
 
   void PrintStatsAndPurge() override
   {
@@ -56,18 +53,18 @@ public:
   struct FeatureAltitude
   {
     FeatureAltitude(uint32_t featureId, geometry::Altitudes && altitudes)
-      : m_featureId(featureId), m_altitudes(std::move(altitudes))
-    {
-    }
+      : m_featureId(featureId)
+      , m_altitudes(std::move(altitudes))
+    {}
 
     uint32_t m_featureId;
     feature::Altitudes m_altitudes;
   };
 
   explicit Processor(AltitudeGetter & altitudeGetter)
-    : m_minAltitude(geometry::kInvalidAltitude), m_altitudeGetter(altitudeGetter)
-  {
-  }
+    : m_minAltitude(geometry::kInvalidAltitude)
+    , m_altitudeGetter(altitudeGetter)
+  {}
 
   void operator()(FeatureType & f, uint32_t id)
   {
@@ -75,8 +72,7 @@ public:
     CHECK_EQUAL(id, m_altitudeAvailabilityBuilder.size(), ());
 
     bool hasAltitude = false;
-    SCOPE_GUARD(altitudeAvailabilityBuilding,
-                [&]() { m_altitudeAvailabilityBuilder.push_back(hasAltitude); });
+    SCOPE_GUARD(altitudeAvailabilityBuilding, [&]() { m_altitudeAvailabilityBuilder.push_back(hasAltitude); });
 
     if (!routing::IsRoad(feature::TypesHolder(f)))
       return;
@@ -176,7 +172,7 @@ void BuildRoadAltitudes(std::string const & mwmPath, AltitudeGetter & altitudeGe
     }
     {
       // Altitude offsets serialization.
-      CHECK(base::IsSortedAndUnique(offsets.begin(), offsets.end()), ());
+      CHECK(base::IsSortedAndUnique(offsets), ());
 
       succinct::elias_fano::elias_fano_builder builder(offsets.back(), offsets.size());
       for (uint32_t offset : offsets)

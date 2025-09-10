@@ -9,6 +9,26 @@ SKIP_MAP_DOWNLOAD=$SKIP_MAP_DOWNLOAD
 SKIP_GENERATE_SYMBOLS=$SKIP_GENERATE_SYMBOLS
 SKIP_GENERATE_DRULES=$SKIP_GENERATE_DRULES
 
+DRULES_NOT_GENERATED=
+SYMBOLS_NOT_GENERATED=
+
+DRULES_FILES=(drules_proto.bin drules_proto_default_dark.bin drules_proto_default_light.bin drules_proto_outdoors_dark.bin drules_proto_outdoors_light.bin drules_proto_vehicle_dark.bin drules_proto_vehicle_light.bin classificator.txt types.txt visibility.txt colors.txt patterns.txt)
+SYMBOLS_FILES=(xhdpi/light/symbols.png xhdpi/light/symbols.sdf xhdpi/dark/symbols.png xhdpi/dark/symbols.sdf mdpi/light/symbols.png mdpi/light/symbols.sdf mdpi/dark/symbols.png mdpi/dark/symbols.sdf 6plus/light/symbols.png 6plus/light/symbols.sdf 6plus/dark/symbols.png 6plus/dark/symbols.sdf xxxhdpi/light/symbols.png xxxhdpi/light/symbols.sdf xxxhdpi/dark/symbols.png xxxhdpi/dark/symbols.sdf hdpi/light/symbols.png hdpi/light/symbols.sdf hdpi/dark/symbols.png hdpi/dark/symbols.sdf xxhdpi/light/symbols.png xxhdpi/light/symbols.sdf xxhdpi/dark/symbols.png xxhdpi/dark/symbols.sdf)
+
+for f in ${DRULES_FILES[*]}; do
+  if [ ! -f "data/$f" ]; then
+    DRULES_NOT_GENERATED=1
+    break
+  fi
+done
+
+for f in ${SYMBOLS_FILES[*]}; do
+  if [ ! -f "data/symbols/$f" ]; then
+    SYMBOLS_NOT_GENERATED=1
+    break
+  fi
+done
+
 ############################# PROCESS OPTIONS ################################
 
 TEMP=$(getopt -o ms --long skip-map-download,skip-generate-symbols,skip-generate-drules \
@@ -87,7 +107,7 @@ else
 fi
 
 if [ -z "$SKIP_GENERATE_SYMBOLS" ]; then
-  if Diff data/symbols_hash data/styles/*/*/symbols/*; then
+  if Diff data/symbols_hash data/styles/*/*/symbols/* || [ ! -z "$SYMBOLS_NOT_GENERATED" ]; then
     echo "Generating symbols..."
     bash ./tools/unix/generate_symbols.sh
   fi
@@ -96,7 +116,7 @@ else
 fi
 
 if [ -z "$SKIP_GENERATE_DRULES" ]; then
-  if Diff data/drules_hash data/styles/*/*/*.mapcss data/styles/*/*/*.prio.txt data/mapcss-mapping.csv; then
+  if Diff data/drules_hash data/styles/*/*/*.mapcss data/styles/*/*/*.prio.txt data/mapcss-mapping.csv || [ ! -z "$DRULES_NOT_GENERATED" ]; then
     echo "Generating drules..."
     bash ./tools/unix/generate_drules.sh
   fi

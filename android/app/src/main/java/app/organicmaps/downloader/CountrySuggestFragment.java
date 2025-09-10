@@ -16,7 +16,7 @@ import app.organicmaps.base.BaseMwmFragmentActivity;
 import app.organicmaps.sdk.downloader.CountryItem;
 import app.organicmaps.sdk.downloader.MapManager;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.widget.WheelProgressView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -70,9 +70,9 @@ public class CountrySuggestFragment extends BaseMwmFragment implements View.OnCl
 
           switch (item.newStatus)
           {
-            case CountryItem.STATUS_FAILED: updateViews(); return;
+          case CountryItem.STATUS_FAILED: updateViews(); return;
 
-            case CountryItem.STATUS_DONE: exitFragment(); return;
+          case CountryItem.STATUS_DONE: exitFragment(); return;
           }
 
           break;
@@ -198,7 +198,8 @@ public class CountrySuggestFragment extends BaseMwmFragment implements View.OnCl
     final int id = v.getId();
     if (id == R.id.btn__download_map)
     {
-      MapManager.warn3gAndDownload(requireActivity(), mCurrentCountry.id, () -> mDownloadingCountry = mCurrentCountry);
+      MapManagerHelper.warn3gAndDownload(requireActivity(), mCurrentCountry.id,
+                                         () -> mDownloadingCountry = mCurrentCountry);
     }
     else if (id == R.id.btn__select_map)
     {

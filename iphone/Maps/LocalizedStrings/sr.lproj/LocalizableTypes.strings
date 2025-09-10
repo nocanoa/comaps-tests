@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Чесма";
 "type.amenity.water_point.drinking_water_no" = "Чесма";
 "type.barrier" = "Баријера";
+"type.barrier.yes" = "Баријера";
 "type.barrier.block" = "Блок";
 "type.barrier.bollard" = "Стуб";
 "type.barrier.border_control" = "Гранична контрола";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Станица за ренџер";
 "type.amenity.bicycle_parking.covered" = "Покривени паркинг за бицикле";
 "type.post_office.post_partner" = "Поштански партнер";
+"type.barrier.wicket_gate" = "Вратница";
+"type.amenity.animal_shelter" = "Волонтирајте и побољшајте CoMaps";

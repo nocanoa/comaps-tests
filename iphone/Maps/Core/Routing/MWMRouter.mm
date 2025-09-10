@@ -146,6 +146,10 @@ char const *kRenderAltitudeImagesQueueLabel = "mapsme.mwmrouter.renderAltitudeIm
     _canAutoAddLastLocation = YES;
     _routingOptions = [MWMRoutingOptions new];
     _isRestoreProcessCompleted = NO;
+
+    [NSNotificationCenter.defaultCenter addObserverForName:@"RoutingOptionsChanged" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull notification) {
+      [MWMRouter updateRoute];
+    }];
   }
   return self;
 }
@@ -570,7 +574,7 @@ char const *kRenderAltitudeImagesQueueLabel = "mapsme.mwmrouter.renderAltitudeIm
 
 + (void)updateRoute {
   MWMRoutingOptions *newOptions = [MWMRoutingOptions new];
-  if ((self.isRoutingActive && !self.isOnRoute) && ![newOptions isEqual:[self router].routingOptions]) {
+  if (self.isRoutingActive && !self.isOnRoute && ![newOptions isEqual:[self router].routingOptions]) {
     [self rebuildWithBestRouter:YES];
   }
 }

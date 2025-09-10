@@ -186,6 +186,8 @@ set(SRC
   restriction_writer.hpp
   road_access_generator.cpp
   road_access_generator.hpp
+  road_penalty_generator.cpp
+  road_penalty_generator.hpp
   routing_city_boundaries_processor.cpp
   routing_city_boundaries_processor.hpp
   routing_helpers.cpp

@@ -15,14 +15,14 @@
 #include <functional>
 #include <string>
 
-#include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
+#include <QOpenGLShaderProgram>
 #include <QOpenGLVertexArrayObject>
 #include <QTouchEvent>
 
+#include <QtGui/QAction>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QOpenGLFunctions>
-#include <QtGui/QAction>
 #include <QtWidgets/QMenu>
 
 // Fraction of the viewport for a move event
@@ -33,7 +33,7 @@ static constexpr float kViewportFractionSmoothMove = 0.1;
 
 namespace qt::common
 {
-//#define ENABLE_AA_SWITCH
+// #define ENABLE_AA_SWITCH
 
 MapWidget::MapWidget(Framework & framework, bool isScreenshotMode, QWidget * parent)
   : QOpenGLWidget(parent)
@@ -107,7 +107,7 @@ void MapWidget::CreateEngine()
 {
   Framework::DrapeCreationParams p;
 
-  p.m_apiVersion = m_apiOpenGLES3 ? dp::ApiVersion::OpenGLES3 : dp::ApiVersion::OpenGLES2;
+  p.m_apiVersion = dp::ApiVersion::OpenGLES3;
 
   p.m_surfaceWidth = m_screenshotMode ? width() : static_cast<int>(m_ratio * width());
   p.m_surfaceHeight = m_screenshotMode ? height() : static_cast<int>(m_ratio * height());
@@ -116,8 +116,7 @@ void MapWidget::CreateEngine()
 
   m_skin.reset(new gui::Skin(gui::ResolveGuiSkinFile("default"), m_ratio));
   m_skin->Resize(p.m_surfaceWidth, p.m_surfaceHeight);
-  m_skin->ForEach(
-      [&p](gui::EWidget widget, gui::Position const & pos) { p.m_widgetsInitInfo[widget] = pos; });
+  m_skin->ForEach([&p](gui::EWidget widget, gui::Position const & pos) { p.m_widgetsInitInfo[widget] = pos; });
 
   p.m_widgetsInitInfo[gui::WIDGET_SCALE_FPS_LABEL] = gui::Position(dp::LeftTop);
 
@@ -125,29 +124,65 @@ void MapWidget::CreateEngine()
   m_framework.SetViewportListener(std::bind(&MapWidget::OnViewportChanged, this, std::placeholders::_1));
 }
 
-void MapWidget::ScalePlus() { m_framework.Scale(Framework::SCALE_MAG, true); }
+void MapWidget::ScalePlus()
+{
+  m_framework.Scale(Framework::SCALE_MAG, true);
+}
 
-void MapWidget::ScaleMinus() { m_framework.Scale(Framework::SCALE_MIN, true); }
+void MapWidget::ScaleMinus()
+{
+  m_framework.Scale(Framework::SCALE_MIN, true);
+}
 
-void MapWidget::ScalePlusLight() { m_framework.Scale(Framework::SCALE_MAG_LIGHT, true); }
+void MapWidget::ScalePlusLight()
+{
+  m_framework.Scale(Framework::SCALE_MAG_LIGHT, true);
+}
 
-void MapWidget::ScaleMinusLight() { m_framework.Scale(Framework::SCALE_MIN_LIGHT, true); }
+void MapWidget::ScaleMinusLight()
+{
+  m_framework.Scale(Framework::SCALE_MIN_LIGHT, true);
+}
 
-void MapWidget::MoveRight() { m_framework.Move(-kViewportFractionRoughMove, 0, true); }
+void MapWidget::MoveRight()
+{
+  m_framework.Move(-kViewportFractionRoughMove, 0, true);
+}
 
-void MapWidget::MoveRightSmooth() { m_framework.Move(-kViewportFractionSmoothMove, 0, true); }
+void MapWidget::MoveRightSmooth()
+{
+  m_framework.Move(-kViewportFractionSmoothMove, 0, true);
+}
 
-void MapWidget::MoveLeft() { m_framework.Move(kViewportFractionRoughMove, 0, true); }
+void MapWidget::MoveLeft()
+{
+  m_framework.Move(kViewportFractionRoughMove, 0, true);
+}
 
-void MapWidget::MoveLeftSmooth() { m_framework.Move(kViewportFractionSmoothMove, 0, true); }
+void MapWidget::MoveLeftSmooth()
+{
+  m_framework.Move(kViewportFractionSmoothMove, 0, true);
+}
 
-void MapWidget::MoveUp() { m_framework.Move(0, -kViewportFractionRoughMove, true); }
+void MapWidget::MoveUp()
+{
+  m_framework.Move(0, -kViewportFractionRoughMove, true);
+}
 
-void MapWidget::MoveUpSmooth() { m_framework.Move(0, -kViewportFractionSmoothMove, true); }
+void MapWidget::MoveUpSmooth()
+{
+  m_framework.Move(0, -kViewportFractionSmoothMove, true);
+}
 
-void MapWidget::MoveDown() { m_framework.Move(0, kViewportFractionRoughMove, true); }
+void MapWidget::MoveDown()
+{
+  m_framework.Move(0, kViewportFractionRoughMove, true);
+}
 
-void MapWidget::MoveDownSmooth() { m_framework.Move(0, kViewportFractionSmoothMove, true); }
+void MapWidget::MoveDownSmooth()
+{
+  m_framework.Move(0, kViewportFractionSmoothMove, true);
+}
 
 void MapWidget::AntialiasingOn()
 {
@@ -176,9 +211,15 @@ void MapWidget::ScaleChanged(int action)
     m_framework.Scale(factor, false);
 }
 
-void MapWidget::SliderPressed() { m_sliderState = SliderState::Pressed; }
+void MapWidget::SliderPressed()
+{
+  m_sliderState = SliderState::Pressed;
+}
 
-void MapWidget::SliderReleased() { m_sliderState = SliderState::Released; }
+void MapWidget::SliderReleased()
+{
+  m_sliderState = SliderState::Released;
+}
 
 m2::PointD MapWidget::GetDevicePoint(QMouseEvent * e) const
 {
@@ -232,21 +273,13 @@ void MapWidget::Build()
 {
   std::string_view vertexSrc;
   std::string_view fragmentSrc;
-  if (m_apiOpenGLES3)
-  {
 #if defined(OMIM_OS_LINUX)
-    vertexSrc = ":common/shaders/gles_300.vsh.glsl";
-    fragmentSrc = ":common/shaders/gles_300.fsh.glsl";
+  vertexSrc = ":common/shaders/gles_300.vsh.glsl";
+  fragmentSrc = ":common/shaders/gles_300.fsh.glsl";
 #else
-    vertexSrc = ":common/shaders/gl_150.vsh.glsl";
-    fragmentSrc = ":common/shaders/gl_150.fsh.glsl";
+  vertexSrc = ":common/shaders/gl_150.vsh.glsl";
+  fragmentSrc = ":common/shaders/gl_150.fsh.glsl";
 #endif
-  }
-  else
-  {
-    vertexSrc = ":common/shaders/gles_200.vsh.glsl";
-    fragmentSrc = ":common/shaders/gles_200.fsh.glsl";
-  }
 
   m_program = std::make_unique<QOpenGLShaderProgram>(this);
   m_program->addShaderFromSourceFile(QOpenGLShader::Vertex, vertexSrc.data());
@@ -262,12 +295,10 @@ void MapWidget::Build()
   m_vbo->create();
   m_vbo->bind();
 
-  QVector4D vertices[4] = {QVector4D(-1.0, 1.0, 0.0, 1.0),
-                           QVector4D(1.0, 1.0, 1.0, 1.0),
-                           QVector4D(-1.0, -1.0, 0.0, 0.0),
-                           QVector4D(1.0, -1.0, 1.0, 0.0)};
-  m_vbo->allocate(static_cast<void*>(vertices), sizeof(vertices));
-  QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+  QVector4D vertices[4] = {QVector4D(-1.0, 1.0, 0.0, 1.0), QVector4D(1.0, 1.0, 1.0, 1.0),
+                           QVector4D(-1.0, -1.0, 0.0, 0.0), QVector4D(1.0, -1.0, 1.0, 0.0)};
+  m_vbo->allocate(static_cast<void *>(vertices), sizeof(vertices));
+  QOpenGLFunctions * f = QOpenGLContext::currentContext()->functions();
   // 0-index of the buffer is linked to "a_position" attribute in vertex shader.
   // Introduced in https://github.com/organicmaps/organicmaps/pull/9814
   f->glEnableVertexAttribArray(0);
@@ -286,7 +317,7 @@ search::ReverseGeocoder::Address GetFeatureAddressInfo(Framework const & framewo
   coder.GetExactAddress(ft, address);
   return address;
 }
-} // namespace
+}  // namespace
 
 void MapWidget::ShowInfoPopup(QMouseEvent * e, m2::PointD const & pt)
 {
@@ -348,47 +379,26 @@ void MapWidget::initializeGL()
   if (!m_screenshotMode)
     m_ratio = devicePixelRatio();
 
-  m_apiOpenGLES3 = true;
-
 #if defined(OMIM_OS_LINUX)
   {
     QOpenGLFunctions * funcs = context()->functions();
-    LOG(LINFO, ("Vendor:", funcs->glGetString(GL_VENDOR),
-                "\nRenderer:", funcs->glGetString(GL_RENDERER),
-                "\nVersion:", funcs->glGetString(GL_VERSION),
-                "\nShading language version:\n",funcs->glGetString(GL_SHADING_LANGUAGE_VERSION),
-                "\nExtensions:", funcs->glGetString(GL_EXTENSIONS)));
+    LOG(LINFO, ("Vendor:", funcs->glGetString(GL_VENDOR), "\nRenderer:", funcs->glGetString(GL_RENDERER),
+                "\nVersion:", funcs->glGetString(GL_VERSION), "\nShading language version:\n",
+                funcs->glGetString(GL_SHADING_LANGUAGE_VERSION), "\nExtensions:", funcs->glGetString(GL_EXTENSIONS)));
 
     if (!context()->isOpenGLES())
-    {
       LOG(LCRITICAL, ("Context is not LibGLES! This shouldn't have happened."));
-    }
 
     auto fmt = context()->format();
     if (context()->format().version() < qMakePair(3, 0))
     {
-      LOG(LINFO, ("OpenGL ES version is below 3.0, taking the OpenGL ES 2.0 path"));
-      m_apiOpenGLES3 = false;
-
-      constexpr const char* requiredExtensions[3] =
-        { "GL_EXT_map_buffer_range", "GL_OES_mapbuffer", "GL_OES_vertex_array_object" };
-      for (auto & requiredExtension : requiredExtensions)
-      {
-        if (context()->hasExtension(QByteArray::fromStdString(requiredExtension)))
-          LOG(LDEBUG, ("Found OpenGL ES 2.0 extension: ", requiredExtension));
-        else
-          LOG(LCRITICAL, ("A required OpenGL ES 2.0 extension is missing:", requiredExtension));
-      }
-      fmt.setProfile(QSurfaceFormat::CompatibilityProfile);
-      fmt.setVersion(2, 0);
+      CHECK(false, ("OpenGL ES2 is not supported"));
     }
     else
     {
       LOG(LINFO, ("OpenGL version is at least 3.0, enabling GLSL '#version 300 es'"));
-      m_apiOpenGLES3 = true;
       fmt.setVersion(3, 0);
     }
-
 
     QSurfaceFormat::setDefaultFormat(fmt);
   }
@@ -432,7 +442,6 @@ void MapWidget::paintGL()
 
     m_program->release();
     m_vao->release();
-
   }
 }
 
@@ -447,8 +456,7 @@ void MapWidget::resizeGL(int width, int height)
     m_skin->Resize(w, h);
 
     gui::TWidgetsLayoutInfo layout;
-    m_skin->ForEach(
-        [&layout](gui::EWidget w, gui::Position const & pos) { layout[w] = pos.m_pixelPivot; });
+    m_skin->ForEach([&layout](gui::EWidget w, gui::Position const & pos) { layout[w] = pos.m_pixelPivot; });
 
     m_framework.SetWidgetLayout(std::move(layout));
   }
@@ -511,4 +519,4 @@ void MapWidget::wheelEvent(QWheelEvent * e)
   /// @todo Here you can tune the speed of zooming.
   m_framework.Scale(exp(factor), m2::PointD(L2D(pos.x()), L2D(pos.y())), false);
 }
-} // namespace qt::common
+}  // namespace qt::common

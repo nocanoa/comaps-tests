@@ -108,12 +108,8 @@
   <color name="button_accent_text_disabled">#42000000</color>
   <color name="button_accent_text_disabled_night">#4CFFFFFF</color>
 
-  <color name="button_red">@color/button_red_normal</color>
-  <color name="button_red_normal">@color/base_red</color>
-  <color name="button_red_pressed">#FFC22219</color>
-  <color name="button_red_disabled">#FFB9332B</color>
+  <color name="button_red">@color/base_red</color>
   <color name="button_red_text">#FFFFFFFF</color>
-  <color name="button_red_text_disabled">#FF606060</color>
 
   <!-- Routing-->
   <color name="bg_routing_progress">#1F000000</color>
@@ -132,7 +128,7 @@
   <color name="bg_editor_light">#FFF2F6F6</color>
   <color name="bg_editor_light_pressed">#3D000000</color>
 
-  <color name="notification">@color/bg_primary</color>
+  <color name="notification">@color/base_accent</color>
   <color name="yellow">#FFC800</color>
 
   <color name="elevation_profile_dot_enabled">#FF9600</color>

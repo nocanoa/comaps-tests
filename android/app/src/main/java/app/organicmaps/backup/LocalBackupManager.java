@@ -62,38 +62,38 @@ public class LocalBackupManager implements BookmarkManager.BookmarksSharingListe
       ErrorCode errorCode = null;
       switch (result.getCode())
       {
-        case BookmarkSharingResult.SUCCESS ->
+      case BookmarkSharingResult.SUCCESS ->
+      {
+        if (!saveBackup(result))
         {
-          if (!saveBackup(result))
-          {
-            Logger.e(TAG, "Failed to save backup. See system log above");
-            errorCode = ErrorCode.FILE_ERROR;
-          }
-          else
-          {
-            Logger.i(TAG, "Backup was created and saved successfully");
-          }
-        }
-        case BookmarkSharingResult.EMPTY_CATEGORY ->
-        {
-          errorCode = ErrorCode.EMPTY_CATEGORY;
-          Logger.e(TAG, "Failed to create backup. Category is empty");
-        }
-        case BookmarkSharingResult.ARCHIVE_ERROR ->
-        {
-          errorCode = ErrorCode.ARCHIVE_ERROR;
-          Logger.e(TAG, "Failed to create archive of bookmarks");
-        }
-        case BookmarkSharingResult.FILE_ERROR ->
-        {
+          Logger.e(TAG, "Failed to save backup. See system log above");
           errorCode = ErrorCode.FILE_ERROR;
-          Logger.e(TAG, "Failed create file for archive");
         }
-        default ->
+        else
         {
-          errorCode = ErrorCode.UNSUPPORTED;
-          Logger.e(TAG, "Failed to create backup. Unknown error");
+          Logger.i(TAG, "Backup was created and saved successfully");
         }
+      }
+      case BookmarkSharingResult.EMPTY_CATEGORY ->
+      {
+        errorCode = ErrorCode.EMPTY_CATEGORY;
+        Logger.e(TAG, "Failed to create backup. Category is empty");
+      }
+      case BookmarkSharingResult.ARCHIVE_ERROR ->
+      {
+        errorCode = ErrorCode.ARCHIVE_ERROR;
+        Logger.e(TAG, "Failed to create archive of bookmarks");
+      }
+      case BookmarkSharingResult.FILE_ERROR ->
+      {
+        errorCode = ErrorCode.FILE_ERROR;
+        Logger.e(TAG, "Failed create file for archive");
+      }
+      default ->
+      {
+        errorCode = ErrorCode.UNSUPPORTED;
+        Logger.e(TAG, "Failed to create backup. Unknown error");
+      }
       }
 
       ErrorCode finalErrorCode = errorCode;

@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmFragment;
 import app.organicmaps.sdk.editor.OpeningHours;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -162,8 +162,8 @@ public class TimetableContainerFragment extends BaseMwmFragment implements Timet
 
     switch (mMode)
     {
-      case SIMPLE -> setMode(Mode.ADVANCED, filledTimetables);
-      case ADVANCED -> setMode(Mode.SIMPLE, filledTimetables);
+    case SIMPLE -> setMode(Mode.ADVANCED, filledTimetables);
+    case ADVANCED -> setMode(Mode.SIMPLE, filledTimetables);
     }
   }
 

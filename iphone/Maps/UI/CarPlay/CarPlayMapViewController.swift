@@ -159,14 +159,16 @@ final class CarPlayMapViewController: MWMViewController {
   }
 
   func updateVisibleViewPortState(_ state: CPViewPortState) {
-    viewPortState = state
-    switch viewPortState {
-    case .default:
-      updateVisibleViewPortToDefaultState()
-    case .preview:
-      updateVisibleViewPortToPreviewState()
-    case .navigation:
-      updateVisibleViewPortToNavigationState()
+    if CarPlayService.shared.isCarplayActivated {
+      viewPortState = state
+      switch viewPortState {
+        case .default:
+          updateVisibleViewPortToDefaultState()
+        case .preview:
+          updateVisibleViewPortToPreviewState()
+        case .navigation:
+          updateVisibleViewPortToNavigationState()
+      }
     }
   }
 

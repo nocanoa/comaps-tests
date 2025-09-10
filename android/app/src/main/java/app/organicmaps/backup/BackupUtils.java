@@ -1,6 +1,7 @@
 package app.organicmaps.backup;
 
 import static app.organicmaps.sdk.util.StorageUtils.isFolderWritable;
+import static app.organicmaps.sdk.util.Utils.dimen;
 import static app.organicmaps.settings.BackupSettingsFragment.MAX_BACKUPS_DEFAULT_COUNT;
 import static app.organicmaps.settings.BackupSettingsFragment.MAX_BACKUPS_KEY;
 
@@ -15,8 +16,8 @@ import android.text.style.AbsoluteSizeSpan;
 import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
 import app.organicmaps.R;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.sdk.util.log.Logger;
+import app.organicmaps.util.UiUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -50,14 +51,14 @@ public class BackupUtils
 
     String volumeName;
     if ("primary".equalsIgnoreCase(volumeId))
-      volumeName = context.getString(R.string.maps_storage_shared);
+      volumeName = context.getString(app.organicmaps.sdk.R.string.maps_storage_shared);
     else
-      volumeName = context.getString(R.string.maps_storage_removable);
+      volumeName = context.getString(app.organicmaps.sdk.R.string.maps_storage_removable);
 
     SpannableStringBuilder sb = new SpannableStringBuilder();
-    sb.append(volumeName + ": \n", new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_3)),
+    sb.append(volumeName + ": \n", new AbsoluteSizeSpan(dimen(context, R.dimen.text_size_body_3)),
               Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    sb.append("/" + subPath, new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_body_4)),
+    sb.append("/" + subPath, new AbsoluteSizeSpan(dimen(context, R.dimen.text_size_body_4)),
               Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     return sb;
   }

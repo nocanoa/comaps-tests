@@ -4,6 +4,7 @@
 
 #include <string>
 #include <map>
+#include <functional>
 #include "editor/osm_editor.hpp"
 
 @implementation MWMEditorHelper

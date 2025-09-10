@@ -20,11 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.organicmaps.MwmActivity;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
-import app.organicmaps.routing.RoutingController;
 import app.organicmaps.sdk.downloader.CountryItem;
 import app.organicmaps.sdk.downloader.MapManager;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetFragment;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetItem;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -93,7 +93,7 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
 
   private void onDownloadActionSelected(final CountryItem item, DownloaderAdapter adapter)
   {
-    MapManager.warn3gAndDownload(adapter.mActivity, item.id, null);
+    MapManagerHelper.warn3gAndDownload(adapter.mActivity, item.id, null);
   }
 
   private void onUpdateActionSelected(final CountryItem item, DownloaderAdapter adapter)
@@ -101,7 +101,7 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
     item.update();
     if (item.status != CountryItem.STATUS_UPDATABLE)
       return;
-    MapManager.warnOn3gUpdate(adapter.mActivity, item.id, () -> MapManager.startUpdate(item.id));
+    MapManagerHelper.warnOn3gUpdate(adapter.mActivity, item.id, () -> MapManagerHelper.startUpdate(item.id));
   }
 
   private void onExploreActionSelected(CountryItem item, DownloaderAdapter adapter)
@@ -206,7 +206,7 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
       {
         if (item.isLeafNode && item.newStatus == CountryItem.STATUS_FAILED)
         {
-          MapManager.showError(mActivity, item, null);
+          MapManagerHelper.showError(mActivity, item, null);
           break;
         }
       }
@@ -287,41 +287,41 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
     ArrayList<MenuBottomSheetItem> items = new ArrayList<>();
     switch (mSelectedItem.status)
     {
-      case CountryItem.STATUS_DOWNLOADABLE: items.add(getDownloadMenuItem()); break;
+    case CountryItem.STATUS_DOWNLOADABLE: items.add(getDownloadMenuItem()); break;
 
-      case CountryItem.STATUS_UPDATABLE:
-        items.add(getUpdateMenuItem());
-        // Fallthrough
+    case CountryItem.STATUS_UPDATABLE:
+      items.add(getUpdateMenuItem());
+      // Fallthrough
 
-      case CountryItem.STATUS_DONE:
-        if (!mSelectedItem.isExpandable())
-          items.add(getExploreMenuItem());
+    case CountryItem.STATUS_DONE:
+      if (!mSelectedItem.isExpandable())
+        items.add(getExploreMenuItem());
+      appendDeleteMenuItem(items);
+      break;
+
+    case CountryItem.STATUS_FAILED:
+      items.add(getCancelMenuItem());
+
+      if (mSelectedItem.present)
+      {
         appendDeleteMenuItem(items);
-        break;
+        items.add(getExploreMenuItem());
+      }
+      break;
 
-      case CountryItem.STATUS_FAILED:
-        items.add(getCancelMenuItem());
+    case CountryItem.STATUS_PROGRESS:
+    case CountryItem.STATUS_APPLYING:
+    case CountryItem.STATUS_ENQUEUED:
+      items.add(getCancelMenuItem());
 
-        if (mSelectedItem.present)
-        {
-          appendDeleteMenuItem(items);
-          items.add(getExploreMenuItem());
-        }
-        break;
+      if (mSelectedItem.present)
+        items.add(getExploreMenuItem());
+      break;
 
-      case CountryItem.STATUS_PROGRESS:
-      case CountryItem.STATUS_APPLYING:
-      case CountryItem.STATUS_ENQUEUED:
-        items.add(getCancelMenuItem());
-
-        if (mSelectedItem.present)
-          items.add(getExploreMenuItem());
-        break;
-
-      case CountryItem.STATUS_PARTLY:
-        items.add(getDownloadMenuItem());
-        appendDeleteMenuItem(items);
-        break;
+    case CountryItem.STATUS_PARTLY:
+      items.add(getDownloadMenuItem());
+      appendDeleteMenuItem(items);
+      break;
     }
     return items;
   }
@@ -372,20 +372,23 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
     {
       switch (mItem.status)
       {
-        case CountryItem.STATUS_DONE, CountryItem.STATUS_PROGRESS, CountryItem.STATUS_APPLYING,
-            CountryItem.STATUS_ENQUEUED ->
+      case CountryItem.STATUS_DONE, CountryItem.STATUS_PROGRESS, CountryItem.STATUS_APPLYING,
+          CountryItem.STATUS_ENQUEUED ->
+        processLongClick();
+      case CountryItem.STATUS_DOWNLOADABLE, CountryItem.STATUS_PARTLY ->
+      {
+        if (clickOnStatus)
+          onDownloadActionSelected(mItem, DownloaderAdapter.this);
+        else
           processLongClick();
-        case CountryItem.STATUS_DOWNLOADABLE, CountryItem.STATUS_PARTLY ->
-        {
-          if (clickOnStatus)
-            onDownloadActionSelected(mItem, DownloaderAdapter.this);
-          else
-            processLongClick();
-        }
-        case CountryItem.STATUS_FAILED -> MapManager.warn3gAndRetry(mActivity, mItem.id, null);
-        case CountryItem.STATUS_UPDATABLE ->
-          MapManager.warnOn3gUpdate(mActivity, mItem.id, () -> MapManager.startUpdate(mItem.id));
-        default -> throw new IllegalArgumentException("Inappropriate item status: " + mItem.status);
+      }
+      case CountryItem.STATUS_FAILED ->
+      {
+        MapManagerHelper.warn3gAndRetry(mActivity, mItem.id, null);
+      }
+      case CountryItem.STATUS_UPDATABLE ->
+        MapManagerHelper.warnOn3gUpdate(mActivity, mItem.id, () -> MapManagerHelper.startUpdate(mItem.id));
+      default -> throw new IllegalArgumentException("Inappropriate item status: " + mItem.status);
       }
     }
 
@@ -535,32 +538,32 @@ class DownloaderAdapter extends RecyclerView.Adapter<DownloaderAdapter.ViewHolde
       {
         switch (ci.category)
         {
-          case CountryItem.CATEGORY_NEAR_ME ->
+        case CountryItem.CATEGORY_NEAR_ME ->
+        {
+          if (ci.category != prev)
           {
-            if (ci.category != prev)
-            {
-              headerId = CountryItem.CATEGORY_NEAR_ME;
-              mItemsAndHeader.add(new GenericItem(mActivity.getString(R.string.downloader_near_me_subtitle)));
-              prev = ci.category;
-            }
-          }
-          case CountryItem.CATEGORY_DOWNLOADED ->
-          {
-            if (ci.category != prev)
-            {
-              headerId = CountryItem.CATEGORY_DOWNLOADED;
-              mItemsAndHeader.add(new GenericItem(mActivity.getString(R.string.downloader_downloaded_subtitle)));
-              prev = ci.category;
-            }
-          }
-          default ->
-          {
-            int prevHeader = headerId;
-            headerId = CountryItem.CATEGORY_AVAILABLE + ci.name.charAt(0);
-            if (headerId != prevHeader)
-              mItemsAndHeader.add(new GenericItem(StringUtils.toUpperCase(ci.name.substring(0, 1))));
+            headerId = CountryItem.CATEGORY_NEAR_ME;
+            mItemsAndHeader.add(new GenericItem(mActivity.getString(R.string.downloader_near_me_subtitle)));
             prev = ci.category;
           }
+        }
+        case CountryItem.CATEGORY_DOWNLOADED ->
+        {
+          if (ci.category != prev)
+          {
+            headerId = CountryItem.CATEGORY_DOWNLOADED;
+            mItemsAndHeader.add(new GenericItem(mActivity.getString(R.string.downloader_downloaded_subtitle)));
+            prev = ci.category;
+          }
+        }
+        default ->
+        {
+          int prevHeader = headerId;
+          headerId = CountryItem.CATEGORY_AVAILABLE + ci.name.charAt(0);
+          if (headerId != prevHeader)
+            mItemsAndHeader.add(new GenericItem(StringUtils.toUpperCase(ci.name.substring(0, 1))));
+          prev = ci.category;
+        }
         }
         ci.headerId = headerId;
       }

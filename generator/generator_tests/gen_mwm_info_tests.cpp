@@ -30,7 +30,8 @@ UNIT_TEST(OsmID2FeatureID_AddIds)
 
   std::vector<std::pair<generator::CompositeId, uint32_t>> const answer{kPId1, kPId2, kPId3};
   size_t index = 0;
-  mapping.ForEach([&](auto const & pair) {
+  mapping.ForEach([&](auto const & pair)
+  {
     TEST_EQUAL(pair, answer[index], ());
     ++index;
   });
@@ -64,9 +65,7 @@ UNIT_TEST(OsmID2FeatureID_GetFeatureId)
     TEST_EQUAL(mapping.GetFeatureIds(kCid1), answer, ());
   }
   {
-    std::vector<uint32_t> const answer{
-        kId2
-    };
+    std::vector<uint32_t> const answer{kId2};
     TEST_EQUAL(mapping.GetFeatureIds(kCid2), answer, ());
   }
   {
@@ -100,7 +99,8 @@ UNIT_TEST(OsmID2FeatureID_ReadWrite)
     mapping.ReadFromFile(sf.GetFullPath());
     std::vector<std::pair<generator::CompositeId, uint32_t>> const answer{kPId1, kPId2, kPId3};
     size_t index = 0;
-    mapping.ForEach([&](auto const & pair) {
+    mapping.ForEach([&](auto const & pair)
+    {
       TEST_EQUAL(pair, answer[index], ());
       ++index;
     });
@@ -123,7 +123,8 @@ UNIT_TEST(OsmID2FeatureID_WorkingWithOldFormat)
     generator::OsmID2FeatureID mapping;
     mapping.ReadFromFile(sf.GetFullPath());
     size_t index = 0;
-    mapping.ForEach([&](auto const & pair) {
+    mapping.ForEach([&](auto const & pair)
+    {
       TEST_EQUAL(pair.first.m_mainId, answer[index].first, ());
       TEST_EQUAL(pair.second, answer[index].second, ());
       ++index;

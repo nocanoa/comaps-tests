@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Παροχή νερού";
 "type.amenity.water_point.drinking_water_no" = "Παροχή νερού";
 "type.barrier" = "Εμπόδιο";
+"type.barrier.yes" = "Εμπόδιο";
 "type.barrier.block" = "Εμπόδιο";
 "type.barrier.bollard" = "Πυλώνας";
 "type.barrier.border_control" = "Έλεγχος συνόρων";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";

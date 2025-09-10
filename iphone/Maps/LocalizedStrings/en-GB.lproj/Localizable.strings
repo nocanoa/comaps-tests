@@ -533,6 +533,10 @@
 "editor_report_problem_send_button" = "Send";
 "autodownload" = "Auto-download maps";
 
+/* Place page confirmation messages and time ago formatting */
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";
+
 /* Place Page opening hours text */
 "closed_now" = "Closed now";
 
@@ -777,12 +781,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Saved";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "here";
 "core_entrance" = "Entrance";
 "error_enter_correct_name" = "Please enter a correct name";
 "bookmark_lists" = "Lists";

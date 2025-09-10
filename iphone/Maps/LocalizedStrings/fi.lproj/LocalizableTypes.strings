@@ -8,7 +8,7 @@
 "type.aerialway.gondola" = "Gondolihissi";
 "type.aerialway.mixed_lift" = "Köysirata";
 "type.aerialway.station" = "Köysirata-asema";
-"type.aeroway" = "Airspace Infrastructure";
+"type.aeroway" = "Ilmatilan Infrastruktuuri";
 "type.aeroway.aerodrome" = "Lentokenttä";
 "type.aeroway.aerodrome.international" = "Kansainvälinen lentokenttä";
 "type.aeroway.apron" = "Lentokentän asemataso";
@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Vesipiste";
 "type.amenity.water_point.drinking_water_no" = "Vesipiste";
 "type.barrier" = "Este";
+"type.barrier.yes" = "Este";
 "type.barrier.block" = "Este";
 "type.barrier.bollard" = "Tolppa";
 "type.barrier.border_control" = "Rajavalvonta";
@@ -687,7 +688,7 @@
 "type.landuse.salt_pond" = "Suolalampi";
 "type.landuse.village_green" = "Maa";
 "type.landuse.vineyard" = "Viinitarha";
-"type.leisure" = "Leisure";
+"type.leisure" = "Vapaa-aika";
 "type.leisure.common" = "Julkinen paikka";
 "type.leisure.dog_park" = "Koirien ulkoilupaikka";
 "type.leisure.fitness_centre" = "Kuntosali";
@@ -722,7 +723,7 @@
 "type.leisure.track.area" = "Juoksurata";
 "type.leisure.water_park" = "Vesipuisto";
 "type.leisure.beach_resort" = "Rantalomakohde";
-"type.man_made" = "Man Made";
+"type.man_made" = "Ihmisen Tekemä";
 "type.man_made.breakwater" = "Aallonmurtaja";
 "type.man_made.cairn" = "Kiviröykkiö";
 "type.man_made.chimney" = "Tehtaan piippu";
@@ -809,7 +810,7 @@
 "type.natural.water" = "Vettä";
 "type.natural.wetland" = "Soistuva maa";
 "type.natural.wetland.bog" = "Suo";
-"type.natural.wetland.marsh" = "Marsh";
+"type.natural.wetland.marsh" = "Suo";
 "type.noexit" = "Umpikuja";
 "type.office" = "Toimisto";
 "type.office.company" = "Yhtiön toimisto";
@@ -1285,7 +1286,7 @@
 "type.shop.baby_goods" = "Lasten kauppa";
 "type.shop.bag" = "Laukkukauppa";
 "type.shop.bed" = "Sänkykauppa";
-"type.shop.boutique" = "Boutique";
+"type.shop.boutique" = "Putiikki";
 "type.shop.charity" = "Hyväntekeväisyysmyymälä";
 "type.shop.cheese" = "Juustokauppa";
 "type.shop.craft" = "Käsityöt";
@@ -1437,10 +1438,10 @@
 "type.piste_type.nordic" = "Latu";
 "type.piste_type.sled" = "Kelkkarata";
 "type.piste_type.sled.area" = "Kelkkarata";
-"type.piste_type.snow_park" = "Snow Park";
+"type.piste_type.snow_park" = "Lumipuisto";
 "type.piste_type.hike" = "Lumi vaellusreitti";
 "type.piste_type.connection" = "Pisteen yhteys";
-"type.piste_type.skitour" = "Skitour Trail";
+"type.piste_type.skitour" = "Hiihtovaellusreitti";
 "type.amenity.events_venue" = "Tapahtumakeskus";
 "type.shop.auction" = "Huutokauppa";
 "type.shop.collector" = "Keräilyesineet";
@@ -1481,3 +1482,5 @@
 "type.post_office.post_partner" = "Postikumppani";
 "type.amenity.ranger_station" = "Vartioasema";
 "type.amenity.bicycle_parking.covered" = "Pyöräkatos";
+"type.amenity.animal_shelter" = "Eläinsuoja";
+"type.barrier.wicket_gate" = "Käyntiportti";

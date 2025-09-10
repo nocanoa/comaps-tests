@@ -1,7 +1,7 @@
 #pragma once
 
-#include "app/organicmaps/sdk/core/jni_helper.hpp"
 #include "androidoglcontext.hpp"
+#include "app/organicmaps/sdk/core/jni_helper.hpp"
 #include "drape/graphics_context_factory.hpp"
 
 #include "base/src_point.hpp"
@@ -33,8 +33,6 @@ public:
   int GetHeight() const;
   void UpdateSurfaceSize(int w, int h);
 
-  bool IsSupportedOpenGLES3() const { return m_supportedES3; }
-
 private:
   bool QuerySurfaceSize();
 
@@ -47,7 +45,7 @@ private:
 
   EGLSurface m_windowSurface;
   EGLSurface m_pixelbufferSurface;
-  EGLConfig  m_config;
+  EGLConfig m_config;
 
   ANativeWindow * m_nativeWindow;
   EGLDisplay m_display;
@@ -56,7 +54,6 @@ private:
   int m_surfaceHeight;
 
   bool m_windowSurfaceValid;
-  bool m_supportedES3;
 
   bool m_isInitialized = false;
   size_t m_initializationCounter = 0;

@@ -1,7 +1,9 @@
-• OpenStreetMap data as of August 4
-• improve map colors for water, forests, scrubs, various amenities, pedestrian areas etc.
-• add ranger stations, covered bicycle parkings, escape games, luggage lockers, post office partners
-• upgrade altitude contour lines to 20m step for some popular hiking regions
-• support more search abbreviations and aliases
-• add search and bookmark icons for fast food, bicycle and charging stations
-• more smooth position arrow movements
+• OpenStreetMap data as of August 22
+• New current speed indicator, display track info
+• Improved dark map style, added coloured labels
+• Display when places & opening hours were last checked
+• Routing now considers turns, stop signs, lights & conditional restrictions
+• Prefer GPS bearing over compass and increase location poll rate
+• Enable adding standalone addresses & notes in the editor
+• Various UI element & map style improvements
+Check our Codeberg release notes for more changes!

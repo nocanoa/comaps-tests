@@ -14,7 +14,7 @@
     android:elevation="@dimen/appbar_elevation"
     android:background="?android:windowBackground"
     app:tabGravity="fill"
-    app:tabIndicatorColor="?colorAccent"
+    app:tabIndicatorColor="?colorSecondary"
     app:tabMode="fixed"
     app:tabRippleColor="@android:color/transparent"
     tools:ignore="UnusedAttribute"/>

@@ -18,8 +18,8 @@ import androidx.core.widget.ImageViewCompat;
 import app.organicmaps.R;
 import app.organicmaps.sdk.Map;
 import app.organicmaps.sdk.location.LocationState;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.ThemeUtils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MyPositionButton
@@ -52,7 +52,7 @@ public class MyPositionButton
     if (mode == LocationState.FOLLOW || mode == LocationState.FOLLOW_AND_ROTATE
         || mode == LocationState.PENDING_POSITION)
     {
-      colorAttr = androidx.appcompat.R.attr.colorAccent;
+      colorAttr = com.google.android.material.R.attr.colorSecondary;
       if (mode == LocationState.PENDING_POSITION)
         sizeDimen = R.dimen.map_button_size;
       else

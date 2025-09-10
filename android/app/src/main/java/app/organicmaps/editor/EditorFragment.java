@@ -20,19 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmFragment;
 import app.organicmaps.dialog.EditTextDialogFragment;
+import app.organicmaps.editor.data.TimeFormatUtils;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.bookmarks.data.Metadata;
 import app.organicmaps.sdk.editor.Editor;
 import app.organicmaps.sdk.editor.OpeningHours;
 import app.organicmaps.sdk.editor.data.LocalizedName;
 import app.organicmaps.sdk.editor.data.LocalizedStreet;
-import app.organicmaps.editor.data.TimeFormatUtils;
 import app.organicmaps.sdk.editor.data.Timetable;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.sdk.util.Utils;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.InputUtils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -236,6 +236,11 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     return true;
   }
 
+  boolean saveEdits()
+  {
+    return setEdits() && beforeSavingValidation();
+  }
+
   @NonNull
   protected String getDescription()
   {
@@ -280,6 +285,19 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     }
 
     return validateNames();
+  }
+
+  private boolean beforeSavingValidation()
+  {
+    // Validation to make sure address features have a house number
+    if (!Editor.nativeCheckHouseNumberWhenIsAddress())
+    {
+      mHouseNumber.requestFocus();
+      UiUtils.setInputError(mInputHouseNumber, R.string.error_enter_correct_house_number);
+      InputUtils.showKeyboard(mHouseNumber);
+      return false;
+    }
+    return true;
   }
 
   private boolean validateNames()
@@ -623,11 +641,11 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
     switch (Editor.nativeGetMapObjectStatus())
     {
-      case Editor.CREATED -> mReset.setText(R.string.editor_remove_place_button);
-      case Editor.MODIFIED -> mReset.setText(R.string.editor_reset_edits_button);
-      case Editor.UNTOUCHED -> mReset.setText(R.string.editor_place_doesnt_exist);
-      case Editor.DELETED -> throw new IllegalStateException("Can't delete already deleted feature.");
-      case Editor.OBSOLETE -> throw new IllegalStateException("Obsolete objects cannot be reverted.");
+    case Editor.CREATED -> mReset.setText(R.string.editor_remove_place_button);
+    case Editor.MODIFIED -> mReset.setText(R.string.editor_reset_edits_button);
+    case Editor.UNTOUCHED -> mReset.setText(R.string.editor_place_doesnt_exist);
+    case Editor.DELETED -> throw new IllegalStateException("Can't delete already deleted feature.");
+    case Editor.OBSOLETE -> throw new IllegalStateException("Obsolete objects cannot be reverted.");
     }
   }
 
@@ -641,11 +659,11 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
     switch (Editor.nativeGetMapObjectStatus())
     {
-      case Editor.CREATED -> rollback(Editor.CREATED);
-      case Editor.MODIFIED -> rollback(Editor.MODIFIED);
-      case Editor.UNTOUCHED -> placeDoesntExist();
-      case Editor.DELETED -> throw new IllegalStateException("Can't delete already deleted feature.");
-      case Editor.OBSOLETE -> throw new IllegalStateException("Obsolete objects cannot be reverted.");
+    case Editor.CREATED -> rollback(Editor.CREATED);
+    case Editor.MODIFIED -> rollback(Editor.MODIFIED);
+    case Editor.UNTOUCHED -> placeDoesntExist();
+    case Editor.DELETED -> throw new IllegalStateException("Can't delete already deleted feature.");
+    case Editor.OBSOLETE -> throw new IllegalStateException("Obsolete objects cannot be reverted.");
     }
   }
 

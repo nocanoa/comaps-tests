@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Ponto de água";
 "type.amenity.water_point.drinking_water_no" = "Ponto de água";
 "type.barrier" = "Barreira";
+"type.barrier.yes" = "Barreira";
 "type.barrier.block" = "Bloco";
 "type.barrier.bollard" = "Pilarete";
 "type.barrier.border_control" = "Controlo de fronteira";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Posto de Guardas Florestais";
 "type.amenity.bicycle_parking.covered" = "Estacionamento de Bicicletas Coberto";
 "type.post_office.post_partner" = "Parceiro Postal";
+"type.barrier.wicket_gate" = "Postigo";
+"type.amenity.animal_shelter" = "Abrigo Animal";

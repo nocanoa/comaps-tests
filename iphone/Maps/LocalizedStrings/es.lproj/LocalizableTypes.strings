@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Fuente de agua para caravanas";
 "type.amenity.water_point.drinking_water_no" = "Fuente de agua para caravanas";
 "type.barrier" = "Barrera";
+"type.barrier.yes" = "Barrera";
 "type.barrier.block" = "Bloque";
 "type.barrier.bollard" = "Bolardo";
 "type.barrier.border_control" = "Control fronterizo";
@@ -329,19 +330,19 @@
 "type.cuisine.noodles" = "Fideos";
 "type.cuisine.oriental" = "Oriental";
 "type.cuisine.pancake" = "Tortitas";
-"type.cuisine.pasta" = "Pastas";
+"type.cuisine.pasta" = "Pasta";
 "type.cuisine.persian" = "Persa";
 "type.cuisine.peruvian" = "Peruana";
 "type.cuisine.pizza" = "Pizzas";
 "type.cuisine.polish" = "Polaca";
 "type.cuisine.portuguese" = "Portuguesa";
 "type.cuisine.ramen" = "Ramen";
-"type.cuisine.regional" = "Cocina regional";
+"type.cuisine.regional" = "Regional";
 "type.cuisine.russian" = "Rusa";
 "type.cuisine.sandwich" = "Sándwiches";
 "type.cuisine.sausage" = "Salchichas";
 "type.cuisine.savory_pancakes" = "Tortitas saladas";
-"type.cuisine.seafood" = "Mariscos";
+"type.cuisine.seafood" = "del mar";
 "type.cuisine.soba" = "Soba";
 "type.cuisine.spanish" = "Española";
 "type.cuisine.steak_house" = "Asador";
@@ -384,11 +385,11 @@
 "type.healthcare.sample_collection" = "Muestreo";
 "type.healthcare.speech_therapist" = "Logopedia";
 "type.highway" = "Carretera";
-"type.highway.bridleway" = "Camino de caballos";
+"type.highway.bridleway" = "Camino ecuestre";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.bridleway.bridge" = "Puente";
-"type.highway.bridleway.permissive" = "Camino de caballos";
+"type.highway.bridleway.permissive" = "Camino ecuestre";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.bridleway.tunnel" = "Túnel";
@@ -399,7 +400,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.busway.tunnel" = "Túnel";
-"type.highway.bus_stop" = "Parada de autobús";
+"type.highway.bus_stop" = "Parada de bus";
 "type.highway.construction" = "Vía en construcción";
 "type.highway.cycleway" = "Ciclovía";
 
@@ -473,7 +474,7 @@
 "type.highway.primary.bridge" = "Puente";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.primary.tunnel" = "Túnel de carretera principal";
+"type.highway.primary.tunnel" = "Túnel";
 "type.highway.primary_link" = "Enlace de carretera principal";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -664,7 +665,7 @@
 "type.landuse.farmland" = "Tierras agrícolas";
 "type.landuse.farmyard" = "Granja";
 "type.landuse.field" = "Campo";
-"type.landuse.flowerbed" = "Cama de flores";
+"type.landuse.flowerbed" = "Parterre";
 "type.landuse.forest" = "Bosque";
 "type.landuse.forest.coniferous" = "Bosque de coníferas";
 "type.landuse.forest.deciduous" = "Bosque caducifolio";
@@ -863,18 +864,18 @@
 "type.power.generator" = "Generador";
 "type.power.generator.solar" = "Generador solar";
 "type.power.generator.wind" = "Generador de viento";
-"type.power.generator.gas" = "Planta de energía de turbina de gas";
-"type.power.generator.hydro" = "Planta de energía hidroeléctrica";
+"type.power.generator.gas" = "Planta termoeléctrica de gas";
+"type.power.generator.hydro" = "Planta hidroeléctrica";
 "type.power.line" = "Línea eléctrica";
 "type.power.line.underground" = "Línea eléctrica subterránea";
-"type.power.minor_line" = "Línea eléctrica de baja tensión";
-"type.power.plant" = "Planta de energía";
+"type.power.minor_line" = "Línea eléctrica menor";
+"type.power.plant" = "Planta eléctrica";
 "type.power.plant.coal" = "Central eléctrica de carbón";
-"type.power.plant.gas" = "Planta de energía de turbina de gas";
-"type.power.plant.hydro" = "Planta de energía hidroeléctrica";
+"type.power.plant.gas" = "Planta termoeléctrica de gas";
+"type.power.plant.hydro" = "Planta hidroeléctrica";
 "type.power.plant.solar" = "Planta de energía solar";
 "type.power.plant.wind" = "Planta eólica";
-"type.power.substation" = "Subestación eléctrica";
+"type.power.substation" = "Subestación";
 
 /* A tower or pylon carrying high voltage electricity cables. */
 "type.power.tower" = "Torre eléctrica";
@@ -901,13 +902,13 @@
 "type.railway.light_rail" = "Tren ligero";
 "type.railway.light_rail.bridge" = "Puente de tren ligero";
 "type.railway.light_rail.tunnel" = "Túnel de tren ligero";
-"type.railway.monorail" = "Monorraíl";
-"type.railway.monorail.bridge" = "Puente de monorraíl";
-"type.railway.monorail.tunnel" = "Túnel de monorraíl";
+"type.railway.monorail" = "Monorriel";
+"type.railway.monorail.bridge" = "Puente de monorriel";
+"type.railway.monorail.tunnel" = "Túnel de monorriel";
 "type.railway.narrow_gauge" = "Vía férrea estrecha";
 "type.railway.narrow_gauge.bridge" = "Puente de vía férrea estrecha";
 "type.railway.narrow_gauge.tunnel" = "Túnel de vía férrea estrecha";
-"type.railway.platform" = "Plataforma de vía férrea";
+"type.railway.platform" = "Plataforma ferroviaria";
 "type.railway.preserved" = "Raíl conservado";
 "type.railway.preserved.bridge" = "Puente ferroviario conservado";
 "type.railway.preserved.tunnel" = "Túnel ferroviario conservado";
@@ -1245,7 +1246,7 @@
 "type.shop.mobile_phone" = "Tienda de Móviles";
 "type.shop.money_lender" = "Prestamista";
 "type.shop.motorcycle" = "Tienda de motos";
-"type.shop.motorcycle_repair" = "Reparación de motos";
+"type.shop.motorcycle_repair" = "Taller de motos";
 "type.shop.music" = "Tienda de discos";
 "type.shop.musical_instrument" = "Instrumentos musicales";
 "type.shop.newsagent" = "Puesto de venta de periódicos";
@@ -1263,7 +1264,7 @@
 "type.shop.seafood" = "Pescadería";
 "type.shop.second_hand" = "Tienda de segunda mano";
 "type.shop.shoes" = "Zapatería";
-"type.shop.sports" = "Artículos de deporte";
+"type.shop.sports" = "Tienda deportiva";
 "type.shop.stationery" = "Papelería";
 "type.shop.supermarket" = "Supermercado";
 "type.shop.tattoo" = "Estudio de tatuajes";
@@ -1481,3 +1482,5 @@
 "type.amenity.luggage_locker" = "Casillero de maletas";
 "type.amenity.ranger_station" = "Estación de guardabosques";
 "type.amenity.bicycle_parking.covered" = "Parking de bici cubierto";
+"type.amenity.animal_shelter" = "Refugio de animales";
+"type.barrier.wicket_gate" = "Wicket gate";

@@ -222,6 +222,31 @@ void registerCellsForTableView(std::vector<MWMEditorCellID> const & cells, UITab
     return;
   }
 
+  // Validation to make sure address features have a house number
+  if (!m_mapObject.CheckHouseNumberWhenIsAddress())
+  {
+    // Find indexPath for the house number cell and mark it as invalid
+    auto const sectionIt = std::find(m_sections.begin(), m_sections.end(), MWMEditorSectionAddress);
+    if (sectionIt != m_sections.end())
+    {
+      NSInteger const section = std::distance(m_sections.begin(), sectionIt);
+      auto const & cells = m_cells[MWMEditorSectionAddress];
+      auto const it = std::find(cells.begin(), cells.end(), MWMEditorCellTypeBuilding);
+      if (it != cells.end())
+      {
+        NSInteger const row = std::distance(cells.begin(), it);
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        [self markCellAsInvalid:indexPath];
+        
+        // Focus the text field to draw the user's attention.
+        MWMEditorTextTableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [cell.textField becomeFirstResponder];
+      }
+    }
+    // Stop the save process
+    return;
+  }
+
   if ([self showPersonalInfoWarningAlertIfNeeded])
     return;
 

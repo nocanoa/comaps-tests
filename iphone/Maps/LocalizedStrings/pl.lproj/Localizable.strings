@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Zapisano";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Zaloguj się do OpenStreetMap, aby automatycznie przesyłać wszystkie zmiany na mapie. Dowiedz się więcej";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "tutaj";
 "core_entrance" = "Wejście";
 "error_enter_correct_name" = "Wprowadź poprawną nazwę";
 "bookmark_lists" = "Listy";
@@ -1099,3 +1093,5 @@
 "pref_maplanguage_local" = "Local Language";
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

@@ -133,6 +133,14 @@ jobs:
         with:
           key: ${{ github.workflow }}-unity-${{ matrix.compiler.CC }}-${{ matrix.CMAKE_BUILD_TYPE }}
 
+      - name: Configure repository
+        shell: bash
+        env:
+          SKIP_MAP_DOWNLOAD: 1
+          SKIP_GENERATE_SYMBOLS: 1
+          SKIP_GENERATE_DRULES: 1
+        run: ./configure.sh
+
       - name: CMake
         shell: bash
         env:

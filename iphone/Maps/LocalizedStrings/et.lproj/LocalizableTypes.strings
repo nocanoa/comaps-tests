@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Joogivee tankimispunkt";
 "type.amenity.water_point.drinking_water_no" = "Joogivee tankimispunkt";
 "type.barrier" = "Barjäär";
+"type.barrier.yes" = "Barjäär";
 "type.barrier.block" = "Kiviplokk";
 "type.barrier.bollard" = "Piirdetulp";
 "type.barrier.border_control" = "Piirikontroll";
@@ -304,10 +305,10 @@
 "type.cuisine.georgian" = "Gruusia";
 "type.cuisine.german" = "Saksa";
 "type.cuisine.greek" = "Kreeka";
-"type.cuisine.grill" = "Grill";
+"type.cuisine.grill" = "Grillroad";
 "type.cuisine.heuriger" = "Austria hooajaline veinikõrts (heuriger)";
 "type.cuisine.hotdog" = "Viinersai";
-"type.cuisine.hungarian" = "Ungari";
+"type.cuisine.hungarian" = "Ungari köök";
 "type.cuisine.ice_cream" = "Jäätis";
 "type.cuisine.indian" = "India";
 "type.cuisine.indonesian" = "Indoneesia";
@@ -329,7 +330,7 @@
 "type.cuisine.noodles" = "Nuudliroad";
 "type.cuisine.oriental" = "Kaug-Ida";
 "type.cuisine.pancake" = "Pannkoogid";
-"type.cuisine.pasta" = "Pasta";
+"type.cuisine.pasta" = "Pastaroad";
 "type.cuisine.persian" = "Pärsia";
 "type.cuisine.peruvian" = "Peruu köök";
 "type.cuisine.pizza" = "Pitsa";
@@ -1481,3 +1482,5 @@
 "type.amenity.ranger_station" = "Pargivahi maja";
 "type.amenity.luggage_locker" = "Pagasihoid";
 "type.post_office.post_partner" = "Postiteenused partneri juures";
+"type.barrier.wicket_gate" = "Jalgvärav";
+"type.amenity.animal_shelter" = "Loomade varjupaik";

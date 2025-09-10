@@ -12,7 +12,7 @@
     android:id="@+id/iv__place_website_menu"
     style="@style/PlacePageMetadataIcon"
     app:srcCompat="@drawable/ic_website_menu"
-    app:tint="?colorAccent"/>
+    app:tint="?colorSecondary"/>
 
   <LinearLayout
     android:layout_width="match_parent"

@@ -16,6 +16,7 @@ import android.view.ViewTreeObserver;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
@@ -26,7 +27,6 @@ import app.organicmaps.MwmActivity;
 import app.organicmaps.R;
 import app.organicmaps.leftbutton.LeftButton;
 import app.organicmaps.leftbutton.LeftToggleButton;
-import app.organicmaps.routing.RoutingController;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.downloader.MapManager;
 import app.organicmaps.sdk.downloader.UpdateInfo;
@@ -34,9 +34,11 @@ import app.organicmaps.sdk.location.TrackRecorder;
 import app.organicmaps.sdk.maplayer.isolines.IsolinesManager;
 import app.organicmaps.sdk.maplayer.subway.SubwayManager;
 import app.organicmaps.sdk.maplayer.traffic.TrafficManager;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.util.Config;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.ThemeUtils;
+import app.organicmaps.util.UiUtils;
+import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils;
 import app.organicmaps.widget.menu.MyPositionButton;
 import app.organicmaps.widget.placepage.PlacePageViewModel;
@@ -213,7 +215,7 @@ public class MapButtonsController extends Fragment
       //        helpButton.setImageResource(R.drawable.ic_launcher);
       //      }
       //      // Keep this button colorful in normal theme.
-      //      if (!ThemeUtils.isNightTheme(requireContext()))
+      //      if (!ThemeUtils.isNightTheme())
       //        helpButton.getDrawable().setTintList(null);
     }
     else if (leftButtonView != null)
@@ -230,21 +232,21 @@ public class MapButtonsController extends Fragment
       return;
     switch (button)
     {
-      case zoom: UiUtils.showIf(show && Config.showZoomButtons(), buttonView); break;
-      case toggleMapLayer:
-        if (mToggleMapLayerButton != null)
-          UiUtils.showIf(show && !isInNavigationMode(), mToggleMapLayerButton);
-        break;
-      case myPosition:
-        if (mNavMyPosition != null)
-          mNavMyPosition.showButton(show);
-        break;
-      case search: mSearchWheel.show(show);
-      case bookmarks:
-      case menu: UiUtils.showIf(show, buttonView); break;
-      case trackRecordingStatus:
-        UiUtils.showIf(show, buttonView);
-        animateIconBlinking(show, (FloatingActionButton) buttonView);
+    case zoom: UiUtils.showIf(show && Config.showZoomButtons(), buttonView); break;
+    case toggleMapLayer:
+      if (mToggleMapLayerButton != null)
+        UiUtils.showIf(show && !isInNavigationMode(), mToggleMapLayerButton);
+      break;
+    case myPosition:
+      if (mNavMyPosition != null)
+        mNavMyPosition.showButton(show);
+      break;
+    case search: mSearchWheel.show(show);
+    case bookmarks:
+    case menu: UiUtils.showIf(show, buttonView); break;
+    case trackRecordingStatus:
+      UiUtils.showIf(show, buttonView);
+      animateIconBlinking(show, (FloatingActionButton) buttonView);
     }
   }
 
@@ -295,7 +297,7 @@ public class MapButtonsController extends Fragment
       mBadgeDrawable.setMaxCharacterCount(0);
       mBadgeDrawable.setHorizontalOffset(verticalOffset);
       mBadgeDrawable.setVerticalOffset(dpToPx(9, context));
-      mBadgeDrawable.setBackgroundColor(getResources().getColor(R.color.base_accent));
+      mBadgeDrawable.setBackgroundColor(ContextCompat.getColor(context, R.color.base_accent));
       mBadgeDrawable.setVisible(enable);
       BadgeUtils.attachBadgeDrawable(mBadgeDrawable, menuButton);
     }

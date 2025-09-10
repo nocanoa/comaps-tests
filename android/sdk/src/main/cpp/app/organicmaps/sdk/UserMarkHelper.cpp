@@ -1,6 +1,7 @@
 #include "UserMarkHelper.hpp"
 
 #include "app/organicmaps/sdk/routing/RoutePointInfo.hpp"
+#include "app/organicmaps/sdk/util/Distance.hpp"
 
 #include "map/elevation_info.hpp"
 #include "map/place_page_info.hpp"
@@ -27,107 +28,135 @@ void InjectMetadata(JNIEnv * env, jclass const clazz, jobject const mapObject, o
   });
 }
 
-//jobject CreatePopularity(JNIEnv * env, place_page::Info const & info)
+// jobject CreatePopularity(JNIEnv * env, place_page::Info const & info)
 //{
-//  static jclass const popularityClass =
-//    jni::GetGlobalClassRef(env, "app/organicmaps/sdk/search/Popularity");
-//  static jmethodID const popularityConstructor =
-//    jni::GetConstructorID(env, popularityClass, "(I)V");
-//  auto const popularityValue = info.GetPopularity();
-//  return env->NewObject(popularityClass, popularityConstructor, static_cast<jint>(popularityValue));
-//}
+//   static jclass const popularityClass =
+//     jni::GetGlobalClassRef(env, "app/organicmaps/sdk/search/Popularity");
+//   static jmethodID const popularityConstructor =
+//     jni::GetConstructorID(env, popularityClass, "(I)V");
+//   auto const popularityValue = info.GetPopularity();
+//   return env->NewObject(popularityClass, popularityConstructor, static_cast<jint>(popularityValue));
+// }
 
-jobject CreateMapObject(JNIEnv * env, place_page::Info const & info, int mapObjectType,
-                        double lat, double lon, bool parseMeta, bool parseApi,
-                        jobject const & routingPointInfo, jobject const & popularity, jobjectArray jrawTypes)
+jobject CreateMapObject(JNIEnv * env, place_page::Info const & info, int mapObjectType, double lat, double lon,
+                        bool parseMeta, bool parseApi, jobject const & routingPointInfo, jobject const & popularity,
+                        jobjectArray jrawTypes)
 {
   //  public MapObject(@NonNull FeatureId featureId, @MapObjectType int mapObjectType, String title,
   //                   @Nullable String secondaryTitle, String subtitle, String address,
   //                   double lat, double lon, String apiId, @Nullable RoutePointInfo routePointInfo,
   //                   @OpeningMode int openingMode, @NonNull Popularity popularity, @NonNull String description,
   //                   int roadWarningType, @Nullable String[] rawTypes)
-  static jmethodID const ctorId = jni::GetConstructorID(
-      env, g_mapObjectClazz,
-      "("
-      "Lapp/organicmaps/sdk/bookmarks/data/FeatureId;"  // featureId
-      "I"                                               // mapObjectType
-      "Ljava/lang/String;"                              // title
-      "Ljava/lang/String;"                              // secondaryTitle
-      "Ljava/lang/String;"                              // subtitle
-      "Ljava/lang/String;"                              // address
-      "DD"                                              // lat, lon
-      "Ljava/lang/String;"                              // appId
-      "Lapp/organicmaps/sdk/routing/RoutePointInfo;"    // routePointInfo
-      "I"                                               // openingMode
-      "Lapp/organicmaps/sdk/search/Popularity;"         // popularity
-      "Ljava/lang/String;"                              // description
-      "I"                                               // roadWarnType
-      "[Ljava/lang/String;"                             // rawTypes
-      ")V");
+  static jmethodID const ctorId =
+      jni::GetConstructorID(env, g_mapObjectClazz,
+                            "("
+                            "Lapp/organicmaps/sdk/bookmarks/data/FeatureId;"  // featureId
+                            "I"                                               // mapObjectType
+                            "Ljava/lang/String;"                              // title
+                            "Ljava/lang/String;"                              // secondaryTitle
+                            "Ljava/lang/String;"                              // subtitle
+                            "Ljava/lang/String;"                              // address
+                            "DD"                                              // lat, lon
+                            "Ljava/lang/String;"                              // appId
+                            "Lapp/organicmaps/sdk/routing/RoutePointInfo;"    // routePointInfo
+                            "I"                                               // openingMode
+                            "Lapp/organicmaps/sdk/search/Popularity;"         // popularity
+                            "Ljava/lang/String;"                              // description
+                            "I"                                               // roadWarnType
+                            "[Ljava/lang/String;"                             // rawTypes
+                            ")V");
 
-  //public FeatureId(@NonNull String mwmName, long mwmVersion, int featureIndex)
-  static jmethodID const featureCtorId =
-      jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
+  // public FeatureId(@NonNull String mwmName, long mwmVersion, int featureIndex)
+  static jmethodID const featureCtorId = jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
 
   auto const fID = info.GetID();
   jni::TScopedLocalRef jMwmName(env, jni::ToJavaString(env, fID.GetMwmName()));
-  jni::TScopedLocalRef jFeatureId(
-      env, env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(), (jlong)fID.GetMwmVersion(),
-                          (jint)fID.m_index));
+  jni::TScopedLocalRef jFeatureId(env, env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(),
+                                                      (jlong)fID.GetMwmVersion(), (jint)fID.m_index));
   jni::TScopedLocalRef jTitle(env, jni::ToJavaString(env, info.GetTitle()));
   jni::TScopedLocalRef jSecondaryTitle(env, jni::ToJavaString(env, info.GetSecondaryTitle()));
   jni::TScopedLocalRef jSubtitle(env, jni::ToJavaStringWithSupplementalCharsFix(env, info.GetSubtitle()));
   jni::TScopedLocalRef jAddress(env, jni::ToJavaString(env, info.GetSecondarySubtitle()));
   jni::TScopedLocalRef jApiId(env, jni::ToJavaString(env, parseApi ? info.GetApiUrl() : ""));
   jni::TScopedLocalRef jWikiDescription(env, jni::ToJavaString(env, info.GetWikiDescription()));
-  jobject mapObject =
-      env->NewObject(g_mapObjectClazz, ctorId, jFeatureId.get(), mapObjectType, jTitle.get(),
-                     jSecondaryTitle.get(), jSubtitle.get(), jAddress.get(), lat, lon, jApiId.get(),
-                     routingPointInfo,
-                     static_cast<jint>(info.GetOpeningMode()), popularity, jWikiDescription.get(),
-                     static_cast<jint>(info.GetRoadType()), jrawTypes);
+  jobject mapObject = env->NewObject(g_mapObjectClazz, ctorId, jFeatureId.get(), mapObjectType, jTitle.get(),
+                                     jSecondaryTitle.get(), jSubtitle.get(), jAddress.get(), lat, lon, jApiId.get(),
+                                     routingPointInfo, static_cast<jint>(info.GetOpeningMode()), popularity,
+                                     jWikiDescription.get(), static_cast<jint>(info.GetRoadType()), jrawTypes);
 
   if (parseMeta)
     InjectMetadata(env, g_mapObjectClazz, mapObject, info);
   return mapObject;
 }
 
-jobject CreateBookmark(JNIEnv *env, const place_page::Info &info,
-                       const jni::TScopedLocalObjectArrayRef &jrawTypes,
-                       const jni::TScopedLocalRef &routingPointInfo,
-                       jobject const & popularity)
+jobject CreateTrack(JNIEnv * env, place_page::Info const & info, jni::TScopedLocalObjectArrayRef const & jrawTypes,
+                    jni::TScopedLocalRef const & routingPointInfo, jobject const & popularity)
 {
-  //public Bookmark(@NonNull FeatureId featureId, @IntRange(from = 0) long categoryId,
-  //                @IntRange(from = 0) long bookmarkId, String title, @Nullable String secondaryTitle,
-  //                @Nullable String subtitle, @Nullable String address, @Nullable RoutePointInfo routePointInfo,
-  //                @OpeningMode int openingMode, @NonNull Popularity popularity, @NonNull String description,
-  //                @Nullable String[] rawTypes)
   static jmethodID const ctorId =
-          jni::GetConstructorID(env, g_bookmarkClazz,
-                                "(Lapp/organicmaps/sdk/bookmarks/data/FeatureId;JJLjava/lang/String;"
-                                "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;"
-                                "Lapp/organicmaps/sdk/routing/RoutePointInfo;"
-                                "ILapp/organicmaps/sdk/search/Popularity;Ljava/lang/String;"
-                                "[Ljava/lang/String;)V");
-  static jmethodID const featureCtorId =
-          jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
+      jni::GetConstructorID(env, g_trackClazz,
+                            "(Lapp/organicmaps/sdk/bookmarks/data/FeatureId;JJLjava/lang/String;"
+                            "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;"
+                            "Lapp/organicmaps/sdk/routing/RoutePointInfo;"
+                            "ILapp/organicmaps/sdk/search/Popularity;Ljava/lang/String;"
+                            "[Ljava/lang/String;ILapp/organicmaps/sdk/util/Distance;DD)V");
+  static jmethodID const featureCtorId = jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
+
+  auto const trackId = info.GetTrackId();
+  auto const track = frm()->GetBookmarkManager().GetTrack(trackId);
+  jint androidColor = track->GetColor(0).GetARGB();
+  auto const categoryId = track->GetGroupId();
+  ms::LatLon const ll = info.GetLatLon();
+  jni::TScopedLocalRef jMwmName(env, jni::ToJavaString(env, info.GetID().GetMwmName()));
+  jni::TScopedLocalRef jFeatureId(env, env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(),
+                                                      (jlong)info.GetID().GetMwmVersion(), (jint)info.GetID().m_index));
+  jni::TScopedLocalRef jTitle(env, jni::ToJavaString(env, info.GetTitle()));
+  jni::TScopedLocalRef jSecondaryTitle(env, jni::ToJavaString(env, info.GetSecondaryTitle()));
+  jni::TScopedLocalRef jSubtitle(env, jni::ToJavaString(env, info.GetSubtitle()));
+  jni::TScopedLocalRef jAddress(env, jni::ToJavaString(env, info.GetSecondarySubtitle()));
+  jni::TScopedLocalRef jWikiDescription(env, jni::ToJavaString(env, info.GetWikiDescription()));
+  jobject mapObject =
+      env->NewObject(g_trackClazz, ctorId, jFeatureId.get(), static_cast<jlong>(categoryId),
+                     static_cast<jlong>(trackId), jTitle.get(), jSecondaryTitle.get(), jSubtitle.get(), jAddress.get(),
+                     routingPointInfo.get(), info.GetOpeningMode(), popularity, jWikiDescription.get(), jrawTypes.get(),
+                     androidColor, ToJavaDistance(env, platform::Distance::CreateFormatted(track->GetLengthMeters())),
+                     static_cast<jdouble>(ll.m_lat), static_cast<jdouble>(ll.m_lon));
+
+  if (info.HasMetadata())
+    InjectMetadata(env, g_mapObjectClazz, mapObject, info);
+  return mapObject;
+}
+
+jobject CreateBookmark(JNIEnv * env, place_page::Info const & info, jni::TScopedLocalObjectArrayRef const & jrawTypes,
+                       jni::TScopedLocalRef const & routingPointInfo, jobject const & popularity)
+{
+  // public Bookmark(@NonNull FeatureId featureId, @IntRange(from = 0) long categoryId,
+  //                 @IntRange(from = 0) long bookmarkId, String title, @Nullable String secondaryTitle,
+  //                 @Nullable String subtitle, @Nullable String address, @Nullable RoutePointInfo routePointInfo,
+  //                 @OpeningMode int openingMode, @NonNull Popularity popularity, @NonNull String description,
+  //                 @Nullable String[] rawTypes)
+  static jmethodID const ctorId =
+      jni::GetConstructorID(env, g_bookmarkClazz,
+                            "(Lapp/organicmaps/sdk/bookmarks/data/FeatureId;JJLjava/lang/String;"
+                            "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;"
+                            "Lapp/organicmaps/sdk/routing/RoutePointInfo;"
+                            "ILapp/organicmaps/sdk/search/Popularity;Ljava/lang/String;"
+                            "[Ljava/lang/String;)V");
+  static jmethodID const featureCtorId = jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
 
   auto const bookmarkId = info.GetBookmarkId();
   auto const categoryId = info.GetBookmarkCategoryId();
   jni::TScopedLocalRef jMwmName(env, jni::ToJavaString(env, info.GetID().GetMwmName()));
-  jni::TScopedLocalRef jFeatureId(
-          env, env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(),
-                              (jlong)info.GetID().GetMwmVersion(), (jint)info.GetID().m_index));
+  jni::TScopedLocalRef jFeatureId(env, env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(),
+                                                      (jlong)info.GetID().GetMwmVersion(), (jint)info.GetID().m_index));
   jni::TScopedLocalRef jTitle(env, jni::ToJavaString(env, info.GetTitle()));
   jni::TScopedLocalRef jSecondaryTitle(env, jni::ToJavaString(env, info.GetSecondaryTitle()));
   jni::TScopedLocalRef jSubtitle(env, jni::ToJavaStringWithSupplementalCharsFix(env, info.GetSubtitle()));
   jni::TScopedLocalRef jAddress(env, jni::ToJavaString(env, info.GetSecondarySubtitle()));
   jni::TScopedLocalRef jWikiDescription(env, jni::ToJavaString(env, info.GetWikiDescription()));
-  jobject mapObject = env->NewObject(
-          g_bookmarkClazz, ctorId, jFeatureId.get(), static_cast<jlong>(categoryId),
-          static_cast<jlong>(bookmarkId), jTitle.get(), jSecondaryTitle.get(), jSubtitle.get(),
-          jAddress.get(), routingPointInfo.get(), info.GetOpeningMode(), popularity,
-          jWikiDescription.get(), jrawTypes.get());
+  jobject mapObject = env->NewObject(g_bookmarkClazz, ctorId, jFeatureId.get(), static_cast<jlong>(categoryId),
+                                     static_cast<jlong>(bookmarkId), jTitle.get(), jSecondaryTitle.get(),
+                                     jSubtitle.get(), jAddress.get(), routingPointInfo.get(), info.GetOpeningMode(),
+                                     popularity, jWikiDescription.get(), jrawTypes.get());
 
   if (info.HasMetadata())
     InjectMetadata(env, g_mapObjectClazz, mapObject, info);
@@ -138,11 +167,11 @@ jobject CreateElevationPoint(JNIEnv * env, ElevationInfo::Point const & point)
 {
   static jclass const pointClass =
       jni::GetGlobalClassRef(env, "app/organicmaps/sdk/bookmarks/data/ElevationInfo$Point");
-  // public Point(double distance, int altitude)
-  static jmethodID const pointCtorId =
-      jni::GetConstructorID(env, pointClass, "(DI)V");
-  return env->NewObject(pointClass, pointCtorId, static_cast<jdouble >(point.m_distance),
-                        static_cast<jint>(point.m_point.GetAltitude()));
+  // public Point(double distance, int altitude, double latitude, double longitude)
+  static jmethodID const pointCtorId = jni::GetConstructorID(env, pointClass, "(DIDD)V");
+  return env->NewObject(
+      pointClass, pointCtorId, static_cast<jdouble>(point.m_distance), static_cast<jint>(point.m_point.GetAltitude()),
+      static_cast<jdouble>(point.m_point.GetPoint().x), static_cast<jdouble>(point.m_point.GetPoint().y));
 }
 
 jobjectArray ToElevationPointArray(JNIEnv * env, ElevationInfo::Points const & points)
@@ -150,31 +179,18 @@ jobjectArray ToElevationPointArray(JNIEnv * env, ElevationInfo::Points const & p
   CHECK(!points.empty(), ("Elevation points must be non empty!"));
   static jclass const pointClass =
       jni::GetGlobalClassRef(env, "app/organicmaps/sdk/bookmarks/data/ElevationInfo$Point");
-  return jni::ToJavaArray(env, pointClass, points,
-                         [](JNIEnv * env, ElevationInfo::Point const & item)
-                         {
-                           return CreateElevationPoint(env, item);
-                         });
+  return jni::ToJavaArray(env, pointClass, points, [](JNIEnv * env, ElevationInfo::Point const & item)
+  { return CreateElevationPoint(env, item); });
 }
 
 jobject CreateElevationInfo(JNIEnv * env, ElevationInfo const & info)
 {
-  // public ElevationInfo(long trackId, @NonNull String name, @NonNull Point[] points,
-  //                      int ascent, int descent, int minAltitude, int maxAltitude, int difficulty,
-  //                      long m_duration)
+  // public ElevationInfo(@NonNull Point[] points, int difficulty);
   static jmethodID const ctorId =
-      jni::GetConstructorID(env, g_elevationInfoClazz, "(JLjava/lang/String;Ljava/lang/String;"
-                                                       "[Lapp/organicmaps/sdk/bookmarks/data/ElevationInfo$Point;"
-                                                       "IIIIIJ)V");
+      jni::GetConstructorID(env, g_elevationInfoClazz, "([Lapp/organicmaps/sdk/bookmarks/data/ElevationInfo$Point;I)V");
+
   jni::TScopedLocalObjectArrayRef jPoints(env, ToElevationPointArray(env, info.GetPoints()));
-  // TODO (KK): elevation info should have only the elevation data - see the https://github.com/organicmaps/organicmaps/pull/10063
-  return env->NewObject(g_elevationInfoClazz, ctorId,
-                        jPoints.get(),
-//                        static_cast<jint>(info.GetAscent()),
-//                        static_cast<jint>(info.GetDescent()),
-//                        static_cast<jint>(info.GetMinAltitude()),
-//                        static_cast<jint>(info.GetMaxAltitude()),
-                        static_cast<jint>(info.GetDifficulty()));
+  return env->NewObject(g_elevationInfoClazz, ctorId, jPoints.get(), static_cast<jint>(info.GetDifficulty()));
 }
 
 jobject CreateMapObject(JNIEnv * env, place_page::Info const & info)
@@ -185,46 +201,42 @@ jobject CreateMapObject(JNIEnv * env, place_page::Info const & info)
   if (info.IsRoutePoint())
     routingPointInfo.reset(CreateRoutePointInfo(env, info));
 
-  //jni::TScopedLocalRef popularity(env, CreatePopularity(env, info));
+  // jni::TScopedLocalRef popularity(env, CreatePopularity(env, info));
   jobject popularity = nullptr;
 
   if (info.IsBookmark())
-  {
     return CreateBookmark(env, info, jrawTypes, routingPointInfo, popularity);
-  }
 
   ms::LatLon const ll = info.GetLatLon();
   // TODO(yunikkk): object can be POI + API + search result + bookmark simultaneously.
   // TODO(yunikkk): Should we pass localized strings here and in other methods as byte arrays?
   if (info.IsMyPosition())
   {
-    return CreateMapObject(env, info, kMyPosition, ll.m_lat, ll.m_lon,
-                           false /* parseMeta */, false /* parseApi */,
+    return CreateMapObject(env, info, kMyPosition, ll.m_lat, ll.m_lon, false /* parseMeta */, false /* parseApi */,
                            routingPointInfo.get(), popularity, jrawTypes.get());
   }
 
   if (info.HasApiUrl())
   {
-    return CreateMapObject(env, info, kApiPoint, ll.m_lat, ll.m_lon,
-                           true /* parseMeta */, true /* parseApi */,
+    return CreateMapObject(env, info, kApiPoint, ll.m_lat, ll.m_lon, true /* parseMeta */, true /* parseApi */,
                            routingPointInfo.get(), popularity, jrawTypes.get());
   }
 
-  return CreateMapObject(env, info, kPoi, ll.m_lat, ll.m_lon,
-                         true /* parseMeta */, false /* parseApi */,
+  if (info.IsTrack())
+    return CreateTrack(env, info, jrawTypes, routingPointInfo, popularity);
+
+  return CreateMapObject(env, info, kPoi, ll.m_lat, ll.m_lon, true /* parseMeta */, false /* parseApi */,
                          routingPointInfo.get(), popularity, jrawTypes.get());
 }
 
 jobject CreateFeatureId(JNIEnv * env, FeatureID const & fid)
 {
-  static jmethodID const featureCtorId =
-    jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
+  static jmethodID const featureCtorId = jni::GetConstructorID(env, g_featureIdClazz, "(Ljava/lang/String;JI)V");
 
   auto const & info = fid.m_mwmId.GetInfo();
   jni::TScopedLocalRef jMwmName(env, jni::ToJavaString(env, info ? info->GetCountryName() : ""));
   return env->NewObject(g_featureIdClazz, featureCtorId, jMwmName.get(),
-                        info ? static_cast<jlong>(info->GetVersion()) : 0,
-                        static_cast<jint>(fid.m_index));
+                        info ? static_cast<jlong>(info->GetVersion()) : 0, static_cast<jint>(fid.m_index));
 }
 
 jobjectArray ToFeatureIdArray(JNIEnv * env, std::vector<FeatureID> const & ids)
@@ -233,8 +245,6 @@ jobjectArray ToFeatureIdArray(JNIEnv * env, std::vector<FeatureID> const & ids)
     return nullptr;
 
   return jni::ToJavaArray(env, g_featureIdClazz, ids,
-                          [](JNIEnv * env, FeatureID const & fid) {
-                            return CreateFeatureId(env, fid);
-                          });
+                          [](JNIEnv * env, FeatureID const & fid) { return CreateFeatureId(env, fid); });
 }
 }  // namespace usermark_helper

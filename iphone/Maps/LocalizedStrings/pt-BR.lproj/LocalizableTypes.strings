@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Ponto de água";
 "type.amenity.water_point.drinking_water_no" = "Ponto de água";
 "type.barrier" = "Barreira";
+"type.barrier.yes" = "Barreira";
 "type.barrier.block" = "Bloco";
 "type.barrier.bollard" = "Pilarete";
 "type.barrier.border_control" = "Controle de fronteira";
@@ -701,7 +702,7 @@
 "type.leisure.ice_rink" = "Rinque de patinação";
 "type.leisure.marina" = "Marina";
 "type.leisure.nature_reserve" = "Reserva natural";
-"type.leisure.outdoor_seating" = "Assentos ao ar livre";
+"type.leisure.outdoor_seating" = "Mesas externas";
 "type.leisure.park" = "Parque";
 "type.leisure.park.no.access" = "Parque";
 "type.leisure.park.permissive" = "Parque";
@@ -1481,3 +1482,5 @@
 "type.amenity.bicycle_parking.covered" = "Bicicletário coberto";
 "type.post_office.post_partner" = "Parceiro postal";
 "type.amenity.ranger_station" = "Posto de guardas florestais";
+"type.barrier.wicket_gate" = "Postigo";
+"type.amenity.animal_shelter" = "Abrigo de animais";

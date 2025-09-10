@@ -97,7 +97,7 @@ public class DownloaderService extends Service implements MapManager.StorageCall
   }
 
   @Override
-  public void onProgress(String countryId, long localSize, long remoteSize)
+  public void onProgress(String countryId, long bytesDownloaded, long bytesTotal)
   {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
         && ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PERMISSION_GRANTED)
@@ -106,8 +106,7 @@ public class DownloaderService extends Service implements MapManager.StorageCall
       return;
     }
 
-    // TODO: How to calculate progress?
-    mNotifier.notifyProgress();
+    mNotifier.notifyProgress(countryId, (int) bytesTotal, (int) bytesDownloaded);
   }
 
   @Override

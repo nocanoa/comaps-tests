@@ -33,15 +33,15 @@ import app.organicmaps.sdk.bookmarks.data.BookmarkInfo;
 import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
 import app.organicmaps.sdk.bookmarks.data.BookmarkSharingResult;
 import app.organicmaps.sdk.bookmarks.data.CategoryDataSource;
-import app.organicmaps.sdk.bookmarks.data.Icon;
 import app.organicmaps.sdk.bookmarks.data.KmlFileType;
+import app.organicmaps.sdk.bookmarks.data.PredefinedColors;
 import app.organicmaps.sdk.bookmarks.data.SortedBlock;
 import app.organicmaps.sdk.bookmarks.data.Track;
 import app.organicmaps.sdk.search.BookmarkSearchListener;
 import app.organicmaps.sdk.search.SearchEngine;
-import app.organicmaps.sdk.util.UiUtils;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.SharingUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils;
 import app.organicmaps.util.bottomsheet.MenuBottomSheetFragment;
@@ -551,12 +551,12 @@ public class BookmarksListFragment extends BaseMwmRecyclerFragment<ConcatAdapter
 
     switch (adapter.getItemViewType(position))
     {
-      case BookmarkListAdapter.TYPE_SECTION, BookmarkListAdapter.TYPE_DESC ->
-      {
-        return;
-      }
-      case BookmarkListAdapter.TYPE_BOOKMARK -> onBookmarkClicked(position, intent, adapter);
-      case BookmarkListAdapter.TYPE_TRACK -> onTrackClicked(position, intent, adapter);
+    case BookmarkListAdapter.TYPE_SECTION, BookmarkListAdapter.TYPE_DESC ->
+    {
+      return;
+    }
+    case BookmarkListAdapter.TYPE_BOOKMARK -> onBookmarkClicked(position, intent, adapter);
+    case BookmarkListAdapter.TYPE_TRACK -> onTrackClicked(position, intent, adapter);
     }
 
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -592,7 +592,7 @@ public class BookmarksListFragment extends BaseMwmRecyclerFragment<ConcatAdapter
     if (mTrack == null)
       return;
     final Bundle args = new Bundle();
-    args.putInt(BookmarkColorDialogFragment.ICON_TYPE, Icon.getColorPosition(mTrack.getColor()));
+    args.putInt(BookmarkColorDialogFragment.ICON_COLOR, PredefinedColors.getPredefinedColorIndex(mTrack.getColor()));
     final FragmentManager manager = getChildFragmentManager();
     String className = BookmarkColorDialogFragment.class.getName();
     final FragmentFactory factory = manager.getFragmentFactory();
@@ -601,7 +601,7 @@ public class BookmarksListFragment extends BaseMwmRecyclerFragment<ConcatAdapter
     dialogFragment.setArguments(args);
     dialogFragment.setOnColorSetListener((colorPos) -> {
       int from = mTrack.getColor();
-      int to = BookmarkManager.ICONS.get(colorPos).argb();
+      int to = PredefinedColors.getColor(colorPos);
       if (from == to)
         return;
       BookmarkManager.INSTANCE.changeTrackColor(mTrack.getTrackId(), to);
@@ -621,22 +621,22 @@ public class BookmarksListFragment extends BaseMwmRecyclerFragment<ConcatAdapter
 
     switch (type)
     {
-      case BookmarkListAdapter.TYPE_SECTION:
-      case BookmarkListAdapter.TYPE_DESC:
-        // Do nothing here?
-        break;
+    case BookmarkListAdapter.TYPE_SECTION:
+    case BookmarkListAdapter.TYPE_DESC:
+      // Do nothing here?
+      break;
 
-      case BookmarkListAdapter.TYPE_BOOKMARK:
-        final BookmarkInfo bookmark = (BookmarkInfo) adapter.getItem(mSelectedPosition);
-        MenuBottomSheetFragment.newInstance(BOOKMARKS_MENU_ID, bookmark.getName())
-            .show(getChildFragmentManager(), BOOKMARKS_MENU_ID);
-        break;
+    case BookmarkListAdapter.TYPE_BOOKMARK:
+      final BookmarkInfo bookmark = (BookmarkInfo) adapter.getItem(mSelectedPosition);
+      MenuBottomSheetFragment.newInstance(BOOKMARKS_MENU_ID, bookmark.getName())
+          .show(getChildFragmentManager(), BOOKMARKS_MENU_ID);
+      break;
 
-      case BookmarkListAdapter.TYPE_TRACK:
-        final Track track = (Track) adapter.getItem(mSelectedPosition);
-        MenuBottomSheetFragment.newInstance(TRACK_MENU_ID, track.getName())
-            .show(getChildFragmentManager(), TRACK_MENU_ID);
-        break;
+    case BookmarkListAdapter.TYPE_TRACK:
+      final Track track = (Track) adapter.getItem(mSelectedPosition);
+      MenuBottomSheetFragment.newInstance(TRACK_MENU_ID, track.getName())
+          .show(getChildFragmentManager(), TRACK_MENU_ID);
+      break;
     }
   }
 
@@ -843,19 +843,19 @@ public class BookmarksListFragment extends BaseMwmRecyclerFragment<ConcatAdapter
   {
     switch (id)
     {
-      case BOOKMARKS_MENU_ID ->
-      {
-        return getBookmarkMenuItems();
-      }
-      case TRACK_MENU_ID ->
-      {
-        final Track track = (Track) getBookmarkListAdapter().getItem(mSelectedPosition);
-        return getTrackMenuItems(track);
-      }
-      case OPTIONS_MENU_ID ->
-      {
-        return getOptionsMenuItems();
-      }
+    case BOOKMARKS_MENU_ID ->
+    {
+      return getBookmarkMenuItems();
+    }
+    case TRACK_MENU_ID ->
+    {
+      final Track track = (Track) getBookmarkListAdapter().getItem(mSelectedPosition);
+      return getTrackMenuItems(track);
+    }
+    case OPTIONS_MENU_ID ->
+    {
+      return getOptionsMenuItems();
+    }
     }
     return null;
   }

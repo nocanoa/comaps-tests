@@ -27,6 +27,7 @@ import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
 import androidx.core.view.ViewCompat;
 import app.organicmaps.base.BaseMwmFragmentActivity;
+import app.organicmaps.downloader.MapManagerHelper;
 import app.organicmaps.intent.Factory;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.downloader.CountryItem;
@@ -35,7 +36,7 @@ import app.organicmaps.sdk.location.LocationListener;
 import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.ConnectionState;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils.PaddingInsetsListener;
 import com.google.android.material.button.MaterialButton;
@@ -116,10 +117,10 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
   private final app.organicmaps.sdk.DownloadResourcesLegacyActivity.Listener mResourcesDownloadListener =
       new app.organicmaps.sdk.DownloadResourcesLegacyActivity.Listener() {
         @Override
-        public void onProgress(final int percent)
+        public void onProgress(final int bytesDownloaded)
         {
           if (!isFinishing())
-            mProgress.setProgressCompat(percent, true);
+            mProgress.setProgressCompat(bytesDownloaded, true);
         }
 
         @Override
@@ -150,14 +151,14 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
 
         switch (item.newStatus)
         {
-          case CountryItem.STATUS_DONE:
-            mAreResourcesDownloaded = true;
-            showMap();
-            return;
+        case CountryItem.STATUS_DONE:
+          mAreResourcesDownloaded = true;
+          showMap();
+          return;
 
-          case CountryItem.STATUS_FAILED:
-            MapManager.showError(DownloadResourcesLegacyActivity.this, item, null);
-            return;
+        case CountryItem.STATUS_FAILED:
+          MapManagerHelper.showError(DownloadResourcesLegacyActivity.this, item, null);
+          return;
         }
       }
     }
@@ -252,7 +253,8 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
       setDownloadMessage(bytes);
 
       mProgress.setMax(bytes);
-      mProgress.setProgressCompat(0, true);
+      // Start progress at 1% according to M3 guidelines
+      mProgress.setProgressCompat(bytes/100, true);
     }
     else
       finishFilesDownload(bytes);
@@ -370,10 +372,11 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
         String fileSizeString = StringUtils.getFileSizeString(this, item.totalSize);
         mTvMessage.setText(getString(R.string.downloading_country_can_proceed, item.name, fileSizeString));
         mProgress.setMax((int) item.totalSize);
-        mProgress.setProgressCompat(0, true);
+        // Start progress at 1% according to M3 guidelines
+        mProgress.setProgressCompat((int) (item.totalSize/100), true);
 
         mCountryDownloadListenerSlot = MapManager.nativeSubscribe(mCountryDownloadListener);
-        MapManager.startDownload(mCurrentCountry);
+        MapManagerHelper.startDownload(mCurrentCountry);
         setAction(PROCEED_TO_MAP);
       }
       else

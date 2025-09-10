@@ -1,15 +1,15 @@
 
 /* Used in home screen quick actions. */
-"search" = "Cerca";
+"search" = "Ricerca";
 
 /* Used in home screen quick actions. */
 "bookmarks_and_tracks" = "Luoghi preferiti e tracce";
 
 /* Used in home screen quick actions. */
-"route" = "Linea";
+"route" = "Percorso";
 
 /* Needed to explain why we always require access to GPS coordinates, and not only when the app is active. */
-"NSLocationAlwaysUsageDescription" = "Il rilevamento della posizione corrente in background è necessario per godere appieno delle funzionalità dell'app. Viene utilizzato per la navigazione e il salvataggio della traccia percorsa di recente.";
+"NSLocationAlwaysUsageDescription" = "Il rilevamento della posizione corrente in background è necessario per godere appieno delle funzionalità dell'app. Viene utilizzata per la navigazione e il salvataggio delle tracce percorse di recente.";
 
 /* Needed to explain why we require access to GPS coordinates when the app is active. */
-"NSLocationWhenInUseUsageDescription" = "La definizione della posizione corrente viene utilizzata nelle opzioni di tracciamento del percorso e salvataggio del percorso effettuato di recente.";
+"NSLocationWhenInUseUsageDescription" = "La posizione corrente viene utilizzata durante la navigazione e per il salvataggio dei percorsi.";

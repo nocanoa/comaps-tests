@@ -494,8 +494,6 @@
 "log_file_size" = "Grössi vo de Protokolldatei: %@";
 "planning_route_remove_title" = "Dahi zieh zum Entferne";
 "start_from_my_position" = "Starte vo";
-"alert_reauth_message_ios" = "Bitte meld dich bi OpenStreetMap aa, zum all dini Chartebearbeitige automatisch ufezlade. Erfahr meh";
-"alert_reauth_link_text_ios" = "da";
 "downloader_hide_screen" = "Bildschirm uusblende";
 "downloader_percent" = "%@ (%@ vo %@)";
 "downloader_process" = "%@ abeglade…";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Charte-Spraach";
 "transliteration_title_disabled_summary" = "Bi de Nutzig vo de lokale Spraach für d Charte uusgschaltet";
 "pref_maplanguage_local" = "Lokali Spraach";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

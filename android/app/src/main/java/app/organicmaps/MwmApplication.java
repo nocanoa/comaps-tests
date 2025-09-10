@@ -14,11 +14,12 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
+import androidx.preference.PreferenceManager;
 import app.organicmaps.background.OsmUploadWork;
 import app.organicmaps.downloader.DownloaderNotifier;
+import app.organicmaps.location.LocationProviderFactoryImpl;
 import app.organicmaps.location.TrackRecordingService;
 import app.organicmaps.routing.NavigationService;
-import app.organicmaps.routing.RoutingController;
 import app.organicmaps.sdk.Map;
 import app.organicmaps.sdk.OrganicMaps;
 import app.organicmaps.sdk.display.DisplayManager;
@@ -28,9 +29,11 @@ import app.organicmaps.sdk.location.SensorHelper;
 import app.organicmaps.sdk.location.TrackRecorder;
 import app.organicmaps.sdk.maplayer.isolines.IsolinesManager;
 import app.organicmaps.sdk.maplayer.subway.SubwayManager;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.ConnectionState;
 import app.organicmaps.sdk.util.log.Logger;
+import app.organicmaps.util.ThemeSwitcher;
 import app.organicmaps.util.Utils;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -39,6 +42,9 @@ public class MwmApplication extends Application implements Application.ActivityL
 {
   @NonNull
   private static final String TAG = MwmApplication.class.getSimpleName();
+
+  @NonNull
+  private final LocationProviderFactoryImpl mLocationProviderFactory = new LocationProviderFactoryImpl();
 
   @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
@@ -99,6 +105,12 @@ public class MwmApplication extends Application implements Application.ActivityL
   }
 
   @NonNull
+  public LocationProviderFactoryImpl getLocationProviderFactory()
+  {
+    return mLocationProviderFactory;
+  }
+
+  @NonNull
   public static MwmApplication from(@NonNull Context context)
   {
     return (MwmApplication) context.getApplicationContext();
@@ -118,7 +130,10 @@ public class MwmApplication extends Application implements Application.ActivityL
 
     sInstance = this;
 
-    mOrganicMaps = new OrganicMaps(getApplicationContext());
+    PreferenceManager.setDefaultValues(this, R.xml.prefs_main, false);
+    mOrganicMaps = new OrganicMaps(getApplicationContext(), BuildConfig.FLAVOR, BuildConfig.APPLICATION_ID,
+                                   BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME,
+                                   BuildConfig.FILE_PROVIDER_AUTHORITY, mLocationProviderFactory);
 
     ConnectionState.INSTANCE.initialize(this);
 
@@ -133,6 +148,8 @@ public class MwmApplication extends Application implements Application.ActivityL
   public boolean initOrganicMaps(@NonNull Runnable onComplete) throws IOException
   {
     return mOrganicMaps.init(() -> {
+      ThemeSwitcher.INSTANCE.initialize(this);
+      ThemeSwitcher.INSTANCE.restart(false);
       ProcessLifecycleOwner.get().getLifecycle().addObserver(mProcessLifecycleObserver);
       onComplete.run();
     });

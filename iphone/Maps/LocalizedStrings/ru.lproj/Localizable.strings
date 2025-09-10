@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Сообщить или исправить неправильные данные на карте";
 
 /* Button in the About screen */
-"volunteer" = "Cтать волонтёром";
+"volunteer" = "Станьте добровольцем и улучшьте CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Свяжитесь с нами";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Сохранено";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Пожалуйста войдите в аккаунт OpenStreetMap.org, чтобы публиковать ваши изменения карты. Подробности по";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "ссылке";
 "core_entrance" = "Вход";
 "error_enter_correct_name" = "Пожалуйста, введите название правильно";
 "bookmark_lists" = "Списки";
@@ -1098,6 +1092,8 @@
 "osm_profile_view_edit_history" = "История правок";
 "osm_profile_view_notes" = "Заметки";
 "pref_mapappearance_title" = "Оформление карты";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
+"transliteration_title_disabled_summary" = "Отключено при постоянном использовании местного языка для карты";
 "pref_maplanguage_title" = "Язык карты";
 "pref_maplanguage_local" = "Местный язык";
+"existence_confirmed_time_ago" = "Существование подтверждено %@";
+"hours_confirmed_time_ago" = "Подтверждено %@";
