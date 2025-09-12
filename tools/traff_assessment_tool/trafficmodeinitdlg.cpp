@@ -1,4 +1,4 @@
-#include "traffxml/traff_assessment_tool/trafficmodeinitdlg.h"
+#include "traff_assessment_tool/trafficmodeinitdlg.h"
 #include "ui_trafficmodeinitdlg.h"
 
 #include "platform/settings.hpp"

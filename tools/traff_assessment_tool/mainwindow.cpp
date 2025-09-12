@@ -1,10 +1,10 @@
-#include "traffxml/traff_assessment_tool/mainwindow.hpp"
+#include "traff_assessment_tool/mainwindow.hpp"
 
-#include "traffxml/traff_assessment_tool/map_widget.hpp"
-#include "traffxml/traff_assessment_tool/points_controller_delegate_base.hpp"
-#include "traffxml/traff_assessment_tool/traffic_drawer_delegate_base.hpp"
-#include "traffxml/traff_assessment_tool/traffic_panel.hpp"
-#include "traffxml/traff_assessment_tool/trafficmodeinitdlg.h"
+#include "traff_assessment_tool/map_widget.hpp"
+#include "traff_assessment_tool/points_controller_delegate_base.hpp"
+#include "traff_assessment_tool/traffic_drawer_delegate_base.hpp"
+#include "traff_assessment_tool/traffic_panel.hpp"
+#include "traff_assessment_tool/trafficmodeinitdlg.h"
 
 #include "map/framework.hpp"
 

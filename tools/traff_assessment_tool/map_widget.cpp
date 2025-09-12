@@ -1,4 +1,4 @@
-#include "traffxml/traff_assessment_tool/map_widget.hpp"
+#include "traff_assessment_tool/map_widget.hpp"
 
 #include "qt/qt_common/helpers.hpp"
 

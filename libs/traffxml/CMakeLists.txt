@@ -19,7 +19,3 @@ target_link_libraries(${PROJECT_NAME}
   pugixml
   coding
 )
-
-if (NOT SKIP_QT_GUI)
-  omim_add_tool_subdirectory(traff_assessment_tool)
-endif()

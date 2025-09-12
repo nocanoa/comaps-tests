@@ -7,5 +7,6 @@ omim_add_tool_subdirectory(topography_generator)
 omim_add_tool_subdirectory(track_generator)
 if (NOT SKIP_QT_GUI)
   omim_add_tool_subdirectory(skin_generator)
+  omim_add_tool_subdirectory(traff_assessment_tool)
 endif()
 

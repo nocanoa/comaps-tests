@@ -1,4 +1,4 @@
-#include "traffxml/traff_assessment_tool/traffic_panel.hpp"
+#include "traff_assessment_tool/traffic_panel.hpp"
 
 #include <QtCore/QAbstractTableModel>
 #include <QtWidgets/QBoxLayout>
