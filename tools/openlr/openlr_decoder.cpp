@@ -436,7 +436,7 @@ bool OpenLRDecoder::SegmentsFilter::Matches(LinearSegment const & segment) const
 // OpenLRDecoder -----------------------------------------------------------------------------
 OpenLRDecoder::OpenLRDecoder(DataSource & dataSource,
                              CountryParentNameGetter const & countryParentNameGetter)
-  : m_dataSources(dataSources)
+  : m_dataSource(dataSource)
   , m_countryParentNameGetter(countryParentNameGetter)
 {}
 
