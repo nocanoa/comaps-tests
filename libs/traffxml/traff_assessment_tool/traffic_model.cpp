@@ -18,6 +18,13 @@
 
 namespace traffxml
 {
+
+constexpr static dp::Color kColorFrom(0x309302ff);
+constexpr static dp::Color kColorAt(0x1a5ec1ff);
+constexpr static dp::Color kColorVia(0xf19721ff);
+constexpr static dp::Color kColorNotVia(0x8c5678ff);
+constexpr static dp::Color kColorTo(0xe42300ff);
+
 namespace
 {
 void RemovePointFromPull(m2::PointD const & toBeRemoved, std::vector<m2::PointD> & pool)
@@ -443,20 +450,24 @@ void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelectio
     return;
 
   m2::RectD rect;
-  std::vector<m2::PointD> points;
 
-  for (auto & coords : {
-       message->m_location.value().m_from,
-       message->m_location.value().m_at,
-       message->m_location.value().m_via,
-       message->m_location.value().m_notVia,
-       message->m_location.value().m_to
+  auto editSession = m_framework.GetBookmarkManager().GetEditSession();
+  editSession.ClearGroup(UserMark::Type::COLORED);
+  editSession.SetIsVisible(UserMark::Type::COLORED, true);
+
+  for (auto & [coords, color] : {
+       std::pair{message->m_location.value().m_from, kColorFrom},
+       std::pair{message->m_location.value().m_at, kColorAt},
+       std::pair{message->m_location.value().m_via, kColorVia},
+       std::pair{message->m_location.value().m_notVia, kColorNotVia},
+       std::pair{message->m_location.value().m_to, kColorTo}
        })
     if (coords)
     {
       auto point = mercator::FromLatLon(coords.value().m_coordinates);
       rect.Add(point);
-      points.push_back(point);
+      auto mark = editSession.CreateUserMark<ColoredMarkPoint>(point);
+      mark->SetColor(color);
     }
 
   if (rect.IsValid())
@@ -464,12 +475,6 @@ void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelectio
     rect.Scale(1.5);
     m_framework.ShowRect(rect, 15 /* maxScale */, true /* animation */, true /* useVisibleViewport */);
   }
-
-  auto editSession = m_framework.GetBookmarkManager().GetEditSession();
-  editSession.ClearGroup(UserMark::Type::DEBUG_MARK);
-  editSession.SetIsVisible(UserMark::Type::DEBUG_MARK, true);
-  for (auto const & p : points)
-    editSession.CreateUserMark<DebugMarkPoint>(p);
 }
 
 Qt::ItemFlags TrafficModel::flags(QModelIndex const & index) const
