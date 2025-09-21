@@ -375,6 +375,9 @@ amenity-charging_station-motorcar                   # icon z14- (also has captio
 amenity-fuel                                        # icon z14- (also has caption(optional) z14-, area z15-)
 === 4270
 
+amenity-charging_station-motorcar-small             # icon z16- (also has caption(optional) z16-, area z15-)
+=== 4260
+
 highway-services                                    # icon z14- (also has caption(optional) z14-, area z13-)
 === 4250
 
@@ -748,7 +751,7 @@ piste:type-sled                                     # pathtext z15- (also has li
 piste:type-snow_park                                # caption z15- (also has area z13-)
 === 2770
 
-amenity-townhall                                    # icon z16- (also has caption(optional) z16-)
+amenity-townhall                                    # icon z15- (also has caption(optional) z15-)
 leisure-resort                                      # icon z16- (also has caption(optional) z16-, area z13-)
 tourism-hotel                                       # icon z16- (also has caption(optional) z16-)
 === 2750
@@ -896,7 +899,7 @@ landuse-military-danger_area                        # icon z16- (also has captio
 
 amenity-sanitary_dump_station                       # icon z15- (also has caption(optional) z15-)
 leisure-golf_course                                 # icon z15- (also has caption(optional) z17-, area z12-)
-leisure-miniature_golf                              # icon z17- (also has caption(optional) z17-, area z14-)
+leisure-miniature_golf                              # icon z16- (also has caption(optional) z17-, area z14-)
 natural-wetland                                     # caption z16- (also has area z11-)
 natural-wetland-bog                                 # caption z16- (also has area z11-)
 natural-wetland-fen                                 # caption z16- (also has area z11-)
@@ -917,6 +920,43 @@ railway-level_crossing                              # icon z17-
 railway-platform                                    # caption z16- (also has area z16-)
 === 1650
 
+leisure-sports_centre-sport-swimming                # icon z15- (also has caption(optional) z15-, area z13-)
+=== 1620
+
+leisure-fitness_centre-sport-yoga                   # icon z16- (also has caption(optional) z17-, area z16-)
+leisure-sports_centre-sport-american_football       # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-archery                 # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-athletics               # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-australian_football     # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-badminton               # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-baseball                # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-basketball              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-beachvolleyball         # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-bowls                   # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-climbing                # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-cricket                 # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-curling                 # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-equestrian              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-field_hockey            # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-futsal                  # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-golf                    # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-gymnastics              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-handball                # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-ice_hockey              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-multi                   # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-padel                   # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-pelota                  # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-scuba_diving            # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-shooting                # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-skateboard              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-skiing                  # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-soccer                  # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-table_tennis            # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-tennis                  # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-volleyball              # icon z16- (also has caption(optional) z16-, area z13-)
+leisure-sports_centre-sport-yoga                    # icon z16- (also has caption(optional) z16-, area z13-)
+=== 1610
+
 amenity-animal_shelter                              # icon z17- (also has caption(optional) z17-)
 amenity-car_wash                                    # icon z17- (also has caption(optional) z17-, area z15-)
 amenity-childcare                                   # icon z17- (also has caption(optional) z17-, area z13-)
@@ -925,7 +965,7 @@ amenity-driving_school                              # icon z17- (also has captio
 amenity-language_school                             # icon z17- (also has caption(optional) z17-)
 amenity-money_transfer                              # icon z17- (also has caption(optional) z18-)
 amenity-music_school                                # icon z17- (also has caption(optional) z17-)
-amenity-recycling-centre                            # icon z17- (also has caption(optional) z18-, area z15-)
+amenity-recycling-centre                            # icon z16- (also has caption(optional) z16-, area z15-)
 amenity-veterinary                                  # icon z16- (also has caption(optional) z16-)
 craft-electrician                                   # icon z17- (also has caption(optional) z18-)
 craft-electronics_repair                            # icon z17- (also has caption(optional) z18-)
@@ -939,7 +979,7 @@ healthcare-optometrist                              # icon z17- (also has captio
 healthcare-physiotherapist                          # icon z17- (also has caption(optional) z17-)
 healthcare-sample_collection                        # icon z17- (also has caption(optional) z17-)
 leisure-escape_game                                 # icon z17- (also has caption(optional) z17-)
-leisure-fitness_centre                              # icon z17- (also has caption(optional) z17-)
+leisure-fitness_centre                              # icon z16- (also has caption(optional) z17-)
 leisure-hackerspace                                 # icon z17- (also has caption(optional) z17-)
 leisure-sauna                                       # icon z17- (also has caption(optional) z17-)
 office-estate_agent                                 # icon z18- (also has caption(optional) z18-)
@@ -1000,7 +1040,7 @@ shop-video_games                                    # icon z16- (also has captio
 
 aeroway-gate                                        # icon z17- (also has caption(optional) z17-)
 amenity-kindergarten                                # icon z17- (also has caption(optional) z17-, area z13-)
-amenity-school                                      # icon z17- (also has caption(optional) z17-, area z13-)
+amenity-school                                      # icon z16- (also has caption(optional) z16-, area z13-)
 amenity-studio                                      # icon z16- (also has caption(optional) z16-)
 historic-archaeological_site                        # icon z17- (also has caption(optional) z17-)
 historic-boundary_stone                             # icon z16- (also has caption(optional) z16-)
@@ -1067,12 +1107,12 @@ sport-soccer                                        # icon z17- (also has captio
 === 1300
 
 amenity-atm                                         # icon z18- (also has caption(optional) z18-)
-amenity-dojo                                        # icon z17- (also has caption(optional) z18-)
+amenity-dojo                                        # icon z16- (also has caption(optional) z18-)
 isoline-step_50                                     # pathtext z15- (also has line z13-)
 landuse-recreation_ground                           # caption z15- (also has area z12-)
-leisure-dance                                       # icon z17- (also has caption(optional) z17-)
+leisure-dance                                       # icon z16- (also has caption(optional) z17-)
 leisure-recreation_ground                           # caption z17-
-leisure-sports_centre                               # icon z17- (also has caption(optional) z17-, area z13-)
+leisure-sports_centre                               # icon z16- (also has caption(optional) z16-, area z13-)
 leisure-sports_hall                                 # icon z17- (also has caption(optional) z17-)
 === 1250
 
@@ -1161,7 +1201,7 @@ leisure-amusement_arcade                            # icon z17- (also has captio
 office-company                                      # icon z18- (also has caption(optional) z18-)
 office-ngo                                          # icon z18- (also has caption(optional) z18-)
 office-telecommunication                            # icon z18- (also has caption(optional) z18-)
-shop-agrarian                                       # icon z18- (also has caption(optional) z18-)
+shop-agrarian                                       # icon z16- (also has caption(optional) z16-)
 shop-auction                                        # icon z18- (also has caption(optional) z18-)
 shop-bookmaker                                      # icon z18- (also has caption(optional) z18-)
 shop-carpet                                         # icon z18- (also has caption(optional) z18-)
@@ -1171,7 +1211,7 @@ shop-curtain                                        # icon z18- (also has captio
 shop-fabric                                         # icon z18- (also has caption(optional) z18-)
 shop-fishing                                        # icon z18- (also has caption(optional) z18-)
 shop-funeral_directors                              # icon z18- (also has caption(optional) z18-)
-shop-gas                                            # icon z18- (also has caption(optional) z18-)
+shop-gas                                            # icon z16- (also has caption(optional) z16-)
 shop-hearing_aids                                   # icon z18- (also has caption(optional) z18-)
 shop-herbalist                                      # icon z18- (also has caption(optional) z18-)
 shop-hifi                                           # icon z18- (also has caption(optional) z18-)
@@ -1180,7 +1220,7 @@ shop-medical_supply                                 # icon z18- (also has captio
 shop-outpost                                        # icon z18- (also has caption(optional) z18-)
 shop-pet_grooming                                   # icon z18- (also has caption(optional) z18-)
 shop-storage_rental                                 # icon z18- (also has caption(optional) z18-)
-shop-trade                                          # icon z18- (also has caption(optional) z18-)
+shop-trade                                          # icon z16- (also has caption(optional) z16-)
 shop-watches                                        # icon z18- (also has caption(optional) z18-)
 shop-wholesale                                      # icon z18- (also has caption(optional) z18-)
 === 500
@@ -1546,6 +1586,9 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # amenity-fuel                                      # caption(optional) z14- (also has icon z14-, area z15-)
 # === -5730
 
+# amenity-charging_station-motorcar-small           # caption(optional) z16- (also has icon z16-, area z15-)
+# === -5740
+
 # highway-services                                  # caption(optional) z14- (also has icon z14-, area z13-)
 # === -5750
 
@@ -1744,7 +1787,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # natural-rock                                      # caption(optional) z17- (also has icon z14-)
 # === -7150
 
-# amenity-townhall                                  # caption(optional) z16- (also has icon z16-)
+# amenity-townhall                                  # caption(optional) z15- (also has icon z15-)
 # leisure-resort                                    # caption(optional) z16- (also has icon z16-, area z13-)
 # tourism-hotel                                     # caption(optional) z16- (also has icon z16-)
 # === -7250
@@ -1883,9 +1926,46 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 
 # amenity-sanitary_dump_station                     # caption(optional) z15- (also has icon z15-)
 # leisure-golf_course                               # caption(optional) z17- (also has icon z15-, area z12-)
-# leisure-miniature_golf                            # caption(optional) z17- (also has icon z17-, area z14-)
+# leisure-miniature_golf                            # caption(optional) z17- (also has icon z16-, area z14-)
 # tourism-picnic_site                               # caption(optional) z14- (also has icon z14-)
 # === -8200
+
+# leisure-sports_centre-sport-swimming              # caption(optional) z15- (also has icon z15-, area z13-)
+# === -8380
+
+# leisure-fitness_centre-sport-yoga                 # caption(optional) z17- (also has icon z16-, area z16-)
+# leisure-sports_centre-sport-american_football     # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-archery               # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-athletics             # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-australian_football   # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-badminton             # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-baseball              # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-basketball            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-beachvolleyball       # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-bowls                 # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-climbing              # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-cricket               # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-curling               # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-equestrian            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-field_hockey          # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-futsal                # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-golf                  # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-gymnastics            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-handball              # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-ice_hockey            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-multi                 # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-padel                 # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-pelota                # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-scuba_diving          # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-shooting              # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-skateboard            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-skiing                # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-soccer                # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-table_tennis          # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-tennis                # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-volleyball            # caption(optional) z16- (also has icon z16-, area z13-)
+# leisure-sports_centre-sport-yoga                  # caption(optional) z16- (also has icon z16-, area z13-)
+# === -8390
 
 # amenity-animal_shelter                            # caption(optional) z17- (also has icon z17-)
 # amenity-car_wash                                  # caption(optional) z17- (also has icon z17-, area z15-)
@@ -1895,7 +1975,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # amenity-language_school                           # caption(optional) z17- (also has icon z17-)
 # amenity-money_transfer                            # caption(optional) z18- (also has icon z17-)
 # amenity-music_school                              # caption(optional) z17- (also has icon z17-)
-# amenity-recycling-centre                          # caption(optional) z18- (also has icon z17-, area z15-)
+# amenity-recycling-centre                          # caption(optional) z16- (also has icon z16-, area z15-)
 # amenity-veterinary                                # caption(optional) z16- (also has icon z16-)
 # craft-electrician                                 # caption(optional) z18- (also has icon z17-)
 # craft-electronics_repair                          # caption(optional) z18- (also has icon z17-)
@@ -1909,7 +1989,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # healthcare-physiotherapist                        # caption(optional) z17- (also has icon z17-)
 # healthcare-sample_collection                      # caption(optional) z17- (also has icon z17-)
 # leisure-escape_game                               # caption(optional) z17- (also has icon z17-)
-# leisure-fitness_centre                            # caption(optional) z17- (also has icon z17-)
+# leisure-fitness_centre                            # caption(optional) z17- (also has icon z16-)
 # leisure-hackerspace                               # caption(optional) z17- (also has icon z17-)
 # leisure-sauna                                     # caption(optional) z17- (also has icon z17-)
 # office-estate_agent                               # caption(optional) z18- (also has icon z18-)
@@ -1970,7 +2050,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 
 # aeroway-gate                                      # caption(optional) z17- (also has icon z17-)
 # amenity-kindergarten                              # caption(optional) z17- (also has icon z17-, area z13-)
-# amenity-school                                    # caption(optional) z17- (also has icon z17-, area z13-)
+# amenity-school                                    # caption(optional) z16- (also has icon z16-, area z13-)
 # amenity-studio                                    # caption(optional) z16- (also has icon z16-)
 # historic-archaeological_site                      # caption(optional) z17- (also has icon z17-)
 # historic-boundary_stone                           # caption(optional) z16- (also has icon z16-)
@@ -2036,9 +2116,9 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # === -8700
 
 # amenity-atm                                       # caption(optional) z18- (also has icon z18-)
-# amenity-dojo                                      # caption(optional) z18- (also has icon z17-)
-# leisure-dance                                     # caption(optional) z17- (also has icon z17-)
-# leisure-sports_centre                             # caption(optional) z17- (also has icon z17-, area z13-)
+# amenity-dojo                                      # caption(optional) z18- (also has icon z16-)
+# leisure-dance                                     # caption(optional) z17- (also has icon z16-)
+# leisure-sports_centre                             # caption(optional) z16- (also has icon z16-, area z13-)
 # leisure-sports_hall                               # caption(optional) z17- (also has icon z17-)
 # === -8750
 
@@ -2109,7 +2189,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # office-company                                    # caption(optional) z18- (also has icon z18-)
 # office-ngo                                        # caption(optional) z18- (also has icon z18-)
 # office-telecommunication                          # caption(optional) z18- (also has icon z18-)
-# shop-agrarian                                     # caption(optional) z18- (also has icon z18-)
+# shop-agrarian                                     # caption(optional) z16- (also has icon z16-)
 # shop-auction                                      # caption(optional) z18- (also has icon z18-)
 # shop-bookmaker                                    # caption(optional) z18- (also has icon z18-)
 # shop-carpet                                       # caption(optional) z18- (also has icon z18-)
@@ -2119,7 +2199,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # shop-fabric                                       # caption(optional) z18- (also has icon z18-)
 # shop-fishing                                      # caption(optional) z18- (also has icon z18-)
 # shop-funeral_directors                            # caption(optional) z18- (also has icon z18-)
-# shop-gas                                          # caption(optional) z18- (also has icon z18-)
+# shop-gas                                          # caption(optional) z16- (also has icon z16-)
 # shop-hearing_aids                                 # caption(optional) z18- (also has icon z18-)
 # shop-herbalist                                    # caption(optional) z18- (also has icon z18-)
 # shop-hifi                                         # caption(optional) z18- (also has icon z18-)
@@ -2128,7 +2208,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # shop-outpost                                      # caption(optional) z18- (also has icon z18-)
 # shop-pet_grooming                                 # caption(optional) z18- (also has icon z18-)
 # shop-storage_rental                               # caption(optional) z18- (also has icon z18-)
-# shop-trade                                        # caption(optional) z18- (also has icon z18-)
+# shop-trade                                        # caption(optional) z16- (also has icon z16-)
 # shop-watches                                      # caption(optional) z18- (also has icon z18-)
 # shop-wholesale                                    # caption(optional) z18- (also has icon z18-)
 # === -9500

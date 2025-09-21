@@ -431,16 +431,17 @@ node|z18-[historic=stone],
 
 node|z12-14[historic=fort],
 node|z12-14[historic=castle],
-{icon-image: remains-s.svg;text-offset: 1;icon-min-distance: 12;}
+{icon-image: castle-s.svg;text-offset: 1;icon-min-distance: 12;}
 node|z15[historic=fort],
 node|z15[historic=castle],
-{icon-image: remains-m.svg;icon-min-distance: 5;}
+{icon-image: castle-m.svg;icon-min-distance: 5;}
 node|z16[historic=fort],
 node|z16[historic=castle],
-{icon-image: remains-m.svg;text-offset: 1;}
-node|z17-[historic=ruins][name],
+{icon-image: castle-m.svg;text-offset: 1;}
 node|z17-[historic=fort],
 node|z17-[historic=castle],
+{icon-image: castle-m.svg;}
+node|z17-[historic=ruins][name],
 {icon-image: remains-m.svg;}
 
 node|z17-[historic=archaeological_site],
@@ -761,7 +762,7 @@ node|z16-[barrier=turnstile],
 node|z17-[barrier=wicket_gate],
 node|z16-[barrier=cycle_barrier],
 node|z16-[amenity=nightclub],
-node|z16-[amenity=townhall],
+node|z15-[amenity=townhall],
 node|z16-[amenity=bank],
 node|z16-[amenity=taxi],
 node|z16-[leisure=dog_park],
@@ -795,7 +796,7 @@ node|z17-[amenity=social_facility],
 node|z17-[amenity=animal_shelter],
 node|z17-[amenity=kindergarten],
 node|z17-[amenity=childcare],
-node|z17-[amenity=school],
+node|z16-[amenity=school],
 node|z17-[amenity=driving_school],
 node|z17-[amenity=language_school],
 node|z17-[amenity=music_school],
@@ -821,6 +822,39 @@ node|z17-[amenity=parcel_locker],
 node|z17-[amenity=public_bath],
 node|z17-[aeroway=gate],
 node|z17-[sport],
+node|z16-[leisure=sports_centre],
+node|z16-[leisure=sports_centre][sport=american_football],
+node|z16-[leisure=sports_centre][sport=basketball],
+node|z16-[leisure=sports_centre][sport=baseball],
+node|z16-[leisure=sports_centre][sport=equestrian],
+node|z16-[leisure=sports_centre][sport=soccer],
+node|z16-[leisure=sports_centre][sport=futsal],
+node|z16-[leisure=sports_centre][sport=tennis],
+node|z16-[leisure=sports_centre][sport=skiing],
+node|z16-[leisure=sports_centre][sport=archery],
+node|z16-[leisure=sports_centre][sport=shooting],
+node|z16-[leisure=sports_centre][sport=australian_football],
+node|z16-[leisure=sports_centre][sport=cricket],
+node|z16-[leisure=sports_centre][sport=curling],
+node|z16-[leisure=sports_centre][sport=scuba_diving],
+node|z16-[leisure=sports_centre][sport=climbing],
+node|z16-[leisure=sports_centre][sport=golf],
+node|z16-[leisure=sports_centre][sport=skateboard],
+node|z16-[leisure=sports_centre][sport=table_tennis],
+node|z16-[leisure=sports_centre][sport=volleyball],
+node|z16-[leisure=sports_centre][sport=beachvolleyball],
+node|z16-[leisure=sports_centre][sport=yoga],
+node|z16-[leisure=sports_centre][sport=padel],
+node|z16-[leisure=sports_centre][sport=handball],
+node|z16-[leisure=sports_centre][sport=ice_hockey],
+node|z16-[leisure=sports_centre][sport=field_hockey],
+node|z16-[leisure=sports_centre][sport=badminton],
+node|z16-[leisure=sports_centre][sport=pelota],
+node|z16-[leisure=sports_centre][sport=multi],
+node|z16-[leisure=sports_centre][sport=athletics],
+node|z16-[leisure=sports_centre][sport=gymnastics],
+node|z16-[leisure=sports_centre][sport=bowls],
+node|z15-[leisure=sports_centre][sport=swimming],
 node|z17-[highway=ladder],
 node|z18-[amenity=dojo],
 node|z18-[amenity=vending_machine],
@@ -835,6 +869,7 @@ node|z18-[amenity=bureau_de_change],
 node|z18-[amenity=money_transfer],
 node|z18-[amenity=waste_disposal],
 node|z18-[amenity=recycling],
+node|z16-[amenity=recycling][recycling_type=centre],
 node|z18-[amenity=waste_transfer_station],
 node|z18-[amenity=hunting_stand],
 node|z18-[building=guardhouse],
@@ -973,7 +1008,7 @@ node|z17-[amenity=childcare],
 {icon-image: kindergarten-m.svg;}
 node|z18-[amenity=childcare],
 {font-size: 11;}
-node|z17-[amenity=school],
+node|z16-[amenity=school],
 {icon-image: school-m.svg;}
 node|z18-[amenity=school],
 {font-size: 11;}
@@ -1000,13 +1035,14 @@ node|z17-[leisure=pitch],
 node|z17-[leisure=ice_rink]
 {icon-image: pitch-m.svg;icon-min-distance: 10;}
 node|z17-[leisure=fitness_station]
-{icon-image: fitness_station-m.svg;icon-min-distance: 10;}
-node|z17-[leisure=sports_centre]
+{icon-image: fitness-m.svg;icon-min-distance: 10;}
+node|z16-[leisure=sports_centre],
+{icon-image: sports_centre-m.svg;icon-min-distance: 9;}
 node|z17-[leisure=sports_hall]
 {icon-image: sports_centre-m.svg;icon-min-distance: 10;}
-node|z17-[leisure=dance]
+node|z16-[leisure=dance]
 {icon-image: dance-m.svg;icon-min-distance: 10;}
-node|z17-[leisure=fitness_centre]
+node|z16-[leisure=fitness_centre]
 {icon-image: fitness_centre-m.svg;icon-min-distance: 10;}
 node|z17-[leisure=sauna]
 {icon-image: sauna-m.svg;icon-min-distance: 10;}
@@ -1017,76 +1053,136 @@ node|z17-[leisure=swimming_pool],
 node|z17-[leisure=swimming_pool][access=private],
 {icon-image: zero-icon.svg;}
 node|z15-[leisure=golf_course],
-node|z17-[leisure=miniature_golf],
 {icon-image: golf-m.svg;icon-min-distance: 10;}
+node|z16-[leisure=miniature_golf],
+{icon-image: golf-centre-m.svg;icon-min-distance: 10;}
 
-node|z17-[amenity=dojo]
-{icon-image: martial-arts-m.svg;}
+node|z16-[amenity=dojo]
+{icon-image: martial-arts-centre-m.svg;}
 
 node|z17-[sport],
 {icon-image: pitch-m.svg; icon-min-distance: 10; }
 
 node|z17-[sport=american_football],
 {icon-image: america-football-m.svg;}
+node|z16-[leisure=sports_centre][sport=american_football],
+{icon-image: america-football-centre-m.svg;}
 node|z17-[sport=basketball],
 {icon-image: basketball-m.svg;}
+node|z16-[leisure=sports_centre][sport=basketball],
+{icon-image: basketball-centre-m.svg;}
 node|z17-[sport=baseball],
 {icon-image: baseball-m.svg;}
+node|z16-[leisure=sports_centre][sport=baseball],
+{icon-image: baseball-centre-m.svg;}
 node|z17-[sport=equestrian],
 {icon-image: equestrian-m.svg;}
+node|z16-[leisure=sports_centre][sport=equestrian],
+{icon-image: equestrian-centre-m.svg;}
 node|z17-[sport=soccer],
+node|z17-[sport=futsal],
 {icon-image: soccer-m.svg;}
+node|z16-[leisure=sports_centre][sport=soccer],
+node|z16-[leisure=sports_centre][sport=futsal],
+{icon-image: soccer-centre-m.svg;}
 node|z17-[sport=tennis],
 {icon-image: tennis-m.svg;}
+node|z16-[leisure=sports_centre][sport=tennis],
+{icon-image: tennis-centre-m.svg;}
 node|z17-[sport=skiing],
 {icon-image: skiing-m.svg;}
+node|z16-[leisure=sports_centre][sport=skiing],
+{icon-image: skiing-centre-m.svg;}
 node|z17-[sport=archery],
-{icon-image: archery-m.svg;}
 node|z17-[sport=shooting],
 {icon-image: archery-m.svg;}
+node|z16-[leisure=sports_centre][sport=archery],
+node|z16-[leisure=sports_centre][sport=shooting],
+{icon-image: archery-centre-m.svg;}
 node|z17-[sport=australian_football],
 {icon-image: australian-football-m.svg;}
+node|z16-[leisure=sports_centre][sport=australian_football],
+{icon-image: australian-football-centre-m.svg;}
 node|z17-[sport=cricket],
 {icon-image: cricket-m.svg;}
+node|z16-[leisure=sports_centre][sport=cricket],
+{icon-image: cricket-centre-m.svg;}
 node|z17-[sport=curling],
 {icon-image: curling-m.svg;}
+node|z16-[leisure=sports_centre][sport=curling],
+{icon-image: curling-centre-m.svg;}
 node|z17-[sport=scuba_diving],
 {icon-image: diving-m.svg;}
+node|z16-[leisure=sports_centre][sport=scuba_diving],
+{icon-image: diving-centre-m.svg;}
 node|z17-[sport=9pin],
-{icon-image: bowling-m.svg;}
 node|z17-[sport=10pin],
 {icon-image: bowling-m.svg;}
 node|z17-[sport=chess],
 {icon-image: chess-m.svg;}
 node|z17-[sport=climbing],
 {icon-image: climbing-m.svg;}
+node|z16-[leisure=sports_centre][sport=climbing],
+{icon-image: climbing-centre-m.svg;}
 node|z17-[sport=golf],
 {icon-image: golf-m.svg;}
+node|z16-[leisure=sports_centre][sport=golf],
+{icon-image: golf-centre-m.svg;}
 node|z17-[sport=skateboard],
 {icon-image: skateboard-m.svg;}
+node|z16-[leisure=sports_centre][sport=skateboard],
+{icon-image: skateboard-centre-m.svg;}
 node|z17-[sport=swimming],
 {icon-image: swimming-m.svg;}
+node|z15-[leisure=sports_centre][sport=swimming],
+{icon-image: swimming-centre-m.svg; icon-min-distance: 8; }
 node|z17-[sport=table_tennis],
 {icon-image: table-tennis-m.svg;}
+node|z16-[leisure=sports_centre][sport=table_tennis],
+{icon-image: table-tennis-centre-m.svg;}
 node|z17-[sport=volleyball],
 node|z17-[sport=beachvolleyball],
 {icon-image: volleyball-m.svg;}
+node|z16-[leisure=sports_centre][sport=volleyball],
+node|z16-[leisure=sports_centre][sport=beachvolleyball],
+{icon-image: volleyball-centre-m.svg;}
 node|z17-[sport=yoga],
 {icon-image: yoga-m.svg;}
+node|z16-[leisure=sports_centre][sport=yoga],
+node|z16-[leisure=fitness_centre][sport=yoga],
+{icon-image: yoga-centre-m.svg;}
 node|z17-[sport=padel],
 {icon-image: padel-m.svg;}
+node|z16-[leisure=sports_centre][sport=padel],
+{icon-image: padel-centre-m.svg;}
 node|z17-[sport=handball],
 {icon-image: handball-m.svg;}
-node|z17-[sport=futsal],
-{icon-image: soccer-m.svg;}
+node|z16-[leisure=sports_centre][sport=handball],
+{icon-image: handball-centre-m.svg;}
 node|z17-[sport=ice_hockey],
-{icon-image: hockey-m.svg;}
 node|z17-[sport=field_hockey],
 {icon-image: hockey-m.svg;}
+node|z16-[leisure=sports_centre][sport=ice_hockey],
+node|z16-[leisure=sports_centre][sport=field_hockey],
+{icon-image: hockey-centre-m.svg;}
 node|z17-[sport=badminton],
 {icon-image: badminton-m.svg;}
+node|z16-[leisure=sports_centre][sport=badminton],
+{icon-image: badminton-centre-m.svg;}
 node|z17-[sport=pelota],
 {icon-image: pelota-m.svg;}
+node|z16-[leisure=sports_centre][sport=pelota],
+{icon-image: pelota-centre-m.svg;}
+node|z17-[sport=multi],
+node|z17-[sport=athletics],
+node|z17-[sport=gymnastics],
+node|z17-[sport=bowls],
+{icon-image: pitch-m.svg;}
+node|z16-[leisure=sports_centre][sport=multi],
+node|z16-[leisure=sports_centre][sport=athletics],
+node|z16-[leisure=sports_centre][sport=gymnastics],
+node|z16-[leisure=sports_centre][sport=bowls],
+{icon-image: sports_centre-m.svg;}
 
 node|z18-[sport],
 {font-size: 11; }
@@ -1307,7 +1403,7 @@ node|z17-[amenity=prison],
 node|z18-[amenity=prison],
 {font-size: 11;}
 
-node|z16-[amenity=townhall],
+node|z15-[amenity=townhall],
 {icon-image: public-building-m.svg;}
 node|z17-[office=diplomatic],
 {icon-image: embassy-m.svg;}
@@ -1362,6 +1458,10 @@ node|z17-[amenity=telephone]
 
 node|z17-[emergency=phone]
 {icon-image: emergency-phone-m.svg;}
+
+
+node|z16-[amenity=recycling][recycling_type=centre],
+{icon-image: recycling-centre-m.svg;}
 
 node|z17-[amenity=recycling],
 node|z17-[amenity=waste_transfer_station],
@@ -1960,7 +2060,10 @@ area|z15-[highway=rest_area],
 {text-position: center;}
 
 node|z14-[amenity=fuel],
-node|z14-[amenity=charging_station][motorcar?],
+node|z15-[amenity=charging_station][motorcar?][!capacity],
+node|z15-[amenity=charging_station][motorcar?][capacity=1],
+node|z15-[amenity=charging_station][motorcar?][capacity=2],
+node|z14-[amenity=charging_station][motorcar?][capacity?],
 area|z14-[highway=services],
 area|z15-[highway=rest_area],
 area|z15-[landuse=garages],
@@ -1988,14 +2091,23 @@ node|z17-[amenity=fuel],
 node|z18-[amenity=fuel],
 {font-size: 11;}
 
-node|z14[amenity=charging_station][motorcar?],
-{icon-image: charging-station-s.svg;text-offset: 1;font-size: 10;icon-min-distance: 20;}
-node|z15[amenity=charging_station][motorcar?],
-{icon-image: charging-station-m.svg;icon-min-distance: 20;}
-node|z16[amenity=charging_station],
-{icon-image: charging-station-m.svg;icon-min-distance: 10;}
-node|z17-[amenity=charging_station],
+node|z15-[amenity=charging_station][motorcar?][!capacity],
+node|z15-[amenity=charging_station][motorcar?][capacity=1],
+node|z15-[amenity=charging_station][motorcar?][capacity=2],
+node|z16-[amenity=charging_station],
+{icon-image: charging-point-m.svg;}
+
+node|z14[amenity=charging_station][motorcar?][capacity?],
+{icon-image: charging-station-s.svg;}
+node|z15-[amenity=charging_station][motorcar?][capacity?],
 {icon-image: charging-station-m.svg;}
+
+node|z14[amenity=charging_station][motorcar?][capacity?],
+{text-offset: 1;font-size: 10;icon-min-distance: 20;}
+node|z15[amenity=charging_station][motorcar?],
+{icon-min-distance: 20;}
+node|z16[amenity=charging_station],
+{icon-min-distance: 10;}
 node|z18-[amenity=charging_station],
 {font-size: 11;}
 

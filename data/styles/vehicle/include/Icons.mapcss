@@ -593,7 +593,10 @@ area|z14-[highway=rest_area],
 node|z12-[amenity=fuel],
 area|z13-[highway=services],
 area|z14-[highway=rest_area],
-node|z14-[amenity=charging_station][motorcar?],
+node|z14-[amenity=charging_station][motorcar?][!capacity],
+node|z14-[amenity=charging_station][motorcar?][capacity=1],
+node|z14-[amenity=charging_station][motorcar?][capacity=2],
+node|z14-[amenity=charging_station][motorcar?][capacity?],
 node|z15-[amenity=sanitary_dump_station],
 node|z16-[amenity=charging_station],
 node|z16-[amenity=parking],
@@ -622,16 +625,25 @@ node|z17[amenity=fuel],
 node|z18-[amenity=fuel],
 {icon-image: fuel-m.svg;font-size: 14.5;}
 
-node|z14[amenity=charging_station][motorcar?],
-{icon-image: charging-station-m.svg;text-offset: 1;font-size: 12.25;icon-min-distance: 20;}
+node|z14-[amenity=charging_station][motorcar?][!capacity],
+node|z14-[amenity=charging_station][motorcar?][capacity=1],
+node|z14-[amenity=charging_station][motorcar?][capacity=2],
+node|z16-[amenity=charging_station],
+{icon-image: charging-point-m.svg;}
+
+node|z14-[amenity=charging_station][motorcar?][capacity?],
+{icon-image: charging-station-m.svg;}
+
+node|z14[amenity=charging_station][motorcar?][capacity?],
+{text-offset: 1;font-size: 12.25;icon-min-distance: 20;}
 node|z15[amenity=charging_station][motorcar?],
-{icon-image: charging-station-m.svg;icon-min-distance: 20;font-size: 12.5;}
+{icon-min-distance: 20;font-size: 12.5;}
 node|z16[amenity=charging_station],
-{icon-image: charging-station-m.svg;icon-min-distance: 10;font-size: 12.75;}
+{icon-min-distance: 10;font-size: 12.75;}
 node|z17[amenity=charging_station],
-{icon-image: charging-station-m.svg; font-size: 13.75;}
+{font-size: 13.75;}
 node|z18-[amenity=charging_station],
-{icon-image: charging-station-m.svg;font-size: 14.75;}
+{font-size: 14.75;}
 
 area|z12[highway=services],
 {icon-image: car-repair-s.svg; icon-min-distance: 20;}
