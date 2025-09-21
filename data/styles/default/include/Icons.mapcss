@@ -441,15 +441,17 @@ node|z18-[historic=stone],
 
 node|z12-14[historic=fort],
 node|z12-14[historic=castle],
-{icon-image: remains-s.svg;text-offset: 1;icon-min-distance: 12;}
+{icon-image: castle-s.svg;text-offset: 1;icon-min-distance: 12;}
 node|z15[historic=fort],
 node|z15[historic=castle],
-{icon-image: remains-m.svg;icon-min-distance: 5;}
+{icon-image: castle-m.svg;icon-min-distance: 5;}
 node|z16[historic=fort],
 node|z16[historic=castle],
-{icon-image: remains-m.svg;text-offset: 1;}
+{icon-image: castle-m.svg;text-offset: 1;}
 node|z17-[historic=fort],
 node|z17-[historic=castle],
+{icon-image: castle-m.svg;}
+node|z17-[historic=ruins][name],
 {icon-image: remains-m.svg;}
 
 node|z12-14[historic=castle][castle_type=castrum],
@@ -1457,7 +1459,7 @@ node|z17-[amenity=prison],
 node|z18-[amenity=prison],
 {font-size: 11;}
 
-node|z16-[amenity=townhall],
+node|z15-[amenity=townhall],
 {icon-image: public-building-m.svg;}
 node|z17-[office=diplomatic],
 {icon-image: embassy-m.svg;}

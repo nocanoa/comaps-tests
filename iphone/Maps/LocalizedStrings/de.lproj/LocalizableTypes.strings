@@ -722,7 +722,7 @@
 "type.leisure.sports_centre.sport.multi" = "Sportzentrum";
 "type.leisure.sports_centre.sport.american_football" = "Sportzentrum";
 "type.leisure.sports_centre.sport.archery" = "Sportzentrum";
-"type.leisure.sports_centre.sport.athletics" = "Sportzentrum";
+"type.leisure.sports_centre.sport.athletics" = "Sportzentrume";
 "type.leisure.sports_centre.sport.australian_football" = "Sportzentrum";
 "type.leisure.sports_centre.sport.badminton" = "Sportzentrum";
 "type.leisure.sports_centre.sport.baseball" = "Sportzentrum";
@@ -1503,7 +1503,7 @@
 "type.highway.ladder" = "Leiter";
 "type.landuse.plant_nursery" = "Gärtnerei";
 "type.leisure.firepit" = "Feuerstelle";
-"type.amenity.studio" = "Medienstudio";
+"type.amenity.studio" = "Studio";
 "type.man_made.crane" = "Kran";
 "type.railway.station.subway.qingdao" = "U-Bahn-Station";
 "type.natural.wetland.saltmarsh" = "Salzmarsch";
