@@ -1,8 +1,10 @@
-• Dados OSM de 22/08
-• Novo indicador de velocidade e tela de informações de trilha
-• Melhor estilo de mapa escuro, rótulos coloridos adicionados
-• Exibição da última atualização de locais e horários de funcionamento
-• O roteamento agora considera conversões, PARE, semáforos, e restrições condicionais
-• Preferência por orientação GPS em vez de bússola e aumento da frequência de localização
-• Editor: adição de endereços e notas independentes
-• Melhorias em elementos da interface e estilo de mapa
+• Dados OSM de 6/09
+• Penalidades de conversão para bicicleta
+• Etiquetas de POI coloridas para o estilo do mapa de navegação de carros
+• Busca de POIs por nome de filial
+• Adição de portais de energia, guaritas e escritórios
+• Atualização de ícones para torres, discotecas, farmácias e mastros
+• Salva a cor dos favoritos nas exportações GPX
+• Preenchimento de praças pavimentadas
+• Android Auto: exibe números de saída de rotatória
+Confira nossas notas de lançamento do Codeberg para mais mudanças

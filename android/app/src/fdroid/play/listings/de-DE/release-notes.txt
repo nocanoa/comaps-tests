@@ -1,8 +1,10 @@
-• OpenStreetMap-Daten vom 22. August
-• Neue Geschwindigkeitsanzeige & Details aufgezeichneter Strecken
-• Besserer dunkler Modus, neue farbige Labels 
-• Anzeige wann Orte & Öffnungszeiten überprüft wurden
-• Routenplanung berücksichtigt Stoppschilder, Ampeln & bedingte Einschränkungen.
-• GPS-Peilung wird statt Kompass bevorzugt & höhere GPS-Frequenz.
-• Adressen & Notizen im OSM-Editor unterstützt.
-• Mehr Verbesserungen an UI-Elementen & Kartenstil, alle Details in den Codeberg-Versionshinweisen!
+• Karten-Daten vom 6. September
+• Zeitstrafen für Radrouting
+• Farbige POI-Beschriftungen in Autonavigation
+• POI-Suche nach Filialnamen
+• Abspannportale, Sicherheitskabinen & Büros hinzugefügt
+• Aktualisierte Symbole für Türme, Nachtclubs, Apotheken und Fahnenmasten
+• Lesezeichen-Farbe in GPX-Exporten
+• Farbfüllung von Fußgängerbereiche auf Plätzen
+• Android Auto: Anzeige Ausfahrtsnummern in Kreisverkehren
+Weitere Änderungen in Codeberg-Versionshinweisen!

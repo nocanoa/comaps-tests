@@ -1,9 +1,10 @@
-• Datos de OSM a 22-08-2025
-• Nuevo indicador de velocidad e información de pista
-• Modo oscuro mejorado y nombres de POI coloreados
-• Indicador de última revisión de lugares y horarios de apertura
-• Rutas mejoradas teniendo en cuenta giros, señales de STOP, semáforos y restricciones
-• Mayor precisión para determinar tu localización y sentido
-• Añade direcciones y notas con el editor
-• Otras mejoras en elementos de la interfaz y estilo del mapa
-Entra en nuestro Codeberg para más cambios!
+• Datos a 6 de septiembre
+• Penalizaciones de giros en rutas de bici
+• Etiquetas de puntos de interés en color en navegación
+• Buscar por nombre de sucursal
+• Añadir portales de energía, cabinas de seguridad y oficinas
+• Nuevos iconos: torres, discotecas, parafarmacias y mástiles
+• Guardar color en exportaciones GPX
+• Colorear áreas peatonales de plazas
+• Android Auto: mostrar números de salida de rotondas
+Más detalles en Codeberg
