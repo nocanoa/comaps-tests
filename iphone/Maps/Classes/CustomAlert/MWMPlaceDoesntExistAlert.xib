@@ -42,7 +42,7 @@
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="regular14:blackSecondaryText"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="editor_detailed_description"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="editor_place_doesnt_exist_description"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npf-dH-f50">

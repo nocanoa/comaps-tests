@@ -535,12 +535,12 @@
     <string name="placepage_more_button">More</string>
     <string name="placepage_edit_bookmark_button">Edit Bookmark</string>
     <string name="placepage_personal_notes_hint">Personal notes (text or html)</string>
-    <string name="editor_comment_hint">Comment…</string>
     <string name="editor_reset_edits_message">Discard all local changes?</string>
     <string name="editor_reset_edits_button">Discard</string>
     <string name="editor_remove_place_message">Delete added place?</string>
     <string name="editor_remove_place_button">Delete</string>
     <string name="editor_place_doesnt_exist">Place does not exist</string>
+    <string name="editor_place_doesnt_exist_description">Describe what the place looks like now to send an error note to the OpenStreetMap community</string>
     <!-- Error message for "Place doesn't exist" dialog when comment is empty -->
     <string name="delete_place_empty_comment_error">Please indicate the reason for deleting the place</string>
     <!-- Phone number error message -->
