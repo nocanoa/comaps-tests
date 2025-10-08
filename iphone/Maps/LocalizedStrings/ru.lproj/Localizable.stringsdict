@@ -13,13 +13,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>%d меток</string>
+			<string>%d закладок</string>
 			<key>one</key>
-			<string>%d метка</string>
+			<string>%d закладка</string>
 			<key>few</key>
-			<string>%d метки</string>
+			<string>%d закладки</string>
 			<key>many</key>
-			<string>%d меток</string>
+			<string>%d закладок</string>
 		</dict>
 	</dict>
 	<key>bookmarks_detect_message</key>

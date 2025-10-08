@@ -48,17 +48,16 @@ string const kOsmIdsToFeatureIdsName = "osm_ids_to_feature_ids" OSM2FEATURE_FILE
 struct RestrictionUTurnForTests
 {
   RestrictionUTurnForTests(Restriction::Type type, uint32_t featureId, bool viaIsFirstPoint)
-    : m_type(type),
-      m_featureId(featureId),
-      m_viaIsFirstPoint(viaIsFirstPoint)
+    : m_type(type)
+    , m_featureId(featureId)
+    , m_viaIsFirstPoint(viaIsFirstPoint)
   {
     CHECK(m_type == Restriction::Type::NoUTurn || m_type == Restriction::Type::OnlyUTurn, ());
   }
 
   bool operator==(RestrictionUTurnForTests const & rhs) const
   {
-    return m_type == rhs.m_type && m_featureId == rhs.m_featureId &&
-           m_viaIsFirstPoint == rhs.m_viaIsFirstPoint;
+    return m_type == rhs.m_type && m_featureId == rhs.m_featureId && m_viaIsFirstPoint == rhs.m_viaIsFirstPoint;
   }
 
   bool operator<(RestrictionUTurnForTests const & rhs) const
@@ -92,8 +91,7 @@ void BuildEmptyMwm(LocalCountryFile & country)
   generator::tests_support::TestMwmBuilder builder(country, feature::DataHeader::MapType::Country);
 }
 
-void LoadRestrictions(string const & mwmFilePath,
-                      vector<Restriction> & restrictions,
+void LoadRestrictions(string const & mwmFilePath, vector<Restriction> & restrictions,
                       vector<RestrictionUTurnForTests> & restrictionsUTurn)
 {
   FilesContainerR const cont(mwmFilePath);
@@ -111,8 +109,8 @@ void LoadRestrictions(string const & mwmFilePath,
     RestrictionVec restrictionsOnly;
     vector<RestrictionUTurn> restrictionsNoUTurn;
     vector<RestrictionUTurn> restrictionsOnlyUTurn;
-    RestrictionSerializer::Deserialize(header, restrictionsNo, restrictionsOnly,
-                                       restrictionsNoUTurn, restrictionsOnlyUTurn, src);
+    RestrictionSerializer::Deserialize(header, restrictionsNo, restrictionsOnly, restrictionsNoUTurn,
+                                       restrictionsOnlyUTurn, src);
 
     for (auto const & r : restrictionsNo)
       restrictions.emplace_back(Restriction::Type::No, vector<uint32_t>(r.begin(), r.end()));
@@ -136,10 +134,8 @@ void LoadRestrictions(string const & mwmFilePath,
 /// loads the restriction section and test loaded restrictions.
 /// \param |restrictionPath| comma separated text with restrictions in osm id terms.
 /// \param |osmIdsToFeatureIdContent| comma separated text with mapping from osm ids to feature ids.
-void TestRestrictionBuilding(string const & restrictionPath,
-                             string const & osmIdsToFeatureIdContent,
-                             unique_ptr<IndexGraph> graph,
-                             vector<Restriction> & expectedNotUTurn,
+void TestRestrictionBuilding(string const & restrictionPath, string const & osmIdsToFeatureIdContent,
+                             unique_ptr<IndexGraph> graph, vector<Restriction> & expectedNotUTurn,
                              vector<RestrictionUTurnForTests> & expectedUTurn)
 {
   Platform & platform = GetPlatform();
@@ -167,7 +163,8 @@ void TestRestrictionBuilding(string const & restrictionPath,
   string const & mwmFullPath = scopedMwm.GetFullPath();
 
   // Prepare data to collector.
-  auto restrictionCollector = std::make_unique<routing_builder::RestrictionCollector>(osmIdsToFeatureIdFullPath, *graph);
+  auto restrictionCollector =
+      std::make_unique<routing_builder::RestrictionCollector>(osmIdsToFeatureIdFullPath, *graph);
 
   TEST(restrictionCollector->Process(restrictionFullPath), ("Bad restrictions were given."));
 
@@ -229,8 +226,8 @@ std::pair<unique_ptr<IndexGraph>, string> BuildTwoCubeGraph()
 
   vector<Joint> const joints = {
       // {{/* feature id */, /* point id */}, ... }
-      MakeJoint({{7, 0}}),                 /* joint at point (-1, 0) */
-      MakeJoint({{0, 0}, {6, 0}, {7, 1}}), /* joint at point (0, 0) */
+      MakeJoint({{7, 0}}),                  /* joint at point (-1, 0) */
+      MakeJoint({{0, 0}, {6, 0}, {7, 1}}),  /* joint at point (0, 0) */
       MakeJoint({{0, 1}, {1, 0}}),          /* joint at point (1, 0) */
       MakeJoint({{1, 1}, {2, 0}, {9, 0}}),  /* joint at point (2, 0) */
       MakeJoint({{2, 1}, {3, 1}, {8, 0}}),  /* joint at point (2, 1) */
@@ -269,13 +266,11 @@ UNIT_TEST(RestrictionGenerationTest_1)
       /* Type  ViaType  ViaNodeCoords: x    y   from  to */
       R"(Only, node,                   1.0, 0.0,  0,  1)";
 
-  vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::Only, {0, 1}}
-  };
+  vector<Restriction> expectedNotUTurn = {{Restriction::Type::Only, {0, 1}}};
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_2)
@@ -288,13 +283,11 @@ UNIT_TEST(RestrictionGenerationTest_2)
       /* Type  ViaType from  ViaWayId to */
       R"(Only, way,      0,     1     2)";
 
-  vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::Only, {0, 1, 2}}
-  };
+  vector<Restriction> expectedNotUTurn = {{Restriction::Type::Only, {0, 1, 2}}};
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_3)
@@ -308,14 +301,11 @@ UNIT_TEST(RestrictionGenerationTest_3)
       R"(Only, node,                  0.0, 0.0,  7,      6
          No,   way,                              2,   8, 10)";
 
-  vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::Only, {7, 6}},
-      {Restriction::Type::No,   {2, 8, 10}}
-  };
+  vector<Restriction> expectedNotUTurn = {{Restriction::Type::Only, {7, 6}}, {Restriction::Type::No, {2, 8, 10}}};
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_BadConnection_1)
@@ -331,13 +321,11 @@ UNIT_TEST(RestrictionGenerationTest_BadConnection_1)
          No,   way,                              2,   8, 10)";
 
   // So we don't expect first restriction here.
-  vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::No,   {2, 8, 10}}
-  };
+  vector<Restriction> expectedNotUTurn = {{Restriction::Type::No, {2, 8, 10}}};
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_BadConnection_2)
@@ -353,13 +341,11 @@ UNIT_TEST(RestrictionGenerationTest_BadConnection_2)
          No,   way,                              0,   1, 3)";
 
   // So we don't expect second restriction here.
-  vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::Only,   {7, 6}}
-  };
+  vector<Restriction> expectedNotUTurn = {{Restriction::Type::Only, {7, 6}}};
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_WithUTurn_1)
@@ -369,19 +355,18 @@ UNIT_TEST(RestrictionGenerationTest_WithUTurn_1)
   tie(indexGraph, osmIdsToFeatureIdsContent) = BuildTwoCubeGraph();
 
   string const restrictionPath =
-    /* Type     ViaType ViaNodeCoords: x    y   from  to */
-    R"(NoUTurn,   node,                2.0, 1.0,  3,   3
+      /* Type     ViaType ViaNodeCoords: x    y   from  to */
+      R"(NoUTurn,   node,                2.0, 1.0,  3,   3
        OnlyUTurn, node,                0.0, 0.0,  6,   6)";
 
   // So we don't expect second restriction here.
   vector<Restriction> expectedNotUTurn;
   vector<RestrictionUTurnForTests> expectedUTurn = {
-    {Restriction::Type::NoUTurn, 3 /* featureId */, false /* viaIsFirstPoint */},
-    {Restriction::Type::OnlyUTurn, 6 /* featureId */, true /* viaIsFirstPoint */}
-  };
+      {Restriction::Type::NoUTurn, 3 /* featureId */, false /* viaIsFirstPoint */},
+      {Restriction::Type::OnlyUTurn, 6 /* featureId */, true /* viaIsFirstPoint */}};
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_WithUTurn_2)
@@ -401,17 +386,13 @@ UNIT_TEST(RestrictionGenerationTest_WithUTurn_2)
 
   // So we don't expect second restriction here.
   vector<Restriction> expectedNotUTurn = {
-      {Restriction::Type::No, {2, 8}},
-      {Restriction::Type::No, {2, 8, 10}},
-      {Restriction::Type::Only, {6, 5, 4}}
-  };
+      {Restriction::Type::No, {2, 8}}, {Restriction::Type::No, {2, 8, 10}}, {Restriction::Type::Only, {6, 5, 4}}};
 
   vector<RestrictionUTurnForTests> expectedUTurn = {
-      {Restriction::Type::OnlyUTurn, 6 /* featureId */, false /* viaIsFirstPoint */}
-  };
+      {Restriction::Type::OnlyUTurn, 6 /* featureId */, false /* viaIsFirstPoint */}};
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 
 UNIT_TEST(RestrictionGenerationTest_WithUTurn_BadConnection_1)
@@ -431,7 +412,7 @@ UNIT_TEST(RestrictionGenerationTest_WithUTurn_BadConnection_1)
   vector<Restriction> expectedNotUTurn;
   vector<RestrictionUTurnForTests> expectedUTurn;
 
-  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph),
-                          expectedNotUTurn, expectedUTurn);
+  TestRestrictionBuilding(restrictionPath, osmIdsToFeatureIdsContent, std::move(indexGraph), expectedNotUTurn,
+                          expectedUTurn);
 }
 }  // namespace restriction_test

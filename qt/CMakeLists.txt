@@ -93,11 +93,8 @@ set(RESOURCES_FOLDER ${BUNDLE_FOLDER}/Contents/Resources)
 set(DATA_DIR ${OMIM_ROOT}/data)
 
 execute_process(
-  COMMAND mkdir -p ${RESOURCES_FOLDER}/shaders_compiler
-  COMMAND cp ${PROJECT_SOURCE_DIR}/res/mac.icns ${RESOURCES_FOLDER}
-  COMMAND cp ${PROJECT_SOURCE_DIR}/res/designer.icns ${RESOURCES_FOLDER}
+    COMMAND mkdir -p ${RESOURCES_FOLDER}
 )
-
 function(copy_resources)
   foreach(file ${ARGN})
     execute_process(
@@ -109,13 +106,7 @@ endfunction()
 copy_resources(
   countries-strings
   fonts
-  resources-default
-  resources-mdpi_light
-  resources-hdpi_light
-  resources-xhdpi_light
-  resources-xxhdpi_light
-  resources-xxxhdpi_light
-  resources-6plus_light
+  symbols
   welcome.html
 
   categories.txt
@@ -143,8 +134,8 @@ install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/)
 install(DIRECTORY ${OMIM_ROOT}/data DESTINATION ${CMAKE_INSTALL_PREFIX}/share/comaps/)
 
 if (PLATFORM_LINUX)
-  install(FILES ${OMIM_ROOT}/packaging/app.comaps.desktop.metainfo.xml DESTINATION ${CMAKE_INSTALL_PREFIX}/share/metainfo/)
-  install(FILES ${OMIM_ROOT}/qt/res/app.comaps.desktop.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
+  install(FILES ${OMIM_ROOT}/packaging/app.comaps.comaps.metainfo.xml DESTINATION ${CMAKE_INSTALL_PREFIX}/share/metainfo/)
+  install(FILES ${OMIM_ROOT}/qt/res/linux/app.comaps.comaps.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
   install(FILES ${OMIM_ROOT}/qt/res/logo.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/512x512/apps/ RENAME comaps.png)
 endif()
 
@@ -154,13 +145,15 @@ if (NOT PLATFORM_LINUX)
 endif()
 
 if (PLATFORM_MAC)
-  execute_process(
-    COMMAND cp -r ${OMIM_ROOT}/tools/shaders_compiler/macos ${RESOURCES_FOLDER}/shaders_compiler
-  )
-elseif (PLATFORM_LINUX)
-  execute_process(
-    COMMAND cp -r ${OMIM_ROOT}/tools/shaders_compiler/linux ${RESOURCES_FOLDER}/shaders_compiler
-  )
+  if (BUILD_DESIGNER)
+    execute_process(
+        COMMAND cp ${PROJECT_SOURCE_DIR}/res/mac/designer.icns ${RESOURCES_FOLDER}
+    )
+  else ()
+    execute_process(
+        COMMAND cp ${PROJECT_SOURCE_DIR}/res/mac/mac.icns ${RESOURCES_FOLDER}
+    )
+  endif ()
 endif()
 
 if (PLATFORM_MAC)
@@ -170,27 +163,27 @@ if (PLATFORM_MAC)
     set(BUNDLE_VERSION ${APP_VERSION})
   endif()
 
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/Info.plist.in ${CMAKE_CURRENT_SOURCE_DIR}/res/Info.plist)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/res/mac/Info.plist.in ${CMAKE_CURRENT_BINARY_DIR}/generated/Info.plist)
 
   set_target_properties(${PROJECT_NAME}
     PROPERTIES
       OUTPUT_NAME ${BUNDLE_NAME}
-      MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/res/Info.plist
+      MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_BINARY_DIR}/generated/Info.plist
   )
 endif()
 
 if (PLATFORM_WIN)
-  target_sources(${PROJECT_NAME} PRIVATE res/windows.rc)
+  target_sources(${PROJECT_NAME} PRIVATE res/windows/windows.rc)
 endif()
 
 if (BUILD_DESIGNER)
   execute_process(
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-mdpi_light/ ${OMIM_ROOT}/data/resources-mdpi_design/
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-hdpi_light/ ${OMIM_ROOT}/data/resources-hdpi_design/
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-xhdpi_light/ ${OMIM_ROOT}/data/resources-xhdpi_design/
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-xxhdpi_light/ ${OMIM_ROOT}/data/resources-xxhdpi_design/
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-6plus_light/ ${OMIM_ROOT}/data/resources-6plus_design/
-    COMMAND cp -rf ${OMIM_ROOT}/data/resources-xxxhdpi_light/ ${OMIM_ROOT}/data/resources-xxxhdpi_design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/mdpi/light/ ${OMIM_ROOT}/data/symbols/mdpi/design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/hdpi/light/ ${OMIM_ROOT}/data/symbols/hdpi/design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/xhdpi/light/ ${OMIM_ROOT}/data/symbols/xhdpi/design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/xxhdpi/light/ ${OMIM_ROOT}/data/symbols/xxhdpi/design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/6plus/light/ ${OMIM_ROOT}/data/symbols/6plus/design/
+    COMMAND cp -rf ${OMIM_ROOT}/data/symbols/xxxhdpi/light/ ${OMIM_ROOT}/data/symbols/xxxhdpi/design/
     COMMAND cp -f ${OMIM_ROOT}/data/drules_proto_default_light.bin ${OMIM_ROOT}/data/drules_proto_default_design.bin
     COMMAND cp -f ${OMIM_ROOT}/data/colors.txt ${OMIM_ROOT}/data/colors_design.txt
     COMMAND cp -f ${OMIM_ROOT}/data/patterns.txt ${OMIM_ROOT}/data/patterns_design.txt
@@ -202,12 +195,12 @@ if (BUILD_DESIGNER)
     mapcss-dynamic.txt
     mapcss-mapping.csv
     patterns_design.txt
-    resources-mdpi_design
-    resources-hdpi_design
-    resources-xhdpi_design
-    resources-xxhdpi_design
-    resources-xxxhdpi_design
-    resources-6plus_design
+    symbols/mdpi/design
+    symbols/hdpi/design
+    symbols/xhdpi/design
+    symbols/xxhdpi/design
+    symbols/xxxhdpi/design
+    symbols/6plus/design
   )
 
   execute_process(
@@ -243,7 +236,7 @@ if (BUILD_DESIGNER)
   set(CPACK_GENERATOR DragNDrop)
   set(CPACK_DMG_FORMAT UDZO)
   set(CPACK_DMG_VOLUME_NAME ${BUNDLE_NAME})
-  set(CPACK_PACKAGE_ICON ${PROJECT_SOURCE_DIR}/res/designer.icns)
+  set(CPACK_PACKAGE_ICON ${PROJECT_SOURCE_DIR}/res/mac/designer.icns)
   include(CPack)
 elseif (BUILD_STANDALONE)
   add_custom_command(TARGET desktop POST_BUILD

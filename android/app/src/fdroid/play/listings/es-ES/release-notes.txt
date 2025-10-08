@@ -1,9 +1,10 @@
-¡Presentamos el logo de CoMaps!
-• mejora de isolíneas con más detalle para muchas regiones
-• añade enlaces de imágenes de Panoramax a POIs seleccionados
-• datos de OpenStreetMap a 13 de julio
-• añadidos rellenos de color a muchas características
-• se muestra el estado de horarios de apertura al seleccionar un POI
-• se dividen los humedales en tipos distintos
-• se actualiza la vegetación y otros colores del mapa, así como otros iconos
-• exteriores: líneas de contorno de altitud más gruesas
+• Datos a 6 de septiembre
+• Penalizaciones de giros en rutas de bici
+• Etiquetas de puntos de interés en color en navegación
+• Buscar por nombre de sucursal
+• Añadir portales de energía, cabinas de seguridad y oficinas
+• Nuevos iconos: torres, discotecas, parafarmacias y mástiles
+• Guardar color en exportaciones GPX
+• Colorear áreas peatonales de plazas
+• Android Auto: mostrar números de salida de rotondas
+Más detalles en Codeberg

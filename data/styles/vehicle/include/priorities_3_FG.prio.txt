@@ -15,6 +15,7 @@
 historic-citywalls                                  # line z15-
 === 280
 
+highway-ladder                                      # line z18-
 highway-steps                                       # line z18-
 highway-steps-bridge                                # line z18-
 hwtag-oneway::arrows                                # line::arrows z15-
@@ -29,6 +30,7 @@ barrier-fence                                       # line z17-
 barrier-guard_rail                                  # line z17-
 barrier-hedge                                       # line z18-
 barrier-wall                                        # line z17-
+barrier-yes                                         # line z17-
 railway-monorail                                    # line z14-
 railway-monorail-bridge                             # line z14-
 railway-monorail-tunnel                             # line z14-
@@ -261,6 +263,7 @@ highway-path-horse                                  # line z17-
 highway-pedestrian                                  # line z18-
 highway-pedestrian-area                             # line z18-
 highway-pedestrian-bridge                           # line z18-
+highway-pedestrian-square                           # line z18-
 highway-track                                       # line z16-
 highway-track-area                                  # line z16-
 highway-track-bridge                                # line z16-
@@ -350,6 +353,7 @@ man_made-cutline                                    # line z15-
 barrier-ditch                                       # line z17-
 building                                            # area z15- (also has caption z18-)
 building-garage                                     # area z15- (also has caption z18-)
+building-guardhouse                                 # area z15- (also has icon z18-)
 building-has_parts                                  # area z15- (also has caption z18-)
 building-train_station                              # area z15- (also has caption z18-)
 === 50
@@ -359,11 +363,13 @@ man_made-pier                                       # line z15- and area z13-
 waterway-dam                                        # line z15- and area z15-
 === 20
 
+landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
+landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
+=== 17
+
 amenity-prison                                      # area z12- (also has icon z16-, caption(optional) z16-)
 boundary-national_park                              # area z10- (also has icon z12-, caption(optional) z12-)
 boundary-protected_area-1                           # area z10- (also has icon z12-, caption(optional) z12-)
-landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
-landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
 leisure-nature_reserve                              # area z10- (also has icon z12-, caption(optional) z12-)
 === 15
 

@@ -4,6 +4,10 @@ import Combine
 @objc class Settings: NSObject {
     // MARK: Properties
     
+    // The notification name for changed routing options
+    static let routingOptionsChangedNotificationName: Notification.Name = Notification.Name(rawValue: "RoutingOptionsChanged")
+    
+    
     /// Key for storing if the sync beta alert has been shown in the user defaults
     static private let userDefaultsKeyHasShownSyncBetaAlert = "kUDDidShowICloudSynchronizationEnablingAlert"
     
@@ -352,6 +356,8 @@ import Combine
             let routingOptions = RoutingOptions()
             routingOptions.avoidToll = newValue
             routingOptions.save()
+            
+            NotificationCenter.default.post(name: routingOptionsChangedNotificationName, object: nil)
         }
     }
     
@@ -365,6 +371,8 @@ import Combine
             let routingOptions = RoutingOptions()
             routingOptions.avoidDirty = newValue
             routingOptions.save()
+            
+            NotificationCenter.default.post(name: routingOptionsChangedNotificationName, object: nil)
         }
     }
     
@@ -378,6 +386,8 @@ import Combine
             let routingOptions = RoutingOptions()
             routingOptions.avoidFerry = newValue
             routingOptions.save()
+            
+            NotificationCenter.default.post(name: routingOptionsChangedNotificationName, object: nil)
         }
     }
     
@@ -391,6 +401,8 @@ import Combine
             let routingOptions = RoutingOptions()
             routingOptions.avoidMotorway = newValue
             routingOptions.save()
+            
+            NotificationCenter.default.post(name: routingOptionsChangedNotificationName, object: nil)
         }
     }
     

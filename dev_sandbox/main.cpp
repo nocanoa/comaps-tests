@@ -9,6 +9,7 @@
 
 #include "base/logging.hpp"
 #include "base/macros.hpp"
+#include "base/math.hpp"
 
 #include "std/target_os.hpp"
 
@@ -80,7 +81,10 @@ bool ValidateLogAbortLevel(char const * flagname, std::string const & value)
 
 bool const g_logAbortLevelDummy = gflags::RegisterFlagValidator(&FLAGS_log_abort_level, &ValidateLogAbortLevel);
 
-void errorCallback(int error, char const * description) { LOG(LERROR, ("GLFW (", error, "):", description)); }
+void errorCallback(int error, char const * description)
+{
+  LOG(LERROR, ("GLFW (", error, "):", description));
+}
 
 struct WindowHandlers
 {
@@ -142,7 +146,7 @@ void FormatMapSize(uint64_t sizeInBytes, std::string & units, size_t & sizeToDow
 
 std::string_view GetMyPoisitionText(location::EMyPositionMode mode)
 {
-  switch(mode)
+  switch (mode)
   {
   case location::EMyPositionMode::PendingPosition: return "Pending";
   case location::EMyPositionMode::NotFollowNoPosition: return "No position";
@@ -156,9 +160,12 @@ std::string_view GetMyPoisitionText(location::EMyPositionMode mode)
 dp::ApiVersion GetApiVersion(char const * apiLabel)
 {
   std::string_view v(apiLabel);
-  if (v == "Metal") return dp::ApiVersion::Metal;
-  if (v == "Vulkan") return dp::ApiVersion::Vulkan;
-  if (v == "OpenGL") return  dp::ApiVersion::OpenGLES3;
+  if (v == "Metal")
+    return dp::ApiVersion::Metal;
+  if (v == "Vulkan")
+    return dp::ApiVersion::Vulkan;
+  if (v == "OpenGL")
+    return dp::ApiVersion::OpenGLES3;
   return dp::ApiVersion::Invalid;
 }
 
@@ -180,7 +187,7 @@ public:
     return {true, base::TaskLoop::kNoId};
   }
 
-  void ExecuteTasks() 
+  void ExecuteTasks()
   {
     std::lock_guard<std::mutex> lock(m_mutex);
     for (auto & task : m_tasks)
@@ -230,17 +237,14 @@ int main(int argc, char * argv[])
   // Init GLFW.
   glfwSetErrorCallback(errorCallback);
   if (!glfwInit())
-  {
     return -1;
-  }
   glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 #if defined(OMIM_OS_WINDOWS)
   glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
 #endif
   auto monitor = glfwGetPrimaryMonitor();
   auto mode = glfwGetVideoMode(monitor);
-  GLFWwindow * window =
-      glfwCreateWindow(mode->width, mode->height, "Developer Render Sandbox", nullptr, nullptr);
+  GLFWwindow * window = glfwCreateWindow(mode->width, mode->height, "Developer Render Sandbox", nullptr, nullptr);
   int fbWidth = 0, fbHeight = 0;
   glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
   float xs = 1.0f, ys = 1.0f;
@@ -276,16 +280,14 @@ int main(int argc, char * argv[])
       .m_visualScale = visualScale,
       .m_surfaceWidth = fbWidth,
       .m_surfaceHeight = fbHeight,
-      .m_renderInjectionHandler = [&](ref_ptr<dp::GraphicsContext> context, 
-                                      ref_ptr<dp::TextureManager> textureManager,
-                                      ref_ptr<gpu::ProgramManager> programManager,
-                                      bool shutdown)
-      {
-        if (shutdown)
-          imguiRenderer.Reset();
-        else
-          imguiRenderer.Render(context, textureManager, programManager);
-      }};
+      .m_renderInjectionHandler = [&](ref_ptr<dp::GraphicsContext> context, ref_ptr<dp::TextureManager> textureManager,
+                                      ref_ptr<gpu::ProgramManager> programManager, bool shutdown)
+  {
+    if (shutdown)
+      imguiRenderer.Reset();
+    else
+      imguiRenderer.Render(context, textureManager, programManager);
+  }};
   gui::Skin guiSkin(gui::ResolveGuiSkinFile("default"), visualScale);
   guiSkin.Resize(fbWidth, fbHeight);
   guiSkin.ForEach([&](gui::EWidget widget, gui::Position const & pos) { drapeParams.m_widgetsInitInfo[widget] = pos; });
@@ -300,7 +302,7 @@ int main(int argc, char * argv[])
     drapeParams.m_surfaceHeight = fbHeight;
     contextFactory = CreateContextFactory(window, drapeParams.m_apiVersion,
                                           m2::PointU(static_cast<uint32_t>(drapeParams.m_surfaceWidth),
-                                          static_cast<uint32_t>(drapeParams.m_surfaceHeight)));
+                                                     static_cast<uint32_t>(drapeParams.m_surfaceHeight)));
     auto params = drapeParams;
     framework.CreateDrapeEngine(make_ref(contextFactory), std::move(params));
     OnCreateDrapeEngine(window, version, make_ref(contextFactory));
@@ -359,10 +361,8 @@ int main(int argc, char * argv[])
       framework.OnSize(fbWidth, fbHeight);
     }
   };
-  glfwSetWindowContentScaleCallback(window, [](GLFWwindow *, float xscale, float yscale) 
-  { 
-    handlers.onContentScale(xscale, yscale); 
-  });
+  glfwSetWindowContentScaleCallback(
+      window, [](GLFWwindow *, float xscale, float yscale) { handlers.onContentScale(xscale, yscale); });
 
   // Location handler
   std::optional<ms::LatLon> lastLatLon;
@@ -383,9 +383,7 @@ int main(int argc, char * argv[])
                             .m_horizontalAccuracy = 10,
                             .m_bearing = bearingEnabled ? bearing : -1.0f});
       if (bearingEnabled)
-      {
-        framework.OnCompassUpdate(location::CompassInfo{.m_bearing = base::DegToRad(bearing)});
-      }
+        framework.OnCompassUpdate(location::CompassInfo{.m_bearing = math::DegToRad(bearing)});
     }
   };
 
@@ -435,19 +433,17 @@ int main(int argc, char * argv[])
 
   framework.GetStorage().Subscribe(
       [&](storage::CountryId const & countryId)
-      {
-        // Storage also calls notifications for parents, but we are interested in leafs only.
-        if (framework.GetStorage().IsLeaf(countryId))
-          onCountryChanged(countryId);
-      },
-      [&](storage::CountryId const & countryId, downloader::Progress const & progress)
-      {
-        std::stringstream str;
-        str << "Downloading (" << countryId << ") " << (progress.m_bytesDownloaded * 100 / progress.m_bytesTotal)
-            << "%";
-        downloadStatusLabel = str.str();
-        framework.MakeFrameActive();
-      });
+  {
+    // Storage also calls notifications for parents, but we are interested in leafs only.
+    if (framework.GetStorage().IsLeaf(countryId))
+      onCountryChanged(countryId);
+  }, [&](storage::CountryId const & countryId, downloader::Progress const & progress)
+  {
+    std::stringstream str;
+    str << "Downloading (" << countryId << ") " << (progress.m_bytesDownloaded * 100 / progress.m_bytesTotal) << "%";
+    downloadStatusLabel = str.str();
+    framework.MakeFrameActive();
+  });
 
   // Handle mouse buttons.
   bool touchActive = false;
@@ -490,13 +486,12 @@ int main(int argc, char * argv[])
       touchMods = 0;
     }
   };
-  glfwSetMouseButtonCallback(window,
-                             [](GLFWwindow * wnd, int button, int action, int mods)
-                             {
-                               double x, y;
-                               glfwGetCursorPos(wnd, &x, &y);
-                               handlers.onMouseButton(x, y, button, action, mods);
-                             });
+  glfwSetMouseButtonCallback(window, [](GLFWwindow * wnd, int button, int action, int mods)
+  {
+    double x, y;
+    glfwGetCursorPos(wnd, &x, &y);
+    handlers.onMouseButton(x, y, button, action, mods);
+  });
 
   // Handle mouse moving.
   handlers.onMouseMove = [&](double x, double y)
@@ -508,19 +503,13 @@ int main(int argc, char * argv[])
       framework.MakeFrameActive();
 
     if (touchActive)
-    {
 #if defined(OMIM_OS_MAC)
       x *= visualScale;
-      y *= visualScale;
+    y *= visualScale;
 #endif
-      framework.TouchEvent(
-          GetTouchEvent(framework, x, y, touchMods, df::TouchEvent::TOUCH_MOVE));
-    }
+    framework.TouchEvent(GetTouchEvent(framework, x, y, touchMods, df::TouchEvent::TOUCH_MOVE));
   };
-  glfwSetCursorPosCallback(window, [](GLFWwindow *, double x, double y) 
-  { 
-    handlers.onMouseMove(x, y); 
-  });
+  glfwSetCursorPosCallback(window, [](GLFWwindow *, double x, double y) { handlers.onMouseMove(x, y); });
 
   // Handle scroll.
   handlers.onScroll = [&](double x, double y, double xOffset, double yOffset)
@@ -542,20 +531,17 @@ int main(int argc, char * argv[])
     double const factor = yOffset * kSensitivity;
     framework.Scale(exp(factor), m2::PointD(x, y), false);
   };
-  glfwSetScrollCallback(window,
-                        [](GLFWwindow * wnd, double xoffset, double yoffset)
-                        {
-                          double x, y;
-                          glfwGetCursorPos(wnd, &x, &y);
-                          handlers.onScroll(x, y, xoffset, yoffset);
-                        });
+  glfwSetScrollCallback(window, [](GLFWwindow * wnd, double xoffset, double yoffset)
+  {
+    double x, y;
+    glfwGetCursorPos(wnd, &x, &y);
+    handlers.onScroll(x, y, xoffset, yoffset);
+  });
 
   // Keys.
   handlers.onKeyboardButton = [&](int key, int scancode, int action, int mods) {};
   glfwSetKeyCallback(window, [](GLFWwindow *, int key, int scancode, int action, int mods)
-  {
-    handlers.onKeyboardButton(key, scancode, action, mods);
-  });
+  { handlers.onKeyboardButton(key, scancode, action, mods); });
 
   // imGui UI
   bool enableDebugRectRendering = false;
@@ -568,12 +554,9 @@ int main(int argc, char * argv[])
     // Drape controls
     char const * apiLabels[] = {
 #if defined(OMIM_OS_MAC)
-      "Metal",
-      "Vulkan",
-      "OpenGL"
+        "Metal", "Vulkan", "OpenGL"
 #elif defined(OMIM_OS_LINUX)
-      "Vulkan",
-      "OpenGL"
+        "Vulkan", "OpenGL"
 #endif
     };
     static int currentAPI = 0;
@@ -655,7 +638,7 @@ int main(int argc, char * argv[])
 
     // Render imGui UI
     ImGui_ImplGlfw_NewFrame();
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO & io = ImGui::GetIO();
 #if defined(OMIM_OS_LINUX)
     // Apply correct visual scale on Linux
     // In glfw for Linux, window size and framebuffer size are the same,

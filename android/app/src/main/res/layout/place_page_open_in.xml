@@ -12,7 +12,7 @@
     android:id="@+id/iv__place_open_in"
     style="@style/PlacePageMetadataIcon"
     app:srcCompat="@drawable/ic_open_in"
-    app:tint="?colorAccent"/>
+    app:tint="?colorSecondary"/>
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv__place_open_in"

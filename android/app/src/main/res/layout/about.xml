@@ -17,7 +17,7 @@
       android:orientation="vertical"
       android:padding="@dimen/margin_base">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="@dimen/about_logo"
         android:layout_height="@dimen/about_logo"
         android:layout_gravity="center_horizontal"
@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/ic_logo_monochrome"
         app:tint="?attr/colorLogo"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:textIsSelectable="true"
         tools:text="2025.04.16-FDroid" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_base"
@@ -46,7 +46,7 @@
         android:textAppearance="@style/MwmTextAppearance.Headline"
         android:textColor="?android:textColorPrimary" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_half"
@@ -54,7 +54,7 @@
         android:textAppearance="@style/MwmTextAppearance.Body1"
         android:textColor="?android:textColorPrimary" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_half"
@@ -62,7 +62,7 @@
         android:textAppearance="@style/MwmTextAppearance.Body1"
         android:textColor="?android:textColorPrimary" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_half"
@@ -70,11 +70,10 @@
         android:textAppearance="@style/MwmTextAppearance.Body1"
         android:textColor="?android:textColorPrimary" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_half"
-        android:fontFamily="@string/robotoRegular"
         android:text="@string/about_developed_by_enthusiasts"
         android:textAppearance="@style/MwmTextAppearance.Body2"
         android:textColor="?android:textColorPrimary"
@@ -84,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-      <ImageView
+      <com.google.android.material.imageview.ShapeableImageView
           android:id="@+id/osm_logo"
           android:layout_width="@dimen/osm_logo"
           android:layout_height="@dimen/osm_logo"
@@ -95,12 +94,11 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
           android:id="@+id/osm_presentation"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginStart="@dimen/margin_half"
-          android:fontFamily="@string/robotoRegular"
           android:includeFontPadding="false"
           android:text="@string/osm_presentation"
           android:textAppearance="@style/MwmTextAppearance.Body2"
@@ -112,124 +110,113 @@
           app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/donate"
-        style="@style/MwmWidget.Button.Accent"
+        style="@style/MwmWidget.M3.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_base"
-        android:fontFamily="@string/robotoMedium"
         android:padding="@dimen/margin_quarter"
         android:text="@string/donate" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/report"
-        style="@style/MwmWidget.Button"
+        style="@style/MwmWidget.M3.Button.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_base"
-        android:background="@color/light_gray"
-        android:fontFamily="@string/robotoMedium"
-        android:text="@string/report_a_bug"
-        android:textColor="@color/text_dark" />
+        android:layout_marginTop="@dimen/margin_half"
+        android:text="@string/report_a_bug" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
       android:id="@+id/faq"
       style="@style/MwmWidget.TextView.Item"
       android:text="@string/faq"
       android:textAlignment="viewStart"
       app:drawableStartCompat="@drawable/ic_question_mark" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/support_us"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/how_to_support_us"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_donate" />
+        app:drawableStartCompat="@drawable/ic_volunteer" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/news"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/news"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_news" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/rate"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/rate_the_app"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_rate" />
 
-    <TextView
-        android:id="@+id/telegram"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/telegram"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_telegram" />
-
-    <TextView
-        android:id="@+id/code_repo"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/codeberg"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_codeberg" />
-
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/web"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/website"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_website" />
 
-    <TextView
-        android:id="@+id/email"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/code_repo"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/email"
+        android:text="@string/codeberg"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_email" />
+        app:drawableStartCompat="@drawable/ic_codeberg" />
 
-    <TextView
-        android:id="@+id/matrix"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/matrix"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_matrix" />
-
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mastodon"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/mastodon"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_mastodon" />
 
-    <TextView
-        android:id="@+id/facebook"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/matrix"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/facebook"
+        android:text="@string/matrix"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_facebook" />
-<!--
-    <TextView
-        android:id="@+id/twitter"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/twitter"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_twitterx" />
--->
-    <TextView
-        android:id="@+id/instagram"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/instagram"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_instagram" />
+        app:drawableStartCompat="@drawable/ic_matrix" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/lemmy"
+        style="@style/MwmWidget.TextView.Item"
+        android:text="@string/lemmy"
+        android:textAlignment="viewStart"
+        app:drawableStartCompat="@drawable/ic_lemmy" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/bluesky"
+        style="@style/MwmWidget.TextView.Item"
+        android:text="@string/bluesky"
+        android:textAlignment="viewStart"
+        app:drawableStartCompat="@drawable/ic_bluesky" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/pixelfed"
+        style="@style/MwmWidget.TextView.Item"
+        android:text="@string/pixelfed"
+        android:textAlignment="viewStart"
+        app:drawableStartCompat="@drawable/ic_pixelfed" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/openstreetmap"
         style="@style/MwmWidget.TextView.Item"
         android:text="@string/openstreetmap"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_openstreetmap" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/email"
+        style="@style/MwmWidget.TextView.Item"
+        android:text="@string/email"
+        android:textAlignment="viewStart"
+        app:drawableStartCompat="@drawable/ic_email" />
 
     <View
         android:layout_width="match_parent"
@@ -238,19 +225,19 @@
         android:layout_marginTop="@dimen/margin_quarter"
         android:background="?dividerHorizontal" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/privacy_policy"
         style="@style/MwmWidget.TextView.Item"
         android:textAlignment="viewStart"
         android:text="@string/privacy_policy" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/term_of_use_link"
         style="@style/MwmWidget.TextView.Item"
         android:textAlignment="viewStart"
         android:text="@string/terms_of_use" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/copyright"
         style="@style/MwmWidget.TextView.Item"
         android:textAlignment="viewStart"

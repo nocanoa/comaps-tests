@@ -7,14 +7,11 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-
 import app.organicmaps.R;
 import app.organicmaps.util.ThemeUtils;
-import app.organicmaps.sdk.util.UiUtils;
-
+import app.organicmaps.util.UiUtils;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
@@ -46,22 +43,20 @@ public class TrafficButton
   void turnOff()
   {
     stopWaitingAnimation();
-    mButton.setImageResource(ThemeUtils.isNightTheme(mButton.getContext()) ? R.drawable.ic_traffic_on_night
-                                                                           : R.drawable.ic_traffic_on);
+    mButton.setImageResource(ThemeUtils.isNightTheme() ? R.drawable.ic_traffic_on_night : R.drawable.ic_traffic_on);
   }
 
   void turnOn()
   {
     stopWaitingAnimation();
-    mButton.setImageResource(ThemeUtils.isNightTheme(mButton.getContext()) ? R.drawable.ic_traffic_on_night
-                                                                           : R.drawable.ic_traffic_on);
+    mButton.setImageResource(ThemeUtils.isNightTheme() ? R.drawable.ic_traffic_on_night : R.drawable.ic_traffic_on);
   }
 
   void markAsOutdated()
   {
     stopWaitingAnimation();
-    mButton.setImageResource(ThemeUtils.isNightTheme(mButton.getContext()) ? R.drawable.ic_traffic_outdated_night
-                                                                           : R.drawable.ic_traffic_outdated);
+    mButton.setImageResource(ThemeUtils.isNightTheme() ? R.drawable.ic_traffic_outdated_night
+                                                       : R.drawable.ic_traffic_outdated);
   }
 
   void startWaitingAnimation()

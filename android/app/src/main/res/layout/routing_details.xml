@@ -12,7 +12,7 @@
     android:layout_height="@dimen/altitude_chart_time_distance_height"
     android:textAppearance="@style/MwmTextAppearance.Body3"
     android:fontFamily="@string/robotoMedium"
-    android:textColor="?colorAccent"
+    android:textColor="?colorSecondary"
     android:layout_gravity="end"
     android:gravity="center"
     android:layout_alignParentEnd="true"

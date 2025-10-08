@@ -12,20 +12,24 @@ function BuildDrawingRules() {
   styleName=$2
   suffix=${3-}
   echo "Building drawing rules for style $styleType/$styleName"
-  # Cleanup
-  rm "$DATA_PATH"/drules_proto$suffix.{bin,txt} || true
+  # Cleanup old compiled drules and diff
+  rm "$DATA_PATH"/drules_proto$suffix.{bin,txt.diff} || true
+  # Store old txt version for diff
+  mv -f "$DATA_PATH"/drules_proto$suffix.txt{,.prev} || true
   # Run script to build style
   python3 "$OMIM_PATH/tools/kothic/src/libkomwm.py" --txt \
     -s "$DATA_PATH/styles/$styleType/$styleName/style.mapcss" \
     -o "$DATA_PATH/drules_proto$suffix" \
     -p "$DATA_PATH/styles/$styleType/include/"
+  # Output diff and store to a file
+  diff -u "$DATA_PATH"/drules_proto$suffix.txt{.prev,} | tee "$DATA_PATH"/drules_proto$suffix.txt.diff
 }
 
-# Cleanup
-cleanup=(classificator.txt types.txt visibility.txt colors.txt patterns.txt)
-for item in ${cleanup[*]}
+outputs=(classificator.txt types.txt visibility.txt colors.txt patterns.txt drules_proto.txt)
+# Store old versions for diffs
+for item in ${outputs[*]}
 do
-  rm $DATA_PATH/$item || true
+  mv $DATA_PATH/$item{,.prev} || true
 done
 
 # Building drawing rules
@@ -37,19 +41,29 @@ BuildDrawingRules outdoors  dark _outdoors_dark
 BuildDrawingRules vehicle  light _vehicle_light
 BuildDrawingRules vehicle  dark _vehicle_dark
 
+# TODO: the designer is not used at the moment.
 # In designer mode we use drules_proto_design file instead of standard ones
-cp $OMIM_PATH/data/drules_proto_default_light.bin $OMIM_PATH/data/drules_proto_default_design.bin
+# cp $OMIM_PATH/data/drules_proto_default_light.bin $OMIM_PATH/data/drules_proto_default_design.bin
 
 echo "Exporting transit colors..."
 python3 "$OMIM_PATH/tools/python/transit/transit_colors_export.py" \
   "$DATA_PATH/colors.txt" > /dev/null
 
-echo "Merging default and vehicle styles..."
+# Merged drules_proto.bin is used by the map generator.
+# It contains max visibilities (min visible zoom) for features across all styles.
+echo "Merging styles..."
 python3 "$OMIM_PATH/tools/python/stylesheet/drules_merge.py" \
-  "$DATA_PATH/drules_proto_default_light.bin" "$DATA_PATH/drules_proto_vehicle_light.bin" \
-  "$DATA_PATH/drules_proto.bin.tmp" > /dev/null
-echo "Merging in outdoors style..."
-python3 "$OMIM_PATH/tools/python/stylesheet/drules_merge.py" \
-  "$DATA_PATH/drules_proto.bin.tmp" "$DATA_PATH/drules_proto_outdoors_light.bin" \
-  "$DATA_PATH/drules_proto.bin" "$DATA_PATH/drules_proto.txt" > /dev/null
-rm "$DATA_PATH/drules_proto.bin.tmp" || true
+  "$DATA_PATH/drules_proto_default_light.bin" \
+  "$DATA_PATH/drules_proto_vehicle_light.bin" \
+  "$DATA_PATH/drules_proto_outdoors_light.bin" \
+  "$DATA_PATH/drules_proto.bin" \
+  "$DATA_PATH/drules_proto.txt" \
+   > /dev/null
+
+# Output diffs and store to files
+for item in ${outputs[*]}
+do
+  diff -u "$DATA_PATH"/$item{.prev,} | tee "$DATA_PATH"/$item.diff
+done
+
+echo "Diffs for all changes are stored in $DATA_PATH/*.txt.diff"

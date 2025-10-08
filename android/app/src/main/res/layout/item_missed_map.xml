@@ -17,13 +17,13 @@
     android:layout_centerVertical="true"
     android:layout_marginEnd="@dimen/margin_half"
     android:visibility="gone"
-    app:wheelProgressColor="?colorAccent"
+    app:wheelProgressColor="?colorSecondary"
     app:wheelSecondaryColor="?dividerHorizontal"
     app:wheelThickness="@dimen/margin_eighth"
     app:centerDrawable="@android:color/transparent"
     tools:visibility="visible"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv__size"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
     android:textAppearance="@style/MwmTextAppearance.Body1"
     tools:text="256 MB"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv__title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

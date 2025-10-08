@@ -21,7 +21,7 @@ final class ColorPicker: NSObject {
 
     switch pickerType {
     case .defaultColorPicker(let color):
-      if #available(iOS 14.0, *), !ProcessInfo.processInfo.isiOSAppOnMac {
+      if !ProcessInfo.processInfo.isiOSAppOnMac {
         colorPickerViewController = defaultColorPickerViewController(with: color)
       } else {
         colorPickerViewController = bookmarksColorPickerViewController(with: BookmarkColor.bookmarkColor(from: color) ?? .none)

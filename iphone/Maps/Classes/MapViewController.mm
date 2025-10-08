@@ -37,7 +37,6 @@ typedef NS_ENUM(NSUInteger, UserTouchesAction) { UserTouchesActionNone, UserTouc
 namespace {
 NSString *const kDownloaderSegue = @"Map2MapDownloaderSegue";
 NSString *const kEditorSegue = @"Map2EditorSegue";
-NSString *const kUDViralAlertWasShown = @"ViralAlertWasShown";
 NSString *const kPP2BookmarkEditingSegue = @"PP2BookmarkEditing";
 NSString *const kSettingsSegue = @"Map2Settings";
 NSString *const kAboutSegue = @"Map2About";
@@ -383,8 +382,9 @@ NSString *const kAboutSegue = @"Map2About";
   [self updateStatusBarStyle];
   GetFramework().SetRenderingEnabled();
   GetFramework().InvalidateRendering();
-  [self showViralAlertIfNeeded];
-  [self checkAuthorization];
+  if (Profile.needsReauthorization) {
+    [self checkAuthorization];
+  }
   [MWMRouter updateRoute];
 }
 
@@ -468,11 +468,19 @@ NSString *const kAboutSegue = @"Map2About";
 - (void)setupTrackPadGestureRecognizers API_AVAILABLE(ios(14.0)) {
   if (!NSProcessInfo.processInfo.isiOSAppOnMac)
     return;
-  // Mouse zoom
+  // Pan
   UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-  panRecognizer.allowedScrollTypesMask = UIScrollTypeMaskAll;
+  panRecognizer.minimumNumberOfTouches = 2;
+  panRecognizer.allowedScrollTypesMask = UIScrollTypeMaskContinuous;
   panRecognizer.allowedTouchTypes = @[@(UITouchTypeIndirect)];
+  panRecognizer.delegate = self;
   [self.view addGestureRecognizer:panRecognizer];
+
+  // Mouse zoom
+  UIPanGestureRecognizer * zoomPanRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleZoomPan:)];
+  zoomPanRecognizer.allowedScrollTypesMask = UIScrollTypeMaskDiscrete;
+  zoomPanRecognizer.allowedTouchTypes = @[@(UITouchTypeIndirect)];
+  [self.view addGestureRecognizer:zoomPanRecognizer];
 
   // Trackpad zoom
   UIPinchGestureRecognizer * pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
@@ -490,23 +498,6 @@ NSString *const kAboutSegue = @"Map2About";
   UIHoverGestureRecognizer * hoverRecognizer = [[UIHoverGestureRecognizer alloc] initWithTarget:self action:@selector(handlePointerHover:)];
   hoverRecognizer.allowedTouchTypes = @[@(UITouchTypeIndirectPointer)];
   [self.view addGestureRecognizer:hoverRecognizer];
-}
-
-- (void)showViralAlertIfNeeded {
-  NSUserDefaults *ud = NSUserDefaults.standardUserDefaults;
-
-  if (!Profile.needsReauthorization || [ud objectForKey:kUDViralAlertWasShown] || !Profile.isExisting)
-    return;
-
-  if (osm::Editor::Instance().GetStats().m_edits.size() < 2)
-    return;
-
-  if (!Platform::IsConnected())
-    return;
-
-  [self.alertController presentEditorViralAlert];
-
-  [ud setObject:[NSDate date] forKey:kUDViralAlertWasShown];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -561,6 +552,12 @@ NSString *const kAboutSegue = @"Map2About";
   [[MWMBookmarksManager sharedManager] addObserver:self];
   [[MWMBookmarksManager sharedManager] loadBookmarks];
   [MWMFrameworkListener addObserver:self];
+
+  [NSNotificationCenter.defaultCenter addObserverForName:@"EditingFinishedNotififcation" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull notification) {
+    if (!Profile.isExisting || Profile.needsReauthorization) {
+      [self checkAuthorization];
+    }
+  }];
 }
 
 - (void)dealloc {
@@ -650,13 +647,9 @@ NSString *const kAboutSegue = @"Map2About";
 #pragma mark - Authorization
 
 - (void)checkAuthorization {
-  BOOL const isAfterEditing = Profile.needsReauthorization && !Profile.isExisting;
-  if (isAfterEditing) {
-    [Profile requestReauthorizationWithShouldReauthorize:NO];
-    if (!Platform::IsConnected())
-      return;
-    [self presentViewController:BridgeControllers.profileAsAlert animated:YES completion:nil];
-  }
+  if (!Platform::IsConnected())
+    return;
+  [self presentViewController:BridgeControllers.profileAsAlert animated:YES completion:nil];
 }
 
 #pragma mark - 3d touch
@@ -825,7 +818,8 @@ NSString *const kAboutSegue = @"Map2About";
   [UIKeyCommand commandWithTitle:@"Zoom Out" image:[UIImage systemImageNamed: @"minus.magnifyingglass"] action:@selector(zoomOut) input:@"-" modifierFlags:UIKeyModifierCommand propertyList:nil],
   [UIKeyCommand commandWithTitle:@"Zoom In" image:[UIImage systemImageNamed: @"plus.magnifyingglass"] action:@selector(zoomIn) input:@"+" modifierFlags:UIKeyModifierCommand propertyList:nil],
   [UIKeyCommand commandWithTitle:@"Go Back" image:nil action:@selector(goBack) input:UIKeyInputEscape modifierFlags:0 propertyList:nil],
-  [UIKeyCommand commandWithTitle:@"Switch position mode" image:nil action:@selector(switchPositionMode) input:@"0" modifierFlags:UIKeyModifierCommand propertyList:nil]
+  [UIKeyCommand commandWithTitle:@"Switch position mode" image:nil action:@selector(switchPositionMode) input:@"0" modifierFlags:UIKeyModifierCommand propertyList:nil],
+  [UIKeyCommand commandWithTitle:@"Search" image:[UIImage systemImageNamed: @"magnifyingglass"] action:@selector(search) input:@"F" modifierFlags:UIKeyModifierCommand propertyList:nil]
   ];
 
   for (UIKeyCommand *command in commands) {
@@ -833,6 +827,12 @@ NSString *const kAboutSegue = @"Map2About";
   }
 
   return commands;
+}
+
+- (void)search {
+  if (!self.searchManager.isSearching) {
+    [self.searchManager startSearchingWithIsRouting:NO];
+  }
 }
 
 - (void)zoomOut {
@@ -906,7 +906,49 @@ NSString *const kAboutSegue = @"Map2About";
     case UIGestureRecognizerStateChanged:
     {
       CGPoint translation = [recognizer translationInView:self.view];
-      if (translation.x == 0 && CGPointEqualToPoint(translation, CGPointZero))
+      if (translation.x == 0 && translation.y == 0 && CGPointEqualToPoint(translation, CGPointZero))
+        return;
+      
+      BOOL isShiftPressed = [recognizer modifierFlags] & UIKeyModifierShift;
+      
+      if (isShiftPressed) {
+        self.userTouchesAction = UserTouchesActionScale;
+        static const CGFloat kScaleFactor = 0.9;
+        const CGFloat factor = translation.y > 0 ? kScaleFactor : 1 / kScaleFactor;
+        GetFramework().Scale(factor, [self getZoomPoint], false);
+      } else {
+        self.userTouchesAction = UserTouchesActionDrag;
+        CGPoint velocity = [recognizer velocityInView:self.view];
+        CGFloat velocityX = ABS(velocity.x * 0.001);
+        velocityX = MAX(1, velocityX);
+        if (velocityX > 2.5) {
+          velocityX = 2.5;
+        }
+        CGFloat velocityY = ABS(velocity.y * 0.001);
+        velocityY = MAX(1, velocityY);
+        if (velocityY > 2.5) {
+          velocityY = 2.5;
+        }
+        GetFramework().Scroll((translation.x * velocityX) * -1, (translation.y * velocityY) * -1);
+      }
+      [recognizer setTranslation:CGPointZero inView:self.view];
+      break;
+    }
+    case UIGestureRecognizerStateEnded:
+      self.userTouchesAction = UserTouchesActionNone;
+      break;
+    default:
+      break;
+  }
+}
+
+- (void)handleZoomPan:(UIPanGestureRecognizer *)recognizer API_AVAILABLE(ios(14.0)) {
+  switch (recognizer.state) {
+    case UIGestureRecognizerStateBegan:
+    case UIGestureRecognizerStateChanged:
+    {
+      CGPoint translation = [recognizer translationInView:self.view];
+      if (translation.y == 0)
         return;
       self.userTouchesAction = UserTouchesActionScale;
       static const CGFloat kScaleFactor = 0.9;

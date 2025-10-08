@@ -16,8 +16,6 @@
     <string name="kilometres">Kilometro</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">Miliak</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">Nire kokapena</string>
     <!-- Update maps later button text -->
     <string name="later">Geroago</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -40,13 +38,13 @@
     <!-- Text in About screen -->
     <string name="about_headline">Proiektu irekia, auzolanean egina</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_1">• Ez iragarkirik, ez jarraipenik, ez datu-bilketarik</string>
+    <string name="about_proposition_1">• Erabiltzeko erraza eta leundua</string>
     <!-- Text in About screen -->
     <string name="about_proposition_2">• Pribatutasunean zentratua eta iragarkirik gabea</string>
     <!-- Text in About screen -->
     <string name="about_proposition_3">• Offline, azkarra eta minimalista</string>
     <!-- Text in About screen -->
-    <string name="about_developed_by_enthusiasts">Zale eta bolondresek sortutako kode irekiko aplikazioa.</string>
+    <string name="about_developed_by_enthusiasts">Guztiz kode irekikoa, irabazi asmorik gabea, erabaki eta finantza gardenak.</string>
     <!-- The button that opens system location settings -->
     <string name="location_settings">Kokapen ezarpenak</string>
     <string name="close">Itxi</string>
@@ -74,9 +72,7 @@
     <!-- Should be used in the bookmarks-only context, see bookmarks_and_tracks if tracks are also implied. -->
     <string name="bookmarks">Markagailuak</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
-    <string name="bookmarks_and_tracks">Markagailuak eta ibilbideak</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">Nire tokiak</string>
+    <string name="bookmarks_and_tracks">Markagailuak eta arrastoak</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Izena</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -88,17 +84,9 @@
     <!-- Header of settings activity where user defines storage path -->
     <string name="maps_storage">Mapak gordetzeko tokia</string>
     <!-- Detailed description of Maps Storage settings button -->
-    <string name="maps_storage_summary">Hautatu mapak non deskargatu behar diren.</string>
+    <string name="maps_storage_summary">Hautatu mapak zein karpetan deskargatu behar diren.</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Deskargatutako mapak</string>
-    <!-- Internal storage type in Maps Storage settings (not accessible by the user) -->
-    <string name="maps_storage_internal">Barne biltegiratze pribatua</string>
-    <!-- Shared storage type in Maps Storage settings (a primary storage usually) -->
-    <string name="maps_storage_shared">Barne biltegiratze partekatua</string>
-    <!-- Removable external storage type in Maps Storage settings, e.g. an SD card -->
-    <string name="maps_storage_removable">SD txartela</string>
-    <!-- Generic external storage type in Maps Storage settings -->
-    <string name="maps_storage_external">Kanpoko biltegiratze partekatua</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
     <string name="maps_storage_free_size">%2$s-tik %1$s libre</string>
     <!-- Question dialog for transferring maps from one storage to another -->
@@ -150,8 +138,6 @@
     <string name="category_post">Posta bulegoa</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">Polizia</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">WiFi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">Birziklapena</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -179,9 +165,9 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">Zure kokapena ez da oraindik zehaztu</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Barkatu, mapa biltegiratzeko ezarpena desgaituta dago.</string>
+    <string name="cant_change_this_setting">Barkatu, mapa biltegiratzeko ezarpena desgaituta dago</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">Mapak deskargatzen ari dira.</string>
+    <string name="downloading_is_active">Mapak deskargatzen ari dira</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
     <string name="my_position_share_sms">Ikusi nire uneko kokapena CoMaps-en! %1$s edo %2$s Ez al duzu lineaz kanpoko maparik? Deskargatu hemendik: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
@@ -203,7 +189,7 @@
     <!-- Confirmation for OpenStreetMap log out. -->
     <string name="osm_log_out_confirmation">Ziur zure OpenStreetMap kontutik saioa amaitu nahi duzula?</string>
     <!-- Title for tracks category in bookmarks manager -->
-    <string name="tracks_title">Arrasto</string>
+    <string name="tracks_title">Arrastoak</string>
     <!-- Length of track in cell that describes route -->
     <string name="length">Luzera</string>
     <string name="share_my_location">Partekatu nire kokapena</string>
@@ -237,9 +223,9 @@
     <!-- Settings «Route» category: «Tts language» title -->
     <string name="pref_tts_language_title">Ahots hizkuntza</string>
     <!-- Settings «Route» category: «Test Voice Directions» title -->
-    <string name="pref_tts_test_voice_title">Probatu ahots bidezko jarraibideak (TTS, Text-To-Speech)</string>
+    <string name="pref_tts_test_voice_title">Probatu ahots bidezko jarraibideak</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
-    <string name="pref_tts_playing_test_voice">Egiaztatu bolumena edo sistemaren testu-ahotsaren ezarpenak ahotsa entzuten ez baduzu.</string>
+    <string name="pref_tts_playing_test_voice">Egiaztatu bolumena edo sistemaren testu-ahotsaren ezarpenak ahotsa entzuten ez baduzu</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
     <string name="pref_tts_unavailable">Ez dago erabilgarri</string>
     <string name="pref_map_auto_zoom">Zoom automatikoa</string>
@@ -287,7 +273,7 @@
     <string name="downloader_download_all_button">Deskargatu guztiak</string>
     <string name="downloader_downloading">Deskargatzen:</string>
     <!-- Displayed in a dialog that appears when a user tries to delete a map while the app is in the follow route mode -->
-    <string name="downloader_delete_map_while_routing_dialog">Mapa ezabatzeko, gelditu nabigazioa.</string>
+    <string name="downloader_delete_map_while_routing_dialog">Mapa ezabatzeko, gelditu nabigazioa</string>
     <!-- PointsInDifferentMWM -->
     <string name="routing_failed_cross_mwm_building">Eskualde bakarreko mapa batean guztiz bilduta dauden arrastoak soilik sor daitezke.</string>
     <!-- Context menu item for downloader. -->
@@ -299,9 +285,9 @@
     <!-- Item in context menu. -->
     <string name="downloader_update_map">Eguneratu mapa</string>
     <!-- Preference title -->
-    <string name="google_play_services">Google Play Kokapen Zerbitzuak</string>
+    <string name="google_play_services">Google Fused Kokapen Zerbitzuak</string>
     <!-- Preference text -->
-    <string name="pref_use_google_play">Zehaztu azkar zure gutxi gorabeherako kokapena Bluetooth, WiFi edo sare mugikorra erabiliz</string>
+    <string name="pref_use_google_play">GPSa, WiFi-a, sare zelularrak eta abar konbinatzen dituen zerbitzu partikularra. zure kokapena zehatzago zehazteko. Google-ren zerbitzariekin konekta daiteke.</string>
     <!-- Preference title -->
     <!-- Preference description -->
     <!-- Text for routing error dialog -->
@@ -359,18 +345,18 @@
     <string name="dialog_routing_location_turn_on">Aktibatu kokapen zerbitzuak</string>
     <string name="dialog_routing_location_unknown_turn_on">Ezin dira GPS koordenatuak aurkitu. Aktibatu kokapen zerbitzuak arrastoa kalkulatzeko.</string>
     <string name="dialog_routing_unable_locate_route">Ezin da ibilbiderik aurkitu</string>
-    <string name="dialog_routing_cant_build_route">Ezin da ibilbidea sortu.</string>
+    <string name="dialog_routing_cant_build_route">Ezin da ibilbidea sortu</string>
     <string name="dialog_routing_change_start_or_end">Ezarri zure abiapuntua edota helmuga.</string>
     <string name="dialog_routing_change_start">Ezarri abiapuntua</string>
     <string name="dialog_routing_start_not_determined">Ibilbidea ez da sortu. Abiapuntua ezin izan da aurkitu.</string>
     <string name="dialog_routing_select_closer_start">Hautatu errepide batetik gertuko abiapuntua.</string>
     <string name="dialog_routing_change_end">Zehaztu helmuga</string>
     <string name="dialog_routing_end_not_determined">Ibilbidea ez da sortu. Ezin izan da helmuga aurkitu.</string>
-    <string name="dialog_routing_select_closer_end">Hautatu helmuga puntu bat errepide batetik gertu.</string>
-    <string name="dialog_routing_change_intermediate">Ezin izan da tarteko puntua kokatu.</string>
-    <string name="dialog_routing_intermediate_not_determined">Mesedez, zehaztu tarteko puntua.</string>
+    <string name="dialog_routing_select_closer_end">Hautatu helmuga puntu bat errepide batetik gertu</string>
+    <string name="dialog_routing_change_intermediate">Ezin izan da tarteko puntua kokatu</string>
+    <string name="dialog_routing_intermediate_not_determined">Mesedez, zehaztu tarteko puntua</string>
     <string name="dialog_routing_system_error">Sistemaren errorea</string>
-    <string name="dialog_routing_application_error">Ibilbidea ezin izan da sortu aplikazioaren errore baten ondorioz.</string>
+    <string name="dialog_routing_application_error">Ibilbidea ezin izan da sortu aplikazioaren errore baten ondorioz</string>
     <string name="dialog_routing_try_again">Saiatu berriro</string>
     <string name="not_now">Orain ez</string>
     <string name="dialog_routing_download_and_build_cross_route">Mapa deskargatu eta mapa bat baino gehiago hartzen duen ibilbide hobe bat sortu nahi duzu?</string>
@@ -384,17 +370,17 @@
     <string name="hide">Ezkutatu</string>
     <string name="categories">Kategoriak</string>
     <string name="history">Historiala</string>
-    <string name="search_not_found">Barkatu, ez dut ezer aurkitu.</string>
+    <string name="search_not_found">Barkatu, ez da ezer aurkitu</string>
     <!-- The message when user did not find anything in the search. -->
     <string name="search_not_found_query">Deskargatu bilatzen ari zaren eskualdea edo saiatu inguruko herri/hiri izena gehitzen.</string>
     <string name="search_history_title">Bilaketa historia</string>
-    <string name="search_history_text">Ikusi azken bilaketak.</string>
+    <string name="search_history_text">Ikusi azken bilaketak</string>
     <string name="clear_search">Garbitu bilaketa historia</string>
     <string name="p2p_your_location">Zure kokapena</string>
     <string name="p2p_start">Hasi</string>
     <string name="p2p_from_here">Abiapuntua</string>
     <string name="p2p_to_here">Helmuga</string>
-    <string name="p2p_only_from_current">Nabigazioa zure uneko kokapenetik soilik dago erabilgarri.</string>
+    <string name="p2p_only_from_current">Nabigazioa zure uneko kokapenetik soilik dago erabilgarri</string>
     <string name="p2p_reroute_from_current">Zure uneko kokapenetik ibilbide bat antolatzea nahi duzu?</string>
     <!-- Edit open hours/set time and minutes dialog -->
     <string name="next_button">Hurrengoa</string>
@@ -429,7 +415,6 @@
     <string name="twentyfour_seven">24/7</string>
     <string name="day_off_today">Gaur atseden eguna</string>
     <string name="day_off">Itxita</string>
-    <string name="today">Gaur</string>
     <string name="opens_in">%s barru irekiko da</string>
     <string name="closes_in">%s barru itxiko da</string>
     <string name="closed">Itxita</string>
@@ -440,8 +425,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Saioa hasi gabe</string>
     <string name="login_osm">Hasi saioa OpenStreetMap-en</string>
-    <string name="password">Pasahitza</string>
-    <string name="forgot_password">Pasahitza ahaztu duzu?</string>
     <string name="logout">Saioa itxi</string>
     <string name="edit_place">Editatu tokia</string>
     <string name="add_language">Gehitu hizkuntza bat</string>
@@ -457,21 +440,19 @@
     <string name="empty_street_name_error">Sartu kalearen izena</string>
     <string name="choose_language">Aukeratu hizkuntza bat</string>
     <string name="choose_street">Aukeratu kale bat</string>
-    <string name="postal_code">Posta kodea</string>
     <string name="cuisine">Sukaldea</string>
     <string name="select_cuisine">Aukeratu sukaldea</string>
     <!-- login text field -->
-    <string name="email_or_username">Posta elektronikoa edo erabiltzailea</string>
     <string name="editor_add_phone">Gehitu telefonoa</string>
     <string name="level">Solairua</string>
-    <string name="downloader_delete_map_dialog">Mapan egin dituzun aldaketa guztiak maparekin batera ezabatuko dira.</string>
+    <string name="downloader_delete_map_dialog">Mapan egin dituzun aldaketa guztiak maparekin batera ezabatuko dira</string>
     <string name="downloader_update_maps">Eguneratu mapak</string>
     <string name="downloader_mwm_migration_dialog">Ibilbide bat sortzeko, beharrezkoa da mapa guztiak eguneratzea eta ibilbidea berriro planifikatzea.</string>
     <string name="downloader_search_field_hint">Bilatu mapa</string>
-    <string name="common_check_internet_connection_dialog">Mesedez, egiaztatu ezarpenak eta ziurtatu zure gailua Internetera konektatuta dagoela.</string>
+    <string name="common_check_internet_connection_dialog">Mesedez, egiaztatu ezarpenak eta ziurtatu zure gailua Internetera konektatuta dagoela</string>
     <string name="downloader_no_space_title">Leku nahikorik ez</string>
     <string name="downloader_no_space_message">Ezabatu beharrezkoak ez diren datuak</string>
-    <string name="editor_login_error_dialog">Saioa hasteko errorea.</string>
+    <string name="editor_login_error_dialog">Saioa hasteko errorea</string>
     <string name="editor_profile_changes">Egiaztatutako aldaketak</string>
     <string name="editor_focus_map_on_location">Arrastatu mapa gurutzea tokiaren edo negozioaren kokalekuan kokatzeko.</string>
     <string name="editor_edit_place_title">Editatzen</string>
@@ -488,18 +469,16 @@
     <string name="osm_presentation">Komunitateak sortutako OpenStreetMap datuak %s-tik aurrera. Lortu informazio gehiago mapa editatu eta eguneratzeari buruz OpenStreetMap.org helbidean</string>
     <!-- OSM explanation on Android login screen -->
     <string name="login_osm_presentation">OpenStreetMap.org (OSM) mapa libre eta irekia eraikitzeko komunitateko proiektu bat da. CoMaps-en mapen datuen iturri nagusia da eta Wikipediaren antzera funtzionatzen du. Tokiak gehitu edo edita ditzakezu eta mundu osoko milioika erabiltzailerentzat eskuragarri egongo dira. \nSartu komunitatean eta lagundu mapa hobea egiten guztiontzat!</string>
-    <string name="login_to_make_edits_visible">Sortu OpenStreetMap kontu bat edo hasi saioa zure maparen aldaketak munduan argitaratzeko.</string>
+    <string name="login_to_make_edits_visible">Sortu OpenStreetMap kontu bat edo hasi saioa zure maparen aldaketak munduan argitaratzeko</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%1$d/%2$d</string>
     <string name="download_over_mobile_header">Deskargatu sare mugikorreko konexioarekin?</string>
-    <string name="download_over_mobile_message">Oso garestia izan daiteke roaming plan batzuekin edo datu-ibiltaritzarekin.</string>
+    <string name="download_over_mobile_message">Oso garestia izan daiteke roaming plan batzuekin edo datu-ibiltaritzarekin</string>
     <string name="error_enter_correct_house_number">Sartu etxeko zenbaki baliozkoa</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">Solairu kopurua ez da %d-tik gorakoa izan behar</string>
     <string name="editor_zip_code">Posta kodea</string>
     <string name="error_enter_correct_zip_code">Sartu baliozko posta-kodea</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">Maparen puntua</string>
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">OpenStreetMap-eko boluntarioentzako oharra (aukerakoa)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
@@ -515,18 +494,10 @@
     <string name="editor_category_unsuitable_title">Ezin duzu kategoria egokirik aurkitu?</string>
     <string name="editor_category_unsuitable_text">CoMaps-ek puntu kategoria soilak gehitzeko aukera ematen du, hau da, ez da herririk, errepiderik, lakurik, eraikinen eskemarik, etab. Gehitu kategoria horiek zuzenean <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Begiratu gure <a href="https://www.comaps.app/support/advanced-map-editing/">gida</a> urratsez urrats argibide zehatzak lortzeko.</string>
     <string name="downloader_no_downloaded_maps_title">Ez duzu maparik deskargatu</string>
-    <string name="downloader_no_downloaded_maps_message">Deskargatu mapak kokapena aurkitzeko eta lineaz kanpo nabigatzeko.</string>
-    <string name="current_location_unknown_error_title">Uneko kokapena ezezaguna da.</string>
-    <!-- abbreviation for meters -->
-    <string name="m">m</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">km</string>
+    <string name="downloader_no_downloaded_maps_message">Deskargatu mapak kokapena aurkitzeko eta lineaz kanpo nabigatzeko</string>
+    <string name="current_location_unknown_error_title">Uneko kokapena ezezaguna da</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/h</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">mi</string>
-    <!-- A unit of measure -->
-    <string name="ft">oin</string>
     <string name="miles_per_hour">mph</string>
     <string name="hour">h</string>
     <string name="minute">min</string>
@@ -555,11 +526,11 @@
     <!-- Displayed when saving some edits to the map to warn against publishing personal data -->
     <string name="editor_share_to_all_dialog_title">Erabiltzaile guztiei bidali nahi diezu?</string>
     <!-- Dialog before publishing the modifications to the public map. -->
-    <string name="editor_share_to_all_dialog_message_1">Ziurtatu ez duzula datu pertsonalik sartu.</string>
-    <string name="editor_share_to_all_dialog_message_2">OpenStreetMap editoreek aldaketak egiaztatuko dituzte eta zurekin harremanetan jarriko dira zalantzaren bat izanez gero.</string>
+    <string name="editor_share_to_all_dialog_message_1">Ziurtatu ez duzula datu pertsonalik sartu</string>
+    <string name="editor_share_to_all_dialog_message_2">OpenStreetMap editoreek aldaketak egiaztatuko dituzte eta zurekin harremanetan jarriko dira zalantzaren bat izanez gero</string>
     <string name="navigation_stop_button">Gelditu</string>
     <!-- Shown as toast when starting the recent track recording -->
-    <string name="track_recording">Ibilbidea grabatzea</string>
+    <string name="track_recording">Arrastoa grabatzea</string>
     <!-- For the first routing -->
     <string name="accept">Onartu</string>
     <!-- For the first routing -->
@@ -570,10 +541,10 @@
     <string name="mobile_data_option_not_today">Ez erabili gaur</string>
     <string name="mobile_data">Internet mugikorra</string>
     <!-- NOTE to translators: please synchronize your translation with the English one. -->
-    <string name="mobile_data_description">Internet mugikorra behar da tokiei buruzko informazio zehatza bistaratzeko, hala nola argazkiak, prezioak eta iritziak.</string>
+    <string name="mobile_data_description">Internet mugikorra beharrezkoa da mapak eguneratzeko jakinarazpenetarako eta edizioak igotzeko</string>
     <string name="mobile_data_option_never">Ez erabili inoiz</string>
     <string name="mobile_data_option_ask">Galdetu beti</string>
-    <string name="traffic_update_maps_text">Trafiko datuak bistaratzeko, mapak eguneratu behar dira.</string>
+    <string name="traffic_update_maps_text">Trafiko datuak bistaratzeko, mapak eguneratu behar dira</string>
     <string name="big_font">Handitu letra tamaina mapan</string>
     <string name="traffic_update_app">Eguneratu CoMaps</string>
     <!-- "traffic" as in "road congestion" -->
@@ -583,11 +554,9 @@
     <string name="feedback_general">Iritzi orokorra</string>
     <string name="prefs_languages_information">TTS sistema erabiltzen dugu ahots argibideetarako. Android gailu askok Google TTS erabiltzen dute. Google Play-tik deskargatu edo egunera dezakezu (https://play.google.com/store/apps/details?idu003dcom.google.android.tts)</string>
     <string name="prefs_languages_information_off">Zenbait hizkuntzatan, beste ahots-sintetizadore bat edo hizkuntza-pakete gehigarri bat instalatu behar duzu aplikazio-dendatik (Google Play, Galaxy Store, App Gallery, FDroid). \nIreki zure gailuaren Ezarpenak &gt; Hizkuntza eta sarrera &gt; Hizkera &gt; Hizketarako testurako aukerak. \nHemen ahots-sintesiaren ezarpenak kudea ditzakezu (adibidez, hizkuntza pakete bat deskargatu, konexiorik gabe erabiltzeko) edo testu-hizketarako beste motor bat hauta dezakezu.</string>
-    <string name="prefs_languages_information_off_link">Informazio gehiago lortzeko, ikusi gida hau.</string>
+    <string name="prefs_languages_information_off_link">Informazio gehiago lortzeko, ikusi gida hau</string>
     <string name="transliteration_title">Latinezko transliterazioa</string>
     <string name="learn_more">Irakurri gehiago</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">Irten</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Erabili bilaketa edo sakatu mapan ibilbidearen abiapuntua gehitzeko</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -596,12 +565,9 @@
     <string name="button_plan">Planifikatu</string>
     <string name="placepage_remove_stop">Kendu geltokia</string>
     <string name="placepage_add_stop">Gehitu geltokia</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Hasi saioa OpenStreetMap-en zure mapen aldaketa guztiak automatikoki kargatzeko. Lortu informazio gehiago <a href="https://github.com/organicmaps/organicmaps/issues/6144">hemen</a>.</string>
     <string name="dialog_error_storage_title">Biltegiratze sarbidearen arazoa</string>
     <string name="dialog_error_storage_message">Kanpoko biltegiratzea ez dago erabilgarri; Baliteke SD txartela kendu edo hondatuta egotea, edo fitxategi sistema irakurtzeko soilik izatea. Mesedez, begiratu edo idatzi iezaguzu support@comaps.app helbidera</string>
     <string name="setting_emulate_bad_storage">Emulatu kaltetutako biltegiratzea</string>
-    <string name="core_entrance">Sarrera</string>
     <string name="error_enter_correct_name">Mesedez, idatzi baliozko izen bat</string>
     <string name="bookmark_lists">Zerrendak</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -613,7 +579,7 @@
     </plurals>
     <string name="bookmarks_create_new_group">Sortu zerrenda berria</string>
     <!-- Bookmark categories screen, button that opens folder selection dialog to import KML/KMZ/GPX/KMB files -->
-    <string name="bookmarks_import">Inportatu markagailuak eta ibilbideak</string>
+    <string name="bookmarks_import">Inportatu markagailuak eta arrastoak</string>
     <string name="bookmarks_error_message_share_general">Ezin izan da partekatu aplikazioaren errore baten ondorioz</string>
     <string name="bookmarks_error_title_share_empty">Partekatzeak huts egin du</string>
     <string name="bookmarks_error_message_share_empty">Ezin da partekatu zerrenda hutsik</string>
@@ -631,8 +597,8 @@
     </plurals>
     <string name="restore">Berreskuratu</string>
     <plurals name="tracks">
-        <item quantity="one">%d arrasto</item>
-        <item quantity="other">%d arrastos</item>
+        <item quantity="one">arrasto %d</item>
+        <item quantity="other">%d arrasto</item>
     </plurals>
     <!-- Settings privacy group in settings screen -->
     <string name="privacy">Pribatutasuna</string>
@@ -641,16 +607,12 @@
     <string name="button_layer_traffic">Trafikoa</string>
     <string name="subway">Metroa</string>
     <string name="layers_title">Maparen estiloak eta geruzak</string>
-    <string name="subway_data_unavailable">Metroaren mapa ez dago erabilgarri</string>
     <string name="bookmarks_empty_list_title">Zerrenda hau hutsik dago</string>
     <string name="bookmarks_empty_list_message">Markagailu bat gehitzeko, ukitu mapako toki bat eta, ondoren, ukitu izarraren ikonoa</string>
     <string name="category_desc_more">…gehiago</string>
     <string name="export_file">Esportatu KMZ</string>
     <string name="export_file_gpx">Esportatu GPX</string>
     <string name="delete_list">Ezabatu zerrenda</string>
-    <string name="public_access">Sarbide publikoa</string>
-    <string name="limited_access">Sarbide mugatua</string>
-    <string name="not_shared">Pribatua</string>
     <string name="speedcams_alert_title">Abiadura kamerak</string>
     <string name="place_description_title">Tokiaren deskribapena</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -662,12 +624,11 @@
     <!-- Speed camera settings menu option - Never warn (about speedcams) -->
     <string name="pref_tts_speedcams_never">Inoiz ez abisatu</string>
     <string name="power_managment_title">Energia aurrezteko modua</string>
-    <string name="power_managment_description">Energia aurrezteko modua aktibatuta badago, aplikazioak energia kontsumitzen duten funtzioak itzaliko ditu, telefonoaren uneko kargaren arabera.</string>
+    <string name="power_managment_description">Saiatu energiaren erabilera murrizten, funtzionalitateren baten kontura</string>
     <string name="power_managment_setting_never">Inoiz ez</string>
     <string name="power_managment_setting_auto">Automatikoa</string>
     <string name="power_managment_setting_manual_max">Energia aurrezpen handiena</string>
     <string name="enable_logging_warning_message">Aukera hau diagnostiko helburua duten erregistro ekintzetarako gaituta dago. Honek gure taldeari aplikazioarekin arazoak identifikatzen laguntzen dio. Gaitu aukera CoMaps laguntzari eskatuta soilik.</string>
-    <string name="access_rules_author_only">Sarean editatzen</string>
     <string name="driving_options_title">Bideratzeko aukerak</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">Bidesariak saihestea</string>
@@ -816,7 +777,7 @@
     <string name="browser_not_available">Web arakatzailea ez dago erabilgarri</string>
     <string name="volume">Bolumena</string>
     <!-- Bookmark categories screen, button that opens share dialog to export all bookmarks and tracks -->
-    <string name="bookmarks_export">Esportatu Laster-marka eta Pista guztiak</string>
+    <string name="bookmarks_export">Esportatu markagailu eta arrasto guztiak</string>
     <!-- button in (app) TTS settings, to open the system TTS settings. -->
     <string name="pref_tts_open_system_settings">Sistemaren ahots-sintesiaren ezarpenak</string>
     <!-- toast displayed when pressing the "Speech synthesis system settings" button, and the system settings aren't found. -->
@@ -840,17 +801,17 @@
     <!-- Disclaimer summary shown when Power Saving Mode is enabled -->
     <string name="power_save_dialog_summary">Nabigazio zehatzena lortzeko, telefonoaren bateriaren ezarpenetan energia aurrezteko modua desgaitzea gomendatzen dugu.</string>
     <!-- Prompt to start recording a track. -->
-    <string name="start_track_recording">Ibilbidearen grabaketa</string>
+    <string name="start_track_recording">Grabatu arrastoa</string>
     <!-- Prompt for stopping a track recording. -->
-    <string name="stop_track_recording">Gelditu ibilbidearen grabaketa</string>
+    <string name="stop_track_recording">Gelditu arrastoaren grabaketa</string>
     <!-- Title for the "Stop Without Saving" action for the alert when saving a track recording. -->
     <string name="stop_without_saving">Gelditu gorde gabe</string>
     <!-- Title for the "Stop Without Saving" action for the alert when saving a track recording. -->
     <string name="continue_recording">Jarraitu grabatzen</string>
     <!-- Title for the alert when saving a track recording. -->
-    <string name="track_recording_alert_title">Ibilbidearen grabaketa markagailuetan eta ibilbideetan gorde nahi duzu?</string>
+    <string name="track_recording_alert_title">Markagailu eta arrastoetan gorde nahi duzu?</string>
     <!-- Message for the toast when saving the track recording is finished but nothing to save. -->
-    <string name="track_recording_toast_nothing_to_save">Ibilbidea hutsik dago; ez dago ezer gordetzeko</string>
+    <string name="track_recording_toast_nothing_to_save">Arrastoa hutsik dago; ez dago ezer gordetzeko</string>
     <!-- Error message when there are no File Manager apps installed to select a folder when importing Bookmarks and Tracks -->
     <string name="error_no_file_manager_app">Ezin da karpeta hautatzeko elkarrizketa-koadroa erakutsi zure gailuan ez dagoelako aplikazio egokirik instalatuta. Instalatu fitxategi-kudeatzaile aplikazio bat eta saiatu berriro.</string>
     <string name="choose_color">Aukeratu kolorea</string>
@@ -858,24 +819,12 @@
     <string name="uri_open_location_failed">Ez dago kokapena ireki dezakeen aplikaziorik instalatuta</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Nabigazioan automatikoa</string>
-    <string name="telegram">Telegram</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="vk">VK</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="read_in_wikipedia">Wikipedia</string>
     <string name="level_value_generic">Maila: %s</string>
-    <string name="mb">MB</string>
-    <string name="gb">GB</string>
-    <string name="github">GitHub</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="saved">Gordeta</string>
@@ -884,7 +833,6 @@
     <string name="pref_left_button_title">Ezkerreko botoiaren ezarpena</string>
     <string name="about_help">Honi buruz eta Laguntza</string>
     <string name="bookmark_color">Laster-markaren kolorea</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Sartu baliozko Blueskyko erabiltzaile-izena edo web helbidea</string>
     <string name="error_enter_correct_fediverse_page">Sartu baliozko Mastodoneko erabiltzaile-izena edo web helbidea</string>
     <string name="route_type">Ibilbide mota</string>
@@ -894,7 +842,6 @@
     <string name="ruler">Erregela</string>
     <string name="clear">Garbitu</string>
     <string name="panoramax">Panoramax Irudia</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_backup_now_title">Babeskopia egin orain</string>
     <string name="pref_backup_now_summary">Sortu babeskopia berehala</string>
     <string name="pref_backup_now_summary_ok">Babeskopia behar bezala egin da</string>
@@ -909,11 +856,15 @@
     <string name="backup_interval_every_week">Astero</string>
     <string name="backup_interval_manual_only">Itzalita (eskuz bakarrik)</string>
     <string name="pref_backup_title">Markagailu eta arrastoen babeskopia</string>
-    <string name="pref_backup_summary">Egin babeskopia zure gailuan automatikoki</string>
+    <string name="pref_backup_summary">Automatikoki egin babeskopia zure gailuan</string>
     <string name="pref_backup_now_summary_folder_unavailable">Babeskopiaren karpeta ez dago eskuragarri</string>
     <string name="dialog_report_error_missing_folder">Babeskopiarako hautatutako kokapena ez dago eskuragarri edo ezin da idatzi. Hautatu beste kokapen bat.</string>
     <string name="pref_backup_now_summary_progress">Babeskopia egiten…</string>
     <string name="editor_level">Solairuak (O beheko solairua da)</string>
     <string name="editor_building_levels">Solairuak (beheko solairua barne, sabaia ez)</string>
     <string name="error_enter_correct_level">Sartu baliozko solairu kopurua</string>
+    <string name="dialog_report_error_with_logs">Mesedez, bidali errore-txosten bat:\n- \"Gaitu erregistroa\" ezarpenetan\n- arazoa erreproduzitzea\n- \"Honi buruz &amp; Laguntza\" pantailan, sakatu \"Akatsen berri eman\" botoia eta bidali posta elektronikoz edo txataren bidez\n- erregistroa desgaitu</string>
+    <string name="open_now">Ireki orain</string>
+    <string name="closed_now">Orain itxita</string>
+    <string name="at">%s-etan</string>
 </resources>

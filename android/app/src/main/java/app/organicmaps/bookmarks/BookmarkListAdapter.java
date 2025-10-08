@@ -4,13 +4,9 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.textview.MaterialTextView;
-
 import app.organicmaps.R;
 import app.organicmaps.sdk.bookmarks.data.BookmarkCategory;
 import app.organicmaps.sdk.bookmarks.data.BookmarkInfo;
@@ -20,7 +16,7 @@ import app.organicmaps.sdk.bookmarks.data.SortedBlock;
 import app.organicmaps.sdk.content.DataSource;
 import app.organicmaps.widget.recycler.RecyclerClickListener;
 import app.organicmaps.widget.recycler.RecyclerLongClickListener;
-
+import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,12 +58,14 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
       mDataSource = dataSource;
     }
 
-    public BookmarkCategory getCategory() { return mDataSource.getData(); }
+    public BookmarkCategory getCategory()
+    {
+      return mDataSource.getData();
+    }
 
     boolean hasDescription()
     {
-      return (!mDataSource.getData().getAnnotation().isEmpty() ||
-              !mDataSource.getData().getDescription().isEmpty());
+      return (!mDataSource.getData().getAnnotation().isEmpty() || !mDataSource.getData().getDescription().isEmpty());
     }
 
     void invalidate()
@@ -115,7 +113,10 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     }
 
     @Override
-    public int getSectionsCount() { return mSectionsCount; }
+    public int getSectionsCount()
+    {
+      return mSectionsCount;
+    }
 
     @Override
     public boolean isEditable(int sectionIndex)
@@ -124,7 +125,10 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     }
 
     @Override
-    public boolean hasTitle(int sectionIndex) { return true; }
+    public boolean hasTitle(int sectionIndex)
+    {
+      return true;
+    }
 
     @Nullable
     public String getTitle(int sectionIndex, @NonNull Resources rs)
@@ -172,15 +176,13 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     @Override
     public long getBookmarkId(@NonNull SectionPosition pos)
     {
-      return BookmarkManager.INSTANCE.getBookmarkIdByPosition(getCategory().getId(),
-                                                              pos.getItemIndex());
+      return BookmarkManager.INSTANCE.getBookmarkIdByPosition(getCategory().getId(), pos.getItemIndex());
     }
 
     @Override
     public long getTrackId(@NonNull SectionPosition pos)
     {
-      return BookmarkManager.INSTANCE.getTrackIdByPosition(getCategory().getId(),
-                                                           pos.getItemIndex());
+      return BookmarkManager.INSTANCE.getTrackIdByPosition(getCategory().getId(), pos.getItemIndex());
     }
   }
 
@@ -189,30 +191,47 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     @NonNull
     private final List<Long> mSearchResults;
 
-    SearchResultsSectionsDataSource(@NonNull DataSource<BookmarkCategory> dataSource,
-                                    @NonNull List<Long> searchResults)
+    SearchResultsSectionsDataSource(@NonNull DataSource<BookmarkCategory> dataSource, @NonNull List<Long> searchResults)
     {
       super(dataSource);
       mSearchResults = searchResults;
     }
 
     @Override
-    public int getSectionsCount() { return 1; }
+    public int getSectionsCount()
+    {
+      return 1;
+    }
 
     @Override
-    public boolean isEditable(int sectionIndex) { return true; }
+    public boolean isEditable(int sectionIndex)
+    {
+      return true;
+    }
 
     @Override
-    public boolean hasTitle(int sectionIndex) { return false; }
+    public boolean hasTitle(int sectionIndex)
+    {
+      return false;
+    }
 
     @Nullable
-    public String getTitle(int sectionIndex, @NonNull Resources rs) { return null; }
+    public String getTitle(int sectionIndex, @NonNull Resources rs)
+    {
+      return null;
+    }
 
     @Override
-    public int getItemsCount(int sectionIndex) { return mSearchResults.size(); }
+    public int getItemsCount(int sectionIndex)
+    {
+      return mSearchResults.size();
+    }
 
     @Override
-    public int getItemsType(int sectionIndex) { return TYPE_BOOKMARK; }
+    public int getItemsType(int sectionIndex)
+    {
+      return TYPE_BOOKMARK;
+    }
 
     @Override
     public void onDelete(@NonNull SectionPosition pos)
@@ -238,8 +257,7 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     @NonNull
     private final List<SortedBlock> mSortedBlocks;
 
-    SortedSectionsDataSource(@NonNull DataSource<BookmarkCategory> dataSource,
-                             @NonNull List<SortedBlock> sortedBlocks)
+    SortedSectionsDataSource(@NonNull DataSource<BookmarkCategory> dataSource, @NonNull List<SortedBlock> sortedBlocks)
     {
       super(dataSource);
       mSortedBlocks = sortedBlocks;
@@ -272,7 +290,10 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     }
 
     @Override
-    public boolean hasTitle(int sectionIndex) { return true; }
+    public boolean hasTitle(int sectionIndex)
+    {
+      return true;
+    }
 
     @Nullable
     public String getTitle(int sectionIndex, @NonNull Resources rs)
@@ -421,39 +442,37 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
     Holders.BaseBookmarkHolder holder = null;
     switch (viewType)
     {
-      case TYPE_TRACK:
-        Holders.TrackViewHolder trackHolder =
-            new Holders.TrackViewHolder(inflater.inflate(R.layout.item_track, parent,
-                                                         false));
-        trackHolder.setOnClickListener(mClickListener);
-        trackHolder.setOnLongClickListener(mLongClickListener);
-        trackHolder.setTrackIconClickListener(mIconClickListener);
-        trackHolder.setMoreButtonClickListener(mMoreClickListener);
-        holder = trackHolder;
-        break;
-      case TYPE_BOOKMARK:
-        Holders.BookmarkViewHolder bookmarkHolder =
-            new Holders.BookmarkViewHolder(inflater.inflate(R.layout.item_bookmark, parent,
-                                                            false));
-        bookmarkHolder.setOnClickListener(mClickListener);
-        bookmarkHolder.setOnLongClickListener(mLongClickListener);
-        holder = bookmarkHolder;
-        break;
-      case TYPE_SECTION:
-        MaterialTextView tv = (MaterialTextView) inflater.inflate(R.layout.item_category_title, parent, false);
-        holder = new Holders.SectionViewHolder(tv);
-        break;
-      case TYPE_DESC:
-        View desc = inflater.inflate(R.layout.item_category_description, parent, false);
-        MaterialTextView moreBtn = desc.findViewById(R.id.more_btn);
-        MaterialTextView text = desc.findViewById(R.id.text);
-        MaterialTextView title = desc.findViewById(R.id.title);
-        setMoreButtonVisibility(text, moreBtn);
-        holder = new Holders.DescriptionViewHolder(desc, mSectionsDataSource.getCategory());
-        text.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
-        moreBtn.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
-        title.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
-        break;
+    case TYPE_TRACK:
+      Holders.TrackViewHolder trackHolder =
+          new Holders.TrackViewHolder(inflater.inflate(R.layout.item_track, parent, false));
+      trackHolder.setOnClickListener(mClickListener);
+      trackHolder.setOnLongClickListener(mLongClickListener);
+      trackHolder.setTrackIconClickListener(mIconClickListener);
+      trackHolder.setMoreButtonClickListener(mMoreClickListener);
+      holder = trackHolder;
+      break;
+    case TYPE_BOOKMARK:
+      Holders.BookmarkViewHolder bookmarkHolder =
+          new Holders.BookmarkViewHolder(inflater.inflate(R.layout.item_bookmark, parent, false));
+      bookmarkHolder.setOnClickListener(mClickListener);
+      bookmarkHolder.setOnLongClickListener(mLongClickListener);
+      holder = bookmarkHolder;
+      break;
+    case TYPE_SECTION:
+      MaterialTextView tv = (MaterialTextView) inflater.inflate(R.layout.item_category_title, parent, false);
+      holder = new Holders.SectionViewHolder(tv);
+      break;
+    case TYPE_DESC:
+      View desc = inflater.inflate(R.layout.item_category_description, parent, false);
+      MaterialTextView moreBtn = desc.findViewById(R.id.more_btn);
+      MaterialTextView text = desc.findViewById(R.id.text);
+      MaterialTextView title = desc.findViewById(R.id.title);
+      setMoreButtonVisibility(text, moreBtn);
+      holder = new Holders.DescriptionViewHolder(desc, mSectionsDataSource.getCategory());
+      text.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
+      moreBtn.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
+      title.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
+      break;
     }
 
     if (holder == null)

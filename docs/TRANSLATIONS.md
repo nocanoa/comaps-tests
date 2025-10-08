@@ -9,7 +9,8 @@ The project consists of multiple components, each with its own translation files
 | Weblate Component                                   | Description                                                | Translation Files                                                                                        |
 | --------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | [Android][android_weblate]                          | UI strings                                                 | [android/app/src/main/res/values\*/strings.xml][android_git] ([en][android_git_en])                      |
-| [Android feature types][android_typestrings_weblate] | Map feature types                                        | [android/app/src/main/res/values\*/type_strings.xml][android_git] ([en][android_typestrings_git_en])    |
+| [Android feature types][android_typestrings_weblate]| Map feature types                                          | [android/sdk/src/main/res/values\*/type_strings.xml][android_sdkstrings_git] ([en][android_typestrings_git_en])|
+| [Android SDK][android_sdkstrings_weblate]           | UI strings (system-level)                                  | [android/sdk/src/main/res/values\*/strings.xml][android_sdkstrings_git] ([en][android_sdkstrings_git_en])|
 | [iOS][ios_weblate]                                  | UI strings                                                 | [iphone/Maps/LocalizedStrings/\*.lproj/Localizable.strings][ios_git] ([en][ios_git_en])                  |
 | [iOS Type Strings][ios_typestrings_weblate]         | OpenStreetMap Types                                        | [iphone/Maps/LocalizedStrings/\*.lproj/LocalizableTypes.strings][ios_git] ([en][ios_typestrings_git_en]) |
 | [iOS Plurals][ios_plurals_weblate]                  | UI strings (plurals)                                       | [iphone/Maps/LocalizedStrings/\*.lproj/Localizable.stringsdict][ios_git] ([en][ios_plurals_git_en])      |
@@ -18,9 +19,10 @@ The project consists of multiple components, each with its own translation files
 | [Countries][countries_weblate]                      | Country names for downloader                               | [data/country-strings/\*.json][countries_git] ([en][countries_git_en])                                   |
 | Search keywords                                     | Search keywords/aliases/synonyms                           | [data/categories.txt][categories_git]                                                                    |
 | Search keywords (cuisines)                          | Search keywords for cuisine types                          | [data/categories_cuisines.txt][categories_cuisines_git]                                                  |
-| AppStore Descriptions                               | AppStore descriptions                                      | [iphone/metadata][appstore_git] ([en][appstore_git_en])                                                  |
-| Android Stores Descriptions                                | Google, F-Droid, Huawei store descriptions                 | [android/app/src/fdroid/play][googleplay_git] ([en][googleplay_git_en])                                  |
-| [Website][website_weblate]                          | Website content                                            | [comaps/website][website_git] ([see details][website_guide])                                        |
+| [AppStore Descriptions][appstore_weblate]           | AppStore descriptions                                      | [iphone/metadata][appstore_git] ([en][appstore_git_en])                                                  |
+| [Android Stores Descriptions][googleplay_weblate]   | Google, Huawei store descriptions                          | [android/app/src/google/play/listings][googleplay_git] ([en][googleplay_git_en])                         |
+| [F-Droid Descriptions][fdroid_weblate]              | F-Droid descriptions                                       | [android/app/src/fdroid/play/listings][fdroid_git] ([en][fdroid_git_en])                                 |
+| [Website][website_weblate]                          | Website content                                            | [comaps/website][website_git] ([see details][website_guide])                                             |
 
 Components without links haven't been integrated into Weblate and must be translated directly via [Codeberg Pull Requests](CONTRIBUTING.md).
 
@@ -33,6 +35,29 @@ Translations are managed through [Codeberg Translate][codeberg_translate]. Direc
 ### Cross-Component Synchronization
 
 Android and iOS share most of the strings. Codeberg Translate automatically syncs translations between components (e.g., from Android to iOS and vice versa), so updating a string in one place is usually sufficient.
+
+### Categories strings
+
+Syntax:
+|   - used to separate synonyms.
+1-9 - digits in front of a synonym indicate the number of symbols that need to be
+       typed in a search query to make this synonym appear in the list of suggestions.
+       Located immediately at the start of a synonym. At most one
+       digit per synonym is allowed.
+It's possible to use emoji codes as search synonyms, e.g. U+1F6B0 for potable water.
+
+For all languages with nominative and gentive cases (e.g. Slavic languagues like Russian,
+Ukrainian, Belarus, Serbian), state _short_ nouns in nominative and genitive case, e.g. `Вино|вина`,
+so that both (e.g. Russian) searches for "вино" and "магазин вина" returns wine shops.
+
+For longer nouns (6 letters or longer) this is not necessary, because error correction
+can fix 1 or 2 letters, e.g `Мебель`
+
+Searcing for "магазин мебели" will also match the category name (1 letter difference).
+
+Exact treshold may be different for different languages. For Serbian, error correction
+kicks in only for 8-letter or longer words.
+
 
 ## Machine Translation
 
@@ -76,15 +101,19 @@ It is recommended to add comments directly on Codeberg Translate, as translators
 
 The recommended approach for resolving conflicts is as follows:
 
-1. Commit all changes from the internal database to the internal Git repository:  
-   _Manage → Repository Maintenance → Commit (button)_.
-2. Update the `weblate-comaps-<component>` branch of the Translate's forked Git repository on Codeberg:  
-   _Manage → Repository Maintenance → Push (button)_.
-3. Locally checkout the `weblate-comaps-<component>` branch.
-4. Rebase it onto `main` of the main repository, resolving any conflicts during the process.
-5. Push the branch to Codeberg to update the pull request, then merge the branch or PR into `main`.
-6. Reset Codeberg Translate to sync changes from Codeberg:  
-   _Manage → Repository Maintenance → Reset (button)_.
+1. Make sure [the translations on Weblate are actually locked](https://translate.codeberg.org/projects/comaps/#repository), this ensures that no more changes are done on Weblate while the conflict is being fixed. You will need to have the right Weblate permissions to do this.
+2. Commit all changes from the _Weblate_ internal database to the Weblate-internal Git repository, the steps in the UI are: _Manage → Repository Maintenance → Commit (button)_. This ensures that all existing translations are in the Weblate-internal _Git_ repo. (this also requires the right Weblate permissions)
+3. Now you can add the weblate-internal Git repo as a remote for your local repo: `git remote add weblate https://translate.codeberg.org/git/comaps/android/`. This step only needs to be done the first time you have to resolve a conflict
+4. Make sure that your local main branch is at the latest remote state, e.g. by running `git checkout main; git pull`
+5. Now you can fetch the current state of the _Weblate_ remote: `git fetch weblate`
+6. To be able to rebase the Codeberg `main` into the Weblate one, you need to have an editable branch. You can create it using `git checkout -b resolve_translate weblate/main`. This creates a branch called `resolve_translate` off the Weblate remote, and also switches you to this newly created branch.
+7. You can now run `git rebase main`, to rebase the branch and resolve any conflicts that are between the two. (**Note: Make sure to run this command from your `resolve_translate` branch**)
+8. Once you have resolved the conflicts, you can push the `resolve_translate` branch to Codeberg: `git push` 
+9. Make a PR for merging your conflict-resolution-branch into `main` on Codeberg, and get it reviewed as usual
+10. Once the PR is merged into `main` on Codeberg and the merge conflict is gone, you can now unlock the translations on Weblate again. 
+11. **Optionally if necessary**: If the conflict hasn't resolved through the steps, you can optionally reset the Weblate from the admin backend for the `website` component, this forces the current state from the Codeberg git repo into Weblate: _Manage → Repository Maintenance → Reset (button)_.
+
+Using these steps all existing translations can still be kept and rebased into the repo, without losing work. The important bit is that you need to ensure that all translations are in the Weblate-internal git repository before you rebase, so that they get into the _actual_ Codeberg repo. 
 
 [codeberg_translate]: https://translate.codeberg.org/projects/comaps/
 [contribute]: https://docs.weblate.org/en/latest/workflows.html
@@ -92,7 +121,10 @@ The recommended approach for resolving conflicts is as follows:
 [android_git]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/main/res
 [android_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/main/res/values/strings.xml
 [android_typestrings_weblate]: https://translate.codeberg.org/projects/comaps/android-typestrings/
-[android_typestrings_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/main/res/values/types_strings.xml
+[android_typestrings_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/sdk/src/main/res/values/types_strings.xml
+[android_sdkstrings_weblate]: https://translate.codeberg.org/projects/comaps/android-ui-strings-sdk/
+[android_sdkstrings_git]: https://codeberg.org/comaps/comaps/src/branch/main/android/sdk/src/main/res
+[android_sdkstrings_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/sdk/src/main/res/values/strings.xml
 [countries_weblate]: https://translate.codeberg.org/projects/comaps/countries/
 [countries_git]: https://codeberg.org/comaps/comaps/src/branch/main/data/countries-strings
 [countries_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/data/countries-strings/en.json/localize.json
@@ -113,9 +145,14 @@ The recommended approach for resolving conflicts is as follows:
 [website_weblate]: https://translate.codeberg.org/projects/comaps/website/
 [website_git]: https://codeberg.org/comaps/website/
 [website_guide]: https://codeberg.org/comaps/website/src/branch/main/TRANSLATIONS.md
+[appstore_weblate]: https://translate.codeberg.org/projects/comaps/appstore-description
 [appstore_git]: https://codeberg.org/comaps/comaps/src/branch/main/iphone/metadata
 [appstore_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/iphone/metadata/en-US
-[googleplay_git]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/fdroid/play
-[googleplay_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/fdroid/play/listings/en-US
+[googleplay_weblate]: https://translate.codeberg.org/projects/comaps/google-play-descriptions
+[googleplay_git]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/google/play/listings
+[googleplay_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/google/play/listings/en-US
+[fdroid_weblate]: https://translate.codeberg.org/projects/comaps/fdroid-app-description
+[fdroid_git]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/fdroid/play/listings
+[fdroid_git_en]: https://codeberg.org/comaps/comaps/src/branch/main/android/app/src/fdroid/play/listings/en-US
 [mergers]: https://codeberg.org/org/comaps/teams
 [failing_checks]: https://translate.codeberg.org/search/comaps/?q=has%3Acheck+AND+state%3A%3E%3Dtranslated+language%3Aru&sort_by=target&checksum=

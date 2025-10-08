@@ -1,0 +1,9 @@
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/socket_grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="3"
+    android:padding="16dp"
+    android:alignmentMode="alignMargins"
+    android:columnOrderPreserved="false" />

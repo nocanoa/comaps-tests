@@ -68,6 +68,11 @@ static BOOL isNightMode = NO;
 {
   return StyleManager.shared.theme.colors.buttonRed;
 }
++ (UIColor *)black
+{
+  return StyleManager.shared.theme.colors.black;
+}
+
 + (UIColor *)blackPrimaryText
 {
   return StyleManager.shared.theme.colors.blackPrimaryText;

@@ -9,19 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-
+import androidx.core.content.ContextCompat;
 import app.organicmaps.R;
 import app.organicmaps.adapter.DisabledChildSimpleExpandableListAdapter;
 import app.organicmaps.base.BaseMwmDialogFragment;
 import app.organicmaps.sdk.downloader.CountryItem;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.sdk.util.Utils;
+import app.organicmaps.util.UiUtils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
+import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,8 +46,7 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
 
   private Dialog createDialog(AlertDialog.Builder builder)
   {
-    View view = (mMissingMaps.size() == 1 ? buildSingleMapView(mMissingMaps.get(0))
-                                          : buildMultipleMapView());
+    View view = (mMissingMaps.size() == 1 ? buildSingleMapView(mMissingMaps.get(0)) : buildMultipleMapView());
     builder.setView(view);
     return builder.create();
   }
@@ -58,8 +57,8 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
   {
     parseArguments();
     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
-        .setCancelable(true)
-        .setNegativeButton(android.R.string.cancel, null);
+                                             .setCancelable(true)
+                                             .setNegativeButton(android.R.string.cancel, null);
     beforeDialogCreated(builder);
     return createDialog(builder);
   }
@@ -97,9 +96,9 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
   {
     @SuppressLint("InflateParams")
     final View countryView = View.inflate(requireActivity(), R.layout.dialog_missed_map, null);
-    ((TextView) countryView.findViewById(R.id.tv__title)).setText(map.name);
+    ((MaterialTextView) countryView.findViewById(R.id.tv__title)).setText(map.name);
 
-    final TextView szView = countryView.findViewById(R.id.tv__size);
+    final MaterialTextView szView = countryView.findViewById(R.id.tv__size);
     szView.setText(StringUtils.getFileSizeString(requireContext(), map.totalSize));
     ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) szView.getLayoutParams();
     lp.rightMargin = 0;
@@ -125,11 +124,11 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
     }
 
     listView.setAdapter(buildAdapter());
-    listView.setChildDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+    listView.setChildDivider(new ColorDrawable(ContextCompat.getColor(requireContext(), android.R.color.transparent)));
 
     UiUtils.waitLayout(listView, () -> {
       final int width = listView.getWidth();
-      final int indicatorWidth = UiUtils.dimen(requireContext(), R.dimen.margin_quadruple);
+      final int indicatorWidth = Utils.dimen(requireContext(), R.dimen.margin_quadruple);
       listView.setIndicatorBounds(width - indicatorWidth, width);
       listView.setIndicatorBoundsRelative(width - indicatorWidth, width);
     });
@@ -142,7 +141,7 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
     List<Map<String, String>> countries = new ArrayList<>();
     long size = 0;
 
-    for (CountryItem item: mMissingMaps)
+    for (CountryItem item : mMissingMaps)
     {
       Map<String, String> data = new HashMap<>();
       data.put(COUNTRY_NAME, item.name);
@@ -161,17 +160,10 @@ abstract class BaseRoutingErrorDialogFragment extends BaseMwmDialogFragment
     List<List<Map<String, String>>> children = new ArrayList<>();
     children.add(countries);
 
-    return new DisabledChildSimpleExpandableListAdapter(requireActivity(),
-                                                        groups,
-                                                        R.layout.item_missed_map_group,
-                                                        R.layout.item_missed_map,
-                                                        new String[] { GROUP_NAME, GROUP_SIZE },
-                                                        new int[] { R.id.tv__title, R.id.tv__size },
-                                                        children,
-                                                        R.layout.item_missed_map,
-                                                        new String[] { COUNTRY_NAME },
-                                                        new int[] { R.id.tv__title })
-    {
+    return new DisabledChildSimpleExpandableListAdapter(
+        requireActivity(), groups, R.layout.item_missed_map_group, R.layout.item_missed_map,
+        new String[] {GROUP_NAME, GROUP_SIZE}, new int[] {R.id.tv__title, R.id.tv__size}, children,
+        R.layout.item_missed_map, new String[] {COUNTRY_NAME}, new int[] {R.id.tv__title}) {
       @Override
       public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)
       {

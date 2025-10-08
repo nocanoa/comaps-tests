@@ -28,8 +28,6 @@
 "type.area_highway.residential" = "Rúa residencial";
 "type.historic.citywalls" = "Muralla";
 "type.historic.fort" = "Forte";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
 "type.landuse" = "Uso do adoito";
 "type.landuse.allotments" = "Horto urbano";
 "type.landuse.basin" = "Cuenca";
@@ -290,6 +288,7 @@
 "type.amenity.water_point" = "Fonte de auga para caravanas";
 "type.amenity.water_point.drinking_water_no" = "Fonte de auga para caravanas";
 "type.barrier" = "Barreira";
+"type.barrier.yes" = "Barreira";
 "type.barrier.block" = "Bloque";
 "type.barrier.bollard" = "Bolardo";
 "type.barrier.border_control" = "Control fronteirizo";
@@ -496,6 +495,8 @@
 "type.highway.pedestrian" = "Cale peonil";
 "type.highway.pedestrian.area" = "Zona peonil";
 "type.highway.pedestrian.bridge" = "Puente peonil";
+
+"type.highway.pedestrian.square" = "Praza";
 "type.highway.pedestrian.tunnel" = "Túnel peonil";
 "type.highway.primary" = "Estrada principal";
 "type.highway.primary.bridge" = "Puente";
@@ -559,8 +560,6 @@
 "type.area_highway.track" = "Pista";
 "type.area_highway.trunk" = "Vía troncal";
 "type.area_highway.unclassified" = "Estrada sen clasificar";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Obxecto histórico";
 "type.historic.aircraft" = "Avión histórico";
 "type.historic.anchor" = "Ancora histórica";
@@ -601,17 +600,6 @@
 "type.historic.wayside_cross" = "Cruz de termo";
 "type.historic.wayside_shrine" = "Peto de ánimas";
 "type.historic.wreck" = "Naufraxio";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Cruce";
@@ -705,8 +693,6 @@
 "type.man_made.water_well.drinking_water_no" = "Pozo";
 "type.man_made.windmill" = "Muíño";
 "type.man_made.works" = "Fábrica";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Militar";
 "type.military.bunker" = "Búnker";
 "type.mountain_pass" = "Porto de montaña";
@@ -803,11 +789,6 @@
 "type.power.tower" = "Torre eléctrica";
 "type.power.pole" = "Poste eléctrico";
 "type.man_made.utility_pole" = "Poste";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Transporte público";
 "type.public_transport.platform" = "Plataforma";
 "type.railway" = "Vía férrea";
@@ -1067,7 +1048,6 @@
 "type.railway.tram.tunnel" = "Túnel de tranvía";
 "type.railway.tram_stop" = "Parada de tranvía";
 "type.route.ferry" = "Roteiro de ferry";
-"type.route.shuttle_train" = "route-lanzadeira_train";
 "type.shop" = "Tenda";
 "type.shop.alcohol" = "Licorería";
 "type.shop.bakery" = "Panadería";
@@ -1318,3 +1298,8 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

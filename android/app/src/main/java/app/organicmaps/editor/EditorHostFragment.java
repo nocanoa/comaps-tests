@@ -1,13 +1,11 @@
 package app.organicmaps.editor;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmToolbarFragment;
+import app.organicmaps.editor.data.PhoneFragment;
 import app.organicmaps.sdk.bookmarks.data.Metadata;
 import app.organicmaps.sdk.editor.Editor;
 import app.organicmaps.sdk.editor.OsmOAuth;
@@ -25,19 +24,17 @@ import app.organicmaps.sdk.editor.data.Language;
 import app.organicmaps.sdk.editor.data.LocalizedName;
 import app.organicmaps.sdk.editor.data.LocalizedStreet;
 import app.organicmaps.sdk.editor.data.NamesDataSource;
-import app.organicmaps.editor.data.PhoneFragment;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils.PaddingInsetsListener;
 import app.organicmaps.widget.SearchToolbarController;
 import app.organicmaps.widget.ToolbarController;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditorHostFragment extends BaseMwmToolbarFragment implements View.OnClickListener,
-    LanguagesFragment.Listener
+public class EditorHostFragment
+    extends BaseMwmToolbarFragment implements View.OnClickListener, LanguagesFragment.Listener
 {
   private boolean mIsNewObject;
   @Nullable
@@ -131,8 +128,7 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     mToolbarInnerLayout = toolbar.findViewById(R.id.toolbar_inner_layout);
     mSave = toolbar.findViewById(R.id.save);
     mSave.setOnClickListener(this);
-    UiUtils.setupHomeUpButtonAsNavigationIcon(getToolbarController().getToolbar(),
-                                              v -> onBackPressed());
+    UiUtils.setupHomeUpButtonAsNavigationIcon(getToolbarController().getToolbar(), v -> onBackPressed());
 
     if (getArguments() != null)
       mIsNewObject = getArguments().getBoolean(EditorActivity.EXTRA_NEW_OBJECT, false);
@@ -154,8 +150,7 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
   @Override
   protected ToolbarController onCreateToolbarController(@NonNull View root)
   {
-    return new SearchToolbarController(root, requireActivity())
-    {
+    return new SearchToolbarController(root, requireActivity()) {
       @Override
       protected void onTextChanged(String query)
       {
@@ -177,8 +172,8 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
   {
     switch (mMode)
     {
-      case OPENING_HOURS, STREET, CUISINE, LANGUAGE, PHONE, SELF_SERVICE -> editMapObject();
-      default -> Utils.navigateToParent(requireActivity());
+    case OPENING_HOURS, STREET, CUISINE, LANGUAGE, PHONE, SELF_SERVICE -> editMapObject();
+    default -> Utils.navigateToParent(requireActivity());
     }
     return true;
   }
@@ -198,12 +193,12 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     if (focusToLastName)
       args.putInt(EditorFragment.LAST_INDEX_OF_NAMES_ARRAY, sNames.size() - 1);
     FragmentManager fragmentManager = getChildFragmentManager();
-    final Fragment editorFragment = fragmentManager.getFragmentFactory()
-      .instantiate(requireActivity().getClassLoader(), EditorFragment.class.getName());
+    final Fragment editorFragment = fragmentManager.getFragmentFactory().instantiate(requireActivity().getClassLoader(),
+                                                                                     EditorFragment.class.getName());
     editorFragment.setArguments(args);
     fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, editorFragment, EditorFragment.class.getName())
-                        .commit();
+        .replace(R.id.fragment_container, editorFragment, EditorFragment.class.getName())
+        .commit();
   }
 
   protected void editTimetable()
@@ -245,7 +240,8 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     editWithFragment(Mode.LANGUAGE, R.string.choose_language, args, LanguagesFragment.class, false);
   }
 
-  private void editWithFragment(Mode newMode, @StringRes int toolbarTitle, @Nullable Bundle args, Class<? extends Fragment> fragmentClass, boolean showSearch)
+  private void editWithFragment(Mode newMode, @StringRes int toolbarTitle, @Nullable Bundle args,
+                                Class<? extends Fragment> fragmentClass, boolean showSearch)
   {
     if (!setEdits())
       return;
@@ -254,11 +250,13 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     getToolbarController().setTitle(toolbarTitle);
     showSearchControls(showSearch);
     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-    final Fragment fragment = fragmentManager.getFragmentFactory().instantiate(requireActivity().getClassLoader(), fragmentClass.getName());
+    final Fragment fragment =
+        fragmentManager.getFragmentFactory().instantiate(requireActivity().getClassLoader(), fragmentClass.getName());
     fragment.setArguments(args);
-    getChildFragmentManager().beginTransaction()
-                             .replace(R.id.fragment_container, fragment, fragmentClass.getName())
-                             .commit();
+    getChildFragmentManager()
+        .beginTransaction()
+        .replace(R.id.fragment_container, fragment, fragmentClass.getName())
+        .commit();
   }
 
   private void showSearchControls(boolean showSearch)
@@ -267,15 +265,19 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     if (mToolbarInnerLayout != null && mSave != null)
     {
       // Make room for the toolbar title if the search controls are hidden.
-      mToolbarInnerLayout.getLayoutParams().width = showSearch
-              ? ViewGroup.LayoutParams.MATCH_PARENT
-              : mSave.getLayoutParams().width;
+      mToolbarInnerLayout.getLayoutParams().width =
+          showSearch ? ViewGroup.LayoutParams.MATCH_PARENT : mSave.getLayoutParams().width;
     }
   }
 
   private boolean setEdits()
   {
     return ((EditorFragment) getChildFragmentManager().findFragmentByTag(EditorFragment.class.getName())).setEdits();
+  }
+
+  private boolean saveEdits()
+  {
+    return ((EditorFragment) getChildFragmentManager().findFragmentByTag(EditorFragment.class.getName())).saveEdits();
   }
 
   @Override
@@ -285,48 +287,57 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
     {
       switch (mMode)
       {
-        case OPENING_HOURS ->
-        {
-          final String timetables = ((TimetableContainerFragment) getChildFragmentManager().findFragmentByTag(TimetableContainerFragment.class.getName())).getTimetable();
-          Editor.nativeSetOpeningHours(timetables);
-          editMapObject();
-        }
-        case STREET ->
-            setStreet(((StreetFragment) getChildFragmentManager().findFragmentByTag(StreetFragment.class.getName())).getStreet());
-        case CUISINE ->
-        {
-          String[] cuisines = ((CuisineFragment) getChildFragmentManager().findFragmentByTag(CuisineFragment.class.getName())).getCuisines();
-          Editor.nativeSetSelectedCuisines(cuisines);
-          editMapObject();
-        }
-        case SELF_SERVICE ->
-                setSelection(Metadata.MetadataType.FMD_SELF_SERVICE, ((SelfServiceFragment) getChildFragmentManager().findFragmentByTag(SelfServiceFragment.class.getName())).getSelection());
-        case LANGUAGE -> editMapObject();
-        case MAP_OBJECT ->
-        {
-          if (!setEdits())
-            return;
+      case OPENING_HOURS ->
+      {
+        final String timetables = ((TimetableContainerFragment) getChildFragmentManager().findFragmentByTag(
+                                       TimetableContainerFragment.class.getName()))
+                                      .getTimetable();
+        Editor.nativeSetOpeningHours(timetables);
+        editMapObject();
+      }
+      case STREET ->
+        setStreet(
+            ((StreetFragment) getChildFragmentManager().findFragmentByTag(StreetFragment.class.getName())).getStreet());
+      case CUISINE ->
+      {
+        String[] cuisines =
+            ((CuisineFragment) getChildFragmentManager().findFragmentByTag(CuisineFragment.class.getName()))
+                .getCuisines();
+        Editor.nativeSetSelectedCuisines(cuisines);
+        editMapObject();
+      }
+      case SELF_SERVICE ->
+        setSelection(
+            Metadata.MetadataType.FMD_SELF_SERVICE,
+            ((SelfServiceFragment) getChildFragmentManager().findFragmentByTag(SelfServiceFragment.class.getName()))
+                .getSelection());
+      case LANGUAGE -> editMapObject();
+      case MAP_OBJECT ->
+      {
+        if (!saveEdits())
+          return;
 
-          // Save object edits
-          if (!MwmApplication.prefs(requireContext()).contains(NOOB_ALERT_SHOWN))
-          {
-            showNoobDialog();
-          }
-          else
-          {
-            saveNote();
-            saveMapObjectEdits();
-          }
-        }
-        case PHONE ->
+        // Save object edits
+        if (!MwmApplication.prefs(requireContext()).contains(NOOB_ALERT_SHOWN))
         {
-          final String phone = ((PhoneFragment) getChildFragmentManager().findFragmentByTag(PhoneFragment.class.getName())).getPhone();
-          if (Editor.nativeIsPhoneValid(phone))
-          {
-            Editor.nativeSetPhone(phone);
-            editMapObject();
-          }
+          showNoobDialog();
         }
+        else
+        {
+          saveNote();
+          saveMapObjectEdits();
+        }
+      }
+      case PHONE ->
+      {
+        final String phone =
+            ((PhoneFragment) getChildFragmentManager().findFragmentByTag(PhoneFragment.class.getName())).getPhone();
+        if (Editor.nativeIsPhoneValid(phone))
+        {
+          Editor.nativeSetPhone(phone);
+          editMapObject();
+        }
+      }
       }
     }
   }
@@ -349,8 +360,7 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
 
   private void processEditedFeatures()
   {
-    Context context = requireContext();
-    if (OsmOAuth.isAuthorized(context))
+    if (OsmOAuth.isAuthorized())
     {
       Utils.navigateToParent(requireActivity());
       return;
@@ -378,15 +388,14 @@ public class EditorHostFragment extends BaseMwmToolbarFragment implements View.O
   {
     new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
         .setTitle(R.string.editor_share_to_all_dialog_title)
-        .setMessage(getString(R.string.editor_share_to_all_dialog_message_1)
-            + " " + getString(R.string.editor_share_to_all_dialog_message_2))
-        .setPositiveButton(android.R.string.ok, (dlg, which) -> {
-          MwmApplication.prefs(requireContext()).edit()
-              .putBoolean(NOOB_ALERT_SHOWN, true)
-              .apply();
-          saveNote();
-          saveMapObjectEdits();
-        })
+        .setMessage(getString(R.string.editor_share_to_all_dialog_message_1) + " "
+                    + getString(R.string.editor_share_to_all_dialog_message_2))
+        .setPositiveButton(android.R.string.ok,
+                           (dlg, which) -> {
+                             MwmApplication.prefs(requireContext()).edit().putBoolean(NOOB_ALERT_SHOWN, true).apply();
+                             saveNote();
+                             saveMapObjectEdits();
+                           })
         .setNegativeButton(android.R.string.cancel, null)
         .show();
   }

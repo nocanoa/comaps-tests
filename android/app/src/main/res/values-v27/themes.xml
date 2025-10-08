@@ -3,6 +3,7 @@
 <resources>
   <style name="MwmTheme.MainActivity">
     <item name="android:colorPrimaryDark">@android:color/black</item>
+    <item name="colorPrimaryVariant">@android:color/black</item>
     <item name="android:windowBackground">@null</item>
     <item name="android:windowTranslucentNavigation">false</item>
     <!-- Allows to show the app behind the camera notch in landscape and when hiding the status bar -->
@@ -10,6 +11,7 @@
   </style>
   <style name="MwmTheme.Night.MainActivity">
     <item name="android:colorPrimaryDark">@android:color/black</item>
+    <item name="colorPrimaryVariant">@android:color/black</item>
     <item name="android:windowBackground">@null</item>
     <item name="android:windowTranslucentNavigation">false</item>
     <!-- Allows to show the app behind the camera notch in landscape and when hiding the status bar -->

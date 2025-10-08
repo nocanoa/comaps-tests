@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings/Downloader - size string, only strings different from English should be translated -->
+    <string name="mb">مگابایت</string>
+    <string name="gb">گیگابایت</string>
+    <!-- A text for current gps location point/arrow selected on the map -->
+    <string name="core_my_position">ایستار من</string>
+    <!-- Default bookmark list name -->
+    <string name="core_my_places">گیاگ‌های من</string>
+    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
+    <string name="category_wifi">وای‌فای</string>
+    <string name="postal_code">کد پستی</string>
+    <!-- Place Page title for long tap -->
+    <string name="core_placepage_unknown_place">خَجَکِ نقشه</string>
+    <!-- abbreviation for meters -->
+    <string name="m">متر</string>
+    <!-- abbreviation for kilometers -->
+    <string name="km">کیلومتر</string>
+    <!-- abbreviation for mile(s) -->
+    <string name="mi">مایل</string>
+    <!-- A unit of measure -->
+    <string name="ft">پای</string>
+    <!-- Subway exits for public transport marks on the map -->
+    <string name="core_exit">اوزیدن</string>
+    <string name="core_entrance">آدین</string>
+    <string name="subway_data_unavailable">نقشه مترو ناهَندِمان است</string>
+    <string name="public_access">دسترسی اَمَرکانیگ</string>
+    <string name="limited_access">دسترسی کرانمند</string>
+    <string name="not_shared">خوشیک</string>
+    <string name="access_rules_author_only">ویرایش آنلاین</string>
+    <string name="today">امروز</string>
+    <string name="yesterday">دیروز</string>
+    <string name="days_ago">%s روز پیش</string>
+    <string name="week_ago">%s هفته پیش</string>
+    <string name="weeks_ago">%s هفته پیش</string>
+    <string name="month_ago">%s ماه پیش</string>
+    <string name="months_ago">%s ماه پیش</string>
+    <string name="year_ago">%s سال پیش</string>
+    <string name="years_ago">%s سال پیش</string>
+    <string name="maps_storage_shared">ویر درونی اَنبازیده</string>
+    <string name="maps_storage_external">ویر بیرونی اَنبازیده</string>
+    <string name="maps_storage_removable">کارت SD</string>
+    <string name="maps_storage_internal">ویر درونی خوِشیک</string>
+</resources>

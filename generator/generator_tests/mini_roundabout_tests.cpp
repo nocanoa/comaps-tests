@@ -49,18 +49,17 @@ OsmElement RoadNode(uint64_t id, double lat, double lon)
   return node;
 }
 
-void TestRunCmpPoints(std::vector<m2::PointD> const & pointsFact,
-                      std::vector<m2::PointD> const & pointsPlan, double r)
+void TestRunCmpPoints(std::vector<m2::PointD> const & pointsFact, std::vector<m2::PointD> const & pointsPlan, double r)
 {
   TEST_EQUAL(pointsFact.size(), pointsPlan.size(), ());
   TEST_GREATER(pointsFact.size(), 2, ());
   for (size_t i = 0; i < pointsFact.size(); ++i)
-    TEST(m2::AlmostEqualAbs(pointsFact[i], pointsPlan[i], kMwmPointAccuracy), ());
+    TEST(AlmostEqualAbs(pointsFact[i], pointsPlan[i], kMwmPointAccuracy), ());
 }
 
 void TestRunCmpNumbers(double val1, double val2)
 {
-  TEST(base::AlmostEqualAbs(val1, val2, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(val1, val2, kMwmPointAccuracy), ());
 }
 
 UNIT_TEST(PointToPolygon_GeneralProperties)
@@ -74,17 +73,16 @@ UNIT_TEST(PointToPolygon_GeneralProperties)
   {
     for (size_t verticesCount = 3; verticesCount < 30; ++verticesCount)
     {
-      std::vector<m2::PointD> const circlePlain =
-          PointToPolygon(center, r, verticesCount, angleDeg);
+      std::vector<m2::PointD> const circlePlain = PointToPolygon(center, r, verticesCount, angleDeg);
       double const vertexLenght = DistanceOnPlain(circlePlain.front(), circlePlain.back());
 
       for (size_t i = 0; i < circlePlain.size() - 1; ++i)
       {
         double const rCurrent = DistanceOnPlain(circlePlain[i], center);
-        TEST(base::AlmostEqualAbs(rCurrent, r, kMwmPointAccuracy), ());
+        TEST(AlmostEqualAbs(rCurrent, r, kMwmPointAccuracy), ());
 
         double const vertexLengthCurrent = DistanceOnPlain(circlePlain[i], circlePlain[i + 1]);
-        TEST(base::AlmostEqualAbs(vertexLengthCurrent, vertexLenght, kMwmPointAccuracy), ());
+        TEST(AlmostEqualAbs(vertexLengthCurrent, vertexLenght, kMwmPointAccuracy), ());
       }
     }
   }
@@ -97,7 +95,7 @@ UNIT_TEST(TrimSegment_Vertical)
   double const dist = 1.0;
   m2::PointD const point = GetPointAtDistFromTarget(a /* source */, b /* target */, dist);
   m2::PointD const pointPlan(2.0, 2.0);
-  TEST(m2::AlmostEqualAbs(point, pointPlan, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(point, pointPlan, kMwmPointAccuracy), ());
 }
 
 UNIT_TEST(TrimSegment_VerticalNegative)
@@ -107,7 +105,7 @@ UNIT_TEST(TrimSegment_VerticalNegative)
   double const dist = 4.0;
   m2::PointD const point = GetPointAtDistFromTarget(a /* source */, b /* target */, dist);
   m2::PointD const pointPlan(-3.0, 2.0);
-  TEST(m2::AlmostEqualAbs(point, pointPlan, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(point, pointPlan, kMwmPointAccuracy), ());
 }
 
 UNIT_TEST(TrimSegment_ExceptionalCase)
@@ -116,7 +114,7 @@ UNIT_TEST(TrimSegment_ExceptionalCase)
   m2::PointD const b(2.0, 3.0);
   double const dist = 10.0;
   m2::PointD const point = GetPointAtDistFromTarget(a /* source */, b /* target */, dist);
-  TEST(m2::AlmostEqualAbs(point, a, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(point, a, kMwmPointAccuracy), ());
 }
 
 UNIT_TEST(PointToCircle_ZeroMeridian)
@@ -126,9 +124,8 @@ UNIT_TEST(PointToCircle_ZeroMeridian)
   double const r = mercator::MetersToMercator(100.0);
   auto const circlePlain = PointToPolygon(center, r, 6, 30.0);
 
-  std::vector<m2::PointD> const circlePlainExpected{{0.00077, 59.48054},  {0.00000, 59.48100},
-                                                    {-0.00077, 59.48054}, {-0.00077, 59.47964},
-                                                    {0.00000, 59.47920},  {0.00077, 59.47964}};
+  std::vector<m2::PointD> const circlePlainExpected{{0.00077, 59.48054},  {0.00000, 59.48100}, {-0.00077, 59.48054},
+                                                    {-0.00077, 59.47964}, {0.00000, 59.47920}, {0.00077, 59.47964}};
 
   TestRunCmpPoints(circlePlain, circlePlainExpected, r);
 }
@@ -140,9 +137,8 @@ UNIT_TEST(PointToCircle_LargeRadius)
   double const r = mercator::MetersToMercator(500000.0);
   auto const circlePlain = PointToPolygon(center, r, 6, 30.0);
 
-  std::vector<m2::PointD> const circlePlainExpected{{3.99631, 114.67859},  {0.10000, 116.92812},
-                                                    {-3.79631, 114.67859}, {-3.79631, 110.17951},
-                                                    {0.10000, 107.92998},  {3.99631, 110.17951}};
+  std::vector<m2::PointD> const circlePlainExpected{{3.99631, 114.67859},  {0.10000, 116.92812}, {-3.79631, 114.67859},
+                                                    {-3.79631, 110.17951}, {0.10000, 107.92998}, {3.99631, 110.17951}};
 
   TestRunCmpPoints(circlePlain, circlePlainExpected, r);
 }
@@ -168,8 +164,8 @@ UNIT_TEST(TrimSegment_Radius3)
   m2::PointD const pointRoundabout(15.0, 17.0);
   double const r = 3.0;
 
-  m2::PointD const nextPointOnRoad = GetPointAtDistFromTarget(
-      pointOnRoad /* source */, pointRoundabout /* target */, r /* dist */);
+  m2::PointD const nextPointOnRoad =
+      GetPointAtDistFromTarget(pointOnRoad /* source */, pointRoundabout /* target */, r /* dist */);
   double const dist = DistanceOnPlain(nextPointOnRoad, pointRoundabout);
   TestRunCmpNumbers(dist, r);
 }
@@ -192,29 +188,20 @@ UNIT_TEST(Manage_MiniRoundabout_1Road)
 
   // Check for "diameters" equality.
   double const diameter = r * 2.;
-  TEST(base::AlmostEqualAbs(DistanceOnPlain(circlePlain[0], circlePlain[3]), diameter,
-                            kMwmPointAccuracy),
-       ());
-  TEST(base::AlmostEqualAbs(DistanceOnPlain(circlePlain[1], circlePlain[4]), diameter,
-                            kMwmPointAccuracy),
-       ());
-  TEST(base::AlmostEqualAbs(DistanceOnPlain(circlePlain[2], circlePlain[5]), diameter,
-                            kMwmPointAccuracy),
-       ());
+  TEST(AlmostEqualAbs(DistanceOnPlain(circlePlain[0], circlePlain[3]), diameter, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(DistanceOnPlain(circlePlain[1], circlePlain[4]), diameter, kMwmPointAccuracy), ());
+  TEST(AlmostEqualAbs(DistanceOnPlain(circlePlain[2], circlePlain[5]), diameter, kMwmPointAccuracy), ());
 
   double const edgeLen = DistanceOnPlain(circlePlain[0], circlePlain[1]);
   for (size_t i = 1; i < circlePlain.size(); ++i)
-    TEST(base::AlmostEqualAbs(DistanceOnPlain(circlePlain[i - 1], circlePlain[i]), edgeLen,
-                              kMwmPointAccuracy),
-         ());
+    TEST(AlmostEqualAbs(DistanceOnPlain(circlePlain[i - 1], circlePlain[i]), edgeLen, kMwmPointAccuracy), ());
 
-  m2::PointD const newPointOnRoad =
-      GetPointAtDistFromTarget(nearest /* source */, center /* target */, r /* dist */);
+  m2::PointD const newPointOnRoad = GetPointAtDistFromTarget(nearest /* source */, center /* target */, r /* dist */);
   AddPointToCircle(circlePlain, newPointOnRoad);
 
-  std::vector<m2::PointD> const circlePlainExpected{
-      {11.50013, 85.06309}, {11.50012, 85.06310}, {11.50011, 85.06310}, {11.50010, 85.06309},
-      {11.50010, 85.06306}, {11.50012, 85.06305}, {11.50013, 85.06306}};
+  std::vector<m2::PointD> const circlePlainExpected{{11.50013, 85.06309}, {11.50012, 85.06310}, {11.50011, 85.06310},
+                                                    {11.50010, 85.06309}, {11.50010, 85.06306}, {11.50012, 85.06305},
+                                                    {11.50013, 85.06306}};
 
   TestRunCmpPoints(circlePlain, circlePlainExpected, r);
 }
@@ -230,34 +217,28 @@ UNIT_TEST(Manage_MiniRoundabout_4Roads)
   auto const stationRoadLeftNode = RoadNode(4, 51.7460327, -0.4739356);  // End of road
   auto const plaughRoundaboutRightNode = RoadNode(5, 51.7458321, -0.4732662);
 
-  m2::PointD const center =
-      mercator::FromLatLon({miniRoundabout.m_lat, miniRoundabout.m_lon});
+  m2::PointD const center = mercator::FromLatLon({miniRoundabout.m_lat, miniRoundabout.m_lon});
 
   double const r = mercator::MetersToMercator(2.5);
 
   auto circlePlain = PointToPolygon(center, r, 6, 30.0);
 
   AddPointToCircle(circlePlain, GetPointAtDistFromTarget(
-                                    mercator::FromLatLon(stationRoadNode.m_lat,
-                                                         stationRoadNode.m_lon) /* source */,
+                                    mercator::FromLatLon(stationRoadNode.m_lat, stationRoadNode.m_lon) /* source */,
                                     center /* target */, r /* dist */));
-  AddPointToCircle(circlePlain, GetPointAtDistFromTarget(
-                                    mercator::FromLatLon(plaughRoundaboutNode.m_lat,
-                                                         plaughRoundaboutNode.m_lon) /* source */,
-                                    center /* target */, r /* dist */));
-  AddPointToCircle(circlePlain, GetPointAtDistFromTarget(
-                                    mercator::FromLatLon(stationRoadLeftNode.m_lat,
-                                                         stationRoadLeftNode.m_lon) /* source */,
-                                    center /* target */, r /* dist */));
-  AddPointToCircle(circlePlain,
-                   GetPointAtDistFromTarget(mercator::FromLatLon(plaughRoundaboutRightNode.m_lat,
-                                                                 plaughRoundaboutRightNode.m_lon),
-                                            center, r));
+  AddPointToCircle(circlePlain, GetPointAtDistFromTarget(mercator::FromLatLon(plaughRoundaboutNode.m_lat,
+                                                                              plaughRoundaboutNode.m_lon) /* source */,
+                                                         center /* target */, r /* dist */));
+  AddPointToCircle(circlePlain, GetPointAtDistFromTarget(mercator::FromLatLon(stationRoadLeftNode.m_lat,
+                                                                              stationRoadLeftNode.m_lon) /* source */,
+                                                         center /* target */, r /* dist */));
+  AddPointToCircle(circlePlain, GetPointAtDistFromTarget(mercator::FromLatLon(plaughRoundaboutRightNode.m_lat,
+                                                                              plaughRoundaboutRightNode.m_lon),
+                                                         center, r));
 
   std::vector<m2::PointD> const circlePlainExpected{
-      {-0.47381, 60.67520}, {-0.47383, 60.67521}, {-0.47384, 60.67521}, {-0.47385, 60.67520},
-      {-0.47386, 60.67520}, {-0.47385, 60.67518}, {-0.47385, 60.67518}, {-0.47383, 60.67517},
-      {-0.47381, 60.67518}, {-0.47381, 60.67518}};
+      {-0.47381, 60.67520}, {-0.47383, 60.67521}, {-0.47384, 60.67521}, {-0.47385, 60.67520}, {-0.47386, 60.67520},
+      {-0.47385, 60.67518}, {-0.47385, 60.67518}, {-0.47383, 60.67517}, {-0.47381, 60.67518}, {-0.47381, 60.67518}};
   TestRunCmpPoints(circlePlain, circlePlainExpected, r);
 }
 

@@ -14,7 +14,7 @@
 #include <unordered_set>
 #include <vector>
 
-#define BORDERS_DIR "borders/"
+#define BORDERS_DIR       "borders/"
 #define BORDERS_EXTENSION ".poly"
 
 namespace borders
@@ -44,9 +44,9 @@ class CountryPolygons
 public:
   CountryPolygons() = default;
   explicit CountryPolygons(std::string && name, PolygonsTree && regions)
-      : m_name(std::move(name)), m_polygons(std::move(regions))
-  {
-  }
+    : m_name(std::move(name))
+    , m_polygons(std::move(regions))
+  {}
 
   std::string const & GetName() const { return m_name; }
   bool IsEmpty() const { return m_polygons.IsEmpty(); }
@@ -61,16 +61,12 @@ public:
     double m_eps, m_squareEps;
 
   public:
-    explicit ContainsCompareFn(double eps) : m_eps(eps), m_squareEps(eps*eps) {}
+    explicit ContainsCompareFn(double eps) : m_eps(eps), m_squareEps(eps * eps) {}
     bool EqualPoints(m2::PointD const & p1, m2::PointD const & p2) const
     {
-      return base::AlmostEqualAbs(p1.x, p2.x, m_eps) &&
-             base::AlmostEqualAbs(p1.y, p2.y, m_eps);
+      return AlmostEqualAbs(p1.x, p2.x, m_eps) && AlmostEqualAbs(p1.y, p2.y, m_eps);
     }
-    bool EqualZeroSquarePrecision(double val) const
-    {
-      return base::AlmostEqualAbs(val, 0.0, m_squareEps);
-    }
+    bool EqualZeroSquarePrecision(double val) const { return AlmostEqualAbs(val, 0.0, m_squareEps); }
   };
 
   static double GetContainsEpsilon() { return 1.0E-4; }
@@ -108,9 +104,7 @@ public:
 
     auto const & inserted = res.first->second;
     inserted.ForEachPolygon([&inserted, this](Polygon const & polygon)
-    {
-      m_regionsTree.Add(inserted, polygon.GetRect());
-    });
+    { m_regionsTree.Add(inserted, polygon.GetRect()); });
   }
 
   size_t GetSize() const { return m_countryPolygonsMap.size(); }
@@ -126,10 +120,7 @@ public:
     });
   }
 
-  bool HasRegionByName(std::string const & name) const
-  {
-    return m_countryPolygonsMap.count(name) != 0;
-  }
+  bool HasRegionByName(std::string const & name) const { return m_countryPolygonsMap.count(name) != 0; }
 
   CountryPolygons const & GetRegionByName(std::string const & name) const
   {
@@ -139,7 +130,7 @@ public:
   }
 
 private:
-  m4::Tree<std::reference_wrapper<const CountryPolygons>> m_regionsTree;
+  m4::Tree<std::reference_wrapper<CountryPolygons const>> m_regionsTree;
   std::unordered_map<std::string, CountryPolygons> m_countryPolygonsMap;
 };
 
@@ -148,8 +139,7 @@ using PolygonsList = std::vector<Polygon>;
 /// @return false if borderFile can't be opened
 bool LoadBorders(std::string const & borderFile, PolygonsList & outBorders);
 
-bool GetBordersRect(std::string const & baseDir, std::string const & country,
-                    m2::RectD & bordersRect);
+bool GetBordersRect(std::string const & baseDir, std::string const & country, m2::RectD & bordersRect);
 
 bool LoadCountriesList(std::string const & baseDir, CountryPolygonsCollection & countries);
 

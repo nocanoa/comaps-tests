@@ -1,13 +1,11 @@
 package app.organicmaps.base;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
 import androidx.annotation.CallSuper;
@@ -18,18 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
 import androidx.fragment.app.FragmentManager;
-
-import com.google.android.material.appbar.MaterialToolbar;
-
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.SplashActivity;
 import app.organicmaps.sdk.util.Config;
-import app.organicmaps.util.RtlUtils;
-import app.organicmaps.util.ThemeUtils;
 import app.organicmaps.sdk.util.concurrency.UiThread;
 import app.organicmaps.sdk.util.log.Logger;
-
+import app.organicmaps.util.RtlUtils;
+import com.google.android.material.appbar.MaterialToolbar;
 import java.util.Objects;
 
 public abstract class BaseMwmFragmentActivity extends AppCompatActivity
@@ -44,12 +38,10 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
   @StyleRes
   protected int getThemeResourceId(@NonNull String theme)
   {
-    Context context = getApplicationContext();
+    if (Config.UiTheme.isDefault(theme))
+      return R.style.MwmTheme;
 
-    if (ThemeUtils.isDefaultTheme(context, theme))
-        return R.style.MwmTheme;
-
-    if (ThemeUtils.isNightTheme(context, theme))
+    if (Config.UiTheme.isNight(theme))
       return R.style.MwmTheme_Night;
 
     throw new IllegalArgumentException("Attempt to apply unsupported theme: " + theme);
@@ -66,7 +58,7 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
   protected final void onCreate(@Nullable Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    mThemeName = Config.getCurrentUiTheme(getApplicationContext());
+    mThemeName = Config.UiTheme.getCurrent();
     setTheme(getThemeResourceId(mThemeName));
     EdgeToEdge.enable(this, SystemBarStyle.dark(Color.TRANSPARENT));
     RtlUtils.manageRtl(this);
@@ -126,7 +118,7 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
   public void onPostResume()
   {
     super.onPostResume();
-    if (!mThemeName.equals(Config.getCurrentUiTheme(getApplicationContext())))
+    if (!mThemeName.equals(Config.UiTheme.getCurrent()))
     {
       // Workaround described in https://code.google.com/p/android/issues/detail?id=93731
       UiThread.runLater(this::recreate);
@@ -216,11 +208,13 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
   /**
    * Replace attached fragment with the new one.
    */
-  public void replaceFragment(@NonNull Class<? extends Fragment> fragmentClass, @Nullable Bundle args, @Nullable Runnable completionListener)
+  public void replaceFragment(@NonNull Class<? extends Fragment> fragmentClass, @Nullable Bundle args,
+                              @Nullable Runnable completionListener)
   {
     final int resId = getFragmentContentResId();
     if (resId <= 0 || findViewById(resId) == null)
-      throw new IllegalStateException("Fragment can't be added, since getFragmentContentResId() isn't implemented or returns wrong resourceId.");
+      throw new IllegalStateException(
+          "Fragment can't be added, since getFragmentContentResId() isn't implemented or returns wrong resourceId.");
 
     String name = fragmentClass.getName();
     Fragment potentialInstance = getSupportFragmentManager().findFragmentByTag(name);
@@ -230,9 +224,7 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
       final FragmentFactory factory = manager.getFragmentFactory();
       final Fragment fragment = factory.instantiate(getClassLoader(), name);
       fragment.setArguments(args);
-      manager.beginTransaction()
-          .replace(resId, fragment, name)
-          .commitAllowingStateLoss();
+      manager.beginTransaction().replace(resId, fragment, name).commitAllowingStateLoss();
       manager.executePendingTransactions();
       if (completionListener != null)
         completionListener.run();
@@ -240,8 +232,8 @@ public abstract class BaseMwmFragmentActivity extends AppCompatActivity
   }
 
   /**
-   * Override to automatically attach fragment in onCreate. Tag applied to fragment in back stack is set to fragment name, too.
-   * WARNING : if custom layout for activity is set, getFragmentContentResId() must be implemented, too.
+   * Override to automatically attach fragment in onCreate. Tag applied to fragment in back stack is set to fragment
+   * name, too. WARNING : if custom layout for activity is set, getFragmentContentResId() must be implemented, too.
    * @return class of the fragment, eg FragmentClass.getClass()
    */
   protected Class<? extends Fragment> getFragmentClass()

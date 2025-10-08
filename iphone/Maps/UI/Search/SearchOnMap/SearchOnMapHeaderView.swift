@@ -65,11 +65,9 @@ final class SearchOnMapHeaderView: UIView {
     searchBar.setStyle(.defaultSearchBar)
     searchBar.placeholder = L("search")
     searchBar.showsCancelButton = false
-    if #available(iOS 13.0, *) {
-      searchBar.searchTextField.clearButtonMode = .always
-      searchBar.returnKeyType = .search
-      searchBar.searchTextField.enablesReturnKeyAutomatically = true
-    }
+    searchBar.searchTextField.clearButtonMode = .always
+    searchBar.returnKeyType = .search
+    searchBar.searchTextField.enablesReturnKeyAutomatically = true
   }
 
   private func setupCancelButton() {

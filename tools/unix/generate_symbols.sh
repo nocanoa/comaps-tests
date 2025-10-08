@@ -20,27 +20,16 @@ export PYTHONDONTWRITEBYTECODE=1
 # Add env var to disable renderer on a display (renderer not working into a Github container)
 export QT_QPA_PLATFORM=offscreen
 
+BINARY_NAME=skin_generator_tool
 OMIM_PATH="${OMIM_PATH:-$(cd "$(dirname "$0")/../.."; pwd)}"
-OUT_PATH="$OMIM_PATH/out/release"
-SKIN_GENERATOR="${SKIN_GENERATOR:-$OUT_PATH/skin_generator_tool}"
+BUILD_DIR="$OMIM_PATH/build"
+SKIN_GENERATOR="${SKIN_GENERATOR:-$BUILD_DIR/$BINARY_NAME}"
 DATA_PATH="$OMIM_PATH/data"
 
-# If skin_generator does not exist then build it
-if [ ! -f "$SKIN_GENERATOR" ];
-then
-  source "$OMIM_PATH/tools/autobuild/detect_cmake.sh"
-  # OS-specific parameters
-  if [ "$(uname -s)" == "Darwin" ]; then
-    PROCESSES=$(sysctl -n hw.ncpu)
-  else
-    PROCESSES=$(nproc)
-  fi
-  mkdir -p "$OUT_PATH"
-  pushd "$OUT_PATH" > /dev/null
-  "$CMAKE" "$OMIM_PATH" -DSKIP_TESTS:bool=true
-  make skin_generator_tool -j$PROCESSES
-  popd > /dev/null
-fi
+# cmake rebuilds skin generator binary if necessary.
+cmake -S "$OMIM_PATH" -B "$BUILD_DIR" -G Ninja -DCMAKE_BUILD_TYPE=Release -DSKIP_TESTS:bool=true
+cmake --build "$BUILD_DIR" --target "$BINARY_NAME"
+
 
 # Helper function to build skin
 # Parameter $1 - style type (default)
@@ -67,44 +56,41 @@ function BuildSkin() {
   ln -s "$STYLE_PATH/$resourceName$symbolsSuffix" "$PNG_PATH"
   # Run skin generator
   "$SKIN_GENERATOR" --symbolWidth $symbolSize --symbolHeight $symbolSize --symbolsDir "$STYLE_PATH/$symbolsFolder" \
-      --skinName "$DATA_PATH/resources-$resourceName$suffix/basic" --skinSuffix="$symbolsSuffix"
+      --skinName "$DATA_PATH/symbols/$resourceName/$suffix/basic" --skinSuffix="$symbolsSuffix"
   # Reset environment
   rm -r "$PNG_PATH" || true
 }
 
+symbols_name=(6plus mdpi hdpi xhdpi xxhdpi xxxhdpi)
+
 # Cleanup
-cleanup=(resources-{{6plus,mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}{_dark,_light}})
-for item in ${cleanup[*]}
-do
-  rm -rf "$DATA_PATH/$item" || true
-  mkdir "$DATA_PATH/$item"
-done
+rm -rf "$DATA_PATH"/symbols/*/*/symbols.*
 
 # Build styles
 
-BuildSkin default  dark mdpi    18 _dark symbols
-BuildSkin default  dark hdpi    27 _dark symbols
-BuildSkin default  dark xhdpi   36 _dark symbols
-BuildSkin default  dark 6plus   43 _dark symbols
-BuildSkin default  dark xxhdpi  54 _dark symbols
-BuildSkin default  dark xxxhdpi 64 _dark symbols
+BuildSkin default dark  mdpi    18 dark  symbols
+BuildSkin default dark  hdpi    27 dark  symbols
+BuildSkin default dark  xhdpi   36 dark  symbols
+BuildSkin default dark  6plus   43 dark  symbols
+BuildSkin default dark  xxhdpi  54 dark  symbols
+BuildSkin default dark  xxxhdpi 64 dark  symbols
 
-BuildSkin default  light mdpi    18 _light symbols
-BuildSkin default  light hdpi    27 _light symbols
-BuildSkin default  light xhdpi   36 _light symbols
-BuildSkin default  light 6plus   43 _light symbols
-BuildSkin default  light xxhdpi  54 _light symbols
-BuildSkin default  light xxxhdpi 64 _light symbols
+BuildSkin default light mdpi    18 light symbols
+BuildSkin default light hdpi    27 light symbols
+BuildSkin default light xhdpi   36 light symbols
+BuildSkin default light 6plus   43 light symbols
+BuildSkin default light xxhdpi  54 light symbols
+BuildSkin default light xxxhdpi 64 light symbols
 
-rm -rf "$OMIM_PATH"/data/resources-{*}
-
-rm -rf "$OMIM_PATH"/data/resources-*_design
-
-for i in mdpi hdpi xhdpi xxhdpi xxxhdpi 6plus; do
-  optipng -zc9 -zm8 -zs0 -f0 "$OMIM_PATH"/data/resources-${i}_light/symbols.png
-  optipng -zc9 -zm8 -zs0 -f0 "$OMIM_PATH"/data/resources-${i}_dark/symbols.png
+for i in ${symbols_name[*]}; do
+  optipng -zc9 -zm8 -zs0 -f0 "$DATA_PATH"/symbols/"${i}"/light/symbols.png
+  optipng -zc9 -zm8 -zs0 -f0 "$DATA_PATH"/symbols/"${i}"/dark/symbols.png
 done
 
-for i in mdpi hdpi xhdpi xxhdpi xxxhdpi 6plus; do
-  cp -r "$OMIM_PATH"/data/resources-${i}_light/ "$OMIM_PATH"/data/resources-${i}_design/
-done
+rm -rf "$DATA_PATH"/symbols/*/design/
+
+# The styles designer is not used at the moment.
+# If enabled then remove design symbols from bundled android assets in android/sdk/src/main/assets/symbols
+# for i in ${symbols_name[*]}; do
+#   cp -r "$DATA_PATH"/symbols/"${i}"/light/ "$DATA_PATH"/symbols/"${i}"/design/
+# done

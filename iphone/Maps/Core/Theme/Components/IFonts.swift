@@ -56,4 +56,5 @@
   var semibold15: UIFont { get }
   var semibold16: UIFont { get }
   var semibold18: UIFont { get }
+  var semibold20: UIFont { get }
 }

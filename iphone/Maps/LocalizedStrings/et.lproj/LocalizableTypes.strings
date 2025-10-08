@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Joogivee tankimispunkt";
 "type.amenity.water_point.drinking_water_no" = "Joogivee tankimispunkt";
 "type.barrier" = "Barjäär";
+"type.barrier.yes" = "Barjäär";
 "type.barrier.block" = "Kiviplokk";
 "type.barrier.bollard" = "Piirdetulp";
 "type.barrier.border_control" = "Piirikontroll";
@@ -304,10 +305,10 @@
 "type.cuisine.georgian" = "Gruusia";
 "type.cuisine.german" = "Saksa";
 "type.cuisine.greek" = "Kreeka";
-"type.cuisine.grill" = "Grill";
+"type.cuisine.grill" = "Grillroad";
 "type.cuisine.heuriger" = "Austria hooajaline veinikõrts (heuriger)";
 "type.cuisine.hotdog" = "Viinersai";
-"type.cuisine.hungarian" = "Ungari";
+"type.cuisine.hungarian" = "Ungari köök";
 "type.cuisine.ice_cream" = "Jäätis";
 "type.cuisine.indian" = "India";
 "type.cuisine.indonesian" = "Indoneesia";
@@ -329,7 +330,7 @@
 "type.cuisine.noodles" = "Nuudliroad";
 "type.cuisine.oriental" = "Kaug-Ida";
 "type.cuisine.pancake" = "Pannkoogid";
-"type.cuisine.pasta" = "Pasta";
+"type.cuisine.pasta" = "Pastaroad";
 "type.cuisine.persian" = "Pärsia";
 "type.cuisine.peruvian" = "Peruu köök";
 "type.cuisine.pizza" = "Pitsa";
@@ -464,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Jalakäijate sild";
+"type.highway.pedestrian.square" = "Väljak";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Jalakäijate tunnel";
@@ -596,8 +598,6 @@
 "type.area_highway.track" = "Rada";
 "type.area_highway.trunk" = "E-tähistusega põhimaantee";
 "type.area_highway.unclassified" = "Vähetähtis tee";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Ajalooline objekt";
 "type.historic.aircraft" = "Ajalooline lennuk";
 "type.historic.anchor" = "Ajalooline ankur";
@@ -644,18 +644,6 @@
 "type.historic.wayside_cross" = "Teeäärne rist";
 "type.historic.wayside_shrine" = "Teeäärne altar";
 "type.historic.wreck" = "Laevavrakk";
-"type.hwtag" = "hwtag";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Wifi";
 "type.junction" = "Ristmik";
@@ -772,8 +760,6 @@
 "type.man_made.water_well.drinking_water_no" = "Pole joogivesi";
 "type.man_made.windmill" = "Tuuleveski";
 "type.man_made.works" = "Tehas";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Militaarobjekt";
 "type.military.bunker" = "Punker";
 "type.mountain_pass" = "Mäekuru";
@@ -900,11 +886,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Valgustus- või sidepost";
-"type.psurface" = "Pind";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Ühistransport";
 "type.public_transport.platform" = "Ooteplatvorm";
 "type.railway" = "Raudtee";
@@ -1206,7 +1187,6 @@
 "type.railway.tram_stop" = "Trammipeatus";
 "type.route" = "Marsruut";
 "type.route.ferry" = "Praamiliin";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Pood";
 "type.shop.alcohol" = "Alkoholipood";
 "type.shop.bakery" = "Pagar";
@@ -1482,7 +1462,6 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Spordisaal";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
 "type.landuse.plant_nursery" = "Puukool";
 "type.highway.ladder" = "Redel";
 "type.amenity.love_hotel" = "Armuhotell";
@@ -1500,7 +1479,13 @@
 "type.natural.wetland.saltmarsh" = "Sooldunud padur";
 "type.natural.wetland.saltmarsh.tidal" = "Loodete mõjutatud sooldunud padur";
 "type.leisure.escape_game" = "Põgenemistuba";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
-"type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.luggage_locker" = "Luggage Locker";
-"type.post_office.post_partner" = "Post Partner";
+"type.amenity.bicycle_parking.covered" = "Kaetud jalgrattaparkla";
+"type.amenity.ranger_station" = "Pargivahi maja";
+"type.amenity.luggage_locker" = "Pagasihoid";
+"type.post_office.post_partner" = "Postiteenused partneri juures";
+"type.barrier.wicket_gate" = "Jalgvärav";
+"type.amenity.animal_shelter" = "Loomade varjupaik";
+"type.office.security" = "Turvafirma kontor";
+"type.power.portal" = "Õhuliini värava-tüüpi mast";
+"type.building.guardhouse" = "Valvuriputka";
+"type.shop.lighting" = "Lambipood";

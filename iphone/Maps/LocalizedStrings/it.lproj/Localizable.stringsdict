@@ -12,8 +12,12 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>Nessun preferito</string>
 			<key>one</key>
 			<string>%d preferito</string>
+			<key>many</key>
+			<string>%d preferiti</string>
 			<key>other</key>
 			<string>%d preferiti</string>
 		</dict>
@@ -28,8 +32,12 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>Nessun file trovato</string>
 			<key>one</key>
 			<string>%d file è stato trovato. Lo vedrai dopo la conversione.</string>
+			<key>many</key>
+			<string>%d file sono stati trovati. Li vedrai dopo la conversione.</string>
 			<key>other</key>
 			<string>%d file sono stati trovati. Li vedrai dopo la conversione.</string>
 		</dict>
@@ -45,7 +53,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>%d tracce</string>
+			<string>Nessuna traccia</string>
 			<key>one</key>
 			<string>%d traccia</string>
 			<key>many</key>

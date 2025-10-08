@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Water Tank Refill Point";
 "type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.barrier.block" = "Block";
 "type.barrier.bollard" = "Bollard";
 "type.barrier.border_control" = "Border Control";
@@ -326,7 +327,7 @@
 "type.cuisine.mediterranean" = "Mediterranean";
 "type.cuisine.mexican" = "Mexican";
 "type.cuisine.moroccan" = "Moroccan";
-"type.cuisine.noodles" = "Noodles";
+"type.cuisine.noodles" = "Nūdeles";
 "type.cuisine.oriental" = "East Asian";
 "type.cuisine.pancake" = "Pancake";
 "type.cuisine.pasta" = "Pasta";
@@ -463,17 +464,18 @@
 "type.highway.pedestrian.area" = "Pedestrian Street";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+"type.highway.pedestrian.bridge" = "Gājēju tilts";
+"type.highway.pedestrian.square" = "Laukums";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.pedestrian.tunnel" = "Pedestrian Tunnel";
-"type.highway.primary" = "Primary Road";
+"type.highway.pedestrian.tunnel" = "Gājēju tunelis";
+"type.highway.primary" = "Galvenais ceļš";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.primary.bridge" = "Bridge";
+"type.highway.primary.bridge" = "Tilts";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.primary.tunnel" = "Tunnel";
+"type.highway.primary.tunnel" = "Tunelis";
 "type.highway.primary_link" = "Primary Road";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -596,8 +598,6 @@
 "type.area_highway.track" = "Track";
 "type.area_highway.trunk" = "Trunk Road";
 "type.area_highway.unclassified" = "Minor Road";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Historic Object";
 "type.historic.aircraft" = "Historic Aircraft";
 "type.historic.anchor" = "Historic Anchor";
@@ -644,19 +644,6 @@
 "type.historic.wayside_cross" = "Wayside Cross";
 "type.historic.wayside_shrine" = "Wayside Shrine";
 "type.historic.wreck" = "Shipwreck";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Junction";
@@ -749,7 +736,7 @@
 "type.man_made.pier" = "Pier";
 "type.man_made.pipeline" = "Pipeline";
 "type.man_made.pipeline.overground" = "Overground Pipeline";
-"type.man_made.silo" = "Silo";
+"type.man_made.silo" = "Krātuve";
 "type.man_made.storage_tank" = "Storage Tank";
 "type.man_made.surveillance" = "Surveillance Camera";
 "type.man_made.tower" = "Tower";
@@ -773,8 +760,6 @@
 "type.man_made.water_well.drinking_water_no" = "Water Well";
 "type.man_made.windmill" = "Windmill";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Bunker";
 "type.mountain_pass" = "Mountain Pass";
@@ -901,11 +886,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Utility Pole";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Public Transport";
 "type.public_transport.platform" = "Platform";
 "type.railway" = "Railway";
@@ -927,7 +907,7 @@
 "type.railway.monorail.bridge" = "Monorail Bridge";
 "type.railway.monorail.tunnel" = "Monorail Tunnel";
 "type.railway.narrow_gauge" = "Narrow Gauge Rail";
-"type.railway.narrow_gauge.bridge" = "Narrow Gauge Rail Bridge";
+"type.railway.narrow_gauge.bridge" = "Šaursliežu dzelzceļa tilts";
 "type.railway.narrow_gauge.tunnel" = "Narrow Gauge Rail Tunnel";
 "type.railway.platform" = "Railway Platform";
 "type.railway.preserved" = "Preserved Rail";
@@ -1207,7 +1187,6 @@
 "type.railway.tram_stop" = "Tram Stop";
 "type.route" = "Route";
 "type.route.ferry" = "Ferry";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Shop";
 "type.shop.alcohol" = "Liquor Shop";
 "type.shop.bakery" = "Bakery";
@@ -1265,7 +1244,7 @@
 "type.shop.laundry" = "Laundry";
 "type.shop.mall" = "Mall";
 "type.shop.massage" = "Massage Salon";
-"type.shop.mobile_phone" = "Cell Phone Store";
+"type.shop.mobile_phone" = "Viedtālruņa veikals";
 "type.shop.money_lender" = "Money Lender";
 "type.shop.motorcycle" = "Motorcycle Shop";
 "type.shop.motorcycle_repair" = "Motorcycle Repair";
@@ -1327,9 +1306,9 @@
 "type.shop.trade" = "Trade Supplies";
 "type.shop.watches" = "Watch Store";
 "type.shop.wholesale" = "Wholesale Store";
-"type.sport" = "Sport";
-"type.sport.american_football" = "American Football";
-"type.sport.archery" = "Archery";
+"type.sport" = "Sports";
+"type.sport.american_football" = "Amerikāņu futbols";
+"type.sport.archery" = "Lokšaušana";
 "type.sport.athletics" = "Athletics";
 "type.sport.australian_football" = "Australian Football";
 "type.sport.baseball" = "Baseball";
@@ -1399,13 +1378,13 @@
 "type.tourism.information.guidepost" = "Guidepost";
 "type.tourism.information.map" = "Tourist Map";
 "type.tourism.information.office" = "Tourist Office";
-"type.tourism.information.visitor_centre" = "Visitor Centre";
+"type.tourism.information.visitor_centre" = "Apmeklētāju centrs";
 "type.tourism.motel" = "Motel";
 "type.tourism.museum" = "Museum";
 "type.tourism.picnic_site" = "Picnic Site";
 "type.leisure.resort" = "Resort";
 "type.tourism.theme_park" = "Theme Park";
-"type.tourism.viewpoint" = "Viewpoint";
+"type.tourism.viewpoint" = "Skatu laukums";
 
 /* Typically more basic, not staffed and free (compared to alpine_hut). */
 "type.tourism.wilderness_hut" = "Wilderness Hut";
@@ -1483,24 +1462,30 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sports hall";
-"type.leisure.firepit" = "Firepit";
+"type.leisure.firepit" = "Ugunskura vieta";
 "type.sport.diving" = "High Diving";
 "type.natural.wetland.tidalflat" = "Tidal Flat";
-"type.highway.ladder" = "Ladder";
-"type.natural.wetland.swamp" = "Swamp";
+"type.highway.ladder" = "Kāpnes";
+"type.natural.wetland.swamp" = "Purvs";
 "type.man_made.crane" = "Crane";
 "type.natural.wetland.saltmarsh" = "Salt Marsh";
 "type.natural.wetland.mangrove" = "Mangrove";
 "type.barrier.guard_rail" = "Guard Rail";
-"type.amenity.studio" = "Studio";
+"type.amenity.studio" = "Studija";
 "type.natural.wetland.fen" = "Fen";
 "type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
 "type.natural.wetland.reedbed" = "Reed Bed";
-"type.railway.station.subway.qingdao" = "Subway Station";
-"type.landuse.plant_nursery" = "Plant Nursery";
+"type.railway.station.subway.qingdao" = "Metro stacija";
+"type.landuse.plant_nursery" = "Stādaudzētava";
 "type.amenity.love_hotel" = "Love Hotel";
 "type.leisure.escape_game" = "Escape Room";
-"type.amenity.luggage_locker" = "Luggage Locker";
+"type.amenity.luggage_locker" = "Bagāžas glabātava";
 "type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.bicycle_parking.covered" = "Divriteņu novietne ar jumtu";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Dzīvnieku patversme";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";
+"type.shop.lighting" = "Gaismekļu veikals";

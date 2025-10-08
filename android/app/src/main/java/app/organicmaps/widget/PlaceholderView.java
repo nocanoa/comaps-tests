@@ -6,31 +6,31 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.R;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 
 public class PlaceholderView extends LinearLayout
 {
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private ImageView mImage;
+  private ShapeableImageView mImage;
 
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mTitle;
+  private MaterialTextView mTitle;
 
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mSubtitle;
+  private MaterialTextView mSubtitle;
 
   private int mImgMaxHeight;
   private int mImgMinHeight;
@@ -59,8 +59,7 @@ public class PlaceholderView extends LinearLayout
     init(context, attrs);
   }
 
-  public PlaceholderView(Context context, @Nullable AttributeSet attrs, int defStyleAttr,
-                         int defStyleRes)
+  public PlaceholderView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes)
   {
     super(context, attrs, defStyleAttr, defStyleRes);
     init(context, attrs);
@@ -85,17 +84,10 @@ public class PlaceholderView extends LinearLayout
     TypedArray attrsArray = null;
     try
     {
-      attrsArray =
-          context.getTheme().obtainStyledAttributes(attrs, R.styleable.PlaceholderView, 0, 0);
-      mImgSrcDefault = attrsArray.getResourceId(
-          R.styleable.PlaceholderView_imgSrcDefault,
-          UiUtils.NO_ID);
-      mTitleResIdDefault = attrsArray.getResourceId(
-          R.styleable.PlaceholderView_titleDefault,
-          UiUtils.NO_ID);
-      mSubtitleResIdDefault = attrsArray.getResourceId(
-          R.styleable.PlaceholderView_subTitleDefault,
-          UiUtils.NO_ID);
+      attrsArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PlaceholderView, 0, 0);
+      mImgSrcDefault = attrsArray.getResourceId(R.styleable.PlaceholderView_imgSrcDefault, UiUtils.NO_ID);
+      mTitleResIdDefault = attrsArray.getResourceId(R.styleable.PlaceholderView_titleDefault, UiUtils.NO_ID);
+      mSubtitleResIdDefault = attrsArray.getResourceId(R.styleable.PlaceholderView_subTitleDefault, UiUtils.NO_ID);
     }
     finally
     {
@@ -144,10 +136,8 @@ public class PlaceholderView extends LinearLayout
 
     final int defHeight = getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec);
     MarginLayoutParams imgParams = (MarginLayoutParams) mImage.getLayoutParams();
-    int potentialHeight =
-        defHeight - getPaddingBottom() - getPaddingTop() - childrenTextTotalHeight -
-        imgParams.bottomMargin - imgParams.topMargin;
-
+    int potentialHeight = defHeight - getPaddingBottom() - getPaddingTop() - childrenTextTotalHeight
+                        - imgParams.bottomMargin - imgParams.topMargin;
 
     int imgSpaceRaw = Math.min(potentialHeight, mImgMaxHeight);
     imgParams.height = imgSpaceRaw;
@@ -160,7 +150,7 @@ public class PlaceholderView extends LinearLayout
       childrenTotalHeight += calcHeightWithMargins(mImage);
 
     UiUtils.showIf(isImageSpaceAllowed, mImage);
-    final int height = childrenTotalHeight  + getPaddingTop() + getPaddingBottom();
+    final int height = childrenTotalHeight + getPaddingTop() + getPaddingBottom();
     final int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
     setMeasuredDimension(width, height);
   }
@@ -173,20 +163,20 @@ public class PlaceholderView extends LinearLayout
       View child = getChildAt(index);
       if (child.getVisibility() == VISIBLE && child != mImage)
       {
-        measureChildWithMargins(child, widthMeasureSpec , 0, heightMeasureSpec, 0);
+        measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
         totalHeight += calcHeightWithMargins(child);
       }
     }
     return totalHeight;
   }
 
-  private static int calcHeightWithMargins(@NonNull View view) {
+  private static int calcHeightWithMargins(@NonNull View view)
+  {
     MarginLayoutParams params = (MarginLayoutParams) view.getLayoutParams();
     return view.getMeasuredHeight() + params.bottomMargin + params.topMargin;
   }
 
-  public void setContent(@StringRes int titleRes,
-                         @StringRes int subtitleRes)
+  public void setContent(@StringRes int titleRes, @StringRes int subtitleRes)
   {
     mTitle.setText(titleRes);
     mSubtitle.setText(subtitleRes);

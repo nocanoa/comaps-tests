@@ -139,6 +139,13 @@
 
 @poi_label: #444444;
 @subway_label: #333333;
+@shop_label: #8C5678;
+@food_label: #BA7141;
+@culture_label: #82512D;
+@hotel_label: #54413B;
+@healthcare_label: #A6454B;
+@industry_label: #494F54;
+@public_transport_label: #1F4366;
 
 /* ROADS LABELS */
 @shield_text: #000000;

@@ -159,6 +159,8 @@ class PlacePageInfoViewController: UIViewController {
   private typealias Style = InfoItemView.Style
 
   @IBOutlet var stackView: UIStackView!
+  @IBOutlet var checkDateLabel: UILabel!
+  @IBOutlet var checkDateLabelLayoutConstraint: NSLayoutConstraint!
 
   private lazy var openingHoursViewController: OpeningHoursViewController = {
     storyboard!.instantiateViewController(ofType: OpeningHoursViewController.self)
@@ -207,13 +209,8 @@ class PlacePageInfoViewController: UIViewController {
     stackView.alignment = .fill
     stackView.spacing = 0
     stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.addSeparator(.bottom)
     view.addSubview(stackView)
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      stackView.topAnchor.constraint(equalTo: view.topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    ])
     setupViews()
   }
 
@@ -221,6 +218,7 @@ class PlacePageInfoViewController: UIViewController {
   private func setupViews() {
     if let openingHours = placePageInfoData.openingHours {
       openingHoursViewController.openingHours = openingHours
+      openingHoursViewController.openingHoursCheckDate = placePageInfoData.checkDateOpeningHours
       addChild(openingHoursViewController)
       addToStack(openingHoursViewController.view)
       openingHoursViewController.didMove(toParent: self)
@@ -436,7 +434,7 @@ class PlacePageInfoViewController: UIViewController {
       })
     }
 	
-	  if let panoramax = placePageInfoData.panoramax {
+    if let panoramax = placePageInfoData.panoramax {
       panoramaxView = createInfoItem(L("panoramax_picture"),
                                 icon: UIImage(named: "ic_placepage_panoramax"),
                                 style: .link,
@@ -458,6 +456,19 @@ class PlacePageInfoViewController: UIViewController {
 
     setupCoordinatesView()
     setupOpenWithAppView()
+
+    if let checkDate = placePageInfoData.checkDate {
+      let checkDateFormatter = RelativeDateTimeFormatter()
+      checkDateFormatter.unitsStyle = .spellOut
+      checkDateFormatter.localizedString(for: checkDate, relativeTo: Date.now)
+      self.checkDateLabel.text = String(format: L("existence_confirmed_time_ago"),  checkDateFormatter.localizedString(for: checkDate, relativeTo: Date.now))
+        checkDateLabel.isHidden = false
+      NSLayoutConstraint.activate([checkDateLabelLayoutConstraint])
+    } else {
+      checkDateLabel.text = String()
+      checkDateLabel.isHidden = true
+      NSLayoutConstraint.deactivate([checkDateLabelLayoutConstraint])
+    }
   }
 
   private func setupCoordinatesView() {
@@ -477,16 +488,15 @@ class PlacePageInfoViewController: UIViewController {
                                      longPressHandler: { [weak self] in
       self?.copyCoordinatesToPasteboard()
     })
-    if #available(iOS 14.0, *) {
-      let menu = UIMenu(children: coordFormats.enumerated().map { (index, format) in
-        UIAction(title: format, handler: { [weak self] _ in
-          self?.setCoordinatesSelected(formatId: index)
-          self?.copyCoordinatesToPasteboard()
-        })
+    
+    let menu = UIMenu(children: coordFormats.enumerated().map { (index, format) in
+      UIAction(title: format, handler: { [weak self] _ in
+        self?.setCoordinatesSelected(formatId: index)
+        self?.copyCoordinatesToPasteboard()
       })
-      coordinatesView?.accessoryButton.menu = menu
-      coordinatesView?.accessoryButton.showsMenuAsPrimaryAction = true
-    }
+    })
+    coordinatesView?.accessoryButton.menu = menu
+    coordinatesView?.accessoryButton.showsMenuAsPrimaryAction = true
   }
 
   private func setCoordinatesSelected(formatId: Int) {

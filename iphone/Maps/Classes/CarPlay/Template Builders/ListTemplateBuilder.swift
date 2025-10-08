@@ -13,7 +13,7 @@ final class ListTemplateBuilder {
     case search
   }
   
-  // MARK: - CPListTemplate bilder
+  // MARK: - CPListTemplate builder
   class func buildListTemplate(for type: ListTemplateType) -> CPListTemplate {
     var title = ""
     var trailingNavigationBarButtons = [CPBarButton]()
@@ -40,38 +40,38 @@ final class ListTemplateBuilder {
     case .bookmarks(let category):
       title = category.title
     }
-    let template = CPListTemplate(title: title, sections: [])
+
+    let sections = buildSectionsForType(type)
+    let template = CPListTemplate(title: title, sections: sections)
     template.trailingNavigationBarButtons = trailingNavigationBarButtons
-    obtainResources(for: type, template: template)
     return template
   }
-  
-  private class func obtainResources(for type: ListTemplateType, template: CPListTemplate) {
+
+  private class func buildSectionsForType(_ type: ListTemplateType) -> [CPListSection] {
     switch type {
     case .history:
-      obtainHistory(template: template)
+      return buildHistorySections()
     case .bookmarks(let category):
-      obtainBookmarks(template: template, categoryId: category.categoryId)
+      return buildBookmarksSections(categoryId: category.categoryId)
     case .bookmarkLists:
-      obtainCategories(template: template)
+      return buildBookmarkListsSections()
     case .searchResults(let results):
-      convertSearchResults(results, template: template)
+      return buildSearchResultsSections(results)
     }
   }
-  
-  private class func obtainHistory(template: CPListTemplate) {
+
+  private class func buildHistorySections() -> [CPListSection] {
     let searchQueries = FrameworkHelper.obtainLastSearchQueries()
     let items = searchQueries.map({ (text) -> CPListItem in
-      let item = CPListItem(text: text, detailText: nil, image: UIImage(named: "ic_carplay_recent"))
+      let item = CPListItem(text: text, detailText: nil, image: UIImage(named: "recent"))
       item.userInfo = ListItemInfo(type: CPConstants.ListItemType.history,
                                    metadata: nil)
       return item
     })
-    let section = CPListSection(items: items)
-    template.updateSections([section])
+    return [CPListSection(items: items)]
   }
-  
-  private class func obtainCategories(template: CPListTemplate) {
+
+  private class func buildBookmarkListsSections() -> [CPListSection] {
     let bookmarkManager = BookmarksManager.shared()
     let categories = bookmarkManager.sortedUserCategories()
     let items: [CPListItem] = categories.compactMap({ category in
@@ -82,11 +82,10 @@ final class ListTemplateBuilder {
                                    metadata: CategoryInfo(category: category))
       return item
     })
-    let section = CPListSection(items: items)
-    template.updateSections([section])
+    return [CPListSection(items: items)]
   }
-  
-  private class func obtainBookmarks(template: CPListTemplate, categoryId: MWMMarkGroupID) {
+
+  private class func buildBookmarksSections(categoryId: MWMMarkGroupID) -> [CPListSection] {
     let bookmarkManager = BookmarksManager.shared()
     let bookmarks = bookmarkManager.bookmarks(forCategory: categoryId)
     var items = bookmarks.map({ (bookmark) -> CPListItem in
@@ -96,20 +95,17 @@ final class ListTemplateBuilder {
                                                           bookmarkId: bookmark.bookmarkId))
       return item
     })
-    if #available(iOS 15.0, *) {
-      let maxItemCount = CPListTemplate.maximumItemCount - 1
-      if items.count >= maxItemCount {
-        items = Array(items.prefix(maxItemCount))
-        let cropWarning = CPListItem(text: L("not_all_shown_bookmarks_carplay"), detailText: L("switch_to_phone_bookmarks_carplay"))
-        cropWarning.isEnabled = false
-        items.append(cropWarning)
-      }
+    let maxItemCount = CPListTemplate.maximumItemCount - 1
+    if items.count >= maxItemCount {
+      items = Array(items.prefix(maxItemCount))
+      let cropWarning = CPListItem(text: L("not_all_shown_bookmarks_carplay"), detailText: L("switch_to_phone_bookmarks_carplay"))
+      cropWarning.isEnabled = false
+      items.append(cropWarning)
     }
-    let section = CPListSection(items: items)
-    template.updateSections([section])
+    return [CPListSection(items: items)]
   }
-  
-  private class func convertSearchResults(_ results: [MWMCarPlaySearchResultObject], template: CPListTemplate) {
+
+  private class func buildSearchResultsSections(_ results: [MWMCarPlaySearchResultObject]) -> [CPListSection] {
     var items = [CPListItem]()
     for object in results {
       let item = CPListItem(text: object.title, detailText: object.address)
@@ -117,17 +113,17 @@ final class ListTemplateBuilder {
                                    metadata: SearchResultInfo(originalRow: object.originalRow))
       items.append(item)
     }
-    let section = CPListSection(items: items)
-    template.updateSections([section])
+    return [CPListSection(items: items)]
   }
-  
+
+
   // MARK: - CPBarButton builder
   private class func buildBarButton(type: BarButtonType, action: ((CPBarButton) -> Void)?) -> CPBarButton {
     switch type {
     case .bookmarks:
-      return CPBarButton(image: UIImage(named: "ic_carplay_bookmark")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "list.star")!, handler: action)
     case .search:
-      return CPBarButton(image: UIImage(named: "ic_carplay_keyboard")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "keyboard.fill")!, handler: action)
     }
   }
 }

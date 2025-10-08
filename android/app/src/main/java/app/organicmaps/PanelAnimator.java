@@ -5,21 +5,20 @@ import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-
 import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import app.organicmaps.sdk.util.Utils;
+import app.organicmaps.util.UiUtils;
 import org.chromium.base.ObserverList;
-
-import app.organicmaps.sdk.util.UiUtils;
 
 class PanelAnimator
 {
   private final MwmActivity mActivity;
   private final ObserverList<MwmActivity.LeftAnimationTrackListener> mAnimationTrackListeners = new ObserverList<>();
-  private final ObserverList.RewindableIterator<MwmActivity.LeftAnimationTrackListener> mAnimationTrackIterator = mAnimationTrackListeners.rewindableIterator();
+  private final ObserverList.RewindableIterator<MwmActivity.LeftAnimationTrackListener> mAnimationTrackIterator =
+      mAnimationTrackListeners.rewindableIterator();
   private final View mPanel;
   private final int mWidth;
   @IntegerRes
@@ -28,7 +27,7 @@ class PanelAnimator
   PanelAnimator(MwmActivity activity)
   {
     mActivity = activity;
-    mWidth = UiUtils.dimen(activity.getApplicationContext(), R.dimen.panel_width);
+    mWidth = Utils.dimen(activity.getApplicationContext(), R.dimen.panel_width);
     mPanel = mActivity.findViewById(R.id.fragment_container);
     mDuration = mActivity.getResources().getInteger(R.integer.anim_panel);
   }
@@ -50,7 +49,8 @@ class PanelAnimator
   }
 
   /** @param completionListener will be called before the fragment becomes actually visible */
-  public void show(final Class<? extends Fragment> clazz, final Bundle args, @Nullable final Runnable completionListener)
+  public void show(final Class<? extends Fragment> clazz, final Bundle args,
+                   @Nullable final Runnable completionListener)
   {
     if (isVisible())
     {
@@ -78,8 +78,7 @@ class PanelAnimator
 
     ValueAnimator animator = ValueAnimator.ofFloat(-mWidth, 0.0f);
     animator.addUpdateListener(this::track);
-    animator.addListener(new UiUtils.SimpleAnimatorListener()
-    {
+    animator.addListener(new UiUtils.SimpleAnimatorListener() {
       @Override
       public void onAnimationEnd(Animator animation)
       {
@@ -109,8 +108,7 @@ class PanelAnimator
 
     ValueAnimator animator = ValueAnimator.ofFloat(0.0f, -mWidth);
     animator.addUpdateListener(this::track);
-    animator.addListener(new UiUtils.SimpleAnimatorListener()
-    {
+    animator.addListener(new UiUtils.SimpleAnimatorListener() {
       @Override
       public void onAnimationEnd(Animator animation)
       {

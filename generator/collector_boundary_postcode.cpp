@@ -14,8 +14,7 @@ BoundaryPostcodeCollector::BoundaryPostcodeCollector(std::string const & filenam
   : CollectorInterface(filename)
   , m_cache(cache)
   , m_featureMakerSimple(cache)
-{
-}
+{}
 
 std::shared_ptr<CollectorInterface> BoundaryPostcodeCollector::Clone(IDRInterfacePtr const & cache) const
 {
@@ -53,14 +52,17 @@ void BoundaryPostcodeCollector::Collect(OsmElement const & el)
 
 void BoundaryPostcodeCollector::Save()
 {
+  LOG(LINFO, ("Saving postcode boundaries to", GetFilename()));
   std::sort(m_data.begin(), m_data.end());
 
   FileWriter writer(GetFilename());
   for (auto const & p : m_data)
   {
-    utils::WriteString(writer, p.first);
+    rw::WriteNonEmpty(writer, p.first);
     rw::WriteVectorOfPOD(writer, p.second);
   }
+
+  LOG(LINFO, ("Finished saving postcode boundaries"));
 }
 
 void BoundaryPostcodeCollector::MergeInto(BoundaryPostcodeCollector & collector) const

@@ -34,9 +34,6 @@ on:
       - track_generator/**
       - xcode/**
 
-env:
-  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
-
 jobs:
   lint:
     name: Android Lint
@@ -50,10 +47,6 @@ jobs:
       - name: Parallel submodules checkout
         shell: bash
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
-
-      - name: Configure repository
-        shell: bash
-        run: ./configure.sh
 
       - name: Lint
         shell: bash
@@ -92,10 +85,6 @@ jobs:
       - name: Parallel submodules checkout
         shell: bash
         run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
-
-      - name: Configure repository
-        shell: bash
-        run: ./configure.sh
 
       - name: Configure ccache
         uses: hendrikmuhs/ccache-action@v1.2

@@ -15,18 +15,29 @@ stxxl.errlog
 stxxl.log
 screenlog.0
 
-data/styles/*/*/out/*
-data/resources-*_design/*
 # symbols png/sdf are now generated at build
-data/resources-*_*/symbols.png
-data/resources-*_*/symbols.sdf
-data/drules_proto_default_design.bin
-data/colors_design.txt
-data/patterns_design.txt
+data/symbols/**/symbols.png
+data/symbols/**/symbols.sdf
+
 data/bookmarks
 data/edits.xml
 data/World.mwm
 data/WorldCoasts.mwm
+data/world_mwm/*
+data/*_hash
+data/drules_proto*
+data/classificator.txt*
+data/types.txt*
+data/visibility.txt*
+data/colors.txt*
+data/patterns.txt*
+# TODO: designer is not used at the moment
+# data/symbols/*/design/
+# data/colors_design.txt
+# data/patterns_design.txt
+
+# Auto-generated from data/categories-strings/* by tools/unix/generate_categories.sh
+data/categories.txt
 
 # Compiled Python
 *.pyc
@@ -45,10 +56,9 @@ omim.sdf
 *.suo
 *.aps
 *.rc
-!qt/res/windows.rc
+!qt/res/windows/windows.rc
 *.pdb
-out/*
-qt/mapswithme.log
+out/
 
 # XCode
 xcode/keys/*

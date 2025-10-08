@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2025 The CoMaps Community -->
+<component type="desktop-application">
+  <id>app.comaps.comaps</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>Apache-2.0</project_license>
+  <content_rating type="oars-1.1" />
+
+  <name>CoMaps</name>
+  <summary>Free offline maps for everyone</summary>
+  <developer id="app.comaps">
+    <name>The CoMaps Community</name>
+  </developer>
+
+  <launchable type="desktop-id">app.comaps.comaps.desktop</launchable>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <description>
+    <p>
+      CoMaps is a free Android &amp; iOS offline maps app for travellers,
+      tourists, hikers, drivers and cyclists.
+      It uses crowd-sourced OpenStreetMap data.
+    </p>
+    <p>
+      The Linux version of CoMaps does not have feature parity
+      with the Android and iPhone versions, and has not yet been
+      optimized for mobile devices.
+    </p>
+  </description>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#456644</color>
+    <color type="primary" scheme_preference="dark">#375237</color>
+  </branding>
+
+  <url type="homepage">https://comaps.app</url>
+  <url type="bugtracker">https://codeberg.org/comaps/comaps/issues</url>
+  <url type="faq">https://www.comaps.app/support/</url>
+  <url type="help">https://www.comaps.app/community/</url>
+  <url type="donation">https://www.comaps.app/donate/</url>
+  <url type="translate">https://codeberg.org/comaps/comaps/src/branch/main/docs/TRANSLATIONS.md</url>
+  <url type="contact">https://www.comaps.app/community/</url>
+  <url type="vcs-browser">https://codeberg.org/comaps/comaps</url>
+  <url type="contribute">https://codeberg.org/comaps/comaps/src/branch/main/docs/CONTRIBUTING.md</url>
+
+  <screenshots>
+    <screenshot type="default" environment="plasma">
+      <image>https://www.comaps.app/images/screenshots/Desktop_light_routing.png</image>
+      <caption>Routing in light mode</caption>
+    </screenshot>
+    <screenshot environment="plasma:dark">
+      <image>https://www.comaps.app/images/screenshots/Desktop_dark_routing.png</image>
+      <caption>Routing in dark mode</caption>
+    </screenshot>
+    <screenshot environment="plasma">
+      <image>https://www.comaps.app/images/screenshots/Desktop_light_overview.png</image>
+      <caption>Map overview in light mode</caption>
+    </screenshot>
+    <screenshot environment="plasma:dark">
+      <image>https://www.comaps.app/images/screenshots/Desktop_dark_overview.png</image>
+      <caption>Map overview in dark mode</caption>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+   <release version="2025.07.13-9" date="2025-08-09">
+     <description>
+       <p>CoMaps is now on Linux!</p>
+     </description>
+   </release>
+ </releases>
+</component>

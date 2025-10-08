@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Језик гласа";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Тестирај гласовне инструкције (Текст-у-говор)";
+"pref_tts_test_voice_title" = "Тестирај гласовне инструкције";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Остало";
@@ -322,10 +322,10 @@
 "report_incorrect_map_bug" = "Пријавите или поправите нетачне податке на мапи";
 
 /* Button in the About screen */
-"volunteer" = "Волонтирајте";
+"volunteer" = "Волонтирајте и побољшајте CoMaps";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Контактирајте нас";
+"follow_us" = "Повежите се с нама";
 
 /* Alert text */
 "email_error_body" = "Email клијент није подешен. Молимо вас да га подесите или нас контактирајте на %@";
@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Сачувано";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Молим вас да се улогујете на OpenStreetMap да бисте аутоматски послали све ваше промене на мапи. Сазнајте више";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "овде";
 "core_entrance" = "Улаз";
 "error_enter_correct_name" = "Молим Вас да унесете исправан назив";
 "bookmark_lists" = "Листе";
@@ -1096,6 +1090,8 @@
 "osm_profile_view_edit_history" = "Погледајте историју измена";
 "about_headline" = "Отворени пројекат који покреће заједница";
 "pref_mapappearance_title" = "Изглед мапе";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Језик мапе";
+"transliteration_title_disabled_summary" = "Онемогућено када увек користите локални језик за мапу";
+"pref_maplanguage_local" = "Локални језик";
+"existence_confirmed_time_ago" = "Проверено да постоји %@";
+"hours_confirmed_time_ago" = "Потврђено %@";

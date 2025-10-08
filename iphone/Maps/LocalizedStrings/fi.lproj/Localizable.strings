@@ -43,7 +43,7 @@
 "country_status_download_failed" = "Lataus epäonnistui";
 
 /* Text in About screen */
-"about_headline" = "Avoin projekti yhteisön voimin";
+"about_headline" = "Avoin projekti yhteisön toteuttamana";
 
 /* Text in About screen */
 "about_proposition_1" = "Yhteydetön tila, nopea ja helppokäyttöinen";
@@ -253,7 +253,7 @@
 "pref_tts_language_title" = "Äänen kieli";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testaa puheohjeita (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testaa puheohjeita";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Muu";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Ilmoita tai korjaa virheelliset karttatiedot";
 
 /* Button in the About screen */
-"volunteer" = "Vapaaehtoiseksi";
+"volunteer" = "Auta parantamaan CoMapsia";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Ota yhteyttä";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Tallennettu";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Kirjaudu sisään OpenStreetMapiin, jotta voit ladata kaikki karttamuutoksesi automaattisesti. Lisätietoja";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "täältä";
 "core_entrance" = "Sisäänkäynti";
 "error_enter_correct_name" = "Anna oikea nimi";
 "bookmark_lists" = "Luettelot";
@@ -1098,6 +1092,8 @@
 "osm_profile_view_edit_history" = "Näytä muokkaushistoria";
 "osm_profile_view_notes" = "Näytä ilmoitukset";
 "pref_mapappearance_title" = "Kartan ulkoasu";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Karttakieli";
+"transliteration_title_disabled_summary" = "Kytke pois käytöstä, jos käytät aina paikallista kieltä kartalle";
+"pref_maplanguage_local" = "Paikallinen kieli";
+"existence_confirmed_time_ago" = "Olemassaolo varmistettu %@";
+"hours_confirmed_time_ago" = "Varmistettu %@";

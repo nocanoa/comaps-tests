@@ -5,18 +5,19 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.R;
 import app.organicmaps.sdk.search.SearchResult;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.ThemeUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 
 class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHolder>
 {
@@ -43,11 +44,11 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     BaseResultViewHolder(@NonNull View view)
     {
       super(view);
-      if (view instanceof TextView)
+      if (view instanceof MaterialTextView)
       {
         int tintAttr = getTintAttr();
         if (tintAttr != 0)
-          Graphics.tint((TextView)view, tintAttr);
+          Graphics.tint((MaterialTextView) view, tintAttr);
       }
       view.setOnClickListener(v -> processClick(mResult, mOrder));
     }
@@ -57,18 +58,19 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     {
       mResult = result;
       mOrder = order;
-      final TextView titleView = getTitleView();
+      final MaterialTextView titleView = getTitleView();
 
       if (titleView != null)
         titleView.setText(mResult.getFormattedTitle(titleView.getContext()));
     }
 
-    @AttrRes int getTintAttr()
+    @AttrRes
+    int getTintAttr()
     {
       return androidx.appcompat.R.attr.colorAccent;
     }
 
-    abstract TextView getTitleView();
+    abstract MaterialTextView getTitleView();
 
     abstract void processClick(SearchResult result, int order);
   }
@@ -81,9 +83,9 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     }
 
     @Override
-    TextView getTitleView()
+    MaterialTextView getTitleView()
     {
-      return (TextView) itemView;
+      return (MaterialTextView) itemView;
     }
 
     @Override
@@ -98,15 +100,15 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     @NonNull
     final View mFrame;
     @NonNull
-    final TextView mName;
+    final MaterialTextView mName;
     @NonNull
-    final TextView mOpen;
+    final MaterialTextView mOpen;
     @NonNull
-    final TextView mDescription;
+    final MaterialTextView mDescription;
     @NonNull
-    final TextView mRegion;
+    final MaterialTextView mRegion;
     @NonNull
-    final TextView mDistance;
+    final MaterialTextView mDistance;
 
     @Override
     int getTintAttr()
@@ -120,13 +122,13 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
       mFrame = view;
       mName = view.findViewById(R.id.title);
       mOpen = view.findViewById(R.id.open);
-      mDescription =  view.findViewById(R.id.description);
+      mDescription = view.findViewById(R.id.description);
       mRegion = view.findViewById(R.id.region);
       mDistance = view.findViewById(R.id.distance);
     }
 
     @Override
-    TextView getTitleView()
+    MaterialTextView getTitleView()
     {
       return mName;
     }
@@ -149,41 +151,39 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
 
       switch (result.description.openNow)
       {
-        case SearchResult.OPEN_NOW_YES ->
+      case SearchResult.OPEN_NOW_YES ->
+      {
+        if (result.description.minutesUntilClosed < 60) // less than 1 hour
         {
-          if (result.description.minutesUntilClosed < 60)   // less than 1 hour
-          {
-            final String time = result.description.minutesUntilClosed + " " +
-                          resources.getString(R.string.minute);
-            final String string = resources.getString(R.string.closes_in, time);
+          final String time = result.description.minutesUntilClosed + " " + resources.getString(R.string.minute);
+          final String string = resources.getString(R.string.closes_in, time);
 
-            UiUtils.setTextAndShow(mOpen, string);
-            mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_yellow));
-          }
-          else
-          {
-            UiUtils.setTextAndShow(mOpen, resources.getString(R.string.editor_time_open));
-            mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_green));
-          }
+          UiUtils.setTextAndShow(mOpen, string);
+          mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_yellow));
         }
-        case SearchResult.OPEN_NOW_NO ->
+        else
         {
-          if (result.description.minutesUntilOpen < 60) // less than 1 hour
-          {
-            final String time = result.description.minutesUntilOpen + " " +
-                          resources.getString(R.string.minute);
-            final String string = resources.getString(R.string.opens_in, time);
-
-            UiUtils.setTextAndShow(mOpen, string);
-            mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_red));
-          }
-          else
-          {
-            UiUtils.setTextAndShow(mOpen, resources.getString(R.string.closed));
-            mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_red));
-          }
+          UiUtils.setTextAndShow(mOpen, resources.getString(R.string.editor_time_open));
+          mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_green));
         }
-        default -> UiUtils.hide(mOpen);
+      }
+      case SearchResult.OPEN_NOW_NO ->
+      {
+        if (result.description.minutesUntilOpen < 60) // less than 1 hour
+        {
+          final String time = result.description.minutesUntilOpen + " " + resources.getString(R.string.minute);
+          final String string = resources.getString(R.string.opens_in, time);
+
+          UiUtils.setTextAndShow(mOpen, string);
+          mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_red));
+        }
+        else
+        {
+          UiUtils.setTextAndShow(mOpen, resources.getString(R.string.closed));
+          mOpen.setTextColor(ContextCompat.getColor(mSearchFragment.getContext(), R.color.base_red));
+        }
+      }
+      default -> UiUtils.hide(mOpen);
       }
     }
 
@@ -215,9 +215,9 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     return switch (viewType)
     {
       case SearchResult.TYPE_SUGGEST, SearchResult.TYPE_PURE_SUGGEST ->
-          new SuggestViewHolder(inflater.inflate(R.layout.item_search_suggest, parent, false));
+        new SuggestViewHolder(inflater.inflate(R.layout.item_search_suggest, parent, false));
       case SearchResult.TYPE_RESULT ->
-          new ResultViewHolder(inflater.inflate(R.layout.item_search_result, parent, false));
+        new ResultViewHolder(inflater.inflate(R.layout.item_search_result, parent, false));
       default -> throw new IllegalArgumentException("Unhandled view type given");
     };
   }

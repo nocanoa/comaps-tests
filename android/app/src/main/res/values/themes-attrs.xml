@@ -17,6 +17,7 @@
     <attr name="iconTintLight" format="color" />
     <attr name="ppBackground" format="color" />
     <attr name="ppButtonsBackground" format="color" />
+    <attr name="ppFloatingMarkerIconColor" format="color" />
     <attr name="navNextTurnFrame" format="reference" />
     <attr name="navNextNextTurnFrame" format="reference" />
     <attr name="navLanesBackgroundColor" format="reference" />
@@ -29,9 +30,6 @@
     <attr name="accentButtonBackground" format="reference" />
     <attr name="accentButtonTextColor" format="color" />
     <attr name="accentButtonTextColorDisabled" format="color" />
-    <attr name="redButtonBackground" format="reference" />
-    <attr name="redButtonTextColor" format="color" />
-    <attr name="redButtonTextColorDisabled" format="color" />
     <attr name="primaryButtonBackground" format="reference" />
     <attr name="menuBackground" format="color" />
     <attr name="myPositionButtonAnimation" format="reference" />

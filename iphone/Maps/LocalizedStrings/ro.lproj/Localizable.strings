@@ -96,7 +96,7 @@
 "category_parking" = "Parcare";
 
 /* Search category for malls/clothes/shoes/gifts/jewellery/sport shops; any changes should be duplicated in categories.txt @category_shopping! */
-"category_shopping" = "Shopping";
+"category_shopping" = "Cumpărături";
 
 /* Search category for second_hand/charity/antique/auction shops; any changes should be duplicated in categories.txt @category_secondhand! */
 "category_secondhand" = "La mâna a doua";
@@ -148,7 +148,7 @@
 
 /* Search category for RV facilities; any changes should be duplicated in categories.txt @category_rv! */
 "category_rv" = "Pentru rulote";
-"share_bookmarks_email_body" = "Bună!\n\nȚi-am atașat locurile mele preferate din aplicația CoMaps. Deschide-le dacă ai instalată CoMaps. Dacă nu, o poți descărca pentru iOS sau Android de aici: https://www.comaps.app/";
+"share_bookmarks_email_body" = "Salut!\n\nAm atașat marcajele mele; te rog să le deschizi în CoMaps. Dacă nu îl ai instalat, îl poți descărca de aici: https://www.comaps.app/download/\n\nBucură-te de călătorii cu CoMaps!";
 
 /* message title of loading file */
 "load_kmz_title" = "Se încarcă locurile preferate";
@@ -247,7 +247,7 @@
 "pref_tts_language_title" = "Limba ghidului vocal";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testarea indicațiilor vocale (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testează direcțiile vocale";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Altceva";
@@ -325,7 +325,7 @@
 "follow_us" = "Urmăriți-ne și contactați-ne";
 
 /* Alert text */
-"email_error_body" = "Aplicația de email nu a fost stabilită. Stabilește-o sau utilizează alt mod de a ne contacta la %@.";
+"email_error_body" = "Clientul de e-mail nu a fost configurat. Te rugăm să-l configurezi sau să ne contactezi la %@";
 
 /* Alert title */
 "email_error_title" = "Eroare de trimitere e-mail";
@@ -438,7 +438,7 @@
 "dialog_routing_disclaimer_priority" = "— Condițiile de drum, legile și semnele rutiere sunt mai importante decât indicațiile navigatorului;";
 "dialog_routing_disclaimer_precision" = "— Harta poate conține greșeli, iar traseul sugerat pentru a ajunge la destinație nu e întotdeauna cel mai bun;";
 "dialog_routing_disclaimer_recommendations" = "— Traseele sugerate sunt doar niște recomandări;";
-"dialog_routing_disclaimer_borders" = "— Ai grijă în zonele de graniță: traseele create de aplicația noastră pot trece granița prin locuri nepermise;";
+"dialog_routing_disclaimer_borders" = "— Ai grijă în zonele de graniță: traseele create de aplicația noastră pot trece granița prin locuri nepermise.";
 "dialog_routing_disclaimer_beware" = "Fii vigilent și condu în siguranță!";
 "dialog_routing_check_gps" = "Verifică semnalul GPS";
 "dialog_routing_error_location_not_found" = "Crearea traseului a eșuat. Coordonatele GPS actuale nu au putut fi identificate.";
@@ -677,7 +677,7 @@
 "editor_edits_sent_message" = "Nota dvs. va fi trimisă către OpenStreetMap";
 "editor_comment_hint" = "Comentariu…";
 "editor_reset_edits_message" = "Ștergi toate modificările locale?";
-"editor_reset_edits_button" = "Șterge";
+"editor_reset_edits_button" = "Renunță";
 "editor_remove_place_message" = "Elimini locul adăugat?";
 "editor_remove_place_button" = "Elimină";
 "editor_place_doesnt_exist" = "Locul nu există";
@@ -751,12 +751,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvat";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Vă rugăm să vă conectați la OpenStreetMap pentru a încărca automat toate modificările aduse hărții. Aflați mai multe";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "aici";
 "core_entrance" = "Intrare";
 "error_enter_correct_name" = "Introdu un nume corect";
 "bookmark_lists" = "Liste";
@@ -791,7 +785,7 @@
 "subway_data_unavailable" = "Harta de metrou nu este disponibilă";
 "title_error_downloading_bookmarks" = "A apărut o eroare";
 "popular_place" = "Populare";
-"export_file" = "Export KMZ";
+"export_file" = "Exportă KMZ";
 "export_file_gpx" = "Exportați GPX";
 "delete_list" = "Șterge lista";
 "hide_from_map" = "Ascunde de pe hartă";
@@ -859,11 +853,11 @@
 "trip_finished" = "Ai ajuns!";
 "keyboard_availability_alert" = "Tastatura nu poate fi folosită cât timp conduci";
 "dialog_routing_change_start_carplay" = "Traseul de la locul în care te afli nu poate fi alcătuit";
-"dialog_routing_change_end_carplay" = "Traseul către destinația aleasă nu poate fi alcătuit. Alege altă destinație.";
-"dialog_routing_check_gps_carplay" = "Nu este semnal GPS. Mergi la loc deschis.";
+"dialog_routing_change_end_carplay" = "Nu s-a putut găsi o rută către destinația ta. Te rugăm să alegi un alt punct final";
+"dialog_routing_check_gps_carplay" = "Nu există semnal GPS. Te rugăm să te deplasezi într-o zonă deschisă";
 "dialog_routing_unable_locate_route_carplay" = "Nu poate fi alcătuit un traseu. Alege alte puncte ale traseului";
 "dialog_routing_download_files_carplay" = "Pentru a crea un traseu, descarcă hărțile lipsă în dispozitivul tău";
-"dialog_routing_system_error_carplay" = "Eroare. Repornește aplicația.";
+"dialog_routing_system_error_carplay" = "A apărut o eroare. Te rugăm să repornești aplicația";
 "dialog_routing_rebuild_from_current_location_carplay" = "Traseul va fi refăcut de la locul în care te afli";
 "dialog_routing_rebuild_for_vehicle_carplay" = "Traseul va fi înlocuit cu unul pentru autovehicule";
 "not_all_shown_bookmarks_carplay" = "Nu sunt afișate toate marcajele";
@@ -954,7 +948,7 @@
 "translated_om_site_url" = "https://www.comaps.app/";
 
 /* App Tip #00 */
-"app_tip_00" = "Vă mulțumim că utilizați hărțile create de comunitatea noastră!";
+"app_tip_00" = "Mulțumim că folosești hărțile construite de comunitatea noastră!";
 
 /* App tip #01 */
 "app_tip_01" = "Cu donațiile și sprijinul dumneavoastră, putem crea cele mai bune hărți din lume!";
@@ -1060,7 +1054,7 @@
 "bookmarks_recently_deleted" = "Liste șterse recent";
 
 /* Title for the "Clear" button on the Recently Deleted Lists screen. */
-"clear" = "Șterge";
+"clear" = "Ștergere";
 
 /* Title for the "Delete All" button on the Recently Deleted Lists screen. */
 "delete_all" = "Ștergeți toate";
@@ -1091,9 +1085,11 @@
 "edit_track" = "Editează traseul";
 "osm_profile_view_edit_history" = "Vizualizați istoricul modificărilor";
 "osm_profile_view_notes" = "Vizualizați notițe";
-"about_headline" = "Open project powered by the community";
-"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Proiect deschis, susținut de comunitate";
+"about_proposition_3" = "Transparent și non-profit";
 "pref_mapappearance_title" = "Map Appearance";
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existence confirmed %@";

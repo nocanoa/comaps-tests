@@ -69,7 +69,7 @@
 "bookmarks" = "Markagailuak";
 
 /* "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt */
-"bookmarks_and_tracks" = "Markagailuak eta ibilbideak";
+"bookmarks_and_tracks" = "Markagailuak eta arrastoak";
 
 /* Default bookmark list name */
 "core_my_places" = "Nire tokiak";
@@ -195,7 +195,7 @@
 "version: %@ (%@)\nmap data: %@" = "Bertsioa: %@ (%@)\nMaparen datuak: %@";
 
 /* Title for tracks category in bookmarks manager */
-"tracks_title" = "Arrasto";
+"tracks_title" = "Arrastoak";
 
 /* Length of track in cell that describes route */
 "length" = "Luzera";
@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Ahots hizkuntza";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Probatu ahots bidezko jarraibideak (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Probatu ahots bidezko jarraibideak";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Beste batzuk";
@@ -325,7 +325,7 @@
 "volunteer" = "Boluntario izateko";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Jarraitu eta jarri gurekin harremanetan";
+"follow_us" = "Jarri gurekin harremanetan";
 
 /* Alert text */
 "email_error_body" = "Posta elektronikoko bezeroa ez da konfiguratu. Mesedez, konfigura ezazu edo erabili beste moduren bat gurekin harremanetan jartzeko %@ helbidean";
@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Gordeta";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Hasi saioa OpenStreetMap-en zure mapen aldaketa guztiak automatikoki kargatzeko. Lortu informazio gehiago";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "hemen";
 "core_entrance" = "Sarrera";
 "error_enter_correct_name" = "Mesedez, idatzi baliozko izen bat";
 "bookmark_lists" = "Zerrendak";
@@ -770,7 +764,7 @@
 "bookmarks_create_new_group" = "Sortu zerrenda berria";
 
 /* Bookmark categories screen, button that opens folder selection dialog to import KML/KMZ/GPX/KMB files */
-"bookmarks_import" = "Inportatu markagailuak eta ibilbideak";
+"bookmarks_import" = "Inportatu markagailuak eta arrastoak";
 "downloader_hide_screen" = "Ezkutatu pantaila";
 "downloader_percent" = "%@ (%@/%@)";
 "downloader_process" = "%@ deskargatzen…";
@@ -942,7 +936,7 @@
 "placepage_delete_track_button" = "Ezabatu arrastoa";
 
 /* The track deletion confirmaion alert message. */
-"placepage_delete_track_confirmation_alert_message" = "Ziur pista hau ezabatu nahi duzula?";
+"placepage_delete_track_confirmation_alert_message" = "Ziur arrasto hau ezabatu nahi duzula?";
 
 /* Placeholder for track name input on track edit screen */
 "placepage_track_name_hint" = "Arrastoaren izena";
@@ -1002,7 +996,7 @@
 "button_layer_outdoor" = "Landa-eremua";
 
 /* Bookmark categories screen, button that opens share dialog to export all bookmarks and tracks */
-"bookmarks_export" = "Esportatu Laster-marka eta Pista guztiak";
+"bookmarks_export" = "Esportatu markagailu eta arrasto guztiak";
 
 /* Text for the editing the Track's color button. */
 "change_color" = "Kolorea aldatu";
@@ -1024,7 +1018,7 @@
 "enable_icloud_synchronization_title" = "Gaitu iCloud sinkronizazioa";
 
 /* Message for the "Enable iCloud Syncronization" alert. */
-"enable_icloud_synchronization_message" = "iCloud sinkronizazioa garatzen ari den ezaugarri esperimental bat da. Ziurtatu zure laster-marka eta ibilbide guztien babeskopia egin duzula.";
+"enable_icloud_synchronization_message" = "iCloud sinkronizazioa garatzen ari den ezaugarri esperimental bat da. Ziurtatu zure markagailu eta arrasto guztien babeskopia egin duzula.";
 
 /* Title for the "iCloud Is Disabled" alert. */
 "icloud_disabled_title" = "iCloud desgaituta dago";
@@ -1075,10 +1069,10 @@
 "recover_all" = "Guztia berreskuratu";
 
 /* Prompt to start recording a track. */
-"start_track_recording" = "Ibilbidearen grabaketa";
+"start_track_recording" = "Grabatu arrastoa";
 
 /* Prompt for stopping a track recording. */
-"stop_track_recording" = "Gelditu ibilbidearen grabaketa";
+"stop_track_recording" = "Gelditu arrastoaren grabaketa";
 
 /* Title for the "Stop Without Saving" action for the alert when saving a track recording. */
 "stop_without_saving" = "Gelditu gorde gabe";
@@ -1087,15 +1081,17 @@
 "continue_recording" = "Jarraitu grabatzen";
 
 /* Title for the alert when saving a track recording. */
-"track_recording_alert_title" = "Ibilbidearen grabaketa markagailuetan eta ibilbideetan gorde nahi duzu?";
+"track_recording_alert_title" = "Markagailu eta arrastoetan gorde nahi duzu?";
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
-"track_recording_toast_nothing_to_save" = "Ibilbidea hutsik dago; ez dago ezer gordetzeko";
+"track_recording_toast_nothing_to_save" = "Arrastoa hutsik dago; ez dago ezer gordetzeko";
 "edit_track" = "Editatu arrastoa";
 "osm_profile_view_notes" = "Oharrak ikusi";
 "osm_profile_view_edit_history" = "Aldaketen historia ikusi";
-"about_proposition_3" = "Transparent and not for profit";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"about_proposition_3" = "Gardena eta irabazi asmorik gabekoa";
+"pref_mapappearance_title" = "Mapen itxura";
+"pref_maplanguage_title" = "Mapen hizkuntza";
+"transliteration_title_disabled_summary" = "Desgaituta maparako hizkuntza lokala beti erabiltzean";
+"pref_maplanguage_local" = "Hizkuntza lokala";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

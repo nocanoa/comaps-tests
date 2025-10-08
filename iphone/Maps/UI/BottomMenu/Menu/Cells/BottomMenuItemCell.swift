@@ -21,7 +21,9 @@ class BottomMenuItemCell: UITableViewCell {
       icon.image = Settings.LeftButtonType.help.image
     } else if imageName == "plus" {
       icon.image = Settings.LeftButtonType.addPlace.image
-    } else if imageName == "track_recorder_inactive" || imageName == "track_recorder_active" || imageName == "ic_menu_download" || imageName == "ic_menu_donate" {
+    } else if imageName == "track" {
+      icon.image = Settings.LeftButtonType.recordTrack.image
+    } else if imageName == "ic_menu_download" || imageName == "ic_menu_donate" {
       icon.image = UIImage(named: imageName)
     } else {
       let configuration = UIImage.SymbolConfiguration(pointSize: 22, weight: .semibold)

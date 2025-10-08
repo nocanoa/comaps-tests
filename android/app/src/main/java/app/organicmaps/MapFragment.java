@@ -10,22 +10,21 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ConfigurationHelper;
-
 import app.organicmaps.base.BaseMwmFragment;
-import app.organicmaps.sdk.display.DisplayType;
 import app.organicmaps.sdk.Map;
 import app.organicmaps.sdk.MapRenderingListener;
+import app.organicmaps.sdk.display.DisplayType;
 import app.organicmaps.sdk.util.log.Logger;
-
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class MapFragment extends BaseMwmFragment implements View.OnTouchListener, SurfaceHolder.Callback
 {
   private static final String TAG = MapFragment.class.getSimpleName();
+
+  @NonNull
   private final Map mMap = new Map(DisplayType.Device);
 
   public void updateCompassOffset(int offsetX, int offsetY)
@@ -71,7 +70,8 @@ public class MapFragment extends BaseMwmFragment implements View.OnTouchListener
   public void surfaceChanged(SurfaceHolder surfaceHolder, int format, int width, int height)
   {
     Logger.d(TAG);
-    mMap.onSurfaceChanged(requireContext(), surfaceHolder.getSurface(), surfaceHolder.getSurfaceFrame(), surfaceHolder.isCreating());
+    mMap.onSurfaceChanged(requireContext(), surfaceHolder.getSurface(), surfaceHolder.getSurfaceFrame(),
+                          surfaceHolder.isCreating());
   }
 
   @Override
@@ -86,6 +86,8 @@ public class MapFragment extends BaseMwmFragment implements View.OnTouchListener
   {
     Logger.d(TAG);
     super.onAttach(context);
+
+    mMap.setLocationHelper(MwmApplication.from(requireContext()).getLocationHelper());
     mMap.setMapRenderingListener((MapRenderingListener) context);
     mMap.setCallbackUnsupported(this::reportUnsupported);
   }
@@ -161,24 +163,24 @@ public class MapFragment extends BaseMwmFragment implements View.OnTouchListener
     int pointerIndex = event.getActionIndex();
     switch (action)
     {
-      case MotionEvent.ACTION_POINTER_UP -> action = Map.NATIVE_ACTION_UP;
-      case MotionEvent.ACTION_UP ->
-      {
-        action = Map.NATIVE_ACTION_UP;
-        pointerIndex = 0;
-      }
-      case MotionEvent.ACTION_POINTER_DOWN -> action = Map.NATIVE_ACTION_DOWN;
-      case MotionEvent.ACTION_DOWN ->
-      {
-        action = Map.NATIVE_ACTION_DOWN;
-        pointerIndex = 0;
-      }
-      case MotionEvent.ACTION_MOVE ->
-      {
-        action = Map.NATIVE_ACTION_MOVE;
-        pointerIndex = Map.INVALID_POINTER_MASK;
-      }
-      case MotionEvent.ACTION_CANCEL -> action = Map.NATIVE_ACTION_CANCEL;
+    case MotionEvent.ACTION_POINTER_UP -> action = Map.NATIVE_ACTION_UP;
+    case MotionEvent.ACTION_UP ->
+    {
+      action = Map.NATIVE_ACTION_UP;
+      pointerIndex = 0;
+    }
+    case MotionEvent.ACTION_POINTER_DOWN -> action = Map.NATIVE_ACTION_DOWN;
+    case MotionEvent.ACTION_DOWN ->
+    {
+      action = Map.NATIVE_ACTION_DOWN;
+      pointerIndex = 0;
+    }
+    case MotionEvent.ACTION_MOVE ->
+    {
+      action = Map.NATIVE_ACTION_MOVE;
+      pointerIndex = Map.INVALID_POINTER_MASK;
+    }
+    case MotionEvent.ACTION_CANCEL -> action = Map.NATIVE_ACTION_CANCEL;
     }
     Map.onTouch(action, event, pointerIndex);
     return true;

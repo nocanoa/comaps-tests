@@ -5,9 +5,10 @@
   android:id="@+id/ll__place_editor"
   style="@style/PlacePageItemFrame"
   tools:visibility="visible">
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/tv__editor"
-    style="@style/PlacePageMetadataText.Button"
-    android:gravity="center"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/mb__place_editor"
+    style="@style/MwmWidget.M3.Button.Secondary"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
     android:text="@string/edit_place"/>
 </LinearLayout>

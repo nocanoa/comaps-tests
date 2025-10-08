@@ -11,7 +11,14 @@
     style="@style/MwmWidget.ToolbarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:theme="@style/MwmWidget.ToolbarTheme"/>
+    android:theme="@style/MwmWidget.ToolbarTheme">
+    <com.google.android.material.imageview.ShapeableImageView
+      android:layout_width="?actionBarSize"
+      android:layout_height="?actionBarSize"
+      android:scaleType="centerInside"
+      android:layout_gravity="end|center_vertical"
+      app:srcCompat="@drawable/ic_done"/>
+  </com.google.android.material.appbar.MaterialToolbar>
   <androidx.core.widget.NestedScrollView
     android:scrollbars="none"
     android:fillViewport="true"
@@ -33,6 +40,7 @@
           android:id="@+id/edit_list_name_input"
           app:hintAnimationEnabled="false"
           style="@style/MwmWidget.Editor.CustomTextInput"
+          android:hint="@string/list"
           android:textColorHint="?android:textColorSecondary"
           app:endIconMode="custom"
           app:endIconDrawable="@drawable/ic_clear_rounded"
@@ -40,12 +48,13 @@
         <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/edit_list_name_view"
           style="@style/MwmWidget.Editor.CustomTextInput"
-          android:hint="@string/list"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
+      android:paddingStart="@dimen/margin_half"
+      android:paddingEnd="@dimen/margin_half"
       app:hintAnimationEnabled="false"
       style="@style/MwmWidget.Editor.CustomTextInput"
       android:textColorHint="?android:textColorSecondary">
@@ -54,14 +63,12 @@
       style="@style/MwmWidget.Editor.CustomTextInput"
       android:hint="@string/placepage_personal_notes_hint"
       android:minHeight="@dimen/height_item_multiline"
-      android:paddingStart="@dimen/margin_base"
-      android:paddingEnd="@dimen/margin_base"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:inputType="textMultiLine"/>
     </com.google.android.material.textfield.TextInputLayout>
     <View
-      android:background="?android:attr/windowBackground"
+      android:background="?cardBackground"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
   </LinearLayout>

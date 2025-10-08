@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		039371B62C5B68CD00708377 /* UIFont+monospaced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039371B52C5B68CD00708377 /* UIFont+monospaced.swift */; };
 		165953742CB1D85500CFED7C /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 165953732CB1D83700CFED7C /* fonts */; };
+		165953942CB44B5600CFED7C /* symbols in Resources */ = {isa = PBXBuildFile; fileRef = 165953932CB44B3B00CFED7C /* symbols */; };
 		1DFA2F6A20D3B57400FB2C66 /* UIColor+PartnerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFA2F6920D3B57400FB2C66 /* UIColor+PartnerColor.m */; };
 		270C9C282E16AB6F00ABA688 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C9C252E16AB6300ABA688 /* Profile.swift */; };
+		27176A862E65B0150015F25F /* Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 27176A852E65B0150015F25F /* Icon.icon */; };
+		27176A8A2E65B01B0015F25F /* Debug Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 27176A892E65B01B0015F25F /* Debug Icon.icon */; };
 		272F1F392E0EE09000FA52EF /* ExistingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F382E0EE08A00FA52EF /* ExistingProfileView.swift */; };
 		272F1F3B2E0EE0A300FA52EF /* NoExistingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */; };
 		272F1F3D2E0EE0C800FA52EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */; };
@@ -202,8 +205,6 @@
 		408645FC21495EB1000A4A1D /* categories_cuisines.txt in Resources */ = {isa = PBXBuildFile; fileRef = 408645FB21495EB1000A4A1D /* categories_cuisines.txt */; };
 		44360A0D2A7D34990016F412 /* TransportRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44360A0C2A7D34990016F412 /* TransportRuler.swift */; };
 		44360A112A7D35440016F412 /* TransportRuler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44360A102A7D35440016F412 /* TransportRuler.xib */; };
-		4501B1942077C35A001B9173 /* resources-xxxhdpi_light in Resources */ = {isa = PBXBuildFile; fileRef = 4501B1922077C35A001B9173 /* resources-xxxhdpi_light */; };
-		4501B1952077C35A001B9173 /* resources-xxxhdpi_dark in Resources */ = {isa = PBXBuildFile; fileRef = 4501B1932077C35A001B9173 /* resources-xxxhdpi_dark */; };
 		4554B6EC1E55F0EF0084017F /* drules_proto_vehicle_light.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4554B6E81E55F02B0084017F /* drules_proto_vehicle_light.bin */; };
 		4554B6EE1E55F0F30084017F /* drules_proto_vehicle_dark.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4554B6E91E55F02B0084017F /* drules_proto_vehicle_dark.bin */; };
 		462452E92BD052C0004C85E1 /* MWMEditorSegmentedTableViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 462452E72BD052C0004C85E1 /* MWMEditorSegmentedTableViewCell.mm */; };
@@ -281,31 +282,23 @@
 		6741A9421BF340DE002C974C /* sound-strings in Resources */ = {isa = PBXBuildFile; fileRef = 5605022E1B6211E100169CAD /* sound-strings */; };
 		6741A9451BF340DE002C974C /* classificator.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE026F0511D6AC0D00645242 /* classificator.txt */; };
 		6741A9491BF340DE002C974C /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA46DA2B12D4166E00968C36 /* countries.txt */; };
-		6741A94A1BF340DE002C974C /* resources-6plus_light in Resources */ = {isa = PBXBuildFile; fileRef = 4A23D1571B8B4DD700D4EB6F /* resources-6plus_light */; };
-		6741A94D1BF340DE002C974C /* resources-xxhdpi_light in Resources */ = {isa = PBXBuildFile; fileRef = 4A23D15A1B8B4DD700D4EB6F /* resources-xxhdpi_light */; };
 		6741A94F1BF340DE002C974C /* MWMDefaultAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F198C1AB81A00006EAF7E /* MWMDefaultAlert.xib */; };
 		6741A9511BF340DE002C974C /* MWMDownloaderDialogHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F4B701B4A41D40081A24A /* MWMDownloaderDialogHeader.xib */; };
 		6741A9521BF340DE002C974C /* World.mwm in Resources */ = {isa = PBXBuildFile; fileRef = FAFF42291347F101009BBB14 /* World.mwm */; };
-		6741A9551BF340DE002C974C /* resources-xxhdpi_dark in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D89C41B2EBF3B00AC843E /* resources-xxhdpi_dark */; };
 		6741A95C1BF340DE002C974C /* categories.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAAFD696139D9BE2000AE70C /* categories.txt */; };
 		6741A95D1BF340DE002C974C /* types.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA64D9A813F975AD00350ECF /* types.txt */; };
 		6741A9601BF340DE002C974C /* MWMRoutingDisclaimerAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63774E61B59375E00BCF54D /* MWMRoutingDisclaimerAlert.xib */; };
-		6741A9611BF340DE002C974C /* resources-xhdpi_dark in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D89C31B2EBF3B00AC843E /* resources-xhdpi_dark */; };
 		6741A9681BF340DE002C974C /* faq.html in Resources */ = {isa = PBXBuildFile; fileRef = 978D4A30199A11E600D72CA7 /* faq.html */; };
 		6741A96C1BF340DE002C974C /* MWMDownloadTransitMapAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F19981AB81A00006EAF7E /* MWMDownloadTransitMapAlert.xib */; };
 		6741A96D1BF340DE002C974C /* MWMLocationAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BBF2C71B4FFB8C000CF8E2 /* MWMLocationAlert.xib */; };
 		6741A9711BF340DE002C974C /* copyright.html in Resources */ = {isa = PBXBuildFile; fileRef = 97A5967E19B9CD47007A963F /* copyright.html */; };
-		6741A9741BF340DE002C974C /* resources-6plus_dark in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D89C11B2EBF3B00AC843E /* resources-6plus_dark */; };
 		6741A9751BF340DE002C974C /* WorldCoasts.mwm in Resources */ = {isa = PBXBuildFile; fileRef = FA459EB314327AF700B5BB3C /* WorldCoasts.mwm */; };
 		6741A9761BF340DE002C974C /* packed_polygons.bin in Resources */ = {isa = PBXBuildFile; fileRef = FA85F632145DDDC20090E1A0 /* packed_polygons.bin */; };
 		6741A97D1BF340DE002C974C /* synonyms.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAAEA7D0161BD26600CCD661 /* synonyms.txt */; };
 		6741A97E1BF340DE002C974C /* drules_proto_default_dark.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4A00DBDE1AB704C400113624 /* drules_proto_default_dark.bin */; };
-		6741A97F1BF340DE002C974C /* resources-mdpi_light in Resources */ = {isa = PBXBuildFile; fileRef = 4A23D1581B8B4DD700D4EB6F /* resources-mdpi_light */; };
 		6741A9871BF340DE002C974C /* drules_proto_default_light.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4A23D1561B8B4DD700D4EB6F /* drules_proto_default_light.bin */; };
 		6741A98B1BF340DE002C974C /* MWMCircularProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349A35771B53D4C9009677EE /* MWMCircularProgress.xib */; };
-		6741A9901BF340DE002C974C /* resources-mdpi_dark in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D89C21B2EBF3B00AC843E /* resources-mdpi_dark */; };
 		6741A9951BF340DE002C974C /* MWMDownloaderDialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F4B6E1B46A5380081A24A /* MWMDownloaderDialogCell.xib */; };
-		6741A9981BF340DE002C974C /* resources-xhdpi_light in Resources */ = {isa = PBXBuildFile; fileRef = 4A23D1591B8B4DD700D4EB6F /* resources-xhdpi_light */; };
 		6741A9991BF340DE002C974C /* MWMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F19831AB81A00006EAF7E /* MWMAlertViewController.xib */; };
 		6741A9A31BF340DE002C974C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; };
 		6741A9A51BF340DE002C974C /* MWMShareActivityItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 340837151B72451A00B5C185 /* MWMShareActivityItem.mm */; };
@@ -329,7 +322,6 @@
 		674A7E301C0DB10B003D48E1 /* MWMMapWidgets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34FE4C441BCC013500066718 /* MWMMapWidgets.mm */; };
 		676507601C10559800830BB3 /* patterns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 451950391B7A3E070085DA05 /* patterns.txt */; };
 		676507611C10559B00830BB3 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 452FCA3A1B6A3DF7007019AB /* colors.txt */; };
-		677A2DE21C0DD50900635A00 /* resources-default in Resources */ = {isa = PBXBuildFile; fileRef = A367C93A1B17334800E2B6E7 /* resources-default */; };
 		6B9978361C89A316003B8AA0 /* editor.config in Resources */ = {isa = PBXBuildFile; fileRef = 6B9978341C89A316003B8AA0 /* editor.config */; };
 		8C4FB9C72BEFEFF400D44877 /* CarPlayWindowScaleAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4FB9C62BEFEFF400D44877 /* CarPlayWindowScaleAdjuster.swift */; };
 		8CB13C3B2BF1276A004288F2 /* CarplayPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB13C3A2BF1276A004288F2 /* CarplayPlaceholderView.swift */; };
@@ -547,16 +539,12 @@
 		EDF838C42C00B9D6007E4E67 /* FileManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF838B32C00B9C7007E4E67 /* FileManagerMock.swift */; };
 		EDFDFB482B7139670013A44C /* Social Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFDFB472B7139670013A44C /* Social Media.swift */; };
 		EDFE1A4A2DF1989700FDEA38 /* UIAlertController+UnknownCurrentPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A492DF1989700FDEA38 /* UIAlertController+UnknownCurrentPosition.swift */; };
-		F607C1881C032A8800B53A87 /* resources-hdpi_light in Resources */ = {isa = PBXBuildFile; fileRef = F607C1831C032A8800B53A87 /* resources-hdpi_light */; };
-		F607C18A1C032A8800B53A87 /* resources-hdpi_dark in Resources */ = {isa = PBXBuildFile; fileRef = F607C1841C032A8800B53A87 /* resources-hdpi_dark */; };
 		F623DA6C1C9C2731006A3436 /* opening_hours_how_to_edit.html in Resources */ = {isa = PBXBuildFile; fileRef = F623DA6A1C9C2731006A3436 /* opening_hours_how_to_edit.html */; };
 		F623DA6F1C9C2E62006A3436 /* MWMAddPlaceNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F653CE171C71F62400A453F1 /* MWMAddPlaceNavigationBar.xib */; };
 		F62607FD207B790300176C5A /* SpinnerAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62607FC207B790300176C5A /* SpinnerAlert.swift */; };
 		F62607FF207B83C400176C5A /* MWMSpinnerAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62607FE207B83C400176C5A /* MWMSpinnerAlert.xib */; };
 		F626D52F1C3E83F800C17D15 /* MWMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F626D52D1C3E6CAA00C17D15 /* MWMTableViewCell.m */; };
 		F6381BF61CD12045004CA943 /* LocaleTranslator.mm in Sources */ = {isa = PBXBuildFile; fileRef = F6381BF41CD12045004CA943 /* LocaleTranslator.mm */; };
-		F64D9CA01C899C350063FA30 /* MWMEditorViralAlert.mm in Sources */ = {isa = PBXBuildFile; fileRef = F64D9C9E1C899C350063FA30 /* MWMEditorViralAlert.mm */; };
-		F64D9CA31C899C760063FA30 /* MWMEditorViralAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64D9CA11C899C760063FA30 /* MWMEditorViralAlert.xib */; };
 		F653CE191C71F62700A453F1 /* MWMAddPlaceNavigationBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = F653CE151C71F60200A453F1 /* MWMAddPlaceNavigationBar.mm */; };
 		F660DEE51EAF4F59004DC056 /* MWMLocationManager+SpeedAndAltitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660DEE31EAF4F59004DC056 /* MWMLocationManager+SpeedAndAltitude.swift */; };
 		F6791B141C43DF0B007A8A6E /* MWMStartButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6791B121C43DEA7007A8A6E /* MWMStartButton.m */; };
@@ -766,12 +754,15 @@
 /* Begin PBXFileReference section */
 		039371B52C5B68CD00708377 /* UIFont+monospaced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+monospaced.swift"; sourceTree = "<group>"; };
 		165953732CB1D83700CFED7C /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../data/fonts; sourceTree = "<group>"; };
+		165953932CB44B3B00CFED7C /* symbols */ = {isa = PBXFileReference; lastKnownFileType = folder; name = symbols; path = ../../data/symbols; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* MapsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MapsAppDelegate.h; sourceTree = "<group>"; tabWidth = 2; };
 		1D3623250D0F684500981E51 /* MapsAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = MapsAppDelegate.mm; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1DFA2F6820D3B52F00FB2C66 /* UIColor+PartnerColor.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "UIColor+PartnerColor.h"; sourceTree = "<group>"; tabWidth = 2; };
 		1DFA2F6920D3B57400FB2C66 /* UIColor+PartnerColor.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; indentWidth = 2; lineEnding = 0; path = "UIColor+PartnerColor.m"; sourceTree = "<group>"; tabWidth = 2; };
 		1DFA2F6E20D3CA9200FB2C66 /* UIColorRoutines.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = UIColorRoutines.h; sourceTree = "<group>"; tabWidth = 2; };
 		270C9C252E16AB6300ABA688 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		27176A852E65B0150015F25F /* Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon.icon; sourceTree = "<group>"; };
+		27176A892E65B01B0015F25F /* Debug Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Debug Icon.icon"; sourceTree = "<group>"; };
 		272F1F382E0EE08A00FA52EF /* ExistingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingProfileView.swift; sourceTree = "<group>"; };
 		272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExistingProfileView.swift; sourceTree = "<group>"; };
 		272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -1121,8 +1112,6 @@
 		408645FB21495EB1000A4A1D /* categories_cuisines.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = categories_cuisines.txt; path = ../../data/categories_cuisines.txt; sourceTree = "<group>"; };
 		44360A0C2A7D34990016F412 /* TransportRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRuler.swift; sourceTree = "<group>"; };
 		44360A102A7D35440016F412 /* TransportRuler.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportRuler.xib; sourceTree = "<group>"; };
-		4501B1922077C35A001B9173 /* resources-xxxhdpi_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xxxhdpi_light"; path = "../../data/resources-xxxhdpi_light"; sourceTree = "<group>"; };
-		4501B1932077C35A001B9173 /* resources-xxxhdpi_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xxxhdpi_dark"; path = "../../data/resources-xxxhdpi_dark"; sourceTree = "<group>"; };
 		451950391B7A3E070085DA05 /* patterns.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = patterns.txt; path = ../../data/patterns.txt; sourceTree = "<group>"; };
 		452FCA3A1B6A3DF7007019AB /* colors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = colors.txt; path = ../../data/colors.txt; sourceTree = "<group>"; };
 		4554B6E81E55F02B0084017F /* drules_proto_vehicle_light.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = drules_proto_vehicle_light.bin; path = ../../data/drules_proto_vehicle_light.bin; sourceTree = "<group>"; };
@@ -1215,15 +1204,7 @@
 		49AB95972CB2FE5300468EA2 /* UIButton+ImagePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ImagePadding.swift"; sourceTree = "<group>"; };
 		4A00DBDE1AB704C400113624 /* drules_proto_default_dark.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = drules_proto_default_dark.bin; path = ../../data/drules_proto_default_dark.bin; sourceTree = "<group>"; };
 		4A23D1561B8B4DD700D4EB6F /* drules_proto_default_light.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = drules_proto_default_light.bin; path = ../../data/drules_proto_default_light.bin; sourceTree = "<group>"; };
-		4A23D1571B8B4DD700D4EB6F /* resources-6plus_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-6plus_light"; path = "../../data/resources-6plus_light"; sourceTree = "<group>"; };
-		4A23D1581B8B4DD700D4EB6F /* resources-mdpi_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-mdpi_light"; path = "../../data/resources-mdpi_light"; sourceTree = "<group>"; };
-		4A23D1591B8B4DD700D4EB6F /* resources-xhdpi_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xhdpi_light"; path = "../../data/resources-xhdpi_light"; sourceTree = "<group>"; };
-		4A23D15A1B8B4DD700D4EB6F /* resources-xxhdpi_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xxhdpi_light"; path = "../../data/resources-xxhdpi_light"; sourceTree = "<group>"; };
 		4A300ED31C6DCFD400140018 /* countries-strings */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "countries-strings"; path = "../../data/countries-strings"; sourceTree = "<group>"; };
-		4A7D89C11B2EBF3B00AC843E /* resources-6plus_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-6plus_dark"; path = "../../data/resources-6plus_dark"; sourceTree = "<group>"; };
-		4A7D89C21B2EBF3B00AC843E /* resources-mdpi_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-mdpi_dark"; path = "../../data/resources-mdpi_dark"; sourceTree = "<group>"; };
-		4A7D89C31B2EBF3B00AC843E /* resources-xhdpi_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xhdpi_dark"; path = "../../data/resources-xhdpi_dark"; sourceTree = "<group>"; };
-		4A7D89C41B2EBF3B00AC843E /* resources-xxhdpi_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-xxhdpi_dark"; path = "../../data/resources-xxhdpi_dark"; sourceTree = "<group>"; };
 		4B4153B42BF9695500EE4B02 /* MWMTextToSpeechTests.mm */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = MWMTextToSpeechTests.mm; sourceTree = "<group>"; tabWidth = 2; };
 		4B83AE472C2E59F800B0C3BC /* TTSTester.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = TTSTester.h; sourceTree = "<group>"; tabWidth = 2; };
 		4B83AE482C2E59F800B0C3BC /* TTSTester.mm */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = TTSTester.mm; sourceTree = "<group>"; tabWidth = 2; };
@@ -1347,7 +1328,6 @@
 		99F8B4C523B644A6009FF0B4 /* MapStyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStyleSheet.swift; sourceTree = "<group>"; };
 		99F9A0E42462CA0E00AE21E0 /* DownloadAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAllView.swift; sourceTree = "<group>"; };
 		99F9A0E62462CA1700AE21E0 /* DownloadAllView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAllView.xib; sourceTree = "<group>"; };
-		A367C93A1B17334800E2B6E7 /* resources-default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-default"; path = "../../data/resources-default"; sourceTree = "<group>"; };
 		A630D1E9207CA95900976DEA /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ar; path = ar.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A630D1EB207CA96700976DEA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = cs; path = cs.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A630D1EC207CA96D00976DEA /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = da; path = da.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -1553,8 +1533,6 @@
 		EDFE1A492DF1989700FDEA38 /* UIAlertController+UnknownCurrentPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+UnknownCurrentPosition.swift"; sourceTree = "<group>"; };
 		EE026F0511D6AC0D00645242 /* classificator.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = classificator.txt; path = ../../data/classificator.txt; sourceTree = SOURCE_ROOT; };
 		EED10A4411F78D120095FAD4 /* MapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = MapViewController.mm; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F607C1831C032A8800B53A87 /* resources-hdpi_light */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-hdpi_light"; path = "../../data/resources-hdpi_light"; sourceTree = "<group>"; };
-		F607C1841C032A8800B53A87 /* resources-hdpi_dark */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-hdpi_dark"; path = "../../data/resources-hdpi_dark"; sourceTree = "<group>"; };
 		F607C18C1C047FDC00B53A87 /* MWMSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMSegue.h; sourceTree = "<group>"; tabWidth = 2; };
 		F607C18D1C047FDC00B53A87 /* MWMSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = MWMSegue.m; sourceTree = "<group>"; tabWidth = 2; };
 		F623DA6A1C9C2731006A3436 /* opening_hours_how_to_edit.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = opening_hours_how_to_edit.html; path = ../../data/opening_hours_how_to_edit.html; sourceTree = "<group>"; };
@@ -1566,9 +1544,6 @@
 		F63774E81B59376F00BCF54D /* MWMRoutingDisclaimerAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMRoutingDisclaimerAlert.h; sourceTree = "<group>"; tabWidth = 2; };
 		F63774E91B59376F00BCF54D /* MWMRoutingDisclaimerAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MWMRoutingDisclaimerAlert.m; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F6381BF41CD12045004CA943 /* LocaleTranslator.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = LocaleTranslator.mm; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F64D9C9D1C899C350063FA30 /* MWMEditorViralAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMEditorViralAlert.h; sourceTree = "<group>"; tabWidth = 2; };
-		F64D9C9E1C899C350063FA30 /* MWMEditorViralAlert.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = MWMEditorViralAlert.mm; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F64D9CA11C899C760063FA30 /* MWMEditorViralAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWMEditorViralAlert.xib; sourceTree = "<group>"; };
 		F64F19811AB81A00006EAF7E /* MWMAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MWMAlertViewController.h; sourceTree = "<group>"; tabWidth = 2; };
 		F64F19821AB81A00006EAF7E /* MWMAlertViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = MWMAlertViewController.mm; sourceTree = "<group>"; tabWidth = 2; };
 		F64F19831AB81A00006EAF7E /* MWMAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWMAlertViewController.xib; sourceTree = "<group>"; };
@@ -2042,6 +2017,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27176A852E65B0150015F25F /* Icon.icon */,
+				27176A892E65B01B0015F25F /* Debug Icon.icon */,
 				F6C3A1B121AC22810060EEC8 /* Alert 5.m4a */,
 				4A300ED31C6DCFD400140018 /* countries-strings */,
 				5605022E1B6211E100169CAD /* sound-strings */,
@@ -3485,16 +3462,6 @@
 			path = RoutingDisclaimerAlert;
 			sourceTree = "<group>";
 		};
-		F64D9C9C1C899BEA0063FA30 /* EditorAlert */ = {
-			isa = PBXGroup;
-			children = (
-				F64D9C9D1C899C350063FA30 /* MWMEditorViralAlert.h */,
-				F64D9C9E1C899C350063FA30 /* MWMEditorViralAlert.mm */,
-				F64D9CA11C899C760063FA30 /* MWMEditorViralAlert.xib */,
-			);
-			name = EditorAlert;
-			sourceTree = "<group>";
-		};
 		F64F195F1AB8125C006EAF7E /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -3504,7 +3471,6 @@
 				349B92691DF0516C007779DD /* Toast */,
 				349A137E1DEC138C00C7DB60 /* MobileInternetAlert */,
 				F6FE3C351CC50FDF00A73196 /* PlaceDoesntExist */,
-				F64D9C9C1C899BEA0063FA30 /* EditorAlert */,
 				F63774E51B59374F00BCF54D /* RoutingDisclaimerAlert */,
 				F6BBF2C31B4FFB56000CF8E2 /* LocationAlert */,
 				F64F19801AB81A00006EAF7E /* AlertController */,
@@ -3963,6 +3929,7 @@
 			isa = PBXGroup;
 			children = (
 				165953732CB1D83700CFED7C /* fonts */,
+				165953932CB44B3B00CFED7C /* symbols */,
 				47AEF83F2231249E00D20538 /* categories_brands.txt */,
 				408645FB21495EB1000A4A1D /* categories_cuisines.txt */,
 				FAAFD696139D9BE2000AE70C /* categories.txt */,
@@ -3984,19 +3951,6 @@
 				F623DA6A1C9C2731006A3436 /* opening_hours_how_to_edit.html */,
 				FA85F632145DDDC20090E1A0 /* packed_polygons.bin */,
 				451950391B7A3E070085DA05 /* patterns.txt */,
-				4A23D1571B8B4DD700D4EB6F /* resources-6plus_light */,
-				4A7D89C11B2EBF3B00AC843E /* resources-6plus_dark */,
-				A367C93A1B17334800E2B6E7 /* resources-default */,
-				F607C1831C032A8800B53A87 /* resources-hdpi_light */,
-				F607C1841C032A8800B53A87 /* resources-hdpi_dark */,
-				4A23D1581B8B4DD700D4EB6F /* resources-mdpi_light */,
-				4A7D89C21B2EBF3B00AC843E /* resources-mdpi_dark */,
-				4A23D1591B8B4DD700D4EB6F /* resources-xhdpi_light */,
-				4A7D89C31B2EBF3B00AC843E /* resources-xhdpi_dark */,
-				4A23D15A1B8B4DD700D4EB6F /* resources-xxhdpi_light */,
-				4A7D89C41B2EBF3B00AC843E /* resources-xxhdpi_dark */,
-				4501B1922077C35A001B9173 /* resources-xxxhdpi_light */,
-				4501B1932077C35A001B9173 /* resources-xxxhdpi_dark */,
 				FAAEA7D0161BD26600CCD661 /* synonyms.txt */,
 				BB25B1A51FB32767007276FA /* transit_colors.txt */,
 				FA64D9A813F975AD00350ECF /* types.txt */,
@@ -4033,6 +3987,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6741AA541BF340DE002C974C /* Build configuration list for PBXNativeTarget "CoMaps" */;
 			buildPhases = (
+				2768C8A32E4E560D00F617AF /* ShellScript */,
 				FA456C4E26BDCCC300B83C20 /* CopyFiles */,
 				6741A9411BF340DE002C974C /* Resources */,
 				6741A9A01BF340DE002C974C /* Sources */,
@@ -4096,7 +4051,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				ORGANIZATIONNAME = CoMaps;
 				TargetAttributes = {
 					6741A93D1BF340DE002C974C = {
@@ -4217,6 +4172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				165953742CB1D85500CFED7C /* fonts in Resources */,
+				165953942CB44B5600CFED7C /* symbols in Resources */,
 				47AEF8402231249E00D20538 /* categories_brands.txt in Resources */,
 				F6C3A1B221AC22810060EEC8 /* Alert 5.m4a in Resources */,
 				3404F49A2028A20D0090E401 /* BMCCategoryCell.xib in Resources */,
@@ -4224,6 +4180,7 @@
 				471A7BC22481D44B00A0D4C1 /* BookmarkTitleCell.xib in Resources */,
 				FA637ED329A500BE00D8921A /* drules_proto_outdoors_light.txt in Resources */,
 				F6E2FE6D1E097BA00083EBEC /* _MWMOHHeaderCell.xib in Resources */,
+				27176A862E65B0150015F25F /* Icon.icon in Resources */,
 				F6E2FE701E097BA00083EBEC /* _MWMOHSubCell.xib in Resources */,
 				4554B6EE1E55F0F30084017F /* drules_proto_vehicle_dark.bin in Resources */,
 				47CA68D22500435E00671019 /* BookmarksListViewController.xib in Resources */,
@@ -4248,7 +4205,6 @@
 				993DF0CA23F6BD0600AC231A /* ElevationDetailsViewController.xib in Resources */,
 				F623DA6F1C9C2E62006A3436 /* MWMAddPlaceNavigationBar.xib in Resources */,
 				6741A9991BF340DE002C974C /* MWMAlertViewController.xib in Resources */,
-				4501B1942077C35A001B9173 /* resources-xxxhdpi_light in Resources */,
 				3467CEB7202C6FA900D3C670 /* BMCNotificationsCell.xib in Resources */,
 				4761BE2B252D3DB900EE2DE4 /* SubgroupCell.xib in Resources */,
 				99F9A0E72462CA1700AE21E0 /* DownloadAllView.xib in Resources */,
@@ -4273,7 +4229,6 @@
 				467F341B2BCA928B00CDC7DE /* MWMEditorSegmentedTableViewCell.xib in Resources */,
 				34D3B0451E389D05004100F9 /* MWMEditorTextTableViewCell.xib in Resources */,
 				ED0B1C312BC2951F00FB8EDD /* PrivacyInfo.xcprivacy in Resources */,
-				F64D9CA31C899C760063FA30 /* MWMEditorViralAlert.xib in Resources */,
 				6741A96D1BF340DE002C974C /* MWMLocationAlert.xib in Resources */,
 				3406FA191C6E0D8F00E9FAD2 /* MWMMapDownloadDialog.xib in Resources */,
 				A630D1EA207CA95900976DEA /* Localizable.stringsdict in Resources */,
@@ -4320,7 +4275,6 @@
 				34AB66231FC5AA330078E451 /* MWMiPadRoutePreview.xib in Resources */,
 				BB25B1A71FB32767007276FA /* transit_colors.txt in Resources */,
 				34AB66681FC5AA330078E451 /* TransportTransitPedestrian.xib in Resources */,
-				4501B1952077C35A001B9173 /* resources-xxxhdpi_dark in Resources */,
 				F6D67CDE2062BBA60032FD38 /* MWMBCCreateCategoryAlert.xib in Resources */,
 				3490D2E31CE9DD2500D0B838 /* MWMSideButtonsView.xib in Resources */,
 				F6E2FE2E1E097BA00083EBEC /* MWMStreetEditorEditTableViewCell.xib in Resources */,
@@ -4328,20 +4282,9 @@
 				F623DA6C1C9C2731006A3436 /* opening_hours_how_to_edit.html in Resources */,
 				6741A9761BF340DE002C974C /* packed_polygons.bin in Resources */,
 				676507601C10559800830BB3 /* patterns.txt in Resources */,
-				6741A94A1BF340DE002C974C /* resources-6plus_light in Resources */,
 				9989273D2449E60200260CE2 /* BottomMenuViewController.xib in Resources */,
-				6741A9741BF340DE002C974C /* resources-6plus_dark in Resources */,
-				677A2DE21C0DD50900635A00 /* resources-default in Resources */,
-				F607C1881C032A8800B53A87 /* resources-hdpi_light in Resources */,
-				F607C18A1C032A8800B53A87 /* resources-hdpi_dark in Resources */,
 				FA637ED229A500BE00D8921A /* drules_proto_outdoors_light.bin in Resources */,
-				6741A97F1BF340DE002C974C /* resources-mdpi_light in Resources */,
-				6741A9901BF340DE002C974C /* resources-mdpi_dark in Resources */,
-				6741A9981BF340DE002C974C /* resources-xhdpi_light in Resources */,
-				6741A9611BF340DE002C974C /* resources-xhdpi_dark in Resources */,
-				6741A94D1BF340DE002C974C /* resources-xxhdpi_light in Resources */,
 				3404F49E2028A2430090E401 /* BMCActionsCell.xib in Resources */,
-				6741A9551BF340DE002C974C /* resources-xxhdpi_dark in Resources */,
 				44360A112A7D35440016F412 /* TransportRuler.xib in Resources */,
 				6741A9421BF340DE002C974C /* sound-strings in Resources */,
 				F69018BD1E9F7CB600B3C10B /* MWMAutoupdateController.xib in Resources */,
@@ -4351,6 +4294,7 @@
 				6741A95D1BF340DE002C974C /* types.txt in Resources */,
 				340E1EFE1E2F614400CE49BF /* Welcome.storyboard in Resources */,
 				6741A9521BF340DE002C974C /* World.mwm in Resources */,
+				27176A8A2E65B01B0015F25F /* Debug Icon.icon in Resources */,
 				6741A9751BF340DE002C974C /* WorldCoasts.mwm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4371,6 +4315,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2768C8A32E4E560D00F617AF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/data/*",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}/../../\nenv -i PATH=\"$PATH:/opt/homebrew/bin\" ./configure.sh 2>/dev/null\ntouch data/*\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6741A9A01BF340DE002C974C /* Sources */ = {
@@ -4498,7 +4465,6 @@
 				F6791B141C43DF0B007A8A6E /* MWMStartButton.m in Sources */,
 				9977E6A12480E1EE0073780C /* BottomMenuLayerButton.swift in Sources */,
 				471527372491C20500E91BBA /* SelectBookmarkGroupViewController.swift in Sources */,
-				F64D9CA01C899C350063FA30 /* MWMEditorViralAlert.mm in Sources */,
 				34AC8FD11EFC02C000E7F910 /* MWMRoutePoint.mm in Sources */,
 				CDB4D5012231412900104869 /* ListTemplateBuilder.swift in Sources */,
 				99A906F323FA95AB0005872B /* PlacePageStyleSheet.swift in Sources */,
@@ -5127,6 +5093,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_ENTITLEMENTS = "CoMaps-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -5159,6 +5127,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_ENTITLEMENTS = "CoMaps-Release.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -5256,7 +5226,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoMapsWidgetExtension/Info.plist;

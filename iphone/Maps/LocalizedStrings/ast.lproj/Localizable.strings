@@ -218,7 +218,6 @@
 "osm_profile_register" = "Register at OpenStreetMap";
 "osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/About_OpenStreetMap";
 "mi" = "mi";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "planning_route_remove_title" = "Drag here to remove";
 "sort_distance" = "Sort by distance";
 "downloader_search_results" = "Found";
@@ -246,7 +245,6 @@
 "downloader_process" = "Downloading %@…";
 "bookmark_lists_hide_all" = "Hide all";
 "downloader_applying" = "Applying %@…";
-"alert_reauth_link_text_ios" = "here";
 "bookmarks_error_title_share_empty" = "Sharing error";
 "bookmarks_error_title_list_name_already_taken" = "This name is already taken";
 "downloader_percent" = "%@ (%@ of %@)";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

@@ -115,8 +115,9 @@ static PlacePageRoadType convertRoadType(RoadWarningMarkType roadType) {
     self.onTrackRecordingProgressUpdate();
 }
 
-- (void)handleActiveTrackSelectionPointChanged {
-  if (!self || !rawData().IsTrack())
+- (void)handleActiveTrackSelectionPointChanged
+{
+  if (!self || !PlacePageData.hasData || !rawData().IsTrack())
     return;
   auto const & trackInfo = GetFramework().GetBookmarkManager().GetTrackSelectionInfo(rawData().GetTrackId());
   auto const latlon = mercator::ToLatLon(trackInfo.m_trackPoint);

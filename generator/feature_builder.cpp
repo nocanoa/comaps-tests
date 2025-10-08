@@ -11,16 +11,13 @@
 #include "coding/byte_stream.hpp"
 #include "coding/geometry_coding.hpp"
 #include "coding/read_write_utils.hpp"
-#include "coding/reader.hpp"
 
 #include "geometry/region2d.hpp"
 
 #include "base/logging.hpp"
 #include "base/math.hpp"
-#include "base/string_utils.hpp"
 
 #include <algorithm>
-#include <cstring>
 #include <vector>
 
 namespace feature
@@ -29,7 +26,7 @@ namespace
 {
 bool IsEqual(double d1, double d2)
 {
-  return base::AlmostEqualAbs(d1, d2, kMwmPointAccuracy);
+  return AlmostEqualAbs(d1, d2, kMwmPointAccuracy);
 }
 
 bool IsEqual(m2::PointD const & p1, m2::PointD const & p2)
@@ -39,9 +36,7 @@ bool IsEqual(m2::PointD const & p1, m2::PointD const & p2)
 
 bool IsEqual(m2::RectD const & r1, m2::RectD const & r2)
 {
-  return (IsEqual(r1.minX(), r2.minX()) &&
-          IsEqual(r1.minY(), r2.minY()) &&
-          IsEqual(r1.maxX(), r2.maxX()) &&
+  return (IsEqual(r1.minX(), r2.minX()) && IsEqual(r1.minY(), r2.minY()) && IsEqual(r1.maxX(), r2.maxX()) &&
           IsEqual(r1.maxY(), r2.maxY()));
 }
 
@@ -52,10 +47,7 @@ bool IsEqual(std::vector<m2::PointD> const & v1, std::vector<m2::PointD> const &
 }
 }  // namespace
 
-FeatureBuilder::FeatureBuilder()
-  : m_coastCell(-1)
-{
-}
+FeatureBuilder::FeatureBuilder() : m_coastCell(-1) {}
 
 bool FeatureBuilder::IsGeometryClosed() const
 {
@@ -76,14 +68,10 @@ m2::PointD FeatureBuilder::GetKeyPoint() const
 {
   switch (GetGeomType())
   {
-  case GeomType::Point:
-    return m_center;
+  case GeomType::Point: return m_center;
   case GeomType::Line:
-  case GeomType::Area:
-    return GetGeometryCenter();
-  default:
-    CHECK(false, ());
-    return m2::PointD();
+  case GeomType::Area: return GetGeometryCenter();
+  default: CHECK(false, ()); return m2::PointD();
   }
 }
 
@@ -128,7 +116,7 @@ void FeatureBuilder::AssignArea(PointSeq && outline, Geometry const & holes)
 
   for (PointSeq const & points : holes)
   {
-    ASSERT ( !points.empty(), (*this) );
+    ASSERT(!points.empty(), (*this));
 
     size_t j = 0;
     size_t const count = points.size();
@@ -222,13 +210,20 @@ bool FeatureBuilder::PreSerialize()
       auto const & types = GetTypes();
       if (ftypes::IsMotorwayJunctionChecker::Instance()(types) ||
           (m_params.name.IsEmpty() &&
-           (ftypes::IsPostPoiChecker::Instance()(types) ||
-            ftypes::IsRailwaySubwayEntranceChecker::Instance()(types) ||
-            ftypes::IsEntranceChecker::Instance()(types) ||
-            ftypes::IsAerowayGateChecker::Instance()(types) ||
+           (ftypes::IsPostPoiChecker::Instance()(types) || ftypes::IsRailwaySubwayEntranceChecker::Instance()(types) ||
+            ftypes::IsEntranceChecker::Instance()(types) || ftypes::IsAerowayGateChecker::Instance()(types) ||
             ftypes::IsPlatformChecker::Instance()(types))))
       {
         m_params.name.AddString(StringUtf8Multilang::kDefaultCode, m_params.ref);
+      }
+      else if (!m_params.name.IsEmpty() && ftypes::IsRailwaySubwayEntranceChecker::Instance()(types))
+      {
+        StringUtf8Multilang nameWithRef;
+        m_params.name.ForEach([&nameWithRef, this](int8_t code, std::string_view name)
+        {
+          nameWithRef.AddString(code, std::string(name) + " (" + m_params.ref + ")");
+        });
+        m_params.name = std::move(nameWithRef);
       }
 
       m_params.ref.clear();
@@ -253,11 +248,8 @@ bool FeatureBuilder::PreSerialize()
     if (!m_params.ref.empty())
     {
       auto const & types = GetTypes();
-      if (m_params.name.IsEmpty() &&
-          (ftypes::IsPlatformChecker::Instance()(types)))
-      {
+      if (m_params.name.IsEmpty() && (ftypes::IsPlatformChecker::Instance()(types)))
         m_params.name.AddString(StringUtf8Multilang::kDefaultCode, m_params.ref);
-      }
 
       m_params.ref.clear();
     }
@@ -265,8 +257,7 @@ bool FeatureBuilder::PreSerialize()
     m_params.rank = 0;
     break;
 
-  default:
-    return false;
+  default: return false;
   }
 
   // Stats shows that 1706197 POIs out of 2258011 have name == brand.
@@ -298,7 +289,7 @@ bool FeatureBuilder::PreSerializeAndRemoveUselessNamesForIntermediate()
   // Clear name for features with invisible texts.
   // AlexZ: Commented this line to enable captions on subway exits, which
   // are not drawn but should be visible in balloons and search results
-  //RemoveNameIfInvisible();
+  // RemoveNameIfInvisible();
   RemoveUselessNames();
 
   return true;
@@ -312,7 +303,7 @@ void FeatureBuilder::RemoveUselessNames()
     // AFAIR, they were very messy in search because they contain places' names.
     auto const typeRemover = [](uint32_t type)
     {
-      static TypeSetChecker const checkBoundary({ "boundary", "administrative" });
+      static TypeSetChecker const checkBoundary({"boundary", "administrative"});
       return checkBoundary.IsEqual(type);
     };
 
@@ -367,10 +358,8 @@ bool FeatureBuilder::operator==(FeatureBuilder const & fb) const
     return false;
 
   for (auto i = m_polygons.cbegin(), j = fb.m_polygons.cbegin(); i != m_polygons.cend(); ++i, ++j)
-  {
     if (!IsEqual(*i, *j))
       return false;
-  }
 
   return true;
 }
@@ -380,8 +369,8 @@ bool FeatureBuilder::IsExactEq(FeatureBuilder const & fb) const
   if (m_params.GetGeomType() == GeomType::Point && m_center != fb.m_center)
     return false;
 
-  return (m_polygons == fb.m_polygons && m_limitRect == fb.m_limitRect &&
-          m_osmIds == fb.m_osmIds && m_params == fb.m_params && m_coastCell == fb.m_coastCell);
+  return (m_polygons == fb.m_polygons && m_limitRect == fb.m_limitRect && m_osmIds == fb.m_osmIds &&
+          m_params == fb.m_params && m_coastCell == fb.m_coastCell);
 }
 
 void FeatureBuilder::SerializeForIntermediate(Buffer & data) const
@@ -485,7 +474,7 @@ void FeatureBuilder::SerializeAccuratelyForIntermediate(Buffer & data) const
   Buffer tmp(data);
   FeatureBuilder fb;
   fb.DeserializeAccuratelyFromIntermediate(tmp);
-  ASSERT ( fb == *this, ("Source feature: ", *this, "Deserialized feature: ", fb) );
+  ASSERT(fb == *this, ("Source feature: ", *this, "Deserialized feature: ", fb));
 #endif
 }
 
@@ -522,9 +511,15 @@ void FeatureBuilder::DeserializeAccuratelyFromIntermediate(Buffer & data)
   CHECK(IsValid(), (*this));
 }
 
-void FeatureBuilder::AddOsmId(base::GeoObjectId id) { m_osmIds.push_back(id); }
+void FeatureBuilder::AddOsmId(base::GeoObjectId id)
+{
+  m_osmIds.push_back(id);
+}
 
-void FeatureBuilder::SetOsmId(base::GeoObjectId id) { m_osmIds.assign(1, id); }
+void FeatureBuilder::SetOsmId(base::GeoObjectId id)
+{
+  m_osmIds.assign(1, id);
+}
 
 base::GeoObjectId FeatureBuilder::GetFirstOsmId() const
 {
@@ -597,10 +592,8 @@ bool FeatureBuilder::IsDrawableInRange(int lowScale, int highScale) const
 {
   auto const types = GetTypesHolder();
   while (lowScale <= highScale)
-  {
     if (IsDrawableForIndex(types, m_limitRect, lowScale++))
       return true;
-  }
   return false;
 }
 
@@ -636,17 +629,21 @@ bool FeatureBuilder::PreSerializeAndRemoveUselessNamesForMwm(SupportingData cons
   return true;
 }
 
-void FeatureBuilder::SerializeForMwm(SupportingData & data,
-                                     serial::GeometryCodingParams const & params) const
+void FeatureBuilder::SerializeForMwm(SupportingData & data, serial::GeometryCodingParams const & params) const
 {
   data.m_buffer.clear();
 
   PushBackByteSink<Buffer> sink(data.m_buffer);
   FeatureParams(m_params).Write(sink);
 
-  if (m_params.GetGeomType() == GeomType::Point)
+  GeomType const type = m_params.GetGeomType();
+  CHECK(type != GeomType::Undefined, ());
+  if (type == GeomType::Point)
   {
-    serial::SavePoint(sink, m_center, params);
+    uint64_t const encoded =
+        coding::EncodePointDeltaAsUint(PointDToPointU(m_center, params.GetCoordBits()), params.GetBasePoint());
+    CHECK_GREATER(bits::NumHiZeroBits64(encoded), 1, ());
+    WriteVarUint(sink, encoded << 1);  // Relations control bit
     return;
   }
 
@@ -654,27 +651,27 @@ void FeatureBuilder::SerializeForMwm(SupportingData & data,
   uint8_t trgCount = base::asserted_cast<uint8_t>(data.m_innerTrg.size());
   if (trgCount > 0)
   {
-    ASSERT_GREATER ( trgCount, 2, () );
+    CHECK_GREATER(trgCount, 2, ());
     trgCount -= 2;
   }
-
-  GeomType const type = m_params.GetGeomType();
 
   {
     BitWriter<PushBackByteSink<Buffer>> bitSink(sink);
 
     if (type == GeomType::Line)
     {
-      bitSink.Write(ptsCount, 4);
-      if (ptsCount == 0)
-        bitSink.Write(data.m_ptsMask, 4);
+      bitSink.Write(ptsCount != 0 ? ptsCount : data.m_ptsMask, 4);
+      bitSink.Write(ptsCount == 0 ? 1 : 0, 1);
     }
-    else if (type == GeomType::Area)
+    else
     {
-      bitSink.Write(trgCount, 4);
-      if (trgCount == 0)
-        bitSink.Write(data.m_trgMask, 4);
+      CHECK_EQUAL(type, GeomType::Area, ());
+      bitSink.Write(trgCount != 0 ? trgCount : data.m_trgMask, 4);
+      bitSink.Write(trgCount == 0 ? 1 : 0, 1);
     }
+
+    // Relations control bit
+    bitSink.Write(0, 1);
   }
 
   if (type == GeomType::Line)
@@ -685,6 +682,7 @@ void FeatureBuilder::SerializeForMwm(SupportingData & data,
       {
         uint32_t v = data.m_ptsSimpMask;
         int const count = (ptsCount - 2 + 3) / 4;
+        CHECK_LESS(count, 4, ());
         for (int i = 0; i < count; ++i)
         {
           WriteToSink(sink, static_cast<uint8_t>(v));
@@ -697,7 +695,7 @@ void FeatureBuilder::SerializeForMwm(SupportingData & data,
     else
     {
       auto const & poly = GetOuterGeometry();
-      ASSERT_GREATER(poly.size(), 2, ());
+      CHECK_GREATER(poly.size(), 2, ());
 
       // Store first point once for outer linear features.
       serial::SavePoint(sink, poly[0], params);
@@ -707,8 +705,10 @@ void FeatureBuilder::SerializeForMwm(SupportingData & data,
       WriteVarUintArray(data.m_ptsOffset, sink);
     }
   }
-  else if (type == GeomType::Area)
+  else
   {
+    CHECK_EQUAL(type, GeomType::Area, ());
+
     if (trgCount > 0)
       serial::SaveInnerTriangles(data.m_innerTrg, params, sink);
     else
@@ -735,10 +735,8 @@ bool FeatureBuilder::IsValid() const
       return false;
 
     for (auto const & points : geom)
-    {
       if (points.size() < 3)
         return false;
-    }
   }
 
   return true;
@@ -756,9 +754,8 @@ std::string DebugPrint(FeatureBuilder const & fb)
   default: out << "ERROR: unknown geometry type"; break;
   }
 
-  out << " " << DebugPrint(mercator::ToLatLon(fb.GetLimitRect()))
-      << " " << DebugPrint(fb.GetParams())
-      << " " << fb.DebugPrintIDs();
+  out << " " << DebugPrint(mercator::ToLatLon(fb.GetLimitRect())) << " " << DebugPrint(fb.GetParams()) << " "
+      << fb.DebugPrintIDs();
   return out.str();
 }
 

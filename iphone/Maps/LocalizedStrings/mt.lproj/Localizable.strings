@@ -47,7 +47,7 @@
 
 /* Text in About screen */
 "about_proposition_2" = "Iffukat fuq il-privatezza u mingħajr reklami";
-"close" = "Ġħalaq";
+"close" = "Għalaq";
 "download" = "Niżżel";
 
 /* REMOVE THIS STRING AFTER REFACTORING */
@@ -247,7 +247,7 @@
 "pref_tts_language_title" = "Lingwa tal-vuċi";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Ittestja id-Direzzjonijiet tal-vuċi (TTS, Test għad-diskors)";
+"pref_tts_test_voice_title" = "Ittestja id-direzzjonijiet tal-vuċi";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Oħrajn";
@@ -298,7 +298,7 @@
 "panoramax_picture" = "Ritratt Panoramax";
 
 /* Text in menu */
-"rate_the_app" = "Għati rata lill-app";
+"rate_the_app" = "Agħti rata lil app";
 
 /* Text in menu */
 "help" = "Għajnuna";
@@ -313,16 +313,16 @@
 "copyright" = "Drittijiet tal-awtur";
 
 /* Text in menu + Button in the main Help dialog */
-"report_a_bug" = "Irrapporta problemi bl-app";
+"report_a_bug" = "Irrapporta problema";
 
 /* Button in the About screen */
 "report_incorrect_map_bug" = "Irrapporta jew sewwi informazzjoni żbaljata tal-mappa";
 
 /* Button in the About screen */
-"volunteer" = "Voluntier";
+"volunteer" = "Agħmel volontarjat u tejjeb CoMaps";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Segwi u kkuntattjana";
+"follow_us" = "Segwina";
 
 /* Alert text */
 "email_error_body" = "Il-klijent tal-posta elettronika ma ġiex ikkonfigurat. Jekk jogħġbok ikkonfiguraha jew ikkuntattjana fuq %@";
@@ -334,7 +334,7 @@
 "pref_calibration_title" = "Kalibrazzjoni tal-boxxla";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "Taptap fit-tul fuq il-mappa għal darb’ oħra biex tara l-interface";
+"long_tap_toast" = "Itteppja fit-tul darb’ oħra fuq il-mappa biex tara l-interface";
 
 /* Update all button text */
 "downloader_update_all_button" = "Aġġorna kollox";
@@ -515,7 +515,7 @@
 "editor_done_dialog_1" = "Biddilt il-mappa tad-dinja! Iżżommhiex għalik innifsek; għid lil sħabek u editjawha flimkien.";
 "share_with_friends" = "Ixxerja mal-ħbieb";
 "editor_report_problem_send_button" = "Ibgħat";
-"autodownload" = "Mapep Jitniżżlu Awtomatikament";
+"autodownload" = "Mapep jitniżżlu awtomatikament";
 
 /* Place Page opening hours text */
 "closed_now" = "Magħluq issa";
@@ -615,8 +615,8 @@
 
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
 "error_enter_correct_storey_number" = "In-numru ta’ sulari m’ għandux jaqbeż il-%d";
-"editor_zip_code" = "Kodiċi ZIP";
-"error_enter_correct_zip_code" = "Daħħal kodiċi ZIP validu";
+"editor_zip_code" = "Kodiċi Postali";
+"error_enter_correct_zip_code" = "Daħħal kodiċi postali validu";
 
 /* Place Page title for long tap */
 "core_placepage_unknown_place" = "Il-Punt tal-Mappa";
@@ -750,12 +750,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvat";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "here";
 "core_entrance" = "Daħla";
 "error_enter_correct_name" = "Daħħal isem korrett";
 "bookmark_lists" = "Listi";
@@ -1090,10 +1084,12 @@
 "edit_track" = "Editja l-Korsija";
 "osm_profile_view_notes" = "Ara n-noti";
 "osm_profile_view_edit_history" = "Ara l-istorja tal-modifiki";
-"about_headline" = "Open project powered by the community";
-"about_proposition_3" = "Transparent and not for profit";
+"about_headline" = "Proġett miftuħ u imsaħħaħ mill-komunità";
+"about_proposition_3" = "Trasparenti u mhux għal profitt";
 "osm_mapdata_explanation %@" = "Community-created map data as of *%@*. Learn more about how to edit and update the map at [OpenStreetMap.org](https://openstreetmap.org).";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
+"pref_mapappearance_title" = "Kif tidher il-Mappa";
+"pref_maplanguage_title" = "Lingwa tal-mapep";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_local" = "Lingwa Lokali";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

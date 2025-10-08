@@ -10,9 +10,9 @@ namespace generator
 using namespace feature;
 
 MiniRoundaboutCollector::MiniRoundaboutCollector(std::string const & filename, IDRInterfacePtr cache)
-  : generator::CollectorInterface(filename), m_cache(std::move(cache))
-{
-}
+  : generator::CollectorInterface(filename)
+  , m_cache(std::move(cache))
+{}
 
 std::shared_ptr<generator::CollectorInterface> MiniRoundaboutCollector::Clone(IDRInterfacePtr const & cache) const
 {
@@ -39,8 +39,7 @@ void MiniRoundaboutCollector::Collect(OsmElement const & element)
   }
 }
 
-void MiniRoundaboutCollector::CollectFeature(FeatureBuilder const & feature,
-                                             OsmElement const & element)
+void MiniRoundaboutCollector::CollectFeature(FeatureBuilder const & feature, OsmElement const & element)
 {
   if (MiniRoundaboutInfo::IsProcessRoad(feature))
     m_roads.AddWay(element);
@@ -48,6 +47,7 @@ void MiniRoundaboutCollector::CollectFeature(FeatureBuilder const & feature,
 
 void MiniRoundaboutCollector::Save()
 {
+  LOG(LINFO, ("Saving mini roundabouts to", GetFilename()));
   /// @todo We assign only car roads here into MiniRoundaboutInfo.m_ways.
   /// Should also collect other highways (like path or pedestrian) in very general case.
   /// https://www.openstreetmap.org/way/220672898
@@ -67,6 +67,7 @@ void MiniRoundaboutCollector::Save()
     if (miniRoundabout.Normalize())
       WriteMiniRoundabout(writer, miniRoundabout);
   });
+  LOG(LINFO, ("Finished saving mini roundabouts"));
 }
 
 void MiniRoundaboutCollector::MergeInto(MiniRoundaboutCollector & collector) const

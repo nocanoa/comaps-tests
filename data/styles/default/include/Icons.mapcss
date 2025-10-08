@@ -22,6 +22,7 @@
  6.1 Craft
 7.CAR
  7.1 Parking
+8. COLORED LABELS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
@@ -43,7 +44,7 @@ node|z18-[office],
 {icon-image: office-m.svg;}
 
 node|z18-[craft],
-{icon-image: craft-m.svg;}
+{text-color: @shop_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;icon-image: craft-m.svg;}
 
 node|z16-[shop],
 {icon-min-distance: 10;}
@@ -204,30 +205,30 @@ node|z19-[amenity=water_point][drinking_water=not],
 
 node|z12-[railway=station],
 node|z13-[railway=halt],
-{text: name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.6;text-halo-color: @label_halo_light;}
+{text: name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.6;text-halo-color: @label_halo_light;}
 node|z12-[railway=station]::int_name,
 node|z13-[railway=halt]::int_name,
-{text: int_name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.6;text-halo-color: @label_halo_light;}
+{text: int_name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.6;text-halo-color: @label_halo_light;}
 
 node|z17-[railway=tram_stop],
-{text: name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 1;text-halo-color: @label_halo_light;}
+{text: name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 1;text-halo-color: @label_halo_light;}
 node|z17-[railway=tram_stop]::int_name,
-{text: int_name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 1;text-halo-color: @label_halo_light;}
+{text: int_name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 1;text-halo-color: @label_halo_light;}
 node|z17-[highway=bus_stop],
 node|z14-[amenity=bus_station],
-{text: name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;text-position: center;}
+{text: name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;text-position: center;}
 node|z17-[highway=bus_stop]::int_name,
 node|z14-[amenity=bus_station]::int_name,
-{text: int_name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;text-position: center;}
+{text: int_name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;text-position: center;}
 
 node|z10-[aeroway=aerodrome][aerodrome=international],
 node|z14-[aeroway=aerodrome],
 node|z15-[aerialway=station],
 node|z16-[amenity=ferry_terminal]
-{text: name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;text-position: center;}
+{text: name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;text-position: center;}
 node|z12-[aeroway=aerodrome][aerodrome=international]::int_name,
 node|z14-[aeroway=aerodrome]::int_name,
-{text: int_name;text-color: @label_dark;text-halo-radius: 1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;text-position: center;}
+{text: int_name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;text-position: center;}
 
 /* 3.1 Train Station */
 
@@ -292,23 +293,23 @@ node|z18-[railway=tram_stop],
 /* 3.4 Bus Station */
 
 node|z13[amenity=bus_station],
-{icon-image: bus-s.svg;icon-min-distance: 1;}
+{icon-image: buses-s.svg;icon-min-distance: 1;}
 node|z14[amenity=bus_station],
-{icon-image: bus-s.svg;text-offset: 1;font-size: 10;text-halo-opacity: 0.8;}
+{icon-image: buses-s.svg;text-offset: 1;font-size: 10;text-halo-opacity: 0.8;}
 node|z15-16[amenity=bus_station],
-{icon-image: bus-m.svg;text-offset: 1;font-size: 11;text-halo-opacity: 0.8;}
+{icon-image: buses-m.svg;text-offset: 1;font-size: 11;text-halo-opacity: 0.8;}
 node|z15-16[amenity=bus_station]::int_name,
 {text-offset: 1;font-size: 9;text-halo-opacity: 0.8;}
 node|z17[amenity=bus_station],
-{icon-image: bus-m.svg;text-offset: 1;font-size: 11;}
+{icon-image: buses-m.svg;text-offset: 1;font-size: 11;}
 node|z17[amenity=bus_station]::int_name,
 {text-offset: 1;font-size: 9;}
 node|z18[amenity=bus_station],
-{icon-image: bus-m.svg;text-offset: 1;font-size: 12;}
+{icon-image: buses-m.svg;text-offset: 1;font-size: 12;}
 node|z18[amenity=bus_station]::int_name,
 {text-offset: 1;font-size: 10;}
 node|z19-[amenity=bus_station],
-{icon-image: bus-m.svg;text-offset: 1;font-size: 12;}
+{icon-image: buses-m.svg;text-offset: 1;font-size: 12;}
 node|z19-[amenity=bus_station]::int_name,
 {text-offset: 1;font-size: 10;}
 
@@ -347,7 +348,10 @@ node|z14-[aeroway=aerodrome]::int_name,
 {font-size: 11;}
 
 node|z16-[aeroway=helipad],
-{icon-image: helipad-m.svg;text-offset: 1;font-size: 10;text: name;text-color: @poi_label;}
+{icon-image: helipad-m.svg;text-offset: 1;font-size: 10;text: name;text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;}
+
+node[aerialway=station]
+{text-color: @public_transport_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light;}
 
 /* 3.7 Aerialway */
 
@@ -702,9 +706,9 @@ node|z15-[amenity=biergarten],
 node|z15[amenity=cafe],
 {icon-image: cafe-m.svg;icon-min-distance: 12;}
 node|z15[amenity=restaurant],
+node|z15[amenity=food_court],
 {icon-image: restaurant-m.svg;icon-min-distance: 28;}
 node|z15[amenity=fast_food],
-node|z15[amenity=food_court],
 {icon-image: fastfood-m.svg;icon-min-distance: 28;}
 node|z15[amenity=bar],
 {icon-image: bar-m.svg;icon-min-distance: 28;}
@@ -715,9 +719,9 @@ node|z15[amenity=biergarten],
 node|z16-[amenity=cafe],
 {icon-image: cafe-m.svg;icon-min-distance: 12;}
 node|z16-[amenity=restaurant],
+node|z16-[amenity=food_court],
 {icon-image: restaurant-m.svg;icon-min-distance: 12;}
 node|z16-[amenity=fast_food],
-node|z16-[amenity=food_court],
 {icon-image: fastfood-m.svg;icon-min-distance: 12;}
 node|z16-[amenity=bar],
 {icon-image: bar-m.svg;icon-min-distance: 12;}
@@ -745,6 +749,7 @@ node|z16-[leisure=marina],
 node|z16-[leisure=water_park],
 node|z16-[barrier=block],
 node|z16-[barrier=bollard],
+node|z16-[barrier=yes],
 node|z16-[barrier=chain],
 node|z16-[barrier=entrance],
 node|z16-[barrier=gate],
@@ -753,6 +758,7 @@ node|z16-[barrier=lift_gate],
 node|z16-[barrier=swing_gate],
 node|z16-[barrier=stile],
 node|z16-[barrier=turnstile],
+node|z17-[barrier=wicket_gate],
 node|z16-[barrier=cycle_barrier],
 node|z16-[amenity=nightclub],
 node|z16-[amenity=townhall],
@@ -786,9 +792,13 @@ node|z17-[leisure=amusement_arcade],
 node|z17-[amenity=courthouse],
 node|z17-[amenity=nursing_home],
 node|z17-[amenity=social_facility],
+node|z17-[amenity=animal_shelter],
 node|z17-[amenity=kindergarten],
 node|z17-[amenity=childcare],
 node|z17-[amenity=school],
+node|z17-[amenity=driving_school],
+node|z17-[amenity=language_school],
+node|z17-[amenity=music_school],
 node|z17-[amenity=cinema],
 node|z17-[amenity=ice_cream],
 node|z17-[leisure=bowling_alley],
@@ -804,6 +814,7 @@ node|z17-[amenity=motorcycle_rental],
 node|z17-[amenity=bicycle_rental],
 node|z17-[amenity=bicycle_repair_station],
 node|z17-[amenity=post_office],
+node|z17-[amenity=library],
 node|z18-[post_office=post_partner],
 node|z17-[man_made=works],
 node|z17-[amenity=parcel_locker],
@@ -813,8 +824,8 @@ node|z17-[sport],
 node|z17-[highway=ladder],
 node|z18-[amenity=dojo],
 node|z18-[amenity=vending_machine],
-node|z18-[amenity=post_box],
 node|z18-[amenity=fire_station],
+node|z18-[amenity=internet_cafe],
 node|z18-[emergency=defibrillator],
 node|z18-[emergency=assembly_point],
 node|z18-[emergency=lifeguard],
@@ -822,9 +833,12 @@ node|z18-[amenity=toilets],
 node|z18-[amenity=atm],
 node|z18-[amenity=bureau_de_change],
 node|z18-[amenity=money_transfer],
-node|z18-[amenity=library],
 node|z18-[amenity=waste_disposal],
+node|z18-[amenity=recycling],
+node|z18-[amenity=waste_transfer_station],
 node|z18-[amenity=hunting_stand],
+node|z18-[building=guardhouse],
+node|z18-[office=security],
 node|z18-[shop=lottery],
 node|z18-[shop=hearing_aids],
 node|z18-[man_made=chimney],
@@ -839,7 +853,7 @@ node|z18-[amenity=brothel],
 node|z18-[amenity=stripclub],
 node|z18-[amenity=love_hotel],
 node|z18-[amenity=public_bookcase],
-node|z19-[power=substation],
+node|z18-[power=substation],
 node|z18-[man_made=survey_point],
 node|z18-[man_made=petroleum_well],
 node|z18-[man_made=flare],
@@ -919,6 +933,11 @@ node|z18-[healthcare=speech_therapist],
 node|z16-[amenity=veterinary],
 {icon-image: veterinary-m.svg;}
 node|z18-[amenity=veterinary],
+{font-size: 11;}
+
+node|z17-[amenity=animal_shelter],
+{icon-image: animal_shelter-m.svg;}
+node|z18-[amenity=animal_shelter],
 {font-size: 11;}
 
 node|z16-[amenity=pharmacy],
@@ -1170,9 +1189,11 @@ node|z15-[barrier=border_control],
 
 node|z16-[barrier=block],
 node|z16-[barrier=bollard],
+node|z16-[barrier=yes],
 node|z16-[barrier=chain],
 node|z16-[barrier=stile],
 node|z16-[barrier=turnstile],
+node|z17-[barrier=wicket_gate],
 {icon-image: dot-m.svg;font-size: 11;}
 
 node|z16-[barrier=entrance],
@@ -1191,26 +1212,29 @@ node|z16-[barrier=cycle_barrier],
 node|z16-[highway=ford],
 {icon-image: ford-m.svg;}
 
-/* TODO: needs a better icon */
-node|z14-[man_made=communications_tower],
-{icon-image: mast-m.svg;}
+node|z14[man_made=communications_tower],
+{icon-image: communications_tower_major-s.svg;}
+node|z15-[man_made=communications_tower],
+{icon-image: communications_tower_major-m.svg;}
 node|z17-[man_made=communications_tower],
 {font-size: 11;}
 
+node|z19-[power=portal],
 node|z19-[power=tower],
 node|z15-[man_made=flagpole],
 node|z16-[man_made=mast],
 {icon-image: dot-m.svg;}
 
-/* TODO: needs a better icon */
 node|z16-[man_made=tower],
-node|z16-[man_made=tower][tower:type=communication],
 node|z16-[man_made=flare],
-{icon-image: mast-m.svg;}
+{icon-image: tower-m.svg;}
+
+node|z16-[man_made=tower][tower:type=communication],
+{icon-image: communications_tower_minor-m.svg;}
 
 /* TODO: needs a better icon */
 node|z17-[man_made=petroleum_well],
-{icon-image: mast-m.svg;}
+{icon-image: pole-m.svg;}
 
 node|z16-[amenity=taxi],
 {icon-image: taxi-m.svg;icon-min-distance: 30;}
@@ -1269,6 +1293,15 @@ node|z17-[amenity=police],
 node|z18-[amenity=police],
 {font-size: 11;}
 
+node|z18-[building=guardhouse],
+node|z18-[office=security],
+{icon-image: security-m.svg; font-size: 11;}
+/* Reset captions inherited from [building], leave only main label z18- */
+node|z16-17[building=guardhouse],
+{text: none;}
+node|z16-[building=guardhouse]::int_name,
+{text: none;}
+
 node|z17-[amenity=prison],
 {icon-image: prison-m.svg;}
 node|z18-[amenity=prison],
@@ -1303,7 +1336,7 @@ node|z18-[amenity=post_office],
 node|z18-[post_office=post_partner],
 {font-size: 11;}
 node|z18-[amenity=post_box],
-{icon-image: postbox-m.svg;font-size: 11;}
+{icon-image: postbox-m.svg;text: none;}
 node|z19-[emergency=fire_hydrant],
 {icon-image: firehydrant-m.svg;font-size: 11;}
 
@@ -1336,7 +1369,7 @@ node|z17-[amenity=waste_transfer_station],
 node|z17-[power=plant],
 /* Skip individual solar generators, because there are a lot of mapped panels */
 node|z17-[power=generator][generator:source!=solar],
-node|z19-[power=substation],
+node|z17-[power=substation],
 {icon-image: power-m.svg;font-size: 11;}
 
 
@@ -1348,7 +1381,7 @@ node|z18-[power=generator][generator:source=wind],
 node|z15-[power=plant][plant:source=wind],
 {icon-image: power_plant_wind-m.svg;}
 node|z16-[power=plant][plant:source=wind],
-{text: name;text-color: @poi_label; text-offset: 1; font-size: 10;}
+{text: name;text-color: @industry_label;text-halo-radius: 1;text-halo-opacity: 0.9;text-halo-color: @label_halo_light; text-offset: 1; font-size: 10;}
 
 node|z17-[amenity=shower],
 {icon-image: shower-m.svg;}
@@ -1387,11 +1420,11 @@ node|z18-[amenity=bench]
 {icon-image: bench.svg;}
 node|z18-[amenity=waste_basket]
 {icon-image: waste-basket-s.svg;}
-
-node|z18-[amenity=library]
-{icon-image: library-m.svg;font-size: 11;}
 node|z18-[amenity=waste_disposal],
 {icon-image: waste-basket-m.svg;font-size: 11;}
+
+node|z17-[amenity=library]
+{icon-image: library-m.svg; font-size: 11;}
 
 node|z18-[amenity=internet_cafe]
 {icon-image: internet_cafe-m.svg;}
@@ -1511,12 +1544,12 @@ node|z16-[shop=houseware],
 node|z16-[shop=jewelry],
 node|z16-[shop=kiosk],
 node|z16-[shop=laundry],
+node|z16-[shop=lighting],
 node|z16-[shop=dry_cleaning],
 node|z16-[shop=mobile_phone],
 node|z16-[shop=optician],
 node|z16-[shop=outdoor],
 node|z16-[shop=rental],
-node|z16-[shop=rental][rental=bike],
 node|z16-[shop=seafood],
 node|z16-[shop=shoes],
 node|z16-[shop=sports],
@@ -1632,6 +1665,7 @@ node|z16[shop=pet],
 node|z16[shop=department_store],
 {icon-image: department_store-m.svg;}
 node|z16[shop=interior_decoration],
+node|z16[shop=lighting],
 {icon-image: interior_decoration-m.svg;}
 node|z16[shop=doityourself],
 {icon-image: doityourself-m.svg;}
@@ -1773,6 +1807,7 @@ node|z17-[shop=pet],
 node|z17-[shop=department_store],
 {icon-image: department_store-m.svg;icon-min-distance: 24;}
 node|z17-[shop=interior_decoration],
+node|z17-[shop=lighting],
 {icon-image: interior_decoration-m.svg;icon-min-distance: 24;}
 node|z17-[shop=doityourself],
 {icon-image: doityourself-m.svg;icon-min-distance: 24;}
@@ -2041,7 +2076,6 @@ node|z17-[amenity=bicycle_parking],
 {icon-image: bicycle-parking-m.svg;}
 
 node|z17-[amenity=bicycle_parking][covered=yes],
-area|z17-[amenity=bicycle_parking][covered=yes],
 {icon-image: bicycle-parking-covered-m.svg;}
 
 node|z17-[amenity=motorcycle_parking],
@@ -2049,3 +2083,222 @@ node|z17-[amenity=motorcycle_parking],
 
 node|z18-[amenity=parking_space][parking_space=disabled],
 {icon-image: parking-disabled-m.svg;}
+
+/* 8. Colored Labels */
+
+node[shop=mall],
+node[amenity=studio],
+node[shop=alcohol],
+node[shop=antiques],
+node[shop=art],
+node[shop=bakery],
+node[shop=beauty],
+node[shop=beverages],
+node[shop=bicycle],
+node[shop=bookmaker],
+node[shop=books],
+node[shop=butcher],
+node[shop=camera],
+node[shop=car],
+node[shop=caravan],
+node[shop=charity],
+node[shop=cheese],
+node[shop=chemist],
+node[shop=chocolate],
+node[shop=clothes],
+node[shop=computer],
+node[shop=confectionery],
+node[shop=convenience],
+node[shop=copyshop],
+node[shop=cosmetics],
+node[shop=deli],
+node[shop=department_store],
+node[shop=doityourself],
+node[shop=dry_cleaning],
+node[shop=electronics],
+node[shop=erotic],
+node[shop=farm],
+node[shop=florist],
+node[shop=furniture],
+node[shop=garden_centre],
+node[shop=gift],
+node[shop=greengrocer],
+node[shop=grocery],
+node[shop=hairdresser],
+node[shop=hardware],
+node[shop=health_food],
+node[shop=houseware],
+node[shop=interior_decoration],
+node[shop=lighting],
+node[shop=jewelry],
+node[shop=kiosk],
+node[shop=kitchen],
+node[shop=laundry],
+node[amenity=marketplace],
+node[shop=mobile_phone],
+node[shop=motorcycle],
+node[shop=music],
+node[shop=musical_instrument],
+node[shop=optician],
+node[shop=outdoor],
+node[shop=pasta],
+node[shop=pastry],
+node[shop=pet],
+node[shop=photo],
+node[shop=rental],
+node[shop=rental][rental=bike],
+node[shop=seafood],
+node[shop=second_hand],
+node[shop=sewing],
+node[shop=shoes],
+node[shop=sports],
+node[shop=stationery],
+node[shop=supermarket],
+node[shop=tattoo],
+node[shop=ticket],
+node[shop=toys],
+node[shop=video],
+node[shop=video_games],
+node[shop=wine],
+node[leisure=bowling_alley],
+node[shop=variety_store],
+node[amenity=internet_cafe],
+node[shop],
+node[shop=auction],
+node[shop=collector],
+node[shop=fabric],
+node[shop=funeral_directors],
+node[shop=hearing_aids],
+node[shop=lottery],
+node[shop=tobacco],
+node[shop=wholesale],
+node[shop=electrical],
+{text-color: @shop_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+node[amenity=bar],
+node[amenity=biergarten],
+node[amenity=cafe],
+node[amenity=fast_food],
+node[amenity=food_court],
+node[amenity=pub],
+node[amenity=restaurant],
+node[amenity=ice_cream],
+node[amenity=nightclub],
+node[amenity=stripclub],
+{text-color: @food_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+node[amenity=arts_centre],
+node[amenity=cinema],
+node[amenity=community_centre],
+node[amenity=place_of_worship]
+node[amenity=social_facility],
+node[amenity=theatre],
+node[attraction=amusement_ride],
+node[attraction=animal],
+node[attraction=big_wheel],
+node[attraction=bumper_car],
+node[attraction=carousel],
+node[attraction=historic],
+node[attraction=maze],
+node[attraction=roller_coaster],
+node[leisure=escape_game],
+node[leisure=stadium],
+node[tourism=aquarium],
+node[tourism=attraction],
+node[tourism=gallery],
+node[tourism=museum],
+node[tourism=theme_park],
+node[tourism=zoo]
+node[tourism=zoo],
+node[historic=ship],
+node[amenity=conference_centre],
+node[amenity=events_venue],
+node[amenity=exhibition_centre],
+node[leisure=marina],
+node[amenity=casino],
+node[amenity=gambling],
+node[amenity=public_bath],
+node[leisure=adult_gaming_centre],
+node[leisure=amusement_arcade],
+node[shop=massage],
+{text-color: @culture_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+node[tourism=alpine_hut],
+node[leisure=resort],
+node[tourism=apartment],
+node[tourism=chalet],
+node[tourism=guest_house],
+node[tourism=hostel],
+node[tourism=hotel],
+node[tourism=motel],
+node[tourism=wilderness_hut],
+{text-color: @hotel_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+area[amenity=hospital],
+node[amenity=clinic],
+node[amenity=dentist],
+node[amenity=doctors],
+node[amenity=hospital],
+node[amenity=pharmacy],
+node[amenity=veterinary],
+node[healthcare],
+{text-color: @healthcare_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+area[amenity=university][name]
+node[aeroway=gate],
+node[amenity=atm],
+node[amenity=bank],
+node[amenity=bureau_de_change],
+node[amenity=charging_station][motorcar?],
+node[amenity=childcare],
+node[amenity=college],
+node[amenity=courthouse],
+node[amenity=driving_school],
+node[amenity=kindergarten],
+node[amenity=language_school],
+node[amenity=library],
+node[amenity=money_transfer],
+node[amenity=music_school],
+node[amenity=nursing_home],
+node[amenity=police],
+node[amenity=post_office],
+node[amenity=prison],
+node[amenity=school],
+node[amenity=townhall],
+node[amenity=university][name],
+node[barrier=border_control],
+node[leisure=beach_resort],
+node[leisure=hackerspace],
+node[office],
+node[amenity=fuel],
+node[landuse=industrial][industrial=mine],
+node[landuse=quarry],
+node[tourism=information][information=office],
+node[amenity=vehicle_inspection],
+node[shop=car_parts],
+node[shop=car_repair],
+node[shop=car_repair][service=tyres],
+node[shop=tyres],
+node[shop=dry_cleaning],
+node[shop=laundry],
+node[shop=motorcycle_repair],
+node[amenity=car_wash],
+node[amenity=motorcycle_rental],
+node[leisure=dance],
+node[leisure=fitness_centre],
+node[leisure=sports_centre],
+node[leisure=sports_hall],
+node[man_made=works],
+node[shop=money_lender],
+node[shop=pawnbroker],
+node[sport=yoga],
+node[amenity=car_rental],
+node[amenity=car_sharing],
+node[amenity=fire_station],
+node[building=guardhouse],
+node[office=security],
+{text-color: @industry_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
+
+node[amenity=bicycle_rental],
+node[amenity=taxi],
+{text-color: @public_transport_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}

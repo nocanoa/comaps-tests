@@ -4,6 +4,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (MapsMeColor)
 
++ (UIColor *)black;
 + (UIColor *)blackPrimaryText;
 + (UIColor *)blackSecondaryText;
 + (UIColor *)blackHintText;

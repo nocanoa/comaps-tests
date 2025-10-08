@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="core_my_position">Moja lokacija</string>
+    <string name="m">m</string>
+    <string name="km">km</string>
+    <string name="core_exit">Izlaz</string>
+    <string name="not_shared">Privatno</string>
+    <string name="mb">MB</string>
+    <string name="gb">GB</string>
+    <string name="today">Danas</string>
+</resources>

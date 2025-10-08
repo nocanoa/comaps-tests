@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Talespråk";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Test taleanvisninger (TTS, tekst-til-tale)";
+"pref_tts_test_voice_title" = "Test taleanvisninger";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Andre";
@@ -325,7 +325,7 @@
 "volunteer" = "Frivillig arbeid";
 
 /* "Social media" section header in the About screen */
-"follow_us" = "Følg og kontakt oss";
+"follow_us" = "Følg oss";
 
 /* Alert text */
 "email_error_body" = "E-postklienten har ikke blitt konfigurert. Konfigurer den eller bruk en annen måte å kontakte oss på %@";
@@ -567,7 +567,7 @@
 "add_language" = "Legg til et språk";
 
 /* Editable House Number text field (in address block). */
-"house_number" = "Et husnummer";
+"house_number" = "Husnummer";
 "details" = "Detaljer";
 
 /* Text field to enter non-existing street name, below list of known streets around */
@@ -575,8 +575,8 @@
 "choose_language" = "Velg et språk";
 "choose_street" = "Velg en gate";
 "postal_code" = "Postnummer";
-"cuisine" = "Matrett";
-"select_cuisine" = "Velg matrett";
+"cuisine" = "Kjøkken";
+"select_cuisine" = "Velg kjøkken";
 
 /* login text field */
 "email_or_username" = "E-postadresse eller brukernavn";
@@ -595,7 +595,7 @@
 "editor_add_select_category" = "Velg kategori";
 "editor_add_select_category_popular_subtitle" = "Populære";
 "editor_add_select_category_all_subtitle" = "Alle kategorier";
-"editor_edit_place_title" = "Redigerer";
+"editor_edit_place_title" = "Redigering";
 "editor_add_place_title" = "Legger til";
 "editor_edit_place_name_hint" = "Navn på stedet";
 
@@ -754,12 +754,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Lagret";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Logg inn på OpenStreetMap for automatisk å laste opp alle kartredigeringene dine. Finn ut mer";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "her";
 "core_entrance" = "Inngang";
 "error_enter_correct_name" = "Skriv inn korrekt navn";
 "bookmark_lists" = "Lister";
@@ -1094,8 +1088,10 @@
 "edit_track" = "Rediger ruten";
 "osm_profile_view_edit_history" = "Vis redigeringshistorikk";
 "osm_profile_view_notes" = "Vis merknader";
-"about_proposition_3" = "Transparent and not for profit";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
+"about_proposition_3" = "Transparent og ikke for profitt";
+"pref_mapappearance_title" = "Kartets Utseende";
+"pref_maplanguage_title" = "Kart Språk";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_local" = "Lokalt Språk";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

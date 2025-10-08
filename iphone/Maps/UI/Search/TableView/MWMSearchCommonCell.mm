@@ -29,7 +29,9 @@
   self.openLabel.textColor = result.openStatusColor;
   [self.openLabel setHidden:result.openStatusText.length == 0];
   [self setStyleNameAndApply:@"Background"];
-  self.iconImageView.image = [[UIImage imageNamed:result.iconImageName] imageWithTintColor:UIColor.white];
+  if (result.iconImageName != nil) {
+    self.iconImageView.image = [[UIImage imageNamed:result.iconImageName] imageWithTintColor:UIColor.white];
+  }
   self.iconImageView.backgroundColor = [UIColor colorNamed:@"Base Colors/Blue Color"];
   self.separatorInset = UIEdgeInsetsMake(0, kSearchCellSeparatorInset, 0, 0);
 }
@@ -42,7 +44,7 @@
 
 - (NSDictionary *)selectedTitleAttributes {
   return @{
-    NSForegroundColorAttributeName : [UIColor blackPrimaryText],
+    NSForegroundColorAttributeName : [UIColor black],
     NSFontAttributeName : [UIFont bold17]
   };
 }
@@ -50,7 +52,7 @@
 - (NSDictionary *)unselectedTitleAttributes {
   return @{
     NSForegroundColorAttributeName : [UIColor blackPrimaryText],
-    NSFontAttributeName : [UIFont regular17]
+    NSFontAttributeName : [UIFont medium17]
   };
 }
 

@@ -116,13 +116,7 @@ extension BottomMenuPresenter {
                        title: L("placepage_add_place_button"),
                        enabled: enabled)
       case .recordTrack:
-        switch trackRecorder.recordingState {
-        case .inactive:
-          cell.configure(imageName: "track_recorder_inactive", title: L("start_track_recording"))
-        case .active:
-          cell.configure(imageName: "track_recorder_active", title: L("stop_track_recording"))
-        }
-        return cell
+        cell.configure(imageName: "track", title: L("start_track_recording"))
       case .downloadMaps:
         cell.configure(imageName: "ic_menu_download",
                        title: L("download_maps"),

@@ -37,12 +37,9 @@
 node|z1-2[place=continent],
 /*
 node|z12-[place=archipelago],
-area|z12-[place=archipelago],
 */
 node|z12-14[place=island],
-area|z12-14[place=island],
 node|z14-[natural=cape],
-area|z14-[natural=cape]
 {text: name;}
 
 node|z1-2[place=continent]
@@ -50,14 +47,11 @@ node|z1-2[place=continent]
 
 /*
 node|z12-[place=archipelago],
-area|z12-[place=archipelago],
 */
 node|z12-14[place=island],
-area|z12-14[place=island]
 {font-size: 9;text-color: @district_label;}
 
 node|z14-[natural=cape],
-area|z14-[natural=cape]
 {font-size: 8;text-color: @poi_label;}
 
 /* 3.COUNTRIES & STATES */
@@ -374,23 +368,25 @@ node|z17-[leisure=beach_resort],
 node|z17-[natural=beach]
 {text: name;font-size: 10;text-color: @poi_label;}
 
-/* 6.WATER */
+/* 6.WATER
+  Treat landuse=reservoir same as natural=water.
+  It is deprectated and will be replaced with natural=water=reservoir.
+*/
 
 node|z1-[place=ocean],
 node|z4-[place=sea],
-area|z10-[landuse=reservoir][bbox_area>=4000000],
-area|z10-[natural=water][!tunnel][bbox_area>=4000000],
+area|z10-13[landuse=reservoir][bbox_area>=4000000],
+area|z10-13[natural=water][!tunnel][bbox_area>=4000000],
+area|z14-[landuse=reservoir],
+area|z14-[natural=water][!tunnel],
 line|z11-[waterway=river],
 node|z14-[natural=bay],
 node|z16-[natural=wetland],
-area|z16-[natural=wetland],
-{text:name;text-color: @water_label;}
+{text: name; text-color: @water_label;}
 
-area|z10-[natural=water][!tunnel][bbox_area<4000000],
-{text:name;text-color: @water_label;}
-
-area|z12-[landuse=reservoir][bbox_area<4000000],
-{text:name;text-color: @water_label;}
+area|z10-13[landuse=reservoir][bbox_area<4000000],
+area|z10-13[natural=water][!tunnel][bbox_area<4000000],
+{text: none;}
 
 /*6.1 Area water(ocean,sea,lake,pond etc.)*/
 
@@ -406,30 +402,24 @@ node|z5-[place=ocean]
 node|z4-[place=sea]
 {font-size: 12;}
 
-area|z10-[landuse=reservoir][bbox_area>=4000000],
-area|z10-13[natural=water][!tunnel][bbox_area>=4000000],
+area|z10-[landuse=reservoir],
+area|z10-[natural=water][!tunnel],
 {font-size: 8.5;}
-area|z12-[landuse=reservoir][bbox_area<4000000],
-area|z10-13[natural=water][!tunnel][bbox_area<4000000],
-{text: none;}
 
 node|z14-15[natural=bay],
 node|z14-15[natural=strait],
-area|z14-15[natural=water][!tunnel][bbox_area>=4000000],
-{font-size: 9.5;}
-area|z14-15[natural=water][!tunnel][bbox_area<4000000],
+area|z14-15[natural=water][!tunnel],
+area|z14-15[landuse=reservoir],
 {font-size: 9.5;}
 
 node|z16-[natural=bay],
 node|z16-[natural=strait],
-node|z16-[natural=wetland],
-area|z16-[natural=water][!tunnel][bbox_area>=4000000],
 area|z16-[natural=wetland],
-{font-size: 10.5;}
-area|z16-[natural=water][!tunnel][bbox_area<4000000],
+area|z16-[natural=water][!tunnel],
+area|z16-[landuse=reservoir],
 {font-size: 10.5;}
 
-/*don't render caption in vehicle style*/
+/* don't render caption in vehicle style */
 area|z10-[natural=water][water=moat],
 area|z10-[natural=water][water=ditch],
 area|z10-[natural=water][water=drain],
@@ -487,10 +477,8 @@ area|z17-[landuse=military],
 
 /* 8.BUILDINGS */
 
-area|z18-[building],
 node|z18-[building],
 {text: name; text-color: @building_label; text-position: center;}
-area|z18-[building]::int_name,
 node|z18-[building]::int_name,
 {text: int_name; text-color: @building_label; text-position: center;}
 
@@ -524,16 +512,12 @@ node|z19-[entrance=exit]::flats,
 
 /* 8.2 Building */
 
-area|z18[building],
 node|z18[building],
 {font-size: 13;}
-area|z18[building]::int_name,
 node|z18[building]::int_name,
 {font-size: 12;}
-area|z19-[building],
 node|z19-[building],
 {font-size: 14;}
-area|z19-[building]::int_name,
 node|z19-[building]::int_name,
 {font-size: 13;}
 

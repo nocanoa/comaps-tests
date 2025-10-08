@@ -19,7 +19,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       app:srcCompat="@drawable/ic_search"
-      app:tint="?colorAccent"
+      app:tint="?colorSecondary"
       android:layout_marginStart="@dimen/margin_base"
       android:layout_marginEnd="@dimen/margin_base"/>
     <com.google.android.material.textview.MaterialTextView
@@ -31,7 +31,7 @@
       android:layout_marginEnd="@dimen/margin_base"
       android:layout_marginTop="@dimen/routing_action_panel_margin_vert"
       android:layout_marginBottom="@dimen/routing_action_panel_margin_vert"
-      android:textColor="?colorAccent"
+      android:textColor="?colorSecondary"
       tools:text="Add start point to plan a route."/>
   </LinearLayout>
   <LinearLayout
@@ -55,6 +55,6 @@
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/margin_base"
       app:srcCompat="@drawable/ic_location_crosshair"
-      tools:tint="?colorAccent"/>
+      tools:tint="?colorSecondary"/>
   </LinearLayout>
 </LinearLayout>

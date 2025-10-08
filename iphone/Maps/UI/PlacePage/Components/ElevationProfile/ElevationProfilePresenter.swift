@@ -26,8 +26,8 @@ fileprivate struct DescriptionsViewModel {
 
 final class ElevationProfilePresenter: NSObject {
   private weak var view: ElevationProfileViewProtocol?
-  private var trackData: PlacePageTrackData
-  private let delegate: ElevationProfileViewControllerDelegate?
+  private weak var trackData: PlacePageTrackData?
+  private weak var delegate: ElevationProfileViewControllerDelegate?
   private let bookmarkManager: BookmarksManager = .shared()
 
   private let cellSpacing: CGFloat = 8
@@ -72,20 +72,21 @@ extension ElevationProfilePresenter: ElevationProfilePresenterProtocol {
   }
 
   func updateActivePointDistance(_ distance: Double) {
-    guard let view, !view.isChartViewInfoHidden else { return }
+    guard let view, view.canReceiveUpdates else { return }
     view.setActivePointDistance(distance)
   }
 
   func updateMyPositionDistance(_ distance: Double) {
-    guard let view, !view.isChartViewInfoHidden else { return }
+    guard let view, view.canReceiveUpdates else { return }
     view.setMyPositionDistance(distance)
   }
 
   func configure() {
     view?.isChartViewHidden = false
 
-    let kMinPointsToDraw = 3
-    guard let profileData = trackData.elevationProfileData,
+    let kMinPointsToDraw = 2
+    guard let trackData = trackData,
+          let profileData = trackData.elevationProfileData,
           let chartData,
           chartData.points.count >= kMinPointsToDraw else {
       view?.userInteractionEnabled = false
@@ -94,13 +95,13 @@ extension ElevationProfilePresenter: ElevationProfilePresenterProtocol {
 
     view?.setChartData(ChartPresentationData(chartData, formatter: formatter))
     view?.reloadDescription()
-    view?.userInteractionEnabled = true
 
     guard !profileData.isTrackRecording else {
       view?.isChartViewInfoHidden = true
       return
     }
 
+    view?.userInteractionEnabled = true
     view?.setActivePointDistance(trackData.activePointDistance)
     view?.setMyPositionDistance(trackData.myPositionDistance)
   }

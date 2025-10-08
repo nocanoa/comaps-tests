@@ -60,12 +60,9 @@
     <string name="osm_presentation">Datos de OpenStreetMap creados por la comunidad a partir de %s. Obtenga más información sobre cómo editar y actualizar el mapa en OpenStreetMap.org</string>
     <string name="placepage_add_place_button">Agregar lugar a OpenStreetMap</string>
     <string name="transliteration_title">Transliteración al alfabeto latino</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Inicie sesión en OpenStreetMap para cargar automáticamente todas las ediciones de su mapa. Obtenga más información <a href="https://github.com/organicmaps/organicmaps/issues/6144">aquí</a>.</string>
     <string name="dialog_error_storage_title">Problema de acceso al almacenamiento</string>
     <string name="dialog_error_storage_message">El almacenamiento externo no está disponible. Es posible que se haya quitado o dañado la tarjeta SD, o que el sistema de archivos solo permita la lectura. Revíselo y escríbanos a support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emular el almacenamiento dañado</string>
-    <string name="core_entrance">Entrada</string>
     <string name="error_enter_correct_name">Introduzca el nombre correcto</string>
     <string name="bookmark_lists">Listas</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -103,14 +100,10 @@
     <string name="button_layer_traffic">Tráfico</string>
     <string name="subway">Metro</string>
     <string name="layers_title">Estilos y capas de mapas</string>
-    <string name="subway_data_unavailable">El mapa del metro no está disponible</string>
     <string name="bookmarks_empty_list_title">Esta lista está vacía</string>
     <string name="bookmarks_empty_list_message">Para añadir un marcador, toque un lugar en el mapa y después toque el ícono de estrella</string>
     <string name="category_desc_more">…más</string>
     <string name="delete_list">Eliminar lista</string>
-    <string name="public_access">Acceso público</string>
-    <string name="limited_access">Acceso limitado</string>
-    <string name="not_shared">Privado</string>
     <string name="speedcams_alert_title">Cámaras de velocidad</string>
     <string name="place_description_title">Descripción de lugares</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -127,7 +120,6 @@
     <string name="power_managment_setting_auto">Automático</string>
     <string name="power_managment_setting_manual_max">Máximo ahorro de energía</string>
     <string name="enable_logging_warning_message">Esta opción está habilitada para las acciones de registro con fines de diagnóstico. Esto ayuda a nuestro equipo a identificar problemas con la aplicación. Habilite la opción solo a petición del apoyo de CoMaps.</string>
-    <string name="access_rules_author_only">Se edita en línea</string>
     <string name="driving_options_title">Ajustes de desvío</string>
     <string name="unable_to_calc_alert_title">No se puede construir una ruta</string>
     <string name="unable_to_calc_alert_subtitle">Desafortunadamente, no pudimos construir una ruta con las opciones seleccionadas. Cambie la configuración y vuelva a intentarlo</string>
@@ -218,7 +210,6 @@
     <string name="translated_om_site_url">https://comaps.app/es/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="panoramax">Imagen Panoramax</string>
     <string name="app_site_url">https://comaps.app/es/</string>
     <string name="about_headline">Proyecto abierto impulsado por la comunidad</string>

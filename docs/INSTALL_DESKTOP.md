@@ -41,6 +41,7 @@ sudo apt update && sudo apt install -y \
     libxinerama-dev \
     libxcursor-dev \
     libxi-dev \
+    python3-protobuf \
     zlib1g-dev
 ```
 
@@ -79,6 +80,7 @@ sudo dnf install -y \
     qt6-qtpositioning \
     qt6-qtpositioning-devel \
     qt6-qtsvg-devel \
+    python3-protobuf \
     sqlite-devel
 ```
 
@@ -96,6 +98,7 @@ sudo apk add \
     qt6-qtpositioning-dev \
     qt6-qtsvg-dev \
     samurai \
+    py3-protobuf \
     sqlite-dev
 ```
 
@@ -103,6 +106,7 @@ sudo apk add \
 
 ```bash
 brew install cmake ninja qt@6
+pip3 install "protobuf<3.21"
 ```
 
 ### Windows
@@ -263,6 +267,10 @@ CoMaps has some "hidden" debug commands that you can trigger by entering them in
 For example you can switch theme which is very useful for checking [styles](STYLES.md) changes.
 
 There are also other commands for turning on/off isolines, anti-aliasing, etc. Check [DEBUG_COMMANDS.md](DEBUG_COMMANDS.md) to learn about them.
+
+### Debugging in an IDE
+
+To harness the power of an IDE for debugging, you can set up [Qt Creator](QT_CREATOR.md) to work with CoMaps code. This gives you options such as setting breakpoints, examining variables while the code is running, examining call stacks and using debugging tools such as Valgrind.
 
 ### More options
 

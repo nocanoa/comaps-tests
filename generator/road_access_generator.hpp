@@ -14,25 +14,26 @@
 #include <optional>
 #include <set>
 #include <string>
-#include <unordered_map>
 #include <vector>
 
 namespace routing
 {
 class OsmWay2FeaturePoint;
 
-template <class Sink> void Save(Sink & sink, RoadAccess::Type const & ac)
+template <class Sink>
+void Save(Sink & sink, RoadAccess::Type const & ac)
 {
   WriteToSink(sink, static_cast<uint8_t>(ac));
 }
 
-template <class Source> void Load(Source & src, RoadAccess::Type & ac)
+template <class Source>
+void Load(Source & src, RoadAccess::Type & ac)
 {
   uint8_t const res = ReadPrimitiveFromSource<uint8_t>(src);
   CHECK_LESS(res, uint8_t(RoadAccess::Type::Count), ());
   ac = static_cast<RoadAccess::Type>(res);
 }
-} // namspace routing
+}  // namespace routing
 
 namespace routing_builder
 {
@@ -45,9 +46,9 @@ struct AccessConditional
 {
   AccessConditional() = default;
   AccessConditional(RoadAccess::Type accessType, std::string const & openingHours)
-      : m_accessType(accessType), m_openingHours(openingHours)
-  {
-  }
+    : m_accessType(accessType)
+    , m_openingHours(openingHours)
+  {}
 
   bool operator==(AccessConditional const & rhs) const
   {
@@ -65,24 +66,26 @@ struct AccessConditional
 
 using ConditionalRAVectorT = std::vector<AccessConditional>;
 
-template <class Sink> void Save(Sink & sink, ConditionalRAVectorT const & ac)
+template <class Sink>
+void Save(Sink & sink, ConditionalRAVectorT const & ac)
 {
   WriteToSink(sink, uint32_t(ac.size()));
   for (auto const & e : ac)
   {
     Save(sink, e.m_accessType);
-    utils::WriteString(sink, e.m_openingHours);
+    rw::WriteNonEmpty(sink, e.m_openingHours);
   }
 }
 
-template <class Source> void Load(Source & src, ConditionalRAVectorT & vec)
+template <class Source>
+void Load(Source & src, ConditionalRAVectorT & vec)
 {
   uint32_t const count = ReadPrimitiveFromSource<uint32_t>(src);
   vec.resize(count);
   for (uint32_t i = 0; i < count; ++i)
   {
     Load(src, vec[i].m_accessType);
-    utils::ReadString(src, vec[i].m_openingHours);
+    rw::ReadNonEmpty(src, vec[i].m_openingHours);
   }
 }
 
@@ -154,16 +157,15 @@ public:
   static AccessConditionalTagParser const & Instance();
 
   AccessConditionalTagParser();
-  std::vector<AccessConditional> ParseAccessConditionalTag(
-      std::string const & tag, std::string const & value) const;
+  std::vector<AccessConditional> ParseAccessConditionalTag(std::string const & tag, std::string const & value) const;
 
 private:
   RoadAccess::Type GetAccessByVehicleAndStringValue(std::string const & vehicleFromTag,
                                                     std::string const & stringAccessValue) const;
 
-  static std::optional<std::pair<size_t, std::string>> ReadUntilSymbol(std::string const & input,
-                                                                size_t startPos, char symbol) ;
-  static std::string TrimAndDropAroundParentheses(std::string input) ;
+  static std::optional<std::pair<size_t, std::string>> ReadUntilSymbol(std::string const & input, size_t startPos,
+                                                                       char symbol);
+  static std::string TrimAndDropAroundParentheses(std::string input);
 
   std::vector<RoadAccessTagProcessor::TagMapping> m_vehiclesToRoadAccess;
 };

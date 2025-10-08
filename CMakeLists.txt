@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.22.1)
+
 project(omim C CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_C_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_C_STANDARD 23)
 # Our code does not rely on gnu extensions.
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_C_EXTENSIONS OFF)
@@ -38,12 +39,12 @@ if (APPLE AND NOT ("${CMAKE_SYSTEM_NAME}" STREQUAL Android))
   # https://gitlab.kitware.com/cmake/cmake/-/issues/21963
   enable_language(OBJC)
   set(CMAKE_OBJC_EXTENSIONS OFF)
-  set(CMAKE_OBJC_STANDARD 11)
+  set(CMAKE_OBJC_STANDARD 23)
   set(CMAKE_OBJC_FLAGS -fobjc-arc)
   set(CMAKE_OBJC_VISIBILITY_PRESET hidden)
   enable_language(OBJCXX)
   set(CMAKE_OBJCXX_EXTENSIONS OFF)
-  set(CMAKE_OBJCXX_STANDARD 20)
+  set(CMAKE_OBJCXX_STANDARD 23)
   set(CMAKE_OBJCXX_FLAGS -fobjc-arc)
   set(CMAKE_OBJCXX_VISIBILITY_PRESET hidden)
 endif()
@@ -84,7 +85,7 @@ if (MSVC)
   add_compile_options(/utf-8)
   add_link_options(/INCREMENTAL:NO)
 else()
-  add_compile_options(-ffast-math)
+  add_compile_options(-ffast-math $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
 endif()
 
 if (PLATFORM_WIN)
@@ -103,7 +104,7 @@ if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 elseif (${CMAKE_BUILD_TYPE} MATCHES "Rel")
   add_definitions(-DRELEASE)
   if (NOT MSVC)
-    add_compile_options(-Ofast $<$<CXX_COMPILER_ID:GNU>:-flto=auto>)  # Also enables -ffast-math
+    add_compile_options(-O3 $<$<CXX_COMPILER_ID:GNU>:-flto=auto>)
   endif()
 else()
   message(FATAL_ERROR "Unknown build type: " ${CMAKE_BUILD_TYPE})
@@ -119,7 +120,7 @@ if (PLATFORM_LINUX AND (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") AND (CMAKE_BUILD_T
   add_compile_options(-fno-fat-lto-objects)
   # To fix ar and ranlib "plugin needed to handle lto object".
   string(REGEX MATCH "[0-9]+" GCC_MAJOR_VERSION ${CMAKE_CXX_COMPILER_VERSION})
-  file(GLOB_RECURSE plugin /usr/lib/gcc/*/${GCC_MAJOR_VERSION}/liblto_plugin.so)
+  file(GLOB_RECURSE plugin /usr/lib/gcc/*/${GCC_MAJOR_VERSION}*/liblto_plugin.so)
   set(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
   set(CMAKE_C_ARCHIVE_FINISH "<CMAKE_RANLIB> --plugin ${plugin} <TARGET>")
   set(CMAKE_CXX_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
@@ -182,7 +183,7 @@ if (NOT PLATFORM_IPHONE AND NOT PLATFORM_ANDROID)
 endif()
 
 # To allow #include "base/file_name.hpp" in all sources.
-include_directories(${CMAKE_HOME_DIRECTORY})
+include_directories("${CMAKE_HOME_DIRECTORY}" "${CMAKE_HOME_DIRECTORY}/libs" "${CMAKE_HOME_DIRECTORY}/tools")
 
 if (USE_PCH)
   message(STATUS "Precompiled headers are ON")
@@ -194,7 +195,7 @@ if (USE_PCH)
 endif()
 
 # Should be on the root level, not in 3party, so tests can get these dependencies.
-if (PLATFORM_LINUX OR PLATFORM_WIN)
+if (PLATFORM_LINUX)
   find_package(ICU COMPONENTS uc i18n data REQUIRED)
   find_package(Freetype REQUIRED)
   find_package(harfbuzz REQUIRED)
@@ -224,50 +225,43 @@ endif()
 # Used in qt/ and shaders/
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
-add_subdirectory(base)
-add_subdirectory(coding)
-add_subdirectory(descriptions)
-add_subdirectory(drape)
-add_subdirectory(drape_frontend)
-add_subdirectory(editor)
-add_subdirectory(ge0)
-add_subdirectory(generator/mwm_diff)
-add_subdirectory(geometry)
-add_subdirectory(indexer)
-add_subdirectory(kml)
-add_subdirectory(map)
-add_subdirectory(cppjansson)
-add_subdirectory(platform)
-add_subdirectory(routing)
-add_subdirectory(routing_common)
-add_subdirectory(search)
-add_subdirectory(shaders)
-add_subdirectory(storage)
-add_subdirectory(tracking)
-add_subdirectory(traffic)
-add_subdirectory(transit)
+execute_process(
+    COMMAND ${Python3_EXECUTABLE} -c "import google.protobuf; 
+print(google.protobuf.__version__)"
+    RESULT_VARIABLE PROTOBUF_CHECK
+    OUTPUT_VARIABLE PROTOBUF_VERSION
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_QUIET
+)
+
+if(PROTOBUF_CHECK EQUAL 0)
+    if(PROTOBUF_VERSION VERSION_LESS "4.0.0")
+        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (< 4.0)")
+    else()
+        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version < 4.0 required")
+    endif()
+else()
+    message(FATAL_ERROR "Python protobuf not found. Install version <4.0")
+endif()
+
+
+add_subdirectory(libs)
 
 if (PLATFORM_DESKTOP)
-  omim_add_tool_subdirectory(feature_list)
+  add_subdirectory(dev_sandbox)
   add_subdirectory(generator)
-  add_subdirectory(openlr)
-  add_subdirectory(poly_borders)
-  omim_add_tool_subdirectory(topography_generator)
-  add_subdirectory(track_analyzing)
-  omim_add_tool_subdirectory(track_generator)
+  add_subdirectory(tools)
   if (NOT SKIP_QT_GUI)
     add_subdirectory(qt)
-    omim_add_tool_subdirectory(skin_generator)
   endif()
   if (GENERATOR_TOOL)
     add_compile_options(-march=native -mtune=native)
     message(STATUS "target CPU optimizations enabled, produced binaries will NOT work on a different CPU")
   endif()
-  add_subdirectory(dev_sandbox)
 endif()
 
-omim_add_test_subdirectory(qt_tstfrm)
+omim_add_test_subdirectory(libs/qt_tstfrm)
 
 if (PLATFORM_ANDROID)
-  add_subdirectory(android/app/src/main/cpp)
+  add_subdirectory(android/sdk/src/main/cpp)
 endif()

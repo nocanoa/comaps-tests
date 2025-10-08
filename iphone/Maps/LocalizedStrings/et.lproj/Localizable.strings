@@ -154,7 +154,7 @@
 "share_bookmarks_email_body" = "Tere!\n\nManuses on minu järjehoidjad rakendusest CoMaps. Palun ava need kui Sul on CoMaps paigaldatud. Või kui ei ole, laadi rakendus alla oma iOS või Android seadmesse, järgides seda linki: https:omaps.appget?kmz\n\nNaudi reisimist CoMapsiga!";
 
 /* message title of loading file */
-"load_kmz_title" = "Järjehoidjate laadimine";
+"load_kmz_title" = "Laadin järjehoidjaid";
 
 /* Kmz file successful loading */
 "load_kmz_successful" = "Järjehoidjad edukalt laaditud! Leiad need kaardil või järjehoidjate halduri vaates.";
@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Hääljuhiste keel";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testi hääljuhised (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testi hääljuhised";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Muu";
@@ -322,7 +322,7 @@
 "report_incorrect_map_bug" = "Paranda vigaseid kaardiandmeid või teata neist";
 
 /* Button in the About screen */
-"volunteer" = "Vabatahtlik kaastöö";
+"volunteer" = "Osale ühistöös CoMapsi täiendamisel";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Suhtle meiega";
@@ -755,12 +755,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvestatud";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Oma kaardimuudatuste automaatseks üleslaadimiseks palun logi sisse OpenStreetMappi. Lisateave";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "kuskil siin";
 "core_entrance" = "Sissepääs";
 "error_enter_correct_name" = "Palun sisesta korrektne nimi";
 "bookmark_lists" = "Loendid";
@@ -1096,6 +1090,8 @@
 "osm_profile_view_notes" = "Vaata märkused";
 "about_proposition_3" = "Läbipaistev ja kasumit mittetaotlev";
 "pref_mapappearance_title" = "Kaardi välimus";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Kaardi keel";
+"transliteration_title_disabled_summary" = "Kui kaardil on alati kasutusel kohalik keel, siis see eelistus on välja lülitatud";
+"pref_maplanguage_local" = "Kohalik keel";
+"existence_confirmed_time_ago" = "Olemasolu on kontrollitud %@";
+"hours_confirmed_time_ago" = "Kontrollitud %@";

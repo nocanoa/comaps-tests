@@ -8,7 +8,7 @@
 "type.aerialway.gondola" = "Gondolihissi";
 "type.aerialway.mixed_lift" = "Köysirata";
 "type.aerialway.station" = "Köysirata-asema";
-"type.aeroway" = "Airspace Infrastructure";
+"type.aeroway" = "Ilmatilan Infrastruktuuri";
 "type.aeroway.aerodrome" = "Lentokenttä";
 "type.aeroway.aerodrome.international" = "Kansainvälinen lentokenttä";
 "type.aeroway.apron" = "Lentokentän asemataso";
@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Vesipiste";
 "type.amenity.water_point.drinking_water_no" = "Vesipiste";
 "type.barrier" = "Este";
+"type.barrier.yes" = "Este";
 "type.barrier.block" = "Este";
 "type.barrier.bollard" = "Tolppa";
 "type.barrier.border_control" = "Rajavalvonta";
@@ -464,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Jalankulkusilta";
+"type.highway.pedestrian.square" = "Tori";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Jalankulkutunneli";
@@ -596,8 +598,6 @@
 "type.area_highway.track" = "Katu";
 "type.area_highway.trunk" = "Päätie";
 "type.area_highway.unclassified" = "Katu";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Historiallinen esine";
 "type.historic.aircraft" = "Historiallinen lentokone";
 "type.historic.anchor" = "Historiallinen ankkuri";
@@ -644,19 +644,6 @@
 "type.historic.wayside_cross" = "Tienvarren risti";
 "type.historic.wayside_shrine" = "Tienvarren pyhäkkö";
 "type.historic.wreck" = "Haaksirikko";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Risteys";
@@ -702,7 +689,7 @@
 "type.landuse.salt_pond" = "Suolalampi";
 "type.landuse.village_green" = "Maa";
 "type.landuse.vineyard" = "Viinitarha";
-"type.leisure" = "Leisure";
+"type.leisure" = "Vapaa-aika";
 "type.leisure.common" = "Julkinen paikka";
 "type.leisure.dog_park" = "Koirien ulkoilupaikka";
 "type.leisure.fitness_centre" = "Kuntosali";
@@ -737,7 +724,7 @@
 "type.leisure.track.area" = "Juoksurata";
 "type.leisure.water_park" = "Vesipuisto";
 "type.leisure.beach_resort" = "Rantalomakohde";
-"type.man_made" = "Man Made";
+"type.man_made" = "Ihmisen Tekemä";
 "type.man_made.breakwater" = "Aallonmurtaja";
 "type.man_made.cairn" = "Kiviröykkiö";
 "type.man_made.chimney" = "Tehtaan piippu";
@@ -773,8 +760,6 @@
 "type.man_made.water_well.drinking_water_no" = "Kaivo";
 "type.man_made.windmill" = "Tuulimylly";
 "type.man_made.works" = "Tehdas";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Sotilasalue";
 "type.military.bunker" = "Bunkkeri";
 "type.mountain_pass" = "Vuoristosola";
@@ -826,7 +811,7 @@
 "type.natural.water" = "Vettä";
 "type.natural.wetland" = "Soistuva maa";
 "type.natural.wetland.bog" = "Suo";
-"type.natural.wetland.marsh" = "Marsh";
+"type.natural.wetland.marsh" = "Suo";
 "type.noexit" = "Umpikuja";
 "type.office" = "Toimisto";
 "type.office.company" = "Yhtiön toimisto";
@@ -901,11 +886,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Pylväs";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Julkinen liikenne";
 "type.public_transport.platform" = "Joukkoliikenteen pysäkki/laituri";
 "type.railway" = "Rautatie";
@@ -1207,7 +1187,6 @@
 "type.railway.tram_stop" = "Raitiovaunupysäkki";
 "type.route" = "Reitti";
 "type.route.ferry" = "Lauttareitti";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Kauppa";
 "type.shop.alcohol" = "Alkoholikauppa";
 "type.shop.bakery" = "Leipomo";
@@ -1265,7 +1244,7 @@
 "type.shop.laundry" = "Pesula";
 "type.shop.mall" = "Ostoskeskus";
 "type.shop.massage" = "Hierontahuone";
-"type.shop.mobile_phone" = "Elektroniikkakauppa";
+"type.shop.mobile_phone" = "Matkapuhelinkauppa";
 "type.shop.money_lender" = "Rahan lainaaja";
 "type.shop.motorcycle" = "Moottoripyöräliike";
 "type.shop.motorcycle_repair" = "Moottoripyörän korjaus";
@@ -1308,7 +1287,7 @@
 "type.shop.baby_goods" = "Lasten kauppa";
 "type.shop.bag" = "Laukkukauppa";
 "type.shop.bed" = "Sänkykauppa";
-"type.shop.boutique" = "Boutique";
+"type.shop.boutique" = "Putiikki";
 "type.shop.charity" = "Hyväntekeväisyysmyymälä";
 "type.shop.cheese" = "Juustokauppa";
 "type.shop.craft" = "Käsityöt";
@@ -1460,10 +1439,10 @@
 "type.piste_type.nordic" = "Latu";
 "type.piste_type.sled" = "Kelkkarata";
 "type.piste_type.sled.area" = "Kelkkarata";
-"type.piste_type.snow_park" = "Snow Park";
+"type.piste_type.snow_park" = "Lumipuisto";
 "type.piste_type.hike" = "Lumi vaellusreitti";
 "type.piste_type.connection" = "Pisteen yhteys";
-"type.piste_type.skitour" = "Skitour Trail";
+"type.piste_type.skitour" = "Hiihtovaellusreitti";
 "type.amenity.events_venue" = "Tapahtumakeskus";
 "type.shop.auction" = "Huutokauppa";
 "type.shop.collector" = "Keräilyesineet";
@@ -1500,7 +1479,12 @@
 "type.natural.wetland.mangrove" = "Mangrove";
 "type.natural.wetland.tidalflat" = "Vuorovesitasanko";
 "type.leisure.escape_game" = "Pakohuonepeli";
-"type.amenity.luggage_locker" = "Luggage Locker";
-"type.post_office.post_partner" = "Post Partner";
-"type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.luggage_locker" = "Matkatavarasäilytys";
+"type.post_office.post_partner" = "Postikumppani";
+"type.amenity.ranger_station" = "Vartioasema";
+"type.amenity.bicycle_parking.covered" = "Pyöräkatos";
+"type.amenity.animal_shelter" = "Eläinsuoja";
+"type.barrier.wicket_gate" = "Käyntiportti";
+"type.office.security" = "Vartijoiden toimisto";
+"type.power.portal" = "Sähköportaali";
+"type.building.guardhouse" = "Vartijankoppi";

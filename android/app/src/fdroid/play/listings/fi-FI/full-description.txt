@@ -1,32 +1,34 @@
-Yhteisövetoinen, ilmainen ja avoimeen lähdekoodiin perustuva karttasovellus, jonka pohjalla käytetään OpenStreetMapin avointa karttadataa. Sovelluksen kehityksessä on sitouduttu läpinäkyvyyteen, yksityisyyteen ja voittoa tavoittelemattomuuteen. CoMapsin projekti on haarautunut Organic Mapsista, joka taas on haarautunut aiemmin Maps.ME:stä
+Yhteisön johtama vapaa ja avoimeen lähdekoodiin perustuva karttasovellus, jonka karttadata perustuu OpenStreetMap:n avoimeen dataan. Sovelluksessa painottuu vahva sitoutuminen läpinäkyvyyteen, yksityisyyteen ja voittoa tavoittelemattomaan toimintaan. CoMaps on haarautunut Organic Maps:sta, joka taas omalta osaltaan on haarautunut Maps.ME:stä.
 
-Lue lisää projektin tavotteista ja suunnasta osoitteesta <b><i>codeberg.org/comaps</i></b>.
-Liity yhteisöön ja auta kehittämään paras saatavilla oleva karttasovellus
-• Käytä sovellusta ja kerro siitä myös muille
-• Anna palautetta ja raportoi ongelmia
-• Päivitä karttoja, joko sovelluksessa tai OpenStreetMapin verkkosivuilla
+Lue tarkemmin projektin syistä ja sen suunnasta osoitteesta <b><i>codeberg.org/comaps</i></b>.
+Liity yhteisöön ja auta kehittämään parasta karttasovellusta
+• Käytä sovellusta ja levitä siitä sanaa
+• Anna palautetta ja raportoi ongelmista
+• Päivitä karttadataa sovelluksessa tai OpenStreetMap:n verkkosivuilla
 
-‣ <b>Offline-painotteinen</b>: Suunnittele ja navigoi ulkomailla ilman mobiiliverkkoja. Kaikki sovelluksen toiminnot on suunniteltu käytettäväksi ilman verkkoyhteyttä.
-‣ <b>Kunnioittaa yksityisyyttä</b>: Sovellus on suunniteltu yksilön yksityisyys silmälläpitäen. Sovellus ei tunnista tai kerää tietoja sinusta. Mainosvapaa.
-‣ <b>Yksinkertainen ja viimeistelty</b>: Olennaiset ominaisuudet, joita on helppo käyttää. 
-‣ <b>Säästä akkua ja tallennustilaa</b>: Ei kuluta akkua, kuten muut navigointisovellukset. Kompaktit kartat säästävät arvokasta tallennustilaa puhelimessasi. 
-‣ <b>Ilmainen ja yhteisön luoma</b>: Vapaaehtoiset, kuten sinä olette auttaneet sovelluksen kehityksessä lisäämällä paikkoja OpenStreetMap:iin, testaamalla sovellusta ja antamalla palautetta. Voit myös auttaa kehittämällä ominaisuuksia ja lahjoittamalla sovelluskehitykseen
-‣ <b>Avoin ja läpinäkyvä päätöksenteko sekä rahoitus. Voittoa tavoittelematon ja täysin avoimeen lähdekoodiin perustuva.</b>
+‣ <b>Offline-painotteinen</b>: Suunnittele ja navigoi matkasi ilman verkkoyhteyttä. Etsi reittipisteitä retkilläsi. Kaikki sovelluksen toiminnot on suunniteltu käytettäväksi ilman verkkoyhteyttä.
+‣ <b>Kunnioittaa yksityisyyttä</b>: Sovellus on suunniteltu yksityisyyttä silmälläpitäen. Sovellu ei tunnista ihmisä, seuraa toimintaasi, eikä kerää henkilökohtaisia tietojasi. Mainosvapaa.
+‣ <b>Yksinkertainen ja viimeistelty</b>: Olennaiset ominaisuudet, joita on helppo käyttää.
+‣ <b>Säästää akkua ja tilaa</b>: Ei kuluta akkua, kuten toiset karttasovellukset. Kompaktit kartat säästävät tilaa puhelimessasi.
+‣ <b>Ilmainen ja yhteisön rakentama</b>: Ihmiset, kuten sinä ovat auttaneet sovelluksen kehityksessä lisäämällä paikkoja OpenStreetMap:iin, testaamalla sovellusta ja antamalla palautetta. Voit auttaa myös kehittämällä sovellusta ja lahjoittamalla sovelluskehitykseen.
+‣ <b>Avoin ja läpinäkyvä päätöksenteko ja rahoitus. Voittoa tavoittelematon ja täysin avoimeen lähdekoodiin perustuva.</b>
 
 <b>Tärkeimmät ominaisuudet</b>:
-• Ladattavat yksityiskohtaiset kartat paikoista, joita ei löydy edes Google Maps:sta
-• Ulkoilutila, josta löytyy korostettuna reitit, leirintäpaikat, vesipisteet, huiput ja korkeuserot yms.
-• Kävely- ja pyörätiet
-• Kiinnostavat paikat, kuten ravintolat, huoltoasemat, hotellit, kaupat, nähtävyydet ja monta muuta
-• Etsi nimellä, osoitteella tai kiinnostavan paikan kategorialla
-• Navigointi ääni-ilmoituksilla kävellessä, pyöräillessä tai ajaessa
-• Tallenna suosikkipaikkasi yhdellä napautuksella
-• Offline Wikipedia-artikkelit
-• Maanalaisen liikenteen tasot ja ohjeet
-• Reittien tallennus
-• Tuo ja vie kirjanmerkkejä ja reittejä KML-, KMZ- ja GPX-formaateissa
-• Tumma tila iltaa ja yötä varten
-• Paranna karttadataa kaikille sisäänrakennetulla editorilla
+<ul>
+<li>Ladattavat yksityiskohtaiset kartat paikoista, joita ei löydy edes Google Maps:sta</li>
+<li>Ulkoilutila, josta löytyy korostettuna reitit, leirintäpaikat, vesipisteet, huiput ja korkeuserot yms.</li>
+<li>Kävely- ja pyörätiet</li>
+<li>Kiinnostavat paikat, kuten ravintolat, huoltoasemat, hotellit, kaupat, nähtävyydet ja monta muuta</li>
+<li>Etsi nimellä, osoitteella tai kiinnostavan paikan kategorialla</li>
+<li>Navigointi ääni-ilmoituksilla kävellessä, pyöräillessä tai ajaessa</li>
+<li>Tallenna suosikkipaikkasi yhdellä napautuksella</li>
+<li>Offline Wikipedia-artikkelit</li>
+<li>Maanalaisen liikenteen tasot ja ohjeet</li>
+<li>Reittien tallennus</li>
+<li>Tuo ja vie kirjanmerkkejä ja reittejä KML-, KMZ- ja GPX-formaateissa</li>
+<li>Tumma tila iltaa ja yötä varten</li>
+<li>Paranna karttadataa kaikille sisäänrakennetulla editorilla</li>
+</ul>
 
 <b>Vapaus on täällä</b>
-Löydä matkasi ja navigoi maailmalla yksityisyyden ja yhteisön tukemana!
+Löydä matkasi, navigoi maailmassa yksityisyyden ja yhteisön tukemana!

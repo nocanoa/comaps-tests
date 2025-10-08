@@ -61,7 +61,7 @@
 "placepage_edit_bookmark_button" = "Lesezeiche bearbeite";
 "report_a_bug" = "App-Fehler melde";
 "report_incorrect_map_bug" = "Falschi Chartedate melde oder korrigiere";
-"volunteer" = "Freiwillig helfe";
+"volunteer" = "Freiwillig helfe und CoMaps verbessere";
 "follow_us" = "Bliib in Kontakt";
 "email_error_body" = "De Email-Client isch nonig iigrichtet worde. Konfigurier ihn bitte oder nutz en anderi Möglichkeit oder kontaktier eus under %@";
 "email_error_title" = "Fehler bim Email-Versand";
@@ -153,7 +153,7 @@
 "pref_tts_street_names_title" = "Strassenäme aakündige";
 "pref_tts_street_names_description" = "Wenn aktiviert, wird de Name vo de Strass oder Uusfahrt, wo abboge wird, luut aakündigt.";
 "pref_tts_language_title" = "Sprach für d Sprachfüehrig";
-"pref_tts_test_voice_title" = "Teste d Sprachaawisige (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Test d Sprachaawisige";
 "pref_map_auto_zoom" = "Auto-Zoom";
 "placepage_distance" = "Entfernig";
 "search_show_on_map" = "Uf de Charte aaluege";
@@ -494,8 +494,6 @@
 "log_file_size" = "Grössi vo de Protokolldatei: %@";
 "planning_route_remove_title" = "Dahi zieh zum Entferne";
 "start_from_my_position" = "Starte vo";
-"alert_reauth_message_ios" = "Bitte meld dich bi OpenStreetMap aa, zum all dini Chartebearbeitige automatisch ufezlade. Erfahr meh";
-"alert_reauth_link_text_ios" = "da";
 "downloader_hide_screen" = "Bildschirm uusblende";
 "downloader_percent" = "%@ (%@ vo %@)";
 "downloader_process" = "%@ abeglade…";
@@ -586,6 +584,8 @@
 "social_mastodon" = "Mastodon";
 "social_pixelfed" = "Pixelfed";
 "pref_mapappearance_title" = "Chartedarstellig";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Charte-Spraach";
+"transliteration_title_disabled_summary" = "Bi de Nutzig vo de lokale Spraach für d Charte uusgschaltet";
+"pref_maplanguage_local" = "Lokali Spraach";
+"hours_confirmed_time_ago" = "Bestätigt %@";
+"existence_confirmed_time_ago" = "Existenz bestätigt %@";

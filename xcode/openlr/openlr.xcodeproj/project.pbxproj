@@ -147,7 +147,7 @@
 				671E790F1E6A502200B2859B /* way_point.hpp */,
 			);
 			name = openlr;
-			path = ../../openlr;
+			path = ../../tools/openlr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +206,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					671E78F21E6A4FE400B2859B = {
 						CreatedOnToolsVersion = 8.2.1;

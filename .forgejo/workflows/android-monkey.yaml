@@ -4,9 +4,6 @@ on:
   schedule:
     - cron:  '0 5 * * 0' # Once per week at 05:00 UTC
 
-env:
-  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
-
 jobs:
   precondition:
     runs-on: ubuntu-latest
@@ -72,10 +69,6 @@ jobs:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
           SECURE_PROPERTIES: ${{ secrets.SECURE_PROPERTIES }}
           RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
-
-      - name: Configure repository
-        shell: bash
-        run: ./configure.sh
 
       - name: Compile
         shell: bash

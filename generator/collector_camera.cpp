@@ -26,7 +26,6 @@
 
 #include <algorithm>
 
-
 namespace routing_builder
 {
 
@@ -82,12 +81,10 @@ CameraCollector::CameraInfo CameraCollector::CameraInfo::Read(ReaderSource<FileR
 // static
 void CameraCollector::CameraInfo::Write(FileWriter & writer, CameraInfo const & camera)
 {
-  uint32_t const lat =
-      DoubleToUint32(camera.m_lat, ms::LatLon::kMinLat, ms::LatLon::kMaxLat, kPointCoordBits);
+  uint32_t const lat = DoubleToUint32(camera.m_lat, ms::LatLon::kMinLat, ms::LatLon::kMaxLat, kPointCoordBits);
   WriteToSink(writer, lat);
 
-  uint32_t const lon =
-      DoubleToUint32(camera.m_lon, ms::LatLon::kMinLon, ms::LatLon::kMaxLon, kPointCoordBits);
+  uint32_t const lon = DoubleToUint32(camera.m_lon, ms::LatLon::kMinLon, ms::LatLon::kMaxLon, kPointCoordBits);
   WriteToSink(writer, lon);
 
   WriteToSink(writer, camera.m_speedKmPH);
@@ -133,12 +130,14 @@ void CameraCollector::MergeInto(CameraCollector & collector) const
 
 void CameraCollector::Save()
 {
-  LOG(LINFO, ("Saving speed cameras to", GetFilename()));
+  LOG(LINFO, ("Associating speed cameras with ways..."));
 
   FillCameraInWays();
 
+  LOG(LINFO, ("Saving speed cameras to", GetFilename()));
   FileWriter writer(GetFilename());
   ForEachCamera([&](auto const & camera) { CameraInfo::Write(writer, camera); });
+  LOG(LINFO, ("Finished saving speed cameras"));
 }
 
 void CameraCollector::OrderCollectedData()
@@ -159,9 +158,9 @@ void CameraCollector::OrderCollectedData()
 }
 
 CameraCollector::CameraCollector(std::string const & filename, IDRInterfacePtr cache)
-  : generator::CollectorInterface(filename), m_cache(std::move(cache))
-{
-}
+  : generator::CollectorInterface(filename)
+  , m_cache(std::move(cache))
+{}
 
 std::shared_ptr<generator::CollectorInterface> CameraCollector::Clone(IDRInterfacePtr const & cache) const
 {

@@ -1,7 +1,6 @@
 protocol BottomTabBarInteractorProtocol: AnyObject {
   func openSearch()
   func openLeftButton()
-  func openFaq()
   func openBookmarks()
   func openMenu()
 }
@@ -53,10 +52,6 @@ extension BottomTabBarInteractor: BottomTabBarInteractorProtocol {
       default:
         mapViewController?.openAbout()
     }
-  }
-  
-  func openFaq() {
-      mapViewController?.openAbout()
   }
   
   func openBookmarks() {

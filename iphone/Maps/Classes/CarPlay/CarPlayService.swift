@@ -54,10 +54,8 @@ final class CarPlayService: NSObject {
       applyBaseRootTemplate()
       router.restoreTripPreviewOnCarplay(beforeRootTemplateDidAppear: true)
     }
-    if #available(iOS 13.0, *) {
-      updateContentStyle(configuration.contentStyle)
-    }
-    FrameworkHelper.updatePositionArrowOffset(false, offset: 5)
+    updateContentStyle(configuration.contentStyle)
+    FrameworkHelper.updatePositionArrowOffset(false, offset: (Int32(window.height * window.screen.scale)/3))
 
     CarPlayWindowScaleAdjuster.updateAppearance(
       fromWindow: MapsAppDelegate.theApp().window,
@@ -399,31 +397,36 @@ extension CarPlayService: CPMapTemplateDelegate {
     FrameworkHelper.switchMyPositionMode()
   }
 
-  func mapTemplate(_ mapTemplate: CPMapTemplate, panEndedWith direction: CPMapTemplate.PanDirection) {
+  @objc(mapTemplate:panEndedWithDirection:)
+  func mapTemplate(_ mapTemplate: CPMapTemplate, panEndedWith direction: Int) {
     var offset = UIOffset(horizontal: 0.0, vertical: 0.0)
     let offsetStep: CGFloat = 0.25
-    if direction.contains(.up) { offset.vertical -= offsetStep }
-    if direction.contains(.down) { offset.vertical += offsetStep }
-    if direction.contains(.left) { offset.horizontal += offsetStep }
-    if direction.contains(.right) { offset.horizontal -= offsetStep }
+    let panDirection = CPMapTemplate.PanDirection(rawValue: direction)
+    if panDirection.contains(.up) { offset.vertical -= offsetStep }
+    if panDirection.contains(.down) { offset.vertical += offsetStep }
+    if panDirection.contains(.left) { offset.horizontal += offsetStep }
+    if panDirection.contains(.right) { offset.horizontal -= offsetStep }
     FrameworkHelper.moveMap(offset)
     isUserPanMap = true
   }
 
-  func mapTemplate(_ mapTemplate: CPMapTemplate, panWith direction: CPMapTemplate.PanDirection) {
+  
+  @objc(mapTemplate:panWithDirection:)
+  func mapTemplate(_ mapTemplate: CPMapTemplate, panWith direction: Int) {
     var offset = UIOffset(horizontal: 0.0, vertical: 0.0)
     let offsetStep: CGFloat = 0.1
-    if direction.contains(.up) { offset.vertical -= offsetStep }
-    if direction.contains(.down) { offset.vertical += offsetStep }
-    if direction.contains(.left) { offset.horizontal += offsetStep }
-    if direction.contains(.right) { offset.horizontal -= offsetStep }
+    let panDirection = CPMapTemplate.PanDirection(rawValue: direction)
+    if panDirection.contains(.up) { offset.vertical -= offsetStep }
+    if panDirection.contains(.down) { offset.vertical += offsetStep }
+    if panDirection.contains(.left) { offset.horizontal += offsetStep }
+    if panDirection.contains(.right) { offset.horizontal -= offsetStep }
     FrameworkHelper.moveMap(offset)
     isUserPanMap = true
   }
 
   func mapTemplate(_ mapTemplate: CPMapTemplate, didUpdatePanGestureWithTranslation translation: CGPoint, velocity: CGPoint) {
     let scaleFactor = self.carplayVC?.mapView?.contentScaleFactor ?? 1
-    FrameworkHelper.scrollMap(-scaleFactor * translation.x, -scaleFactor * translation.y);
+    FrameworkHelper.scrollMap(toDistanceX:-scaleFactor * translation.x, andY:-scaleFactor * translation.y);
   }
 
   func mapTemplate(_ mapTemplate: CPMapTemplate, startedTrip trip: CPTrip, using routeChoice: CPRouteChoice) {

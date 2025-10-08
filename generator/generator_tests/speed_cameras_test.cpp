@@ -75,10 +75,8 @@ std::vector<CameraMapItem> UnpackMapToVector(CameraMap const & cameraMap)
 {
   std::vector<CameraMapItem> result;
   for (auto const & mapIter : cameraMap)
-  {
     for (auto const & vectorIter : mapIter.second)
       result.push_back({mapIter.first, vectorIter});
-  }
 
   sort(result.begin(), result.end());
   return result;
@@ -97,12 +95,11 @@ void CheckCameraMapsEquality(CameraMap const & lhs, CameraMap const & rhs, doubl
     // It can differ on Jenknins and local computer.
     TEST_EQUAL(vectorL[i].first.GetPointId(), vectorR[i].first.GetPointId(), ());
     TEST_EQUAL(vectorL[i].second.m_maxSpeedKmPH, vectorR[i].second.m_maxSpeedKmPH, ());
-    TEST(base::AlmostEqualAbs(vectorL[i].second.m_coef, vectorR[i].second.m_coef, epsilon), ());
+    TEST(AlmostEqualAbs(vectorL[i].second.m_coef, vectorR[i].second.m_coef, epsilon), ());
   }
 }
 
-void TestSpeedCameraSectionBuilding(string const & osmContent, CameraMap const & answer,
-                                    double epsilon)
+void TestSpeedCameraSectionBuilding(string const & osmContent, CameraMap const & answer, double epsilon)
 {
   // ScopedFile takes relative path only?! and makes WritableDir() + kOsmFileName.
   // Replace WritebleDir here with temporary path.
@@ -189,9 +186,7 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsOnePointOfFeature_1)
   //                      coef - position on segment (at the beginning of segment) - 0,
   //                      maxSpeed - 100.
 
-  CameraMap const answer = {
-    {SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}
-  };
+  CameraMap const answer = {{SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, kCoefEqualityEpsilon);
 }
 
@@ -222,9 +217,7 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsOnePointOfFeature_2)
   //                      coef - position on segment (at the beginning of segment) - 0,
   //                      maxSpeed - 100.
 
-  CameraMap const answer = {
-    {SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}
-  };
+  CameraMap const answer = {{SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, kCoefEqualityEpsilon);
 }
 
@@ -255,9 +248,7 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsOnePointOfFeature_3)
   //                      coef - position on segment (at the end of segment) - 1,
   //                      maxSpeed - 100.
 
-  CameraMap const answer = {
-    {SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{1, 100}}}
-  };
+  CameraMap const answer = {{SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{1, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, kCoefEqualityEpsilon);
 }
 
@@ -311,10 +302,8 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsOnePointOfFeature_4)
   //                      coef - position on segment (at the beginning of segment) - 0,
   //                      maxSpeed - 100.
 
-  CameraMap const answer = {
-    {SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{1, 100}}},
-    {SegmentCoord(1, 1), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}
-  };
+  CameraMap const answer = {{SegmentCoord(0, 1), std::vector<RouteSegment::SpeedCamera>{{1, 100}}},
+                            {SegmentCoord(1, 1), std::vector<RouteSegment::SpeedCamera>{{0, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, kCoefEqualityEpsilon);
 }
 
@@ -352,9 +341,8 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsNearFeature_1)
   auto epsilon = mercator::DistanceOnEarth({0, 0}, {kMwmPointAccuracy, kMwmPointAccuracy}) /
                  mercator::DistanceOnEarth(mercator::FromLatLon(55.7793100, 37.3699100),
                                            mercator::FromLatLon(55.7793300, 37.3699300));
-  epsilon = base::Clamp(epsilon, 0.0, 1.0);
-  CameraMap const answer = {
-      {SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0.5, 100}}}};
+  epsilon = math::Clamp(epsilon, 0.0, 1.0);
+  CameraMap const answer = {{SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0.5, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, epsilon);
 }
 
@@ -389,11 +377,9 @@ UNIT_TEST(SpeedCameraGenerationTest_CameraIsNearFeature_2)
   auto epsilon = mercator::DistanceOnEarth({0, 0}, {kMwmPointAccuracy, kMwmPointAccuracy}) /
                  mercator::DistanceOnEarth(mercator::FromLatLon(55.7793100, 37.3699100),
                                            mercator::FromLatLon(55.7793300, 37.3699300));
-  epsilon = base::Clamp(epsilon, 0.0, 1.0);
+  epsilon = math::Clamp(epsilon, 0.0, 1.0);
 
-  CameraMap const answer = {
-    {SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0.25, 100}}}
-  };
+  CameraMap const answer = {{SegmentCoord(0, 0), std::vector<RouteSegment::SpeedCamera>{{0.25, 100}}}};
   TestSpeedCameraSectionBuilding(osmContent, answer, epsilon);
 }
 

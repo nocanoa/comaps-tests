@@ -24,9 +24,6 @@ class BottomTabBarButtonRenderer {
     if let coloring = style.coloring {
       control.coloring = coloring
     }
-    if let imageName = style.mwmImage {
-      control.imageName = imageName
-    }
     if let backgroundColor = style.backgroundColor {
       control.backgroundColor = backgroundColor
     }

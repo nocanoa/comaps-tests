@@ -24,7 +24,7 @@ Sartu komunitatean eta lagundu maparik onena aplikatzen
 • Lineaz kanpoko Wikipedia artikuluak
 • Metroaren garraio geruza eta jarraibideak
 • Arrastoen grabazioa
-• Laster-markak eta ibilbideak esportatu eta inportatu KML, KMZ, GPX formatuetan
+• Markagailuak eta arrastoak esportatu eta inportatu KML, KMZ, GPX formatuetan
 • Gauean erabiltzeko modu iluna
 • Hobetu mapako datuak guztiontzat oinarrizko editore integratua erabiliz
 

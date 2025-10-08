@@ -8,6 +8,7 @@
 #include "base/file_name_utils.hpp"
 #include "base/logging.hpp"
 
+#include <cmath>
 #include <fstream>
 #include <iomanip>
 #include <sstream>
@@ -27,10 +28,7 @@ struct UnzipMemDelegate : public ZipFileReader::Delegate
   }
 
   // ZipFileReader::Delegate overrides:
-  void OnBlockUnzipped(size_t size, char const * data) override
-  {
-    m_buffer.insert(m_buffer.end(), data, data + size);
-  }
+  void OnBlockUnzipped(size_t size, char const * data) override { m_buffer.insert(m_buffer.end(), data, data + size); }
 
   void OnStarted() override
   {
@@ -115,7 +113,7 @@ ms::LatLon SrtmTile::GetCoordInSeconds(ms::LatLon const & coord)
     lt += 1;
   lt = 1 - lt;  // from North to South
 
-  return { kArcSecondsInDegree * lt, kArcSecondsInDegree * ln };
+  return {kArcSecondsInDegree * lt, kArcSecondsInDegree * ln};
 }
 
 geometry::Altitude SrtmTile::GetHeight(ms::LatLon const & coord) const
@@ -125,7 +123,7 @@ geometry::Altitude SrtmTile::GetHeight(ms::LatLon const & coord) const
 
   auto const ll = GetCoordInSeconds(coord);
 
-  return GetHeightRC(static_cast<size_t>(std::round(ll.m_lat)), static_cast<size_t>(std::round(ll.m_lon)));
+  return GetHeightRC(std::lround(ll.m_lat), std::lround(ll.m_lon));
 }
 
 geometry::Altitude SrtmTile::GetHeightRC(size_t row, size_t col) const
@@ -142,7 +140,7 @@ double SrtmTile::GetTriangleHeight(ms::LatLon const & coord) const
 
   auto const ll = GetCoordInSeconds(coord);
 
-  m2::Point<int> const p1(static_cast<int>(std::round(ll.m_lon)), static_cast<int>(std::round(ll.m_lat)));
+  m2::Point<int> const p1(std::lround(ll.m_lon), std::lround(ll.m_lat));
 
   auto p2 = p1;
   if (p2.x > ll.m_lon)
@@ -204,7 +202,8 @@ double SrtmTile::GetBilinearHeight(ms::LatLon const & coord) const
   return (GetHeightRC(p1.y, p1.x) * (p2.x - ll.m_lon) * (p2.y - ll.m_lat) +
           GetHeightRC(p1.y, p2.x) * (ll.m_lon - p1.x) * (p2.y - ll.m_lat) +
           GetHeightRC(p2.y, p1.x) * (p2.x - ll.m_lon) * (ll.m_lat - p1.y) +
-          GetHeightRC(p2.y, p2.x) * (ll.m_lon - p1.x) * (ll.m_lat - p1.y)) / denom;
+          GetHeightRC(p2.y, p2.x) * (ll.m_lon - p1.x) * (ll.m_lat - p1.y)) /
+         denom;
 }
 
 // static

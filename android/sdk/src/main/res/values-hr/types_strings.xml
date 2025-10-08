@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type.leisure.hackerspace">Hackerspace</string>
+    <string name="type.man_made.silo">Silo</string>
+    <string name="type.addr_interpolation.even">adresa/blok</string>
+    <string name="type.addr_interpolation.odd">adresa/blok</string>
+    <string name="type.aerialway">Žičara</string>
+    <string name="type.addr_interpolation">adresa/blok</string>
+</resources>

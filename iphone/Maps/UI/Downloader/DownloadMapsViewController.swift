@@ -80,7 +80,7 @@ class DownloadMapsViewController: MWMViewController {
     tableView.registerNib(cell: MWMMapDownloaderButtonTableViewCell.self)
     title = dataSource.title
     if mode == .downloaded {
-      let addMapsButton = button(with: UIImage(named: "ic_nav_bar_add"), action: #selector(onAddMaps))
+      let addMapsButton = button(with: UIImage(systemName: "plus"), action: #selector(onAddMaps))
       navigationItem.rightBarButtonItem = addMapsButton
     }
     noMapsContainer.isHidden = !dataSource.isEmpty || Storage.shared().downloadInProgress()

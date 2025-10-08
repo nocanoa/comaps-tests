@@ -92,13 +92,14 @@ extension MapStyleSheet: IStyleSheet {
         s.backgroundColor = colors.linkBlue
         s.cornerRadius = .buttonSmall
         s.shadowRadius = 2
-        s.shadowColor = colors.blackHintText
-        s.shadowOpacity = 1
+        s.shadowColor = colors.shadow
+        s.shadowOpacity = 0.2
         s.shadowOffset = CGSize(width: 0, height: 2)
       }
     case .mapSecondTurnView:
       return .addFrom(Self.mapFirstTurnView) { s in
         s.backgroundColor = colors.white
+        s.shadowColor = colors.blackPrimaryText
       }
     case .mapAutoupdateView:
       return .add { s in

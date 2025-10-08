@@ -114,7 +114,7 @@ NSString *titleForButton(MWMActionBarButtonType type, BOOL isSelected) {
       self.button.coloring = MWMButtonColoringRed;
       break;
     case MWMActionBarButtonTypeSaveTrackRecording:
-      [self.button setImage:[UIImage imageNamed:@"ic_placepage_save_track_recording"] forState:UIControlStateNormal];
+      [self.button setImage:[UIImage systemImageNamed:@"square.and.arrow.down" withConfiguration:[UIImageSymbolConfiguration configurationWithPointSize:22 weight:UIImageSymbolWeightSemibold]] forState:UIControlStateNormal];
       break;
     case MWMActionBarButtonTypeNotSaveTrackRecording:
       [self.button setImage:[UIImage systemImageNamed:@"trash.fill" withConfiguration:[UIImageSymbolConfiguration configurationWithPointSize:22 weight:UIImageSymbolWeightSemibold]] forState:UIControlStateNormal];

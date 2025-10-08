@@ -20,7 +20,40 @@ NSString * GetLocalizedMetadataValueString(MapObject::MetadataID metaID, std::st
   return ToNSString(platform::GetLocalizedTypeName(feature::ToString(metaID) + "." + value));
 }
 
+/// Parse date string in YYYY-MM-DD format to NSDate
+NSDate * _Nullable ParseDateString(NSString * _Nullable dateString) {
+  if (!dateString || dateString.length == 0) {
+    return nil;
+  }
+  
+  static NSDateFormatter *dateFormatter = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+  });
+  
+  return [dateFormatter dateFromString:dateString];
+}
+
 @implementation PlacePageInfoData
+
+- (NSDate * _Nullable)getMostRecentCheckDate {
+  // CheckDate can utilize checkDateOpeningHours if that is available
+  // As surveying opening hours would confirm presence
+  if (_checkDate && _checkDateOpeningHours) {
+    // Both available - return the more recent date
+    return [_checkDate compare:_checkDateOpeningHours] == NSOrderedDescending ? _checkDate : _checkDateOpeningHours;
+  } else if (_checkDate) {
+    return _checkDate;
+  } else if (_checkDateOpeningHours) {
+    return _checkDateOpeningHours;
+  } else {
+    return nil;
+  }
+}
 
 @end
 
@@ -44,6 +77,12 @@ NSString * GetLocalizedMetadataValueString(MapObject::MetadataID metaID, std::st
           _openingHoursString = ToNSString(value);
           _openingHours = [[OpeningHours alloc] initWithRawString:_openingHoursString
                                                      localization:localization];
+          break;
+        case MetadataID::FMD_CHECK_DATE:
+          _checkDate = ParseDateString(ToNSString(value));
+          break;
+        case MetadataID::FMD_CHECK_DATE_OPEN_HOURS:
+          _checkDateOpeningHours = ParseDateString(ToNSString(value));
           break;
         case MetadataID::FMD_PHONE_NUMBER:
         {
@@ -77,6 +116,7 @@ NSString * GetLocalizedMetadataValueString(MapObject::MetadataID metaID, std::st
         case MetadataID::FMD_CONTACT_BLUESKY: _bluesky = ToNSString(value); break;
         case MetadataID::FMD_PANORAMAX: _panoramax = ToNSString(value); break;
         case MetadataID::FMD_OPERATOR: _ppOperator = [NSString stringWithFormat:NSLocalizedString(@"operator", nil), ToNSString(value)]; break;
+        case MetadataID::FMD_BRANCH: _branch = ToNSString(value); break;
         case MetadataID::FMD_INTERNET:
           _wifiAvailable = (rawData.GetInternet() == feature::Internet::No)
               ? NSLocalizedString(@"no_available", nil) : NSLocalizedString(@"yes_available", nil);
@@ -100,7 +140,7 @@ NSString * GetLocalizedMetadataValueString(MapObject::MetadataID metaID, std::st
       }
     });
 
-    _atm = rawData.HasAtm() ? NSLocalizedString(@"type.amenity.atm", nil) : nil;
+    _atm = rawData.HasAtm() ? NSLocalizedStringFromTable(@"type.amenity.atm", @"LocalizableTypes", nil) : nil;
 
     _address = rawData.GetSecondarySubtitle().empty() ? nil : @(rawData.GetSecondarySubtitle().c_str());
     _coordFormats = @[@(rawData.GetFormattedCoordinate(place_page::CoordinatesFormat::LatLonDMS).c_str()),

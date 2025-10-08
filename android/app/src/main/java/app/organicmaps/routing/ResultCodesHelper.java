@@ -3,23 +3,18 @@ package app.organicmaps.routing;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Pair;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
-
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.sdk.routing.ResultCodes;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ResultCodesHelper
 {
-
   @NonNull
-  public static ResourcesHolder getDialogTitleSubtitle(@NonNull Context context,
-                                                       int errorCode, int missingCount)
+  public static ResourcesHolder getDialogTitleSubtitle(@NonNull Context context, int errorCode, int missingCount)
   {
     Resources resources = context.getResources();
     int titleRes = 0;
@@ -109,9 +104,8 @@ public class ResultCodesHelper
       builder.append(messagePart);
     }
 
-    return new ResourcesHolder(
-        new Pair<>(titleRes == 0 ? "" : resources.getString(titleRes), builder.toString()),
-        cancelBtnResId);
+    return new ResourcesHolder(new Pair<>(titleRes == 0 ? "" : resources.getString(titleRes), builder.toString()),
+                               cancelBtnResId);
   }
 
   public static boolean isDownloadable(int resultCode, int missingCount)
@@ -121,12 +115,10 @@ public class ResultCodesHelper
 
     return switch (resultCode)
     {
-      case ResultCodes.INCONSISTENT_MWM_ROUTE,
-           ResultCodes.ROUTE_NOT_FOUND_REDRESS_ROUTE_ERROR,
-           ResultCodes.ROUTING_FILE_NOT_EXIST,
-           ResultCodes.NEED_MORE_MAPS,
-           ResultCodes.ROUTE_NOT_FOUND,
-           ResultCodes.FILE_TOO_OLD -> true;
+      case ResultCodes.INCONSISTENT_MWM_ROUTE, ResultCodes.ROUTE_NOT_FOUND_REDRESS_ROUTE_ERROR,
+          ResultCodes.ROUTING_FILE_NOT_EXIST, ResultCodes.NEED_MORE_MAPS, ResultCodes.ROUTE_NOT_FOUND,
+          ResultCodes.FILE_TOO_OLD ->
+        true;
       default -> false;
     };
   }

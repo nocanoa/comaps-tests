@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type.aeroway.aerodrome">விமான நிலையம்</string>
+    <string name="type.addr_interpolation.odd">முகவரி/சாலைத் தொகுதி</string>
+    <string name="type.aerialway">கம்பிப் போக்குவரத்து</string>
+    <string name="type.aeroway.gate">கேட்</string>
+    <string name="type.amenity.language_school">மொழி பள்ளிக்கூடம்</string>
+    <string name="type.amenity.place_of_worship.christian">தேவாலயம்</string>
+    <string name="type.addr_interpolation">முகவரி/சாலைத் தொகுதி</string>
+    <string name="type.addr_interpolation.even">முகவரி/சாலைத் தொகுதி</string>
+    <string name="type.amenity.music_school">இசை பள்ளிக்கூடம்</string>
+</resources>

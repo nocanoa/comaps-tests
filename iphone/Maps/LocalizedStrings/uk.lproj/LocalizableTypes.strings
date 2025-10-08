@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Вода для автобудинків";
 "type.amenity.water_point.drinking_water_no" = "Вода для автобудинків";
 "type.barrier" = "Перешкода";
+"type.barrier.yes" = "Перешкода";
 "type.barrier.block" = "Блок";
 "type.barrier.bollard" = "Стовпчик";
 "type.barrier.border_control" = "Прикордонний контроль";
@@ -465,6 +466,8 @@
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Міст";
 
+"type.highway.pedestrian.square" = "Площа";
+
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Тунель";
 "type.highway.primary" = "Шосе";
@@ -596,8 +599,6 @@
 "type.area_highway.track" = "Ґрунтівка";
 "type.area_highway.trunk" = "Траса";
 "type.area_highway.unclassified" = "Невелика дорога";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Історичний об'єкт";
 "type.historic.aircraft" = "Історичний літак";
 "type.historic.anchor" = "Історичний якір";
@@ -644,19 +645,6 @@
 "type.historic.wayside_cross" = "Християнський хрест";
 "type.historic.wayside_shrine" = "Святиня";
 "type.historic.wreck" = "Корабельна аварія";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Інтернет";
 "type.internet_access.wlan" = "Інтернет";
 "type.junction" = "Перехрестя";
@@ -773,8 +761,6 @@
 "type.man_made.water_well.drinking_water_no" = "Криниця";
 "type.man_made.windmill" = "Вітряний млин";
 "type.man_made.works" = "Промислове виробництво";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Військові об'єкти";
 "type.military.bunker" = "Бункер";
 "type.mountain_pass" = "Перевал";
@@ -901,11 +887,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Стовп передачі";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Громадський транспорт";
 "type.public_transport.platform" = "Платформа";
 "type.railway" = "Залізниця";
@@ -1207,7 +1188,6 @@
 "type.railway.tram_stop" = "Зупинка";
 "type.route" = "Маршрут";
 "type.route.ferry" = "Паромна переправа";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Крамниця";
 "type.shop.alcohol" = "Винний магазин";
 "type.shop.bakery" = "Пекарня";
@@ -1239,7 +1219,7 @@
 "type.shop.department_store" = "Універмаг";
 "type.shop.doityourself" = "Будівельний магазин";
 "type.shop.dry_cleaning" = "Хімчистка";
-"type.shop.electronics" = "Електротехнiка";
+"type.shop.electronics" = "Електротехніка";
 "type.shop.erotic" = "Секс-шоп";
 "type.shop.fabric" = "Магазин тканин";
 "type.shop.farm" = "Магазин фермерських продуктів";
@@ -1504,3 +1484,8 @@
 "type.amenity.ranger_station" = "Лісництво";
 "type.amenity.bicycle_parking.covered" = "Критий велосипедний паркінг";
 "type.post_office.post_partner" = "Поштовий партнер";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

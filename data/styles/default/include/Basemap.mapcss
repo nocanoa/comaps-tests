@@ -99,6 +99,7 @@ area|z12-[leisure=garden],
 area|z11-[landuse=grass],
 area|z11-[natural=grassland],
 area|z12-[leisure=golf_course],
+area|z15-[leisure=dog_park],
 area|z11-[natural=heath],
 area|z12-[landuse=allotments],
 area|z11-[natural=bare_rock],
@@ -165,6 +166,7 @@ area|z12[leisure=golf_course],
 area|z13[leisure=golf_course],
 {fill-color: @golf_13;}
 area|z14-[leisure=golf_course],
+area|z15-[leisure=dog_park],
 {fill-color: @golf;}
 
 area|z12[leisure=garden],
@@ -220,8 +222,17 @@ area|z10-17[boundary=national_park],
 area|z10-17[boundary=protected_area][protect_class=1],
 {fill-opacity: 0.2; fill-color: @protected_nature;}
 
+line|z10-[boundary=national_park],
+line|z10-[boundary=protected_area][protect_class=1],
+{width: 2; color: @protected_nature;}
+
 area|z10-16[boundary=aboriginal_lands],
 {fill-opacity: 0.07; fill-color: @indigenous_lands;}
+
+line|z10-[boundary=aboriginal_lands],
+{width: 2; color: @indigenous_lands;}
+
+/* ToDo: Assume that military areas already have fences? */
 
 area|z10-[landuse=military][military=danger_area],
 {fill-opacity: 1.0; fill-color: @military;}
@@ -267,7 +278,7 @@ area|z12-[landuse=basin],
 area|z12-[landuse=reservoir],
 {fill-opacity: 1;}
 area|z15-[natural=water][tunnel],
-{fill-opacity: 0.15;}
+{fill-opacity: 0.2;}
 
 area|z11-[natural=wetland],
 area|z13-[leisure=swimming_pool],
@@ -279,7 +290,7 @@ line|z13-[waterway=stream],
 line|z13-[waterway=canal],
 line|z13-[waterway=fish_pass],
 line|z13-[natural=strait],
-{opacity: 0.95; color: @water;}
+{opacity: 1; color: @water;}
 
 /* 6.1 Area water(lake,pond etc.) */
 
@@ -326,56 +337,80 @@ area|z11-[natural=wetland][wetland=mangrove],
 /* 6.2 Line water(river,canal etc.) */
 
 line|z10[waterway=river],
-{width: 1.4;}
+{width: 1.5;}
 
 line|z11-12[waterway=river],
-{width: 2;}
+{width: 2.1;}
 
 line|z13[waterway=river],
 line|z13[natural=strait],
-{width: 2.7;}
+{width: 2.8;}
 line|z13[waterway=stream],
 line|z13[waterway=canal],
 line|z13[waterway=fish_pass],
-{width: 1.3;}
+{width: 1.6;}
 line|z13[waterway=stream][intermittent=yes]
-{width: 1;dashes: 2.7,2.7;}
+{dashes: 3,1;}
 
 line|z14[waterway=river],
 line|z14[natural=strait],
-{width: 3.5;}
+{width: 3.6;}
 line|z14[waterway=stream],
 line|z14[waterway=canal],
 line|z14[waterway=fish_pass],
-{width: 1.5;}
-line|z14[waterway=stream][intermittent=yes]
-{width: 1.2;dashes: 2.7,2.7;}
-
-line|z15-[waterway=river],
-line|z15-[natural=strait],
-{width: 4.6;}
-line|z15-[waterway=stream],
-line|z15-[waterway=canal],
-line|z15-[waterway=fish_pass],
 {width: 1.8;}
-line|z15-[waterway=stream][intermittent=yes]
-{width: 1.6;dashes: 4.95,4.95;}
+line|z14[waterway=stream][intermittent=yes]
+{dashes: 6,2;}
+
+line|z15[waterway=river],
+line|z15[natural=strait],
+{width: 4.7;}
+line|z15[waterway=stream],
+line|z15[waterway=canal],
+line|z15[waterway=fish_pass],
+{width: 2.1;}
+line|z15[waterway=stream][intermittent=yes]
+{dashes: 9,3;}
+
+line|z16-[waterway=river],
+line|z16-[natural=strait],
+{width: 5.7;}
+line|z16[waterway=stream],
+line|z16[waterway=canal],
+line|z16[waterway=fish_pass],
+{width: 2.5;}
+line|z16[waterway=stream][intermittent=yes]
+{dashes: 12,4;}
+
+line|z17[waterway=stream],
+line|z17[waterway=canal],
+line|z17[waterway=fish_pass],
+{width: 3.0;}
+line|z17[waterway=stream][intermittent=yes]
+{dashes: 15,5;}
+
+line|z18-[waterway=stream],
+line|z18-[waterway=canal],
+line|z18-[waterway=fish_pass],
+{width: 3.5;}
+line|z18-[waterway=stream][intermittent=yes]
+{dashes: 18,6;}
 
 node|z16-[waterway=lock_gate],
 {icon-image: dot-m.svg;}
 
 line|z13-[waterway=ditch],
 line|z13-[waterway=drain],
-{opacity: 0.8; color: @water_bad; width: 1.5; dashes: 5.4,2.7;}
+{opacity: 1; color: @water_bad; width: 1.5; dashes: 1.5,1;}
 line|z14[waterway=ditch],
 line|z14[waterway=drain],
-{opacity: 0.9;}
-line|z15-[waterway=ditch],
-line|z15-[waterway=drain],
-{opacity: 0.95;}
+{width: 1.7; dashes: 3,2;}
+line|z15[waterway=ditch],
+line|z15[waterway=drain],
+{width: 2.0; dashes: 4.5,3;}
 line|z16-[waterway=ditch],
 line|z16-[waterway=drain],
-{width: 2;}
+{width: 2.4; dashes: 6,4;}
 
 /* Do not draw tunnel waterways */
 line[waterway][tunnel]
@@ -433,9 +468,6 @@ area|z13-[landuse=education],
 area|z15-[amenity=university],
 {fill-opacity: 0.9;}
 
-area|z13-[landuse=retail],
-{fill-color: @retail; fill-opacity: 1;}
-
 area|z14-[leisure=miniature_golf],
 area|z15-[leisure=pitch],
 area|z15-[leisure=track][area?],
@@ -456,24 +488,30 @@ area|z14-[piste:type=snow_park],
 
 /* 7.4 Cemetery */
 
+area|z10[landuse=cemetery],
+area|z10[amenity=grave_yard],
+{fill-color: @flowers_10;}
+area|z11[landuse=cemetery],
+area|z11[amenity=grave_yard],
+{fill-color: @flowers_11;}
+area|z12[landuse=cemetery],
+area|z12[amenity=grave_yard],
+{fill-color: @flowers_12;}
+area|z13[landuse=cemetery],
+area|z13[amenity=grave_yard],
+{fill-color: @flowers_13;}
 area|z14-[landuse=cemetery],
-area|z14-[amenity=grave_yard]
+area|z14-[amenity=grave_yard],
 {fill-color: @flowers;}
 
 /* 7.5 Pedestrian areas */
 
 area|z14-[highway=pedestrian][area?],
 area|z14-[area:highway=pedestrian],
+area|z14-[highway=pedestrian][place=square],
 area|z14-[highway=footway][area?],
 area|z14-[area:highway=footway],
 area|z14-[area:highway=living_street],
-{fill-color: @pedestrian_area_light;}
-
-area|z16-[highway=pedestrian][area?],
-area|z16-[area:highway=pedestrian],
-area|z16-[highway=footway][area?],
-area|z16-[area:highway=footway],
-area|z16-[area:highway=living_street],
 {fill-color: @pedestrian_area;}
 
 area|z16-[public_transport=platform],
@@ -488,6 +526,7 @@ need to make sure that coastline water is rendered on top.
 area|z13-[leisure=marina],
 */
 
+area|z13-[landuse=retail],
 area|z13-[leisure=water_park],
 area|z13-[amenity=place_of_worship],
 area|z13-[landuse=religious],
@@ -501,7 +540,6 @@ area|z13-[amenity=ranger_station],
 area|z13-[tourism=information][information=visitor_centre],
 
 area|z15-[tourism=information][information=office],
-area|z15-[leisure=dog_park],
 area|z15-[amenity=police],
 area|z15-[amenity=courthouse],
 area|z15-[amenity=fire_station],
@@ -656,12 +694,15 @@ area|z17-[waterway=dam],
 
 line|z16-[barrier=fence],
 line|z16-[barrier=wall],
+line|z16-[barrier=yes],
 {color: @fence; width: 1; opacity: 0.5;}
 line|z17[barrier=fence],
 line|z17[barrier=wall],
+line|z17[barrier=yes],
 {width: 1.3; opacity: 0.6;}
 line|z18-[barrier=fence],
 line|z18-[barrier=wall],
+line|z18-[barrier=yes],
 {width: 1.5; opacity: 0.8;}
 
 line|z17-[barrier=guard_rail],

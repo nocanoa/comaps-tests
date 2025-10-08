@@ -12,7 +12,7 @@
     android:id="@+id/iv__place_twitter"
     style="@style/PlacePageMetadataIcon"
     app:srcCompat="@drawable/ic_twitterx_white"
-    app:tint="?colorAccent"/>
+    app:tint="?colorSecondary"/>
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/tv__place_twitter_page"

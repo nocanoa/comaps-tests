@@ -36,7 +36,7 @@
         android:clickable="true"
         android:gravity="start|top"
         android:text="@string/category_desc_more"
-        android:textColor="?attr/colorAccent"
+        android:textColor="?attr/colorSecondary"
         android:layout_marginTop="2dp" />
   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

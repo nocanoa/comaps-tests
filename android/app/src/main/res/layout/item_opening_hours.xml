@@ -56,18 +56,18 @@
     android:textAppearance="@style/MwmTextAppearance.PlacePage"
     tools:text="Mo-Fr 16:00-18.00\nSu 16:00-18.00"/>
 
-  <com.google.android.material.textview.MaterialTextView
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/edit_opening_hours"
-    style="@style/MwmWidget.Editor.FieldLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.Material3.Button.TextButton"
     android:layout_below="@id/opening_hours"
     android:layout_marginStart="@dimen/editor_margin_timetable_left"
     android:layout_marginTop="@dimen/margin_base_plus"
-    android:background="?clickableBackground"
     android:gravity="center_vertical"
     android:minHeight="@dimen/height_block_base"
     android:text="@string/edit_opening_hours"
-    android:textAllCaps="true"
-    android:textAppearance="@style/MwmTextAppearance.Body1"
-    android:textColor="?colorAccent"/>
+    android:textColor="?colorSecondary"
+    android:textAppearance="@style/MwmTextAppearance.Body1" />
 
 </RelativeLayout>

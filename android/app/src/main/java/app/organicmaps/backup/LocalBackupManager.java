@@ -1,22 +1,14 @@
 package app.organicmaps.backup;
 
-import static app.organicmaps.backup.BackupUtils.getBackupName;
 import static app.organicmaps.backup.BackupUtils.getBackupFolders;
+import static app.organicmaps.backup.BackupUtils.getBackupName;
 import static app.organicmaps.sdk.util.StorageUtils.copyFileToDocumentFile;
 import static app.organicmaps.sdk.util.StorageUtils.deleteDirectoryRecursive;
 
 import android.app.Activity;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
-
-import java.io.File;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
 import app.organicmaps.sdk.bookmarks.data.BookmarkCategory;
 import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
 import app.organicmaps.sdk.bookmarks.data.BookmarkSharingResult;
@@ -24,6 +16,11 @@ import app.organicmaps.sdk.bookmarks.data.KmlFileType;
 import app.organicmaps.sdk.util.concurrency.ThreadPool;
 import app.organicmaps.sdk.util.concurrency.UiThread;
 import app.organicmaps.sdk.util.log.Logger;
+import java.io.File;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class LocalBackupManager implements BookmarkManager.BookmarksSharingListener
 {
@@ -139,8 +136,8 @@ public class LocalBackupManager implements BookmarkManager.BookmarksSharingListe
         }
       }
       cleanOldBackups(parentFolder);
-
-    } catch (Exception e)
+    }
+    catch (Exception e)
     {
       Logger.e(TAG, "Failed to save backup", e);
     }

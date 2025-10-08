@@ -14,7 +14,7 @@
     android:layout_width="48dp"
     android:layout_height="48dp"
     android:layout_marginEnd="@dimen/margin_double"
-    app:buttonTint="?colorAccent"/>
+    app:buttonTint="?colorSecondary"/>
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/cuisine"

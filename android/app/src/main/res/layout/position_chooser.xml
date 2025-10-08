@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
@@ -12,42 +12,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="end|center_vertical"
-    android:theme="@style/MwmWidget.ToolbarTheme">
+    android:theme="@style/MwmWidget.ToolbarTheme"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="horizontal"
-      android:padding="@dimen/margin_half">
-
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/editor_add_select_location"
-        android:textAppearance="@style/MwmTextAppearance.Toolbar.Title"/>
-
-      <ImageView
-        app:tint="@color/image_view"
-        android:id="@+id/done"
-        app:srcCompat="@drawable/ic_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_gravity="end"
-        android:scaleType="centerInside"
-        android:contentDescription="@string/done" />
+        android:padding="@dimen/margin_half"
+        android:text="@string/editor_add_select_location"
+        android:textAppearance="@style/MwmTextAppearance.Toolbar.Title"/>
+    </com.google.android.material.appbar.MaterialToolbar>
 
-    </LinearLayout>
-
-  </com.google.android.material.appbar.MaterialToolbar>
-
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?panel"
     android:padding="@dimen/margin_base"
-    android:text="@string/editor_focus_map_on_location"/>
+    android:text="@string/editor_focus_map_on_location"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_point_chooser" />
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="MwmWidget.M3.FAB.Primary"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_done" />
+</androidx.constraintlayout.widget.ConstraintLayout>

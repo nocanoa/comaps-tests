@@ -4,20 +4,18 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.textview.MaterialTextView;
-
 import app.organicmaps.R;
 import app.organicmaps.sdk.editor.data.FeatureCategory;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.sdk.util.StringUtils;
+import app.organicmaps.util.UiUtils;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
 
 public class FeatureCategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-
   private static final int TYPE_CATEGORY = 0;
   private static final int TYPE_FOOTER = 1;
 
@@ -25,7 +23,14 @@ public class FeatureCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
   private final FeatureCategoryFragment mFragment;
   private final FeatureCategory mSelectedCategory;
 
-  public FeatureCategoryAdapter(@NonNull FeatureCategoryFragment host, @NonNull FeatureCategory[] categories, @Nullable FeatureCategory category)
+  public interface FooterListener
+  {
+    void onNoteTextChanged(String newText);
+    void onSendNoteClicked();
+  }
+
+  public FeatureCategoryAdapter(@NonNull FeatureCategoryFragment host, @NonNull FeatureCategory[] categories,
+                                @Nullable FeatureCategory category)
   {
     mFragment = host;
     mCategories = categories;
@@ -50,14 +55,20 @@ public class FeatureCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
   {
-    switch (viewType) {
-      case TYPE_CATEGORY -> {
-        return new FeatureViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feature_category, parent, false));
-      }
-      case TYPE_FOOTER -> {
-        return new FooterViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feature_category_footer, parent, false));
-      }
-      default -> throw new IllegalArgumentException("Unsupported");
+    final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+    switch (viewType)
+    {
+    case TYPE_CATEGORY ->
+    {
+      return new FeatureViewHolder(inflater.inflate(R.layout.item_feature_category, parent, false));
+    }
+    case TYPE_FOOTER ->
+    {
+      return new FooterViewHolder(inflater.inflate(R.layout.item_feature_category_footer, parent, false),
+              mFragment);
+    }
+    default -> throw new IllegalArgumentException("Unsupported viewType: " + viewType);
     }
   }
 
@@ -67,6 +78,10 @@ public class FeatureCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     if (holder instanceof FeatureViewHolder)
     {
       ((FeatureViewHolder) holder).bind(position);
+    }
+    else if (holder instanceof FooterViewHolder)
+    {
+      ((FooterViewHolder) holder).bind(mFragment.getPendingNoteText());
     }
   }
 
@@ -95,20 +110,44 @@ public class FeatureCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void bind(int position)
     {
       mName.setText(mCategories[position].getLocalizedTypeName());
-      boolean showCondition = mSelectedCategory != null
-                              && mCategories[position].getType().equals(mSelectedCategory.getType());
+      boolean showCondition =
+          mSelectedCategory != null && mCategories[position].getType().equals(mSelectedCategory.getType());
       UiUtils.showIf(showCondition, mSelected);
     }
   }
 
   protected static class FooterViewHolder extends RecyclerView.ViewHolder
   {
+    private final TextInputEditText mNoteEditText;
+    private final View mSendNoteButton;
 
-    FooterViewHolder(@NonNull View itemView)
+    FooterViewHolder(@NonNull View itemView, @NonNull FooterListener listener)
     {
       super(itemView);
       MaterialTextView categoryUnsuitableText = itemView.findViewById(R.id.editor_category_unsuitable_text);
       categoryUnsuitableText.setMovementMethod(LinkMovementMethod.getInstance());
+      mNoteEditText = itemView.findViewById(R.id.note_edit_text);
+      mSendNoteButton = itemView.findViewById(R.id.send_note_button);
+      mSendNoteButton.setOnClickListener(v -> listener.onSendNoteClicked());
+      mNoteEditText.addTextChangedListener(new StringUtils.SimpleTextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count)
+        {
+          final String str = s.toString();
+          listener.onNoteTextChanged(str);
+          mSendNoteButton.setEnabled(!str.trim().isEmpty());
+        }
+      });
+    }
+    public void bind(String pendingNoteText)
+    {
+      if (!mNoteEditText.getText().toString().equals(pendingNoteText))
+      {
+        mNoteEditText.setText(pendingNoteText);
+        if (pendingNoteText != null)
+          mNoteEditText.setSelection(pendingNoteText.length());
+      }
+      mSendNoteButton.setEnabled(pendingNoteText != null && !pendingNoteText.trim().isEmpty());
     }
   }
 

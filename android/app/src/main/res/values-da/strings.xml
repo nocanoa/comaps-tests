@@ -16,8 +16,6 @@
     <string name="kilometres">Kilometer</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">Mil</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">Min position</string>
     <!-- Update maps later button text -->
     <string name="later">Senere</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -75,8 +73,6 @@
     <string name="bookmarks">Bogmærker</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
     <string name="bookmarks_and_tracks">Bogmærker og spor</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">Mine steder</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Navn</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -138,8 +134,6 @@
     <string name="category_post">Post</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">Politi</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">WiFi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">Recirkulering</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -220,7 +214,7 @@
     <!-- Settings «Route» category: «Tts language» title -->
     <string name="pref_tts_language_title">Stemmesprog</string>
     <!-- Settings «Route» category: «Test Voice Directions» title -->
-    <string name="pref_tts_test_voice_title">Test stemmeanvisninger (TTS, Text-To-Speech)</string>
+    <string name="pref_tts_test_voice_title">Test stemmevejledninger</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
     <string name="pref_tts_playing_test_voice">Tjek lydstyrken eller systemets tekst-til-tale-indstillinger, hvis du ikke kan høre stemmen nu</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
@@ -243,7 +237,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Doner</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Støt projektet</string>
+    <string name="how_to_support_us">Bliv frivillig og forbedr CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Copyright</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -410,7 +404,6 @@
     <string name="twentyfour_seven">Døgnet rundt</string>
     <string name="day_off_today">Lukket i dag</string>
     <string name="day_off">Lukket</string>
-    <string name="today">I dag</string>
     <string name="closed">Lukket</string>
     <string name="edit_opening_hours">Rediger åbningstid</string>
     <string name="no_osm_account">Har du ikke OpenStreetMap-konto?</string>
@@ -419,8 +412,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Ikke logget ind</string>
     <string name="login_osm">Log ind på OpenStreetMap</string>
-    <string name="password">Adgangskode</string>
-    <string name="forgot_password">Glemt adgangskode?</string>
     <string name="logout">Log ud</string>
     <string name="edit_place">Redigér stedet</string>
     <string name="add_language">Tilføj et sprog</string>
@@ -436,11 +427,9 @@
     <string name="empty_street_name_error">Indtast et gadenavn</string>
     <string name="choose_language">Vælg et sprog</string>
     <string name="choose_street">Vælg en gade</string>
-    <string name="postal_code">Postnummer</string>
     <string name="cuisine">Køkken</string>
     <string name="select_cuisine">Vælg køkken</string>
     <!-- login text field -->
-    <string name="email_or_username">E-mail eller brugernavn</string>
     <string name="level">Etage</string>
     <string name="downloader_delete_map_dialog">Alle dine kortændringer vil blive slettet sammen med kortet</string>
     <string name="downloader_update_maps">Opdatér kort</string>
@@ -476,8 +465,6 @@
     <string name="error_enter_correct_storey_number">Antallet af etager må ikke overstige %d etager</string>
     <string name="editor_zip_code">Postnummer</string>
     <string name="error_enter_correct_zip_code">Indtast et gyldigt postnummer</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">Kortpunkt</string>
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">Note til OpenStreetMap-frivillige (valgfrit)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
@@ -495,16 +482,8 @@
     <string name="downloader_no_downloaded_maps_title">Du har ikke downloadet nogen kort</string>
     <string name="downloader_no_downloaded_maps_message">Download kort for at søge og navigere offline</string>
     <string name="current_location_unknown_error_title">Aktuel placering er ukendt</string>
-    <!-- abbreviation for meters -->
-    <string name="m">m</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">km</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/t</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">mil</string>
-    <!-- A unit of measure -->
-    <string name="ft">fod</string>
     <string name="miles_per_hour">mph</string>
     <string name="hour">time</string>
     <string name="minute">min</string>
@@ -556,8 +535,6 @@
     <string name="prefs_languages_information_off_link">Se denne vejledning for flere oplysninger</string>
     <string name="transliteration_title">Translitterer til det latinske alfabet</string>
     <string name="learn_more">Flere oplysninger</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">Udgang</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Brug søgning eller tryk på kortet for at tilføje et startpunkt for en rute</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -566,12 +543,9 @@
     <string name="button_plan">Planlæg</string>
     <string name="placepage_remove_stop">Fjern stop</string>
     <string name="placepage_add_stop">Tilføj stop</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Log ind på OpenStreetMap for automatisk at uploade alle dine kortredigeringer. Få mere at vide <a href="https://github.com/organicmaps/organicmaps/issues/6144">her</a>.</string>
     <string name="dialog_error_storage_title">Problem med lageradgang</string>
     <string name="dialog_error_storage_message">Eksternt lager er ikke tilgængeligt. SD-kortet kan være blevet fjernet eller beskadiget, eller filsystemet er skrivebeskyttet. Kontroller dit SD-kort eller kontakt os på support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emulér beskadiget lager</string>
-    <string name="core_entrance">Indgang</string>
     <string name="error_enter_correct_name">Angiv et korrekt navn</string>
     <string name="bookmark_lists">Lister</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -611,16 +585,12 @@
     <string name="button_layer_traffic">Trafik</string>
     <string name="subway">Undergrundsbane</string>
     <string name="layers_title">Kortstile og -lag</string>
-    <string name="subway_data_unavailable">Kort over undergrundsbaner er ikke tilgængeligt</string>
     <string name="bookmarks_empty_list_title">Listen er tom</string>
     <string name="bookmarks_empty_list_message">For at tilføje et bogmærke, så tryk et sted på kort og så på stjerneikonet</string>
     <string name="category_desc_more">…mere</string>
     <string name="export_file">Eksporter KMZ</string>
     <string name="export_file_gpx">Eksporter GPX</string>
     <string name="delete_list">Slet liste</string>
-    <string name="public_access">Offentlig adgang</string>
-    <string name="limited_access">Begrænset adgang</string>
-    <string name="not_shared">Privat</string>
     <string name="speedcams_alert_title">Fartkameraer</string>
     <string name="place_description_title">Beskrivelse af sted</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -637,7 +607,6 @@
     <string name="power_managment_setting_auto">Når batteriniveauet er lavt</string>
     <string name="power_managment_setting_manual_max">Altid</string>
     <string name="enable_logging_warning_message">Aktivér denne mulighed midlertidigt for at registrere og manuelt sende detaljerede diagnostiske logfiler om dit problem til os ved hjælp af \"Rapportér en fejl\" i Hjælp-dialogen. Logfiler kan indeholde placeringsoplysninger.</string>
-    <string name="access_rules_author_only">Online redigering</string>
     <string name="driving_options_title">Indstillinger for ruteberegning</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">Undgå betalingsveje</string>
@@ -819,11 +788,8 @@
     <string name="opens_in">Åbner om %s</string>
     <string name="maps_storage_free_size">%1$s fri af %2$s</string>
     <string name="enable_show_on_lock_screen">Vis på låseskærmen</string>
-    <string name="facebook">Facebook</string>
     <string name="error_enter_correct_facebook_page">Indtast en gyldig Facebook-webadresse, -konto eller -sidenavn</string>
     <string name="connection_failure">Forbindelsesfejl</string>
-    <string name="mb">MB</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="error_enter_correct_twitter_page">Indtast et gyldigt Twitter-brugernavn eller en webadresse</string>
     <string name="share_bookmarks_email_body">Hej! \n \nVedhæftet er mine bogmærker; åbn dem venligst i CoMaps. Hvis du ikke har den installeret, kan du downloade den her: https://www.comaps.app/download/\n \nGod rejse med CoMaps!</string>
     <string name="delete_place_empty_comment_error">Angiv begrundelsen for at slette stedet</string>
@@ -832,31 +798,18 @@
     <string name="translated_om_site_url">https://comaps.app/</string>
     <string name="navigation_stop_button">Stop</string>
     <string name="error_enter_correct_vk_page">Indtast et gyldigt VK-brugernavn eller en webadresse</string>
-    <string name="gb">GB</string>
     <string name="error_enter_correct_line_page">Indtast et gyldigt LINE ID eller en webadresse</string>
-    <string name="maps_storage_internal">Intern privat lagerplads</string>
-    <string name="maps_storage_shared">Intern delt lagerplads</string>
-    <string name="maps_storage_removable">SD-kort</string>
-    <string name="maps_storage_external">Ekstern delt lagerplads</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="level_value_generic">Etage: %s</string>
     <string name="closes_in">Lukker om %s</string>
     <string name="enable_show_on_lock_screen_description">Når den er aktiveret, fungerer appen på låseskærmen, selv når enheden er låst.</string>
-    <string name="matrix">[Matrix]</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="mastodon">Mastodon</string>
     <string name="move_maps_error">Fejl ved flytning af kortfiler</string>
     <string name="disk_error">Kan ikke oprette mapper og flytte filer på enhedens interne hukommelse eller sd-kort</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="github">GitHub</string>
     <string name="prefs_group_general">Generelle indstillinger</string>
-    <string name="vk">VK</string>
     <string name="read_in_wikipedia">Wikipedia</string>
     <string name="menu">Menu</string>
-    <string name="telegram">Telegram</string>
-    <string name="instagram">Instagram</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="change_map_locale">Sprog på kort</string>
     <string name="prefs_group_information">Information</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
@@ -864,7 +817,6 @@
     <string name="panoramax">Panoramax-billede</string>
     <string name="saved">Gemt</string>
     <string name="about_help">Om og hjælp</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_fediverse_page">Indtast et gyldigt Mastodon-brugernavn eller en gyldig webadresse</string>
     <string name="error_enter_correct_bluesky_page">Indtast et gyldigt Bluesky-brugernavn eller en webadresse</string>
     <string name="editor_level">Etage (0 er stueetage)</string>
@@ -883,7 +835,6 @@
     <string name="dialog_report_error_with_logs">Send os en fejlrapport:\n - \"Aktivér logning\" i indstillingerne\n - genskab problemet\n - Tryk på knappen \"Rapporter en fejl\" i skærmbilledet \"Om og hjælp\" og send via e-mail eller chat.\n - deaktiver logning</string>
     <string name="editor_building_levels">Etager (inkl. stueetage, ekskl. tag)</string>
     <string name="error_enter_correct_level">Indtast et gyldigt etagenummer</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_title">Indstilling af venstre knap</string>
     <string name="pref_backup_title">Sikkerhedskopi af bogmærker og spor</string>
     <string name="pref_backup_now_title">Sikkerhedskopiér nu</string>
@@ -903,4 +854,11 @@
     <string name="closed_now">Lukket nu</string>
     <string name="open_now">Åben nu</string>
     <string name="at">kl. %s</string>
+    <string name="share_track">Del spor</string>
+    <string name="delete_track_dialog_title">Slet %s?</string>
+    <string name="pref_tts_no_system_tts_short">Der blev ikke fundet nogen tekst-til-tale-motor. Kontrollér appens indstillinger</string>
+    <string name="osm_note_hint">Du kan også efterlade en bemærkning til OpenStreetMap-fællesskabet, så en anden kan tilføje eller rette stedet her.</string>
+    <string name="osm_note_toast">Bemærkning vil blive sendt til OpenStreetMap</string>
+    <string name="existence_confirmed_time_ago">Eksistens bekræftet %s</string>
+    <string name="hours_confirmed_time_ago">Bekræftet %s</string>
 </resources>

@@ -56,11 +56,11 @@
       <FrameLayout
         android:id="@+id/downloader_controls_frame"
         android:layout_width="180dp"
-        android:layout_height="@dimen/downloader_status_size"
+        android:layout_height="wrap_content"
         android:clipChildren="false">
         <com.google.android.material.button.MaterialButton
           android:id="@+id/downloader_button"
-          style="@style/MwmWidget.Button.Primary"
+          style="@style/MwmWidget.M3.Button.Primary"
           android:layout_width="180dp"
           android:layout_gravity="center"
           android:visibility="gone"
@@ -70,7 +70,7 @@
           android:layout_width="@dimen/downloader_status_size"
           android:layout_height="@dimen/downloader_status_size"
           android:layout_gravity="center"
-          app:wheelProgressColor="?colorAccent"
+          app:wheelProgressColor="?colorSecondary"
           app:wheelSecondaryColor="?dividerHorizontal"
           app:wheelThickness="@dimen/margin_eighth"
           android:visibility="visible"

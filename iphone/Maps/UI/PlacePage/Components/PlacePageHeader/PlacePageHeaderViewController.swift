@@ -3,7 +3,7 @@ protocol PlacePageHeaderViewProtocol: AnyObject {
   var isExpandViewHidden: Bool { get set }
   var isShadowViewHidden: Bool { get set }
 
-  func setTitle(_ title: String?, secondaryTitle: String?)
+  func setTitle(_ title: String?, secondaryTitle: String?, branch: String?)
   func showShareTrackMenu()
 }
 
@@ -21,6 +21,7 @@ class PlacePageHeaderViewController: UIViewController {
 
   private var titleText: String?
   private var secondaryText: String?
+  private var branchText: String?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,6 +38,9 @@ class PlacePageHeaderViewController: UIViewController {
     if presenter?.objectType == .track {
       configureTrackSharingMenu()
     }
+
+    let interaction = UIContextMenuInteraction(delegate: self)
+    titleLabel?.addInteraction(interaction)
   }
 
   @objc func onExpandPressed(sender: UITapGestureRecognizer) {
@@ -54,7 +58,7 @@ class PlacePageHeaderViewController: UIViewController {
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
     guard traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle else { return }
-    setTitle(titleText, secondaryTitle: secondaryText)
+    setTitle(titleText, secondaryTitle: secondaryText, branch: branchText)
   }
 }
 
@@ -77,9 +81,11 @@ extension PlacePageHeaderViewController: PlacePageHeaderViewProtocol {
     }
   }
 
-  func setTitle(_ title: String?, secondaryTitle: String?) {
+  func setTitle(_ title: String?, secondaryTitle: String?, branch: String? = nil) {
     titleText = title
     secondaryText = secondaryTitle
+    branchText = branch
+    
     // XCode 13 is not smart enough to detect that title is used below, and requires explicit unwrapped variable.
     guard let unwrappedTitle = title else {
       titleLabel?.attributedText = nil
@@ -87,11 +93,20 @@ extension PlacePageHeaderViewController: PlacePageHeaderViewProtocol {
     }
 
     let titleAttributes: [NSAttributedString.Key: Any] = [
-      .font: StyleManager.shared.theme!.fonts.medium20,
+      .font: StyleManager.shared.theme!.fonts.semibold20,
       .foregroundColor: UIColor.blackPrimaryText()
     ]
 
     let attributedText = NSMutableAttributedString(string: unwrappedTitle, attributes: titleAttributes)
+    
+    // Add branch with thinner font weight if present and not already in title
+    if let branch = branch, !branch.isEmpty, !unwrappedTitle.contains(branch) {
+      let branchAttributes: [NSAttributedString.Key: Any] = [
+        .font: StyleManager.shared.theme!.fonts.regular20,
+        .foregroundColor: UIColor.blackPrimaryText()
+      ]
+      attributedText.append(NSAttributedString(string: " \(branch)", attributes: branchAttributes))
+    }
 
     guard let unwrappedSecondaryTitle = secondaryTitle else {
       titleLabel?.attributedText = attributedText
@@ -111,38 +126,32 @@ extension PlacePageHeaderViewController: PlacePageHeaderViewProtocol {
   }
 
   func showShareTrackMenu() {
-    if #available(iOS 14.0, *) {
       // The menu will be shown by the shareButton itself
-    } else {
-      let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-      let kmlAction = UIAlertAction(title: L("export_file"), style: .default) { [weak self] _ in
-        guard let self else { return }
-        self.presenter?.onExportTrackButtonPress(.text, from: self.shareButton)
-      }
-      let gpxAction = UIAlertAction(title: L("export_file_gpx"), style: .default) { [weak self] _ in
-        guard let self else { return }
-        self.presenter?.onExportTrackButtonPress(.gpx, from: self.shareButton)
-      }
-      alert.addAction(kmlAction)
-      alert.addAction(gpxAction)
-      present(alert, animated: true, completion: nil)
-    }
   }
 
   private func configureTrackSharingMenu() {
-    if #available(iOS 14.0, *) {
-      let menu = UIMenu(title: "", image: nil, children: [
-        UIAction(title: L("export_file"), image: nil, handler: { [weak self] _ in
-          guard let self else { return }
-          self.presenter?.onExportTrackButtonPress(.text, from: self.shareButton)
-        }),
-        UIAction(title: L("export_file_gpx"), image: nil, handler: { [weak self] _ in
-          guard let self else { return }
-          self.presenter?.onExportTrackButtonPress(.gpx, from: self.shareButton)
-        }),
-      ])
-      shareButton.menu = menu
-      shareButton.showsMenuAsPrimaryAction = true
-    }
+    let menu = UIMenu(title: "", image: nil, children: [
+      UIAction(title: L("export_file"), image: nil, handler: { [weak self] _ in
+        guard let self else { return }
+        self.presenter?.onExportTrackButtonPress(.text, from: self.shareButton)
+      }),
+      UIAction(title: L("export_file_gpx"), image: nil, handler: { [weak self] _ in
+        guard let self else { return }
+        self.presenter?.onExportTrackButtonPress(.gpx, from: self.shareButton)
+      }),
+    ])
+    shareButton.menu = menu
+    shareButton.showsMenuAsPrimaryAction = true
+  }
+}
+
+extension PlacePageHeaderViewController: UIContextMenuInteractionDelegate {
+  func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+    return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+      let copyAction = UIAction(title: L("copy_to_clipboard"), image: UIImage(systemName: "document.on.clipboard")) { action in
+          UIPasteboard.general.string = self.titleLabel?.text
+      }
+      return UIMenu(title: "", children: [copyAction])
+    })
   }
 }

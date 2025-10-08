@@ -1,14 +1,15 @@
 package app.organicmaps.util;
 
+import static app.organicmaps.sdk.util.Utils.dimen;
+import static app.organicmaps.sdk.util.Utils.isIntentSupported;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.DimenRes;
 import androidx.annotation.Keep;
@@ -39,18 +39,17 @@ import app.organicmaps.BuildConfig;
 import app.organicmaps.MwmActivity;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
+import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.Constants;
 import app.organicmaps.sdk.util.Distance;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.sdk.util.StringUtils;
 import app.organicmaps.sdk.util.concurrency.UiThread;
 import app.organicmaps.sdk.util.log.Logger;
 import app.organicmaps.sdk.util.log.LogsManager;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.Closeable;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.util.Map;
+import java.time.LocalTime;
+import java.util.concurrent.TimeUnit;
 
 @Keep
 public class Utils
@@ -64,10 +63,7 @@ public class Utils
   public static final String ZIP_MIME_TYPE = "application/x-zip";
   public static final String EMAIL_MIME_TYPE = "message/rfc822";
 
-
-  private Utils()
-  {
-  }
+  private Utils() {}
 
   /**
    * Enable to keep screen on.
@@ -125,28 +121,14 @@ public class Utils
     showSnackbar(context, view, null, messageResId);
   }
 
-  public static void showSnackbar(@NonNull Context context, @NonNull View view,
-                                  @Nullable View viewAbove, int messageResId)
+  public static void showSnackbar(@NonNull Context context, @NonNull View view, @Nullable View viewAbove,
+                                  int messageResId)
   {
     final String message = context.getString(messageResId);
     if (viewAbove == null)
       showSnackbar(view, message);
     else
       showSnackbarAbove(view, viewAbove, message);
-  }
-
-  @SuppressWarnings("deprecated")
-  private static @Nullable ResolveInfo resolveActivity(@NonNull PackageManager pm, @NonNull Intent intent, int flags)
-  {
-    return pm.resolveActivity(intent, flags);
-  }
-
-  public static boolean isIntentSupported(@NonNull Context context, @NonNull Intent intent)
-  {
-    final PackageManager pm = context.getPackageManager();
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU)
-      return resolveActivity(pm, intent, 0) != null;
-    return pm.resolveActivity(intent, PackageManager.ResolveInfoFlags.of(0)) != null;
   }
 
   public static @Nullable Intent makeSystemLocationSettingIntent(@NonNull Context context)
@@ -167,7 +149,8 @@ public class Utils
 
   public static void checkNotNull(Object object)
   {
-    if (null == object) throw new NullPointerException("Argument here must not be NULL");
+    if (null == object)
+      throw new NullPointerException("Argument here must not be NULL");
   }
 
   public static void copyTextToClipboard(Context context, String text)
@@ -177,33 +160,10 @@ public class Utils
     final ClipData clip = ClipData.newPlainText(context.getString(R.string.project_name) + ": " + text, text);
     clipboard.setPrimaryClip(clip);
   }
-
-  public static <K, V> String mapPrettyPrint(Map<K, V> map)
-  {
-    if (map == null)
-      return "[null]";
-    if (map.isEmpty())
-      return "[]";
-
-
-    String joined = "";
-    for (final K key : map.keySet())
-    {
-      final String keyVal = key + "=" + map.get(key);
-      if (!joined.isEmpty())
-        joined = TextUtils.join(",", new Object[]{joined, keyVal});
-      else
-        joined = keyVal;
-    }
-
-    return "[" + joined + "]";
-  }
-
   public static Uri buildMailUri(String to, String subject, String body)
   {
-    String uriString = Constants.Url.MAILTO_SCHEME + Uri.encode(to) +
-        Constants.Url.MAIL_SUBJECT + Uri.encode(subject) +
-        Constants.Url.MAIL_BODY + Uri.encode(body);
+    String uriString = Constants.Url.MAILTO_SCHEME + Uri.encode(to) + Constants.Url.MAIL_SUBJECT + Uri.encode(subject)
+                     + Constants.Url.MAIL_BODY + Uri.encode(body);
 
     return Uri.parse(uriString);
   }
@@ -217,7 +177,8 @@ public class Utils
     try
     {
       activity.startActivity(marketIntent);
-    } catch (ActivityNotFoundException e)
+    }
+    catch (ActivityNotFoundException e)
     {
       Logger.e(TAG, "Failed to start activity", e);
     }
@@ -230,7 +191,8 @@ public class Utils
       // Exception is thrown if we don't have installed Facebook application.
       getPackageInfo(activity.getPackageManager(), Constants.Package.FB_PACKAGE, 0);
       activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.Url.FB_OM_COMMUNITY_NATIVE)));
-    } catch (final Exception e)
+    }
+    catch (final Exception e)
     {
       activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.Url.FB_OM_COMMUNITY_HTTP)));
     }
@@ -241,18 +203,33 @@ public class Utils
     if (TextUtils.isEmpty(url))
       return;
 
+    Uri uri =
+        isHttpOrHttpsScheme(url) ? Uri.parse(url) : new Uri.Builder().scheme("http").appendEncodedPath(url).build();
+
+    Utils.openUri(context, uri, R.string.browser_not_available);
+  }
+
+  /**
+   * Attempts to open a URI in another app via the system app chooser.
+   * @param context the app context
+   * @param uri the URI to open.
+   * @param failMessage string id: message to show in a toast when the system can't find an app to open with.
+   */
+  public static void openUri(@NonNull Context context, @NonNull Uri uri, @Nullable Integer failMessage)
+  {
     final Intent intent = new Intent(Intent.ACTION_VIEW);
-    Uri uri = isHttpOrHttpsScheme(url)
-               ? Uri.parse(url)
-               : new Uri.Builder().scheme("http").appendEncodedPath(url).build();
     intent.setData(uri);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
     try
     {
       context.startActivity(intent);
     }
     catch (ActivityNotFoundException e)
     {
-      Toast.makeText(context, context.getString(R.string.browser_not_available), Toast.LENGTH_LONG).show();
+      if (failMessage != null)
+        Toast.makeText(context, context.getString(failMessage), Toast.LENGTH_LONG).show();
       Logger.e(TAG, "ActivityNotFoundException", e);
     }
     catch (AndroidRuntimeException e)
@@ -263,49 +240,9 @@ public class Utils
     }
   }
 
-  /**
-   * Attempts to open a URI in another app via the system app chooser.
-   * @param context the app context
-   * @param uri the URI to open.
-   * @param failMessage string id: message to show in a toast when the system can't find an app to open with.
-   * @param action (optional) the Intent action to use. If none is provided, defaults to Intent.ACTION_VIEW.
-   */
-  public static void openUri(@NonNull Context context, @NonNull Uri uri, Integer failMessage, @NonNull String... action)
-  {
-    final String act = (action != null && action.length > 0 && action[0] != null) ? action[0] : Intent.ACTION_VIEW;
-    final Intent intent = new Intent(act);
-    intent.setData(uri);
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-    // https://developer.android.com/guide/components/intents-common
-    // check that an app exists to open with, otherwise it'll crash
-    if (intent.resolveActivity(context.getPackageManager()) != null)
-      context.startActivity(intent);
-    else
-      Toast.makeText(context, failMessage, Toast.LENGTH_SHORT).show();
-  }
-
   private static boolean isHttpOrHttpsScheme(@NonNull String url)
   {
     return url.startsWith("http://") || url.startsWith("https://");
-  }
-
-  public static void closeSafely(@NonNull Closeable... closeable)
-  {
-    for (Closeable each : closeable)
-    {
-      if (each != null)
-      {
-        try
-        {
-          each.close();
-        }
-        catch (IOException e)
-        {
-          Logger.e(TAG, "Failed to close '" + each + "'", e);
-        }
-      }
-    }
   }
 
   // subject is optional (could be an empty string).
@@ -313,17 +250,22 @@ public class Utils
   /**
    * @param subject could be an empty string
    */
-  public static void sendBugReport(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher, @NonNull Activity activity, @NonNull String subject, @NonNull String body)
+  public static void sendBugReport(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher,
+                                   @NonNull Activity activity, @NonNull String subject, @NonNull String body)
   {
-    subject = activity.getString(R.string.project_name) + " Bug Report" + (TextUtils.isEmpty(subject) ? "" : ": " + subject);
-    LogsManager.INSTANCE.zipLogs(new SupportInfoWithLogsCallback(launcher, activity, subject, body, Constants.Email.SUPPORT));
+    subject =
+        activity.getString(R.string.project_name) + " Bug Report" + (TextUtils.isEmpty(subject) ? "" : ": " + subject);
+    LogsManager.INSTANCE.zipLogs(
+        new SupportInfoWithLogsCallback(launcher, activity, subject, body, BuildConfig.SUPPORT_MAIL));
   }
 
-  // TODO: Don't send logs with general feedback, send system information only (version, device name, connectivity, etc.)
-  public static void sendFeedback(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher, @NonNull Activity activity)
+  // TODO: Don't send logs with general feedback, send system information only (version, device name, connectivity,
+  // etc.)
+  public static void sendFeedback(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher,
+                                  @NonNull Activity activity)
   {
-    LogsManager.INSTANCE.zipLogs(new SupportInfoWithLogsCallback(launcher, activity, activity.getString(R.string.project_name) + " Feedback", "",
-                                                                 Constants.Email.SUPPORT));
+    LogsManager.INSTANCE.zipLogs(new SupportInfoWithLogsCallback(
+        launcher, activity, activity.getString(R.string.project_name) + " Feedback", "", BuildConfig.SUPPORT_MAIL));
   }
 
   public static void navigateToParent(@NonNull Activity activity)
@@ -334,11 +276,14 @@ public class Utils
       NavUtils.navigateUpFromSameTask(activity);
   }
 
-  public static SpannableStringBuilder formatTime(Context context, @DimenRes int size, @DimenRes int units, String dimension, String unitText)
+  public static SpannableStringBuilder formatTime(Context context, @DimenRes int size, @DimenRes int units,
+                                                  String dimension, String unitText)
   {
     final SpannableStringBuilder res = new SpannableStringBuilder(dimension).append("\u00A0").append(unitText);
-    res.setSpan(new AbsoluteSizeSpan(UiUtils.dimen(context, size), false), 0, dimension.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    res.setSpan(new AbsoluteSizeSpan(UiUtils.dimen(context, units), false), dimension.length(), res.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    res.setSpan(new AbsoluteSizeSpan(dimen(context, size), false), 0, dimension.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    res.setSpan(new AbsoluteSizeSpan(dimen(context, units), false), dimension.length(), res.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     return res;
   }
 
@@ -346,12 +291,10 @@ public class Utils
   public static Spannable formatDistance(Context context, @NonNull Distance distance)
   {
     final SpannableStringBuilder res = new SpannableStringBuilder(distance.toString(context));
-    res.setSpan(
-        new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_nav_number), false),
-        0, distance.mDistanceStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    res.setSpan(
-        new AbsoluteSizeSpan(UiUtils.dimen(context, R.dimen.text_size_nav_dimension), false),
-        distance.mDistanceStr.length(), res.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    res.setSpan(new AbsoluteSizeSpan(dimen(context, R.dimen.text_size_nav_number), false), 0,
+                distance.mDistanceStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    res.setSpan(new AbsoluteSizeSpan(dimen(context, R.dimen.text_size_nav_dimension), false),
+                distance.mDistanceStr.length(), res.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     return res;
   }
 
@@ -365,7 +308,8 @@ public class Utils
     sendTo(context, email, subject, "");
   }
 
-  public static void sendTo(@NonNull Context context, @NonNull String email, @NonNull String subject, @NonNull String body)
+  public static void sendTo(@NonNull Context context, @NonNull String email, @NonNull String subject,
+                            @NonNull String body)
   {
     Intent intent = new Intent(Intent.ACTION_SENDTO);
     intent.setData(Utils.buildMailUri(email, subject, body));
@@ -386,8 +330,7 @@ public class Utils
     }
   }
 
-  public static void detachFragmentIfCoreNotInitialized(@NonNull Context context,
-                                                        @NonNull Fragment fragment)
+  public static void detachFragmentIfCoreNotInitialized(@NonNull Context context, @NonNull Fragment fragment)
   {
     if (MwmApplication.from(context).getOrganicMaps().arePlatformAndCoreInitialized())
       return;
@@ -420,13 +363,6 @@ public class Utils
 
     return Character.toLowerCase(src.charAt(0)) + src.substring(1);
   }
-
-  public interface Proc<T>
-  {
-    void invoke(@NonNull T param);
-  }
-
-
   public static String getLocalizedLevel(@NonNull Context context, @Nullable String level)
   {
     if (TextUtils.isEmpty(level))
@@ -447,8 +383,9 @@ public class Utils
     @NonNull
     private final String mEmail;
 
-    private SupportInfoWithLogsCallback(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher, @NonNull Activity activity, @NonNull String subject,
-                                         @NonNull String body, @NonNull String email)
+    private SupportInfoWithLogsCallback(@NonNull ActivityResultLauncher<SharingUtils.SharingIntent> launcher,
+                                        @NonNull Activity activity, @NonNull String subject, @NonNull String body,
+                                        @NonNull String email)
     {
       mActivityRef = new WeakReference<>(activity);
       mSubject = subject;
@@ -483,13 +420,11 @@ public class Utils
         }
 
         SharingUtils.shareFile(activity.getApplicationContext(), mLauncher, info);
-
       });
     }
   }
 
-  public static <T> T getParcelable(@NonNull Bundle in, @Nullable String key,
-                                    @NonNull Class<T> clazz)
+  public static <T> T getParcelable(@NonNull Bundle in, @Nullable String key, @NonNull Class<T> clazz)
   {
     in.setClassLoader(clazz.getClassLoader());
     return BundleCompat.getParcelable(in, key, clazz);
@@ -509,22 +444,6 @@ public class Utils
   }
 
   @SuppressWarnings("deprecation")
-  private static ApplicationInfo getApplicationInfoOld(@NonNull PackageManager manager, @NonNull String packageName, int flags)
-      throws PackageManager.NameNotFoundException
-  {
-    return manager.getApplicationInfo(packageName, flags);
-  }
-
-  public static ApplicationInfo getApplicationInfo(@NonNull PackageManager manager, @NonNull String packageName,
-                                                   int flags)
-      throws PackageManager.NameNotFoundException
-  {
-    if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU)
-      return getApplicationInfoOld(manager, packageName, flags);
-    return manager.getApplicationInfo(packageName, PackageManager.ApplicationInfoFlags.of(flags));
-  }
-
-  @SuppressWarnings("deprecation")
   private static PackageInfo getPackageInfoOld(@NonNull PackageManager manager, @NonNull String packageName, int flags)
       throws PackageManager.NameNotFoundException
   {
@@ -537,5 +456,42 @@ public class Utils
     if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU)
       return getPackageInfoOld(manager, packageName, flags);
     return manager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(flags));
+  }
+
+  @NonNull
+  public static CharSequence formatRoutingTime(Context context, int seconds, @DimenRes int unitsSize)
+  {
+    return formatRoutingTime(context, seconds, unitsSize, R.dimen.text_size_routing_number);
+  }
+
+  @NonNull
+  public static CharSequence formatRoutingTime(Context context, int seconds, @DimenRes int unitsSize,
+                                               @DimenRes int textSize)
+  {
+    long minutes = TimeUnit.SECONDS.toMinutes(seconds) % 60;
+    long hours = TimeUnit.SECONDS.toHours(seconds);
+    String min = context.getString(R.string.minute);
+    String hour = context.getString(R.string.hour);
+    SpannableStringBuilder displayedH = Utils.formatTime(context, textSize, unitsSize, String.valueOf(hours), hour);
+    SpannableStringBuilder displayedM = Utils.formatTime(context, textSize, unitsSize, String.valueOf(minutes), min);
+    return hours == 0 ? displayedM : TextUtils.concat(displayedH + "\u00A0", displayedM);
+  }
+
+  @NonNull
+  public static String formatArrivalTime(int seconds)
+  {
+    final LocalTime time = LocalTime.now().plusSeconds(seconds);
+    return StringUtils.formatUsingUsLocale("%d:%02d", time.getHour(), time.getMinute());
+  }
+
+  @NonNull
+  public static String getDonateUrl(@NonNull Context context)
+  {
+    final String url = Config.getDonateUrl();
+    // Enable donations by default if not Google or Huawei. Replace comaps.app/donate/ with localized page.
+    if ((url.isEmpty() && !BuildConfig.FLAVOR.equals("google") && !BuildConfig.FLAVOR.equals("huawei"))
+        || url.endsWith("comaps.app/donate/"))
+      return context.getString(R.string.app_site_url) + "donate/";
+    return url;
   }
 }

@@ -12,8 +12,7 @@
 #include <cstring>
 #include <limits>
 
-ImguiRenderer::ImguiRenderer()
-  : m_state(df::CreateRenderState(gpu::Program::ImGui, df::DepthLayer::GuiLayer))
+ImguiRenderer::ImguiRenderer() : m_state(df::CreateRenderState(gpu::Program::ImGui, df::DepthLayer::GuiLayer))
 {
   m_state.SetDepthTestEnabled(false);
   m_state.SetBlending(dp::Blending(true));
@@ -91,21 +90,20 @@ void ImguiRenderer::Render(ref_ptr<dp::GraphicsContext> context, ref_ptr<dp::Tex
 
   gpu::ImGuiProgramParams const params{.m_projection = m_projection};
   context->PushDebugLabel("ImGui Rendering");
-  m_mesh->Render(context, gpuProgram, m_state, programManager->GetParamsSetter(), params,
-                 [&, this]()
-                 {
-                   context->SetCullingEnabled(false);
-                   for (auto const & drawCall : dataBuffer.m_drawCalls)
-                   {
-                     uint32_t y = drawCall.clipRect.y;
-                     if (context->GetApiVersion() == dp::ApiVersion::OpenGLES3)
-                       y = dataBuffer.m_height - y - drawCall.clipRect.w;
-                     context->SetScissor(drawCall.clipRect.x, y, drawCall.clipRect.z, drawCall.clipRect.w);
-                     m_mesh->DrawPrimitivesSubsetIndexed(context, drawCall.indexCount, drawCall.startIndex);
-                   }
-                   context->SetCullingEnabled(true);
-                   context->SetScissor(0, 0, dataBuffer.m_width, dataBuffer.m_height);
-                 });
+  m_mesh->Render(context, gpuProgram, m_state, programManager->GetParamsSetter(), params, [&, this]()
+  {
+    context->SetCullingEnabled(false);
+    for (auto const & drawCall : dataBuffer.m_drawCalls)
+    {
+      uint32_t y = drawCall.clipRect.y;
+      if (context->GetApiVersion() == dp::ApiVersion::OpenGLES3)
+        y = dataBuffer.m_height - y - drawCall.clipRect.w;
+      context->SetScissor(drawCall.clipRect.x, y, drawCall.clipRect.z, drawCall.clipRect.w);
+      m_mesh->DrawPrimitivesSubsetIndexed(context, drawCall.indexCount, drawCall.startIndex);
+    }
+    context->SetCullingEnabled(true);
+    context->SetScissor(0, 0, dataBuffer.m_width, dataBuffer.m_height);
+  });
   context->PopDebugLabel();
 }
 
@@ -209,7 +207,7 @@ void ImguiRenderer::UpdateBuffers()
 
     for (int cmdIndex = 0; cmdIndex < cmdList->CmdBuffer.Size; ++cmdIndex)
     {
-      const ImDrawCmd cmd = cmdList->CmdBuffer[cmdIndex];
+      ImDrawCmd const cmd = cmdList->CmdBuffer[cmdIndex];
       ImVec2 clipMin((cmd.ClipRect.x - clipOff.x) * clipScale.x, (cmd.ClipRect.y - clipOff.y) * clipScale.y);
       ImVec2 clipMax((cmd.ClipRect.z - clipOff.x) * clipScale.x, (cmd.ClipRect.w - clipOff.y) * clipScale.y);
       if (clipMin.x < 0.0f)

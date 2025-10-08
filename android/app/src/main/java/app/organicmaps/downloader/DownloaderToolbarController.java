@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-
 import app.organicmaps.R;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.widget.SearchToolbarController;
-import app.organicmaps.sdk.util.UiUtils;
 
 class DownloaderToolbarController extends SearchToolbarController
 {

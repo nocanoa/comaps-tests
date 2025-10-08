@@ -69,6 +69,9 @@
 "type.amenity.music_school" = "Music School";
 "type.amenity.language_school" = "Language School";
 "type.office.diplomatic" = "Embassy";
+"type.office.security" = "Security Guards Office";
+"type.building.guardhouse" = "Security Booth";
+"type.power.portal" = "Power Portal";
 "type.amenity.fast_food" = "Fast Food";
 "type.amenity.ferry_terminal" = "Ferry";
 "type.amenity.fire_station" = "Fire Station";
@@ -197,12 +200,14 @@
 "type.amenity.vehicle_inspection" = "Vehicle Inspection";
 "type.amenity.vending_machine.fuel" = "Fuel Pump";
 "type.amenity.veterinary" = "Veterinary Doctor";
+"type.amenity.animal_shelter" = "Animal Shelter";
 "type.amenity.waste_basket" = "Trash Bin";
 "type.amenity.waste_disposal" = "Dumpster";
 "type.amenity.waste_transfer_station" = "Waste Transfer Station";
 "type.amenity.water_point" = "Water Tank Refill Point";
 "type.amenity.water_point.drinking_water_no" = "Water Tank Refill Point";
 "type.barrier" = "Barrier";
+"type.barrier.yes" = "Barrier";
 "type.barrier.block" = "Block";
 "type.barrier.bollard" = "Bollard";
 "type.barrier.border_control" = "Border Control";
@@ -222,6 +227,7 @@
 "type.barrier.retaining_wall" = "Retaining Wall";
 "type.barrier.stile" = "Stile";
 "type.barrier.turnstile" = "Turnstile";
+"type.barrier.wicket_gate" = "Wicket Gate";
 "type.barrier.swing_gate" = "Swing Gate";
 "type.barrier.toll_booth" = "Toll Booth";
 "type.barrier.wall" = "Wall";
@@ -483,6 +489,8 @@
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
 
+"type.highway.pedestrian.square" = "Square";
+
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Pedestrian Tunnel";
 "type.highway.primary" = "Primary Road";
@@ -615,8 +623,6 @@
 "type.area_highway.track" = "Track";
 "type.area_highway.trunk" = "Trunk Road";
 "type.area_highway.unclassified" = "Minor Road";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 
 
 /********** Types: Historic **********/
@@ -667,19 +673,6 @@
 "type.historic.wayside_cross" = "Wayside Cross";
 "type.historic.wayside_shrine" = "Wayside Shrine";
 "type.historic.wreck" = "Shipwreck";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Internet";
 "type.junction" = "Junction";
@@ -800,8 +793,6 @@
 "type.man_made.water_well.drinking_water_no" = "Water Well";
 "type.man_made.windmill" = "Windmill";
 "type.man_made.works" = "Industrial Works";
-"type.mapswithme" = "mapswithme";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Military";
 "type.military.bunker" = "Bunker";
 "type.mountain_pass" = "Mountain Pass";
@@ -935,11 +926,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Utility Pole";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Public Transport";
 "type.public_transport.platform" = "Platform";
 "type.railway" = "Railway";
@@ -1242,7 +1228,6 @@
 "type.railway.tram_stop" = "Tram Stop";
 "type.route" = "Route";
 "type.route.ferry" = "Ferry";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Shop";
 "type.shop.alcohol" = "Liquor Shop";
 "type.shop.bakery" = "Bakery";
@@ -1300,7 +1285,7 @@
 "type.shop.laundry" = "Laundry";
 "type.shop.mall" = "Mall";
 "type.shop.massage" = "Massage Salon";
-"type.shop.mobile_phone" = "Cell Phone Store";
+"type.shop.mobile_phone" = "Mobile Phone Store";
 "type.shop.money_lender" = "Money Lender";
 "type.shop.motorcycle" = "Motorcycle Shop";
 "type.shop.motorcycle_repair" = "Motorcycle Repair";
@@ -1362,6 +1347,7 @@
 "type.shop.trade" = "Trade Supplies";
 "type.shop.watches" = "Watch Store";
 "type.shop.wholesale" = "Wholesale Store";
+"type.shop.lighting" = "Lighting Shop";
 "type.sport" = "Sport";
 "type.sport.american_football" = "American Football";
 "type.sport.archery" = "Archery";

@@ -83,8 +83,7 @@ public:
         auto const it = m_altitudes.find(g.m_point);
         if (it != m_altitudes.cend())
         {
-          CHECK_EQUAL(it->second, g.m_altitude,
-                      ("Point", it->first, "is set with two different altitudes."));
+          CHECK_EQUAL(it->second, g.m_altitude, ("Point", it->first, "is set with two different altitudes."));
           continue;
         }
         m_altitudes[g.m_point] = g.m_altitude;
@@ -104,7 +103,6 @@ public:
   }
 
 private:
-
   TMockAltitudes m_altitudes;
 };
 
@@ -130,9 +128,8 @@ void BuildMwmWithoutAltitudes(std::vector<TPoint3DList> const & roads, LocalCoun
     builder.Add(generator::tests_support::TestStreet(ExtractPoints(geom3D), std::string(), std::string()));
 }
 
-void TestAltitudes(DataSource const & dataSource, MwmSet::MwmId const & mwmId,
-                   std::string const & mwmPath, bool hasAltitudeExpected,
-                   AltitudeGetter & expectedAltitudes)
+void TestAltitudes(DataSource const & dataSource, MwmSet::MwmId const & mwmId, std::string const & mwmPath,
+                   bool hasAltitudeExpected, AltitudeGetter & expectedAltitudes)
 {
   auto const handle = dataSource.GetMwmHandleById(mwmId);
   TEST(handle.IsAlive(), ());
@@ -157,8 +154,7 @@ void TestAltitudes(DataSource const & dataSource, MwmSet::MwmId const & mwmId,
     {
       geometry::Altitude const fromGetter = expectedAltitudes.GetAltitude(f.GetPoint(i));
       geometry::Altitude const expected =
-          (fromGetter == geometry::kInvalidAltitude ? geometry::kDefaultAltitudeMeters
-                                                    : fromGetter);
+          (fromGetter == geometry::kInvalidAltitude ? geometry::kDefaultAltitudeMeters : fromGetter);
       TEST_EQUAL(expected, altitudes[i], ("A wrong altitude"));
     }
   };
@@ -175,8 +171,7 @@ void TestAltitudesBuilding(std::vector<TPoint3DList> const & roads, bool hasAlti
   // Building mwm without altitude section.
   LocalCountryFile country(testDirFullPath, CountryFile(kTestMwm), 1);
   ScopedDir testScopedDir(kTestDir);
-  ScopedFile testScopedMwm(base::JoinPath(kTestDir, kTestMwm + DATA_FILE_EXTENSION),
-                           ScopedFile::Mode::Create);
+  ScopedFile testScopedMwm(base::JoinPath(kTestDir, kTestMwm + DATA_FILE_EXTENSION), ScopedFile::Mode::Create);
 
   BuildMwmWithoutAltitudes(roads, country);
 

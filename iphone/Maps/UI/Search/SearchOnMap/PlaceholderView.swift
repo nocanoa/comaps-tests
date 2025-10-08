@@ -61,25 +61,22 @@ final class PlaceholderView: UIView {
     if let activityIndicator = activityIndicator {
       activityIndicator.hidesWhenStopped = true
       activityIndicator.startAnimating()
-      if #available(iOS 13.0, *) {
-        activityIndicator.style = .medium
-      } else {
-        activityIndicator.style = .gray
-      }
+      activityIndicator.style = .medium
     }
 
     titleLabel.text = title
     titleLabel.setFontStyle(.medium16, color: .blackPrimary)
     titleLabel.textAlignment = .center
+    titleLabel.numberOfLines = 0
 
     subtitleLabel.text = subtitle
     subtitleLabel.setFontStyle(.regular14, color: .blackSecondary)
     subtitleLabel.textAlignment = .center
     subtitleLabel.isHidden = subtitle == nil
-    subtitleLabel.numberOfLines = 2
+    subtitleLabel.numberOfLines = 0
 
     stackView.axis = .vertical
-    stackView.alignment = .center
+    stackView.alignment = .fill
     stackView.spacing = 8
   }
 

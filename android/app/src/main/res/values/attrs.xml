@@ -3,12 +3,22 @@
   <declare-styleable name="SpeedLimitView">
     <attr name="speedLimitBackgroundColor" format="color" />
     <attr name="speedLimitBorderColor" format="color" />
+    <attr name="speedLimitUnlimitedBorderColor" format="color" />
+    <attr name="speedLimitUnlimitedStripeColor" format="color" />
     <attr name="speedLimitAlertColor" format="color" />
     <attr name="speedLimitTextColor" format="color" />
     <attr name="speedLimitTextAlertColor" format="color" />
     <!-- These values are used only in edit mode -->
     <attr name="speedLimitEditModeSpeedLimit" format="integer" />
     <attr name="speedLimitEditModeAlert" format="boolean" />
+  </declare-styleable>
+
+  <declare-styleable name="CurrentSpeedView">
+    <attr name="currentSpeedBackgroundColor" format="color" />
+    <attr name="currentSpeedBorderColor" format="color" />
+    <attr name="currentSpeedTextColor" format="color" />
+    <!-- These values are used only in edit mode -->
+    <attr name="currentSpeedEditModeCurrentSpeed" format="integer" />
   </declare-styleable>
 
   <declare-styleable name="LanesView">
@@ -47,7 +57,6 @@
     <attr name="android:drawable"/>
   </declare-styleable>
 
-  <bool name="isTablet">false</bool>
   <bool name="tabletLayout">false</bool>
 
   <declare-styleable name="PlaceholderView">

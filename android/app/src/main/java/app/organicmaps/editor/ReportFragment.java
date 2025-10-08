@@ -5,14 +5,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmToolbarFragment;
 import app.organicmaps.sdk.editor.Editor;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.WindowInsetUtils.ScrollableContentInsetsListener;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -45,8 +44,8 @@ public class ReportFragment extends BaseMwmToolbarFragment implements View.OnCli
     mSave.setOnClickListener(this);
     mSimpleProblems = view.findViewById(R.id.ll__problems);
     mSimpleProblems.findViewById(R.id.problem_not_exist).setOnClickListener(this);
-//    mSimpleProblems.findViewById(R.id.problem_closed_repair).setOnClickListener(this);
-//    mSimpleProblems.findViewById(R.id.problem_duplicated_place).setOnClickListener(this);
+    //    mSimpleProblems.findViewById(R.id.problem_closed_repair).setOnClickListener(this);
+    //    mSimpleProblems.findViewById(R.id.problem_duplicated_place).setOnClickListener(this);
     mSimpleProblems.findViewById(R.id.problem_other).setOnClickListener(this);
     mAdvancedProblem = view.findViewById(R.id.ll__other_problem);
     mProblemInput = mAdvancedProblem.findViewById(R.id.input);

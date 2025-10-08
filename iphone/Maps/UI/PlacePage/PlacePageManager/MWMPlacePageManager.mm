@@ -42,6 +42,9 @@ using namespace storage;
     [MWMRouter stopRouting];
   }
 
+  [MWMSearch clear];
+  [[[MapViewController sharedController] searchManager] close];
+
   if ([MWMMapOverlayManager transitEnabled]) {
     [MWMRouter setType:MWMRouterTypePublicTransport];
   }
@@ -222,9 +225,11 @@ using namespace storage;
   [[MapViewController sharedController].navigationController pushViewController:editBookmarkController animated:YES];
 }
 
-- (void)editTrack:(PlacePageData *)data {
-  if (data.objectType != PlacePageObjectTypeTrack) {
-    ASSERT_FAIL("editTrack called for non-track object");
+- (void)editTrack:(PlacePageData *)data
+{
+  if (data.objectType != PlacePageObjectTypeTrack)
+  {
+    LOG(LERROR, ("editTrack called for non-track object"));
     return;
   }
   EditTrackViewController * editTrackController = [[EditTrackViewController alloc] initWithTrackId:data.trackData.trackId editCompletion:^(BOOL edited) {

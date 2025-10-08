@@ -190,6 +190,7 @@
 "type.amenity.water_point" = "Vattenpost";
 "type.amenity.water_point.drinking_water_no" = "Vattenpost";
 "type.barrier" = "Hinder";
+"type.barrier.yes" = "Hinder";
 "type.barrier.block" = "Blockering";
 "type.barrier.bollard" = "Stolpe";
 "type.barrier.border_control" = "Gränskontroll";
@@ -455,7 +456,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.path.bridge" = "Bro";
-"type.highway.path.horse" = "Gångväg";
+"type.highway.path.horse" = "Ridväg";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.path.tunnel" = "Tunnel";
@@ -464,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Bro";
+"type.highway.pedestrian.square" = "Torg";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Tunnel";
@@ -548,13 +550,13 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.tertiary_link.tunnel" = "Tunnel";
-"type.highway.track" = "Gata";
-"type.highway.track.area" = "Gata";
+"type.highway.track" = "Traktorväg";
+"type.highway.track.area" = "Traktorväg";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.track.bridge" = "Bro";
-"type.highway.track.grade1" = "Gata";
-"type.highway.track.no.access" = "Gata";
+"type.highway.track.grade1" = "Traktorväg";
+"type.highway.track.no.access" = "Traktorväg";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.track.tunnel" = "Tunnel";
@@ -593,11 +595,9 @@
 "type.area_highway.service" = "Gata";
 "type.area_highway.tertiary" = "Gata";
 "type.area_highway.steps" = "Trappa";
-"type.area_highway.track" = "Gata";
+"type.area_highway.track" = "Traktorväg";
 "type.area_highway.trunk" = "Gata";
 "type.area_highway.unclassified" = "Gata";
-"type.highway.world_level" = "highway-world_level";
-"type.highway.world_towns_level" = "highway-world_towns_level";
 "type.historic" = "Historiskt objekt";
 "type.historic.aircraft" = "Historiska flygplan";
 "type.historic.anchor" = "Historiskt ankare";
@@ -644,19 +644,6 @@
 "type.historic.wayside_cross" = "Korset vid vägkanten";
 "type.historic.wayside_shrine" = "Helgedom vid vägkanten";
 "type.historic.wreck" = "Förlisning";
-"type.hwtag" = "hwtag";
-"type.hwtag.bidir_bicycle" = "hwtag-bidir_bicycle";
-"type.hwtag.onedir_bicycle" = "hwtag-onedir_bicycle";
-"type.hwtag.lit" = "hwtag-lit";
-"type.hwtag.nobicycle" = "hwtag-nobicycle";
-"type.hwtag.nocar" = "hwtag-nocar";
-"type.hwtag.nofoot" = "hwtag-nofoot";
-"type.hwtag.oneway" = "hwtag-oneway";
-"type.hwtag.private" = "hwtag-private";
-"type.hwtag.toll" = "hwtag-toll";
-"type.hwtag.yesbicycle" = "hwtag-yesbicycle";
-"type.hwtag.yescar" = "hwtag-yescar";
-"type.hwtag.yesfoot" = "hwtag-yesfoot";
 "type.internet_access" = "Internet";
 "type.internet_access.wlan" = "Trådlöst nätverk";
 "type.junction" = "Trafikplats";
@@ -773,8 +760,6 @@
 "type.man_made.water_well.drinking_water_no" = "Brunn";
 "type.man_made.windmill" = "Väderkvarn";
 "type.man_made.works" = "Fabrik";
-"type.mapswithme" = "MapsWithMe";
-"type.mapswithme.grid" = "mapswithme-grid";
 "type.military" = "Militärt";
 "type.military.bunker" = "Bunker";
 "type.mountain_pass" = "Bergspass";
@@ -901,11 +886,6 @@
 
 /* A single pole supporting various public utilities, such as lighting or telephony. */
 "type.man_made.utility_pole" = "Utility Pole";
-"type.psurface" = "psurface";
-"type.psurface.paved_bad" = "psurface-paved_bad";
-"type.psurface.paved_good" = "psurface-paved_good";
-"type.psurface.unpaved_bad" = "psurface-unpaved_bad";
-"type.psurface.unpaved_good" = "psurface-unpaved_good";
 "type.public_transport" = "Kollektivtrafik";
 "type.public_transport.platform" = "Perrong";
 "type.railway" = "Järnväg";
@@ -1143,70 +1123,69 @@
 "type.railway.subway_entrance.lisboa" = "Tunnelbaneentré";
 "type.railway.subway_entrance.london" = "Tunnelbaneentré";
 "type.railway.subway_entrance.lyon" = "Tunnelbaneentré";
-"type.railway.subway_entrance.madrid" = "Tunnelbana entré";
-"type.railway.subway_entrance.malaga" = "Tunnelbana entré";
-"type.railway.subway_entrance.manila" = "Tunnelbana entré";
-"type.railway.subway_entrance.maracaibo" = "Tunnelbana entré";
-"type.railway.subway_entrance.mashhad" = "Tunnelbana entré";
-"type.railway.subway_entrance.mecca" = "Tunnelbana entré";
-"type.railway.subway_entrance.medellin" = "Tunnelbana entré";
-"type.railway.subway_entrance.mexico" = "Tunnelbana entré";
-"type.railway.subway_entrance.milan" = "Tunnelbana entré";
-"type.railway.subway_entrance.minsk" = "Tunnelbana entré";
-"type.railway.subway_entrance.montreal" = "Tunnelbana entré";
-"type.railway.subway_entrance.moscow" = "Tunnelbana entré";
-"type.railway.subway_entrance.munchen" = "Tunnelbana entré";
-"type.railway.subway_entrance.nagoya" = "Tunnelbana entré";
-"type.railway.subway_entrance.newyork" = "Tunnelbana entré";
-"type.railway.subway_entrance.nnov" = "Tunnelbana entré";
-"type.railway.subway_entrance.novosibirsk" = "Tunnelbana entré";
-"type.railway.subway_entrance.osaka" = "Tunnelbana entré";
-"type.railway.subway_entrance.oslo" = "Tunnelbana entré";
-"type.railway.subway_entrance.palma" = "Tunnelbana entré";
-"type.railway.subway_entrance.panama" = "Tunnelbana entré";
-"type.railway.subway_entrance.paris" = "Tunnelbana entré";
-"type.railway.subway_entrance.philadelphia" = "Tunnelbana entré";
-"type.railway.subway_entrance.pyongyang" = "Tunnelbana entré";
-"type.railway.subway_entrance.rennes" = "Tunnelbana entré";
-"type.railway.subway_entrance.rio" = "Tunnelbana entré";
-"type.railway.subway_entrance.roma" = "Tunnelbana entré";
-"type.railway.subway_entrance.rotterdam" = "Tunnelbana entré";
-"type.railway.subway_entrance.samara" = "Tunnelbana entré";
-"type.railway.subway_entrance.santiago" = "Tunnelbana entré";
-"type.railway.subway_entrance.santo_domingo" = "Tunnelbana entré";
-"type.railway.subway_entrance.saopaulo" = "Tunnelbana entré";
-"type.railway.subway_entrance.sapporo" = "Tunnelbana entré";
-"type.railway.subway_entrance.sendai" = "Tunnelbana entré";
-"type.railway.subway_entrance.sf" = "Tunnelbana entré";
-"type.railway.subway_entrance.shanghai" = "Tunnelbana entré";
-"type.railway.subway_entrance.shenzhen" = "Tunnelbana entré";
-"type.railway.subway_entrance.shiraz" = "Tunnelbana entré";
-"type.railway.subway_entrance.singapore" = "Tunnelbana entré";
-"type.railway.subway_entrance.sofia" = "Tunnelbana entré";
-"type.railway.subway_entrance.spb" = "Tunnelbana entré";
-"type.railway.subway_entrance.stockholm" = "Tunnelbana entré";
-"type.railway.subway_entrance.tabriz" = "Tunnelbana entré";
-"type.railway.subway_entrance.taipei" = "Tunnelbana entré";
-"type.railway.subway_entrance.taoyuan" = "Tunnelbana entré";
-"type.railway.subway_entrance.tashkent" = "Tunnelbana entré";
-"type.railway.subway_entrance.tbilisi" = "Tunnelbana entré";
-"type.railway.subway_entrance.tehran" = "Tunnelbana entré";
-"type.railway.subway_entrance.tianjin" = "Tunnelbana entré";
-"type.railway.subway_entrance.tokyo" = "Tunnelbana entré";
-"type.railway.subway_entrance.valencia" = "Tunnelbana entré";
-"type.railway.subway_entrance.vienna" = "Tunnelbana entré";
-"type.railway.subway_entrance.warszawa" = "Tunnelbana entré";
-"type.railway.subway_entrance.washington" = "Tunnelbana entré";
-"type.railway.subway_entrance.wuhan" = "Tunnelbana entré";
-"type.railway.subway_entrance.yerevan" = "Tunnelbana entré";
-"type.railway.subway_entrance.yokohama" = "Tunnelbana entré";
+"type.railway.subway_entrance.madrid" = "Tunnelbaneentré";
+"type.railway.subway_entrance.malaga" = "Tunnelbaneentré";
+"type.railway.subway_entrance.manila" = "Tunnelbaneentré";
+"type.railway.subway_entrance.maracaibo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.mashhad" = "Tunnelbaneentré";
+"type.railway.subway_entrance.mecca" = "Tunnelbaneentré";
+"type.railway.subway_entrance.medellin" = "Tunnelbaneentré";
+"type.railway.subway_entrance.mexico" = "Tunnelbaneentré";
+"type.railway.subway_entrance.milan" = "Tunnelbaneentré";
+"type.railway.subway_entrance.minsk" = "Tunnelbaneentré";
+"type.railway.subway_entrance.montreal" = "Tunnelbaneentré";
+"type.railway.subway_entrance.moscow" = "Tunnelbaneentré";
+"type.railway.subway_entrance.munchen" = "Tunnelbaneentré";
+"type.railway.subway_entrance.nagoya" = "Tunnelbaneentré";
+"type.railway.subway_entrance.newyork" = "Tunnelbaneentré";
+"type.railway.subway_entrance.nnov" = "Tunnelbaneentré";
+"type.railway.subway_entrance.novosibirsk" = "Tunnelbaneentré";
+"type.railway.subway_entrance.osaka" = "Tunnelbaneentré";
+"type.railway.subway_entrance.oslo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.palma" = "Tunnelbaneentré";
+"type.railway.subway_entrance.panama" = "Tunnelbaneentré";
+"type.railway.subway_entrance.paris" = "Tunnelbaneentré";
+"type.railway.subway_entrance.philadelphia" = "Tunnelbaneentré";
+"type.railway.subway_entrance.pyongyang" = "Tunnelbaneentré";
+"type.railway.subway_entrance.rennes" = "Tunnelbaneentré";
+"type.railway.subway_entrance.rio" = "Tunnelbaneentré";
+"type.railway.subway_entrance.roma" = "Tunnelbaneentré";
+"type.railway.subway_entrance.rotterdam" = "Tunnelbaneentré";
+"type.railway.subway_entrance.samara" = "Tunnelbaneentré";
+"type.railway.subway_entrance.santiago" = "Tunnelbaneentré";
+"type.railway.subway_entrance.santo_domingo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.saopaulo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.sapporo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.sendai" = "Tunnelbaneentré";
+"type.railway.subway_entrance.sf" = "Tunnelbaneentré";
+"type.railway.subway_entrance.shanghai" = "Tunnelbaneentré";
+"type.railway.subway_entrance.shenzhen" = "Tunnelbaneentré";
+"type.railway.subway_entrance.shiraz" = "Tunnelbaneentré";
+"type.railway.subway_entrance.singapore" = "Tunnelbaneentré";
+"type.railway.subway_entrance.sofia" = "Tunnelbaneentré";
+"type.railway.subway_entrance.spb" = "Tunnelbaneentré";
+"type.railway.subway_entrance.stockholm" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tabriz" = "Tunnelbaneentré";
+"type.railway.subway_entrance.taipei" = "Tunnelbaneentré";
+"type.railway.subway_entrance.taoyuan" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tashkent" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tbilisi" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tehran" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tianjin" = "Tunnelbaneentré";
+"type.railway.subway_entrance.tokyo" = "Tunnelbaneentré";
+"type.railway.subway_entrance.valencia" = "Tunnelbaneentré";
+"type.railway.subway_entrance.vienna" = "Tunnelbaneentré";
+"type.railway.subway_entrance.warszawa" = "Tunnelbaneentré";
+"type.railway.subway_entrance.washington" = "Tunnelbaneentré";
+"type.railway.subway_entrance.wuhan" = "Tunnelbaneentré";
+"type.railway.subway_entrance.yerevan" = "Tunnelbaneentré";
+"type.railway.subway_entrance.yokohama" = "Tunnelbaneentré";
 "type.railway.tram" = "Spårvagn";
 "type.railway.tram.bridge" = "Spårvagnsbro";
 "type.railway.tram.tunnel" = "Spårvagnstunnel";
 "type.railway.tram_stop" = "Spårvagnshållplats";
 "type.route" = "Rutt";
 "type.route.ferry" = "Färja";
-"type.route.shuttle_train" = "route-shuttle_train";
 "type.shop" = "Butik";
 "type.shop.alcohol" = "Spritaffär";
 "type.shop.bakery" = "Bageri";
@@ -1502,5 +1481,10 @@
 "type.leisure.escape_game" = "Escape Room";
 "type.amenity.luggage_locker" = "Luggage Locker";
 "type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.bicycle_parking.covered" = "Cykelparkering under tak";
 "type.post_office.post_partner" = "Post Partner";
+"type.barrier.wicket_gate" = "Wicket gate";
+"type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

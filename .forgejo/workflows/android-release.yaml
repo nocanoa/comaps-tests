@@ -5,7 +5,6 @@ on:
 env:
   RELEASE_NOTES: android/app/src/google/play/release-notes/en-US/default.txt
   FDROID_VERSION: android/app/src/fdroid/play/version.yaml
-  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
 
 jobs:
   tag:
@@ -116,10 +115,6 @@ jobs:
           AGCONNECT_SERVICES_JSON: ${{ secrets.AGCONNECT_SERVICES_JSON }}
           SECURE_PROPERTIES: ${{ secrets.SECURE_PROPERTIES }}
           RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
-
-      - name: Configure repository
-        shell: bash
-        run: ./configure.sh
 
       - name: Set up SDK
         shell: bash

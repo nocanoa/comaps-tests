@@ -8,6 +8,8 @@
 	<array>
 		<string>applinks:comaps.at</string>
 	</array>
+	<key>com.apple.developer.carplay-maps</key>
+	<true/>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
 		<string>iCloud.app.comaps.debug</string>

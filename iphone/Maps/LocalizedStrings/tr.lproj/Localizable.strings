@@ -235,7 +235,7 @@
 "pref_map_3d_buildings_title" = "3B yapılar";
 
 /* A message in Settings/Preferences explaining why is it not possible to enable 3D buildings when max power saving mode is enabled */
-"pref_map_3d_buildings_disabled_summary" = "3B yapılar güç tutum kipindeyken kapatılır";
+"pref_map_3d_buildings_disabled_summary" = "3B yapılar güç tasarrufu modundayken kapatılır";
 
 /* Settings «Route» category: «Tts enabled» title */
 "pref_tts_title" = "Sesli Yönlendirme";
@@ -253,7 +253,7 @@
 "pref_tts_language_title" = "Ses Dili";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Sesli Yönlendirmeleri Sına (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Sesli Navigasyon Testi";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Diğer";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Haritadaki hataları bildir ya da düzelt";
 
 /* Button in the About screen */
-"volunteer" = "Gönüllü ol";
+"volunteer" = "Gönüllü ol ve CoMaps'i iyileştir";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Bize Bağlanın";
@@ -340,7 +340,7 @@
 "pref_calibration_title" = "Pusula kalibrasyonu";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "Arayüzü görmek için haritaya uzun basın";
+"long_tap_toast" = "Seçenekleri görmek için haritaya tekrar basılı tutun";
 
 /* Update all button text */
 "downloader_update_all_button" = "Tümünü Güncelle";
@@ -447,10 +447,10 @@
 "dialog_routing_disclaimer_borders" = "— Sınır bölgelerinde rotalar konusunda dikkatli olun: uygulamamızca oluşturulan rotalar bazen izin verilmeyen yerlerdeki ülke sınırlarından geçebilir.";
 "dialog_routing_disclaimer_beware" = "Lütfen yolda özenli ve güvenli olun!";
 "dialog_routing_check_gps" = "GPS sinyalini denetle";
-"dialog_routing_error_location_not_found" = "Rota oluşturulamıyor. Şu anki GPS koordinatları tanımlanamadı.";
+"dialog_routing_error_location_not_found" = "Rota oluşturulamıyor. Mevcut GPS koordinatları belirlenemedi.";
 "dialog_routing_location_turn_wifi" = "Lütfen GPS sinyalinizi denetleyin. Wi-Fi'ı etkinleştirmek konum doğruluğunu artırır.";
 "dialog_routing_location_turn_on" = "Konum hizmetlerini etkinleştir";
-"dialog_routing_location_unknown_turn_on" = "Şu anki GPS koordinatları belirlenemiyor. Rota hesaplamak için konum hizmetlerini etkinleştirin.";
+"dialog_routing_location_unknown_turn_on" = "Mevcut GPS koordinatları belirlenemiyor. Rota hesaplamak için konum hizmetlerini etkinleştirin.";
 "dialog_routing_download_files" = "Gerekli dosyaları indir";
 "dialog_routing_download_and_update_all" = "Planlanan yoldaki tüm harita ve rota bilgilerini indirip güncelleyerek rotayı hesaplayın.";
 "dialog_routing_unable_locate_route" = "Rota belirlenemiyor";
@@ -623,7 +623,7 @@
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
 "error_enter_correct_storey_number" = "Kat sayısı %d'i geçmemelidir";
 "editor_zip_code" = "Posta Kodu";
-"error_enter_correct_zip_code" = "Geçerli posta kodu gir";
+"error_enter_correct_zip_code" = "Geçerli bir posta kodu girin";
 
 /* Place Page title for long tap */
 "core_placepage_unknown_place" = "Harita Noktası";
@@ -749,7 +749,7 @@
 /* User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". */
 "routing_add_finish_point" = "Bir hedef noktası eklemek için aramayı kullanın veya haritaya dokunun";
 "planning_route_manage_route" = "Rotayı yönet";
-"button_plan" = "Plan";
+"button_plan" = "Hesapla";
 "placepage_remove_stop" = "Durağı Kaldır";
 "planning_route_remove_title" = "Kaldırmak için buraya sürükleyin";
 "placepage_add_stop" = "Ara nokta ekle";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Kaydedildi";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Tüm harita düzenlemelerinizi otomatik olarak yüklemek için lütfen OpenStreetMap'e giriş yapın. Daha fazla bilgi";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "burada";
 "core_entrance" = "Giriş";
 "error_enter_correct_name" = "Lütfen doğru ad girin";
 "bookmark_lists" = "Listeler";
@@ -814,7 +808,7 @@
 
 /* Speed camera settings menu option - Never warn (about speedcams) */
 "pref_tts_speedcams_never" = "Hiçbir zaman uyarma";
-"power_managment_title" = "Düşük güç modu";
+"power_managment_title" = "Güç tasarrufu modu";
 "power_managment_description" = "Kimi işlevler pahasına olsa da güç kullanımını düşürmeyi dener.";
 "power_managment_setting_never" = "Asla";
 "power_managment_setting_auto" = "Pil düşükken";
@@ -834,7 +828,7 @@
 "unable_to_calc_alert_title" = "Rota hesaplanamıyor";
 "unable_to_calc_alert_subtitle" = "Rota bulunamadı. Bunun nedeni, belirlediğiniz seçenekler ya da eksik OpenStreetMap verisi olabilir. Lütfen rota seçeneklerinizi değiştirin ve yeniden deneyin.";
 "define_to_avoid_btn" = "Kaçınılması gereken yolları tanımlayın";
-"change_driving_options_btn" = "Sürüş seçenekleri etkinleştirildi";
+"change_driving_options_btn" = "Yönlendirme seçenekleri etkin";
 "toll_road" = "Paralı yol";
 "unpaved_road" = "Asfaltsız yol";
 "ferry_crossing" = "Vapur geçişi";
@@ -972,7 +966,7 @@
 "app_tip_03" = "Bir yazılım mühendisi / geliştirici tanıyorsanız, ondan ihtiyacınız olan bir özelliği uygulamaya eklemesini isteyebilirsiniz.";
 
 /* App tip #04 */
-"app_tip_04" = "Herhangi bir şeyi seçmek için haritaya dokunun. Uzun dokunarak arayüz gizlenip gösterilebilir.";
+"app_tip_04" = "Herhangi bir şeyi seçmek için haritada üzerine dokunun. Ekrandaki seçenekleri gizlemek ve geri getirmek için ise basılı tutun.";
 
 /* App tip #05 */
 "app_tip_05" = "Haritada şu anki konumunuzu seçebileceğinizi biliyor musunuz?";
@@ -1097,7 +1091,9 @@
 "edit_track" = "Kaydı Düzenle";
 "osm_profile_view_edit_history" = "Düzenleme geçmişini görüntüle";
 "osm_profile_view_notes" = "Notları görüntüle";
-"pref_mapappearance_title" = "Map Appearance";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_mapappearance_title" = "Harita Teması";
+"pref_maplanguage_title" = "Harita Dili";
+"transliteration_title_disabled_summary" = "Harita için her zaman yerel dil kullanıldığında devre dışı bırakılır";
+"pref_maplanguage_local" = "Uygulama Dili";
+"existence_confirmed_time_ago" = "%@ varlığı onaylandı";
+"hours_confirmed_time_ago" = "%@ onaylandı";

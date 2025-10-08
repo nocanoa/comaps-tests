@@ -13,7 +13,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>%d könyvjelző</string>
+			<string>Nincs könyvjelző</string>
 			<key>one</key>
 			<string>%d könyvjelző</string>
 			<key>other</key>
@@ -31,11 +31,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>%d fájl található. Látni fogja a konvertálás után.</string>
+			<string>Nem található fájl.</string>
 			<key>one</key>
-			<string>%d fájl található. Látni fogja azt a konvertálás után.</string>
+			<string>%d fájl található. Ezt a konvertálás után fogja látni.</string>
 			<key>other</key>
-			<string>%d fájl található. Látni fogja azokat a konvertálás után.</string>
+			<string>%d fájl található. Ezeket a konvertálás után fogja látni.</string>
 		</dict>
 	</dict>
 	<key>tracks</key>
@@ -49,7 +49,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>%d nyomvonal</string>
+			<string>Nincs nyomvonal</string>
 			<key>one</key>
 			<string>%d nyomvonal</string>
 			<key>other</key>

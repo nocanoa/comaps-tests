@@ -10,10 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-
 import app.organicmaps.R;
+import app.organicmaps.sdk.settings.StorageItem;
+import app.organicmaps.sdk.settings.StoragePathManager;
+import app.organicmaps.sdk.util.Utils;
 import app.organicmaps.util.ThemeUtils;
-import app.organicmaps.sdk.util.UiUtils;
 
 class StoragePathAdapter extends BaseAdapter
 {
@@ -57,22 +58,22 @@ class StoragePathAdapter extends BaseAdapter
     checkedView.setChecked(isCurrent);
     checkedView.setEnabled(!item.mIsReadonly && (isStorageBigEnough(position) || isCurrent));
 
-    final String size = mActivity.getString(R.string.maps_storage_free_size,
-                                            Formatter.formatShortFileSize(mActivity, item.mFreeSize),
-                                            Formatter.formatShortFileSize(mActivity, item.mTotalSize));
+    final String size =
+        mActivity.getString(R.string.maps_storage_free_size, Formatter.formatShortFileSize(mActivity, item.mFreeSize),
+                            Formatter.formatShortFileSize(mActivity, item.mTotalSize));
 
     SpannableStringBuilder sb = new SpannableStringBuilder(item.mLabel + "\n" + size);
     sb.setSpan(new ForegroundColorSpan(ThemeUtils.getColor(mActivity, android.R.attr.textColorSecondary)),
                sb.length() - size.length(), sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    sb.setSpan(new AbsoluteSizeSpan(UiUtils.dimen(mActivity, R.dimen.text_size_body_3)),
-               sb.length() - size.length(), sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    sb.setSpan(new AbsoluteSizeSpan(Utils.dimen(mActivity, R.dimen.text_size_body_3)), sb.length() - size.length(),
+               sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
     final String path = item.mPath + (item.mIsReadonly ? " (read-only)" : "");
     sb.append("\n").append(path);
     sb.setSpan(new ForegroundColorSpan(ThemeUtils.getColor(mActivity, android.R.attr.textColorSecondary)),
                sb.length() - path.length(), sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    sb.setSpan(new AbsoluteSizeSpan(UiUtils.dimen(mActivity, R.dimen.text_size_body_4)),
-               sb.length() - path.length(), sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    sb.setSpan(new AbsoluteSizeSpan(Utils.dimen(mActivity, R.dimen.text_size_body_4)), sb.length() - path.length(),
+               sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
     checkedView.setText(sb);
 

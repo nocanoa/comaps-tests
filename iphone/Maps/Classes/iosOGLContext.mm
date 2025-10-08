@@ -17,20 +17,14 @@ iosOGLContext::iosOGLContext(CAEAGLLayer * layer, dp::ApiVersion apiVersion,
   , m_frameBufferId(0)
   , m_presentAvailable(true)
 {
-  EAGLRenderingAPI api;
-  if (m_apiVersion == dp::ApiVersion::OpenGLES3)
-    api = kEAGLRenderingAPIOpenGLES3;
-  else
-    api = kEAGLRenderingAPIOpenGLES2;
-  
   if (contextToShareWith != NULL)
   {
-    m_nativeContext = [[EAGLContext alloc] initWithAPI:api
+    m_nativeContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3
                                            sharegroup: contextToShareWith->m_nativeContext.sharegroup];
   }
   else
   {
-    m_nativeContext = [[EAGLContext alloc] initWithAPI:api];
+    m_nativeContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
   }
 }
 
@@ -87,7 +81,7 @@ void iosOGLContext::SetFramebuffer(ref_ptr<dp::BaseFramebuffer> framebuffer)
   }
 }
 
-void iosOGLContext::Resize(int w, int h)
+void iosOGLContext::Resize(uint32_t w, uint32_t h)
 {
   if (m_needBuffers && m_hasBuffers)
   {
@@ -95,7 +89,7 @@ void iosOGLContext::Resize(int w, int h)
     GLint height = 0;
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &width);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
-    if (width == w && height == h)
+    if (width == static_cast<GLint>(w) && height == static_cast<GLint>(h))
       return;
 
     DestroyBuffers();

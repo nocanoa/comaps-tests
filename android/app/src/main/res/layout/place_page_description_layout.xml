@@ -34,7 +34,7 @@
     android:layout_marginBottom="@dimen/margin_base"
     android:textAppearance="?android:attr/textAppearance"
     android:gravity="start|top"
-    android:textColor="?attr/colorAccent"
+    android:textColor="?attr/colorSecondary"
     android:text="@string/category_desc_more"
     android:background="@android:color/transparent"/>
   <include

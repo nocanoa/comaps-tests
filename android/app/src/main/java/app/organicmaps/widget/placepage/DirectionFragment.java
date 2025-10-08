@@ -5,35 +5,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import app.organicmaps.sdk.Framework;
 import app.organicmaps.MwmActivity;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmDialogFragment;
+import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.bookmarks.data.DistanceAndAzimut;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.location.LocationListener;
 import app.organicmaps.sdk.location.SensorListener;
 import app.organicmaps.sdk.util.StringUtils;
-import app.organicmaps.sdk.util.UiUtils;
+import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.widget.ArrowView;
+import com.google.android.material.textview.MaterialTextView;
 
-public class DirectionFragment extends BaseMwmDialogFragment
-                            implements LocationListener, SensorListener
+public class DirectionFragment extends BaseMwmDialogFragment implements LocationListener, SensorListener
 {
   private static final String EXTRA_MAP_OBJECT = "MapObject";
 
   private ArrowView mAvDirection;
-  private TextView mTvTitle;
-  private TextView mTvSubtitle;
-  private TextView mTvDistance;
-  private TextView mTvAzimuth;
+  private MaterialTextView mTvTitle;
+  private MaterialTextView mTvSubtitle;
+  private MaterialTextView mTvDistance;
+  private MaterialTextView mTvAzimuth;
 
   private MapObject mMapObject;
 
@@ -96,7 +93,6 @@ public class DirectionFragment extends BaseMwmDialogFragment
     }
   }
 
-
   @Override
   public void onResume()
   {
@@ -127,9 +123,8 @@ public class DirectionFragment extends BaseMwmDialogFragment
   {
     if (mMapObject != null)
     {
-      final DistanceAndAzimut distanceAndAzimuth =
-          Framework.nativeGetDistanceAndAzimuthFromLatLon(mMapObject.getLat(), mMapObject.getLon(),
-                                                          location.getLatitude(), location.getLongitude(), 0.0);
+      final DistanceAndAzimut distanceAndAzimuth = Framework.nativeGetDistanceAndAzimuthFromLatLon(
+          mMapObject.getLat(), mMapObject.getLon(), location.getLatitude(), location.getLongitude(), 0.0);
       mTvDistance.setText(distanceAndAzimuth.getDistance().toString(requireContext()));
     }
   }
@@ -142,15 +137,13 @@ public class DirectionFragment extends BaseMwmDialogFragment
       return;
 
     final DistanceAndAzimut da = Framework.nativeGetDistanceAndAzimuthFromLatLon(
-        mMapObject.getLat(), mMapObject.getLon(),
-        last.getLatitude(), last.getLongitude(), north);
+        mMapObject.getLat(), mMapObject.getLon(), last.getLatitude(), last.getLongitude(), north);
 
     if (da.getAzimuth() >= 0)
     {
       mAvDirection.setAzimuth(da.getAzimuth());
       final DistanceAndAzimut daAbs = Framework.nativeGetDistanceAndAzimuthFromLatLon(
-          mMapObject.getLat(), mMapObject.getLon(),
-          last.getLatitude(), last.getLongitude(), 0.0);
+          mMapObject.getLat(), mMapObject.getLon(), last.getLatitude(), last.getLongitude(), 0.0);
       mTvAzimuth.setText(StringUtils.formatUsingUsLocale("%.0f°", Math.toDegrees(daAbs.getAzimuth())));
     }
   }

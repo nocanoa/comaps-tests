@@ -45,10 +45,10 @@ amenity-fountain                                    # area z16- (also has icon z
 leisure-sports_centre                               # area z13- (also has icon z17-, caption(optional) z17-)
 === 190
 
-amenity-grave_yard                                  # area z14- (also has icon z17-, caption(optional) z17-)
-amenity-grave_yard-christian                        # area z14- (also has icon z17-, caption(optional) z17-)
-landuse-cemetery                                    # area z14- (also has icon z15-, caption(optional) z15-)
-landuse-cemetery-christian                          # area z14- (also has icon z15-, caption(optional) z15-)
+amenity-grave_yard                                  # area z10- (also has icon z17-, caption(optional) z17-)
+amenity-grave_yard-christian                        # area z10- (also has icon z17-, caption(optional) z17-)
+landuse-cemetery                                    # area z10- (also has icon z14-, caption(optional) z15-)
+landuse-cemetery-christian                          # area z10- (also has icon z14-, caption(optional) z15-)
 === 180
 
 amenity-car_wash                                    # area z15- (also has icon z17-, caption(optional) z17-)
@@ -59,11 +59,12 @@ amenity-fuel                                        # area z15- (also has icon z
 amenity-marketplace                                 # area z15- (also has icon z16-, caption(optional) z16-)
 amenity-police                                      # area z15- (also has icon z17-, caption(optional) z17-)
 amenity-ranger_station                              # area z13- (also has icon z15-, caption(optional) z15-)
-amenity-recycling-centre                            # area z15- (also has icon z17-, caption(optional) z19-)
+amenity-recycling-centre                            # area z15- (also has icon z17-, caption(optional) z18-)
 amenity-social_facility                             # area z15- (also has icon z17-, caption(optional) z17-)
 amenity-vehicle_inspection                          # area z15- (also has icon z16-, caption(optional) z16-)
 emergency-mountain_rescue                           # area z13- (also has icon z16-, caption(optional) z16-)
 highway-pedestrian-area                             # area z14- (also has line z13-, pathtext z14-)
+highway-pedestrian-square                           # area z14- (also has line z13-, pathtext z14-)
 highway-rest_area                                   # area z13- (also has icon z15-, caption(optional) z15-)
 highway-services                                    # area z13- (also has icon z14-, caption(optional) z14-)
 landuse-garages                                     # area z13- (also has caption z15-)
@@ -166,7 +167,7 @@ landuse-forest-deciduous                            # area z10- (also has icon z
 landuse-forest-mixed                                # area z10- (also has icon z13-, caption(optional) z14-)
 === 60
 
-amenity-waste_transfer_station                      # area z13- (also has icon z17-, caption(optional) z19-)
+amenity-waste_transfer_station                      # area z13- (also has icon z17-, caption(optional) z18-)
 landuse-construction                                # area z13- (also has caption z15-)
 landuse-industrial                                  # area z13- (also has caption z15-)
 landuse-industrial-mine                             # area z13- (also has icon z15-, caption(optional) z15-)
@@ -184,7 +185,7 @@ power-plant-gas                                     # area z13- (also has icon z
 power-plant-hydro                                   # area z13- (also has icon z17-)
 power-plant-solar                                   # area z13- (also has icon z17-)
 power-plant-wind                                    # area z13- (also has icon z15-, caption(optional) z16-)
-power-substation                                    # area z13- (also has icon z19-, caption(optional) z19-)
+power-substation                                    # area z13- (also has icon z17-, caption(optional) z18-)
 === 50
 
 amenity-childcare                                   # area z13- (also has icon z17-, caption(optional) z17-)

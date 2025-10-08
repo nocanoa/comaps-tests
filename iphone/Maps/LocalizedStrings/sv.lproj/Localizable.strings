@@ -735,7 +735,7 @@
 "transliteration_title" = "Translitterera till latinska alfabetet";
 
 /* Subway exits for public transport marks on the map */
-"core_exit" = "Avsluta";
+"core_exit" = "Utgång";
 
 /* User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". */
 "routing_add_start_point" = "Använd sökfunktionen eller tryck på kartan för att lägga till en startpunkt för rutten";
@@ -751,12 +751,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Sparad";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Logga in på OpenStreetMap för att automatiskt ladda upp alla dina kartredigeringar. Läs mer";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "här";
 "core_entrance" = "Ingång";
 "error_enter_correct_name" = "Ange ett korrekt namn";
 "bookmark_lists" = "Listor";
@@ -1087,7 +1081,7 @@
 "track_recording_alert_title" = "Spara inspelning i bokmärken och rutter?";
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
-"track_recording_toast_nothing_to_save" = "Routen är tom - inget att spara";
+"track_recording_toast_nothing_to_save" = "Spåret är tomt - inget att spara";
 "edit_track" = "Redigera spår";
 "osm_profile_view_notes" = "Visa anteckningar";
 "osm_profile_view_edit_history" = "Visa redigeringshistorik";
@@ -1097,3 +1091,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"hours_confirmed_time_ago" = "Bekräftat %@";
+"existence_confirmed_time_ago" = "Existens bekräftad %@";

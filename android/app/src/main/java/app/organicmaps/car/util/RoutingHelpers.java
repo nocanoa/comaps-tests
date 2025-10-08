@@ -1,5 +1,11 @@
 package app.organicmaps.car.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.model.CarIcon;
@@ -7,7 +13,6 @@ import androidx.car.app.model.Distance;
 import androidx.car.app.navigation.model.LaneDirection;
 import androidx.car.app.navigation.model.Maneuver;
 import androidx.core.graphics.drawable.IconCompat;
-
 import app.organicmaps.sdk.routing.CarDirection;
 import app.organicmaps.sdk.routing.LaneWay;
 
@@ -26,30 +31,33 @@ public final class RoutingHelpers
       default -> Distance.UNIT_METERS;
     };
 
-    return Distance.create(distance.mDistance, displayUnit);
+        return Distance.create(distance.mDistance, displayUnit);
   }
 
   @NonNull
   public static LaneDirection createLaneDirection(@NonNull LaneWay laneWay, boolean isRecommended)
   {
-    int shape = LaneDirection.SHAPE_UNKNOWN;
-      shape = switch (laneWay) {
-          case REVERSE -> LaneDirection.SHAPE_U_TURN_LEFT;
-          case SHARP_LEFT -> LaneDirection.SHAPE_SHARP_LEFT;
-          case LEFT -> LaneDirection.SHAPE_NORMAL_LEFT;
-          case SLIGHT_LEFT, MERGE_TO_LEFT -> LaneDirection.SHAPE_SLIGHT_LEFT;
-          case SLIGHT_RIGHT, MERGE_TO_RIGHT -> LaneDirection.SHAPE_SLIGHT_RIGHT;
-          case THROUGH -> LaneDirection.SHAPE_STRAIGHT;
-          case RIGHT -> LaneDirection.SHAPE_NORMAL_RIGHT;
-          case SHARP_RIGHT -> LaneDirection.SHAPE_SHARP_RIGHT;
-          default -> shape;
-      };
+    @LaneDirection.Shape
+    final int shape = switch (laneWay)
+    {
+      case ReverseLeft -> LaneDirection.SHAPE_U_TURN_LEFT;
+      case SharpLeft -> LaneDirection.SHAPE_SHARP_LEFT;
+      case Left -> LaneDirection.SHAPE_NORMAL_LEFT;
+      case MergeToLeft, SlightLeft -> LaneDirection.SHAPE_SLIGHT_LEFT;
+      case Through -> LaneDirection.SHAPE_STRAIGHT;
+      case SlightRight, MergeToRight -> LaneDirection.SHAPE_SLIGHT_RIGHT;
+      case Right -> LaneDirection.SHAPE_NORMAL_RIGHT;
+      case SharpRight -> LaneDirection.SHAPE_SHARP_RIGHT;
+      case ReverseRight -> LaneDirection.SHAPE_U_TURN_RIGHT;
+      default -> LaneDirection.SHAPE_UNKNOWN;
+    };
 
-    return LaneDirection.create(shape, isRecommended);
+        return LaneDirection.create(shape, isRecommended);
   }
 
   @NonNull
-  public static Maneuver createManeuver(@NonNull final CarContext context, @NonNull CarDirection carDirection, int roundaboutExitNum)
+  public static Maneuver createManeuver(@NonNull final CarContext context, @NonNull CarDirection carDirection,
+                                        int roundaboutExitNum)
   {
     int maneuverType = switch (carDirection)
     {
@@ -63,17 +71,41 @@ public final class RoutingHelpers
       case U_TURN_LEFT -> Maneuver.TYPE_U_TURN_LEFT;
       case U_TURN_RIGHT -> Maneuver.TYPE_U_TURN_RIGHT;
       // TODO (AndrewShkrob): add support for CW (clockwise) directions
-      case ENTER_ROUND_ABOUT, STAY_ON_ROUND_ABOUT, LEAVE_ROUND_ABOUT ->
-          Maneuver.TYPE_ROUNDABOUT_ENTER_AND_EXIT_CCW;
+      case ENTER_ROUND_ABOUT, STAY_ON_ROUND_ABOUT, LEAVE_ROUND_ABOUT -> Maneuver.TYPE_ROUNDABOUT_ENTER_AND_EXIT_CCW;
       case START_AT_THE_END_OF_STREET -> Maneuver.TYPE_DEPART;
       case REACHED_YOUR_DESTINATION -> Maneuver.TYPE_DESTINATION;
       case EXIT_HIGHWAY_TO_LEFT -> Maneuver.TYPE_OFF_RAMP_SLIGHT_LEFT;
       case EXIT_HIGHWAY_TO_RIGHT -> Maneuver.TYPE_OFF_RAMP_SLIGHT_RIGHT;
     };
-    final Maneuver.Builder builder = new Maneuver.Builder(maneuverType);
+        final Maneuver.Builder builder = new Maneuver.Builder(maneuverType);
     if (maneuverType == Maneuver.TYPE_ROUNDABOUT_ENTER_AND_EXIT_CCW)
       builder.setRoundaboutExitNumber(roundaboutExitNum > 0 ? roundaboutExitNum : 1);
-    builder.setIcon(new CarIcon.Builder(IconCompat.createWithResource(context, carDirection.getTurnRes())).build());
+    builder.setIcon(new CarIcon.Builder(createManeuverIcon(context, carDirection, roundaboutExitNum)).build());
     return builder.build();
+  }
+
+  @NonNull
+  private static IconCompat createManeuverIcon(@NonNull final CarContext context, @NonNull CarDirection carDirection, int roundaboutExitNum)
+  {
+    if (!CarDirection.isRoundAbout(carDirection) || roundaboutExitNum == 0)
+    {
+      return IconCompat.createWithResource(context, carDirection.getTurnRes());
+    }
+    Bitmap bitmapImmutable = BitmapFactory.decodeResource(context.getResources(), carDirection.getTurnRes());
+    Bitmap bitmap = bitmapImmutable.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas canvas = new Canvas(bitmap);
+    Paint paint = new Paint();
+    paint.setColor(Color.WHITE);
+    paint.setTextAlign(Paint.Align.LEFT);
+    paint.setFakeBoldText(true);
+    paint.setTextSize(24);
+    paint.setAntiAlias(true);
+    String digit = String.valueOf(roundaboutExitNum);
+    Rect bounds = new Rect();
+    paint.getTextBounds(digit, 0, 1, bounds);
+    float cx = canvas.getWidth() / 2f - bounds.exactCenterX();
+    float cy = canvas.getHeight() / 2f - bounds.exactCenterY();
+    canvas.drawText(digit, cx, cy, paint);
+    return IconCompat.createWithBitmap(bitmap);
   }
 }

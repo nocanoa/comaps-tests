@@ -43,6 +43,9 @@ class OpeningHoursDayViewController: UIViewController {
 
 class OpeningHoursViewController: UIViewController {
   @IBOutlet var stackView: UIStackView!
+  @IBOutlet var checkDateLabel: UILabel!
+  @IBOutlet var checkDateLabelTopLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet var checkDateLabelBottomLayoutConstraint: NSLayoutConstraint!
 
   private var otherDaysViews: [OpeningHoursDayViewController] = []
 
@@ -56,6 +59,7 @@ class OpeningHoursViewController: UIViewController {
   private var expanded = false
 
   var openingHours: OpeningHours!
+  var openingHoursCheckDate: Date?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -79,6 +83,23 @@ class OpeningHoursViewController: UIViewController {
         self.otherDaysViews.forEach { vc in
           vc.view.isHidden = !self.expanded
         }
+
+        if let checkDate = self.openingHoursCheckDate, self.expanded {
+          let checkDateFormatter = RelativeDateTimeFormatter()
+          checkDateFormatter.unitsStyle = .spellOut
+          checkDateFormatter.localizedString(for: checkDate, relativeTo: Date.now)
+          self.checkDateLabel.text = String(format: L("hours_confirmed_time_ago"),  checkDateFormatter.localizedString(for: checkDate, relativeTo: Date.now))
+
+          NSLayoutConstraint.activate([self.checkDateLabelTopLayoutConstraint])
+          NSLayoutConstraint.activate([self.checkDateLabelBottomLayoutConstraint])
+        } else {
+          self.checkDateLabel.text = String()
+
+          NSLayoutConstraint.deactivate([self.checkDateLabelTopLayoutConstraint])
+          NSLayoutConstraint.deactivate([self.checkDateLabelBottomLayoutConstraint])
+        }
+        self.checkDateLabel.isHidden = !self.expanded
+
         self.todayView.arrowImageView.transform = self.expanded ? CGAffineTransform(rotationAngle: -CGFloat.pi + 0.01)
                                                                 : CGAffineTransform.identity
         self.view.layoutIfNeeded()

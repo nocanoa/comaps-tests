@@ -270,7 +270,6 @@
 "planning_route_remove_title" = "Drag here to remove";
 "p2p_your_location" = "Your Location";
 "category_transport" = "Transport";
-"alert_reauth_link_text_ios" = "here";
 "text_more_button" = "…more";
 "downloader_of" = "%1$d of %2$d";
 "country_status_download_failed" = "Download has failed";
@@ -303,7 +302,7 @@
 "unpaved_road" = "Unpaved road";
 "phone" = "Phone";
 "whats_new_auto_update_button_later" = "Manually update later";
-"delete" = "Delete";
+"delete" = "Izbriši";
 "downloader_no_downloaded_maps_title" = "You haven't downloaded any maps";
 "search_in_the_list" = "Search in the list";
 "elevation_profile_ascent" = "Ascent";
@@ -315,7 +314,6 @@
 "bookmarks_export" = "Export all Bookmarks and Tracks";
 "dialog_routing_change_end" = "Adjust destination";
 "planning_route_manage_route" = "Manage Route";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "place_name" = "Place Name";
 "navigation_stop_button" = "Stop";
 "load_kmz_successful" = "Bookmarks loaded successfully! You can find them on the map or on the Bookmarks Manager screen.";
@@ -407,7 +405,7 @@
 "editor_detailed_description_hint" = "Detailed comment";
 "driving_options_title" = "Routing options";
 "dialog_routing_select_closer_start" = "Please select a starting point closer to a road.";
-"cancel" = "Cancel";
+"cancel" = "Odustani";
 "switch_to_phone_bookmarks_carplay" = "Switch to the phone to see all bookmarks";
 "lime" = "Lime";
 "website_menu" = "Menu Link";
@@ -447,7 +445,7 @@
 "dialog_routing_disclaimer_beware" = "Please stay alert and safe on the roads!";
 "log_file_size" = "Log file size: %@";
 "editor_add_select_category_all_subtitle" = "All Categories";
-"search" = "Search";
+"search" = "Traži";
 "ft" = "ft";
 "placepage_edit_bookmark_button" = "Edit Bookmark";
 "error_enter_correct_phone" = "Enter a valid phone number";
@@ -487,7 +485,7 @@
 "clear_search" = "Clear Search History";
 "downloader_download_all_button" = "Download All";
 "category_tourism" = "Sights";
-"download_maps" = "Download Maps";
+"download_maps" = "Skini karte";
 "editor_comment_hint" = "Comment…";
 "editor_share_to_all_dialog_message_1" = "Make sure you did not enter any private or personal data.";
 "location_services_disabled_message" = "Enable access to geolocation in the device settings";
@@ -580,7 +578,7 @@
 "yes_available" = "Yes";
 "close" = "Close";
 "add_new_set" = "Add a New List";
-"cancel_download" = "Cancel Download";
+"cancel_download" = "Obustavi skidanje";
 "bookmark_sets" = "Bookmark Lists";
 "leave_a_review" = "Leave a Review";
 "dialog_routing_intermediate_not_determined" = "Please adjust your intermediate point.";
@@ -589,3 +587,5 @@
 "pref_maplanguage_title" = "Map Language";
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_local" = "Local Language";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

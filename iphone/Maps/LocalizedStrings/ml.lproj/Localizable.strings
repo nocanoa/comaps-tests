@@ -93,8 +93,6 @@
 "bookmarks_import" = "Import Bookmarks and Tracks";
 "bookmark_lists_hide_all" = "Hide all";
 "downloader_applying" = "Applying %@…";
-"alert_reauth_link_text_ios" = "here";
-"alert_reauth_message_ios" = "Please login to OpenStreetMap to automatically upload all your map edits. Learn more";
 "bookmark_lists" = "Lists";
 "bookmarks_create_new_group" = "Create a new list";
 "downloader_percent" = "%@ (%@ of %@)";
@@ -426,7 +424,7 @@
 "dialog_routing_disclaimer_beware" = "Please stay alert and safe on the roads!";
 "log_file_size" = "Log file size: %@";
 "editor_add_select_category_all_subtitle" = "All Categories";
-"search" = "Search";
+"search" = "തിരയുക";
 "ft" = "ft";
 "placepage_edit_bookmark_button" = "Edit Bookmark";
 "error_enter_correct_phone" = "Enter a valid phone number";
@@ -589,3 +587,5 @@
 "transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
 "pref_maplanguage_title" = "Map Language";
 "pref_maplanguage_local" = "Local Language";
+"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Confirmed %@";

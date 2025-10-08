@@ -43,7 +43,7 @@
 "country_status_download_failed" = "O download falhou";
 
 /* Text in About screen */
-"about_headline" = "Um projeto aberto, movido pela comunidade";
+"about_headline" = "Projeto aberto desenvolvido pela comunidade";
 
 /* Text in About screen */
 "about_proposition_1" = "Não precisa de conexão à internet, rápido e fácil de usar";
@@ -253,7 +253,7 @@
 "pref_tts_language_title" = "Idioma da voz";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Testar orientação por voz (TTS, Text-To-Speech)";
+"pref_tts_test_voice_title" = "Testar orientação por voz";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Outro";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Relatar ou corrigir dados incorretos do mapa";
 
 /* Button in the About screen */
-"volunteer" = "Voluntarie-se";
+"volunteer" = "Voluntarie-se e melhore o CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Conecte-se conosco";
@@ -544,7 +544,7 @@
 /* OpenStreetMap */
 "osm_mapdata" = "Dados de mapa do OpenStreetMap";
 "osm_mapdata_explanation %@" = "Dados de mapas criados pela comunidade até *%@*. Saiba mais sobre como editar e atualizar o mapa em [OpenStreetMap.org](https://openstreetmap.org).";
-"osm_more_about" = "Mais sobre OpenStreetMap";
+"osm_more_about" = "Mais sobre o OpenStreetMap";
 "osm_more_about_url" = "https://wiki.openstreetmap.org/wiki/Pt:Sobre_o_OpenStreetMap";
 
 /* OpenStreetMap Profile */
@@ -559,7 +559,7 @@
 "osm_profile_register_promt" = "Sem conta no OpenStreetMap?";
 "osm_profile_register" = "Abra uma conta no OpenStreetMap";
 "osm_profile_verfied_changes" = "Alterações verificadas";
-"osm_profile_logout" = "Desconectar conta OpenStreetMap";
+"osm_profile_logout" = "Sair da conta OpenStreetMap";
 "osm_profile_delete" = "Excluir conta OpenStreetMap";
 
 /* Information text: "Last upload 11.01.2016" */
@@ -588,7 +588,7 @@
 "please_note" = "Aviso";
 "downloader_delete_map_dialog" = "Todas as edições no mapa serão excluídas juntamente com o mapa.";
 "downloader_update_maps" = "Atualizar mapas";
-"downloader_search_field_hint" = "Encontrar o mapa";
+"downloader_search_field_hint" = "Encontrar mapa";
 "migration_download_error_dialog" = "Erro no download";
 "common_check_internet_connection_dialog" = "Por favor, verifique as suas configurações e certifique-se de que o dispositivo está conectado à internet.";
 "downloader_no_space_title" = "Não há espaço suficiente";
@@ -623,7 +623,7 @@
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
 "error_enter_correct_storey_number" = "O número de andares não pode ser maior que %d";
 "editor_zip_code" = "CEP";
-"error_enter_correct_zip_code" = "Informe o CEP correto";
+"error_enter_correct_zip_code" = "Insira um CEP válido";
 
 /* Place Page title for long tap */
 "core_placepage_unknown_place" = "Ponto do mapa";
@@ -632,14 +632,14 @@
 "editor_other_info" = "Nota para os voluntários do OpenStreetMap (opcional)";
 "editor_detailed_description_hint" = "Comentário detalhado";
 "editor_detailed_description" = "Suas sugestões de mudança serão enviadas para a comunidade OpenStreetMap. Descreva em detalhes o que não pode ser editado com o CoMaps.";
-"editor_more_about_osm" = "Mais sobre OpenStreetMap";
+"editor_more_about_osm" = "Mais sobre o OpenStreetMap";
 "editor_operator" = "Operador";
 
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Operador: %@";
-"editor_category_unsuitable_title" = "Você não encontra uma categoria adequada?";
+"editor_category_unsuitable_title" = "Não encontra uma categoria adequada?";
 "editor_category_unsuitable_text" = "O CoMaps permite que você adicione apenas categorias de pontos simples, o que significa que não há cidades, estradas, lagos, contornos de edifícios etc. Por favor, adicione essas categorias diretamente no <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a>. Consulte nosso <a href=\"https://www.comaps.app/support/advanced-map-editing/\">guia</a> para obter instruções detalhadas passo a passo.";
-"downloader_no_downloaded_maps_title" = "Você não fez o download de nenhum mapa";
+"downloader_no_downloaded_maps_title" = "Você não baixou nenhum mapa";
 "downloader_no_downloaded_maps_message" = "Baixe mapas para pesquisar locais e usar navegação offline.";
 "current_location_unknown_error_title" = "A localização atual é desconhecida.";
 "current_location_unknown_error_message" = "Ocorreu um erro na busca por sua localização. Verifique se o seu dispositivo está funcionando corretamente e tente novamente mais tarde.";
@@ -757,12 +757,6 @@
 
 /* Title for button when a route was saved. */
 "saved" = "Salvo";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's first part */
-"alert_reauth_message_ios" = "Faça login no OpenStreetMap para carregar automaticamente todas as edições de mapas que você fizer. Saiba mais";
-
-/* For iOS message 'alert_reauth_message' should be splitted in two parts: message + link. Here's link part */
-"alert_reauth_link_text_ios" = "aqui";
 "core_entrance" = "Entrada";
 "error_enter_correct_name" = "Por favor, digite um nome correto";
 "bookmark_lists" = "Listas";
@@ -794,7 +788,7 @@
 "terms_of_use" = "Termos de uso";
 "button_layer_subway" = "Metrô";
 "layers_title" = "Estilos e camadas de mapas";
-"subway_data_unavailable" = "Mapa de metrô está indisponível";
+"subway_data_unavailable" = "O mapa de metrô não está disponível";
 "title_error_downloading_bookmarks" = "Ocorreu um erro";
 "popular_place" = "Popular";
 "export_file" = "Exportar KMZ";
@@ -826,7 +820,7 @@
 "avoid_tolls" = "Evitar pedágios";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
-"avoid_unpaved" = "Evitar não-pavimentadas";
+"avoid_unpaved" = "Evitar não pavimentadas";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
 "avoid_ferry" = "Evitar balsas";
@@ -836,7 +830,7 @@
 "define_to_avoid_btn" = "Definir as estradas a serem evitadas";
 "change_driving_options_btn" = "Opções de direção ativadas";
 "toll_road" = "Pedágio";
-"unpaved_road" = "Pista não pavimentada";
+"unpaved_road" = "Via não pavimentada";
 "ferry_crossing" = "Balsa";
 "trip_start" = "Vamos";
 "pick_destination" = "Destino";
@@ -1060,7 +1054,7 @@
 "self_service" = "Autoatendimento";
 
 /* To indicate if restaurant or other place has outdoor seating */
-"outdoor_seating" = "Assentos ao ar livre";
+"outdoor_seating" = "Mesas externas";
 
 /* Title for the "Recently Deleted Lists" button on the Bookmarks and Lists screen. */
 "bookmarks_recently_deleted" = "Listas excluídas recentemente";
@@ -1098,6 +1092,8 @@
 "osm_profile_view_edit_history" = "Ver histórico de edições";
 "osm_profile_view_notes" = "Ver notas";
 "pref_mapappearance_title" = "Aparência do mapa";
-"pref_maplanguage_title" = "Map Language";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
-"pref_maplanguage_local" = "Local Language";
+"pref_maplanguage_title" = "Idioma do mapa";
+"transliteration_title_disabled_summary" = "Desativado quando sempre se utiliza o idioma local para o mapa";
+"pref_maplanguage_local" = "Idioma local";
+"existence_confirmed_time_ago" = "Existência confirmada %@";
+"hours_confirmed_time_ago" = "Confirmado %@";

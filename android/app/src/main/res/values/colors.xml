@@ -85,6 +85,20 @@
   <color name="bg_statusbar_translucent">#66000000</color>
   <color name="bg_statusbar_night">#121417</color>
 
+  <!-- App icons background and foreground colors -->
+  <color name="bg_app_icon_release">@color/bg_primary</color>
+  <color name="bg_app_icon_test">@color/bg_primary</color>
+  <color name="bg_app_icon_debug">#f8b42e</color>
+
+  <color name="fg_app_icon_white">#fefdf6</color>
+  <color name="fg_app_icon_release">#ccdfca</color>
+  <color name="fg_app_icon_debug_border">#fbe0a6</color>
+  <color name="fg_app_icon_debug_fill1">#f8c152</color>
+  <color name="fg_app_icon_debug_fill2">#facb6d</color>
+  <color name="fg_app_icon_test_border">#ccdfca</color>
+  <color name="fg_app_icon_test_fill1">#7a9d7a</color>
+  <color name="fg_app_icon_test_fill2">#89a687</color>
+
   <!-- Buttons -->
   <color name="button_normal">#00000000</color>
   <color name="button_normal_night">#00000000</color>
@@ -108,12 +122,8 @@
   <color name="button_accent_text_disabled">#42000000</color>
   <color name="button_accent_text_disabled_night">#4CFFFFFF</color>
 
-  <color name="button_red">@color/button_red_normal</color>
-  <color name="button_red_normal">@color/base_red</color>
-  <color name="button_red_pressed">#FFC22219</color>
-  <color name="button_red_disabled">#FFB9332B</color>
+  <color name="button_red">@color/base_red</color>
   <color name="button_red_text">#FFFFFFFF</color>
-  <color name="button_red_text_disabled">#FF606060</color>
 
   <!-- Routing-->
   <color name="bg_routing_progress">#1F000000</color>
@@ -132,7 +142,7 @@
   <color name="bg_editor_light">#FFF2F6F6</color>
   <color name="bg_editor_light_pressed">#3D000000</color>
 
-  <color name="notification">@color/bg_primary</color>
+  <color name="notification">@color/base_accent</color>
   <color name="yellow">#FFC800</color>
 
   <color name="elevation_profile_dot_enabled">#FF9600</color>

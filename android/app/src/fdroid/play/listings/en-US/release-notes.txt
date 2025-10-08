@@ -1,10 +1,10 @@
-Introducing CoMaps logo!
-
-• upgrade altitude contour lines for many regions to 20 or 50 meters step
-• add Panoramax Picture links to selected POIs
-• OpenStreetMap data as of July 13
-• add color fills to many features and display fills earlier for existing features
-• display opening hours state when selecting a POI
-• split all wetlands into several distinct types
-• update vegetation and other map colors, update some map icons
-• outdoors: bolder altitude contour lines
+• OpenStreetMap data as of September 6
+• Turn penalties for bicycle routing
+• Colored POI labels for car navigation map style
+• Search POIs by branch name
+• Added power portals, security booths and offices
+• Update icons for towers, nightclubs, chemists, flagpoles
+• Save bookmark color to GPX exports
+• Color fill pedestrian parts of squares
+• Android Auto: display roundabout exit numbers
+Check our Codeberg release notes for more changes!

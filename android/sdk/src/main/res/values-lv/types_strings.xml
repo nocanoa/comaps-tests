@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SECTION: Types -->
+    <string name="type.amenity.motorcycle_rental">Motociklu noma</string>
+    <string name="type.amenity.charging_station.bicycle">Velosipēdu uzlāde</string>
+    <!-- SECTION: Types: Recycling -->
+    <!-- A place where a lifeguard is on duty. -->
+    <string name="type.emergency.lifeguard">Glābējs</string>
+    <!-- A mountain rescue base for search and rescue activities. -->
+    <string name="type.emergency.mountain_rescue">Kalnu glābšanas stacija</string>
+    <!-- SECTION: Types: Historic -->
+    <!-- Usually has no historic and sometimes no religious context. E.g. a mountain summit cross. -->
+    <string name="type.man_made.cross">Krusts</string>
+    <!-- A deep hole drilled into the earth to extract oil or gas. -->
+    <string name="type.man_made.petroleum_well">Naftas vai gāzes urbums</string>
+    <!-- A tower/mast constructed to burn off excess gas. -->
+    <string name="type.man_made.flare">Gāzes deglis</string>
+    <!-- Named part of a city or town, bigger than place=neighbourhood and smaller than place=suburb (Wiki: https://wiki.openstreetmap.org/wiki/Tag:place%3Dquarter) -->
+    <string name="type.place.quarter">Apkaime</string>
+    <!-- Named part of a city, town or suburb, smaller than place=quarter (Wiki: https://wiki.openstreetmap.org/wiki/Neighbourhood) -->
+    <string name="type.place.neighbourhood">Maza apkaime</string>
+    <!-- Named part of a city or town, bigger than place=quarter (Wiki: https://wiki.openstreetmap.org/wiki/Tag:place%3Dsuburb) -->
+    <string name="type.place.suburb">Pilsētas apgabals</string>
+    <string name="type.shop.hearing_aids">Dzirdes aparātu veikals</string>
+    <string name="type.shop.pasta">Makaronu veikals</string>
+    <string name="type.attraction.amusement_ride">Atrakciju brauciens</string>
+    <string name="type.attraction.carousel">Karuselis</string>
+    <string name="type.attraction.historic">Vēsturiska atrakcija</string>
+    <string name="type.attraction.maze">Labirints</string>
+    <string name="type.attraction.roller_coaster">Amerikāņu kalniņi</string>
+    <string name="type.attraction.water_slide">Ūdens slīdkalniņš</string>
+    <string name="type.amenity.pub">Krogs</string>
+    <string name="type.place.sea">Jūra</string>
+    <string name="type.amenity.bar">Bārs</string>
+    <string name="type.amenity.bicycle_parking">Velostāvvieta</string>
+    <string name="type.amenity.bicycle_rental">Velosipēdu īre</string>
+    <string name="type.amenity.biergarten">Alus dārzs</string>
+    <string name="type.amenity.bureau_de_change">Valūtas maiņa</string>
+    <string name="type.amenity.bus_station">Autoosta</string>
+    <string name="type.amenity.cafe">Kafejnīca</string>
+    <string name="type.amenity.car_rental">Auto īre</string>
+    <string name="type.amenity.car_wash">Automazgātuve</string>
+    <string name="type.amenity.casino">Kazino</string>
+    <string name="type.amenity.charging_station">Uzlādes stacija</string>
+    <string name="type.amenity.charging_station.motorcar">Auto uzlādes stacija</string>
+    <string name="type.amenity.cinema">Kinoteātris</string>
+    <string name="type.amenity.clinic">Poliklīnika</string>
+    <string name="type.amenity.college">Koledža</string>
+    <string name="type.amenity.community_centre">Kultūras nams</string>
+    <string name="type.amenity.compressed_air">Saspiests gaiss</string>
+    <string name="type.amenity.bank">Banka</string>
+    <string name="type.amenity.atm">Bankomāts</string>
+    <string name="type.amenity.bench">Soliņš</string>
+    <string name="type.amenity.brothel">Bordelis</string>
+    <string name="type.aeroway.aerodrome">Lidosta</string>
+    <string name="type.highway.busway.bridge">Tilts</string>
+    <string name="type.highway.busway.tunnel">Tunelis</string>
+    <string name="type.aeroway.aerodrome.international">Starptautiskā lidosta</string>
+    <string name="type.highway.bus_stop">Pietura</string>
+    <string name="type.amenity.studio">Studija</string>
+    <string name="type.amenity.luggage_locker">Bagāžas glabātava</string>
+    <string name="type.cuisine.noodles">Nūdeles</string>
+    <string name="type.leisure.firepit">Ugunskura vieta</string>
+    <string name="type.railway.narrow_gauge.bridge">Šaursliežu dzelzceļa tilts</string>
+    <string name="type.shop.mobile_phone">Viedtālruņa veikals</string>
+    <string name="type.tourism.viewpoint">Skatu laukums</string>
+    <string name="type.tourism.information.visitor_centre">Apmeklētāju centrs</string>
+    <string name="type.amenity.bicycle_parking.covered">Divriteņu novietne ar jumtu</string>
+    <string name="type.highway.ladder">Kāpnes</string>
+    <string name="type.landuse.plant_nursery">Stādaudzētava</string>
+    <string name="type.man_made.silo">Krātuve</string>
+    <string name="type.amenity.animal_shelter">Dzīvnieku patversme</string>
+    <string name="type.natural.wetland.swamp">Purvs</string>
+    <string name="type.railway.station.subway.qingdao">Metro stacija</string>
+    <string name="type.highway.pedestrian.bridge">Gājēju tilts</string>
+    <string name="type.highway.primary">Galvenais ceļš</string>
+    <string name="type.highway.primary.bridge">Tilts</string>
+    <string name="type.highway.primary.tunnel">Tunelis</string>
+    <string name="type.highway.pedestrian.square">Laukums</string>
+    <string name="type.highway.pedestrian.tunnel">Gājēju tunelis</string>
+    <string name="type.shop.lighting">Gaismekļu veikals</string>
+    <string name="type.sport">Sports</string>
+    <string name="type.sport.american_football">Amerikāņu futbols</string>
+    <string name="type.sport.archery">Lokšaušana</string>
+</resources>

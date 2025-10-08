@@ -15,7 +15,7 @@
       android:id="@+id/iv__place_wiki"
       style="@style/PlacePageMetadataIcon"
       app:srcCompat="@drawable/ic_wiki"
-      app:tint="?colorAccent" />
+      app:tint="?colorSecondary" />
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/tv__place_wiki"
       android:layout_width="match_parent"

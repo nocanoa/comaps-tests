@@ -117,10 +117,18 @@ NSString *const kNavigationControlViewXibName = @"NavigationControlView";
 - (void)onRouteReady:(BOOL)hasWarnings {
   if (self.state != MWMNavigationDashboardStateNavigation)
     self.state = MWMNavigationDashboardStateReady;
-  if ([MWMRouter hasActiveDrivingOptions]) {
-    self.routePreview.drivingOptionsState = MWMDrivingOptionsStateChange;
+
+  MWMRouterType const routerType = [MWMRouter type];
+  if (routerType == MWMRouterTypePublicTransport || routerType == MWMRouterTypeRuler) {
+    // For Public Transport and Ruler modes, there are no road restrictions, so always hide the button.
+    self.routePreview.drivingOptionsState = MWMDrivingOptionsStateNone;
   } else {
-    self.routePreview.drivingOptionsState = hasWarnings ? MWMDrivingOptionsStateDefine : MWMDrivingOptionsStateNone;
+    // For all other modes (Vehicle, Pedestrian, Bicycle), show the button.
+    if ([MWMRouter hasActiveDrivingOptions]) {
+      self.routePreview.drivingOptionsState = MWMDrivingOptionsStateChange;
+    } else {
+      self.routePreview.drivingOptionsState = MWMDrivingOptionsStateDefine;
+    }
   }
 }
 

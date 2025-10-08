@@ -17,13 +17,8 @@
     <string name="downloading">Downloading…</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
     <string name="kilometres">Kilometers</string>
-    <!-- Settings/Downloader - size string, only strings different from English should be translated -->
-    <string name="mb">MB</string>
-    <string name="gb">GB</string>
     <!-- Choose measurement on first launch alert - choose imperial system button -->
     <string name="miles">Miles</string>
-    <!-- A text for current gps location point/arrow selected on the map -->
-    <string name="core_my_position">My Position</string>
     <!-- Update maps later button text -->
     <string name="later">Later</string>
     <!-- View and button titles for accessibility, please also edit it in iphone/plist.txt -->
@@ -83,8 +78,6 @@
     <string name="bookmarks">Bookmarks</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
     <string name="bookmarks_and_tracks">Bookmarks and Tracks</string>
-    <!-- Default bookmark list name -->
-    <string name="core_my_places">My Places</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Name</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -99,14 +92,6 @@
     <string name="maps_storage_summary">Select the folder to download maps to</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Downloaded maps</string>
-    <!-- Internal storage type in Maps Storage settings (not accessible by the user) -->
-    <string name="maps_storage_internal">Internal private storage</string>
-    <!-- Shared storage type in Maps Storage settings (a primary storage usually) -->
-    <string name="maps_storage_shared">Internal shared storage</string>
-    <!-- Removable external storage type in Maps Storage settings, e.g. an SD card -->
-    <string name="maps_storage_removable">SD card</string>
-    <!-- Generic external storage type in Maps Storage settings -->
-    <string name="maps_storage_external">External shared storage</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
     <string name="maps_storage_free_size">%1$s free of %2$s</string>
     <!-- Question dialog for transferring maps from one storage to another -->
@@ -160,8 +145,6 @@
     <string name="category_post">Post</string>
     <!-- Search category for police; any changes should be duplicated in categories.txt @category_police! -->
     <string name="category_police">Police</string>
-    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
-    <string name="category_wifi">WiFi</string>
     <!-- Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! -->
     <string name="category_recycling">Recycling</string>
     <!-- Search category for water; any changes should be duplicated in categories.txt @category_water! also used to sort bookmarks by type -->
@@ -259,7 +242,7 @@
     <!-- Settings «Route» category: «Tts language» title -->
     <string name="pref_tts_language_title">Voice Language</string>
     <!-- Settings «Route» category: «Test Voice Directions» title -->
-    <string name="pref_tts_test_voice_title">Test Voice Directions (TTS, Text-To-Speech)</string>
+    <string name="pref_tts_test_voice_title">Test Voice Directions</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
     <string name="pref_tts_playing_test_voice">Check the volume or system Text-To-Speech settings if you don\'t hear the voice now</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
@@ -273,30 +256,8 @@
     <string name="website">Website</string>
     <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">News</string>
-    <!-- Text in menu -->
-    <string name="github">GitHub</string>
-    <!-- Text in menu -->
-    <string name="telegram">Telegram</string>
-    <!-- Text in menu -->
-    <string name="matrix">[Matrix]</string>
-    <!-- Text in menu -->
-    <string name="mastodon">Mastodon</string>
-    <!-- Text in menu -->
-    <string name="facebook">Facebook</string>
-    <!-- Text in menu -->
-    <string name="twitter">X (Twitter)</string>
-    <!-- Text in menu -->
-    <string name="instagram">Instagram</string>
-    <!-- Text in the editor -->
-    <string name="vk">VK</string>
-    <!-- Text in menu -->
-    <string name="bluesky">Bluesky</string>
     <!-- Text on the place page -->
     <string name="panoramax">Panoramax Picture</string>
-    <!-- Text in the editor -->
-    <string name="editor_line_social_network">LINE</string>
-    <!-- Text in menu -->
-    <string name="openstreetmap">OpenStreetMap</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">Feedback</string>
     <!-- Text in menu -->
@@ -308,7 +269,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Donate</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Support the project</string>
+    <string name="how_to_support_us">Volunteer and improve CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Copyright</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -479,10 +440,13 @@
     <string name="twentyfour_seven">24/7</string>
     <string name="day_off_today">Closed today</string>
     <string name="day_off">Closed</string>
-    <string name="today">Today</string>
     <string name="opens_in">Opens in %s</string>
     <string name="closes_in">Closes in %s</string>
     <string name="closed">Closed</string>
+    <!-- Used in the opening_hours fragment for the last checked date, eg. "Confirmed two weeks ago" -->
+    <string name="hours_confirmed_time_ago">Confirmed %s</string>
+    <!-- Used on the place page for the last checked date, eg. "Existence confirmed two weeks ago" -->
+    <string name="existence_confirmed_time_ago">Existence confirmed %s</string>
     <string name="edit_opening_hours">Edit business hours</string>
     <string name="no_osm_account">Don\'t have an OpenStreetMap account?</string>
     <string name="register_at_openstreetmap">Register at OpenStreetMap</string>
@@ -490,8 +454,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Not signed in</string>
     <string name="login_osm">Login to OpenStreetMap</string>
-    <string name="password">Password</string>
-    <string name="forgot_password">Forgot your password?</string>
     <string name="logout">Log Out</string>
     <string name="edit_place">Edit Place</string>
     <string name="add_language">Add a language</string>
@@ -507,11 +469,9 @@
     <string name="empty_street_name_error">Please enter a street name</string>
     <string name="choose_language">Choose a language</string>
     <string name="choose_street">Choose a street</string>
-    <string name="postal_code">Postal Code</string>
     <string name="cuisine">Cuisine</string>
     <string name="select_cuisine">Select cuisine</string>
     <!-- login text field -->
-    <string name="email_or_username">Email or username</string>
     <string name="editor_add_phone">Add Phone</string>
     <string name="level">Floor</string>
     <!-- Building level -->
@@ -534,7 +494,6 @@
     <string name="editor_edit_place_category_title">Category</string>
     <string name="detailed_problem_description">Detailed description of the issue</string>
     <string name="editor_report_problem_other_title">Different problem</string>
-    <string name="placepage_add_business_button">Add business</string>
     <string name="message_invalid_feature_position">No object can be located here</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Community-created OpenStreetMap data as of %s. Learn more about how to edit and update the map at OpenStreetMap.org</string>
@@ -550,10 +509,8 @@
     <string name="editor_building_levels">Floors (inc. ground floor, excl. roof)</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">The number of floors must non exceed %d</string>
-    <string name="editor_zip_code">ZIP Code</string>
-    <string name="error_enter_correct_zip_code">Enter a valid ZIP code</string>
-    <!-- Place Page title for long tap -->
-    <string name="core_placepage_unknown_place">Map Point</string>
+    <string name="editor_zip_code">Postal Code</string>
+    <string name="error_enter_correct_zip_code">Enter a valid postal code</string>
     <!-- Title for OSM note section in the editor -->
     <string name="editor_other_info">Note to OpenStreetMap volunteers (optional)</string>
     <!-- Hint of the input field in the OSM note section of the editor -->
@@ -571,16 +528,8 @@
     <string name="downloader_no_downloaded_maps_title">You haven\'t downloaded any maps</string>
     <string name="downloader_no_downloaded_maps_message">Download maps to search and navigate offline</string>
     <string name="current_location_unknown_error_title">Current location is unknown</string>
-    <!-- abbreviation for meters -->
-    <string name="m">m</string>
-    <!-- abbreviation for kilometers -->
-    <string name="km">km</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/h</string>
-    <!-- abbreviation for mile(s) -->
-    <string name="mi">mi</string>
-    <!-- A unit of measure -->
-    <string name="ft">ft</string>
     <string name="miles_per_hour">mph</string>
     <string name="hour">h</string>
     <string name="minute">min</string>
@@ -610,6 +559,8 @@
     <string name="error_enter_correct_fediverse_page">Enter a valid Mastodon username or web address</string>
     <string name="error_enter_correct_bluesky_page">Enter a valid Bluesky username or web address</string>
     <string name="placepage_add_place_button">Add Place to OpenStreetMap</string>
+    <string name="osm_note_hint">Or, alternatively, leave a note to OpenStreetMap community so that someone else can add or fix a place here.</string>
+    <string name="osm_note_toast">Note will be sent to OpenStreetMap</string>
     <!-- Displayed when saving some edits to the map to warn against publishing personal data -->
     <string name="editor_share_to_all_dialog_title">Do you want to send it to all users?</string>
     <!-- Dialog before publishing the modifications to the public map. -->
@@ -646,8 +597,6 @@
     <string name="prefs_languages_information_off_link">For more information please check this guide</string>
     <string name="transliteration_title">Transliterate into Latin alphabet</string>
     <string name="learn_more">Learn more</string>
-    <!-- Subway exits for public transport marks on the map -->
-    <string name="core_exit">Exit</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
     <string name="routing_add_start_point">Use search or tap on the map to add a route starting point</string>
     <!-- User selected the start of a route by pressing Route From. Now the destination of a route should be selected using search or by tapping on the map and then pressing "Route To". -->
@@ -657,12 +606,9 @@
     <string name="placepage_remove_stop">Remove Stop</string>
     <string name="placepage_add_stop">Add Stop</string>
     <string name="saved">Saved</string>
-    <!-- Alert to ask user relogin to OpenStreetMap with OAuth2 flow after OAuth1 authentication is deprecated. -->
-    <string name="alert_reauth_message">Please login to OpenStreetMap to automatically upload all your map edits. Learn more <a href="https://github.com/organicmaps/organicmaps/issues/6144">here</a>.</string>
     <string name="dialog_error_storage_title">Storage access problem</string>
     <string name="dialog_error_storage_message">External storage is not accessible. The SD card may have been removed, damaged, or the file system is read-only. Please, check your SD card or contact us at support@comaps.app</string>
     <string name="setting_emulate_bad_storage">Emulate bad storage</string>
-    <string name="core_entrance">Entrance</string>
     <string name="error_enter_correct_name">Please enter a correct name</string>
     <string name="bookmark_lists">Lists</string>
     <!-- Do not display all bookmark lists on the map -->
@@ -702,16 +648,12 @@
     <string name="button_layer_traffic">Traffic</string>
     <string name="subway">Subway</string>
     <string name="layers_title">Map Styles and Layers</string>
-    <string name="subway_data_unavailable">Subway map is unavailable</string>
     <string name="bookmarks_empty_list_title">This list is empty</string>
     <string name="bookmarks_empty_list_message">To add a bookmark, tap a place on the map and then tap the star icon</string>
     <string name="category_desc_more">…more</string>
     <string name="export_file">Export KMZ</string>
     <string name="export_file_gpx">Export GPX</string>
     <string name="delete_list">Delete list</string>
-    <string name="public_access">Public access</string>
-    <string name="limited_access">Limited access</string>
-    <string name="not_shared">Private</string>
     <string name="speedcams_alert_title">Speed cameras</string>
     <string name="place_description_title">Place Description</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
@@ -728,7 +670,6 @@
     <string name="power_managment_setting_auto">When battery is low</string>
     <string name="power_managment_setting_manual_max">Always</string>
     <string name="enable_logging_warning_message">Enable this option temporarily to record and manually send detailed diagnostic logs about your issue to us using \"Report a bug\" in the Help dialog. Logs may include location info.</string>
-    <string name="access_rules_author_only">Online editing</string>
     <string name="driving_options_title">Routing options</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_tolls">Avoid tolls</string>
@@ -930,7 +871,6 @@
     <string name="uri_open_location_failed">No app installed that can open the location</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto in navigation</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_title">Left button setup</string>
     <string name="pref_left_button_disable">Disable</string>
 
@@ -971,4 +911,16 @@
     <string name="closed_now">Closed now</string>
     <!-- Used in place page preview for next open/close time. eg. "closing in 30 min • at 19:30" -->
     <string name="at">at %s</string>
+    <!-- Title of the bottom sheet when sharing the track -->
+    <string name="share_track">Share Track</string>
+    <string name="delete_track_dialog_title">Delete %s?</string>
+    <string name="pref_tts_no_system_tts_short">No text-to-speech engine found, check the app settings</string>
+    <string name="unknown_power_output">unknown power</string>
+    <string name="charge_socket_type2">Type 2 (no cable)</string>
+    <string name="charge_socket_type2_cable">Type 2 (w/ cable)</string>
+    <string name="charge_socket_type2_combo">Type 2 combo</string>
+    <string name="charge_socket_type1">Type 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="unknown_socket_type">unknown socket</string>
 </resources>

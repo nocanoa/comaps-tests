@@ -11,14 +11,13 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleableRes;
-
 import app.organicmaps.R;
-import app.organicmaps.sdk.routing.SingleLaneInfo;
+import app.organicmaps.sdk.routing.LaneInfo;
+import app.organicmaps.sdk.routing.LaneWay;
 
 public class LanesView extends View
 {
@@ -60,13 +59,17 @@ public class LanesView extends View
     try (TypedArray data = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LanesView, 0, 0))
     {
       backgroundColor = getAttrColor(data, R.styleable.LanesView_lanesBackgroundColor, DefaultValues.BACKGROUND_COLOR);
-      mActiveLaneTintColor = getAttrColor(data, R.styleable.LanesView_lanesActiveLaneTintColor, DefaultValues.ACTIVE_LANE_TINT_COLOR);
-      mInactiveLaneTintColor = getAttrColor(data, R.styleable.LanesView_lanesInactiveLaneTintColor, DefaultValues.INACTIVE_LANE_TINT_COLOR);
-      mCornerRadius = (int) Math.max(data.getDimension(R.styleable.LanesView_lanesCornerRadius, DefaultValues.CORNER_RADIUS), 0.0f);
+      mActiveLaneTintColor =
+          getAttrColor(data, R.styleable.LanesView_lanesActiveLaneTintColor, DefaultValues.ACTIVE_LANE_TINT_COLOR);
+      mInactiveLaneTintColor =
+          getAttrColor(data, R.styleable.LanesView_lanesInactiveLaneTintColor, DefaultValues.INACTIVE_LANE_TINT_COLOR);
+      mCornerRadius =
+          (int) Math.max(data.getDimension(R.styleable.LanesView_lanesCornerRadius, DefaultValues.CORNER_RADIUS), 0.0f);
 
       if (isInEditMode())
       {
-        final int lanesCount = Math.max(1, data.getInt(R.styleable.LanesView_lanesEditModeLanesCount, DefaultValues.LANES_COUNT));
+        final int lanesCount =
+            Math.max(1, data.getInt(R.styleable.LanesView_lanesEditModeLanesCount, DefaultValues.LANES_COUNT));
         createLanesForEditMode(lanesCount);
       }
     }
@@ -75,7 +78,7 @@ public class LanesView extends View
     mBackgroundPaint.setColor(backgroundColor);
   }
 
-  public void setLanes(@Nullable SingleLaneInfo[] lanes)
+  public void setLanes(@Nullable LaneInfo[] lanes)
   {
     if (lanes == null || lanes.length == 0)
       mLanesDrawable = null;
@@ -155,16 +158,16 @@ public class LanesView extends View
 
   private void createLanesForEditMode(int lanesCount)
   {
-    final SingleLaneInfo[] lanes = new SingleLaneInfo[lanesCount];
-    lanes[0] = new SingleLaneInfo(new byte[]{1}, false);
+    final LaneInfo[] lanes = new LaneInfo[lanesCount];
+    lanes[0] = new LaneInfo(new LaneWay[] {LaneWay.ReverseLeft, LaneWay.Left}, LaneWay.None);
     if (lanes.length > 1)
-      lanes[1] = new SingleLaneInfo(new byte[]{3}, false);
+      lanes[1] = new LaneInfo(new LaneWay[] {LaneWay.SharpLeft, LaneWay.Left, LaneWay.Through}, LaneWay.None);
     for (int i = 2; i <= lanes.length - 1; i++)
-      lanes[i] = new SingleLaneInfo(new byte[]{0}, true);
+      lanes[i] = new LaneInfo(new LaneWay[] {LaneWay.Through, LaneWay.Left}, LaneWay.Through);
     if (lanes.length > 2)
-      lanes[lanes.length - 2] = new SingleLaneInfo(new byte[]{8}, false);
+      lanes[lanes.length - 2] = new LaneInfo(new LaneWay[] {LaneWay.SlightRight, LaneWay.Right}, LaneWay.SlightRight);
     if (lanes.length > 3)
-      lanes[lanes.length - 1] = new SingleLaneInfo(new byte[]{9}, false);
+      lanes[lanes.length - 1] = new LaneInfo(new LaneWay[] {LaneWay.ReverseRight}, LaneWay.None);
 
     setLanes(lanes);
   }

@@ -20,9 +20,9 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="@string/categories" />
-  <com.google.android.material.textview.MaterialTextView
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/button"
-    style="?fontSubtitle2"
+    style="@style/Widget.Material3.Button.TextButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentEnd="true"
@@ -30,8 +30,8 @@
     android:background="?selectableItemBackground"
     android:paddingTop="@dimen/margin_half_plus"
     android:text="@string/bookmark_lists_hide_all"
-    android:textAllCaps="true"
-    android:textColor="?colorAccent"
+    android:textColor="?colorSecondary"
+    android:textAppearance="@style/MwmTextAppearance.Body1"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- A text for current gps location point/arrow selected on the map -->
+    <string name="core_my_position">Poziția mea</string>
+    <!-- Default bookmark list name -->
+    <string name="core_my_places">Locurile mele</string>
+    <!-- Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! -->
+    <string name="category_wifi">Wi-Fi</string>
+    <string name="postal_code">Cod poștal</string>
+    <!-- Place Page title for long tap -->
+    <string name="core_placepage_unknown_place">Punct Hartă</string>
+    <!-- abbreviation for meters -->
+    <string name="m">m</string>
+    <!-- abbreviation for kilometers -->
+    <string name="km">km</string>
+    <!-- abbreviation for mile(s) -->
+    <string name="mi">mi</string>
+    <!-- Subway exits for public transport marks on the map -->
+    <string name="core_exit">Ieșire</string>
+    <string name="core_entrance">Intrare</string>
+    <string name="subway_data_unavailable">Harta de metrou nu este disponibilă</string>
+    <string name="public_access">Acces public</string>
+    <string name="limited_access">Acces privat</string>
+    <string name="not_shared">Personal</string>
+    <string name="access_rules_author_only">Modifică online</string>
+    <string name="today">Azi</string>
+    <string name="yesterday">Ieri</string>
+    <string name="week_ago">Acum %s săptămână</string>
+    <string name="weeks_ago">Acum %s săptămâni</string>
+    <string name="month_ago">Acum %s lună</string>
+    <string name="months_ago">Acum %s luni</string>
+    <string name="year_ago">Acum %s an</string>
+    <string name="years_ago">Acum %s ani</string>
+    <string name="maps_storage_removable">Card SD</string>
+    <string name="maps_storage_external">Stocare externă partajată</string>
+    <string name="ft">ft</string>
+    <string name="mb">MB</string>
+    <string name="gb">GB</string>
+    <string name="maps_storage_shared">Stocare internă partajată</string>
+    <string name="maps_storage_internal">Stocare internă privată</string>
+    <string name="days_ago">cu %s zile în urmă</string>
+</resources>

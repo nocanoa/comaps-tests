@@ -19,20 +19,20 @@
 </div>
 <div align="center">
   <p align="center">
-    <a href="https://codeberg.org/comaps/comaps/releases">
-      <img src="https://img.shields.io/github/license/comaps/comaps?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=588157" alt="License" style="width: 90%; max-width: 150px;"/>
+    <a href="https://codeberg.org/comaps/comaps/src/branch/main/LICENSE">
+      <img src="https://img.shields.io/github/license/comaps/comaps?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=588157" alt="License"/>
     </a>
     <a href="https://github.com/comaps/comaps/actions/workflows/android-check.yaml">
-      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/android-check.yaml?label=Android%20Build&logo=android&logoColor=white&style=for-the-badge&color=588157" alt="Android Build Status" style="width: 90%; max-width: 170px;"/>
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/android-check.yaml?label=Android%20Build&logo=android&logoColor=white&style=for-the-badge&color=588157" alt="Android Build Status"/>
     </a>
     <a href="https://github.com/comaps/comaps/actions/workflows/ios-check.yaml">
-      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/ios-check.yaml?label=iOS%20Build&logo=apple&logoColor=white&style=for-the-badge&color=588157" alt="iOS Build Status" style="width: 90%; max-width: 145px;"/>
+      <img src="https://img.shields.io/github/actions/workflow/status/comaps/comaps/.github/workflows/ios-check.yaml?label=iOS%20Build&logo=apple&logoColor=white&style=for-the-badge&color=588157" alt="iOS Build Status"/>
     </a>
     <a href="https://opencollective.com/comaps">
-      <img src="https://img.shields.io/opencollective/all/comaps?label=Open%20Collective%20Donors&logo=opencollective&logoColor=white&style=for-the-badge&color=588157" alt="Open Collective Donors" style="width: 90%; max-width: 191px;"/>
+      <img src="https://img.shields.io/opencollective/all/comaps?label=Open%20Collective%20Donors&logo=opencollective&logoColor=white&style=for-the-badge&color=588157" alt="Open Collective Donors"/>
     </a>
     <a href="https://liberapay.com/CoMaps">
-      <img src="https://img.shields.io/liberapay/patrons/CoMaps.svg?label=Liberapay%20Patrons&logo=liberapay&logoColor=white&style=for-the-badge&color=588157" alt="Liberapay Patrons" style="width: 90%; max-width: 160px;"/>
+      <img src="https://img.shields.io/liberapay/patrons/CoMaps.svg?label=Liberapay%20Patrons&logo=liberapay&logoColor=white&style=for-the-badge&color=588157" alt="Liberapay Patrons"/>
     </a>
   </p>
 </div>
@@ -40,8 +40,6 @@
 ---
 
 A community-led free & open source maps app based on [OpenStreetMap](https://www.openstreetmap.org), built for transparency, privacy, and not-for-profit values. A fork of Organic Maps, originally based on Maps.ME.
-
-**Available for:** Android, iOS, ARM macOS, and alpha Linux/macOS desktop builds (also usable on Linux phones).
 
 <p align="center">
   <a href="https://apps.apple.com/app/comaps/id6747180809">
@@ -52,6 +50,12 @@ A community-led free & open source maps app based on [OpenStreetMap](https://www
   </a>
   <a href="https://f-droid.org/en/packages/app.comaps.fdroid/">
     <img src="docs/badges/fdroid.png" alt="F-Droid" width="160"/>
+  </a>
+  <a href="https://apt.izzysoft.de/fdroid/index/apk/app.comaps">
+    <img src="docs/badges/izzyondroid.png" alt="Obtainium" width="160"/>
+  </a>
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://codeberg.org/comaps/comaps">
+    <img src="docs/badges/obtainium.png" alt="Obtainium" width="160"/>
   </a>
   <a href="https://codeberg.org/comaps/comaps/releases">
     <img src="docs/badges/codeberg.png" alt="Codeberg" width="160"/>
@@ -74,9 +78,10 @@ A community-led free & open source maps app based on [OpenStreetMap](https://www
 ## ⚡️ Highlights
 
 - **Offline-first**: Navigate without a connection
-- **Privacy-respecting**: No tracking, Ads or data collection
+- **Privacy-respecting**: No tracking, ads or data collection
 - **Lightweight**: Battery- and space-efficient
 - **Simple**: Polished, user-focused interface
+- **Cross-platform**: Available for Android, iOS, MacOS, and Linux.
 - **Community-built**: Free, open source, and collaborative
 - **Transparent**: Open finances and governance
 
@@ -122,10 +127,8 @@ You can help by donating, contributing code, translating, or by telling others a
 
 - Build instructions: [docs/INSTALL.md](docs/INSTALL.md)  
 - Contribution guide: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
-> [!NOTE]  
-> Some docs might be outdated, contain broken links or old references to Organic Maps, etc. Its a work in progress and help is much appreciated!
 
-There is a dedicated Zulip chat for active contributors: [Zulip](https://comaps.zulipchat.com)
+There is a dedicated [Zulip](https://codeberg.org/comaps/Governance/src/branch/main/contribute.md#3-team-messaging) chat for active contributors.
 
 ---
 
@@ -139,7 +142,7 @@ There is a dedicated Zulip chat for active contributors: [Zulip](https://comaps.
 
 ## 💸 Funding
 
-CoMaps is free. To stay that way, it relies on your support.  
+CoMaps is free. To fund development, we rely on your voluntary support ♥️
 Donate via [OpenCollective](https://opencollective.com/comaps/donate) or [Liberapay](https://liberapay.com/CoMaps).  
 The project's financial information is completely open and transparent at [our Open Collective](https://opencollective.com/comaps).
 
@@ -154,6 +157,12 @@ To [verify](https://developer.android.com/studio/command-line/apksigner#usage-ve
 SHA-256: 4894e8e6963627ef660031d8593fe77297f835acb4e23810003e926135023b4c
 SHA-1: 8b7b5739f917e9f7c681671ced0c9c8562123ade
 MD5: 9cce0ffea281dc2f0e0a154d6d2e281e
+```
+
+To verify CoMaps via [AppVerifier](https://github.com/soupslurpr/AppVerifier), use the following signing certificate fingerprint:
+```
+app.comaps
+48:94:E8:E6:96:36:27:EF:66:00:31:D8:59:3F:E7:72:97:F8:35:AC:B4:E2:38:10:00:3E:92:61:35:02:3B:4C
 ```
 ---
 

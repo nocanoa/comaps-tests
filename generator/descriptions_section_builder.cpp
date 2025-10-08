@@ -6,8 +6,8 @@
 
 #include "platform/platform.hpp"
 
-#include "coding/files_container.hpp"
 #include "coding/file_writer.hpp"
+#include "coding/files_container.hpp"
 #include "coding/string_utf8_multilang.hpp"
 
 #include "base/file_name_utils.hpp"
@@ -78,23 +78,22 @@ std::string DescriptionsCollectionBuilderStat::LangStatisticsToString() const
     if (m_langsStat[code] == 0)
       continue;
 
-    stream << StringUtf8Multilang::GetLangByCode(static_cast<int8_t>(code))
-           << ":" << m_langsStat[code] << " ";
+    stream << StringUtf8Multilang::GetLangByCode(static_cast<int8_t>(code)) << ":" << m_langsStat[code] << " ";
   }
 
   return stream.str();
 }
 
-void DescriptionsCollector::operator() (FeatureType & ft, uint32_t featureId)
+void DescriptionsCollector::operator()(FeatureType & ft, uint32_t featureId)
 {
-//  auto const & attractionsChecker = ftypes::AttractionsChecker::Instance();
-//  if (!attractionsChecker(ft))
-//    return;
+  //  auto const & attractionsChecker = ftypes::AttractionsChecker::Instance();
+  //  if (!attractionsChecker(ft))
+  //    return;
 
   (*this)(ft.GetMetadata().GetWikiURL(), featureId);
 }
 
-void DescriptionsCollector::operator() (std::string const & wikiUrl, uint32_t featureId)
+void DescriptionsCollector::operator()(std::string const & wikiUrl, uint32_t featureId)
 {
   descriptions::LangMeta langsMeta;
 
@@ -127,7 +126,7 @@ void DescriptionsCollector::operator() (std::string const & wikiUrl, uint32_t fe
   else
     m_stat.IncNumberWikidataIds();
 
-  m_collection.m_features.push_back({ featureId, std::move(langsMeta) });
+  m_collection.m_features.push_back({featureId, std::move(langsMeta)});
 }
 
 // static
@@ -143,8 +142,7 @@ std::string DescriptionsCollector::MakePathForWikipedia(std::string const & wiki
 }
 
 // static
-std::string DescriptionsCollector::MakePathForWikidata(std::string const & wikipediaDir,
-                                                       std::string const & wikidataId)
+std::string DescriptionsCollector::MakePathForWikidata(std::string const & wikipediaDir, std::string const & wikidataId)
 {
   return base::JoinPath(wikipediaDir, "wikidata", wikidataId);
 }
@@ -217,10 +215,8 @@ void DescriptionsSectionBuilder::BuildSection(std::string const & mwmFile, Descr
 {
   auto const & stat = collector.m_stat;
   size_t const size = stat.GetTotalSize();
-  LOG(LINFO, ("Wiki descriptions for", mwmFile,
-              "Wikipedia urls =", stat.GetNumberOfWikipediaUrls(),
-              "Wikidata ids =", stat.GetNumberOfWikidataIds(),
-              "Total number of pages =", stat.GetNumberOfPages(),
+  LOG(LINFO, ("Wiki descriptions for", mwmFile, "Wikipedia urls =", stat.GetNumberOfWikipediaUrls(),
+              "Wikidata ids =", stat.GetNumberOfWikidataIds(), "Total number of pages =", stat.GetNumberOfPages(),
               "Total size of added pages (before writing to section) =", size, "bytes"));
   if (size == 0)
   {
@@ -240,9 +236,7 @@ void DescriptionsSectionBuilder::BuildSection(std::string const & mwmFile, Descr
     sectionSize = writer->Pos() - sectionSize;
   }
 
-  LOG(LINFO, ("Section", DESCRIPTIONS_FILE_TAG, "is built.",
-              "Disk size =", sectionSize, "bytes",
-              "Compression ratio =", size / double(sectionSize),
-              stat.LangStatisticsToString()));
+  LOG(LINFO, ("Section", DESCRIPTIONS_FILE_TAG, "is built.", "Disk size =", sectionSize, "bytes",
+              "Compression ratio =", size / double(sectionSize), stat.LangStatisticsToString()));
 }
 }  // namespace generator

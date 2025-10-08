@@ -7,7 +7,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
@@ -15,35 +14,37 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
-
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-
+import androidx.preference.PreferenceManager;
 import app.organicmaps.background.OsmUploadWork;
-import app.organicmaps.downloader.Android7RootCertificateWorkaround;
 import app.organicmaps.downloader.DownloaderNotifier;
-import app.organicmaps.sdk.display.DisplayManager;
+import app.organicmaps.location.LocationProviderFactoryImpl;
+import app.organicmaps.location.TrackRecordingService;
+import app.organicmaps.routing.NavigationService;
 import app.organicmaps.sdk.Map;
+import app.organicmaps.sdk.OrganicMaps;
+import app.organicmaps.sdk.display.DisplayManager;
 import app.organicmaps.sdk.location.LocationHelper;
 import app.organicmaps.sdk.location.LocationState;
 import app.organicmaps.sdk.location.SensorHelper;
 import app.organicmaps.sdk.location.TrackRecorder;
-import app.organicmaps.location.TrackRecordingService;
 import app.organicmaps.sdk.maplayer.isolines.IsolinesManager;
 import app.organicmaps.sdk.maplayer.subway.SubwayManager;
-import app.organicmaps.routing.NavigationService;
-import app.organicmaps.routing.RoutingController;
-import app.organicmaps.sdk.OrganicMaps;
+import app.organicmaps.sdk.routing.RoutingController;
 import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.ConnectionState;
-import app.organicmaps.util.Utils;
 import app.organicmaps.sdk.util.log.Logger;
-import app.organicmaps.sdk.util.log.LogsManager;
+import app.organicmaps.util.ThemeSwitcher;
+import app.organicmaps.util.Utils;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class MwmApplication extends Application implements Application.ActivityLifecycleCallbacks
 {
   @NonNull
   private static final String TAG = MwmApplication.class.getSimpleName();
+
+  @NonNull
+  private final LocationProviderFactoryImpl mLocationProviderFactory = new LocationProviderFactoryImpl();
 
   @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
@@ -55,6 +56,10 @@ public class MwmApplication extends Application implements Application.ActivityL
 
   @Nullable
   private WeakReference<Activity> mTopActivity;
+
+  @SuppressWarnings("NotNullFieldNotInitialized")
+  @NonNull
+  public static MwmApplication sInstance;
 
   @UiThread
   @Nullable
@@ -100,18 +105,21 @@ public class MwmApplication extends Application implements Application.ActivityL
   }
 
   @NonNull
+  public LocationProviderFactoryImpl getLocationProviderFactory()
+  {
+    return mLocationProviderFactory;
+  }
+
+  @NonNull
   public static MwmApplication from(@NonNull Context context)
   {
     return (MwmApplication) context.getApplicationContext();
   }
 
   @NonNull
-  public static MwmApplication sInstance;
-
-  @NonNull
   public static SharedPreferences prefs(@NonNull Context context)
   {
-    return context.getSharedPreferences(context.getString(R.string.pref_file_name), MODE_PRIVATE);
+    return from(context).getOrganicMaps().getPreferences();
   }
 
   @Override
@@ -122,11 +130,10 @@ public class MwmApplication extends Application implements Application.ActivityL
 
     sInstance = this;
 
-    mOrganicMaps = new OrganicMaps(getApplicationContext());
-
-    LogsManager.INSTANCE.initFileLogging(this);
-
-    Android7RootCertificateWorkaround.initializeIfNeeded(this);
+    PreferenceManager.setDefaultValues(this, R.xml.prefs_main, false);
+    mOrganicMaps = new OrganicMaps(getApplicationContext(), BuildConfig.FLAVOR, BuildConfig.APPLICATION_ID,
+                                   BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME,
+                                   BuildConfig.FILE_PROVIDER_AUTHORITY, mLocationProviderFactory);
 
     ConnectionState.INSTANCE.initialize(this);
 
@@ -141,13 +148,14 @@ public class MwmApplication extends Application implements Application.ActivityL
   public boolean initOrganicMaps(@NonNull Runnable onComplete) throws IOException
   {
     return mOrganicMaps.init(() -> {
+      ThemeSwitcher.INSTANCE.initialize(this);
+      ThemeSwitcher.INSTANCE.restart(false);
       ProcessLifecycleOwner.get().getLifecycle().addObserver(mProcessLifecycleObserver);
       onComplete.run();
     });
   }
 
-  private final LifecycleObserver mProcessLifecycleObserver = new DefaultLifecycleObserver()
-  {
+  private final LifecycleObserver mProcessLifecycleObserver = new DefaultLifecycleObserver() {
     @Override
     public void onStart(@NonNull LifecycleOwner owner)
     {

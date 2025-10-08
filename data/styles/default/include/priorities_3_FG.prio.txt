@@ -45,6 +45,7 @@ power-line                                          # line z19- (also has line::
 power-line::dash                                    # line::dash z19- (also has line z19-)
 === 340
 
+highway-ladder                                      # line z15- (also has icon z17-, pathtext z17-)
 highway-steps                                       # line z15- (also has pathtext z16-)
 highway-steps-bridge                                # line z15- (also has line::bridgeblack z17-, line::bridgewhite z15-, pathtext z16-)
 highway-steps-tunnel                                # line z15- (also has line::tunnelBackground z17-, line::tunnelCasing z17-, pathtext z16-)
@@ -57,6 +58,7 @@ barrier-fence                                       # line z16-
 barrier-guard_rail                                  # line z17-
 barrier-hedge                                       # line z16-
 barrier-wall                                        # line z16-
+barrier-yes                                         # line z16- (also has icon z16-, caption(optional) z16-)
 railway-funicular                                   # line z12-
 railway-funicular-bridge                            # line z12-
 railway-funicular-tunnel                            # line z12-
@@ -264,6 +266,7 @@ highway-ford                                        # line z13- (also has icon z
 highway-pedestrian                                  # line z13- (also has pathtext z14-)
 highway-pedestrian-area                             # line z13- and area z14- (also has pathtext z14-)
 highway-pedestrian-bridge                           # line z13- (also has line::bridgeblack z14-, line::bridgewhite z13-, pathtext z14-)
+highway-pedestrian-square                           # line z13- and area z14- (also has pathtext z14-)
 highway-pedestrian-tunnel                           # line z13- (also has line(casing) z16-, pathtext z14-)
 === 200
 
@@ -395,6 +398,7 @@ railway-subway-bridge::bridgeblack                  # line::bridgeblack z16- (al
 
 building                                            # area z14- (also has caption z16-)
 building-garage                                     # area z14- (also has caption z16-)
+building-guardhouse                                 # area z14- (also has icon z18-, caption(optional) z18-)
 building-has_parts                                  # area z14- (also has caption z16-)
 building-train_station                              # area z14- (also has caption z16-)
 === 130
@@ -449,12 +453,14 @@ man_made-pier                                       # line z14- and area z12- (a
 waterway-dam                                        # line z14- and area z14- (also has pathtext z15-)
 === 30
 
-amenity-prison                                      # area z12- (also has icon z17-, caption(optional) z17-)
-boundary-aboriginal_lands                           # area z10-16 (also has caption z10-16)
-boundary-national_park                              # area z10-17 (also has icon z11-17, caption(optional) z12-17)
-boundary-protected_area-1                           # area z10-17 (also has icon z11-17, caption(optional) z12-17)
 landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
 landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
+=== 25
+
+amenity-prison                                      # area z12- (also has icon z17-, caption(optional) z17-)
+boundary-aboriginal_lands                           # line z10- and area z10-16 (also has caption z10-16)
+boundary-national_park                              # line z10- and area z10-17 (also has icon z11-17, caption(optional) z12-17)
+boundary-protected_area-1                           # line z10- and area z10-17 (also has icon z11-17, caption(optional) z12-17)
 leisure-nature_reserve                              # area z10-17 (also has icon z11-17, caption(optional) z12-17, caption z18-)
 === 20
 

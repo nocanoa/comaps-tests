@@ -53,7 +53,7 @@ Sometimes it's better to discuss and confirm your vision of the fix or implement
 
 Please [learn how to use `git rebase`](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) (or rebase via any git tool with a graphical interface, e.g. [Fork for Mac](https://git-fork.com/) is quite good) to amend your commits in the PR and maintain a clean logical commit history for your changes/branches.
 
-While we strive to help onboard new developers we don't have enough time to guide everyone step-by-step and explain in detail how everything works (in many cases we have to study the code ourselves). You'll need to be largely self-sufficient, expect to read a lot of code and documentation.
+We strive to help onboard new developers but we don't always have enough time to guide newcomers step-by-step and explain everything in detail. For that reason we might ask you to read lots of the documentation and study the existing code.
 
 - [Pull Request Guide](PR_GUIDE.md).
 - [Directories structure](STRUCTURE.md)
@@ -73,6 +73,8 @@ Please help us:
 - keeping [issues](https://codeberg.org/comaps/comaps/issues) in order (check for duplicates, organize, assign labels, link related issues, etc.)
 - composing nice user-centric release notes and news items
 - etc.
+
+You can also contribute in [other ways](https://codeberg.org/comaps/Governance/src/branch/main/contribute.md).
 
 ## Submitting your changes
 
@@ -102,4 +104,21 @@ Git has a flag that can sign a commit for you. An example using it is:
 
     git commit -s -m 'An example commit message'
 
-You can sign-off using your pseudonym or real name.
+Or, if you're making edits using Codeberg UI, check "Add a Signed-off-by trailer
+by the committer at the end of the commit log message" before saving.
+
+You can sign-off using your pseudonym or real name, and using
+"somedev@noreply.codeberg.org" as an email instead of a real one.
+
+## Team Messaging
+
+If you have contributed and interested in contributing more through collaboration with the project team, you are welcome to join Zulip. Zulip is for contributors who regularly collaborate on work with the team, and it is different from Telegram, Matrix or Mastodon which are for broader discussion. If you are interested in further contributing, use this link to join the CoMaps org on Zulip chat:
+
+https://comaps.zulipchat.com/join/e5e3c4zurmfxykrtbiiq6qrw/
+
+When you join Zulip, in Watercooler > Signups do an intro with the team:
+- Short background, professional and personal
+- Why are you contributing to CoMaps
+- What you think about projects' principles and direction https://codeberg.org/comaps/Governance#core-principles
+- Contribution so far (link Issue, PR, etc)
+- What you would like to contribute
