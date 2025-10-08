@@ -11,6 +11,7 @@ import java.util.Map;
 public class Metadata implements Parcelable
 {
   // Values must correspond to the Metadata definition from indexer/feature_meta.hpp.
+  // Remember to also update IntRange below to match the max ID
   public enum MetadataType
   {
     // Defined by classifier types now.
@@ -81,7 +82,7 @@ public class Metadata implements Parcelable
     }
 
     @NonNull
-    public static MetadataType fromInt(@IntRange(from = 1, to = 49) int metaType)
+    public static MetadataType fromInt(@IntRange(from = 1, to = 56) int metaType)
     {
       for (MetadataType type : values())
         if (type.mMetaType == metaType)
