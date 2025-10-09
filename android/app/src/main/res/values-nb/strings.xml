@@ -246,7 +246,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Donere</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Bli frivillig og forbedre CoMaps</string>
+    <string name="how_to_support_us">Bidra som frivillig og forbedre CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Opphavsrett</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -635,7 +635,7 @@
     <string name="avoid_ferry">Unngå fergeoverganger</string>
     <string name="avoid_motorways">Unngå motorveien</string>
     <string name="unable_to_calc_alert_title">Kan ikke beregne rute</string>
-    <string name="unable_to_calc_alert_subtitle">Dessverre kunne vi ikke finne en rute sannsynligvis på grunn av dine definerte alternativer. Vennligst endre innstillingene og prøv igjen</string>
+    <string name="unable_to_calc_alert_subtitle">Kan ikke finne en rute. Dette kan skyldes dine rutealternativer eller ufullstendige OpenStreetMap-data. Endre dine rutealternativer og prøv igjen.</string>
     <string name="define_to_avoid_btn">Definer veier som skal unngås</string>
     <string name="change_driving_options_btn">Kjørealternativer aktivert</string>
     <string name="toll_road">Bompengevei</string>
@@ -696,8 +696,8 @@
     <string name="transit_not_found">T-bane navigasjon er ikke tilgjengelig i denne regionen ennå</string>
     <string name="dialog_pedestrian_route_is_long_header">T-bane rute ikke funnet</string>
     <string name="dialog_pedestrian_route_is_long_message">Velg utgangspunkt eller destinasjon som befinner seg nærmere en T-bane stasjon</string>
-    <string name="button_layer_isolines">Høyder</string>
-    <string name="isolines_activation_error_dialog">For å bruke høydekurver oppdater eller last opp kartet til nødvendig område</string>
+    <string name="button_layer_isolines">Høydekurver</string>
+    <string name="isolines_activation_error_dialog">Aktivering av høydekurver krever nedlasting av kartdata for dette området</string>
     <string name="isolines_location_error_dialog">Høydekurver er ikke tilgjengelige i dette området ennå</string>
     <string name="elevation_profile_ascent">Stigning</string>
     <string name="elevation_profile_descent">Nedstigning</string>

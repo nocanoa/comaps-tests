@@ -164,7 +164,6 @@
     <string name="type.highway.path.tunnel">Тунел</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Мост</string>
-
     <string name="type.highway.pedestrian.square">Площад</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Тунел</string>
@@ -1374,4 +1373,7 @@
     <string name="type.piste_type.downhill.novice.area">Спускане със ски за начинаещи</string>
     <string name="type.highway.services">Обслужвана зона</string>
     <string name="type.landuse.forest">Гора</string>
+    <string name="type.amenity.animal_shelter">Приют за животни</string>
+    <string name="type.internet_access">Интернет</string>
+    <string name="type.internet_access.wlan">Интернет</string>
 </resources>

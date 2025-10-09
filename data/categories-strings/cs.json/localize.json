@@ -123,7 +123,7 @@
 "amenity-car_sharing": "Sdílení aut",
 "amenity-car_rental": "3Půjčovna aut|auto|pronájem|nájemné",
 "amenity-motorcycle_rental": "Půjčovna motocyklů",
-"amenity-cinema|@category_entertainment": "3Kino|biograf",
+"amenity-cinema|@category_entertainment": "3Kino|Filmy|U+1F3A6|U+1F3AC",
 "leisure-bowling_alley|@category_entertainment": "Bowlingová dráha",
 "amenity-theatre|@category_entertainment": "3Divadlo",
 "amenity-nightclub|@category_entertainment|@category_nightlife": "4Noční klub|3disco|3klub",
@@ -445,5 +445,9 @@
 "amenity-luggage_locker": "Skříňka na zavazadla",
 "shop-cannabis|@shop": "Konopí",
 "shop-grocery|@category_food|@shop": "Potraviny",
-"shop-farm|@category_food|@shop": "Farmářské jídlo"
+"shop-farm|@category_food|@shop": "Farmářské jídlo",
+"shop-health_food|@category_food|@shop": "Zdravá výživa",
+"healthcare-blood_donation": "Darování krve",
+"healthcare-sample_collection": "Odběr vzorků",
+"amenity-parking|amenity-parking_entrance|@category_parking": "U+1F697|U+1F17F|U+1F698|U+1F699"
 }

@@ -1255,4 +1255,8 @@
     <string name="type.amenity.parcel_locker">Pakkeboks</string>
     <string name="type.landuse.recreation_ground">Rekreasjonsområde</string>
     <string name="type.leisure.marina">Marina</string>
+    <string name="type.amenity.bicycle_parking.covered">Overbygd sykkelparkering</string>
+    <string name="type.barrier.cycle_barrier">Sykkelbarriere</string>
+    <string name="type.highway.ladder">Stige</string>
+    <string name="type.barrier.guard_rail">Autovern</string>
 </resources>

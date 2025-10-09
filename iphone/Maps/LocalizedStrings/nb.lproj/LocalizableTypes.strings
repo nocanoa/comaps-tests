@@ -196,7 +196,7 @@
 "type.barrier.border_control" = "Grensekontroll";
 "type.barrier.chain" = "Chain";
 "type.barrier.city_wall" = "Bymur";
-"type.barrier.cycle_barrier" = "Cycle Barrier";
+"type.barrier.cycle_barrier" = "Sykkelbarriere";
 "type.waterway.ditch" = "Dreneringsgrøft";
 "type.natural.water.moat" = "Vollgrav";
 "type.natural.water.wastewater" = "Avløpsvann";
@@ -1465,12 +1465,12 @@
 "type.leisure.firepit" = "Bålplass";
 "type.natural.wetland.tidalflat" = "Tidevannslette";
 "type.sport.diving" = "High Diving";
-"type.highway.ladder" = "Ladder";
+"type.highway.ladder" = "Stige";
 "type.natural.wetland.swamp" = "Sumpskog";
 "type.man_made.crane" = "Crane";
 "type.natural.wetland.saltmarsh" = "Salt Marsh";
 "type.natural.wetland.mangrove" = "Mangrove";
-"type.barrier.guard_rail" = "Guard Rail";
+"type.barrier.guard_rail" = "Autovern";
 "type.amenity.studio" = "Studio";
 "type.natural.wetland.fen" = "Fen";
 "type.natural.wetland.saltmarsh.tidal" = "Tidal Salt Marsh";
@@ -1481,7 +1481,7 @@
 "type.leisure.escape_game" = "Escape Room";
 "type.amenity.luggage_locker" = "Bagasjeoppbevaring";
 "type.amenity.ranger_station" = "Ranger Station";
-"type.amenity.bicycle_parking.covered" = "Covered Bicycle Parking";
+"type.amenity.bicycle_parking.covered" = "Overbygd sykkelparkering";
 "type.post_office.post_partner" = "Post Partner";
 "type.barrier.wicket_gate" = "Wicket gate";
 "type.amenity.animal_shelter" = "Animal Shelter";
