@@ -251,6 +251,8 @@
 "type.railway.station.subway.buenos_aires" = "Subway Station";
 "type.shop.greengrocer" = "Greengrocer";
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+
+"type.highway.pedestrian.square" = "Square";
 "type.cuisine.turkish" = "Turkish";
 "type.highway.primary.tunnel" = "Tunnel";
 "type.railway.station.subway.samara" = "Subway Station";
@@ -1298,3 +1300,6 @@
 "type.cuisine.italian_pizza" = "Italian, Pizza";
 "type.amenity.animal_shelter" = "Animal Shelter";
 "type.barrier.wicket_gate" = "Wicket gate";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

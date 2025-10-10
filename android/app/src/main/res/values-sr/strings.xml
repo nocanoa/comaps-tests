@@ -242,7 +242,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Донација</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Подржи пројекат</string>
+    <string name="how_to_support_us">Волонтирај и унапреди CoMaps</string>
     <!-- Text in menu + Button in the main Help dialog -->
     <string name="report_a_bug">Пријавите проблем</string>
     <!-- Toast text when compass calibration may improve the correctness of the current position arrow -->
@@ -420,8 +420,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Нисте пријављени</string>
     <string name="login_osm">Пријава на OpenStreetMap</string>
-    <string name="password">Лозинка</string>
-    <string name="forgot_password">Заборављена лозинка?</string>
     <string name="logout">Одјави се</string>
     <string name="edit_place">Измени место</string>
     <string name="add_language">Додај језик</string>
@@ -438,7 +436,6 @@
     <string name="cuisine">Кухиња</string>
     <string name="select_cuisine">Изаберите кухињу</string>
     <!-- login text field -->
-    <string name="email_or_username">Email или корисничко име</string>
     <string name="editor_add_phone">Додај број телефона</string>
     <string name="level">Спрат</string>
     <!-- Building level -->
@@ -806,24 +803,14 @@
     <string name="uri_open_location_failed">Нема инсталираних апликација које могу да отворе локацију.</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Аутоматски у навигацији</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="instagram">Instagram</string>
     <string name="elevation_profile_max_elevation">Максимална висина</string>
     <string name="elevation_profile_min_elevation">Минимална висина</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="aa_location_permissions_request">CoMaps је потребан локацијски приступ. Када је сигурно, проверите обавештење на свом телефону.</string>
     <string name="aa_request_permission_notification">Ова апликација је потребна ваша дозвола</string>
     <string name="copyright">Copyright</string>
-    <string name="vk">VK</string>
     <string name="editor_add_select_location">Изаберите локацију</string>
     <string name="limited_accuracy">Ограничена тачност</string>
-    <string name="github">GitHub</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="editor_focus_map_on_location">Превуците мапу да поставите крст на локацију места или посла.</string>
     <string name="precise_location_is_disabled_long_text">Да би се осигурала тачна навигација омогућите прецизну локацију у подешавањима</string>
     <string name="translated_om_site_url">https://comaps.app/</string>
@@ -835,11 +822,9 @@
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="social_media">Друштвени медији</string>
     <string name="building">Зграда</string>
-    <string name="codeberg">Codeberg</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_fediverse_page">Унесите важеће корисничко име Мастодона или веб адресу</string>
     <string name="error_enter_correct_bluesky_page">Unesite važeće Bluesky korisničko ime ili veb adresu</string>
     <string name="pref_left_button_title">Подешавање левог дугмета</string>
@@ -880,4 +865,11 @@
     <string name="open_now">Сада је отворено</string>
     <string name="at">на %s</string>
     <string name="about_headline">Отворени пројекат који покреће заједница</string>
+    <string name="delete_track_dialog_title">Обрисати %s?</string>
+    <string name="share_track">Подели путању</string>
+    <string name="existence_confirmed_time_ago">Проверено да постоји %s</string>
+    <string name="hours_confirmed_time_ago">Проверено %s</string>
+    <string name="pref_tts_no_system_tts_short">Није пронађен програм за претварање текста у говор, проверите подешавања апликације</string>
+    <string name="osm_note_hint">Или оставите напомену OpenStreetMap заједници да би неко други могао да дода или паправи ово место.</string>
+    <string name="osm_note_toast">Напомена ће бити послата на OpenStreetMap</string>
 </resources>

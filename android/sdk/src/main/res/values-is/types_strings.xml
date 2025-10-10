@@ -1018,6 +1018,8 @@
     <string name="type.highway.footway.bridge">Göngubrú</string>
     <string name="type.highway.footway.tunnel">Göng fyrir fótgangandi</string>
     <string name="type.highway.pedestrian.bridge">Göngubrú</string>
+
+    <string name="type.highway.pedestrian.square">Torg</string>
     <string name="type.historic">Sögulegur hlutur</string>
     <string name="type.historic.stone">Sögulegur steinn</string>
     <string name="type.historic.memorial.war_memorial">Stríðsminnismerki</string>

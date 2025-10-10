@@ -420,6 +420,7 @@
     <string name="type.highway.pedestrian.area">Fußgängerzone</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Brücke</string>
+    <string name="type.highway.pedestrian.square">Platz</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Fußgängertunnel</string>
     <string name="type.highway.primary">Hauptstraße</string>
@@ -1391,4 +1392,8 @@
     <string name="type.amenity.ranger_station">Försterstation</string>
     <string name="type.amenity.animal_shelter">Tierheim</string>
     <string name="type.barrier.wicket_gate">Schlupfpforte</string>
+    <string name="type.office.security">Büro des Sicherheitsdienstes</string>
+    <string name="type.building.guardhouse">Pförtnerhäuschen</string>
+    <string name="type.power.portal">Abspannportal</string>
+    <string name="type.shop.lighting">Lampenladen</string>
 </resources>

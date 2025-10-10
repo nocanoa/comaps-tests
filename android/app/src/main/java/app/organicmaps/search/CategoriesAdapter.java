@@ -8,13 +8,15 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.R;
 import app.organicmaps.sdk.search.DisplayedCategories;
 import app.organicmaps.sdk.util.Language;
@@ -112,7 +114,7 @@ class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolde
     if (viewType == ViewType.CATEGORY)
     {
       view = mInflater.inflate(R.layout.item_search_category, parent, false);
-      viewHolder = new ViewHolder(view, (TextView) view);
+      viewHolder = new ViewHolder(view, (MaterialTextView) view);
     }
     else
     {
@@ -138,7 +140,7 @@ class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolde
   class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
   {
     @NonNull
-    private final TextView mTitle;
+    private final MaterialTextView mTitle;
     @NonNull
     private final View mView;
 
@@ -166,7 +168,7 @@ class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolde
       return mEnglishResources.getString(categoryId);
     }
 
-    ViewHolder(@NonNull View v, @NonNull TextView tv)
+    ViewHolder(@NonNull View v, @NonNull MaterialTextView tv)
     {
       super(v);
       mView = v;

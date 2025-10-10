@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+SKIP_MAP_DOWNLOAD="${SKIP_MAP_DOWNLOAD:-}"
+SKIP_GENERATE_SYMBOLS="${SKIP_GENERATE_SYMBOLS:-}"
+SKIP_GENERATE_DRULES="${SKIP_GENERATE_DRULES:-}"
+
 OPT_DEBUG=
 OPT_RELEASE=
 OPT_RELEASEDEBUGINFO=
@@ -74,10 +78,10 @@ fi
 
 OMIM_PATH="$(cd "${OMIM_PATH:-$(dirname "$0")/../..}"; pwd)"
 
-if [ "$OPT_TARGET" == "desktop" ]; then
-  ./configure.sh
-else
+if [ "$OPT_TARGET" != "desktop" ] && [ -z "$SKIP_MAP_DOWNLOAD$SKIP_GENERATE_SYMBOLS$SKIP_GENERATE_DRULES" ]; then
   SKIP_MAP_DOWNLOAD=1 SKIP_GENERATE_SYMBOLS=1 SKIP_GENERATE_DRULES=1 ./configure.sh
+else
+  ./configure.sh
 fi
 
 DEVTOOLSET_PATH=/opt/rh/devtoolset-7

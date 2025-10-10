@@ -257,30 +257,8 @@
     <string name="website">Website</string>
     <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">News</string>
-    <!-- Text in menu -->
-    <string name="github">GitHub</string>
-    <!-- Text in menu -->
-    <string name="telegram">Telegram</string>
-    <!-- Text in menu -->
-    <string name="matrix">[Matrix]</string>
-    <!-- Text in menu -->
-    <string name="mastodon">Mastodon</string>
-    <!-- Text in menu -->
-    <string name="facebook">Facebook</string>
-    <!-- Text in menu -->
-    <string name="twitter">X (Twitter)</string>
-    <!-- Text in menu -->
-    <string name="instagram">Instagram</string>
-    <!-- Text in the editor -->
-    <string name="vk">VK</string>
-    <!-- Text in menu -->
-    <string name="bluesky">Bluesky</string>
     <!-- Text on the place page -->
     <string name="panoramax">Panoramax Picture</string>
-    <!-- Text in the editor -->
-    <string name="editor_line_social_network">LINE</string>
-    <!-- Text in menu -->
-    <string name="openstreetmap">OpenStreetMap</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">Feedback</string>
     <!-- Text in menu -->
@@ -477,8 +455,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Not signed in</string>
     <string name="login_osm">Login to OpenStreetMap</string>
-    <string name="password">Password</string>
-    <string name="forgot_password">Forgot your password?</string>
     <string name="logout">Log Out</string>
     <string name="edit_place">Edit Place</string>
     <string name="add_language">Add a language</string>
@@ -497,7 +473,6 @@
     <string name="cuisine">Cuisine</string>
     <string name="select_cuisine">Select cuisine</string>
     <!-- login text field -->
-    <string name="email_or_username">Email or username</string>
     <string name="editor_add_phone">Add Phone</string>
     <string name="level">Floor</string>
     <!-- Building level -->
@@ -916,7 +891,6 @@
     <string name="uri_open_location_failed">No app installed that can open the location</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto in navigation</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_title">Left button setup</string>
     <string name="pref_left_button_disable">Disable</string>
 

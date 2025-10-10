@@ -6,9 +6,10 @@
   style="@style/PlacePageItemFrame"
   tools:visibility="visible">
 
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/tv__editor"
-    style="@style/PlacePageMetadataText.Button"
-    android:text="@string/placepage_add_place_button"
-    android:gravity="center"/>
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/mb__place_add"
+    style="@style/MwmWidget.M3.Button.Secondary"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:text="@string/placepage_add_place_button" />
 </LinearLayout>

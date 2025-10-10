@@ -397,8 +397,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Не е влязъл в системата</string>
     <string name="login_osm">Влезте в OpenStreetMap</string>
-    <string name="password">Парола</string>
-    <string name="forgot_password">Забравили сте паролата си?</string>
     <string name="logout">Изход</string>
     <string name="edit_place">Редакция на място</string>
     <string name="add_language">Добавяне на език</string>
@@ -417,7 +415,6 @@
     <string name="cuisine">Кухня</string>
     <string name="select_cuisine">Избор на кухня</string>
     <!-- login text field -->
-    <string name="email_or_username">Имейл или потребителско име</string>
     <string name="level">Етаж</string>
     <string name="downloader_delete_map_dialog">Всички ваши редакции на картата ще бъдат изтрити заедно с нея.</string>
     <string name="downloader_update_maps">Обновяване на карти</string>
@@ -746,8 +743,6 @@
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="placepage_distance">Разстояние</string>
     <string name="menu">Меню</string>
-    <string name="github">GitHub</string>
-    <string name="mastodon">Mastodon</string>
     <string name="light_blue">Светло Синьо</string>
     <string name="cyan">Синьо</string>
     <string name="teal">Тюркоаз</string>
@@ -767,7 +762,6 @@
     <string name="moreyear_ago_sorttype">Преди повече от година</string>
     <string name="deep_orange">Тъмно Оранжево</string>
     <string name="maps_storage_free_size">%1$s свободни от %2$s</string>
-    <string name="telegram">Telegram</string>
     <string name="shops">Магазини</string>
     <string name="delete_place_empty_comment_error">Моля, опишете причината за премахването</string>
     <string name="medicine">Лечение</string>
@@ -789,19 +783,12 @@
     <string name="hotels">Хотели</string>
     <string name="others_sorttype">Други</string>
     <string name="month_ago_sorttype">Преди месец</string>
-    <string name="matrix">[Matrix]</string>
     <string name="toll_road">Път с винетка</string>
-    <string name="vk">VK</string>
     <string name="near_me_sorttype">На близо</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="trip_finished">Пристигнахте!</string>
-    <string name="instagram">Instagram</string>
     <string name="downloader_loading_ios">Изтегляне</string>
     <string name="wikimedia_commons">Общомедия</string>
     <string name="panoramax">Panoramax Снимка</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="saved">Запазено</string>
     <string name="about_headline">Отворен проект, захранван от общността</string>

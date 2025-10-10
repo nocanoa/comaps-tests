@@ -22,6 +22,7 @@ void CoastlineFinalProcessor::SetCoastlinesFilenames(std::string const & geomFil
 
 void CoastlineFinalProcessor::Process()
 {
+  LOG(LINFO, ("Processing coastline..."));
   ForEachFeatureRawFormat<serialization_policy::MaxAccuracy>(
       m_filename, [this](FeatureBuilder const & fb, uint64_t) { m_generator.Process(fb); });
 
@@ -29,7 +30,7 @@ void CoastlineFinalProcessor::Process()
   // Check and stop if some coasts were not merged.
   CHECK(m_generator.Finish(), ());
 
-  LOG(LINFO, ("Generating coastline polygons."));
+  LOG(LINFO, ("Generating coastline polygons..."));
   size_t totalFeatures = 0;
   size_t totalPoints = 0;
   size_t totalPolygons = 0;
@@ -41,6 +42,6 @@ void CoastlineFinalProcessor::Process()
     totalPolygons += fb.GetPolygonsCount();
   }
 
-  LOG(LINFO, ("Total features:", totalFeatures, "total polygons:", totalPolygons, "total points:", totalPoints));
+  LOG(LINFO, ("Total coastline features:", totalFeatures, "total polygons:", totalPolygons, "total points:", totalPoints));
 }
 }  // namespace generator

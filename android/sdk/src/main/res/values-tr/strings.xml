@@ -37,4 +37,12 @@
     <string name="access_rules_author_only">Çevrimiçi düzenleme</string>
     <string name="gb">GB</string>
     <string name="today">Bugün</string>
+    <string name="yesterday">Dün</string>
+    <string name="days_ago">%s gün önce</string>
+    <string name="week_ago">%s hafta önce</string>
+    <string name="weeks_ago">%s hafta önce</string>
+    <string name="month_ago">%s ay önce</string>
+    <string name="months_ago">%s ay önce</string>
+    <string name="year_ago">%s yıl önce</string>
+    <string name="years_ago">%s yıl önce</string>
 </resources>

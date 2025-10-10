@@ -66,27 +66,41 @@
   <string name="placepage_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
 
   <string name="car_notification_channel_name" translatable="false">Car</string>
-  <string name="type.highway.world_level">highway-world_level</string>
-  <string name="type.highway.world_towns_level">highway-world_towns_level</string>
-  <string name="type.hwtag">hwtag</string>
-  <string name="type.hwtag.bidir_bicycle">hwtag-bidir_bicycle</string>
-  <string name="type.hwtag.onedir_bicycle">hwtag-onedir_bicycle</string>
-  <string name="type.hwtag.lit">hwtag-lit</string>
-  <string name="type.hwtag.nobicycle">hwtag-nobicycle</string>
-  <string name="type.hwtag.nocar">hwtag-nocar</string>
-  <string name="type.hwtag.nofoot">hwtag-nofoot</string>
-  <string name="type.hwtag.oneway">hwtag-oneway</string>
-  <string name="type.hwtag.private">hwtag-private</string>
-  <string name="type.hwtag.toll">hwtag-toll</string>
-  <string name="type.hwtag.yesbicycle">hwtag-yesbicycle</string> 
-  <string name="type.hwtag.yescar">hwtag-yescar</string>
-  <string name="type.hwtag.yesfoot">hwtag-yesfoot</string>
-  <string name="type.mapswithme.grid">mapswithme-grid</string>
-  <string name="type.mapswithme">MapsWithMe</string>
-  <string name="type.psurface">psurface</string>
-  <string name="type.psurface.paved_bad">psurface-paved_bad</string>
-  <string name="type.psurface.paved_good">psurface-paved_good</string>
-  <string name="type.psurface.unpaved_bad">psurface-unpaved_bad</string>
-  <string name="type.psurface.unpaved_good">psurface-unpaved_good</string>
-  <string name="type.route.shuttle_train">route-shuttle_train</string>
+  <string name="type.highway.world_level" translatable="false">highway-world_level</string>
+  <string name="type.highway.world_towns_level" translatable="false">highway-world_towns_level</string>
+  <string name="type.hwtag" translatable="false">hwtag</string>
+  <string name="type.hwtag.bidir_bicycle" translatable="false">hwtag-bidir_bicycle</string>
+  <string name="type.hwtag.onedir_bicycle" translatable="false">hwtag-onedir_bicycle</string>
+  <string name="type.hwtag.lit" translatable="false">hwtag-lit</string>
+  <string name="type.hwtag.nobicycle" translatable="false">hwtag-nobicycle</string>
+  <string name="type.hwtag.nocar" translatable="false">hwtag-nocar</string>
+  <string name="type.hwtag.nofoot" translatable="false">hwtag-nofoot</string>
+  <string name="type.hwtag.oneway" translatable="false">hwtag-oneway</string>
+  <string name="type.hwtag.private" translatable="false">hwtag-private</string>
+  <string name="type.hwtag.toll" translatable="false">hwtag-toll</string>
+  <string name="type.hwtag.yesbicycle" translatable="false">hwtag-yesbicycle</string>
+  <string name="type.hwtag.yescar" translatable="false">hwtag-yescar</string>
+  <string name="type.hwtag.yesfoot" translatable="false">hwtag-yesfoot</string>
+  <string name="type.mapswithme.grid" translatable="false">mapswithme-grid</string>
+  <string name="type.mapswithme" translatable="false">MapsWithMe</string>
+  <string name="type.psurface" translatable="false">psurface</string>
+  <string name="type.psurface.paved_bad" translatable="false">psurface-paved_bad</string>
+  <string name="type.psurface.paved_good" translatable="false">psurface-paved_good</string>
+  <string name="type.psurface.unpaved_bad" translatable="false">psurface-unpaved_bad</string>
+  <string name="type.psurface.unpaved_good" translatable="false">psurface-unpaved_good</string>
+  <string name="type.route.shuttle_train" translatable="false">route-shuttle_train</string>
+
+  <string name="bluesky" translatable="false">Bluesky</string>
+  <string name="codeberg" translatable="false">Codeberg</string>
+  <string name="editor_line_social_network" translatable="false">LINE</string>
+  <string name="facebook" translatable="false">Facebook</string>
+  <string name="instagram" translatable="false">Instagram</string>
+  <string name="mastodon" translatable="false">Mastodon</string>
+  <string name="matrix" translatable="false">Matrix</string>
+  <string name="openstreetmap" translatable="false">OpenStreetMap</string>
+  <string name="telegram" translatable="false">Telegram</string>
+  <string name="twitter" translatable="false">X (Twitter)</string>
+  <string name="vk" translatable="false">VK</string>
+  <string name="lemmy" translatable="false">Lemmy</string>
+  <string name="pixelfed" translatable="false">Pixelfed</string>
 </resources>

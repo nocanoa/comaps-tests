@@ -150,7 +150,7 @@ class TabAdapter extends FragmentPagerAdapter
 
     ViewPager.OnPageChangeListener listener = new PageChangedListener(tabs);
     mPager.addOnPageChangeListener(listener);
-    tabs.setOnTabSelectedListener(new OnTabSelectedListenerForViewPager(mPager));
+    tabs.addOnTabSelectedListener(new OnTabSelectedListenerForViewPager(mPager));
     SharedPreferences preferences = MwmApplication.prefs(mPager.getContext());
     int lastSelectedTabPosition = preferences.getInt(Config.KEY_PREF_LAST_SEARCHED_TAB, 0);
     listener.onPageSelected(lastSelectedTabPosition);

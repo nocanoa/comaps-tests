@@ -431,6 +431,8 @@
     <string name="type.highway.pedestrian.area">步行区</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">人行天桥</string>
+
+    <string name="type.highway.pedestrian.square">广场</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">人行隧道</string>
     <string name="type.highway.primary">主要道路</string>

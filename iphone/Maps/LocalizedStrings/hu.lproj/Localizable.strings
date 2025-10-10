@@ -47,7 +47,7 @@
 
 /* Text in About screen */
 "about_proposition_2" = "Az adatvédelemre összpontosít és nincs hirdetés";
-"close" = "Bezár";
+"close" = "Bezárás";
 "download" = "Letöltés";
 
 /* REMOVE THIS STRING AFTER REFACTORING */
@@ -66,7 +66,7 @@
 "bookmarks" = "Könyvjelzők";
 
 /* "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt */
-"bookmarks_and_tracks" = "Könyvjelzők és útvonalak";
+"bookmarks_and_tracks" = "Könyvjelzők és nyomvonalak";
 
 /* Default bookmark list name */
 "core_my_places" = "Saját helyek";
@@ -166,10 +166,10 @@
 "unknown_current_position" = "Az Ön tartózkodási helye még nincs meghatározva";
 
 /* Subject for emailed bookmark */
-"bookmark_share_email_subject" = "Tekintse meg a térképjelzőmet az CoMaps alkalmazásban!";
+"bookmark_share_email_subject" = "Tekintse meg a térképjelzőmet a CoMaps alkalmazásban!";
 
 /* Subject for emailed position */
-"my_position_share_email_subject" = "Tekintse meg a helyzetemet az CoMaps alkalmazásban!";
+"my_position_share_email_subject" = "Tekintse meg a tartózkodási helyemet a CoMaps alkalmazásban!";
 
 /* Share by email button text, also used in editor and About. */
 "email" = "E-mail-cím";
@@ -196,7 +196,7 @@
 
 /* Length of track in cell that describes route */
 "length" = "Hossz";
-"share_my_location" = "Saját helyzet megosztása";
+"share_my_location" = "Saját tartózkodási hely megosztása";
 "prefs_group_route" = "Navigáció";
 "pref_zoom_title" = "Nagyítás/kicsinyítés gombok";
 "pref_left_button_type" = "Bal oldali főgomb";
@@ -244,7 +244,7 @@
 "pref_tts_street_names_description" = "Ha engedélyezve van, a rendszer hangosan kimondja annak az utcának vagy kijáratnak a nevét, amelyre be kell kanyarodni.";
 
 /* Settings «Route» category: «Tts language» title */
-"pref_tts_language_title" = "A hangutasítások nyelve";
+"pref_tts_language_title" = "Hangutasítások nyelve";
 
 /* Settings «Route» category: «Test Voice Directions» title */
 "pref_tts_test_voice_title" = "Hangutasítások tesztelése";
@@ -304,7 +304,7 @@
 "help" = "Súgó";
 
 /* Button in the main Help dialog */
-"faq" = "Gyakran ismételt kérdések";
+"faq" = "GYIK";
 
 /* Button in the main menu */
 "donate" = "Adományozás";
@@ -313,7 +313,7 @@
 "copyright" = "Szerzői jogok";
 
 /* Text in menu + Button in the main Help dialog */
-"report_a_bug" = "Hiba jelentése";
+"report_a_bug" = "Hibajelentés";
 
 /* Button in the About screen */
 "report_incorrect_map_bug" = "Hibás térképadatok jelentése vagy javítása";
@@ -377,7 +377,7 @@
 "downloader_delete_map" = "Térkép törlése";
 
 /* Text for routing error dialog */
-"routing_download_maps_along" = "Az összes térkép letöltése az útvonal mentén";
+"routing_download_maps_along" = "Összes térkép letöltése az útvonal mentén";
 
 /* Text for routing error dialog */
 "routing_requires_all_map" = "Az útvonal létrehozásához le kell töltenie és frissítenie kell az összes térképet az Ön tartózkodási helyétől a célig.";
@@ -434,7 +434,7 @@
 
 /* blue gray color */
 "blue_gray" = "Kékes szürke";
-"dialog_routing_disclaimer_title" = "Az útvonal követése során vegye figyelembe az alábbiakat:";
+"dialog_routing_disclaimer_title" = "Az útvonal követésekor vegye figyelembe az alábbiakat:";
 "dialog_routing_disclaimer_priority" = "– Az útviszonyok, a közlekedési szabályok és a jelzőtáblák mindig elsőbbséget élveznek a navigációs útmutatással szemben;";
 "dialog_routing_disclaimer_precision" = "– A térkép pontatlan lehet és a javasolt útvonal lehetséges, hogy nem mindig a legoptimálisabb módja a célállomás elérésének;";
 "dialog_routing_disclaimer_recommendations" = "– A javasolt útvonalakat csupán ajánlottként kell tekinteni;";
@@ -482,10 +482,10 @@
 "search_not_found" = "Hoppá, nincs találat.";
 
 /* The message when user did not find anything in the search. */
-"search_not_found_query" = "Töltse le a keresett régiót, vagy próbálja meg egy közeli város vagy település nevét hozzáadni.";
+"search_not_found_query" = "Töltse le a keresett régiót, vagy próbálja meg hozzáadni egy közeli város vagy település nevét.";
 "search_history_title" = "Keresési előzmények";
 "search_history_text" = "Legutóbbi keresések megtekintése.";
-"clear_search" = "A keresési előzmények törlése";
+"clear_search" = "Keresési előzmények törlése";
 
 /* Place Page link to Wikipedia article (if map object has it). */
 "read_in_wikipedia" = "Wikipédia";
@@ -505,11 +505,11 @@
 "editor_time_allday" = "Egész nap (24 óra)";
 "editor_time_open" = "Nyitva";
 "editor_time_close" = "Zárva";
-"editor_time_add_closed" = "Zárva tartás hozzáadása";
-"editor_time_title" = "Nyitva tartás";
+"editor_time_add_closed" = "Zárvatartás hozzáadása";
+"editor_time_title" = "Nyitvatartás";
 "editor_time_advanced" = "Speciális mód";
 "editor_time_simple" = "Egyszerű mód";
-"editor_hours_closed" = "Zárva tartás";
+"editor_hours_closed" = "Zárvatartás";
 "editor_example_values" = "Példaértékek";
 "editor_add_select_location" = "Hely kiválasztása";
 "editor_done_dialog_1" = "Módosította a világtérképet! Ne tartsa meg magának, mondja el a barátainak, és szerkesszék azt közösen.";
@@ -518,7 +518,7 @@
 "autodownload" = "Automatikus térképletöltés";
 
 /* Place Page opening hours text */
-"closed_now" = "Most zárva van";
+"closed_now" = "Jelenleg zárva";
 
 /* Place Page opening hours text */
 "daily" = "Naponta";
@@ -597,7 +597,7 @@
 "editor_edit_place_name_hint" = "Hely neve";
 
 /* The second part of the editor_edit_place_name_hint to explain that name should be entered in a local language, see https://wiki.openstreetmap.org/wiki/Key:name */
-"editor_default_language_hint" = "Ahogyan a helyi nyelven írva van";
+"editor_default_language_hint" = "Ahogyan az, a helyi nyelven írva van";
 "editor_edit_place_category_title" = "Kategória";
 "whatsnew_editor_message_1" = "Új helyek hozzáadása a térképhez, és a meglévők szerkesztése közvetlenül az alkalmazásból.";
 "dialog_incorrect_feature_position" = "Helyszín módosítása";
@@ -609,7 +609,7 @@
 
 /* Downloaded 10 **of** 20 <- it is that "of" */
 "downloader_of" = "%1$d / %2$d";
-"download_over_mobile_header" = "Biztosan letölti mobilhálózati kapcsolaton keresztül?";
+"download_over_mobile_header" = "Biztosan letölti mobiladat-kapcsolaton keresztül?";
 "download_over_mobile_message" = "Ez egyes díjcsomagok vagy roaming esetén jelentős költségekkel járhat.";
 "error_enter_correct_house_number" = "Adjon meg egy érvényes házszámot";
 "editor_storey_number" = "Emeletek száma (legfeljebb: %d)";
@@ -623,7 +623,7 @@
 "core_placepage_unknown_place" = "Térképpont";
 
 /* Title for OSM note section in the editor */
-"editor_other_info" = "Megjegyzés az OpenStreetMap önkénteseinek (nem kötelező)";
+"editor_other_info" = "Megjegyzés az OpenStreetMap közreműködőinek (nem kötelező)";
 "editor_detailed_description_hint" = "Részletes megjegyzés";
 "editor_detailed_description" = "Az Ön által javasolt térképmódosításokat elküldjük az OpenStreetMap közösségnek. Írja le azokat a további részleteket, amelyek nem szerkeszthetők az CoMapsben.";
 "editor_more_about_osm" = "További részletek az OpenStreetMap adatbázisról";
@@ -632,7 +632,7 @@
 /* To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... */
 "operator" = "Üzemeltető: %@";
 "editor_category_unsuitable_title" = "Nem találja a megfelelő kategóriát?";
-"editor_category_unsuitable_text" = "Az CoMaps csak egyszerű pontkategóriák hozzáadását teszi lehetővé, azaz nem tartalmaz városokat, utakat, tavakat, épületek körvonalait stb., az ilyen kategóriákat közvetlenül az <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> oldalon adhatja hozzá. A részletes, lépésről lépésre történő útmutatásért tekintse meg az <a href=\"https://www.comaps.app/support/advanced-map-editing/\">útmutatónkat</a>.";
+"editor_category_unsuitable_text" = "A CoMaps csak egyszerű pontkategóriák hozzáadását teszi lehetővé, azaz nem tartalmaz városokat, utakat, tavakat, épületek körvonalait stb., az ilyen kategóriákat közvetlenül az <a href=\"https://www.openstreetmap.org\">OpenStreetMap.org</a> oldalon adhatja hozzá. A részletes, lépésről lépésre történő útmutatásért tekintse meg az <a href=\"https://www.comaps.app/support/advanced-map-editing/\">útmutatónkat</a>.";
 "downloader_no_downloaded_maps_title" = "Még nem töltött le térképet";
 "downloader_no_downloaded_maps_message" = "Térképek letöltése internetkapcsolat nélküli kereséshez és navigáláshoz.";
 "current_location_unknown_error_title" = "A jelenlegi helyzet ismeretlen.";
@@ -678,7 +678,7 @@
 "editor_comment_hint" = "Megjegyzés…";
 "editor_reset_edits_message" = "Elveti az összes módosítást?";
 "editor_reset_edits_button" = "Elvetés";
-"editor_remove_place_message" = "Töröl egy hozzáadott helyet?";
+"editor_remove_place_message" = "Törli a hozzáadott helyet?";
 "editor_remove_place_button" = "Törlés";
 "editor_place_doesnt_exist" = "A hely nem létezik";
 "text_more_button" = "…több";
@@ -688,7 +688,7 @@
 "error_enter_correct_web" = "Adjon meg egy érvényes weboldalcímet";
 "error_enter_correct_email" = "Adjon meg egy érvényes e-mail-címet";
 "refresh" = "Frissítés";
-"placepage_add_place_button" = "Hely hozzáadása az OpenStreetMap adatbázishoz";
+"placepage_add_place_button" = "Hely hozzáadása az OpenStreetMap adatbázisához";
 
 /* Displayed when saving some edits to the map to warn against publishing personal data */
 "editor_share_to_all_dialog_title" = "Szeretné elküldeni az összes felhasználónak?";
@@ -712,14 +712,14 @@
 
 /* For the first routing */
 "decline" = "Elutasítás";
-"mobile_data_dialog" = "Mobilinternet használata a részletes információk megjelenítéséhez?";
+"mobile_data_dialog" = "Mobiladat-forgalom használata a részletes információk megjelenítéséhez?";
 "mobile_data_option_always" = "Mindig használja";
 "mobile_data_option_today" = "Csak ma";
 "mobile_data_option_not_today" = "Ma ne használja";
-"mobile_data" = "Mobilinternet";
+"mobile_data" = "Mobiladat-forgalom";
 
 /* NOTE to translators: please synchronize your translation with the English one. */
-"mobile_data_description" = "A térképfrissítési értesítésekhez és a szerkesztések feltöltéséhez mobilinternetre van szükség.";
+"mobile_data_description" = "A térképfrissítési értesítésekhez és a szerkesztések feltöltéséhez internetkapcsolatra van szükség.";
 "mobile_data_option_never" = "Soha ne használja";
 "mobile_data_option_ask" = "Mindig kérdezzen rá";
 "traffic_update_maps_text" = "A forgalmi adatok megjelenítéséhez frissíteni kell a térképeket.";
@@ -761,7 +761,7 @@
 "bookmarks_create_new_group" = "Új lista létrehozása";
 
 /* Bookmark categories screen, button that opens folder selection dialog to import KML/KMZ/GPX/KMB files */
-"bookmarks_import" = "Könyvjelzők és útvonalak importálása";
+"bookmarks_import" = "Könyvjelzők és nyomvonalak importálása";
 "downloader_hide_screen" = "Kijelző elrejtése";
 "downloader_percent" = "%@ (%@ / %@)";
 "downloader_process" = "%@ letöltése…";
@@ -785,14 +785,14 @@
 "subway_data_unavailable" = "A metrótérkép nem érhető el";
 "title_error_downloading_bookmarks" = "Hiba történt";
 "popular_place" = "Népszerű";
-"export_file" = "Exportálás KMZ fájlba";
-"export_file_gpx" = "Exportálás GPX fájlba";
+"export_file" = "Exportálás KMZ-fájlba";
+"export_file_gpx" = "Exportálás GPX-fájlba";
 "delete_list" = "Lista törlése";
 "hide_from_map" = "Elrejtés a térképről";
 "tags_loading_error_subtitle" = "Hiba történt a címkék betöltése közben, próbálja meg újra";
 "download_button" = "Letöltés";
 "speedcams_alert_title" = "Sebességmérő kamerák";
-"place_description_title" = "A hely ismertetése";
+"place_description_title" = "Hely ismertetése";
 
 /* "Speed cameras" settings menu option (should be short! no more than 47-50 chars) to warn a driver if there is a risk of exceeding the speed limit */
 "pref_tts_speedcams_auto" = "Gyorshajtáskor figyelmeztessen";
@@ -807,7 +807,7 @@
 "power_managment_setting_never" = "Soha";
 "power_managment_setting_auto" = "Amikor az akkumulátor lemerül";
 "power_managment_setting_manual_max" = "Mindig";
-"enable_logging_warning_message" = "Ha ideiglenesen engedélyezi ezt a lehetőséget, akkor rögzítheti, és a „A CoMaps névjegye” képernyőn a „HIBA JELENTÉSE” gombra katintva elküldheti nekünk a hibával, problémával kapcsolatos részletes diagnosztikai naplókat. A naplók tartalmazhatnak helyadatokat.";
+"enable_logging_warning_message" = "Engedélyezze ideiglenesen ezt a beállítást, hogy rögzíthesse és elküldhesse nekünk a problémájával kapcsolatos részletes diagnosztikai naplókat a „Névjegy és súgó” képernyő „Hibajelentés” funkciójával. A naplók tartalmazhatnak helyadatokat.";
 "driving_options_title" = "Útvonaltervezési beállítások";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
@@ -822,7 +822,7 @@
 "unable_to_calc_alert_title" = "Nem lehet kiszámítani az útvonalat";
 "unable_to_calc_alert_subtitle" = "Nem sikerült útvonalat találni. Ennek oka lehet az útvonaltervezési beállítások vagy a hiányos OpenStreetMap-adatok. Módosítsa az útvonaltervezési beállításokat, és próbálja meg újra.";
 "define_to_avoid_btn" = "Elkerülendő utak meghatározása";
-"change_driving_options_btn" = "Útvonaltervezési lehetőségek engedélyezve";
+"change_driving_options_btn" = "Útvonaltervezési beállítások engedélyezve";
 "toll_road" = "Díjköteles utak";
 "unpaved_road" = "Burkolatlan utak";
 "ferry_crossing" = "Kompátkelők";
@@ -913,7 +913,7 @@
 "elevation_profile_descent" = "Csökkenő";
 "elevation_profile_min_elevation" = "Legkisebb magasság";
 "elevation_profile_max_elevation" = "Legnagyobb magasság";
-"isolines_toast_zooms_1_10" = "Nagyítás az izovonalak felfedezéséhez";
+"isolines_toast_zooms_1_10" = "Nagyítás a szintvonalak megjelenéséhez";
 "downloader_updating_ios" = "Frissítés";
 "downloader_loading_ios" = "Letöltés";
 
@@ -978,10 +978,10 @@
 "app_tip_09" = "A fő célunk az, hogy gyors, az adatvédelemre fókuszáló, könnyen használható térképeket készítsünk, amelyeket szeretni fog.";
 
 /* Text on the Android Auto or CarPlay placeholder screen that maps are displayed on the phone screen */
-"car_used_on_the_phone_screen" = "Ön most az CoMaps alkalmazást használja a telefon képernyőjén";
+"car_used_on_the_phone_screen" = "Ön most a CoMaps alkalmazást használja a telefon képernyőjén";
 
 /* Text on the phone placeholder screen that maps are displayed on the car screen */
-"car_used_on_the_car_screen" = "Ön most az CoMaps alkalmazást használja az autó képernyőjén";
+"car_used_on_the_car_screen" = "Ön most a CoMaps alkalmazást használja az autó képernyőjén";
 
 /* Displayed on the phone screen. Button to display maps on the phone screen instead of a car */
 "car_continue_on_the_phone" = "Folytatás telefonon";
@@ -993,7 +993,7 @@
 "button_layer_outdoor" = "Szabadtéri";
 
 /* Bookmark categories screen, button that opens share dialog to export all bookmarks and tracks */
-"bookmarks_export" = "Az összes könyvjelző és útvonal exportálása";
+"bookmarks_export" = "Összes könyvjelző és nyomvonal exportálása";
 
 /* Text for the editing the Track's color button. */
 "change_color" = "Szín módosítása";
@@ -1078,10 +1078,10 @@
 "continue_recording" = "Rögzítés folytatása";
 
 /* Title for the alert when saving a track recording. */
-"track_recording_alert_title" = "Elmenti a könyvjelzők és útvonalak közé?";
+"track_recording_alert_title" = "Menti a könyvjelzők és nyomvonalak közé?";
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
-"track_recording_toast_nothing_to_save" = "Az útvonal üres – nincs mit menteni";
+"track_recording_toast_nothing_to_save" = "A nyomvonal üres – nincs mit menteni";
 "edit_track" = "Nyomvonal szerkesztése";
 "osm_profile_view_notes" = "Jegyzetek megtekintése";
 "osm_profile_view_edit_history" = "Szerkesztési előzmények megtekintése";

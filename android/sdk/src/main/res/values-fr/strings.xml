@@ -31,12 +31,12 @@
     <!-- Subway exits for public transport marks on the map -->
     <string name="core_exit">Sortie</string>
     <string name="core_entrance">Entrée</string>
-    <string name="subway_data_unavailable">La carte du métro n\'est pas disponible</string>
+    <string name="subway_data_unavailable">La carte du métro n’est pas disponible</string>
     <string name="public_access">Accès publique</string>
     <string name="limited_access">Accès limité</string>
     <string name="not_shared">Privé</string>
-    <string name="access_rules_author_only">Édition en ligne</string>
-    <string name="today">Aujourd\'hui</string>
+    <string name="access_rules_author_only">Modification en ligne</string>
+    <string name="today">Aujourd’hui</string>
     <string name="yesterday">Hier</string>
     <string name="days_ago">Il y a %s jours</string>
     <string name="week_ago">Il y a %s semaine</string>

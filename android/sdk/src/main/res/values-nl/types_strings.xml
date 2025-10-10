@@ -29,7 +29,7 @@
     <string name="type.amenity.bench">Zitbank</string>
     <string name="type.amenity.bicycle_parking">Fietsenstalling</string>
     <string name="type.amenity.bicycle_rental">Fietsverhuur</string>
-    <string name="type.amenity.bicycle_repair_station">Fiets reparatie station</string>
+    <string name="type.amenity.bicycle_repair_station">Fietsreparatie</string>
     <string name="type.amenity.biergarten">Biertuin</string>
     <string name="type.amenity.brothel">Bordeel</string>
     <string name="type.amenity.bureau_de_change">Wisselkantoor</string>
@@ -38,11 +38,11 @@
     <string name="type.amenity.car_rental">Autoverhuur</string>
     <string name="type.amenity.motorcycle_rental">Motorverhuur</string>
     <string name="type.amenity.car_sharing">Autodelen</string>
-    <string name="type.amenity.car_wash">Wasserette</string>
+    <string name="type.amenity.car_wash">Autowasstraat</string>
     <string name="type.amenity.casino">Casino</string>
     <string name="type.amenity.gambling">Gokken</string>
     <string name="type.leisure.adult_gaming_centre">Gamingcentrum voor volwassenen</string>
-    <string name="type.leisure.amusement_arcade">Spelletjeshal</string>
+    <string name="type.leisure.amusement_arcade">Speelhal</string>
     <string name="type.amenity.charging_station">Oplaadstation</string>
     <string name="type.amenity.charging_station.bicycle">Oplaadstation voor fietsen</string>
     <string name="type.amenity.charging_station.motorcar">Oplaadstation voor auto\'s</string>
@@ -56,7 +56,7 @@
     <string name="type.amenity.conference_centre">Conferentiecentrum</string>
     <string name="type.amenity.courthouse">Rechtbank</string>
     <string name="type.amenity.dentist">Tandarts</string>
-    <string name="type.amenity.doctors">Huisartsenpost</string>
+    <string name="type.amenity.doctors">Artsenpost</string>
     <string name="type.amenity.drinking_water">Drinkwater</string>
     <string name="type.drinking_water.yes">Drinkwater</string>
     <string name="type.amenity.driving_school">Rijschool</string>
@@ -80,7 +80,7 @@
     <string name="type.amenity.internet_cafe">Internetcafé</string>
     <string name="type.amenity.kindergarten">Kleuterschool</string>
     <string name="type.amenity.library">Bibliotheek</string>
-    <string name="type.amenity.loading_dock">Laad-dock</string>
+    <string name="type.amenity.loading_dock">Laaddek</string>
     <string name="type.amenity.marketplace">Markt</string>
     <string name="type.amenity.motorcycle_parking">Parking Motorfietsen</string>
     <string name="type.amenity.nightclub">Nachtclub</string>
@@ -430,6 +430,7 @@
     <string name="type.highway.pedestrian.area">Voetgangersgebied</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Voetgangersbrug</string>
+    <string name="type.highway.pedestrian.square">Plein</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Voetgangerstunnel</string>
     <string name="type.highway.primary">Hoofdweg</string>
@@ -1393,4 +1394,8 @@
     <string name="type.amenity.ranger_station">Boswachterkantoor</string>
     <string name="type.amenity.animal_shelter">Dierenasiel</string>
     <string name="type.barrier.wicket_gate">Klinket</string>
+    <string name="type.office.security">Beveiligingskantoor</string>
+    <string name="type.building.guardhouse">Beveiligingsloket</string>
+    <string name="type.power.portal">Verdeelstation</string>
+    <string name="type.shop.lighting">Verlichtingswinkel</string>
 </resources>

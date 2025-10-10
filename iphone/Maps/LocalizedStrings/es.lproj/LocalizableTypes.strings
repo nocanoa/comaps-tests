@@ -78,7 +78,7 @@
 "type.amenity.hunting_stand" = "Puesto de caza";
 "type.amenity.ice_cream" = "Heladería";
 "type.amenity.internet_cafe" = "Cibercafé";
-"type.amenity.kindergarten" = "Escuela infantil";
+"type.amenity.kindergarten" = "Guardería";
 "type.amenity.library" = "Biblioteca";
 "type.amenity.loading_dock" = "Muelle de carga";
 "type.amenity.marketplace" = "Mercado";
@@ -451,8 +451,8 @@
 
 /* Hiking trail tagged as sac_scale=alpine_hiking (4+ of 6) or trail_visibility=horrible or more extreme. */
 "type.highway.path.expert" = "Sendero muy difícil o indistinguible";
-"type.highway.path.bicycle" = "Camino para bicicletas";
-"type.highway.footway.bicycle" = "Camino para bicicletas";
+"type.highway.path.bicycle" = "Camino para bicicletas y peatones";
+"type.highway.footway.bicycle" = "Camino para bicicletas y peatones";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.path.bridge" = "Puente";
@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Puente peatonal";
+"type.highway.pedestrian.square" = "Plaza";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Túnel peatonal";
@@ -1473,7 +1474,7 @@
 "type.natural.wetland.saltmarsh.tidal" = "Marisma Salina de Marea";
 "type.natural.wetland.reedbed" = "Juncal";
 "type.natural.wetland.tidalflat" = "Llanura de marea";
-"type.natural.wetland.swamp" = "Ciénaga";
+"type.natural.wetland.swamp" = "Pantano";
 "type.natural.wetland.saltmarsh" = "Marisma salina";
 "type.natural.wetland.mangrove" = "Manglares";
 "type.railway.station.subway.qingdao" = "Estación de Metro";
@@ -1483,4 +1484,8 @@
 "type.amenity.ranger_station" = "Estación de guardabosques";
 "type.amenity.bicycle_parking.covered" = "Parking de bici cubierto";
 "type.amenity.animal_shelter" = "Refugio de animales";
-"type.barrier.wicket_gate" = "Wicket gate";
+"type.barrier.wicket_gate" = "Portillo";
+"type.office.security" = "Oficina de Seguridad Privada";
+"type.power.portal" = "Torre de alta tensión";
+"type.building.guardhouse" = "Garita de seguridad";
+"type.shop.lighting" = "Tienda de iluminación";

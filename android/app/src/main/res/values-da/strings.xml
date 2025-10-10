@@ -237,7 +237,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Doner</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Støt projektet</string>
+    <string name="how_to_support_us">Bliv frivillig og forbedr CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Copyright</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -412,8 +412,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Ikke logget ind</string>
     <string name="login_osm">Log ind på OpenStreetMap</string>
-    <string name="password">Adgangskode</string>
-    <string name="forgot_password">Glemt adgangskode?</string>
     <string name="logout">Log ud</string>
     <string name="edit_place">Redigér stedet</string>
     <string name="add_language">Tilføj et sprog</string>
@@ -432,7 +430,6 @@
     <string name="cuisine">Køkken</string>
     <string name="select_cuisine">Vælg køkken</string>
     <!-- login text field -->
-    <string name="email_or_username">E-mail eller brugernavn</string>
     <string name="level">Etage</string>
     <string name="downloader_delete_map_dialog">Alle dine kortændringer vil blive slettet sammen med kortet</string>
     <string name="downloader_update_maps">Opdatér kort</string>
@@ -791,10 +788,8 @@
     <string name="opens_in">Åbner om %s</string>
     <string name="maps_storage_free_size">%1$s fri af %2$s</string>
     <string name="enable_show_on_lock_screen">Vis på låseskærmen</string>
-    <string name="facebook">Facebook</string>
     <string name="error_enter_correct_facebook_page">Indtast en gyldig Facebook-webadresse, -konto eller -sidenavn</string>
     <string name="connection_failure">Forbindelsesfejl</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="error_enter_correct_twitter_page">Indtast et gyldigt Twitter-brugernavn eller en webadresse</string>
     <string name="share_bookmarks_email_body">Hej! \n \nVedhæftet er mine bogmærker; åbn dem venligst i CoMaps. Hvis du ikke har den installeret, kan du downloade den her: https://www.comaps.app/download/\n \nGod rejse med CoMaps!</string>
     <string name="delete_place_empty_comment_error">Angiv begrundelsen for at slette stedet</string>
@@ -808,21 +803,13 @@
     <string name="level_value_generic">Etage: %s</string>
     <string name="closes_in">Lukker om %s</string>
     <string name="enable_show_on_lock_screen_description">Når den er aktiveret, fungerer appen på låseskærmen, selv når enheden er låst.</string>
-    <string name="matrix">[Matrix]</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="mastodon">Mastodon</string>
     <string name="move_maps_error">Fejl ved flytning af kortfiler</string>
     <string name="disk_error">Kan ikke oprette mapper og flytte filer på enhedens interne hukommelse eller sd-kort</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="github">GitHub</string>
     <string name="prefs_group_general">Generelle indstillinger</string>
-    <string name="vk">VK</string>
     <string name="read_in_wikipedia">Wikipedia</string>
     <string name="menu">Menu</string>
-    <string name="telegram">Telegram</string>
-    <string name="instagram">Instagram</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="change_map_locale">Sprog på kort</string>
     <string name="prefs_group_information">Information</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
@@ -830,7 +817,6 @@
     <string name="panoramax">Panoramax-billede</string>
     <string name="saved">Gemt</string>
     <string name="about_help">Om og hjælp</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_fediverse_page">Indtast et gyldigt Mastodon-brugernavn eller en gyldig webadresse</string>
     <string name="error_enter_correct_bluesky_page">Indtast et gyldigt Bluesky-brugernavn eller en webadresse</string>
     <string name="editor_level">Etage (0 er stueetage)</string>
@@ -849,7 +835,6 @@
     <string name="dialog_report_error_with_logs">Send os en fejlrapport:\n - \"Aktivér logning\" i indstillingerne\n - genskab problemet\n - Tryk på knappen \"Rapporter en fejl\" i skærmbilledet \"Om og hjælp\" og send via e-mail eller chat.\n - deaktiver logning</string>
     <string name="editor_building_levels">Etager (inkl. stueetage, ekskl. tag)</string>
     <string name="error_enter_correct_level">Indtast et gyldigt etagenummer</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_title">Indstilling af venstre knap</string>
     <string name="pref_backup_title">Sikkerhedskopi af bogmærker og spor</string>
     <string name="pref_backup_now_title">Sikkerhedskopiér nu</string>
@@ -869,4 +854,11 @@
     <string name="closed_now">Lukket nu</string>
     <string name="open_now">Åben nu</string>
     <string name="at">kl. %s</string>
+    <string name="share_track">Del spor</string>
+    <string name="delete_track_dialog_title">Slet %s?</string>
+    <string name="pref_tts_no_system_tts_short">Der blev ikke fundet nogen tekst-til-tale-motor. Kontrollér appens indstillinger</string>
+    <string name="osm_note_hint">Du kan også efterlade en bemærkning til OpenStreetMap-fællesskabet, så en anden kan tilføje eller rette stedet her.</string>
+    <string name="osm_note_toast">Bemærkning vil blive sendt til OpenStreetMap</string>
+    <string name="existence_confirmed_time_ago">Eksistens bekræftet %s</string>
+    <string name="hours_confirmed_time_ago">Bekræftet %s</string>
 </resources>

@@ -103,7 +103,7 @@
     <!-- Search category for cafes, bars, restaurants; any changes should be duplicated in categories.txt @category_eat! -->
     <string name="category_eat">Dónde comer</string>
     <!-- Search category for grocery stores; any changes should be duplicated in categories.txt @category_food! -->
-    <string name="category_food">Provisiones</string>
+    <string name="category_food">Tienda de comestibles</string>
     <!-- Search category for public transport; any changes should be duplicated in categories.txt @category_transport! -->
     <string name="category_transport">Transporte</string>
     <!-- Search category for fuel stations; any changes should be duplicated in categories.txt @category_fuel! -->
@@ -248,7 +248,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Donar</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Apoye el proyecto</string>
+    <string name="how_to_support_us">Apoya el proyecto</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Derechos de autor</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -427,8 +427,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">No se ha iniciado sesión</string>
     <string name="login_osm">Acceder a OpenStreetMap</string>
-    <string name="password">Contraseña</string>
-    <string name="forgot_password">¿Has olvidado tu contraseña?</string>
     <string name="logout">Cerrar sesión</string>
     <string name="edit_place">Editar el lugar</string>
     <string name="add_language">Añadir un idioma</string>
@@ -447,7 +445,6 @@
     <string name="cuisine">Cocina</string>
     <string name="select_cuisine">Seleccionar cocina</string>
     <!-- login text field -->
-    <string name="email_or_username">Correo electrónico o usuario</string>
     <string name="editor_add_phone">Añadir teléfono</string>
     <string name="level">Piso</string>
     <string name="downloader_delete_map_dialog">Todas las ediciones hechas al mapa se eliminarán junto con este</string>
@@ -468,7 +465,7 @@
     <string name="editor_edit_place_category_title">Categoría</string>
     <string name="detailed_problem_description">Descripción detallada del problema</string>
     <string name="editor_report_problem_other_title">Un problema diferente</string>
-    <string name="placepage_add_business_button">Añadir organización</string>
+    <string name="placepage_add_business_button">Añadir empresa</string>
     <string name="message_invalid_feature_position">No se puede ubicar ningún objeto aquí</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Datos de OpenStreetMap creados por la comunidad a partir de %s. Más información sobre cómo editar y actualizar el mapa en OpenStreetMap.org</string>
@@ -492,7 +489,7 @@
     <string name="editor_about_osm">Sus ediciones se cargan en la base de datos pública <a href="https://wiki.openstreetmap.org/wiki/ES:Acerca_de_OpenStreetMap">OpenStreetMap</a>. Por favor, no añada información personal o protegida por derechos de autor.</string>
     <string name="editor_more_about_osm">Más acerca de OpenStreetMap</string>
     <string name="editor_osm_history">Tu historial de ediciones</string>
-    <string name="editor_osm_notes">Tus notas de datos cartográficos</string>
+    <string name="editor_osm_notes">Tus notas del mapa</string>
     <string name="editor_operator">Operador</string>
     <!-- To indicate the operator of ATMs, bicycle rentals, electric vehicle charging stations... -->
     <string name="operator">Operador: %s</string>
@@ -831,25 +828,13 @@
     <string name="uri_open_location_failed">No hay ninguna aplicación instalada que pueda abrir la ubicación</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto en navegación</string>
-    <string name="instagram">Instagram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="telegram">Telegram</string>
-    <string name="github">GitHub</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="facebook">Facebook</string>
-    <string name="vk">VK</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="level_value_generic">Nivel: %s</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="saved">Guardado</string>
-    <string name="codeberg">Codeberg</string>
     <string name="error_enter_correct_fediverse_page">Introduce un nombre de usuario o una dirección web de Mastodon válidos</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="app_site_url">https://comaps.app/es/</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Introduce un nombre de usuario o una dirección web de Bluesky válidos</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="pref_left_button_title">Configurar botón izquierdo</string>
@@ -892,4 +877,7 @@
     <string name="osm_note_toast">Una nota será enviada a OpenStreetMap</string>
     <string name="delete_track_dialog_title">Eliminar %s?</string>
     <string name="existence_confirmed_time_ago">Existencia confirmada %s</string>
+    <string name="hours_confirmed_time_ago">Confirmado %s</string>
+    <string name="share_track">Compartir traza</string>
+    <string name="pref_tts_no_system_tts_short">No se ha encontrado ningún motor de texto-a-voz, comprueba la configuración de la aplicación</string>
 </resources>

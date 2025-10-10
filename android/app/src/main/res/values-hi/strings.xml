@@ -233,16 +233,6 @@
     <string name="website">वेबसाइट</string>
     <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">समाचार</string>
-    <!-- Text in menu -->
-    <string name="github">गिटहब</string>
-    <!-- Text in menu -->
-    <string name="telegram">टेलीग्राम</string>
-    <!-- Text in menu -->
-    <string name="facebook">फेसबुक</string>
-    <!-- Text in menu -->
-    <string name="twitter">ट्विटर</string>
-    <!-- Text in menu -->
-    <string name="instagram">इंस्टाग्राम</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">प्रतिक्रिया</string>
     <!-- Text in menu -->
@@ -571,7 +561,6 @@
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="wikimedia_commons">विकिमीडिया कॉमन्स</string>
     <string name="panoramax">Panoramax चित्र</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/hi/</string>
     <string name="saved">सहेजी हुई</string>
 </resources>

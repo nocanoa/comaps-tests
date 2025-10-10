@@ -162,6 +162,7 @@ recycling:plastic_packaging=yes : recycling:plastic=yes
 recycling:glass=yes             : recycling:glass_bottles=yes
 recycling:organic=yes           : recycling:green_waste=yes
 recycling:garden_waste=yes      : recycling:green_waste=yes
+recycling:food_waste=yes        : recycling:green_waste=yes
 
 recycling:paper_packaging=yes   : recycling:paper=yes
 recycling:newspaper=yes         : recycling:paper=yes

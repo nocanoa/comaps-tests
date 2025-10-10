@@ -60,7 +60,7 @@
 
       <com.google.android.material.button.MaterialButton
         android:id="@+id/btn__download_map"
-        style="@style/MwmWidget.Button.Primary"
+        style="@style/MwmWidget.M3.Button.Primary"
         android:layout_marginTop="@dimen/margin_half"
         android:text="@string/downloader_download_map"/>
     </LinearLayout>
@@ -85,7 +85,7 @@
 
       <com.google.android.material.button.MaterialButton
         android:id="@+id/btn__select_map"
-        style="@style/MwmWidget.Button.Primary"
+        style="@style/MwmWidget.M3.Button.Primary"
         android:layout_marginTop="@dimen/margin_half"
         android:text="@string/search_select_map"/>
     </LinearLayout>

@@ -37,4 +37,12 @@
     <string name="not_shared">Yksityinen</string>
     <string name="access_rules_author_only">Nettimuokkaus</string>
     <string name="today">Tänään</string>
+    <string name="yesterday">Eilen</string>
+    <string name="days_ago">%s päivää sitten</string>
+    <string name="week_ago">%s viikko sitten</string>
+    <string name="weeks_ago">%s viikkoa sitten</string>
+    <string name="month_ago">%s kuukausi sitten</string>
+    <string name="months_ago">%s kuukautta sitten</string>
+    <string name="year_ago">%s vuosi sitten</string>
+    <string name="years_ago">%s vuotta sitten</string>
 </resources>

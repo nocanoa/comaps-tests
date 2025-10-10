@@ -403,6 +403,8 @@
     <string name="type.highway.pedestrian">Cale peonil</string>
     <string name="type.highway.pedestrian.area">Zona peonil</string>
     <string name="type.highway.pedestrian.bridge">Puente peonil</string>
+
+    <string name="type.highway.pedestrian.square">Praza</string>
     <string name="type.highway.pedestrian.tunnel">Túnel peonil</string>
     <string name="type.highway.primary">Estrada principal</string>
     <string name="type.highway.primary.bridge">Puente</string>

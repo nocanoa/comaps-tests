@@ -120,7 +120,7 @@ if (PLATFORM_LINUX AND (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") AND (CMAKE_BUILD_T
   add_compile_options(-fno-fat-lto-objects)
   # To fix ar and ranlib "plugin needed to handle lto object".
   string(REGEX MATCH "[0-9]+" GCC_MAJOR_VERSION ${CMAKE_CXX_COMPILER_VERSION})
-  file(GLOB_RECURSE plugin /usr/lib/gcc/*/${GCC_MAJOR_VERSION}/liblto_plugin.so)
+  file(GLOB_RECURSE plugin /usr/lib/gcc/*/${GCC_MAJOR_VERSION}*/liblto_plugin.so)
   set(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
   set(CMAKE_C_ARCHIVE_FINISH "<CMAKE_RANLIB> --plugin ${plugin} <TARGET>")
   set(CMAKE_CXX_ARCHIVE_CREATE "<CMAKE_AR> --plugin ${plugin} qcs <TARGET> <OBJECTS>")
@@ -224,6 +224,26 @@ endif()
 
 # Used in qt/ and shaders/
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+execute_process(
+    COMMAND ${Python3_EXECUTABLE} -c "import google.protobuf; 
+print(google.protobuf.__version__)"
+    RESULT_VARIABLE PROTOBUF_CHECK
+    OUTPUT_VARIABLE PROTOBUF_VERSION
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_QUIET
+)
+
+if(PROTOBUF_CHECK EQUAL 0)
+    if(PROTOBUF_VERSION VERSION_LESS "4.0.0")
+        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (< 4.0)")
+    else()
+        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version < 4.0 required")
+    endif()
+else()
+    message(FATAL_ERROR "Python protobuf not found. Install version <4.0")
+endif()
+
 
 add_subdirectory(libs)
 

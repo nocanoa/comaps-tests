@@ -26,7 +26,7 @@
 "type.amenity.bench" = "Zitbank";
 "type.amenity.bicycle_parking" = "Fietsenstalling";
 "type.amenity.bicycle_rental" = "Fietsverhuur";
-"type.amenity.bicycle_repair_station" = "Fiets reparatie station";
+"type.amenity.bicycle_repair_station" = "Fietsreparatie";
 "type.amenity.biergarten" = "Biertuin";
 "type.amenity.brothel" = "Bordeel";
 "type.amenity.bureau_de_change" = "Wisselkantoor";
@@ -35,11 +35,11 @@
 "type.amenity.car_rental" = "Autoverhuur";
 "type.amenity.motorcycle_rental" = "Motorverhuur";
 "type.amenity.car_sharing" = "Autodelen";
-"type.amenity.car_wash" = "Wasserette";
+"type.amenity.car_wash" = "Autowasstraat";
 "type.amenity.casino" = "Casino";
 "type.amenity.gambling" = "Gokken";
 "type.leisure.adult_gaming_centre" = "Gamingcentrum voor volwassenen";
-"type.leisure.amusement_arcade" = "Spelletjeshal";
+"type.leisure.amusement_arcade" = "Speelhal";
 "type.amenity.charging_station" = "Oplaadstation";
 "type.amenity.charging_station.bicycle" = "Oplaadstation voor fietsen";
 "type.amenity.charging_station.motorcar" = "Oplaadstation voor auto's";
@@ -53,7 +53,7 @@
 "type.amenity.conference_centre" = "Conferentiecentrum";
 "type.amenity.courthouse" = "Rechtbank";
 "type.amenity.dentist" = "Tandarts";
-"type.amenity.doctors" = "Huisartsenpost";
+"type.amenity.doctors" = "Artsenpost";
 "type.amenity.drinking_water" = "Drinkwater";
 "type.drinking_water.yes" = "Drinkwater";
 "type.amenity.driving_school" = "Rijschool";
@@ -80,7 +80,7 @@
 "type.amenity.internet_cafe" = "Internetcafé";
 "type.amenity.kindergarten" = "Kleuterschool";
 "type.amenity.library" = "Bibliotheek";
-"type.amenity.loading_dock" = "Laad-dock";
+"type.amenity.loading_dock" = "Laaddek";
 "type.amenity.marketplace" = "Markt";
 "type.amenity.motorcycle_parking" = "Parking Motorfietsen";
 "type.amenity.nightclub" = "Nachtclub";
@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Voetgangersbrug";
+"type.highway.pedestrian.square" = "Plein";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Voetgangerstunnel";
@@ -1484,3 +1485,7 @@
 "type.post_office.post_partner" = "Post partner";
 "type.amenity.animal_shelter" = "Dierenasiel";
 "type.barrier.wicket_gate" = "Klinket";
+"type.office.security" = "Beveiligingskantoor";
+"type.power.portal" = "Verdeelstation";
+"type.building.guardhouse" = "Beveiligingsloket";
+"type.shop.lighting" = "Verlichtingswinkel";

@@ -416,8 +416,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Nejste přihlášeni</string>
     <string name="login_osm">Přihlásit se do OpenStreetMap</string>
-    <string name="password">Heslo</string>
-    <string name="forgot_password">Zapomenuté heslo?</string>
     <string name="logout">Odhlášení</string>
     <string name="edit_place">Upravit místo</string>
     <string name="add_language">Přidat jazyk</string>
@@ -436,7 +434,6 @@
     <string name="cuisine">Kuchyně</string>
     <string name="select_cuisine">Vybrat kuchyni</string>
     <!-- login text field -->
-    <string name="email_or_username">E-mail nebo uživatelské jméno</string>
     <string name="level">Podlaží</string>
     <string name="downloader_delete_map_dialog">Zároveň s touto mapou budou odstraněny také všechny změny na této mapě</string>
     <string name="downloader_update_maps">Aktualizujte mapy</string>
@@ -802,17 +799,13 @@
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Automaticky v navigaci</string>
     <string name="closes_in">Zavírá za %s</string>
-    <string name="github">GitHub</string>
     <string name="menu">Nabídka</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="delete_place_empty_comment_error">Uveďte prosím důvod odstranění místa</string>
     <string name="navigation_stop_button">Zastavit</string>
-    <string name="matrix">[Matrix]</string>
     <string name="editor_add_phone">Přidat telefon</string>
-    <string name="vk">VK</string>
     <string name="error_enter_correct_instagram_page">Zadejte platné uživatelské jméno nebo webovou adresu Instagramu</string>
     <string name="error_enter_correct_twitter_page">Zadejte platné uživatelské jméno nebo webovou adresu Twitteru</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="maps_storage_free_size">%1$s z %2$s volných</string>
     <string name="share_bookmarks_email_body">Ahoj! \n \nV příloze najdeš mé záložky; otevři je v aplikaci CoMaps. Pokud ji nemáš nainstalovanou, můžeš si ji stáhnout zde: https://www.comaps.app/download/ \n \nUžij si cestování s CoMaps!</string>
     <string name="disk_error">Nepodařilo se vytvořit složku a přesunout soubory v interní paměti zařízení nebo na SD kartě</string>
@@ -821,25 +814,17 @@
     <string name="disconnect_usb_cable_title">Odpojte kabel USB</string>
     <string name="connection_failure">Chyba připojení</string>
     <string name="opens_in">Otevírá za %s</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
     <string name="level_value_generic">Podlaží: %s</string>
-    <string name="telegram">Telegram</string>
     <string name="error_enter_correct_facebook_page">Zadejte platnou webovou adresu, účet nebo název stránky na Facebooku</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="disk_error_title">Chyba disku</string>
     <string name="error_enter_correct_line_page">Zadejte platné ID nebo webovou adresu LINE</string>
     <string name="move_maps_error">Chyba při přesouvání souborů mapy</string>
     <string name="read_in_wikipedia">Wikipedie</string>
-    <string name="instagram">Instagram</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="app_site_url">https://comaps.app/cs/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="error_enter_correct_fediverse_page">Zadejte platné uživatelské jméno nebo webovou adresu Mastodonu</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Zadejte platné uživatelské jméno nebo webovou adresu Bluesky</string>
     <string name="saved">Uloženo</string>
     <string name="pref_left_button_disable">Zakázat</string>

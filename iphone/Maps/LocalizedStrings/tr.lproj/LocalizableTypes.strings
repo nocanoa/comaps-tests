@@ -7,7 +7,7 @@
 "type.aerialway.drag_lift" = "Kayak Teleferiği";
 "type.aerialway.gondola" = "Telekabin";
 "type.aerialway.mixed_lift" = "Karışık Teleferik";
-"type.aerialway.station" = "Havayolu İstasyonu";
+"type.aerialway.station" = "Teleferik İstasyonu";
 "type.aeroway" = "Hava Sahası Altyapısı";
 "type.aeroway.aerodrome" = "Havaalanı";
 "type.aeroway.aerodrome.international" = "Uluslararası Havalimanı";
@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Yaya Köprüsü";
+"type.highway.pedestrian.square" = "Meydan";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Yaya Tüneli";
@@ -1477,10 +1478,13 @@
 "type.natural.wetland.mangrove" = "Mangrove";
 "type.natural.wetland.reedbed" = "Reed Bed";
 "type.leisure.escape_game" = "Escape Room";
-"type.amenity.luggage_locker" = "Luggage Locker";
+"type.amenity.luggage_locker" = "Emanet Eşya Dolabı";
 "type.amenity.bicycle_parking.covered" = "Üstü kapalı bisiklet park alanı";
-"type.post_office.post_partner" = "Post Partner";
+"type.post_office.post_partner" = "Posta Ortağı";
 "type.amenity.ranger_station" = "Ranger Station";
 "type.natural.wetland.tidalflat" = "Tidal Flat";
-"type.barrier.wicket_gate" = "Wicket gate";
-"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Tel Örgü Kapısı";
+"type.amenity.animal_shelter" = "Hayvan Barınağı";
+"type.office.security" = "Güvenlik Görevlisi Ofisi";
+"type.power.portal" = "Elektrik Portalı";
+"type.building.guardhouse" = "Güvenlik Kulübesi";

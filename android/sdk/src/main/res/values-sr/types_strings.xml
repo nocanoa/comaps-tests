@@ -434,6 +434,7 @@
     <string name="type.highway.pedestrian.area">Пешачка зона</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Пешачки мост</string>
+    <string name="type.highway.pedestrian.square">Трг</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Пешачки тунел</string>
     <string name="type.highway.primary">Пут прве класе</string>
@@ -646,7 +647,7 @@
     <string name="type.leisure.sauna">Сауна</string>
     <string name="type.leisure.slipway">Навоз</string>
     <string name="type.leisure.sports_centre">Спортски центар</string>
-    <string name="type.sport.climbing">Зид за пењање</string>
+    <string name="type.sport.climbing">Вештачка стена</string>
     <string name="type.sport.yoga">Јога студио</string>
     <string name="type.leisure.stadium">Стадион</string>
     <string name="type.leisure.swimming_pool">Базен</string>
@@ -675,7 +676,7 @@
     <!-- A regular telecommunications tower / mast. -->
     <string name="type.man_made.tower.communication">Телекомуникациони торањ</string>
     <!-- A deep hole drilled into the earth to extract oil or gas. -->
-    <string name="type.man_made.petroleum_well">Naftna ili gasna bušotina</string>
+    <string name="type.man_made.petroleum_well">Нафтна или гасна бушотина</string>
     <!-- A tower/mast constructed to burn off excess gas. -->
     <string name="type.man_made.flare">Газни факел</string>
     <string name="type.man_made.wastewater_plant">Пречишћивач отпадних вода</string>
@@ -1370,12 +1371,12 @@
     <string name="type.railway.funicular.tunnel">Тунел успињаче</string>
     <string name="type.railway.narrow_gauge.tunnel">Тунел уског колосека</string>
     <string name="type.sport.diving">Слободни скокови</string>
-    <string name="type.amenity.love_hotel">Ljubavni hotel</string>
-    <string name="type.leisure.firepit">Ognjište</string>
+    <string name="type.amenity.love_hotel">Љубавни хотел</string>
+    <string name="type.leisure.firepit">Огњиште</string>
     <string name="type.landuse.plant_nursery">Расадник</string>
     <string name="type.barrier.guard_rail">Заштитна ограда</string>
     <string name="type.amenity.studio">Студио</string>
-    <string name="type.highway.ladder">Merdevine</string>
+    <string name="type.highway.ladder">Мердевине</string>
     <string name="type.man_made.crane">Кран</string>
     <string name="type.railway.station.subway.qingdao">Метро станица</string>
     <string name="type.landuse.religious">Верско земљиште</string>
@@ -1390,7 +1391,11 @@
     <string name="type.post_office.post_partner">Поштански партнер</string>
     <string name="type.amenity.bicycle_parking.covered">Покривени паркинг за бицикле</string>
     <string name="type.amenity.ranger_station">Станица за ренџер</string>
-    <string name="type.leisure.escape_game">Escape Room</string>
+    <string name="type.leisure.escape_game">Соба за бекство (Escape Room)</string>
     <string name="type.barrier.wicket_gate">Вратница</string>
     <string name="type.amenity.animal_shelter">Волонтирајте и побољшајте CoMaps</string>
+    <string name="type.office.security">Канцеларија обезбеђења</string>
+    <string name="type.building.guardhouse">Кућица обезбеђења</string>
+    <string name="type.power.portal">Носач електричних водова</string>
+    <string name="type.shop.lighting">Продавница расвете</string>
 </resources>

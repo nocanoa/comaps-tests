@@ -5,9 +5,9 @@
 
 echo "Configuring the repository for development..."
 
-SKIP_MAP_DOWNLOAD=$SKIP_MAP_DOWNLOAD
-SKIP_GENERATE_SYMBOLS=$SKIP_GENERATE_SYMBOLS
-SKIP_GENERATE_DRULES=$SKIP_GENERATE_DRULES
+SKIP_MAP_DOWNLOAD="${SKIP_MAP_DOWNLOAD:-}"
+SKIP_GENERATE_SYMBOLS="${SKIP_GENERATE_SYMBOLS:-}"
+SKIP_GENERATE_DRULES="${SKIP_GENERATE_DRULES:-}"
 
 DRULES_NOT_GENERATED=
 SYMBOLS_NOT_GENERATED=
@@ -68,10 +68,10 @@ Diff() {
   fi
 }
 
-if [ ! -d 3party/boost/tools ]; then
-  echo "Cloning all submodules..."
-  git submodule update --init --recursive --depth 1
-fi
+
+echo "Checking submodules..."
+git submodule update --init --recursive --depth 1
+
 if [ ! -d 3party/boost/boost ]; then
   echo "Bootstrapping the boost C++ library..."
   pushd 3party/boost/
@@ -105,6 +105,9 @@ if [ -z "$SKIP_MAP_DOWNLOAD" ]; then
 else
   echo "Skipping world map download..."
 fi
+
+echo "Generating search categories / synonyms..."
+./tools/unix/generate_categories.sh
 
 if [ -z "$SKIP_GENERATE_SYMBOLS" ]; then
   if Diff data/symbols_hash data/styles/*/*/symbols/* || [ ! -z "$SYMBOLS_NOT_GENERATED" ]; then

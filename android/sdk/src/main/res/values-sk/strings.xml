@@ -34,4 +34,5 @@
     <string name="not_shared">Súkromné</string>
     <string name="access_rules_author_only">Online úprava</string>
     <string name="today">Dnes</string>
+    <string name="mb">MB</string>
 </resources>

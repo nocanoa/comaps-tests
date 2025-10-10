@@ -79,7 +79,7 @@
     <string name="type.amenity.hunting_stand">Puesto de caza</string>
     <string name="type.amenity.ice_cream">Heladería</string>
     <string name="type.amenity.internet_cafe">Cibercafé</string>
-    <string name="type.amenity.kindergarten">Escuela infantil</string>
+    <string name="type.amenity.kindergarten">Guardería</string>
     <string name="type.amenity.library">Biblioteca</string>
     <string name="type.amenity.loading_dock">Muelle de carga</string>
     <string name="type.amenity.marketplace">Mercado</string>
@@ -424,8 +424,8 @@
     <string name="type.highway.path.difficult">Sendero difícil o poco visible</string>
     <!-- Hiking trail tagged as sac_scale=alpine_hiking (4+ of 6) or trail_visibility=horrible or more extreme. -->
     <string name="type.highway.path.expert">Sendero muy difícil o indistinguible</string>
-    <string name="type.highway.path.bicycle">Camino para bicicletas</string>
-    <string name="type.highway.footway.bicycle">Camino para bicicletas</string>
+    <string name="type.highway.path.bicycle">Camino para bicicletas y peatones</string>
+    <string name="type.highway.footway.bicycle">Camino para bicicletas y peatones</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.path.bridge">Puente</string>
     <string name="type.highway.path.horse">Sendero ecuestre</string>
@@ -435,6 +435,7 @@
     <string name="type.highway.pedestrian.area">Zona peatonal</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Puente peatonal</string>
+    <string name="type.highway.pedestrian.square">Plaza</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Túnel peatonal</string>
     <string name="type.highway.primary">Carretera principal</string>
@@ -1381,7 +1382,7 @@
     <string name="type.amenity.bicycle_parking.covered">Parking de bici cubierto</string>
     <string name="type.post_office.post_partner">Asociado de Correo</string>
     <string name="type.natural.wetland.tidalflat">Llanura de marea</string>
-    <string name="type.natural.wetland.swamp">Ciénaga</string>
+    <string name="type.natural.wetland.swamp">Pantano</string>
     <string name="type.amenity.ranger_station">Estación de guardabosques</string>
     <string name="type.amenity.luggage_locker">Casillero de maletas</string>
     <string name="type.natural.wetland.mangrove">Manglares</string>
@@ -1393,4 +1394,9 @@
     <string name="type.railway.station.subway.qingdao">Estación de Metro</string>
     <string name="type.leisure.escape_game">Sala de Escape</string>
     <string name="type.amenity.animal_shelter">Refugio de animales</string>
+    <string name="type.barrier.wicket_gate">Portillo</string>
+    <string name="type.office.security">Oficina de Seguridad Privada</string>
+    <string name="type.building.guardhouse">Garita de seguridad</string>
+    <string name="type.power.portal">Torre de alta tensión</string>
+    <string name="type.shop.lighting">Tienda de iluminación</string>
 </resources>

@@ -23,4 +23,12 @@
     <string name="core_entrance">Iigang</string>
     <string name="public_access">Öffentliche Zuegriff</string>
     <string name="today">Hüt</string>
+    <string name="days_ago">vor %s Täg</string>
+    <string name="week_ago">vor %s Wuche</string>
+    <string name="weeks_ago">vor %s Wuche</string>
+    <string name="month_ago">vor %s Monet</string>
+    <string name="months_ago">vor %s Mönet</string>
+    <string name="year_ago">vor %s Jahr</string>
+    <string name="years_ago">vor %s Jahre</string>
+    <string name="yesterday">Geschter</string>
 </resources>

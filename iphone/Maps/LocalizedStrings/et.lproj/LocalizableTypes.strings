@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Jalakäijate sild";
+"type.highway.pedestrian.square" = "Väljak";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Jalakäijate tunnel";
@@ -1484,3 +1485,7 @@
 "type.post_office.post_partner" = "Postiteenused partneri juures";
 "type.barrier.wicket_gate" = "Jalgvärav";
 "type.amenity.animal_shelter" = "Loomade varjupaik";
+"type.office.security" = "Turvafirma kontor";
+"type.power.portal" = "Õhuliini värava-tüüpi mast";
+"type.building.guardhouse" = "Valvuriputka";
+"type.shop.lighting" = "Lambipood";

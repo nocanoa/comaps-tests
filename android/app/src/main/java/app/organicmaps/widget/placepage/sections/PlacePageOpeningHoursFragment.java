@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,7 +65,7 @@ public class PlacePageOpeningHoursFragment extends Fragment implements Observer<
     mFullWeekOpeningHours.setAdapter(mOpeningHoursAdapter);
   }
 
-  private static void setOrHideLastCheckedDate(MapObject mapObject, Resources resources, TextView checkDateView)
+  private static void setOrHideLastCheckedDate(MapObject mapObject, Resources resources, MaterialTextView checkDateView)
   {
     final String checkDate = mapObject.getMetadata(Metadata.MetadataType.FMD_CHECK_DATE_OPEN_HOURS);
     if (!checkDate.isEmpty())

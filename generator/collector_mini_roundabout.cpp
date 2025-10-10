@@ -47,6 +47,7 @@ void MiniRoundaboutCollector::CollectFeature(FeatureBuilder const & feature, Osm
 
 void MiniRoundaboutCollector::Save()
 {
+  LOG(LINFO, ("Saving mini roundabouts to", GetFilename()));
   /// @todo We assign only car roads here into MiniRoundaboutInfo.m_ways.
   /// Should also collect other highways (like path or pedestrian) in very general case.
   /// https://www.openstreetmap.org/way/220672898
@@ -66,6 +67,7 @@ void MiniRoundaboutCollector::Save()
     if (miniRoundabout.Normalize())
       WriteMiniRoundabout(writer, miniRoundabout);
   });
+  LOG(LINFO, ("Finished saving mini roundabouts"));
 }
 
 void MiniRoundaboutCollector::MergeInto(MiniRoundaboutCollector & collector) const

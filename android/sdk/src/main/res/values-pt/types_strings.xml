@@ -418,6 +418,7 @@
     <string name="type.highway.pedestrian.area">Rua pedonal</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Ponte</string>
+    <string name="type.highway.pedestrian.square">Praça ou largo</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Túnel</string>
     <string name="type.highway.primary">Estrada primária</string>
@@ -1394,4 +1395,8 @@
     <string name="type.natural.wetland.tidalflat">Planície de maré</string>
     <string name="type.amenity.animal_shelter">Abrigo Animal</string>
     <string name="type.barrier.wicket_gate">Postigo</string>
+    <string name="type.office.security">Escritório dos Guardas de Segurança</string>
+    <string name="type.building.guardhouse">Cabine de Segurança</string>
+    <string name="type.power.portal">Portal de Energia</string>
+    <string name="type.shop.lighting">Loja de Iluminação</string>
 </resources>

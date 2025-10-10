@@ -353,6 +353,7 @@ man_made-cutline                                    # line z15-
 barrier-ditch                                       # line z17-
 building                                            # area z15- (also has caption z18-)
 building-garage                                     # area z15- (also has caption z18-)
+building-guardhouse                                 # area z15- (also has icon z18-)
 building-has_parts                                  # area z15- (also has caption z18-)
 building-train_station                              # area z15- (also has caption z18-)
 === 50
@@ -362,11 +363,13 @@ man_made-pier                                       # line z15- and area z13-
 waterway-dam                                        # line z15- and area z15-
 === 20
 
+landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
+landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
+=== 17
+
 amenity-prison                                      # area z12- (also has icon z16-, caption(optional) z16-)
 boundary-national_park                              # area z10- (also has icon z12-, caption(optional) z12-)
 boundary-protected_area-1                           # area z10- (also has icon z12-, caption(optional) z12-)
-landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
-landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
 leisure-nature_reserve                              # area z10- (also has icon z12-, caption(optional) z12-)
 === 15
 

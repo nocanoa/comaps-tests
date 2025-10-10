@@ -112,7 +112,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/donate"
-        style="@style/MwmWidget.Button.Accent"
+        style="@style/MwmWidget.M3.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_base"
@@ -121,13 +121,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/report"
-        style="@style/MwmWidget.Button"
+        style="@style/MwmWidget.M3.Button.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_base"
-        android:background="@color/light_gray"
-        android:text="@string/report_a_bug"
-        android:textColor="@color/text_dark" />
+        android:layout_marginTop="@dimen/margin_half"
+        android:text="@string/report_a_bug" />
 
     <com.google.android.material.textview.MaterialTextView
       android:id="@+id/faq"
@@ -158,11 +156,11 @@
         app:drawableStartCompat="@drawable/ic_rate" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/telegram"
+        android:id="@+id/web"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/telegram"
+        android:text="@string/website"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_telegram" />
+        app:drawableStartCompat="@drawable/ic_website" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/code_repo"
@@ -172,18 +170,11 @@
         app:drawableStartCompat="@drawable/ic_codeberg" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/web"
+        android:id="@+id/mastodon"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/website"
+        android:text="@string/mastodon"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_website" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/email"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/email"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_email" />
+        app:drawableStartCompat="@drawable/ic_mastodon" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/matrix"
@@ -193,32 +184,25 @@
         app:drawableStartCompat="@drawable/ic_matrix" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/mastodon"
+        android:id="@+id/lemmy"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/mastodon"
+        android:text="@string/lemmy"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_mastodon" />
+        app:drawableStartCompat="@drawable/ic_lemmy" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/facebook"
+        android:id="@+id/bluesky"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/facebook"
+        android:text="@string/bluesky"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_facebook" />
-<!--
+        app:drawableStartCompat="@drawable/ic_bluesky" />
+
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/twitter"
+        android:id="@+id/pixelfed"
         style="@style/MwmWidget.TextView.Item"
-        android:text="@string/twitter"
+        android:text="@string/pixelfed"
         android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_twitterx" />
--->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/instagram"
-        style="@style/MwmWidget.TextView.Item"
-        android:text="@string/instagram"
-        android:textAlignment="viewStart"
-        app:drawableStartCompat="@drawable/ic_instagram" />
+        app:drawableStartCompat="@drawable/ic_pixelfed" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/openstreetmap"
@@ -226,6 +210,13 @@
         android:text="@string/openstreetmap"
         android:textAlignment="viewStart"
         app:drawableStartCompat="@drawable/ic_openstreetmap" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/email"
+        style="@style/MwmWidget.TextView.Item"
+        android:text="@string/email"
+        android:textAlignment="viewStart"
+        app:drawableStartCompat="@drawable/ic_email" />
 
     <View
         android:layout_width="match_parent"

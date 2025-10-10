@@ -199,6 +199,8 @@ void MetalinesBuilder::Finish()
 
 void MetalinesBuilder::Save()
 {
+  LOG(LINFO, ("Saving metalines to", GetFilename()));
+
   std::unordered_multimap<size_t, std::shared_ptr<LineString>> keyToLineString;
   FileReader reader(GetTmpFilename());
   ReaderSource<FileReader> src(reader);
@@ -223,8 +225,7 @@ void MetalinesBuilder::Save()
     }
   }
 
-  LOG_SHORT(LINFO, ("Wrote", countLines, "metalines [with", countWays, "ways] with OSM IDs for the entire planet to",
-                    GetFilename()));
+  LOG(LINFO, ("Finished saving metalines. Wrote", countLines, "metalines [with", countWays, "ways]"));
 }
 
 void MetalinesBuilder::OrderCollectedData()

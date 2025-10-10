@@ -12,10 +12,14 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>Zero marcaje</string>
 			<key>one</key>
-			<string>%d preferat</string>
+			<string>%d marcaj</string>
+			<key>few</key>
+			<string>%d marcaje</string>
 			<key>other</key>
-			<string>%d preferate</string>
+			<string>%d marcaje</string>
 		</dict>
 	</dict>
 	<key>bookmarks_detect_message</key>
@@ -28,10 +32,14 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>A fost găsit %d fișier. Îl vei vedea după conversie.</string>
 			<key>one</key>
-			<string>A fost găsit %d fișier. Îl vei vedea după conversiune.</string>
+			<string>A fost găsit %d fișier. Îl vei vedea după conversie.</string>
+			<key>few</key>
+			<string>Au fost găsit %d fișiere. Le vei vedea după conversie.</string>
 			<key>other</key>
-			<string>Au fost găsite %d fișiere. Le vei vedea după conversiune.</string>
+			<string>Au fost găsit %d fișiere. Le vei vedea după conversie.</string>
 		</dict>
 	</dict>
 	<key>tracks</key>
@@ -44,6 +52,12 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>%d înregistrare</string>
+			<key>one</key>
+			<string>%d înregistrare</string>
+			<key>few</key>
+			<string>%d înregistrări</string>
 			<key>other</key>
 			<string>%d înregistrări</string>
 		</dict>

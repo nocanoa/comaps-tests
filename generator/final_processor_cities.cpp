@@ -20,6 +20,8 @@ void FinalProcessorCities::Process()
 {
   using namespace feature;
 
+  LOG(LINFO, ("Processing cities..."));
+
   std::mutex mutex;
   auto const & localityChecker = ftypes::IsLocalityChecker::Instance();
 

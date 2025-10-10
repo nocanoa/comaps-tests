@@ -144,7 +144,7 @@ project.afterEvaluate {
 
   final taskName = gradle.startParameter.taskNames
 
-  if (['assemble', 'bundle', 'compile', 'install'].any{taskName.any{task->task.startsWith(it)}}) {
+  if (['assemble', 'bundle', 'compile', 'install', 'run'].any{taskName.any{task->task.startsWith(it)}}) {
     exec {
       workingDir '../..'
 

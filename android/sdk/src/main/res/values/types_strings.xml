@@ -68,6 +68,9 @@
     <string name="type.amenity.music_school">Music School</string>
     <string name="type.amenity.language_school">Language School</string>
     <string name="type.office.diplomatic">Embassy</string>
+    <string name="type.office.security">Security Guards Office</string>
+    <string name="type.building.guardhouse">Security Booth</string>
+    <string name="type.power.portal">Power Portal</string>
     <string name="type.amenity.fast_food">Fast Food</string>
     <string name="type.amenity.ferry_terminal">Ferry</string>
     <string name="type.amenity.fire_station">Fire Station</string>
@@ -444,6 +447,8 @@
     <string name="type.highway.pedestrian.area">Pedestrian Area</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Pedestrian Bridge</string>
+
+    <string name="type.highway.pedestrian.square">Square</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Pedestrian Tunnel</string>
     <string name="type.highway.primary">Primary Road</string>
@@ -1246,6 +1251,7 @@
     <string name="type.shop.trade">Trade Supplies</string>
     <string name="type.shop.watches">Watch Store</string>
     <string name="type.shop.wholesale">Wholesale Store</string>
+    <string name="type.shop.lighting">Lighting Shop</string>
     <string name="type.sport">Sport</string>
     <string name="type.sport.american_football">American Football</string>
     <string name="type.sport.archery">Archery</string>

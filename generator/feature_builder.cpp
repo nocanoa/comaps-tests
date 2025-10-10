@@ -216,6 +216,15 @@ bool FeatureBuilder::PreSerialize()
       {
         m_params.name.AddString(StringUtf8Multilang::kDefaultCode, m_params.ref);
       }
+      else if (!m_params.name.IsEmpty() && ftypes::IsRailwaySubwayEntranceChecker::Instance()(types))
+      {
+        StringUtf8Multilang nameWithRef;
+        m_params.name.ForEach([&nameWithRef, this](int8_t code, std::string_view name)
+        {
+          nameWithRef.AddString(code, std::string(name) + " (" + m_params.ref + ")");
+        });
+        m_params.name = std::move(nameWithRef);
+      }
 
       m_params.ref.clear();
     }

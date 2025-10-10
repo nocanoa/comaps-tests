@@ -45,13 +45,15 @@
       android:maxLines="6" />
   </com.google.android.material.textfield.TextInputLayout>
   
-  <Button
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/send_note_button"
-    style="@style/MwmWidget.Button.Accent"
+    style="@style/MwmWidget.M3.Button.Primary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:background="?accentButtonBackground"
     android:layout_marginTop="@dimen/margin_base"
-    android:enabled="false"
-    android:text="@string/editor_report_problem_send_button" />
+    android:enabled="true"
+    android:text="@string/editor_report_problem_send_button"
+    app:backgroundTint="@null"/>
 </LinearLayout>

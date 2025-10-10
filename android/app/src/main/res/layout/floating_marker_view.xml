@@ -7,7 +7,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:background="@color/black_54"
   tools:ignore="Overdraw">
-  <ImageView
+  <com.google.android.material.imageview.ShapeableImageView
     android:id="@+id/image"
     android:layout_width="@dimen/elevation_profile_marker_width"
     android:layout_height="@dimen/elevation_profile_marker_width"
@@ -22,7 +22,7 @@
     android:layout_toEndOf="@id/image"
     android:clipChildren="false"
     tools:ignore="UnusedAttribute">
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
       android:id="@+id/floating_triangle"
       android:layout_width="@dimen/margin_half"
       android:layout_height="@dimen/margin_base"
@@ -43,13 +43,13 @@
       android:maxWidth="@dimen/dialog_min_height"
       android:padding="@dimen/margin_quarter_plus"
       tools:ignore="UnusedAttribute">
-      <ImageView
+      <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/distance_icon"
         android:layout_width="@dimen/margin_half_plus"
         android:layout_height="@dimen/margin_half_plus"
         app:srcCompat="@drawable/ic_distance_travelled"
         app:tint="?ppFloatingMarkerIconColor" />
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:id="@+id/distance_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,12 +68,12 @@
         android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
           android:id="@+id/triangle"
           android:layout_width="@dimen/margin_half_plus_eight"
           android:layout_height="@dimen/margin_half_plus_eight"
           app:srcCompat="?elevationProfileSelectedPointTriangle" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/altitude"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

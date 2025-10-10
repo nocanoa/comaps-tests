@@ -1093,5 +1093,5 @@
 "pref_maplanguage_title" = "Језик мапе";
 "transliteration_title_disabled_summary" = "Онемогућено када увек користите локални језик за мапу";
 "pref_maplanguage_local" = "Локални језик";
-"existence_confirmed_time_ago" = "Existence confirmed %@";
+"existence_confirmed_time_ago" = "Проверено да постоји %@";
 "hours_confirmed_time_ago" = "Потврђено %@";

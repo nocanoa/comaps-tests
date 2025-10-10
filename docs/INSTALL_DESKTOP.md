@@ -268,6 +268,10 @@ For example you can switch theme which is very useful for checking [styles](STYL
 
 There are also other commands for turning on/off isolines, anti-aliasing, etc. Check [DEBUG_COMMANDS.md](DEBUG_COMMANDS.md) to learn about them.
 
+### Debugging in an IDE
+
+To harness the power of an IDE for debugging, you can set up [Qt Creator](QT_CREATOR.md) to work with CoMaps code. This gives you options such as setting breakpoints, examining variables while the code is running, examining call stacks and using debugging tools such as Valgrind.
+
 ### More options
 
 To make the desktop app display maps in a different language add a `-lang` option, e.g. for the Russian language:

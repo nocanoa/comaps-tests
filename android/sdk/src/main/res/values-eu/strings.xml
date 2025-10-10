@@ -36,4 +36,10 @@
     <string name="mb">MB</string>
     <string name="gb">GB</string>
     <string name="today">Gaur</string>
+    <string name="yesterday">Atzo</string>
+    <string name="days_ago">duela %s egun</string>
+    <string name="week_ago">duela %s aste</string>
+    <string name="weeks_ago">duela %s aste</string>
+    <string name="month_ago">duela %s hilabete</string>
+    <string name="year_ago">duela %s urte</string>
 </resources>

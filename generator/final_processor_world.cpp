@@ -23,11 +23,11 @@ void WorldFinalProcessor::Process()
   auto fbs = ReadAllDatRawFormat<serialization_policy::MaxAccuracy>(m_worldTmpFilename);
   Order(fbs);
   WorldGenerator generator(m_worldTmpFilename, m_coastlineGeomFilename, m_popularPlacesFilename);
-  LOG(LINFO, ("Process World features"));
+  LOG(LINFO, ("Processing World features..."));
   for (auto & fb : fbs)
     generator.Process(fb);
 
-  LOG(LINFO, ("Merge World lines"));
+  LOG(LINFO, ("Merging World lines..."));
   generator.DoMerge();
 }
 

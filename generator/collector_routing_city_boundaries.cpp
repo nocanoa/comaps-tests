@@ -443,7 +443,9 @@ void RoutingCityBoundariesCollector::Collect(OsmElement const & elem)
 
 void RoutingCityBoundariesCollector::Save()
 {
+  LOG(LINFO, ("Saving routing city boundaries to", GetFilename()));
   m_builder.Save(GetFilename());
+  LOG(LINFO, ("Finished saving routing city boundaries"));
 }
 
 void RoutingCityBoundariesCollector::MergeInto(RoutingCityBoundariesCollector & collector) const

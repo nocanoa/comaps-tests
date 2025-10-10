@@ -38,13 +38,13 @@
     <!-- Text in About screen -->
     <string name="about_headline">Открытый проект, создаваемый сообществом</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_1">• Легко использовать и отполированный вид</string>
+    <string name="about_proposition_1">• Прост в использовании</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_2">• Приватный и без рекламы</string>
+    <string name="about_proposition_2">• Без рекламы и сбора данных пользователей</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• Автономный, быстрый и компактный</string>
+    <string name="about_proposition_3">• Работает офлайн, экономит батерею</string>
     <!-- Text in About screen -->
-    <string name="about_developed_by_enthusiasts">Приложение с открытым исходным кодом, не для наживы, прозрачное принятие решений и финансирование.</string>
+    <string name="about_developed_by_enthusiasts">Некоммерческий, с прозрачным управлением и финансами, исходный код полностью открыт.</string>
     <!-- The button that opens system location settings -->
     <string name="location_settings">Настройки местоположения</string>
     <string name="close">Закрыть</string>
@@ -427,8 +427,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Не выполнен вход</string>
     <string name="login_osm">Войти в OpenStreetMap</string>
-    <string name="password">Пароль</string>
-    <string name="forgot_password">Забыли пароль?</string>
     <string name="logout">Выйти</string>
     <string name="edit_place">Редактировать место</string>
     <string name="add_language">Добавить язык</string>
@@ -447,7 +445,6 @@
     <string name="cuisine">Кухня</string>
     <string name="select_cuisine">Выбрать кухню</string>
     <!-- login text field -->
-    <string name="email_or_username">Эл. почта или имя пользователя</string>
     <string name="editor_add_phone">Добавить телефон</string>
     <string name="level">Этаж</string>
     <!-- Building level -->
@@ -549,7 +546,7 @@
     <string name="mobile_data">Мобильный интернет</string>
     <!-- NOTE to translators: please synchronize your translation with the English one. -->
     <string name="mobile_data_description">Мобильный интернет требуется для уведомлений об обновлении карты и для отображения более подробной информации о местах и метках</string>
-    <string name="mobile_data_option_never">Никогда не использовать</string>
+    <string name="mobile_data_option_never">Никогда</string>
     <string name="mobile_data_option_ask">Всегда спрашивать</string>
     <string name="traffic_update_maps_text">Для отображения пробок необходимо обновить карты</string>
     <string name="big_font">Увеличить шрифт на карте</string>
@@ -623,8 +620,8 @@
     <string name="bookmarks_empty_list_title">Список пустой</string>
     <string name="bookmarks_empty_list_message">Чтобы добавить метку, нажмите на место на карте, а затем на иконку звёздочки</string>
     <string name="category_desc_more">…ещё</string>
-    <string name="export_file">Экспорт KMZ</string>
-    <string name="export_file_gpx">Экспорт GPX</string>
+    <string name="export_file">Экспортировать в KMZ</string>
+    <string name="export_file_gpx">Экспортировать в GPX</string>
     <string name="delete_list">Удалить список</string>
     <string name="speedcams_alert_title">Камеры скорости</string>
     <string name="place_description_title">Описание места</string>
@@ -639,8 +636,8 @@
     <string name="power_managment_title">Режим энергосбережения</string>
     <string name="power_managment_description">Попробовать уменьшить потребление заряда батареи за счёт отключения некоторых возможностей</string>
     <string name="power_managment_setting_never">Никогда</string>
-    <string name="power_managment_setting_auto">Авто</string>
-    <string name="power_managment_setting_manual_max">Максимальное энергосбережение</string>
+    <string name="power_managment_setting_auto">При низком заряде</string>
+    <string name="power_managment_setting_manual_max">Всегда</string>
     <string name="enable_logging_warning_message">Эта настройка включается для записи действий в целях диагностики, чтобы помочь нашей команде выявить проблемы с приложением. Включайте ее только на время для отправки детальной информации о неполадках, обнаруженных в приложении, через кнопку «Сообщить о проблеме». Логи могут включать данные о местоположении.</string>
     <string name="driving_options_title">Настройки объезда</string>
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
@@ -838,24 +835,12 @@
     <string name="uri_open_location_failed">Не установлено приложение, которое может открыть местоположение</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Авто в навигации</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="instagram">Instagram</string>
     <string name="wikimedia_commons">Викисклад</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="vk">VK</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="error_enter_correct_bluesky_page">Введите имя пользователя Bluesky или веб-адрес</string>
     <string name="error_enter_correct_fediverse_page">Введите имя пользователя Mastodon или веб-адрес</string>
     <string name="app_site_url">https://comaps.app/ru/</string>
-    <string name="bluesky">Bluesky</string>
-    <string name="codeberg">Codeberg</string>
     <string name="saved">Сохранено</string>
     <string name="pref_left_button_disable">Выключить</string>
     <string name="pref_left_button_title">Действие 1-й кнопки</string>

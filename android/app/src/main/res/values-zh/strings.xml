@@ -238,9 +238,7 @@
     <!-- Text in About menu, opens CoMaps news website -->
     <string name="news">新闻</string>
     <!-- Text in menu -->
-    <string name="facebook">Facebook</string>
     <!-- Text in menu -->
-    <string name="twitter">X（推特）</string>
     <!-- Settings: Send feedback button and dialog title -->
     <string name="feedback">反馈</string>
     <!-- Text in menu -->
@@ -433,8 +431,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">未登录</string>
     <string name="login_osm">登录 OpenStreetMap</string>
-    <string name="password">密码</string>
-    <string name="forgot_password">忘记密码？</string>
     <string name="logout">登出</string>
     <string name="edit_place">编辑地点</string>
     <string name="add_language">添加语言</string>
@@ -453,7 +449,6 @@
     <string name="cuisine">菜肴</string>
     <string name="select_cuisine">选择菜肴</string>
     <!-- login text field -->
-    <string name="email_or_username">电子邮件或用户名</string>
     <string name="editor_add_phone">新增电话号码</string>
     <string name="level">楼层</string>
     <!-- Building level -->
@@ -831,22 +826,12 @@
     <string name="uri_open_location_failed">未安装可以打开位置的应用</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">自动导航</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="github">GitHub</string>
     <string name="app_site_url">https://comaps.app/zh-Hans/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="error_enter_correct_fediverse_page">请输入有效的 Mastodon 用户名或网址</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">请输入有效的 Bluesky 用户名或网址</string>
     <string name="saved">已保存</string>
     <string name="pref_left_button_disable">禁用</string>

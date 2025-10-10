@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentManager;
 import app.organicmaps.R;
 import app.organicmaps.downloader.MapManagerHelper;
 import app.organicmaps.sdk.downloader.CountryItem;
-import app.organicmaps.sdk.downloader.MapManager;
 import app.organicmaps.util.UiUtils;
 import com.google.android.material.textview.MaterialTextView;
 

@@ -432,6 +432,8 @@
     <string name="type.highway.pedestrian.area">Пішохідна зона</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Міст</string>
+
+    <string name="type.highway.pedestrian.square">Площа</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Тунель</string>
     <string name="type.highway.primary">Шосе</string>

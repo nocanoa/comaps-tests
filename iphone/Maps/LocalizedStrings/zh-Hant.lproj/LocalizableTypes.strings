@@ -466,6 +466,8 @@
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "橋";
 
+"type.highway.pedestrian.square" = "廣場";
+
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "隧道";
 "type.highway.primary" = "主要道路";
@@ -1304,7 +1306,7 @@
 "type.shop.tobacco" = "煙草";
 "type.shop.trade" = "貿易用品";
 "type.shop.watches" = "手錶";
-"type.shop.wholesale" = "批髮店";
+"type.shop.wholesale" = "批發店";
 "type.sport" = "體育運動";
 "type.sport.american_football" = "美式足球";
 "type.sport.archery" = "射箭";
@@ -1484,3 +1486,6 @@
 "type.post_office.post_partner" = "郵政代辦所";
 "type.barrier.wicket_gate" = "Wicket gate";
 "type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

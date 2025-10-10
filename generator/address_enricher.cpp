@@ -121,7 +121,7 @@ void AddressEnricher::ProcessRawEntries(std::string const & path, TFBCollectFn c
     if (!res.street)
     {
       ++m_stats.m_noStreet;
-      LOG(LWARNING, ("No street found:", e.m_street, mercator::ToLatLon(e.m_points.front())));
+      LOG(LDEBUG, ("No street found:", e.m_street, mercator::ToLatLon(e.m_points.front())));
       continue;
     }
     if (res.interpol)

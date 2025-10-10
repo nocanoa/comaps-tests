@@ -33,6 +33,8 @@ import app.organicmaps.sdk.util.Utils;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.InputUtils;
 import app.organicmaps.util.UiUtils;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -88,8 +90,8 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
   private MultilanguageAdapter mNamesAdapter;
   private MaterialTextView mNamesCaption;
-  private MaterialTextView mAddLanguage;
-  private MaterialTextView mMoreLanguages;
+  private MaterialButton mAddLanguage;
+  private MaterialButton mMoreLanguages;
 
   private MaterialTextView mStreet;
   private TextInputEditText mHouseNumber;
@@ -97,7 +99,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
   // Define Metadata entries, that have more tricky logic, separately.
   private MaterialTextView mPhone;
-  private MaterialTextView mEditPhoneLink;
+  private MaterialButton mEditPhoneLink;
   private MaterialTextView mCuisine;
   private SwitchCompat mWifi;
   private MaterialTextView mSelfService;
@@ -134,7 +136,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private TextInputEditText mDescription;
   private final Map<Metadata.MetadataType, View> mDetailsBlocks = new HashMap<>();
   private final Map<Metadata.MetadataType, View> mSocialMediaBlocks = new HashMap<>();
-  private MaterialTextView mReset;
+  private MaterialButton mReset;
 
   private EditorHostFragment mParent;
 
@@ -468,7 +470,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     View levelBlock = initBlock(view, Metadata.MetadataType.FMD_LEVEL, R.id.block_level, R.drawable.ic_level_white,
                                 R.string.editor_level, InputType.TYPE_CLASS_NUMBER);
     View fediverseContactBlock =
-        initBlock(view, Metadata.MetadataType.FMD_CONTACT_FEDIVERSE, R.id.block_fediverse, R.drawable.ic_mastodon_white,
+        initBlock(view, Metadata.MetadataType.FMD_CONTACT_FEDIVERSE, R.id.block_fediverse, R.drawable.ic_mastodon,
                   R.string.mastodon, InputType.TYPE_TEXT_VARIATION_URI);
     View facebookContactBlock =
         initBlock(view, Metadata.MetadataType.FMD_CONTACT_FACEBOOK, R.id.block_facebook, R.drawable.ic_facebook_white,
@@ -485,7 +487,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
         initBlock(view, Metadata.MetadataType.FMD_CONTACT_LINE, R.id.block_line, R.drawable.ic_line_white,
                   R.string.editor_line_social_network, InputType.TYPE_TEXT_VARIATION_URI);
     View blueskyContactBlock =
-        initBlock(view, Metadata.MetadataType.FMD_CONTACT_BLUESKY, R.id.block_bluesky, R.drawable.ic_bluesky_white,
+        initBlock(view, Metadata.MetadataType.FMD_CONTACT_BLUESKY, R.id.block_bluesky, R.drawable.ic_bluesky,
                   R.string.bluesky, InputType.TYPE_TEXT_VARIATION_URI);
     View operatorBlock = initBlock(view, Metadata.MetadataType.FMD_OPERATOR, R.id.block_operator,
                                    R.drawable.ic_operator, R.string.editor_operator, 0);

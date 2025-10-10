@@ -52,6 +52,7 @@ void BoundaryPostcodeCollector::Collect(OsmElement const & el)
 
 void BoundaryPostcodeCollector::Save()
 {
+  LOG(LINFO, ("Saving postcode boundaries to", GetFilename()));
   std::sort(m_data.begin(), m_data.end());
 
   FileWriter writer(GetFilename());
@@ -60,6 +61,8 @@ void BoundaryPostcodeCollector::Save()
     rw::WriteNonEmpty(writer, p.first);
     rw::WriteVectorOfPOD(writer, p.second);
   }
+
+  LOG(LINFO, ("Finished saving postcode boundaries"));
 }
 
 void BoundaryPostcodeCollector::MergeInto(BoundaryPostcodeCollector & collector) const

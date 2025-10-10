@@ -192,7 +192,7 @@
       android:layout_height="wrap_content"
       android:background="?ppBackground"
       android:orientation="horizontal">
-      <ImageView
+      <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/item_icon"
         android:layout_width="@dimen/place_page_icon_size"
         android:layout_height="@dimen/place_page_icon_size"
@@ -217,7 +217,7 @@
         android:background="?clickableBackground"
         android:textAllCaps="false"
         tools:text="@string/categories" />
-      <ImageView
+      <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/edit_Bookmark"
         style="@style/MwmWidget.Editor.MetadataIcon"
         android:layout_width="wrap_content"

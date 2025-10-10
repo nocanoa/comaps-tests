@@ -1470,10 +1470,10 @@ void GetNameAndType(OsmElement * p, FeatureBuilderParams & params, TypesFilterFn
 
     size_t const typesCount = params.m_types.size();
     if (params.FinishAddingTypesEx() == FeatureParams::TYPES_EXCEED_MAX)
-      LOG(LWARNING, ("Exceeded types count for:", DebugPrintID(*p), "Types:", typesCount, typesString));
+      LOG(LDEBUG, ("Exceeded types count for:", DebugPrintID(*p), "Types:", typesCount, typesString));
 
     if (!params.house.IsEmpty() && !ftypes::IsAddressObjectChecker::Instance()(params.m_types))
-      LOG(LWARNING, ("Have house number for _non-address_:", DebugPrintID(*p), "Types:", typesString));
+      LOG(LDEBUG, ("Have house number for _non-address_:", DebugPrintID(*p), "Types:", typesString));
   }
 
   // Stage6: Collect additional information about feature such as

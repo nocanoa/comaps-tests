@@ -12,6 +12,8 @@
 		165953942CB44B5600CFED7C /* symbols in Resources */ = {isa = PBXBuildFile; fileRef = 165953932CB44B3B00CFED7C /* symbols */; };
 		1DFA2F6A20D3B57400FB2C66 /* UIColor+PartnerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFA2F6920D3B57400FB2C66 /* UIColor+PartnerColor.m */; };
 		270C9C282E16AB6F00ABA688 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C9C252E16AB6300ABA688 /* Profile.swift */; };
+		27176A862E65B0150015F25F /* Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 27176A852E65B0150015F25F /* Icon.icon */; };
+		27176A8A2E65B01B0015F25F /* Debug Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 27176A892E65B01B0015F25F /* Debug Icon.icon */; };
 		272F1F392E0EE09000FA52EF /* ExistingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F382E0EE08A00FA52EF /* ExistingProfileView.swift */; };
 		272F1F3B2E0EE0A300FA52EF /* NoExistingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */; };
 		272F1F3D2E0EE0C800FA52EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */; };
@@ -760,6 +762,8 @@
 		1DFA2F6920D3B57400FB2C66 /* UIColor+PartnerColor.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; indentWidth = 2; lineEnding = 0; path = "UIColor+PartnerColor.m"; sourceTree = "<group>"; tabWidth = 2; };
 		1DFA2F6E20D3CA9200FB2C66 /* UIColorRoutines.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = UIColorRoutines.h; sourceTree = "<group>"; tabWidth = 2; };
 		270C9C252E16AB6300ABA688 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		27176A852E65B0150015F25F /* Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon.icon; sourceTree = "<group>"; };
+		27176A892E65B01B0015F25F /* Debug Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Debug Icon.icon"; sourceTree = "<group>"; };
 		272F1F382E0EE08A00FA52EF /* ExistingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingProfileView.swift; sourceTree = "<group>"; };
 		272F1F3A2E0EE09500FA52EF /* NoExistingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExistingProfileView.swift; sourceTree = "<group>"; };
 		272F1F3C2E0EE0C400FA52EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -2016,6 +2020,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27176A852E65B0150015F25F /* Icon.icon */,
+				27176A892E65B01B0015F25F /* Debug Icon.icon */,
 				F6C3A1B121AC22810060EEC8 /* Alert 5.m4a */,
 				4A300ED31C6DCFD400140018 /* countries-strings */,
 				5605022E1B6211E100169CAD /* sound-strings */,
@@ -4049,7 +4055,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				ORGANIZATIONNAME = CoMaps;
 				TargetAttributes = {
 					6741A93D1BF340DE002C974C = {
@@ -4178,6 +4184,7 @@
 				471A7BC22481D44B00A0D4C1 /* BookmarkTitleCell.xib in Resources */,
 				FA637ED329A500BE00D8921A /* drules_proto_outdoors_light.txt in Resources */,
 				F6E2FE6D1E097BA00083EBEC /* _MWMOHHeaderCell.xib in Resources */,
+				27176A862E65B0150015F25F /* Icon.icon in Resources */,
 				F6E2FE701E097BA00083EBEC /* _MWMOHSubCell.xib in Resources */,
 				4554B6EE1E55F0F30084017F /* drules_proto_vehicle_dark.bin in Resources */,
 				47CA68D22500435E00671019 /* BookmarksListViewController.xib in Resources */,
@@ -4291,6 +4298,7 @@
 				6741A95D1BF340DE002C974C /* types.txt in Resources */,
 				340E1EFE1E2F614400CE49BF /* Welcome.storyboard in Resources */,
 				6741A9521BF340DE002C974C /* World.mwm in Resources */,
+				27176A8A2E65B01B0015F25F /* Debug Icon.icon in Resources */,
 				6741A9751BF340DE002C974C /* WorldCoasts.mwm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5089,6 +5097,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_ENTITLEMENTS = "CoMaps-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -5121,6 +5131,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_ENTITLEMENTS = "CoMaps-Release.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -5218,7 +5230,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoMapsWidgetExtension/Info.plist;

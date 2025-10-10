@@ -466,6 +466,8 @@
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
 
+"type.highway.pedestrian.square" = "Square";
+
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Pedestrian Tunnel";
 "type.highway.primary" = "Primary Road";
@@ -1484,3 +1486,6 @@
 "type.post_office.post_partner" = "Post Partner";
 "type.amenity.animal_shelter" = "Animal Shelter";
 "type.barrier.wicket_gate" = "Wicket gate";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

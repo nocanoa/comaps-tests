@@ -24,4 +24,6 @@
     <string name="access_rules_author_only">Editjar onlajn</string>
     <string name="public_access">Aċċess pubbliku</string>
     <string name="today">Illum</string>
+    <string name="mb">MB</string>
+    <string name="gb">GB</string>
 </resources>

@@ -265,6 +265,7 @@ bool RawGenerator::GenerateFilteredFeatures()
   while (!isEnd);
 
   LOG(LINFO, ("OSM source input was processed."));
+  LOG(LINFO, ("Finishing translators..."));
   if (!translators.Finish())
     return false;
 

@@ -7,11 +7,11 @@
 #include "base/assert.hpp"
 #include "base/logging.hpp"
 
-#include <boost/core/bit.hpp>
 #include <boost/uuid/detail/sha1.hpp>
 
 #include <algorithm>
 #include <vector>
+#include <bit>
 
 namespace coding
 {
@@ -22,7 +22,7 @@ SHA1::Hash ExtractHash(boost::uuids::detail::sha1 & sha1)
   boost::uuids::detail::sha1::digest_type digest;
   sha1.get_digest(digest);
   for (auto & b : digest)
-    b = boost::core::byteswap(b);
+    b = std::byteswap(b);
 
   SHA1::Hash result;
   static_assert(result.size() == sizeof(digest));

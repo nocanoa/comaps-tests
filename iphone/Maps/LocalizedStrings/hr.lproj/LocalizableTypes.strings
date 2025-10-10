@@ -385,6 +385,8 @@
 "type.shop.greengrocer" = "Greengrocer";
 "type.cuisine.local" = "Local";
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+
+"type.highway.pedestrian.square" = "Square";
 "type.highway.primary.tunnel" = "Tunnel";
 "type.railway.station.subway.samara" = "Subway Station";
 "type.historic.anchor" = "Historic Anchor";
@@ -418,7 +420,7 @@
 "type.shop.collector" = "Collectables";
 "type.amenity.post_box" = "Mailbox";
 "type.place.hamlet" = "Hamlet";
-"type.addr_interpolation" = "Address/Block";
+"type.addr_interpolation" = "adresa/blok";
 "type.railway.subway_entrance.rotterdam" = "Subway Entrance";
 "type.man_made.water_tap" = "Water Tap";
 "type.cuisine.deli" = "Deli";
@@ -731,7 +733,7 @@
 "type.landuse.forest.mixed" = "Mixed-Leaf Forest";
 "type.natural.shingle" = "Shingle";
 "type.recycling.clothes" = "Clothes";
-"type.aerialway" = "Aerialway";
+"type.aerialway" = "Žičara";
 "type.craft.sawmill" = "Sawmill";
 "type.power.generator" = "Power Generator";
 "type.highway.service.parking_aisle" = "Parking Aisle";
@@ -1021,7 +1023,7 @@
 "type.building.garage" = "Garage";
 "type.natural.glacier" = "Glacier";
 "type.cuisine.ramen" = "Ramen";
-"type.addr_interpolation.even" = "Address/Block";
+"type.addr_interpolation.even" = "adresa/blok";
 "type.railway.subway_entrance.chengdu" = "Subway Entrance";
 "type.cuisine.grill" = "Grill";
 "type.highway.unclassified.area" = "Minor Road";
@@ -1067,7 +1069,7 @@
 "type.natural.cape" = "Cape";
 "type.place.islet" = "Islet";
 "type.recycling.shoes" = "Shoes";
-"type.addr_interpolation.odd" = "Address/Block";
+"type.addr_interpolation.odd" = "adresa/blok";
 "type.railway.subway_entrance.moscow" = "Subway Entrance";
 "type.piste_type.downhill.novice.area" = "Novice Downhill Ski Run";
 "type.railway.subway_entrance.santo_domingo" = "Subway Entrance";
@@ -1298,3 +1300,6 @@
 "type.post_office.post_partner" = "Post Partner";
 "type.amenity.animal_shelter" = "Animal Shelter";
 "type.barrier.wicket_gate" = "Wicket gate";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

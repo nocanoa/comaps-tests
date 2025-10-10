@@ -16,11 +16,7 @@
 
 #include "defines.hpp"
 
-#include <algorithm>
 #include <initializer_list>
-#include <limits>
-#include <unordered_map>
-#include <utility>
 
 #include "3party/opening_hours/opening_hours.hpp"
 
@@ -457,7 +453,7 @@ void RoadAccessCollector::Save()
           {
             // Dump only bicycle profile with the most wide barriers set to ignore.
             if (p.m_vehicleType == VehicleType::Bicycle)
-              LOG(LWARNING, ("Node barrier without access:", nodeID));
+              LOG(LDEBUG, ("Node barrier without access:", nodeID));
             continue;
           }
         }
@@ -471,6 +467,8 @@ void RoadAccessCollector::Save()
   }, m_cache);
 
   sizeWriter.Write(writer, count);
+
+  LOG(LINFO, ("Finished saving road access values"));
 }
 
 void RoadAccessCollector::MergeInto(RoadAccessCollector & collector) const

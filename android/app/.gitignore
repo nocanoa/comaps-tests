@@ -24,3 +24,6 @@
 /src/main/res/drawable-mdpi/uk_northern_ireland.png
 /src/main/res/drawable-mdpi/uk_scotland.png
 /src/main/res/drawable-mdpi/uk_wales.png
+
+# Symlinked to F-Droid relnotes by tools/unix/link_gplay_relnotes.sh
+/src/google/play/release-notes

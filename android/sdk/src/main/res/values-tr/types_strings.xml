@@ -10,7 +10,7 @@
     <string name="type.aerialway.drag_lift">Kayak Teleferiği</string>
     <string name="type.aerialway.gondola">Telekabin</string>
     <string name="type.aerialway.mixed_lift">Karışık Teleferik</string>
-    <string name="type.aerialway.station">Havayolu İstasyonu</string>
+    <string name="type.aerialway.station">Teleferik İstasyonu</string>
     <string name="type.aeroway">Hava Sahası Altyapısı</string>
     <string name="type.aeroway.aerodrome">Havaalanı</string>
     <string name="type.aeroway.aerodrome.international">Uluslararası Havalimanı</string>
@@ -427,6 +427,7 @@
     <string name="type.highway.pedestrian.area">Yaya Alanı</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Yaya Köprüsü</string>
+    <string name="type.highway.pedestrian.square">Meydan</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Yaya Tüneli</string>
     <string name="type.highway.primary">Ana Yol</string>
@@ -1382,4 +1383,11 @@
     <string name="type.natural.wetland.swamp">Bataklık</string>
     <string name="type.railway.station.subway.qingdao">Metro İstasyonu</string>
     <string name="type.attraction.big_wheel">Dönme Dolap</string>
+    <string name="type.office.security">Güvenlik Görevlisi Ofisi</string>
+    <string name="type.building.guardhouse">Güvenlik Kulübesi</string>
+    <string name="type.power.portal">Elektrik Portalı</string>
+    <string name="type.amenity.luggage_locker">Emanet Eşya Dolabı</string>
+    <string name="type.post_office.post_partner">Posta Ortağı</string>
+    <string name="type.amenity.animal_shelter">Hayvan Barınağı</string>
+    <string name="type.barrier.wicket_gate">Tel Örgü Kapısı</string>
 </resources>

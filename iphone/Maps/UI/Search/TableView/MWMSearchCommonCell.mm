@@ -44,7 +44,7 @@
 
 - (NSDictionary *)selectedTitleAttributes {
   return @{
-    NSForegroundColorAttributeName : [UIColor blackPrimaryText],
+    NSForegroundColorAttributeName : [UIColor black],
     NSFontAttributeName : [UIFont bold17]
   };
 }
@@ -52,7 +52,7 @@
 - (NSDictionary *)unselectedTitleAttributes {
   return @{
     NSForegroundColorAttributeName : [UIColor blackPrimaryText],
-    NSFontAttributeName : [UIFont regular17]
+    NSFontAttributeName : [UIFont medium17]
   };
 }
 

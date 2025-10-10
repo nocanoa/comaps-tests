@@ -157,7 +157,7 @@
     <string name="type.amenity.shelter.basic_hut">Capanna di Bivacco</string>
     <string name="type.amenity.public_bath">Terme pubbliche</string>
     <string name="type.amenity.shower">Doccia</string>
-    <string name="type.amenity.stripclub">Stripclub</string>
+    <string name="type.amenity.stripclub">Strip club</string>
     <string name="type.amenity.taxi">Taxi</string>
     <string name="type.amenity.telephone">Telefono</string>
     <string name="type.amenity.theatre">Teatro</string>
@@ -205,7 +205,7 @@
     <string name="type.barrier.retaining_wall">Muro di sostegno</string>
     <string name="type.barrier.stile">Scaletta per recinzioni</string>
     <string name="type.barrier.turnstile">Tornello</string>
-    <string name="type.barrier.swing_gate">Barriera ferroviaria</string>
+    <string name="type.barrier.swing_gate">Cancello a battente</string>
     <string name="type.barrier.toll_booth">Casello di pedaggio</string>
     <string name="type.barrier.wall">Muro</string>
     <string name="type.boundary">Confine</string>
@@ -432,6 +432,8 @@
     <string name="type.highway.pedestrian.area">Area pedonale</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Ponte</string>
+
+    <string name="type.highway.pedestrian.square">Piazza</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Tunnel</string>
     <string name="type.highway.primary">Strada</string>
@@ -830,7 +832,7 @@
     <string name="type.railway.station.light_rail.london">Stazione ferroviaria</string>
     <string name="type.railway.station.light_rail.porto">Stazione ferroviaria</string>
     <string name="type.railway.station.monorail">Stazione ferroviaria</string>
-    <string name="type.railway.station.subway">Stazione Metropolitana</string>
+    <string name="type.railway.station.subway">Stazione della metropolitana</string>
     <string name="type.railway.station.subway.adana">Stazione metropolitana</string>
     <string name="type.railway.station.subway.algiers">Stazione metropolitana</string>
     <string name="type.railway.station.subway.almaty">Stazione metropolitana</string>
@@ -885,7 +887,7 @@
     <string name="type.railway.station.subway.lille">Stazione metropolitana</string>
     <string name="type.railway.station.subway.lima">Stazione metropolitana</string>
     <string name="type.railway.station.subway.lisboa">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.london">Stazione Metropolitana di Londra</string>
+    <string name="type.railway.station.subway.london">Stazione della metropolitana londinese</string>
     <string name="type.railway.station.subway.lyon">Stazione metropolitana</string>
     <string name="type.railway.station.subway.madrid">Stazione metropolitana</string>
     <string name="type.railway.station.subway.malaga">Stazione metropolitana</string>
@@ -900,10 +902,10 @@
     <string name="type.railway.station.subway.montreal">Stazione metropolitana</string>
     <string name="type.railway.station.subway.moscow">Stazione metropolitana</string>
     <string name="type.railway.station.subway.munchen">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.nagoya">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.newyork">Stazione metropolitana</string>
+    <string name="type.railway.station.subway.nagoya">Stazione della metropolitana</string>
+    <string name="type.railway.station.subway.newyork">Stazione della metropolitana</string>
     <string name="type.railway.station.subway.nnov">Stazione metropolitana</string>
-    <string name="type.railway.station.subway.novosibirsk">Stazione metropolitana</string>
+    <string name="type.railway.station.subway.novosibirsk">Stazione della metropolitana</string>
     <string name="type.railway.station.subway.osaka">Stazione metropolitana</string>
     <string name="type.railway.station.subway.oslo">Stazione metropolitana</string>
     <string name="type.railway.station.subway.palma">Stazione metropolitana</string>
@@ -1390,7 +1392,10 @@
     <string name="type.natural.wetland.fen">Palude</string>
     <string name="type.leisure.escape_game">Escape Room</string>
     <string name="type.amenity.ranger_station">Stazione delle guardie forestali</string>
-    <string name="type.landuse.religious">Terreno Religioso</string>
-    <string name="type.amenity.animal_shelter">Rifugio per Animali</string>
+    <string name="type.landuse.religious">Terreno religioso</string>
+    <string name="type.amenity.animal_shelter">Rifugio per animali</string>
     <string name="type.barrier.wicket_gate">Cancello pedonale</string>
+    <string name="type.building.guardhouse">Guardiola</string>
+    <string name="type.office.security">Ufficio della sicurezza</string>
+    <string name="type.power.portal">Portale elettrico</string>
 </resources>

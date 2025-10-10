@@ -1,13 +1,13 @@
 
 /* Button text (should be short) */
-"cancel" = "لغو";
+"cancel" = "وازدن";
 
 /* Button which interrupts country download */
 "cancel_download" = "لغو دانلود";
 
 /* Button which deletes downloaded country */
-"delete" = "حذف";
-"download_maps" = "دانلود نقشه‌ها";
+"delete" = "سِتُردن";
+"download_maps" = "بارگیری نقشه‌ها";
 
 /* Settings/Downloader - info for country which started downloading */
 "downloading" = "درحال دانلود…";
@@ -22,7 +22,7 @@
 "miles" = "مایل";
 
 /* A text for current gps location point/arrow selected on the map */
-"core_my_position" = "مکان من";
+"core_my_position" = "ایستار من";
 
 /* Update maps later button text */
 "later" = "بعدًا";
@@ -69,7 +69,7 @@
 "bookmarks_and_tracks" = "نشانه‌ها و مسیر ها";
 
 /* Default bookmark list name */
-"core_my_places" = "مکان من";
+"core_my_places" = "گیاگ‌های من";
 
 /* Editor title above street and house number, duplicates [type.building.address] in types_strings.txt */
 "address" = "آدرس";
@@ -138,7 +138,7 @@
 "category_police" = "پلیس";
 
 /* Search category for WiFi access; any changes should be duplicated in categories.txt @category_wifi! */
-"category_wifi" = "وای فای";
+"category_wifi" = "وای‌فای";
 
 /* Search category for recycling; any changes should be duplicated in categories.txt @category_recycling! */
 "category_recycling" = "بازیافت";
@@ -620,7 +620,7 @@
 "error_enter_correct_zip_code" = "یک کد‌ پستی معتبر وارد کنید";
 
 /* Place Page title for long tap */
-"core_placepage_unknown_place" = "نقطه نقشه";
+"core_placepage_unknown_place" = "خَجَکِ نقشه";
 
 /* Title for OSM note section in the editor */
 "editor_other_info" = "توجه به داوطلبان OpenStreetMap (اختیاری)";
@@ -662,7 +662,7 @@
 "mi" = "مایل";
 
 /* A unit of measure */
-"ft" = "فوت";
+"ft" = "پای";
 "miles_per_hour" = "مایل بر ساعت (mph)";
 "hour" = "ساعت";
 "minute" = "دقیقه";
@@ -735,7 +735,7 @@
 "transliteration_title" = "ترجمه به لاتین";
 
 /* Subway exits for public transport marks on the map */
-"core_exit" = "خروج";
+"core_exit" = "اوزیدن";
 
 /* User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". */
 "routing_add_start_point" = "برای افزودن نقطه شروع مسیر، از جستجو استفاده کنید یا روی نقشه ضربه بزنید";
@@ -751,7 +751,7 @@
 
 /* Title for button when a route was saved. */
 "saved" = "ذخیره شد";
-"core_entrance" = "ورودی";
+"core_entrance" = "آدین";
 "error_enter_correct_name" = "لطفا نام صحیح را وارد کنید";
 "bookmark_lists" = "لیست‌ها";
 
@@ -782,7 +782,7 @@
 "terms_of_use" = "شرایط استفاده";
 "button_layer_subway" = "مترو";
 "layers_title" = "سبک ها و لایه های نقشه";
-"subway_data_unavailable" = "نقشه مترو موجود نیست";
+"subway_data_unavailable" = "نقشه مترو ناهَندِمان است";
 "title_error_downloading_bookmarks" = "خطایی رخ داد";
 "popular_place" = "مشهور";
 "export_file" = "صادرات KMZ";

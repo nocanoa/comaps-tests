@@ -320,7 +320,7 @@ UNIT_TEST(ChunksDownloadStrategyDynamicChunks)
 {
   vector<string> const servers = {"UrlOfServer1", "UrlOfServer2"};
 
-  typedef pair<int64_t, int64_t> RangeT;
+  typedef std::pair<int64_t, int64_t> RangeT;
 
   string url;
   ChunksDownloadStrategy strategy(servers);

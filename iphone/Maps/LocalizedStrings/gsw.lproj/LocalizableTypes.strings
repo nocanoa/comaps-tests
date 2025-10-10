@@ -35,7 +35,7 @@
 "type.amenity.motorcycle_rental" = "Töffvermietig";
 "type.amenity.car_sharing" = "Carsharing";
 "type.amenity.car_wash" = "Autowöschaalag";
-"type.amenity.casino" = "Casino";
+"type.amenity.casino" = "Kasino";
 "type.amenity.gambling" = "Glücksspiel";
 "type.leisure.amusement_arcade" = "Arkade";
 "type.amenity.charging_station" = "Ladestation";
@@ -173,7 +173,7 @@
 "type.amenity.fast_food" = "Fast-Food";
 "type.amenity.ferry_terminal" = "Fähraaleger";
 "type.amenity.fire_station" = "Füürwehr";
-"type.amenity.food_court" = "Food Court";
+"type.amenity.food_court" = "Gastronomieberiich";
 "type.amenity.fountain" = "Springbrunne";
 "type.amenity.fuel" = "Tankstell";
 "type.amenity.grave_yard" = "Fridhof";
@@ -434,6 +434,7 @@
 "type.highway.pedestrian" = "Fuessgängerzone";
 "type.highway.pedestrian.area" = "Fuessgängerzone";
 "type.highway.pedestrian.bridge" = "Fuessgängerzonebrugg";
+"type.highway.pedestrian.square" = "Platz";
 "type.highway.pedestrian.tunnel" = "Fuessgängertunnel";
 "type.highway.primary" = "Hauptstrass";
 "type.highway.primary.bridge" = "Brugg";
@@ -1296,5 +1297,9 @@
 "type.amenity.luggage_locker" = "Gepäckschlüüssfach";
 "type.amenity.ranger_station" = "Förschterstation";
 "type.post_office.post_partner" = "Postpartner";
-"type.barrier.wicket_gate" = "Wicket gate";
-"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Schlupfpforte";
+"type.amenity.animal_shelter" = "Tierheim";
+"type.office.security" = "Sicherheitsdienst";
+"type.power.portal" = "Abspannportal";
+"type.building.guardhouse" = "Pförtnerhüüsli";
+"type.shop.lighting" = "Lampelade";

@@ -20,14 +20,14 @@ To work with styles first [clone the CoMaps repository](INSTALL.md#getting-sourc
 
 Install a `protobuf` python package with `pip`
 ```
-pip install protobuf
+pip install "protobuf<3.21"
 ```
 or with your OS package manager, e.g for Ubuntu 
 ```
 sudo apt install python3-protobuf 
 ```
 
-To run the `generate_symbols.sh` script install `optipng` also, e.g. for Ubuntu
+To run the `generate_symbols.sh` script, you need to install `optipng`, e.g. for Ubuntu
 ```
 sudo apt install optipng
 ```

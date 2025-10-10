@@ -53,7 +53,6 @@
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="panoramax">Panoramax Picture</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="about_proposition_3">• Offline, fast and compact</string>
     <string name="pref_tts_test_voice_title">Test Voice Directions</string>

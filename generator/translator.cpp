@@ -62,9 +62,7 @@ void Translator::Emit(OsmElement const & src)
 
 void Translator::Finish()
 {
-  LOG(LINFO, ("Finishing collectors..."));
   m_collector->Finish();
-  LOG(LINFO, ("Finishing processors..."));
   m_processor->Finish();
 }
 

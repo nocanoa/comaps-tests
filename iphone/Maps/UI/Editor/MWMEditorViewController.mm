@@ -37,7 +37,7 @@ NSString * const kCategoryEditorSegue = @"Editor2CategoryEditorSegue";
 
 NSString * const kUDEditorPersonalInfoWarninWasShown = @"PersonalInfoWarningAlertWasShown";
 
-CGFloat constexpr kDefaultHeaderHeight = 28.;
+CGFloat constexpr kDefaultHeaderHeight = 36.;
 CGFloat constexpr kDefaultFooterHeight = 32.;
 
 typedef NS_ENUM(NSUInteger, MWMEditorSection) {

@@ -33,6 +33,7 @@
     _titleText = result.GetString().empty() ? @(result.GetLocalizedFeatureType().c_str()) : @(result.GetString().c_str());
     _addressText = @(result.GetAddress().c_str());
     _infoText = @(result.GetFeatureDescription().c_str());
+    _branchText = result.GetBranch().empty() ? nil : @(result.GetBranch().c_str());
     if (result.IsSuggest())
       _suggestion = @(result.GetSuggestionString().c_str());
 

@@ -29,12 +29,12 @@ def getCommitMessage() {
 project.ext.appId = 'app.comaps'
 project.ext.appName = 'CoMaps'
 
-// I have Java 21 installed, but this doesn't work on MacOS.
-//java {
-//  toolchain {
-//    languageVersion.set(JavaLanguageVersion.of(17))
-//  }
-//}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
+  }
+}
 
 android {
   namespace = 'app.organicmaps'
@@ -311,8 +311,8 @@ android {
   compileOptions {
     coreLibraryDesugaringEnabled = true
 
-    sourceCompatibility JavaVersion.VERSION_17
-    targetCompatibility JavaVersion.VERSION_17
+    sourceCompatibility JavaVersion.VERSION_21
+    targetCompatibility JavaVersion.VERSION_21
   }
 }
 
@@ -355,8 +355,7 @@ dependencies {
   // Fix for app/organicmaps/util/FileUploadWorker.java:14: error: cannot access ListenableFuture
   // https://github.com/organicmaps/organicmaps/issues/6106
   implementation libs.google.guava
-  implementation libs.devnullorthrow.mpandroidchart
-  implementation libs.jcip.annotations
+  implementation libs.appdevnext.androidchart
 
   // Test Dependencies
   androidTestImplementation libs.androidx.test.junit

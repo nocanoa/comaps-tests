@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.sdk.Framework;
@@ -319,7 +321,7 @@ public class RoutingPlanController extends ToolbarController
     UiUtils.show(mDrivingOptionsBtnContainer);
     boolean hasAnyOptions = RoutingOptions.hasAnyOptions() && !isRulerType();
     UiUtils.showIf(hasAnyOptions, mDrivingOptionsImage);
-    TextView title = mDrivingOptionsBtnContainer.findViewById(R.id.driving_options_btn_title);
+    MaterialTextView title = mDrivingOptionsBtnContainer.findViewById(R.id.driving_options_btn_title);
     title.setText(hasAnyOptions ? R.string.change_driving_options_btn : R.string.define_to_avoid_btn);
   }
 

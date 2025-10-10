@@ -6,9 +6,6 @@ import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -20,6 +17,7 @@ import app.organicmaps.sdk.bookmarks.data.BookmarkManager;
 import app.organicmaps.util.InputUtils;
 import app.organicmaps.util.Utils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
@@ -39,6 +37,8 @@ public class BookmarkCategorySettingsFragment extends BaseMwmToolbarFragment
   @SuppressWarnings("NullableProblems")
   @NonNull
   private TextInputEditText mEditCategoryNameView;
+  @NonNull
+  private ShapeableImageView mSaveView;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState)
@@ -85,23 +85,8 @@ public class BookmarkCategorySettingsFragment extends BaseMwmToolbarFragment
     });
     mEditDescView = root.findViewById(R.id.edit_description);
     mEditDescView.setText(mCategory.getDescription());
-  }
-
-  @Override
-  public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater)
-  {
-    inflater.inflate(R.menu.menu_done, menu);
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item)
-  {
-    if (item.getItemId() == R.id.done)
-    {
-      onEditDoneClicked();
-      return true;
-    }
-    return super.onOptionsItemSelected(item);
+    mSaveView = root.findViewById(R.id.done);
+    mSaveView.setOnClickListener(v -> onEditDoneClicked());
   }
 
   private void onEditDoneClicked()

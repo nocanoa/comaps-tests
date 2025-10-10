@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import app.organicmaps.R;
@@ -19,6 +18,7 @@ import com.github.mikephil.charting.components.IMarker;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
+import com.google.android.material.textview.MaterialTextView;
 
 @SuppressLint("ViewConstructor")
 public class FloatingMarkerView extends RelativeLayout implements IMarker
@@ -34,10 +34,10 @@ public class FloatingMarkerView extends RelativeLayout implements IMarker
   private View mInfoFloatingContainer;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mAltitudeView;
+  private MaterialTextView mAltitudeView;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mDistanceValueView;
+  private MaterialTextView mDistanceValueView;
   @SuppressWarnings("NullableProblems")
   @NonNull
   private View mFloatingTriangle;

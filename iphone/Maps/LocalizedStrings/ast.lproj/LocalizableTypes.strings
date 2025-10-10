@@ -528,6 +528,8 @@
 "type.railway.subway_entrance.stockholm" = "Subway Entrance";
 "type.place.locality" = "Locality";
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+
+"type.highway.pedestrian.square" = "Square";
 "type.cuisine.turkish" = "Turkish";
 "type.historic.anchor" = "Historic Anchor";
 "type.leisure.bowling_alley" = "Bowling Alley";
@@ -1298,3 +1300,6 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.barrier.wicket_gate" = "Wicket gate";
 "type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

@@ -23,22 +23,24 @@
 
   <include layout="@layout/recycler_default" />
 
-  <com.google.android.material.textview.MaterialTextView
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/more_names"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_block_base"
-    android:background="?clickableBackground"
+    style="@style/Widget.Material3.Button.TextButton"
     android:gravity="center"
     android:text="@string/placepage_more_button"
+    android:textColor="?colorSecondary"
     android:textAppearance="@style/MwmTextAppearance.Button" />
 
-  <com.google.android.material.textview.MaterialTextView
+  <com.google.android.material.button.MaterialButton
     android:id="@+id/add_langs"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_block_base"
-    android:background="?clickableBackground"
+    style="@style/Widget.Material3.Button.TextButton"
     android:gravity="center"
     android:text="@string/add_language"
+    android:textColor="?colorSecondary"
     android:textAppearance="@style/MwmTextAppearance.Button" />
 
 </LinearLayout>

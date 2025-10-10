@@ -47,9 +47,19 @@ void HighlightResult(QueryTokens const & tokens, strings::UniString const & pref
   CombinedIter beg(tokens.begin(), tokens.end(), prefix.empty() ? nullptr : &prefix);
   CombinedIter end(tokens.end() /* cur */, tokens.end() /* end */, nullptr);
 
-  // Highlight Title
+  // Highlight Title (potentially including branch)
+  std::string titleForHighlighting = res.GetString();
+  std::string const & branch = res.GetBranch();
+  
+  // If we have a branch that is not already in the title, create combined string for highlighting
+  // This matches the iOS UI behavior where branch is appended as " branchText"
+  if (!branch.empty() && titleForHighlighting.find(branch) == std::string::npos)
+  {
+    titleForHighlighting += " " + branch;
+  }
+  
   SearchStringTokensIntersectionRanges(
-      res.GetString(), beg, end, [&](std::pair<uint16_t, uint16_t> const & range) { res.AddHighlightRange(range); });
+      titleForHighlighting, beg, end, [&](std::pair<uint16_t, uint16_t> const & range) { res.AddHighlightRange(range); });
 
   // Highlight description.
   SearchStringTokensIntersectionRanges(res.GetAddress(), beg, end, [&](std::pair<uint16_t, uint16_t> const & range)

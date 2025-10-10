@@ -467,6 +467,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Пешеходный мост";
+"type.highway.pedestrian.square" = "Площадь";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Пешеходный тоннель";
@@ -1314,6 +1315,7 @@
 "type.shop.trade" = "Торговые поставки";
 "type.shop.watches" = "Часы";
 "type.shop.wholesale" = "Оптовый магазин";
+"type.shop.lighting" = "Осветительные приборы";
 "type.sport" = "Спорт";
 "type.sport.american_football" = "Американский футбол";
 "type.sport.archery" = "Стрельба из лука";
@@ -1483,4 +1485,7 @@
 "type.amenity.luggage_locker" = "Камера хранения";
 "type.amenity.bicycle_parking.covered" = "Крытая велосипедная парковка";
 "type.post_office.post_partner" = "Почтовое отделение";
-"type.amenity.ranger_station" = "Пост лесников";
+"type.amenity.ranger_station" = "Пост рейнджеров";
+"type.office.security" = "Офис охранника";
+"type.power.portal" = "Портальная опора";
+"type.building.guardhouse" = "Будка безопасности";

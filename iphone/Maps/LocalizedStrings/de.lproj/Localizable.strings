@@ -99,13 +99,13 @@
 "category_fuel" = "Tankstelle";
 
 /* Search category for parking lots; any changes should be duplicated in categories.txt @category_parking! */
-"category_parking" = "Parkplätze";
+"category_parking" = "Parkplätze|Parkplatz|Stellplatz";
 
 /* Search category for malls/clothes/shoes/gifts/jewellery/sport shops; any changes should be duplicated in categories.txt @category_shopping! */
 "category_shopping" = "Shopping";
 
 /* Search category for second_hand/charity/antique/auction shops; any changes should be duplicated in categories.txt @category_secondhand! */
-"category_secondhand" = "Second-hand";
+"category_secondhand" = "Second-hand|Gebrauchte Artikel|Gebrauchte Ware";
 
 /* Search category for places to stay; any changes should be duplicated in categories.txt @category_hotel! */
 "category_hotel" = "Hotel";
@@ -340,7 +340,7 @@
 "pref_calibration_title" = "Kompass-Kalibrierung";
 
 /* Toast text when user hides UI with a long tap anywhere on the map */
-"long_tap_toast" = "Tippe erneut lange auf die Karte, um das Interface zu sehen";
+"long_tap_toast" = "Tippe erneut lange auf die Karte, um die Benutzeroberfläche zu sehen";
 
 /* Update all button text */
 "downloader_update_all_button" = "Alle aktualisieren";
@@ -456,10 +456,10 @@
 "dialog_routing_unable_locate_route" = "Route kann nicht ermittelt werden";
 "dialog_routing_change_start_or_end" = "Bitte passen Sie Ihren Startpunkt oder Ihr Ziel an.";
 "dialog_routing_change_start" = "Startpunkt anpassen";
-"dialog_routing_start_not_determined" = "Route wurde nicht erstellt. Startpunkt kann nicht gefunden werden.";
+"dialog_routing_start_not_determined" = "Route wurde nicht erstellt. Startpunkt konnte nicht gefunden werden.";
 "dialog_routing_select_closer_start" = "Bitte wählen Sie einen Startpunkt, der näher an einer Straße liegt.";
 "dialog_routing_change_end" = "Ziel anpassen";
-"dialog_routing_end_not_determined" = "Route wurde nicht erstellt. Ziel kann nicht gefunden werden.";
+"dialog_routing_end_not_determined" = "Route wurde nicht erstellt. Ziel konnte nicht gefunden werden.";
 "dialog_routing_select_closer_end" = "Bitte wählen Sie einen Zielort, der näher an einer Straße liegt.";
 "dialog_routing_change_intermediate" = "Zwischenstopp kann nicht gefunden werden.";
 "dialog_routing_intermediate_not_determined" = "Bitte passen Sie Ihren Zwischenstopp an.";
@@ -467,7 +467,7 @@
 "dialog_routing_application_error" = "Route kann wegen eines Anwendungsfehlers nicht erstellt werden.";
 "dialog_routing_try_again" = "Bitte versuchen Sie es erneut";
 "dialog_routing_download_and_build_cross_route" = "Möchten Sie die Karte herunterladen und eine bessere Route erstellen, die mehr als eine Karte umfasst?";
-"dialog_routing_download_cross_route" = "Laden Sie zusätzliche Karten herunter, um eine bessere Route zu erstellen, die die Grenzen dieser Karte überschreitet.";
+"dialog_routing_download_cross_route" = "Laden Sie zusätzliche Karten herunter, um eine bessere Route zu erstellen, welche die Grenzen dieser Karte überschreitet.";
 
 /* «Show» context menu */
 "show" = "Anzeigen";
@@ -514,7 +514,7 @@
 "editor_time_add_closed" = "Schließzeiten hinzufügen";
 "editor_time_title" = "Öffnungszeiten";
 "editor_time_advanced" = "Erweiterter Modus";
-"editor_time_simple" = "Einfachmodus";
+"editor_time_simple" = "Einfacher Modus";
 "editor_hours_closed" = "Schließzeiten";
 "editor_example_values" = "Beispiele";
 "editor_add_select_location" = "Standort auswählen";
@@ -619,7 +619,7 @@
 "downloader_of" = "%1$d von %2$d";
 "download_over_mobile_header" = "Über eine Mobilfunknetzverbindung herunterladen?";
 "download_over_mobile_message" = "Das könnte mit einigen Tarifen oder beim Roaming sehr teuer werden.";
-"error_enter_correct_house_number" = "Richtige Hausnummer eingeben";
+"error_enter_correct_house_number" = "Gültige Hausnummer eingeben";
 "editor_storey_number" = "Anzahl der Etagen (maximal %d)";
 
 /* Error message in Editor when a user tries to set the number of floors for a building higher than %d floors */
@@ -699,7 +699,7 @@
 "placepage_add_place_button" = "Ort zu OpenStreetMap hinzufügen";
 
 /* Displayed when saving some edits to the map to warn against publishing personal data */
-"editor_share_to_all_dialog_title" = "An alle Benutzer senden?";
+"editor_share_to_all_dialog_title" = "An alle Nutzer*innen senden?";
 
 /* Dialog before publishing the modifications to the public map. */
 "editor_share_to_all_dialog_message_1" = "Stellen Sie sicher, dass Sie keine persönlichen oder privaten Daten eingegeben haben.";
@@ -740,7 +740,7 @@
 "traffic_data_unavailable" = "Verkehrsdaten sind nicht verfügbar";
 "enable_logging" = "Protokollierung aktivieren";
 "log_file_size" = "Größe der Protokolldatei: %@";
-"transliteration_title" = "Transliteration ins Lateinische alphabet";
+"transliteration_title" = "Transliteration ins lateinische Alphabet";
 
 /* Subway exits for public transport marks on the map */
 "core_exit" = "Ausgang";
@@ -778,7 +778,7 @@
 "bookmarks_error_title_share_empty" = "Fehler beim Teilen";
 "bookmarks_error_message_share_empty" = "Eine leere Liste kann nicht geteilt werden";
 "bookmarks_error_message_empty_list_name" = "Bitte geben Sie den Listennamen ein";
-"bookmarks_error_title_list_name_already_taken" = "Dieser Name ist bereits vergeben";
+"bookmarks_error_title_list_name_already_taken" = "Dieser Name wird bereits verwendet";
 "bookmarks_error_title_list_name_too_long" = "Dieser Name ist zu lang";
 "profile" = "OpenStreetMap-Profil";
 "bookmarks_detect_title" = "Neue Dateien erkannt";
@@ -803,7 +803,7 @@
 "place_description_title" = "Ortsbeschreibung";
 
 /* "Speed cameras" settings menu option (should be short! no more than 47-50 chars) to warn a driver if there is a risk of exceeding the speed limit */
-"pref_tts_speedcams_auto" = "Warnen wenn zu schnell";
+"pref_tts_speedcams_auto" = "Warnen bei Geschwindigkeitsübertretung";
 
 /* Speed camera settings menu option - Always warn (about speedcams) */
 "pref_tts_speedcams_always" = "Immer warnen";
@@ -909,7 +909,7 @@
 "religious_places" = "Religiöse Orte";
 "transit_not_found" = "Die U-Bahn-Navigation ist in dieser Region noch nicht verfügbar";
 "dialog_pedestrian_route_is_long_header" = "Keine U-Bahn-Route gefunden";
-"dialog_pedestrian_route_is_long_message" = "Wählen Sie einen zu einer U-Bahn-Station nähergelegenen Start- oder Endpunkt";
+"dialog_pedestrian_route_is_long_message" = "Wählen Sie einen Start- oder Endpunkt näher an einer U-Bahn-Station";
 "button_layer_isolines" = "Höhelinien";
 "isolines_activation_error_dialog" = "Um die Topographieebene nutzen zu können, aktualisieren Sie die Karte des betreffenden Gebiets oder laden Sie diese herunter";
 "isolines_location_error_dialog" = "Topographieebene ist für dieses Gebiet noch nicht verfügbar";
@@ -965,7 +965,7 @@
 "app_tip_02" = "Gefällt Ihnen unsere App? Bitte spenden Sie, um die Entwicklung zu unterstützen! Gefällt es Ihnen noch nicht? Bitte lassen Sie uns wissen warum und wir werden das Problem beheben!";
 
 /* App tip #03 */
-"app_tip_03" = "Wenn Sie einen Softwareentwickler kennen, können Sie ihn oder sie bitten, eine Funktion zu implementieren, die Sie benötigen.";
+"app_tip_03" = "Wenn Sie eine*n Softwareentwickler*in kennen, können Sie ihn oder sie bitten, eine Funktion zu implementieren, die Sie benötigen.";
 
 /* App tip #04 */
 "app_tip_04" = "Tippen Sie irgendwo auf die Karte, um etwas auszuwählen. Tippen Sie lange, um die Oberfläche aus- und wieder einzublenden.";

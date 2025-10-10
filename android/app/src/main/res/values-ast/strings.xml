@@ -12,12 +12,10 @@
     <string name="help">Ayuda</string>
     <string name="categories">Categoríes</string>
     <string name="news">Noticies</string>
-    <string name="telegram">Telegram</string>
     <string name="name">Nome</string>
     <string name="length">Llonxitú</string>
     <string name="menu">Menú</string>
     <string name="pref_tts_unavailable">Non disponible</string>
-    <string name="github">GitHub</string>
     <string name="browser_not_available">El restolador web nun ta disponible</string>
     <string name="capacity">Capacidá: %s</string>
     <string name="downloader_update_maps">Anovar mapes</string>
@@ -37,14 +35,10 @@
     <string name="export_file_gpx">Esportar GPX</string>
     <string name="about_menu_title">Tocante a CoMaps</string>
     <string name="search_show_on_map">Ver nel mapa</string>
-    <string name="instagram">Instagram</string>
     <string name="downloader_delete_map">Desaniciar mapa</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="edit">Editar</string>
-    <string name="vk">VK</string>
     <string name="downloader_update_map">Anovar mapa</string>
     <string name="editor_zip_code">Códigu postal</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="editor_example_values">Valores d’exemplu</string>
     <string name="downloader_of">%1$d de %2$d</string>
     <string name="elevation_profile_difficulty">Dificultá</string>
@@ -55,8 +49,6 @@
     <string name="zoom_to_country">Amosar nel mapa</string>
     <string name="category_parking">Aparcaderu</string>
     <string name="placepage_distance">Distancia</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
     <string name="editor_report_problem_duplicate_place_title">Llugar duplicáu</string>
     <string name="edit_place">Editar llugar</string>
     <string name="add_language">Amestar una llingua</string>
@@ -105,7 +97,6 @@
     <string name="bookmarks_import">Importar marcadores y trayeutos</string>
     <string name="track_recording">Grabando’l trayeutu</string>
     <string name="edit_track">Editar trayeutu</string>
-    <string name="password">Contraseña</string>
     <string name="trip_finished">Aportesti.</string>
     <string name="details">Detalles</string>
     <string name="placepage_edit_bookmark_button">Editar marcador</string>
@@ -155,7 +146,6 @@
     <string name="button_layer_traffic">Tráficu</string>
     <string name="volume">Volume</string>
     <string name="phone_number">Númberu telefónicu</string>
-    <string name="matrix">[Matrix]</string>
     <string name="create">crear</string>
     <string name="blue">Azul</string>
     <string name="green">Verde</string>
@@ -174,7 +164,6 @@
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="panoramax">Panoramax Foto</string>
     <string name="app_site_url">https://comaps.app/</string>
-    <string name="bluesky">Bluesky</string>
     <string name="saved">Archivos</string>
     <string name="about_proposition_3">• Offline, rápidu y compactu</string>
 </resources>

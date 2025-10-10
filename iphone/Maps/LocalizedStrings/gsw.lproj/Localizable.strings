@@ -61,7 +61,7 @@
 "placepage_edit_bookmark_button" = "Lesezeiche bearbeite";
 "report_a_bug" = "App-Fehler melde";
 "report_incorrect_map_bug" = "Falschi Chartedate melde oder korrigiere";
-"volunteer" = "Freiwillig helfe";
+"volunteer" = "Freiwillig helfe und CoMaps verbessere";
 "follow_us" = "Bliib in Kontakt";
 "email_error_body" = "De Email-Client isch nonig iigrichtet worde. Konfigurier ihn bitte oder nutz en anderi Möglichkeit oder kontaktier eus under %@";
 "email_error_title" = "Fehler bim Email-Versand";
@@ -587,5 +587,5 @@
 "pref_maplanguage_title" = "Charte-Spraach";
 "transliteration_title_disabled_summary" = "Bi de Nutzig vo de lokale Spraach für d Charte uusgschaltet";
 "pref_maplanguage_local" = "Lokali Spraach";
-"hours_confirmed_time_ago" = "Confirmed %@";
-"existence_confirmed_time_ago" = "Existence confirmed %@";
+"hours_confirmed_time_ago" = "Bestätigt %@";
+"existence_confirmed_time_ago" = "Existenz bestätigt %@";

@@ -33,7 +33,7 @@ AddressesHolder::AddressInfo FromFB(FeatureBuilder const & fb)
 // - "addr:interpolation: No beg/end address point" = 89774
 void LogWarning(std::string const & msg, uint64_t id)
 {
-  LOG(LWARNING, ("addr:interpolation: " + msg, id));
+  LOG(LDEBUG, ("addr:interpolation: " + msg, id));
 }
 }  // namespace
 
@@ -190,6 +190,8 @@ void AddressesCollector::CollectFeature(FeatureBuilder const & fb, OsmElement co
 
 void AddressesCollector::Save()
 {
+  LOG(LINFO, ("Saving addresses to", GetFilename()));
+
   FileWriter writer(GetFilename());
 
   for (auto const & e : m_interpolWays)
@@ -215,6 +217,8 @@ void AddressesCollector::Save()
     rw::Write(writer, !beg->m_street.empty() ? beg->m_street : end->m_street);
     rw::Write(writer, !beg->m_postcode.empty() ? beg->m_postcode : end->m_postcode);
   }
+
+  LOG(LINFO, ("Finished saving addresses"));
 }
 
 void AddressesCollector::MergeInto(AddressesCollector & collector) const

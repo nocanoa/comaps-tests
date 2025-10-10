@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Haritadaki hataları bildir ya da düzelt";
 
 /* Button in the About screen */
-"volunteer" = "Gönüllü ol";
+"volunteer" = "Gönüllü ol ve CoMaps'i iyileştir";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Bize Bağlanın";
@@ -1093,7 +1093,7 @@
 "osm_profile_view_notes" = "Notları görüntüle";
 "pref_mapappearance_title" = "Harita Teması";
 "pref_maplanguage_title" = "Harita Dili";
-"transliteration_title_disabled_summary" = "Disabled when always using the local language for the map";
+"transliteration_title_disabled_summary" = "Harita için her zaman yerel dil kullanıldığında devre dışı bırakılır";
 "pref_maplanguage_local" = "Uygulama Dili";
-"existence_confirmed_time_ago" = "Existence confirmed %@";
-"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "%@ varlığı onaylandı";
+"hours_confirmed_time_ago" = "%@ onaylandı";

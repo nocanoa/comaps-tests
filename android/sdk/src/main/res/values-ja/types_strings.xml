@@ -406,6 +406,8 @@
     <string name="type.highway.pedestrian.area">ストリート</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">橋</string>
+
+    <string name="type.highway.pedestrian.square">広場</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">トンネル</string>
     <string name="type.highway.primary">ストリート</string>

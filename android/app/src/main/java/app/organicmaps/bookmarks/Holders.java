@@ -23,6 +23,8 @@ import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.widget.recycler.RecyclerClickListener;
 import app.organicmaps.widget.recycler.RecyclerLongClickListener;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -59,7 +61,7 @@ public class Holders
   public static class HeaderViewHolder extends RecyclerView.ViewHolder
   {
     @NonNull
-    private final MaterialTextView mButton;
+    private final MaterialButton mButton;
     @NonNull
     private final MaterialTextView mText;
 
@@ -77,7 +79,7 @@ public class Holders
     }
 
     @NonNull
-    public MaterialTextView getButton()
+    public MaterialButton getButton()
     {
       return mButton;
     }

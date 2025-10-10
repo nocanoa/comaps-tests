@@ -43,7 +43,7 @@
 "country_status_download_failed" = "Lataus epäonnistui";
 
 /* Text in About screen */
-"about_headline" = "Avoin projekti yhteisön voimin";
+"about_headline" = "Avoin projekti yhteisön toteuttamana";
 
 /* Text in About screen */
 "about_proposition_1" = "Yhteydetön tila, nopea ja helppokäyttöinen";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Ilmoita tai korjaa virheelliset karttatiedot";
 
 /* Button in the About screen */
-"volunteer" = "Ryhdy vapaaehtoiseksi ja auta parantamaan CoMapsia";
+"volunteer" = "Auta parantamaan CoMapsia";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Ota yhteyttä";

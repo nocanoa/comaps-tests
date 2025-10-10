@@ -2,10 +2,12 @@ package app.organicmaps.maplayer;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.R;
 import app.organicmaps.adapter.OnItemClickListener;
 
@@ -14,7 +16,7 @@ class LayerHolder extends RecyclerView.ViewHolder
   @NonNull
   final ImageView mButton;
   @NonNull
-  final TextView mTitle;
+  final MaterialTextView mTitle;
   @NonNull
   final View mNewMarker;
   @Nullable

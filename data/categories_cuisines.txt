@@ -502,7 +502,7 @@ ja:アイスクリーム
 ko:아이스크림
 nb:Iskrem
 nl:Ijs
-pl:Lodziarnia
+pl:Lody
 pt:Gelados
 pt-BR:Sorvete
 ro:Înghețată
@@ -612,7 +612,7 @@ ja:ホットケーキ|クレープ
 ko:팬케이크|크레이프
 nb:Pannekake|Crepe
 nl:Pannenkoek
-pl:Naleśnik|Naleśnikarnia
+pl:Naleśniki|Naleśnikarnia
 pt:Panqueca|panquecas|crepes|crepe
 pt-BR:Panqueca|panquecas|crepes|crepe
 ro:Clătită|Crep
@@ -681,7 +681,7 @@ it:Pizza
 ja:ピザ
 ko:피자
 nb:Pizza
-pl:Pizzeria
+pl:Pizza|pizzeria
 pt:Pizza|piza|pizaria
 pt-BR:Pizza|pizzaria|pizaria
 ro:Pizza
@@ -716,7 +716,7 @@ it:Ramen
 ja:ラーメン
 ko:라면
 nb:Ramen
-pl:Zupa ramen
+pl:Ramen
 pt:Lámen|rāmen
 pt-BR:Lámen|rāmen
 ro:Ramen
@@ -788,7 +788,7 @@ it:Salsicce
 ja:ソーセージ
 ko:소시지
 nb:Pølse
-pl:Kiełbasiarnia
+pl:Kiełbasa|Kiełbasiarnia
 pt:Salsicha|salsichas
 pt-BR:Linguiça
 ro:Cârnat
@@ -1004,7 +1004,7 @@ it:Tè
 ja:紅茶
 ko:차
 nb:Te
-pl:Herbaciarnia
+pl:Herbata|Herbaciarnia
 pt:Chá
 pt-BR:Chá
 ro:Ceai
@@ -1419,7 +1419,7 @@ sr:Веганска|Вегетаријанска|Вегетаријанци|Ве
 # ja:牛丼|ビーフボウル
 # ko:쇠고기 덮밥
 # nb:Biffbolle
-# pl:Gyūdon
+# pl:Gyūdon|Gyudon
 # pt:Tigela com carne bovina|Gyudon
 # pt-BR:Tigela com carne bovina|Gyudon
 # ro:Ciorbă de văcuță
@@ -1487,7 +1487,7 @@ sr:Веганска|Вегетаријанска|Вегетаријанци|Ве
 # ja:ブッシェンシャンク
 # ko:와인 레스토랑
 # nb:Buschenschank
-# pl:Winiarnia
+# pl:Buschenschank|Heuriger
 # pt:Buschenschank|Heuriger
 # pt-BR:Buschenschank|Heuriger
 # ro:Tavernă

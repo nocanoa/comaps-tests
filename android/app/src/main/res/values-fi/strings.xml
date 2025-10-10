@@ -9,7 +9,7 @@
     <string name="delete">Poista</string>
     <string name="download_maps">Lataa karttoja</string>
     <!-- Settings/Downloader - info for country when download fails -->
-    <string name="download_has_failed">Lataus epäonnistui, napauta yrittääksesi uudelleen.</string>
+    <string name="download_has_failed">Lataus epäonnistui. Napauta yrittääksesi uudelleen</string>
     <!-- Settings/Downloader - info for country which started downloading -->
     <string name="downloading">Ladataan…</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
@@ -27,7 +27,7 @@
     <!-- A dialog title, that warns a user that Precise Location is disabled and suggests to turn it on -->
     <string name="limited_accuracy">Rajoitettu tarkkuus</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">Tarkan navigoinnin varmistamiseksi, ota Tarkka sijainti käyttöön asetuksissa.</string>
+    <string name="precise_location_is_disabled_long_text">Tarkan navigoinnin varmistamiseksi ota käyttöön tarkka sijainti asetuksista</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Näytä kartalla</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
@@ -36,7 +36,7 @@
     <string name="try_again">Yritä uudelleen</string>
     <string name="about_menu_title">Tietoa CoMaps:stä</string>
     <!-- Text in About screen -->
-    <string name="about_headline">Avoin projekti yhteisön voimin</string>
+    <string name="about_headline">Avoin projekti yhteisön toteuttamana</string>
     <!-- Text in About screen -->
     <string name="about_proposition_1">• Helppokäyttöinen ja viimeistelty</string>
     <!-- Text in About screen -->
@@ -84,7 +84,7 @@
     <!-- Header of settings activity where user defines storage path -->
     <string name="maps_storage">Tallenna kartat kohteeseen</string>
     <!-- Detailed description of Maps Storage settings button -->
-    <string name="maps_storage_summary">Valitse karttojen latauskohde</string>
+    <string name="maps_storage_summary">Valitse karttojen latauskansio</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Ladatut kartat</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
@@ -164,9 +164,9 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">Sijaintiasi ei ole vielä määritetty</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Valitettavasti karttatallennusasetukset ovat pois päältä</string>
+    <string name="cant_change_this_setting">Kartan tallennusasetukset ovat poissa käytöstä</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">Karttaa ladataan parhaillaan</string>
+    <string name="downloading_is_active">Kartan lataus käynnissä</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
     <string name="my_position_share_sms">Hei, katso sijaintini CoMaps-sovelluksessa! %1$s tai %2$s Eikö sinulla ole vielä offline-karttoja? Lataa ne täältä: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
@@ -426,8 +426,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Et ole kirjautunut sisään</string>
     <string name="login_osm">Kirjaudu OpenStreetMapiin</string>
-    <string name="password">Salasana</string>
-    <string name="forgot_password">Unohtuiko salasana?</string>
     <string name="logout">Kirjaudu ulos</string>
     <string name="edit_place">Muokkaa kohdetta</string>
     <string name="add_language">Lisää kieli</string>
@@ -446,7 +444,6 @@
     <string name="cuisine">Ruokalaji</string>
     <string name="select_cuisine">Valitse ruokalaji</string>
     <!-- login text field -->
-    <string name="email_or_username">Sähköposti tai käyttäjätunnus</string>
     <string name="editor_add_phone">Lisää puhelinnumero</string>
     <string name="level">Kerros</string>
     <string name="downloader_delete_map_dialog">Kaikki karttaan tehdyt muutokset poistetaan kartan mukana</string>
@@ -821,27 +818,15 @@
     <string name="uri_open_location_failed">Ei asennettua sovellusta, joka voi avata sijainnin</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Automaattinen navigointi</string>
-    <string name="facebook">Facebook</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="vk">VK</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="level_value_generic">Kerros: %s</string>
     <string name="share_bookmarks_email_body">Hei! \n\nLiitteenä ovat kirjamerkkini; Avaa ne CoMaps -sovelluksessa. Mikäli sinulla ei ole vielä sovellusta asennettuna, voit ladata sen osoitteesta: https://www.comaps.app/download/ \n\nNauti matkustamisesta CoMaps:n kanssa!</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="translated_om_site_url">https://comaps.app/fi/</string>
-    <string name="telegram">Telegram</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="matrix">[Matrix]</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
-    <string name="github">Github</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="instagram">Instagram</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_fediverse_page">Kirjoita kelvollinen Mastodon-käyttäjänimi tai verkko-osoite</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="error_enter_correct_bluesky_page">Kirjoita kelvollinen Bluesky-käyttäjänimi tai verkko-osoite</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="app_site_url">https://comaps.app/fi/</string>
@@ -886,4 +871,7 @@
     <string name="osm_note_hint">Vaihtoehtoisesti voit jättää huomion OpenStreetMap yhteisölle, jotta joku muu voi lisätä tai korjata paikan tiedot.</string>
     <string name="delete_track_dialog_title">Poista %s?</string>
     <string name="share_track">Jaa Reitti</string>
+    <string name="hours_confirmed_time_ago">Vahvistettu %s</string>
+    <string name="existence_confirmed_time_ago">Olemassaolo vahvistettu %s</string>
+    <string name="pref_tts_no_system_tts_short">Tekstistä puheeksi -moottoria ei löytynyt, tarkista sovelluksen asetukset</string>
 </resources>

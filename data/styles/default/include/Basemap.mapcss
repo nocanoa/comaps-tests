@@ -222,8 +222,17 @@ area|z10-17[boundary=national_park],
 area|z10-17[boundary=protected_area][protect_class=1],
 {fill-opacity: 0.2; fill-color: @protected_nature;}
 
+line|z10-[boundary=national_park],
+line|z10-[boundary=protected_area][protect_class=1],
+{width: 2; color: @protected_nature;}
+
 area|z10-16[boundary=aboriginal_lands],
 {fill-opacity: 0.07; fill-color: @indigenous_lands;}
+
+line|z10-[boundary=aboriginal_lands],
+{width: 2; color: @indigenous_lands;}
+
+/* ToDo: Assume that military areas already have fences? */
 
 area|z10-[landuse=military][military=danger_area],
 {fill-opacity: 1.0; fill-color: @military;}
@@ -479,8 +488,20 @@ area|z14-[piste:type=snow_park],
 
 /* 7.4 Cemetery */
 
+area|z10[landuse=cemetery],
+area|z10[amenity=grave_yard],
+{fill-color: @flowers_10;}
+area|z11[landuse=cemetery],
+area|z11[amenity=grave_yard],
+{fill-color: @flowers_11;}
+area|z12[landuse=cemetery],
+area|z12[amenity=grave_yard],
+{fill-color: @flowers_12;}
+area|z13[landuse=cemetery],
+area|z13[amenity=grave_yard],
+{fill-color: @flowers_13;}
 area|z14-[landuse=cemetery],
-area|z14-[amenity=grave_yard]
+area|z14-[amenity=grave_yard],
 {fill-color: @flowers;}
 
 /* 7.5 Pedestrian areas */

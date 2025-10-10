@@ -421,6 +421,8 @@
     <string name="type.highway.pedestrian.area">Piyada ərazisi</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Körpü</string>
+
+    <string name="type.highway.pedestrian.square">Kvadrat</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Tunel</string>
     <string name="type.highway.primary">Əsas yol</string>

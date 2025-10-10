@@ -55,4 +55,5 @@ class Fonts: IFonts {
   var semibold15 = UIFont.systemFont(ofSize: 15, weight:UIFont.Weight.semibold)
   var semibold16 = UIFont.systemFont(ofSize: 16, weight:UIFont.Weight.semibold)
   var semibold18 = UIFont.systemFont(ofSize: 18, weight:UIFont.Weight.semibold)
+  var semibold20 = UIFont.systemFont(ofSize: 20, weight:UIFont.Weight.semibold)
 }

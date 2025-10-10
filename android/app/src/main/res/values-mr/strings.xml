@@ -402,8 +402,6 @@
     <string name="login">लॉग इन</string>
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">साइन इन केलेले नाही</string>
-    <string name="password">पासवर्ड</string>
-    <string name="forgot_password">पासवर्ड विसरलात?</string>
     <string name="logout">लॉग आऊट</string>
     <string name="edit_place">ठिकाण संपादित करा</string>
     <string name="add_language">भाषा जोडा</string>
@@ -422,7 +420,6 @@
     <string name="cuisine">पाककृती</string>
     <string name="select_cuisine">पाककृती निवडा</string>
     <!-- login text field -->
-    <string name="email_or_username">ईमेल किंवा वापरकर्तानाव</string>
     <string name="editor_add_phone">फोन जोडा</string>
     <string name="level">मजला</string>
     <string name="downloader_delete_map_dialog">तुमचे सर्व नकाशा संपादने नकाशासह पुसले जातील.</string>
@@ -807,7 +804,6 @@
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="wikimedia_commons">विकिमीडिया कॉमन्स</string>
     <string name="panoramax">Panoramax चित्र</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/mr/</string>
     <string name="saved">जतन केले</string>
 </resources>

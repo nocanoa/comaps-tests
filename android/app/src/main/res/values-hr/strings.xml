@@ -3,10 +3,10 @@
     <string name="back">Nazad</string>
     <string name="download_has_failed">Preuzimanje neuspješno. Dotaknite za ponovni pokušaj.</string>
     <string name="cancel">Odustani</string>
-    <string name="delete">Obriši</string>
+    <string name="delete">Izbriši</string>
     <string name="kilometres">Kilometara</string>
     <string name="downloading">Preuzimanje…</string>
-    <string name="download_maps">Preuzmi Karte</string>
+    <string name="download_maps">Skini karte</string>
     <string name="miles">Milje</string>
     <string name="later">Kasnije</string>
     <string name="search">Traži</string>
@@ -48,8 +48,6 @@
     <string name="placepage_distance">Udaljenost</string>
     <string name="menu">Izbornik</string>
     <string name="news">Novosti</string>
-    <string name="telegram">Telegram</string>
-    <string name="facebook">Facebook</string>
     <string name="help">Pomoć</string>
     <string name="donate">Doniraj</string>
     <string name="copyright">Autorska prava</string>
@@ -70,8 +68,6 @@
     <string name="category_post">Pošta</string>
     <string name="email">E-mail</string>
     <string name="done">Potvrdi</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
     <string name="rate_the_app">Ocijeni aplikaciju</string>
     <string name="downloader_downloading">Preuzima se:</string>
     <string name="search_history_title">Povijest pretrage</string>
@@ -103,7 +99,6 @@
     <string name="privacy">Privatnost</string>
     <string name="power_managment_setting_never">Nikada</string>
     <string name="editor_reset_edits_button">Odbaci</string>
-    <string name="password">Lozinka</string>
     <string name="details">Detalji</string>
     <string name="privacy_policy">Politika privatnosti</string>
     <string name="editor_edit_place_category_title">Kategorija</string>
@@ -142,8 +137,6 @@
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="wikimedia_commons">Zajednički poslužitelj</string>
     <string name="self_service">Samoposluživanje</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="panoramax">Panoramax slika</string>
-    <string name="bluesky">Bluesky</string>
     <string name="saved">Spremljeno</string>
 </resources>

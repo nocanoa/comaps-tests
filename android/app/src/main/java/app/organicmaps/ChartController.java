@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.View;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import app.organicmaps.sdk.Framework;
@@ -25,9 +24,11 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.google.android.material.textview.MaterialTextView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -55,10 +56,10 @@ public class ChartController implements OnChartValueSelectedListener
   private MarkerView mCurrentLocationMarkerView;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mMaxAltitude;
+  private MaterialTextView mMaxAltitude;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mMinAltitude;
+  private MaterialTextView mMinAltitude;
   @NonNull
   private final Context mContext;
   private long mTrackId = Utils.INVALID_ID;
@@ -118,7 +119,7 @@ public class ChartController implements OnChartValueSelectedListener
     x.setPosition(XAxis.XAxisPosition.BOTTOM);
     x.setAxisLineColor(ThemeUtils.getColor(mContext, androidx.appcompat.R.attr.dividerHorizontal));
     x.setAxisLineWidth(mContext.getResources().getDimensionPixelSize(R.dimen.divider_height));
-    ValueFormatter xAxisFormatter = new AxisValueFormatter(mChart);
+    IAxisValueFormatter xAxisFormatter = new AxisValueFormatter(mChart);
     x.setValueFormatter(xAxisFormatter);
 
     YAxis y = mChart.getAxisLeft();

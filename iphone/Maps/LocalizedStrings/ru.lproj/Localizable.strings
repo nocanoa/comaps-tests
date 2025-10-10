@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Сообщить или исправить неправильные данные на карте";
 
 /* Button in the About screen */
-"volunteer" = "Станьте добровольцем и улучшьте CoMaps";
+"volunteer" = "Стать добровольцем, чтобы сделать CoMaps лучше";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Свяжитесь с нами";
@@ -726,7 +726,7 @@
 
 /* NOTE to translators: please synchronize your translation with the English one. */
 "mobile_data_description" = "Мобильный интернет требуется для уведомлений об обновлении карты и для отображения более подробной информации о местах и метках.";
-"mobile_data_option_never" = "Никогда не использовать";
+"mobile_data_option_never" = "Никогда";
 "mobile_data_option_ask" = "Всегда спрашивать";
 "traffic_update_maps_text" = "Для отображения пробок необходимо обновить карты.";
 "big_font" = "Увеличить шрифт на карте";
@@ -791,8 +791,8 @@
 "subway_data_unavailable" = "Карта метро недоступна";
 "title_error_downloading_bookmarks" = "Произошла ошибка";
 "popular_place" = "Популярно";
-"export_file" = "Экспорт KMZ";
-"export_file_gpx" = "Экспорт GPX";
+"export_file" = "Экспортировать в KMZ";
+"export_file_gpx" = "Экспортировать в GPX";
 "delete_list" = "Удалить список";
 "hide_from_map" = "Скрыть с карты";
 "tags_loading_error_subtitle" = "Во время загрузки тегов произошла ошибка, пожалуйста, попробуйте ещё раз";
@@ -811,8 +811,8 @@
 "power_managment_title" = "Режим энергосбережения";
 "power_managment_description" = "Попробовать уменьшить потребление заряда аккумулятора за счёт отключения некоторых функций.";
 "power_managment_setting_never" = "Никогда";
-"power_managment_setting_auto" = "Авто";
-"power_managment_setting_manual_max" = "Максимальное энергосбережение";
+"power_managment_setting_auto" = "При низком заряде";
+"power_managment_setting_manual_max" = "Всегда";
 "enable_logging_warning_message" = "Эта настройка включается для записи действий в целях диагностики, чтобы помочь нашей команде выявить проблемы с приложением. Включайте ее только на время для отправки детальной информации о неполадках, обнаруженных в приложении, через кнопку «Сообщить о проблеме». Логи могут включать данные о местоположении.";
 "driving_options_title" = "Настройки объезда";
 

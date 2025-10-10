@@ -12,7 +12,7 @@
   <com.google.android.material.imageview.ShapeableImageView
     android:id="@+id/iv__place_bluesky"
     style="@style/PlacePageMetadataIcon"
-    app:srcCompat="@drawable/ic_bluesky_white"
+    app:srcCompat="@drawable/ic_bluesky"
     app:tint="?colorSecondary"/>
 
   <com.google.android.material.textview.MaterialTextView

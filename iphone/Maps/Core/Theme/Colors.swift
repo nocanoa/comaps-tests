@@ -21,6 +21,7 @@ class DayColors: IColors {
   var linkBlueDark = UIColor.accent
   var buttonRed = UIColor(244, 67, 67, alpha100)
   var buttonRedHighlighted = UIColor(183, 28, 28, alpha100)
+  var black = UIColor(0, 0, 0, alpha100)
   var blackPrimaryText = UIColor(0, 0, 0, alpha87)
   var blackSecondaryText = UIColor(0, 0, 0, alpha54)
   var blackHintText = UIColor(0, 0, 0, alpha26)
@@ -83,6 +84,7 @@ class NightColors: IColors {
   var linkBlueDark = UIColor.accent
   var buttonRed = UIColor(244, 67, 67, alpha100)
   var buttonRedHighlighted = UIColor(183, 28, 28, alpha100)
+  var black = UIColor(255, 255, 255, alpha100)
   var blackPrimaryText =  UIColor(255, 255, 255, alpha90)
   var blackSecondaryText =  UIColor(255, 255, 255, alpha70)
   var blackHintText =  UIColor(255, 255, 255, alpha30)

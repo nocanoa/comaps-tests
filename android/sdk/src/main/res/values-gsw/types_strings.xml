@@ -50,7 +50,7 @@
     <string name="type.amenity.car_rental">Autovermietig</string>
     <string name="type.amenity.car_sharing">Carsharing</string>
     <string name="type.amenity.car_wash">Autowöschaalag</string>
-    <string name="type.amenity.casino">Casino</string>
+    <string name="type.amenity.casino">Kasino</string>
     <string name="type.amenity.gambling">Glücksspiel</string>
     <string name="type.leisure.adult_gaming_centre">Gaming-Zentrum für Erwachsni</string>
     <string name="type.leisure.amusement_arcade">Arkade</string>
@@ -77,7 +77,7 @@
     <string name="type.amenity.fast_food">Fast-Food</string>
     <string name="type.amenity.ferry_terminal">Fähraaleger</string>
     <string name="type.amenity.fire_station">Füürwehr</string>
-    <string name="type.amenity.food_court">Food Court</string>
+    <string name="type.amenity.food_court">Gastronomieberiich</string>
     <string name="type.amenity.fountain">Springbrunne</string>
     <string name="type.amenity.fuel">Tankstell</string>
     <string name="type.amenity.grave_yard.christian">Fridhof</string>
@@ -365,6 +365,7 @@
     <string name="type.highway.pedestrian">Fuessgängerzone</string>
     <string name="type.highway.pedestrian.area">Fuessgängerzone</string>
     <string name="type.highway.pedestrian.bridge">Fuessgängerzonebrugg</string>
+    <string name="type.highway.pedestrian.square">Platz</string>
     <string name="type.highway.primary">Hauptstrass</string>
     <string name="type.highway.primary.bridge">Brugg</string>
     <string name="type.highway.primary.tunnel">Hauptstrassetunnel</string>
@@ -1297,4 +1298,10 @@
     <string name="type.amenity.bicycle_parking.covered">Überdachte Veloparkplatz</string>
     <string name="type.amenity.luggage_locker">Gepäckschlüüssfach</string>
     <string name="type.amenity.ranger_station">Förschterstation</string>
+    <string name="type.barrier.wicket_gate">Schlupfpforte</string>
+    <string name="type.amenity.animal_shelter">Tierheim</string>
+    <string name="type.office.security">Sicherheitsdienst</string>
+    <string name="type.building.guardhouse">Pförtnerhüüsli</string>
+    <string name="type.power.portal">Abspannportal</string>
+    <string name="type.shop.lighting">Lampelade</string>
 </resources>

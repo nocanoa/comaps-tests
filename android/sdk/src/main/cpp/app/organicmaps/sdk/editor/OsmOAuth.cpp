@@ -31,24 +31,6 @@ JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeGetOAut
   return ToJavaString(env, auth.BuildOAuth2Url());
 }
 
-JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithPassword(JNIEnv * env, jclass clazz,
-                                                                                          jstring login,
-                                                                                          jstring password)
-{
-  OsmOAuth auth = OsmOAuth::ServerAuth();
-  try
-  {
-    if (auth.AuthorizePassword(ToNativeString(env, login), ToNativeString(env, password)))
-      return ToJavaString(env, auth.GetAuthToken());
-    LOG(LWARNING, ("nativeAuthWithPassword: invalid login or password."));
-  }
-  catch (std::exception const & ex)
-  {
-    LOG(LWARNING, ("nativeAuthWithPassword error ", ex.what()));
-  }
-  return nullptr;
-}
-
 JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_OsmOAuth_nativeAuthWithOAuth2Code(JNIEnv * env, jclass,
                                                                                             jstring oauth2code)
 {

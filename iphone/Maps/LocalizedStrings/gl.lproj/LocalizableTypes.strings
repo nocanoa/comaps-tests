@@ -495,6 +495,8 @@
 "type.highway.pedestrian" = "Cale peonil";
 "type.highway.pedestrian.area" = "Zona peonil";
 "type.highway.pedestrian.bridge" = "Puente peonil";
+
+"type.highway.pedestrian.square" = "Praza";
 "type.highway.pedestrian.tunnel" = "Túnel peonil";
 "type.highway.primary" = "Estrada principal";
 "type.highway.primary.bridge" = "Puente";
@@ -1298,3 +1300,6 @@
 "type.post_office.post_partner" = "Post Partner";
 "type.barrier.wicket_gate" = "Wicket gate";
 "type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

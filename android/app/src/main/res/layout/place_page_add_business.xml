@@ -7,10 +7,11 @@
   android:visibility="visible"
   tools:visibility="visible">
 
-  <com.google.android.material.textview.MaterialTextView
-    android:id="@+id/tv__editor"
-    style="@style/PlacePageMetadataText.Button"
-    android:gravity="center"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/mb__add_organisation"
+    style="@style/MwmWidget.M3.Button.Secondary"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
     android:text="@string/placepage_add_business_button"/>
 
 </LinearLayout>

@@ -199,7 +199,7 @@ EdgeEstimator::EdgeEstimator(VehicleType vehicleType, double maxWeightSpeedKMpH,
     double penalty;
   };
 
-#define N 144
+#define N 288
 
   static auto constexpr kTurnPenaltyMatrix = []
   {
@@ -348,6 +348,150 @@ EdgeEstimator::EdgeEstimator(VehicleType vehicleType, double maxWeightSpeedKMpH,
         {HighwayType::HighwayUnclassified, HighwayType::HighwayTrunk, VehicleType::Car, 0.09},
         {HighwayType::HighwayUnclassified, HighwayType::HighwayTrunkLink, VehicleType::Car, 0.09},
         {HighwayType::HighwayUnclassified, HighwayType::HighwayUnclassified, VehicleType::Car, 0.08},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayLivingStreet, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.11},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayPrimary, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimary, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayService, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayPrimary, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayService, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayPrimaryLink, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayResidential, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayResidential, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayResidential, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayResidential, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayResidential, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayResidential, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayResidential, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayResidential, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayResidential, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayResidential, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayResidential, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayResidential, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwaySecondary, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondary, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayService, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwaySecondary, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.05},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.05},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayService, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.05},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.05},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwaySecondaryLink, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayService, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayService, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayService, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayService, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTertiary, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiary, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTertiaryLink, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.05},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.03},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayTrunk, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunk, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayService, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.01},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.01},
+        {HighwayType::HighwayTrunk, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.11},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.04},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayService, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.06},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.02},
+        {HighwayType::HighwayTrunkLink, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.1},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayLivingStreet, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayPrimary, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayPrimaryLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayResidential, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwaySecondary, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwaySecondaryLink, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayService, VehicleType::Bicycle, 0.08},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayTertiary, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayTertiaryLink, VehicleType::Bicycle, 0.07},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayTrunk, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayTrunkLink, VehicleType::Bicycle, 0.09},
+        {HighwayType::HighwayUnclassified, HighwayType::HighwayUnclassified, VehicleType::Bicycle, 0.08},
     }};
 
     array<TurnPenaltyMatrix, N> result{};
@@ -507,10 +651,7 @@ public:
   double GetUTurnPenalty(Purpose /* purpose */) const override { return 20.0 /* seconds */; }
 
   double GetTurnPenalty(Purpose purpose, double angle, RoadGeometry const & from_road, RoadGeometry const & to_road,
-                        bool is_left_hand_traffic = false) const override
-  {
-    return 0;
-  }
+                        bool is_left_hand_traffic = false) const override;
 
   double GetFerryLandingPenalty(Purpose purpose) const override
   {
@@ -556,6 +697,35 @@ public:
     });
   }
 };
+
+double BicycleEstimator::GetTurnPenalty(Purpose purpose, double angle, RoadGeometry const & from_road,
+                                        RoadGeometry const & to_road, bool is_left_hand_traffic) const
+{
+  auto penalty = m_defaultPenalty;
+
+  if (from_road.GetHighwayType().has_value() && to_road.GetHighwayType().has_value())
+  {
+    int const from_road_idx = static_cast<int>(from_road.GetHighwayType().value());
+    int const to_road_idx = static_cast<int>(to_road.GetHighwayType().value());
+    auto const pen = m_turnPenaltyMap.find(from_road_idx * 65535 + to_road_idx);
+    if (pen != m_turnPenaltyMap.end())
+      penalty = pen->second;
+  }
+
+  // Determine if turn crosses traffic based on driving side
+  // For bicycles, crossing traffic is less dangerous than for cars but still a factor
+  bool turn_crosses_traffic;
+  if (is_left_hand_traffic)
+    turn_crosses_traffic = angle < 0;
+  else
+    turn_crosses_traffic = angle > 0;
+
+  // Penalty multiplier for bicycles crossing traffic
+  auto const extra_penalty = turn_crosses_traffic ? 2.0 : 1.0;
+  auto const result = fabs(angle) * penalty * extra_penalty;
+
+  return result;
+}
 
 // CarEstimator ------------------------------------------------------------------------------------
 class CarEstimator final : public EdgeEstimator

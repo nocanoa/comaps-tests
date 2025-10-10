@@ -419,8 +419,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Sessão não iniciada</string>
     <string name="login_osm">Entrar no OpenStreetMap</string>
-    <string name="password">Palavra-chave</string>
-    <string name="forgot_password">Esqueceu-se da palavra-chave?</string>
     <string name="logout">Terminar sessão</string>
     <string name="edit_place">Editar o local</string>
     <string name="add_language">Adicionar um idioma</string>
@@ -437,7 +435,6 @@
     <string name="cuisine">Culinária</string>
     <string name="select_cuisine">Selecione a culinária</string>
     <!-- login text field -->
-    <string name="email_or_username">Email ou nome de utilizador</string>
     <string name="level">Andar</string>
     <string name="downloader_delete_map_dialog">Todas as alterações ao mapa serão eliminadas juntamente com o mapa</string>
     <string name="downloader_update_maps">Atualizar mapas</string>
@@ -800,19 +797,8 @@
     <string name="menu">Menu</string>
     <string name="app_site_url">https://comaps.app/pt/</string>
     <string name="editor_level">Piso (0 é o rés de chão)</string>
-    <string name="instagram">Instagram</string>
     <string name="maps_storage_free_size">%1$s disponíveis de %2$s</string>
     <string name="move_maps_error">Erro ao mover os ficheiros dos mapas</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="vk">VK</string>
-    <string name="bluesky">Bluesky</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="opens_in">Abre em %s</string>
     <string name="closes_in">Fecha em %s</string>
@@ -823,7 +809,6 @@
     <string name="editor_building_levels">Pisos (inc. rés de chão, excl. telhado)</string>
     <string name="error_enter_correct_level">Introduza um número de piso válido</string>
     <string name="saved">Guardado</string>
-    <string name="codeberg">Codeberg</string>
     <string name="disk_error">Não foi possível criar a pasta e mover os ficheiros no Armazenamento Interno do dispositivo ou no Cartão SD</string>
     <string name="enable_show_on_lock_screen_description">Quando ativado, a aplicação irá funcionar sobre o ecrã de bloqueio mesmo quando o dispositivo estiver bloqueado.</string>
     <string name="pref_left_button_disable">Desativar</string>

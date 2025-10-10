@@ -16,7 +16,7 @@
     android:visibility="gone"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/highest_altitude"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
     android:paddingEnd="@dimen/margin_quarter_plus"
     android:paddingBottom="@dimen/margin_eighth"
     android:textSize="@dimen/text_size_body_5" />
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/lowest_altitude"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

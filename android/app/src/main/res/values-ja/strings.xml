@@ -429,8 +429,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">サインインしていません</string>
     <string name="login_osm">OpenStreetMapにログイン</string>
-    <string name="password">パスワード</string>
-    <string name="forgot_password">パスワードをお忘れですか？</string>
     <string name="logout">ログアウト</string>
     <string name="edit_place">場所を編集</string>
     <string name="add_language">言語を追加</string>
@@ -449,7 +447,6 @@
     <string name="cuisine">料理</string>
     <string name="select_cuisine">料理を選択</string>
     <!-- login text field -->
-    <string name="email_or_username">メールアドレスまたはユーザー名</string>
     <string name="editor_add_phone">電話番号を追加</string>
     <string name="level">階</string>
     <string name="downloader_delete_map_dialog">すべてのマップの変更はマップとともに削除されます。</string>
@@ -823,28 +820,16 @@
     <string name="uri_open_location_failed">場所を開くことができるアプリがインストールされていません</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">ナビゲーションオート</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">マストドン</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="github">GitHub</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="level_value_generic">階層：%s</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="codeberg">Codeberg</string>
     <string name="translated_om_site_url">https://comaps.app/</string>
     <string name="error_enter_correct_bluesky_page">有効なBlueskyのユーザー名またはウェブアドレスを入力してください</string>
     <string name="saved">保存しました</string>
     <string name="error_enter_correct_fediverse_page">有効なMastodonのユーザー名またはウェブアドレスを入力してください</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="app_site_url">https://comaps.app/</string>
-    <string name="bluesky">Bluesky</string>
     <string name="pref_left_button_title">左ボタンの設定</string>
     <string name="pref_left_button_disable">無効にする</string>
     <string name="vehicle">車両</string>

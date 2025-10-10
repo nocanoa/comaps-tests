@@ -130,12 +130,14 @@ void CameraCollector::MergeInto(CameraCollector & collector) const
 
 void CameraCollector::Save()
 {
-  LOG(LINFO, ("Saving speed cameras to", GetFilename()));
+  LOG(LINFO, ("Associating speed cameras with ways..."));
 
   FillCameraInWays();
 
+  LOG(LINFO, ("Saving speed cameras to", GetFilename()));
   FileWriter writer(GetFilename());
   ForEachCamera([&](auto const & camera) { CameraInfo::Write(writer, camera); });
+  LOG(LINFO, ("Finished saving speed cameras"));
 }
 
 void CameraCollector::OrderCollectedData()

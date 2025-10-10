@@ -9,6 +9,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -133,7 +134,7 @@ public class HoursMinutesPickerFragment extends BaseMwmDialogFragment
     if (id != 0)
     {
       mPickerHoursLabel = mPicker.findViewById(id);
-      if (!(mPickerHoursLabel instanceof MaterialTextView))
+      if (!(mPickerHoursLabel instanceof TextView))
         mPickerHoursLabel = null;
     }
 

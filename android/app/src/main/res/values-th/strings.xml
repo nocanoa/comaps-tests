@@ -410,8 +410,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">ยังไม่ได้ลงชื่อเข้าใช้</string>
     <string name="login_osm">เข้าสู่ระบบ OpenStreetMap</string>
-    <string name="password">รหัสผ่าน</string>
-    <string name="forgot_password">ลืมรหัสผ่าน?</string>
     <string name="logout">ออกจากระบบ</string>
     <string name="edit_place">แก้ไขสถานที่</string>
     <string name="add_language">เพิ่มภาษา</string>
@@ -428,7 +426,6 @@
     <string name="cuisine">ประเภทอาหาร</string>
     <string name="select_cuisine">เลือกประเภทอาหาร</string>
     <!-- login text field -->
-    <string name="email_or_username">อีเมลหรือชื่อผู้ใช้</string>
     <string name="level">ชั้น</string>
     <string name="downloader_delete_map_dialog">การเปลี่ยนแปลงแผนที่ทั้งหมดจะถูกลบไปพร้อมกับแผนที่</string>
     <string name="downloader_update_maps">อัปเดตแผนที่</string>
@@ -777,7 +774,6 @@
     <string name="uri_open_location_failed">ไม่มีการติดตั้งแอปที่สามารถเปิดตำแหน่งได้</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">อัตโนมัติในการนำทาง</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/Th:เกี่ยวกับ_OpenStreetMap</string>
     <string name="translated_om_site_url">https://comaps.app/</string>
@@ -785,7 +781,6 @@
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="wikimedia_commons">วิกิมีเดียคอมมอนส์</string>
     <string name="panoramax">ภาพถ่าย Panoramax</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="saved">บันทึกแล้ว</string>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- SECTION: Types -->
-    <string name="type.addr_interpolation">Cím/blokk</string>
-    <string name="type.addr_interpolation.even">Cím/blokk</string>
-    <string name="type.addr_interpolation.odd">Cím/blokk</string>
+    <string name="type.addr_interpolation">Cím/háztömb</string>
+    <string name="type.addr_interpolation.even">Cím/háztömb</string>
+    <string name="type.addr_interpolation.odd">Cím/háztömb</string>
     <string name="type.aerialway.station">Felvonóállomás</string>
     <string name="type.aeroway.aerodrome">Repülőtér</string>
     <string name="type.aeroway.aerodrome.international">Nemzetközi repülőtér</string>
@@ -20,7 +20,7 @@
     <string name="type.amenity.biergarten">Sörkert</string>
     <string name="type.amenity.brothel">Bordélyház</string>
     <string name="type.amenity.bureau_de_change">Pénzváltó</string>
-    <string name="type.amenity.bus_station">Autóbuszállomás</string>
+    <string name="type.amenity.bus_station">Buszállomás</string>
     <string name="type.amenity.cafe">Kávézó</string>
     <string name="type.amenity.car_rental">Autókölcsönző</string>
     <string name="type.amenity.motorcycle_rental">Motorkerékpár-bérlés</string>
@@ -64,7 +64,7 @@
     <string name="type.amenity.hospital">Kórház</string>
     <string name="type.amenity.hunting_stand">Magasles</string>
     <string name="type.amenity.ice_cream">Fagylaltárus</string>
-    <string name="type.amenity.internet_cafe">Internet kávézó</string>
+    <string name="type.amenity.internet_cafe">Internetkávézó</string>
     <string name="type.amenity.kindergarten">Óvoda</string>
     <string name="type.amenity.library">Könyvtár</string>
     <string name="type.amenity.loading_dock">Rakodórámpa</string>
@@ -164,7 +164,7 @@
     <string name="type.barrier.entrance">Bejárat</string>
     <string name="type.barrier.gate">Kapu</string>
     <string name="type.barrier.kissing_gate">Lengőkapu</string>
-    <string name="type.barrier.lift_gate">Felnyitható sorompó</string>
+    <string name="type.barrier.lift_gate">Emelkedő sorompó</string>
     <string name="type.barrier.stile">Kerítésátjáró</string>
     <string name="type.barrier.turnstile">Forgókapu</string>
     <string name="type.barrier.swing_gate">Elforduló sorompó</string>
@@ -251,7 +251,7 @@
     <string name="type.cuisine.heuriger">Heuriger</string>
     <string name="type.cuisine.hotdog">Hotdog</string>
     <string name="type.cuisine.hungarian">Magyar</string>
-    <string name="type.cuisine.ice_cream">Jégkrém</string>
+    <string name="type.cuisine.ice_cream">Fagylalt</string>
     <string name="type.cuisine.indian">Indiai</string>
     <string name="type.cuisine.indonesian">Indonéz</string>
     <string name="type.cuisine.international">Nemzetközi</string>
@@ -377,6 +377,7 @@
     <string name="type.highway.pedestrian.area">Sétálóutca</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Híd</string>
+    <string name="type.highway.pedestrian.square">Tér</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Alagút</string>
     <string name="type.highway.primary">Utca</string>
@@ -512,7 +513,7 @@
     <string name="type.historic.mine">Történelmi bánya</string>
     <string name="type.historic.monument">Monumentális, épületszerű műemlék</string>
     <string name="type.historic.pillory">Pellengér</string>
-    <string name="type.historic.ruins">Történelmi rom</string>
+    <string name="type.historic.ruins">Történelmi romok</string>
     <string name="type.historic.ship">Hajó</string>
     <string name="type.historic.tank">Történelmi tank</string>
     <string name="type.historic.tomb">Történelmi sír</string>
@@ -718,7 +719,7 @@
     <string name="type.railway.station.light_rail">HÉV-állomás</string>
     <string name="type.railway.station.light_rail.berlin">S-Bahn-állomás</string>
     <string name="type.railway.station.light_rail.london">DLR-állomás</string>
-    <string name="type.railway.station.light_rail.porto">Portói metró</string>
+    <string name="type.railway.station.light_rail.porto">Porto Metro</string>
     <string name="type.railway.station.monorail">Egysínűvasút-állomás</string>
     <string name="type.railway.station.subway">Metróállomás</string>
     <string name="type.railway.station.subway.adana">Metróállomás</string>
@@ -775,7 +776,7 @@
     <string name="type.railway.station.subway.lille">Metróállomás</string>
     <string name="type.railway.station.subway.lima">Metróállomás</string>
     <string name="type.railway.station.subway.lisboa">Metróállomás</string>
-    <string name="type.railway.station.subway.london">Földalatti állomás</string>
+    <string name="type.railway.station.subway.london">Metróállomás</string>
     <string name="type.railway.station.subway.lyon">Metróállomás</string>
     <string name="type.railway.station.subway.madrid">Metróállomás</string>
     <string name="type.railway.station.subway.malaga">Metróállomás</string>
@@ -950,7 +951,7 @@
     <string name="type.railway.subway_entrance.yokohama">Metrólejáró</string>
     <string name="type.railway.tram_stop">Villamosmegálló</string>
     <string name="type.shop">Bolt</string>
-    <string name="type.shop.alcohol">Szeszesitalbolt</string>
+    <string name="type.shop.alcohol">Szeszesital-bolt</string>
     <string name="type.shop.bakery">Pékség</string>
     <string name="type.shop.bathroom_furnishing">Fürdőszoba-berendezés</string>
     <string name="type.shop.beauty">Szépségszalon</string>
@@ -1005,7 +1006,7 @@
     <string name="type.shop.laundry">Mosoda</string>
     <string name="type.shop.mall">Bevásárlóközpont</string>
     <string name="type.shop.massage">Masszázsszalon</string>
-    <string name="type.shop.mobile_phone">Mobiltelefon bolt</string>
+    <string name="type.shop.mobile_phone">Mobiltelefon-bolt</string>
     <string name="type.shop.money_lender">Pénzkölcsönző</string>
     <string name="type.shop.motorcycle">Motorkerékpár-szaküzlet</string>
     <string name="type.shop.motorcycle_repair">Motorkerékpár-szerviz</string>
@@ -1037,8 +1038,8 @@
     <string name="type.shop.tyres">Autógumi-szaküzlet</string>
     <string name="type.shop.variety_store">100 forintos bolt</string>
     <string name="type.shop.video">Videófilmbolt vagy -kölcsönző</string>
-    <string name="type.shop.video_games">Videojáték-bolt</string>
-    <string name="type.shop.wine">Boszaküzlet</string>
+    <string name="type.shop.video_games">Videojáték-szaküzlet</string>
+    <string name="type.shop.wine">Borszaküzlet</string>
     <string name="type.shop.agrarian">Gazdabolt</string>
     <string name="type.shop.antiques">Régiségkereskedés</string>
     <string name="type.shop.appliance">Háztartásigép-bolt</string>
@@ -1173,13 +1174,13 @@
     <!-- https://wiki.openstreetmap.org/wiki/Tag:emergency=emergency_ward_entrance -->
     <string name="type.emergency.emergency_ward_entrance">Sürgősségi kórterem bejárata</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:amenity=dojo -->
-    <string name="type.amenity.dojo">Dodzsó</string>
+    <string name="type.amenity.dojo">Dodzso</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
     <string name="type.leisure.sports_hall">Sportcsarnok</string>
     <string name="type.aeroway.runway">Kifutópálya</string>
     <string name="type.aeroway.terminal">Terminál</string>
     <string name="type.recycling.cans">Fémdoboz</string>
-    <string name="type.recycling.green_waste">Zöld/szerves hulladék</string>
+    <string name="type.recycling.green_waste">Szerves hulladék</string>
     <string name="type.recycling.cartons">Italos karton</string>
     <string name="type.amenity.sanitary_dump_station">Szennyvízürítőhely</string>
     <string name="type.amenity.shelter.lean_to">Háromoldalú fészer</string>
@@ -1251,7 +1252,7 @@
     <string name="type.landuse.meadow">Rét</string>
     <string name="type.landuse.orchard">Gyümölcsös</string>
     <string name="type.aerialway">Drótkötélpályás felvonó</string>
-    <string name="type.barrier.chain">Lánckorlát</string>
+    <string name="type.barrier.chain">Lánc</string>
     <string name="type.boundary.administrative">Közigazgatási határ</string>
     <string name="type.landuse.education">Oktatási létesítmény</string>
     <string name="type.landuse.farmyard">Tanyaudvar</string>
@@ -1304,7 +1305,7 @@
     <string name="type.aerialway.mixed_lift">Vegyes sífelvonó</string>
     <string name="type.boundary.administrative.3">Tartományhatár</string>
     <string name="type.boundary.administrative.4">Regionális határ</string>
-    <string name="type.leisure.hackerspace">Hacker-tér (hackerspace)</string>
+    <string name="type.leisure.hackerspace">Hackerspace</string>
     <string name="type.leisure.marina">Kishajókikötő</string>
     <string name="type.man_made.cairn">Kőhalom (mesterséges)</string>
     <string name="type.railway.light_rail">Könnyűvasút, HÉV</string>
@@ -1361,19 +1362,19 @@
     <string name="type.piste_type.downhill.intermediate">Sípálya középhaladóknak</string>
     <string name="type.piste_type.downhill.area">Sípálya</string>
     <string name="type.piste_type.downhill.advanced">Sípálya tapasztaltaknak</string>
-    <string name="type.piste_type.downhill.easy">Könnyű sípálya</string>
+    <string name="type.piste_type.downhill.easy">Sípálya újoncoknak</string>
     <string name="type.piste_type.downhill.expert.area">Sípálya szakértőknek</string>
     <string name="type.piste_type.downhill.intermediate.area">Sípálya középhaladóknak</string>
-    <string name="type.piste_type.downhill.easy.area">Könnyű sípálya</string>
-    <string name="type.piste_type.downhill.freeride">Természetes eredetű sípálya (ingyenes)</string>
-    <string name="type.amenity.luggage_locker">Poggyászmegőrző</string>
-    <string name="type.amenity.love_hotel">Szálloda szerelmeseknek</string>
+    <string name="type.piste_type.downhill.easy.area">Sípálya újoncoknak</string>
+    <string name="type.piste_type.downhill.freeride">Természetes eredetű sípálya</string>
+    <string name="type.amenity.luggage_locker">Csomagmegőrző</string>
+    <string name="type.amenity.love_hotel">Szeretőszálló</string>
     <string name="type.amenity.studio">Stúdió</string>
     <string name="type.amenity.bicycle_parking.covered">Fedett kerékpártároló</string>
-    <string name="type.post_office.post_partner">Posta partner</string>
+    <string name="type.post_office.post_partner">Postapartnerpont</string>
     <string name="type.amenity.animal_shelter">Állatmenhely</string>
-    <string name="type.barrier.guard_rail">Védőkorlát</string>
-    <string name="type.barrier.wicket_gate">Kiskapu</string>
+    <string name="type.barrier.guard_rail">Szalagkorlát</string>
+    <string name="type.barrier.wicket_gate">Személybejáró</string>
     <string name="type.highway.ladder">Létra</string>
     <string name="type.landuse.plant_nursery">Faiskola</string>
     <string name="type.leisure.firepit">Tűzrakóhely</string>
@@ -1388,6 +1389,10 @@
     <string name="type.sport.diving">Légzőkészülék nélküli búvárkodás</string>
     <string name="type.landuse.religious">Vallási föld</string>
     <string name="type.natural.wetland.saltmarsh">Sós mocsár</string>
-    <string name="type.amenity.ranger_station">Erdészház</string>
+    <string name="type.amenity.ranger_station">Vadőrség</string>
     <string name="type.leisure.escape_game">Szabadulószoba</string>
+    <string name="type.shop.lighting">Világítástechnikai szaküzlet</string>
+    <string name="type.office.security">Biztonsági őr irodája</string>
+    <string name="type.building.guardhouse">Biztonsági fülke</string>
+    <string name="type.power.portal">Villanytorony (Portál)</string>
 </resources>

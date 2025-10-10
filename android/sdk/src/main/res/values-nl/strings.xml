@@ -33,7 +33,7 @@
     <string name="limited_access">Beperkte toegang</string>
     <string name="not_shared">Privé</string>
     <string name="access_rules_author_only">Wordt online bewerkt</string>
-    <string name="gb">VK</string>
+    <string name="gb">GB</string>
     <string name="mb">MB</string>
     <string name="today">Vandaag</string>
     <string name="yesterday">Gisteren</string>
@@ -42,6 +42,6 @@
     <string name="weeks_ago">%s weken geleden</string>
     <string name="month_ago">%s maand geleden</string>
     <string name="year_ago">%s jaar geleden</string>
-    <string name="years_ago">%s jaar geleden</string>
+    <string name="years_ago">%s jaren geleden</string>
     <string name="months_ago">%s maanden geleden</string>
 </resources>

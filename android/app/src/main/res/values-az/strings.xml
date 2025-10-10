@@ -425,8 +425,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Giriş edilməyib</string>
     <string name="login_osm">OpenStreetMap-a daxil olun</string>
-    <string name="password">Parol</string>
-    <string name="forgot_password">Parolu unutmusunuz?</string>
     <string name="logout">Çıxış</string>
     <string name="edit_place">Məkanı Redaktə edin</string>
     <string name="add_language">Dil əlavə edin</string>
@@ -445,7 +443,6 @@
     <string name="cuisine">Mətbəx</string>
     <string name="select_cuisine">Mətbəx seçin</string>
     <!-- login text field -->
-    <string name="email_or_username">E-poçt və ya istifadəçi adı</string>
     <string name="editor_add_phone">Telefon əlavə edin</string>
     <string name="level">Mərtəbə</string>
     <string name="downloader_delete_map_dialog">Bütün xəritə dəyişiklikləri xəritə ilə birlikdə silinəcək.</string>
@@ -804,7 +801,6 @@
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="wikimedia_commons">Vikianbar</string>
     <string name="panoramax">Panoramax Şəkil</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app/tr/</string>
     <string name="saved">Saxlandı</string>
 </resources>

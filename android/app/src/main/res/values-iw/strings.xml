@@ -419,8 +419,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">לא מחובר</string>
     <string name="login_osm">היכנס ל-OpenStreetMap</string>
-    <string name="password">סיסמה</string>
-    <string name="forgot_password">שכחת סיסמה?</string>
     <string name="logout">התנתק</string>
     <string name="edit_place">ערוך מקום</string>
     <string name="add_language">הוסף שפה</string>
@@ -439,7 +437,6 @@
     <string name="cuisine">סגנון בישול</string>
     <string name="select_cuisine">בחר סיגנון בישול</string>
     <!-- login text field -->
-    <string name="email_or_username">דוא\"ל או שם משתמש</string>
     <string name="editor_add_phone">הוסף טלפון</string>
     <string name="level">קומה</string>
     <string name="downloader_delete_map_dialog">כל העריכות שלך במפה יימחקו יחד עם המפה.</string>
@@ -822,9 +819,7 @@
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app</string>
     <string name="wikimedia_commons">ויקישיתוף</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="panoramax">תמונת Panoramax</string>
     <string name="app_site_url">https://comaps.app</string>
     <string name="saved">נשמר</string>
-    <string name="bluesky">בלוסקיי</string>
 </resources>

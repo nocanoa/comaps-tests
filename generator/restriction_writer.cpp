@@ -188,6 +188,7 @@ void RestrictionWriter::Finish()
 void RestrictionWriter::Save()
 {
   CHECK(!m_stream.is_open(), ("Finish() has not been called."));
+  LOG(LINFO, ("Saving restriction values to", GetFilename()));
   if (Platform::IsFileExistsByFullPath(GetTmpFilename()))
     CHECK(base::CopyFileX(GetTmpFilename(), GetFilename()), ());
 }

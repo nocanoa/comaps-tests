@@ -423,8 +423,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Niet ingelogd</string>
     <string name="login_osm">Log in bij OpenStreetMap</string>
-    <string name="password">Wachtwoord</string>
-    <string name="forgot_password">Wachtwoord vergeten?</string>
     <string name="logout">Log uit</string>
     <string name="edit_place">Locatie bewerken</string>
     <string name="add_language">Taal toevoegen</string>
@@ -443,7 +441,6 @@
     <string name="cuisine">Keuken</string>
     <string name="select_cuisine">Selecteer keuken</string>
     <!-- login text field -->
-    <string name="email_or_username">E-mailadres of gebruikersnaam</string>
     <string name="editor_add_phone">Telefoonnummer toevoegen</string>
     <string name="level">Verdieping</string>
     <string name="downloader_delete_map_dialog">Alle wijzigingen aan de kaart zullen samen met de kaart worden verwijderd</string>
@@ -823,27 +820,15 @@
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto in navigatie</string>
     <string name="menu">Menu</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="read_in_wikipedia">Wikipedia</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="level_value_generic">Niveau: %s</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="app_site_url">https://comaps.app/nl/</string>
-    <string name="bluesky">Bluesky</string>
     <string name="saved">Opgeslagen</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_disable">Schakel uit</string>
     <string name="error_enter_correct_fediverse_page">Voer een geldige Mastodon-gebruikersnaam of webadres in</string>
     <string name="editor_level">Verdieping (0 is begane grond)</string>

@@ -161,9 +161,9 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">La tua posizione non è stata ancora stabilita</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Le impostazioni di archiviazione delle mappe sono disabilitate al momento</string>
+    <string name="cant_change_this_setting">Scusaci, al momento le impostazioni di archiviazione delle mappe sono disabilitate</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">Il download della mappa è in corso</string>
+    <string name="downloading_is_active">Scaricamento della mappa in corso</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
     <string name="my_position_share_sms">Guarda la mia posizione in CoMaps! %1$s o %2$s Non hai scaricato l\'app? La puoi scaricare da qui: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
@@ -221,7 +221,7 @@
     <!-- Settings «Route» category: «Test Voice Directions» title -->
     <string name="pref_tts_test_voice_title">Prova le indicazioni vocali</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
-    <string name="pref_tts_playing_test_voice">Controlla il volume o le impostazioni del sistema di sintesi vocale se ora non senti la voce</string>
+    <string name="pref_tts_playing_test_voice">Controlla il volume o le impostazioni del sistema di sintesi vocale se non senti la voce ora</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
     <string name="pref_tts_unavailable">Non disponibile</string>
     <string name="pref_map_auto_zoom">Zoom automatico</string>
@@ -267,7 +267,7 @@
     <string name="downloader_download_all_button">Scarica tutte</string>
     <string name="downloader_downloading">Sto scaricando:</string>
     <!-- Displayed in a dialog that appears when a user tries to delete a map while the app is in the follow route mode -->
-    <string name="downloader_delete_map_while_routing_dialog">Per eliminare una mappa interrompi la navigazione</string>
+    <string name="downloader_delete_map_while_routing_dialog">Per eliminare la mappa interrompi la navigazione</string>
     <!-- PointsInDifferentMWM -->
     <string name="routing_failed_cross_mwm_building">Si possono creare solo percorsi che siano completamente contenuti nella mappa di una singola regione.</string>
     <!-- Context menu item for downloader. -->
@@ -348,7 +348,7 @@
     <string name="dialog_routing_end_not_determined">Percorso non creato. Impossibile individuare la destinazione.</string>
     <string name="dialog_routing_select_closer_end">Seleziona una destinazione più vicina a una strada</string>
     <string name="dialog_routing_change_intermediate">Impossibile individuare il punto intermedio</string>
-    <string name="dialog_routing_intermediate_not_determined">Modifica il punto intermedio</string>
+    <string name="dialog_routing_intermediate_not_determined">Per favore modifica il punto intermedio</string>
     <string name="dialog_routing_system_error">Errore di sistema</string>
     <string name="dialog_routing_application_error">Impossibile creare il percorso a causa di un errore dell\'applicazione</string>
     <string name="dialog_routing_try_again">Riprova</string>
@@ -364,7 +364,7 @@
     <string name="hide">Nascondi</string>
     <string name="categories">Categorie</string>
     <string name="history">Cronologia</string>
-    <string name="search_not_found">Oops, non è stato trovato nulla</string>
+    <string name="search_not_found">Ops, non è stato trovato nulla</string>
     <!-- The message when user did not find anything in the search. -->
     <string name="search_not_found_query">Scarica la regione in cui stai effettuando la ricerca oppure prova ad aggiungere il nome di una città/villaggio vicino.</string>
     <string name="search_history_title">Cronologia delle ricerche</string>
@@ -421,8 +421,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Accesso non effettuato</string>
     <string name="login_osm">Accedi a OpenStreetMap</string>
-    <string name="password">Password</string>
-    <string name="forgot_password">Hai dimenticato la password?</string>
     <string name="logout">Esci</string>
     <string name="edit_place">Modifica il luogo</string>
     <string name="add_language">Aggiungi una lingua</string>
@@ -441,10 +439,9 @@
     <string name="cuisine">Cucina</string>
     <string name="select_cuisine">Seleziona la cucina</string>
     <!-- login text field -->
-    <string name="email_or_username">E-mail o nome utente</string>
     <string name="editor_add_phone">Aggiungi numero</string>
     <string name="level">Piano</string>
-    <string name="downloader_delete_map_dialog">Tutte le tue modifiche alla mappa saranno cancellate insieme alla mappa</string>
+    <string name="downloader_delete_map_dialog">Tutte le tue modifiche alla mappa saranno cancellate insieme a essa</string>
     <string name="downloader_update_maps">Aggiorna mappe</string>
     <string name="downloader_mwm_migration_dialog">Per creare un percorso, devi aggiornare tutte le mappe e pianificare nuovamente il percorso.</string>
     <string name="downloader_search_field_hint">Trova la mappa</string>
@@ -539,7 +536,7 @@
     <string name="mobile_data_option_not_today">Non usare oggi</string>
     <string name="mobile_data">Internet mobile</string>
     <!-- NOTE to translators: please synchronize your translation with the English one. -->
-    <string name="mobile_data_description">L\'internet mobile è necessario per ricevere notifiche sugli aggiornamenti alle mappe e per caricare modifiche</string>
+    <string name="mobile_data_description">È necessaria una connessione dati per ricevere notifiche sugli aggiornamenti alle mappe e per caricare modifiche</string>
     <string name="mobile_data_option_never">Non usare mai</string>
     <string name="mobile_data_option_ask">Chiedi sempre</string>
     <string name="traffic_update_maps_text">Per visualizzare i dati sul traffico, le mappe devono essere aggiornate</string>
@@ -821,28 +818,16 @@
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Automatica durante la navigazione</string>
     <string name="disk_error_title">Errore di memoria</string>
-    <string name="mastodon">Mastodon</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="maps_storage_free_size">%1$s liberi su %2$s</string>
     <string name="disk_error">Impossibile creare la cartella e spostare i file nella memoria interna del dispositivo o sulla scheda SD</string>
     <string name="menu">Menu</string>
-    <string name="telegram">Telegram</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="level_value_generic">Piano: %s</string>
     <string name="move_maps_error">Errore durante lo spostamento dei file delle mappe</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="github">GitHub</string>
     <string name="hour">h</string>
-    <string name="vk">VK</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="codeberg">Codeberg</string>
     <string name="app_site_url">https://comaps.app/it/</string>
     <string name="error_enter_correct_fediverse_page">Inserisci un nome utente o un indirizzo web Mastodon valido</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Inserisci un nome utente o un indirizzo web Bluesky valido</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
@@ -853,7 +838,7 @@
     <string name="editor_level">Piano (0 è il piano terra)</string>
     <string name="error_enter_correct_level">Entra un numero di piano valido</string>
     <string name="vehicle">Veicolo</string>
-    <string name="pedestrian">A piedi</string>
+    <string name="pedestrian">Pedonale</string>
     <string name="bicycle">Bicicletta</string>
     <string name="ruler">Righello</string>
     <string name="clear">Cancella</string>
@@ -881,7 +866,7 @@
     <string name="dialog_report_error_missing_folder">Il percorso di backup selezionato non è disponibile o non ha i permessi in scrittura. Selezionare un percorso differente.</string>
     <string name="panoramax">Immagine Panoramax</string>
     <string name="open_now">Aperto adesso</string>
-    <string name="closed_now">Chiuso adesso</string>
+    <string name="closed_now">Ora chiuso</string>
     <string name="at">alle %s</string>
     <string name="osm_note_hint">In alternativa lascia una nota per la community di OpenStreetMap, così un altro utente potrà aggiungere o sistemare questo posto.</string>
     <string name="osm_note_toast">La nota verrà mandata a OpenStreetMap</string>

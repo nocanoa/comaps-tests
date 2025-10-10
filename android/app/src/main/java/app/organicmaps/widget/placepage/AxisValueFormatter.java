@@ -3,22 +3,23 @@ package app.organicmaps.widget.placepage;
 import androidx.annotation.NonNull;
 import app.organicmaps.sdk.util.StringUtils;
 import com.github.mikephil.charting.charts.BarLineChartBase;
-import com.github.mikephil.charting.formatter.DefaultValueFormatter;
+import androidx.annotation.Nullable;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
-public class AxisValueFormatter extends DefaultValueFormatter
+public class AxisValueFormatter implements IAxisValueFormatter
 {
-  private static final int DEF_DIGITS = 1;
   @NonNull
   private final BarLineChartBase mChart;
 
   public AxisValueFormatter(@NonNull BarLineChartBase chart)
   {
-    super(DEF_DIGITS);
+    super();
     mChart = chart;
   }
 
   @Override
-  public String getFormattedValue(float value)
+  public String getFormattedValue(float value, @Nullable AxisBase axisBase)
   {
     return StringUtils.nativeFormatDistance(value).toString(mChart.getContext());
   }

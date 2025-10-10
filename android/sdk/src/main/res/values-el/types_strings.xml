@@ -383,6 +383,8 @@
     <string name="type.highway.pedestrian.area">Οδός</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Γέφυρα</string>
+
+    <string name="type.highway.pedestrian.square">Πλατεία</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Σήραγγα</string>
     <string name="type.highway.primary">Οδός</string>

@@ -561,6 +561,8 @@
 "type.barrier.chain" = "Chain";
 "type.emergency" = "Emergency";
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+
+"type.highway.pedestrian.square" = "Square";
 "type.highway.primary.tunnel" = "Tunnel";
 "type.historic.anchor" = "Historic Anchor";
 "type.railway.subway_entrance.algiers" = "Subway Entrance";
@@ -1298,3 +1300,6 @@
 "type.post_office.post_partner" = "Post Partner";
 "type.barrier.wicket_gate" = "Wicket gate";
 "type.amenity.animal_shelter" = "Animal Shelter";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

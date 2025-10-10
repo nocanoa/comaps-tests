@@ -17,7 +17,6 @@ import app.organicmaps.BuildConfig;
 import app.organicmaps.R;
 import app.organicmaps.base.BaseMwmFragment;
 import app.organicmaps.sdk.Framework;
-import app.organicmaps.sdk.util.Config;
 import app.organicmaps.sdk.util.Constants;
 import app.organicmaps.sdk.util.DateUtils;
 import app.organicmaps.util.Graphics;
@@ -58,18 +57,17 @@ public class HelpFragment extends BaseMwmFragment implements View.OnClickListene
       Linkify.addLinks(osmPresentationView, Linkify.WEB_URLS);
     }
 
+    setupItem(R.id.faq, true, root);
     setupItem(R.id.news, true, root);
     setupItem(R.id.web, true, root);
-    setupItem(R.id.email, true, root);
-    setupItem(R.id.code_repo, false, root);
-    setupItem(R.id.telegram, false, root);
-    setupItem(R.id.instagram, false, root);
-    setupItem(R.id.facebook, false, root);
-    // setupItem(R.id.twitter, true, root);
+    setupItem(R.id.code_repo, true, root);
+    setupItem(R.id.mastodon, true, root);
     setupItem(R.id.matrix, true, root);
-    setupItem(R.id.mastodon, false, root);
+    setupItem(R.id.lemmy, true, root);
+    setupItem(R.id.bluesky, true, root);
+    setupItem(R.id.pixelfed, true, root);
     setupItem(R.id.openstreetmap, true, root);
-    setupItem(R.id.faq, true, root);
+    setupItem(R.id.email, true, root);
     setupItem(R.id.report, isLandscape, root);
     setupItem(R.id.copyright, false, root);
 
@@ -120,18 +118,16 @@ public class HelpFragment extends BaseMwmFragment implements View.OnClickListene
       Utils.sendTo(requireContext(), BuildConfig.SUPPORT_MAIL, getString(R.string.project_name));
     else if (id == R.id.code_repo)
       Utils.openUrl(requireActivity(), Constants.Url.CODE_REPO);
-    else if (id == R.id.telegram)
-      Utils.openUrl(requireActivity(), getString(R.string.telegram_url));
-    else if (id == R.id.instagram)
-      Utils.openUrl(requireActivity(), getString(R.string.instagram_url));
-    else if (id == R.id.facebook)
-      Utils.showFacebookPage(requireActivity());
-    //    else if (id == R.id.twitter)
-    //      Utils.openUrl(requireActivity(), Constants.Url.TWITTER);
-    else if (id == R.id.matrix)
-      Utils.openUrl(requireActivity(), Constants.Url.MATRIX);
     else if (id == R.id.mastodon)
       Utils.openUrl(requireActivity(), Constants.Url.MASTODON);
+    else if (id == R.id.matrix)
+      Utils.openUrl(requireActivity(), Constants.Url.MATRIX);
+    else if (id == R.id.lemmy)
+      Utils.openUrl(requireActivity(), Constants.Url.LEMMY);
+    else if (id == R.id.bluesky)
+      Utils.openUrl(requireActivity(), Constants.Url.BLUESKY);
+    else if (id == R.id.pixelfed)
+      Utils.openUrl(requireActivity(), Constants.Url.PIXELFED);
     else if (id == R.id.openstreetmap)
       Utils.openUrl(requireActivity(), getString(R.string.osm_wiki_about_url));
     else if (id == R.id.faq)

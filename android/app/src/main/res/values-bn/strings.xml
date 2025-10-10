@@ -35,9 +35,6 @@
     <string name="wikimedia_commons">উইকিমিডিয়া কমন্স</string>
     <string name="self_service">স্ব-সেবা</string>
     <string name="panoramax">Panoramax ছবি</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="mastodon">মাস্টোডন</string>
-    <string name="bluesky">ব্লুস্কাই</string>
     <string name="saved">সংরক্ষণ</string>
     <string name="not_enough_free_space_on_sdcard">এই অ্যাপটি ব্যবহার করার জন্য অনুগ্রহ করে SD কার্ড অথবা USB স্টোরেজ থেকে যায়গা মুক্ত করুন</string>
     <string name="download_resources_continue">মানচিত্রে যান</string>
@@ -121,7 +118,6 @@
     <string name="email">ইমেইল</string>
     <string name="off">বন্ধ</string>
     <string name="pref_map_style_title">নাইট মোড</string>
-    <string name="telegram">টেলিগ্রাম</string>
     <string name="auto">স্বয়ংক্রিয়</string>
     <string name="pref_map_3d_title">দৃষ্টিকোণ দৃশ্য</string>
     <string name="pref_map_3d_buildings_title">3D বিল্ডিং</string>
@@ -136,18 +132,11 @@
     <string name="placepage_distance">দুরত্ব</string>
     <string name="menu">মেনু</string>
     <string name="news">খবর</string>
-    <string name="github">গিটহাব</string>
-    <string name="matrix">মেট্রিক্স</string>
-    <string name="facebook">ফেসবুক</string>
-    <string name="twitter">এক্স (টুইটার)</string>
-    <string name="vk">ভিকে</string>
     <string name="pref_tts_playing_test_voice">যদি এখন আওয়াজ শুনতে না পান, তাহলে আওয়াজ অথবা সিস্টেমের \"টেক্সট-টু-স্পিচ\" সেটিংস পরীক্ষা করুন</string>
     <string name="website">ওয়েবসাইট</string>
-    <string name="openstreetmap">ওপেনস্ট্রিটম্যাপ</string>
     <string name="google_play_services">গুগল দ্বারা মিশ্রিত অবস্থান সেবা</string>
     <string name="search_show_on_map">মানচিত্রে দেখুন</string>
     <string name="feedback">প্রতিক্রিয়া</string>
-    <string name="instagram">ইনস্টাগ্রাম</string>
     <string name="pref_use_google_play">একটি বদ্ধ পরিষেবা যা আপনার অবস্থান আরও সঠিকভাবে নির্ধারণের জন্য জিপিএস, ওয়াইফাই, সেলুলার নেটওয়ার্ক ইত্যাদির সমন্বয় করে। এটি গুগলের সার্ভারের সাথে সংযুক্ত হতে পারে।</string>
     <string name="routing_requires_all_map">একটি রুট তৈরি করার জন্য, আমাদের আপনার অবস্থান থেকে আপনার গন্তব্য পর্যন্ত সমস্ত মানচিত্র ডাউনলোড এবং আপডেট করতে হবে।</string>
     <string name="rate_the_app">অ্যাপটি রেট করুন</string>
@@ -244,7 +233,6 @@
     <string name="closes_in">%s-এর মধ্যে বন্ধ হবে</string>
     <string name="no_osm_account">আপনার ওপেনস্ট্রিটম্যাপ অ্যাকাউন্ট নেই?</string>
     <string name="logout">লগ আউট করুন</string>
-    <string name="forgot_password">পাসওয়ার্ড ভুলে গেছেন?</string>
     <string name="edit_place">স্থানটি পরিবর্তন করুন</string>
     <string name="add_language">একটি ভাষা যোগ করুন</string>
     <string name="street">রাস্তা</string>
@@ -285,7 +273,6 @@
     <string name="history">ইতিহাস</string>
     <string name="p2p_start">চালু করুন</string>
     <string name="editor_time_from">থেকে</string>
-    <string name="password">পাসওয়ার্ড</string>
     <string name="day_off">বন্ধ</string>
     <string name="closed">বন্ধ</string>
     <string name="social_media">সামাজিক মাধ্যম</string>
@@ -306,7 +293,6 @@
     <string name="choose_street">একটি রাস্তা বেছে নিন</string>
     <string name="cuisine">রন্ধনপ্রণালী</string>
     <string name="select_cuisine">রন্ধনপ্রণালী নির্বাচন করুন</string>
-    <string name="email_or_username">ইমাইল বা ইউইজারনেম</string>
     <string name="editor_add_phone">ফোন নম্বর যোগ করুন</string>
     <string name="downloader_update_maps">মানচিত্রগুলি আপডেট করুন</string>
     <string name="downloader_mwm_migration_dialog">একটি রুট তৈরি করতে, আপনাকে সমস্ত মানচিত্র আপডেট করতে হবে এবং তারপর আবার রুট পরিকল্পনা করতে হবে।</string>

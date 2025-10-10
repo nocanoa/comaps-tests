@@ -390,4 +390,55 @@
   <style name="MwmWidget.SwitchPreferenceCompat" parent="Preference.SwitchPreferenceCompat.Material">
     <item name="android:widgetLayout">@layout/preference_switch</item>
   </style>
+
+  <style name="MwmWidget.M3.Button" parent="Widget.Material3.Button">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">?accentButtonTextColor</item>
+    <item name="backgroundTint">@null</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="cornerRadius">20dp</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="MwmWidget.M3.Button.Primary" parent="@style/MwmWidget.M3.Button">
+    <item name="backgroundTint">?colorSecondary</item>
+  </style>
+
+  <style name="MwmWidget.M3.Button.Secondary" parent="@style/Widget.Material3.Button.OutlinedButton">
+    <item name="android:textSize">16sp</item>
+    <item name="strokeColor">?colorSecondary</item>
+    <item name="android:textColor">?colorSecondary</item>
+  </style>
+
+  <style name="MwmWidget.M3.FAB.Primary" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+    <item name="shapeAppearance">@style/ShapeAppearanceOverlay.Material3.FloatingActionButton</item>
+    <item name="rippleColor">@null</item>
+  </style>
+
+  <style name="MwmWidget.M3.FAB.MapButton" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="shapeAppearance">@style/ShapeAppearanceOverlay.Material3.FloatingActionButton</item>
+    <item name="backgroundTint">?menuBackground</item>
+    <item name="tint">?iconTint</item>
+    <item name="fabCustomSize">@dimen/map_button_size</item>
+    <item name="maxImageSize">@dimen/map_button_icon_size</item>
+    <item name="elevation">0dp</item>
+    <item name="pressedTranslationZ">0dp</item>
+    <item name="hoveredFocusedTranslationZ">0dp</item>
+  </style>
+
+  <style name="MwmWidget.M3.FAB.MapButton.Square">
+    <item name="backgroundTint">?menuBackground</item>
+  </style>
+
+  <style name="MwmWidget.M3.FAB.MapButton.Zoom">
+    <item name="maxImageSize">34dp</item>
+  </style>
+
+  <style name="MwmWidget.M3.FAB.MapButton.Bottom">
+    <item name="android:maxWidth">@dimen/map_buttons_bottom_max_width</item>
+    <item name="android:padding">@dimen/nav_frame_padding</item>
+  </style>
 </resources>

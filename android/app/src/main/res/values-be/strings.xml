@@ -419,8 +419,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Не ўвайшлі ў сістэму</string>
     <string name="login_osm">Увайсці ў OpenStreetMap</string>
-    <string name="password">Пароль</string>
-    <string name="forgot_password">Забылі пароль?</string>
     <string name="logout">Выйсці</string>
     <string name="edit_place">Правіць месца</string>
     <string name="add_language">Дадаць мову</string>
@@ -439,7 +437,6 @@
     <string name="cuisine">Кухня</string>
     <string name="select_cuisine">Выбраць кухню</string>
     <!-- login text field -->
-    <string name="email_or_username">Email або імя карыстальніка</string>
     <string name="level">Паверх</string>
     <string name="downloader_delete_map_dialog">Разам з картай будуць выдалены і ўсе вашы праўкі карты.</string>
     <string name="downloader_update_maps">Абнавіць карты</string>
@@ -809,18 +806,8 @@
     <string name="uri_open_location_failed">Не ўсталявана праграма, якая можа адкрыць месцазнаходжанне</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Аўто ў навігацыі</string>
-    <string name="matrix">[Matrix]</string>
     <string name="move_maps_error">Памылка перамяшчэння файлаў карты</string>
     <string name="menu">Меню</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="facebook">Facebook</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="vk">VK</string>
-    <string name="telegram">Telegram</string>
-    <string name="instagram">Instagram</string>
-    <string name="github">GitHub</string>
     <string name="level_value_generic">Узровень: %s</string>
     <string name="disk_error_title">Памылка дыска</string>
     <string name="error_enter_correct_twitter_page">Увядзіце сапраўднае імя карыстальніка або спасылку Twitter</string>

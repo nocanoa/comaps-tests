@@ -89,21 +89,22 @@
     android:paddingStart="0dp"
     android:paddingEnd="@dimen/altitude_chart_container_padding_left">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/btn__cancel"
-      style="@style/MwmWidget.Button"
+      style="@style/Widget.Material3.Button.TextButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center_vertical"
       android:text="@string/cancel"
-      android:textColor="?android:attr/textColorPrimary"
+      android:textColor="?android:textColorPrimary"
+      android:textAppearance="@style/MwmTextAppearance.Body1"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/btn__plan"
-      style="@style/MwmWidget.Button.Primary"
+      style="@style/MwmWidget.M3.Button.Primary"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center_vertical"

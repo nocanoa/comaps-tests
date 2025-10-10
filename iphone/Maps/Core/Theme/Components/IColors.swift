@@ -32,6 +32,7 @@ let alpha100: CGFloat = 1.0
   var linkBlueDark: UIColor { get }
   var buttonRed: UIColor { get }
   var buttonRedHighlighted: UIColor { get }
+  var black: UIColor { get }
   var blackPrimaryText: UIColor { get }
   var blackSecondaryText: UIColor { get }
   var blackHintText: UIColor { get }

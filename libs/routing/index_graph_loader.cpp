@@ -182,11 +182,11 @@ bool ReadSpeedCamsFromMwm(MwmValue const & mwmValue, SpeedCamerasMapT & camerasM
   }
   catch (Reader::OpenException const &)
   {
-    LOG(LWARNING, (CAMERAS_INFO_FILE_TAG "section not found"));
+    LOG(LWARNING, (CAMERAS_INFO_FILE_TAG "section not found in", mwmValue.GetCountryFileName()));
   }
   catch (Reader::Exception const & e)
   {
-    LOG(LERROR, ("Error while reading", CAMERAS_INFO_FILE_TAG, "section.", e.Msg()));
+    LOG(LERROR, ("Error while reading", CAMERAS_INFO_FILE_TAG, "section in", mwmValue.GetCountryFileName(), ":", e.Msg()));
   }
   return false;
 }
@@ -202,11 +202,11 @@ bool ReadRoadAccessFromMwm(MwmValue const & mwmValue, VehicleType vehicleType, R
   }
   catch (Reader::OpenException const &)
   {
-    LOG(LWARNING, (ROAD_ACCESS_FILE_TAG, "section not found"));
+    LOG(LWARNING, (ROAD_ACCESS_FILE_TAG, "section not found in", mwmValue.GetCountryFileName()));
   }
   catch (Reader::Exception const & e)
   {
-    LOG(LERROR, ("Error while reading", ROAD_ACCESS_FILE_TAG, "section.", e.Msg()));
+    LOG(LERROR, ("Error while reading", ROAD_ACCESS_FILE_TAG, "section in", mwmValue.GetCountryFileName(), ":", e.Msg()));
   }
   return false;
 }
@@ -236,11 +236,11 @@ bool ReadRoadPenaltyFromMwm(MwmValue const & mwmValue, VehicleType vehicleType, 
   catch (Reader::OpenException const &)
   {
     // This is expected for older mwm files - not an error
-    LOG(LDEBUG, (ROAD_PENALTY_FILE_TAG, "section not found - using legacy penalty system"));
+    LOG(LINFO, (ROAD_PENALTY_FILE_TAG, "section not found in", mwmValue.GetCountryFileName(), "- using legacy penalty system"));
   }
   catch (Reader::Exception const & e)
   {
-    LOG(LERROR, ("Error while reading", ROAD_PENALTY_FILE_TAG, "section.", e.Msg()));
+    LOG(LERROR, ("Error while reading", ROAD_PENALTY_FILE_TAG, "section in", mwmValue.GetCountryFileName(), ":", e.Msg()));
   }
   return false;
 }

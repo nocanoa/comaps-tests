@@ -30,11 +30,13 @@ git clone --recurse-submodules --shallow-submodules https://codeberg.org/comaps/
 Go into the cloned repository:
 ```bash
 cd comaps
+./configure.sh
 ```
 
 Install required packages (Ubuntu/Debian):
 ```bash
-sudo apt install build-essential cmake qt6-base-dev qt6-svg-dev qt6-positioning-dev libicu-dev libfreetype-dev libharfbuzz-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev optipng python3-protobuf
+sudo apt install build-essential cmake qt6-base-dev qt6-svg-dev qt6-positioning-dev libicu-dev libfreetype-dev libharfbuzz-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev optipng python3-pip ninja-build
+pip install "protobuf<3.21" --break-system-packages
 ```
 
 If you plan to publish the app privately in stores check [special options](#special-cases-options).
@@ -245,7 +247,7 @@ Check if you have a system-wide Java Runtime Environment (JRE) installed:
 java -version
 ```
 
-If your system doesn't have a JRE installed or Java version is less than 17 (OpenJDK)
+If your system doesn't have a JRE installed or Java version is less than 21 (OpenJDK)
 or you want command line builds to use a JRE version bundled with the Studio
 then set the `JAVA_HOME` environment variable:
 
@@ -318,7 +320,7 @@ If you are low on RAM, disk space or traffic there are ways to reduce system req
 
 Android Studio has issues in parsing the C++ part of the project, please let us know if you know how to resolve it. As a workaround, for working C++ suggestions, you may use:
 
-- [Qt Creator](https://www.qt.io/product/development-tools)
+- [Qt Creator](https://www.qt.io/product/development-tools), see [setup/usage instructions](QT_CREATOR.md)
 - [Xcode](https://developer.apple.com/xcode/)
 - [CLion](https://www.jetbrains.com/clion/)
 
@@ -398,6 +400,16 @@ Select "CoMaps" product scheme.
 - Choose either "iPhone _" or "iPad _" to run in the Simulator.
 
 Compile and run the project ("Product" → "Run").
+
+### CarPlay
+To test CarPlay, simply select "I/O" → "External Displays" → "CarPlay" in the Simulator
+
+### Spoofing GPS
+The Simulator supports setting a specific location or spoofing a GPX track. This is especially handy when testing CarPlay
+
+To select an Apple predetermined track or specific custom location, choose "Features" → "Location" in the Simulator
+
+To simulate a custom GPX track use `python3 tools/python/ios_simulator_load_gpx.py <path to your gpx>` which is a wrapper for `xcrun simctl location`. Default values are 60 km/h and 0.1s update intervals, but can be customized
 
 ## Desktop app
 

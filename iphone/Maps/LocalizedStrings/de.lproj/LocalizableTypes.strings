@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Brücke";
+"type.highway.pedestrian.square" = "Platz";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Fußgängertunnel";
@@ -1484,3 +1485,7 @@
 "type.post_office.post_partner" = "Postpartner";
 "type.barrier.wicket_gate" = "Schlupfpforte";
 "type.amenity.animal_shelter" = "Tierheim";
+"type.office.security" = "Büro des Sicherheitsdienstes";
+"type.power.portal" = "Abspannportal";
+"type.building.guardhouse" = "Pförtnerhäuschen";
+"type.shop.lighting" = "Lampenladen";

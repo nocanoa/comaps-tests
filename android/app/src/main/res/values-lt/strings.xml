@@ -232,7 +232,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Paaukoti</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Paremti projektą</string>
+    <string name="how_to_support_us">Prisidėti prie „CoMaps“ tobulinimo</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Autorių teisės</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -413,8 +413,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Neprisijungta</string>
     <string name="login_osm">Prisijungti prie „OpenStreetMap“</string>
-    <string name="password">Slaptažodis</string>
-    <string name="forgot_password">Pamiršote slaptažodį?</string>
     <string name="logout">Atsijungti</string>
     <string name="edit_place">Taisyti vietą</string>
     <string name="add_language">Pridėti kalbą</string>
@@ -433,7 +431,6 @@
     <string name="cuisine">Virtuvė</string>
     <string name="select_cuisine">Pasirinkite virtuvę</string>
     <!-- login text field -->
-    <string name="email_or_username">El. paštas arba naudotojo vardas</string>
     <string name="editor_add_phone">Pridėti telefono numerį</string>
     <string name="level">Aukštas</string>
     <string name="downloader_delete_map_dialog">Visi jūsų žemėlapio pakeitimai bus pašalinti kartu su žemėlapiu</string>
@@ -766,17 +763,7 @@
     <string name="category_secondhand">Naudotos prekės</string>
     <string name="pref_tts_street_names_title">Sakyti gatvių pavadinimus</string>
     <string name="pref_tts_street_names_description">Įjungus šią parinktį, bus įvardijamos gatvės ir išvažiavimai, į kuriuos siūloma sukti.</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="level_value_generic">Aukštas: %s</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="vk">VK</string>
     <string name="pref_tts_test_voice_title">Išbandyti balso instrukcijas</string>
     <string name="pref_tts_playing_test_voice">Patikrinkite sistemos kalbos sintezės garsumo nustatymus, jeigu dabar negirdite balso</string>
     <plurals name="tracks">
@@ -822,9 +809,7 @@
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="panoramax">Panoramax vaizdas</string>
     <string name="saved">Išsaugota</string>
-    <string name="codeberg">Codeberg</string>
     <string name="ruler">Liniuotė</string>
-    <string name="bluesky">Bluesky</string>
     <string name="pref_left_button_title">Kairiojo mygtuko funkcija</string>
     <string name="pref_backup_now_summary_empty_lists">Neturite jokių žymių ar trasų atsarginei kopijai sudaryti</string>
     <string name="pref_backup_interval_title">Automatinis atsarginis kopijavimas</string>
@@ -861,4 +846,11 @@
     <string name="open_now">Dabar atidaryta</string>
     <string name="closed_now">Dabar uždaryta</string>
     <string name="at">%s val.</string>
+    <string name="share_track">Dalintis trasa</string>
+    <string name="delete_track_dialog_title">Pašalinti %s?</string>
+    <string name="osm_note_hint">Arba, jeigu norite, galite palikti pastabą „OpenStreetMap“ bendruomenei, kad kas nors kitas pridėtų ar pakoreguotų šią vietą.</string>
+    <string name="hours_confirmed_time_ago">Patvirtinta %s</string>
+    <string name="existence_confirmed_time_ago">Egzistavimas patvirtintas %s</string>
+    <string name="pref_tts_no_system_tts_short">Neaptikta jokia šnekos sintezės sistema, patikrinkite programėlės nustatymus</string>
+    <string name="osm_note_toast">Pastaba bus nusiųsta į „OpenStreetMap“</string>
 </resources>

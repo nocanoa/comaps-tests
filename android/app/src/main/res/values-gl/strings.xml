@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="mastodon">Mastodon</string>
     <string name="move_maps">Mover mapas?</string>
     <string name="login">Acceder</string>
     <string name="medicine">Medicina</string>
@@ -21,9 +20,7 @@
     <string name="day_off">Pechado</string>
     <string name="day">d</string>
     <string name="news">Noticias</string>
-    <string name="github">GitHub</string>
     <string name="pink">Rosa</string>
-    <string name="facebook">Facebook</string>
     <string name="accept">Aceptar</string>
     <string name="downloader_queued">En cola</string>
     <string name="red">Vermello</string>
@@ -114,10 +111,8 @@
     <string name="measurement_units">Unidades de medida</string>
     <string name="continue_button">Continuar</string>
     <string name="category_pharmacy">Farmacia</string>
-    <string name="telegram">Telegram</string>
     <string name="later">Máis tarde</string>
     <string name="no">Non</string>
-    <string name="vk">VK</string>
     <string name="p2p_start">Empezar</string>
     <string name="parkings">Estacionamento</string>
     <string name="not_signed_in">Non se iniciou sesión</string>
@@ -141,7 +136,6 @@
     <string name="history">Historial</string>
     <string name="dialog_routing_location_turn_on">Activar servizos de localización</string>
     <string name="prefs_group_information">Información</string>
-    <string name="password">Contrasinal</string>
     <string name="placepage_add_business_button">Engadir organización</string>
     <string name="category_atm">Caixeiro automático</string>
     <string name="prefs_group_route">Navegación</string>
@@ -223,7 +217,6 @@
     <string name="pref_tts_unavailable">Non dispoñible</string>
     <string name="pref_map_auto_zoom">Zum automático</string>
     <string name="search_show_on_map">Ver no mapa</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="feedback">Comentarios</string>
     <string name="rate_the_app">Valore a aplicación</string>
     <string name="faq">Preguntas frecuentes</string>
@@ -304,7 +297,6 @@
     <string name="closes_in">Pecha en %s</string>
     <string name="no_osm_account">Non ten conta en OpenStreetMap?</string>
     <string name="login_osm">Acceder a OpenStreetMap</string>
-    <string name="forgot_password">Esqueceu o seu contrasinal?</string>
     <string name="logout">Pechar sesión</string>
     <string name="edit_place">Editar o lugar</string>
     <string name="add_language">Engadir un idioma</string>
@@ -313,7 +305,6 @@
     <string name="street">Rúa</string>
     <string name="empty_street_name_error">Por favor, introduza un nome de rúa</string>
     <string name="choose_language">Elixir un idioma</string>
-    <string name="email_or_username">Correo electrónico ou usuario</string>
     <string name="level_value_generic">Nivel: %s</string>
     <string name="downloader_delete_map_dialog">Todas as edicións feitas ao mapa eliminaranse xunto con este</string>
     <string name="choose_street">Elixa unha cale</string>
@@ -497,11 +488,7 @@
     <string name="share">Compartir</string>
     <string name="website">Sitio web</string>
     <string name="downloader_update_map">Actualizar mapa</string>
-    <string name="matrix">[Matrix]</string>
     <string name="yes">Si</string>
-    <string name="instagram">Instagram</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="help">Axuda</string>
     <string name="downloader_downloaded_subtitle">Descargado</string>
     <string name="kilometers_per_hour">km/h</string>
@@ -580,7 +567,6 @@
     <string name="app_site_url">https://comaps.app/gl/</string>
     <string name="about_help">Sobre e Axuda</string>
     <string name="bicycle">En bicicleta</string>
-    <string name="bluesky">Bluesky</string>
     <string name="vehicle">Vehículo</string>
     <string name="pedestrian">A pé</string>
     <string name="clear">Limpar</string>
@@ -590,7 +576,6 @@
     <string name="error_enter_correct_level">Escribe un número de piso válido</string>
     <string name="error_enter_correct_fediverse_page">Escribe un identificador de Mastodon válido ou enderezo web</string>
     <string name="error_enter_correct_bluesky_page">Escribe un identificador válido en Bluesky ou enderezo web</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_backup_summary">Facer copia automatica nun cartafol do dispositivo</string>
     <string name="pref_backup_now_title">Facer copia agora</string>
     <string name="pref_backup_now_summary_progress">Facendo a copia…</string>
@@ -621,4 +606,5 @@
     <string name="hours_confirmed_time_ago">Confirmado %s</string>
     <string name="existence_confirmed_time_ago">Existencia confirmada %s</string>
     <string name="share_track">Compartir ruta</string>
+    <string name="pref_tts_no_system_tts_short">Non se atopa un motor texto-a-fala, comproba os axustes da app</string>
 </resources>

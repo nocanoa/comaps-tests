@@ -410,8 +410,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">로그인되지 않음</string>
     <string name="login_osm">OpenStreetMap에 로그인</string>
-    <string name="password">암호</string>
-    <string name="forgot_password">암호를 잊으 셨나요?</string>
     <string name="logout">로그 아웃</string>
     <string name="edit_place">장소 편집</string>
     <string name="add_language">언어 추가</string>
@@ -428,7 +426,6 @@
     <string name="cuisine">요리</string>
     <string name="select_cuisine">요리 선택</string>
     <!-- login text field -->
-    <string name="email_or_username">이메일 또는 사용자 이름</string>
     <string name="level">층</string>
     <string name="downloader_delete_map_dialog">모든 지도의 변경 사항은 지도와 함께 삭제됩니다.</string>
     <string name="downloader_update_maps">지도 업데이트</string>
@@ -784,11 +781,9 @@
     <string name="translated_om_site_url">https://comaps.app/</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="wikimedia_commons">위키미디어 공용</string>
     <string name="panoramax">Panoramax 사진</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="saved">저장됨</string>
 </resources>

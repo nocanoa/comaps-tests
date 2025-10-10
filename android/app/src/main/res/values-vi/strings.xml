@@ -410,8 +410,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Chưa đăng nhập</string>
     <string name="login_osm">Đăng nhập vào OpenStreetMap</string>
-    <string name="password">Mật khẩu</string>
-    <string name="forgot_password">Quên mật khẩu?</string>
     <string name="logout">Đăng xuất</string>
     <string name="edit_place">Chỉnh sửa địa điểm</string>
     <string name="add_language">Thêm ngôn ngữ</string>
@@ -428,7 +426,6 @@
     <string name="cuisine">Ẩm thực</string>
     <string name="select_cuisine">Chọn Ẩm thực</string>
     <!-- login text field -->
-    <string name="email_or_username">Email hoặc tên người dùng</string>
     <string name="level">Tầng</string>
     <string name="downloader_delete_map_dialog">Tất cả những thay đổi của bản đồ sẽ bị xóa cùng với bản đồ đó.</string>
     <string name="downloader_update_maps">Cập nhật các bản đồ</string>
@@ -776,7 +773,6 @@
     <string name="nav_auto">Tự động điều hướng</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="app_site_url">https://comaps.app/</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="translated_om_site_url">https://comaps.app/</string>

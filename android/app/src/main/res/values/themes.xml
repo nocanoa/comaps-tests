@@ -14,7 +14,6 @@
     <item name="android:textColorSecondary">@color/text_dark_subtitle</item>
     <item name="android:windowBackground">?windowBackgroundForced</item>
     <item name="android:colorPrimaryDark">@color/bg_primary_dark</item>
-    <item name="colorPrimaryVariant">@color/bg_primary_dark</item>
     <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     <item name="android:fontFamily">@string/robotoRegular</item>
     <item name="android:colorBackgroundCacheHint">@null</item>
@@ -30,7 +29,6 @@
     <item name="colorPrimary">@color/bg_primary</item>
     <item name="colorControlNormal">?secondary</item>
     <item name="colorAccent">@color/base_accent</item>
-    <item name="colorSecondary">@color/base_accent</item>
     <item name="colorAccentTransparent">@color/base_accent_transparent</item>
     <item name="colorBtnHighlight">@color/white_38</item>
     <item name="panel">@color/bg_panel</item>
@@ -132,6 +130,13 @@
     <item name="bottomSheetStyle">@style/MwmWidget.BottomSheet</item>
     <!-- Theme used for bottom sheet dialog components -->
     <item name="bottomSheetDialogTheme">@style/MwmTheme.BottomSheetDialog</item>
+
+    <!-- M3 colors -->
+    <item name="colorPrimaryVariant">@color/bg_primary_dark</item>
+    <item name="colorSecondary">@color/base_accent</item>
+    <item name="colorPrimaryContainer">?colorSecondary</item>
+    <item name="colorOnPrimaryContainer">?android:textColorPrimaryInverse</item>
+
   </style>
 
     <!-- Night theme -->
@@ -148,7 +153,6 @@
       <item name="android:textColorSecondary">@color/text_light_subtitle</item>
       <item name="android:windowBackground">?windowBackgroundForced</item>
       <item name="android:colorPrimaryDark">@color/bg_primary_dark_night</item>
-      <item name="colorPrimaryVariant">@color/bg_primary_dark_night</item>
       <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
       <item name="android:fontFamily">@string/robotoRegular</item>
       <item name="android:colorBackgroundCacheHint">@null</item>
@@ -166,7 +170,6 @@
       <item name="colorPrimary">@color/bg_primary_night</item>
       <item name="colorControlNormal">?secondary</item>
       <item name="colorAccent">@color/base_accent_night</item>
-      <item name="colorSecondary">@color/base_accent_night</item>
       <item name="colorAccentTransparent">@color/base_accent_transparent</item>
       <item name="colorBtnHighlight">@color/white_24</item>
       <item name="panel">@color/bg_panel_night</item>
@@ -252,6 +255,12 @@
 
       <item name="bottomSheetStyle">@style/MwmWidget.BottomSheet</item>
       <item name="bottomSheetDialogTheme">@style/MwmTheme.BottomSheetDialog</item>
+
+      <!-- M3 colors -->
+      <item name="colorPrimaryVariant">@color/bg_primary_dark_night</item>
+      <item name="colorSecondary">@color/base_accent_night</item>
+      <item name="colorPrimaryContainer">?colorSecondary</item>
+      <item name="colorOnPrimaryContainer">?android:textColorPrimaryInverse</item>
     </style>
 
   <style name="MwmTheme" parent="MwmTheme.Base"/>

@@ -28,7 +28,6 @@
     <string name="about_developed_by_enthusiasts">Vollständig open-source, nöd gwünnorientiert, transparenti Entscheidigsfindig und Finanze.</string>
     <string name="dialog_routing_change_start_or_end">Bitte pass din Startpunkt oder dis Ziil a.</string>
     <string name="daily">Täglich</string>
-    <string name="email_or_username">E-Mail oder Benutzername</string>
     <string name="autodownload">Charte automatisch abelade</string>
     <string name="login_osm_presentation">OpenStreetMap.org (OSM) isch es Gmeinschaftsprojekt zum Erstelle vonere freie und offene Charte. Es isch d Hauptquelle für Chartedate in CoMaps und funktioniert ähnlich wie Wikipedia. Du chasch Ort hinzuefüege oder bearbeite, wo denn Millione vo Nutzende uf de ganze Welt zur Verfüegig stönd. \nTritt de Gmeinschaft bii und hilf mit, d Charte für alli besser z mache!</string>
     <string name="editor_building_levels">Etage (inkl. Erdgschoss, ohni Dach)</string>
@@ -130,7 +129,6 @@
     <string name="app_tip_05">Scho gwüsst, dass du din aktuelle Standort uf de Charte uuswähle chasch?</string>
     <string name="track_recording_toast_nothing_to_save">Route isch leer – nüt z speichere</string>
     <string name="nav_auto">Auto i de Navigation</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_title">Iistellig lingge Chnopf</string>
     <string name="pref_backup_now_summary">Sicherig sofort erstelle</string>
     <string name="pref_backup_status_summary_success">Letschti erfolgriichi Sicherig</string>
@@ -235,24 +233,13 @@
     <string name="menu">Menü</string>
     <string name="website">Websiite</string>
     <string name="news">Neuigkeite</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="bluesky">Bluesky</string>
     <string name="panoramax">Panoramax Bild</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="feedback">Feedback</string>
     <string name="rate_the_app">Bewert d App</string>
     <string name="help">Hilf</string>
     <string name="faq">Hüüfigi Frage und Antworte</string>
     <string name="donate">Spende</string>
-    <string name="how_to_support_us">Unterstütz s Projekt</string>
+    <string name="how_to_support_us">Freiwillig helfe und CoMaps verbessere</string>
     <string name="copyright">Copyright</string>
     <string name="report_a_bug">App-Fehler melde</string>
     <string name="compass_calibration_recommended">Verbesser d Pfiilrichtig, indem du s Telefon inere Achterbewegig bewegsch, zum de Kompass z kalibriere.</string>
@@ -368,8 +355,6 @@
     <string name="login">Bi OpenStreetMap aamelde</string>
     <string name="not_signed_in">Nöd aagmolde</string>
     <string name="login_osm">Bi OpenStreetMap aamelde</string>
-    <string name="password">Passwort</string>
-    <string name="forgot_password">Passwort vergesse?</string>
     <string name="logout">Abmelde</string>
     <string name="edit_place">Iitrag bearbeite</string>
     <string name="add_language">E Spraach hinzuefüege</string>
@@ -617,4 +602,9 @@
     <string name="at">am %s</string>
     <string name="osm_note_hint">Oder hinterlaa alternativ en Hiiwiis für d OpenStreetMap Community, sodass öpper andersch en Ort hinzuefüege oder korrigiere cha.</string>
     <string name="osm_note_toast">En Hiiwiis wird zu OpenStreetMap gschickt</string>
+    <string name="share_track">Strecki teile</string>
+    <string name="delete_track_dialog_title">%s lösche?</string>
+    <string name="existence_confirmed_time_ago">Existenz bestätigt %s</string>
+    <string name="hours_confirmed_time_ago">Bestätigt %s</string>
+    <string name="pref_tts_no_system_tts_short">Keis Text-to-Speech-Modul gfunde, überprüef d App-Iistellige</string>
 </resources>

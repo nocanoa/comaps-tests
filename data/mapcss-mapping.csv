@@ -304,7 +304,8 @@ waterway|dam;200;
 amenity|charging_station|motorcar;[amenity=charging_station][motorcar?];;name;int_name;201;
 leisure|golf_course;202;
 highway|service|bridge;[highway=service][bridge?];;name;int_name;203;
-highway|pedestrian|square;[highway=pedestrian][place=square];;name;int_name;204;
+# ~250K usages.
+power|portal;204;
 # Marsh 500K usages, wet_meadow 160K
 natural|wetland|marsh;[natural=wetland][wetland=marsh],[natural=wetland][wetland=wet_meadow],[natural=wetland][wetland=dambo];;;;205;
 leisure|stadium;206;
@@ -392,7 +393,7 @@ power|generator|gas;[power=generator][generator:source=gas];;name;int_name;285;
 sport|athletics;286;
 landuse|railway;287;
 leisure|slipway;288;
-tourism|caravan_site;289;
+tourism|caravan_site;[tourism=caravan_site],[tourism=camp_site][caravans=yes],[tourism=camp_site][motorhome=yes];;name;int_name;289;
 place|state;290;
 power|generator|hydro;[power=generator][generator:source=hydro];;name;int_name;291;
 railway|subway|tunnel;[railway=subway][tunnel?];;name;int_name;292;
@@ -415,7 +416,7 @@ mountain_pass;[mountain_pass];;name;int_name;307;
 highway|raceway;308;
 highway|primary|tunnel;[highway=primary][tunnel?];;name;int_name;309;
 highway|primary_link|bridge;[highway=primary_link][bridge?];;name;int_name;310;
-man_made|tower|communication;[man_made=tower][tower:type=communication],[man_made=mast][tower:type=communication];;name;int_name;311;
+man_made|tower|communication;[man_made=tower][tower:type=communication];;name;int_name;311;
 sport|equestrian;312;
 tourism|information|office;[tourism=information][information=office];;name;int_name;313;
 deprecated:highway|footway|hiking:04.2024;[highway=footway][sac_scale=hiking];x;name;int_name;314;highway|path
@@ -444,7 +445,7 @@ sport|cricket;334;
 sport|bowls;335;
 highway|path|tunnel;[highway=path][tunnel?],[highway=path][location=underground];;name;int_name;336;
 man_made|breakwater;337;
-deprecated:amenity|parking|permissive|fee:01.2020;[amenity=parking][access=permissive][fee?];x;name;int_name;338;amenity|parking|permissive
+man_made|mast|communication;[man_made=mast][tower:type=communication];;name;int_name;338;
 # -utility includes all usage=industrial/military/test/science/freight (see replaced_tags.txt) incl. w/ service=spur, but not w/ other service= values.
 # TODO: add [key=value1|value2|etc] (and [key!=value1|value2|etc]) support to avoid referring to replaced_tags.txt.
 railway|rail|utility;[railway=rail][usage=utility][!service],[railway=rail][usage=utility][service=spur];;name;int_name;339;
@@ -873,8 +874,10 @@ barrier|kissing_gate;749;
 barrier|turnstile;750;
 landuse|industrial|mine;[landuse=industrial][industrial=mine];;name;int_name;751;
 landuse|flowerbed;752;
-deprecated|deprecated;753;x
-deprecated|deprecated;754;x
+# Used for barrier|yes in OM
+deprecated|OM;753;x
+# Used for barrier|wicket_gate in OM
+deprecated|OM;754;x
 deprecated|deprecated;755;x
 deprecated|deprecated;756;x
 deprecated|deprecated;757;x
@@ -996,7 +999,7 @@ deprecated|deprecated;871;x
 deprecated|deprecated;872;x
 area:highway|pedestrian;873;
 area:highway|unclassified;874;
-deprecated|deprecated;875;x
+highway|pedestrian|square;[highway=pedestrian][place=square];;;;875;
 deprecated|deprecated;876;x
 area:highway|cycleway;877;
 entrance|exit;878;
@@ -1752,3 +1755,6 @@ post_office|post_partner;1626;
 amenity|ranger_station;1627;
 leisure|escape_game;1628;
 amenity|luggage_locker;1629;
+building|guardhouse;[building=guardhouse],[amenity=security_booth],[amenity=checkpoint];;;;1630;
+office|security;1631;
+shop|lighting;1632;

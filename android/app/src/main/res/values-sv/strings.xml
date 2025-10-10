@@ -410,8 +410,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Inte inloggad</string>
     <string name="login_osm">Logga in på OpenStreetMap</string>
-    <string name="password">Lösenord</string>
-    <string name="forgot_password">Glömt lösenord?</string>
     <string name="logout">Logga ut</string>
     <string name="edit_place">Ändra platsen</string>
     <string name="add_language">Lägg till ett språk</string>
@@ -428,7 +426,6 @@
     <string name="cuisine">Mat</string>
     <string name="select_cuisine">Välj mat</string>
     <!-- login text field -->
-    <string name="email_or_username">E-postadress eller användarnamn</string>
     <string name="level">Våningsplan</string>
     <string name="downloader_delete_map_dialog">Alla kartändringar kommer att raderas tillsammans med kartan.</string>
     <string name="downloader_update_maps">Uppdatera kartor</string>
@@ -782,24 +779,14 @@
     <string name="uri_open_location_failed">Ingen app installerad som kan öppna platsen</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto i navigering</string>
-    <string name="vk">VK</string>
     <string name="prefs_group_general">Allmänna inställningar</string>
-    <string name="telegram">Telegram</string>
     <string name="prefs_group_information">Information</string>
     <string name="menu">Meny</string>
-    <string name="github">GitHub</string>
-    <string name="facebook">Facebook</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="instagram">Instagram</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="opens_in">Öppnar om %s</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="maps_storage_free_size">%1$s av %2$s ledigt</string>
     <string name="read_in_wikipedia">Wikipedia</string>
-    <string name="matrix">[Matrix]</string>
     <string name="closes_in">Stänger om %s</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="level_value_generic">Nivå: %s</string>
     <string name="download_map_title">Ladda ner översiktskartan för hela världen</string>
     <string name="disconnect_usb_cable_title">Koppla ur USB-kabel</string>
@@ -842,4 +829,8 @@
     <string name="at">kl. %s</string>
     <string name="enable_show_on_lock_screen_description">Vid aktivering kommer appen fungera på låsskärmen även när enheten är låst.</string>
     <string name="about_help">Om &amp; Hjälp</string>
+    <string name="share_track">Dela spår</string>
+    <string name="delete_track_dialog_title">Ta bort %s?</string>
+    <string name="existence_confirmed_time_ago">Existens bekräftad %s</string>
+    <string name="hours_confirmed_time_ago">Bekräftat %s</string>
 </resources>

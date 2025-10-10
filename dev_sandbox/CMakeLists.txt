@@ -71,7 +71,7 @@ set(RESOURCES_FOLDER ${BUNDLE_FOLDER}/Contents/Resources)
 set(DATA_DIR ${OMIM_ROOT}/data)
 
 execute_process(
-  COMMAND mkdir -p ${RESOURCES_FOLDER}/shaders_compiler
+  COMMAND mkdir -p ${RESOURCES_FOLDER}
 )
 
 function(copy_resources)

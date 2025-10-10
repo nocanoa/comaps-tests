@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, nullable) NSURL *emailUrl;
 @property(nonatomic, readonly, nullable) NSString *cuisine;
 @property(nonatomic, readonly, nullable) NSString *ppOperator;
+@property(nonatomic, readonly, nullable) NSString *branch;
 @property(nonatomic, readonly, nullable) NSString *address;
 @property(nonatomic, readonly, nullable) NSArray *coordFormats;
 @property(nonatomic, readonly, nullable) NSString *wifiAvailable;

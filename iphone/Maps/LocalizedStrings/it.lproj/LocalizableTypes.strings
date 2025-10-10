@@ -161,7 +161,7 @@
 "type.amenity.shelter.lean_to" = "Riparo a capanna";
 "type.amenity.public_bath" = "Terme pubbliche";
 "type.amenity.shower" = "Doccia";
-"type.amenity.stripclub" = "Stripclub";
+"type.amenity.stripclub" = "Strip club";
 "type.amenity.taxi" = "Taxi";
 "type.amenity.telephone" = "Telefono";
 "type.amenity.theatre" = "Teatro";
@@ -209,7 +209,7 @@
 "type.barrier.retaining_wall" = "Muro di sostegno";
 "type.barrier.stile" = "Scaletta per recinzioni";
 "type.barrier.turnstile" = "Tornello";
-"type.barrier.swing_gate" = "Barriera ferroviaria";
+"type.barrier.swing_gate" = "Cancello a battente";
 "type.barrier.toll_booth" = "Casello di pedaggio";
 "type.barrier.wall" = "Muro";
 "type.boundary" = "Confine";
@@ -465,6 +465,8 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Ponte";
+
+"type.highway.pedestrian.square" = "Piazza";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Tunnel";
@@ -947,7 +949,7 @@
 "type.railway.station.light_rail.london" = "Stazione ferroviaria";
 "type.railway.station.light_rail.porto" = "Stazione ferroviaria";
 "type.railway.station.monorail" = "Stazione ferroviaria";
-"type.railway.station.subway" = "Stazione Metropolitana";
+"type.railway.station.subway" = "Stazione della metropolitana";
 "type.railway.station.subway.adana" = "Stazione metropolitana";
 "type.railway.station.subway.algiers" = "Stazione metropolitana";
 "type.railway.station.subway.almaty" = "Stazione metropolitana";
@@ -1002,7 +1004,7 @@
 "type.railway.station.subway.lille" = "Stazione metropolitana";
 "type.railway.station.subway.lima" = "Stazione metropolitana";
 "type.railway.station.subway.lisboa" = "Stazione metropolitana";
-"type.railway.station.subway.london" = "Stazione Metropolitana di Londra";
+"type.railway.station.subway.london" = "Stazione della metropolitana londinese";
 "type.railway.station.subway.lyon" = "Stazione metropolitana";
 "type.railway.station.subway.madrid" = "Stazione metropolitana";
 "type.railway.station.subway.malaga" = "Stazione metropolitana";
@@ -1017,10 +1019,10 @@
 "type.railway.station.subway.montreal" = "Stazione metropolitana";
 "type.railway.station.subway.moscow" = "Stazione metropolitana";
 "type.railway.station.subway.munchen" = "Stazione metropolitana";
-"type.railway.station.subway.nagoya" = "Stazione metropolitana";
-"type.railway.station.subway.newyork" = "Stazione metropolitana";
+"type.railway.station.subway.nagoya" = "Stazione della metropolitana";
+"type.railway.station.subway.newyork" = "Stazione della metropolitana";
 "type.railway.station.subway.nnov" = "Stazione metropolitana";
-"type.railway.station.subway.novosibirsk" = "Stazione metropolitana";
+"type.railway.station.subway.novosibirsk" = "Stazione della metropolitana";
 "type.railway.station.subway.osaka" = "Stazione metropolitana";
 "type.railway.station.subway.oslo" = "Stazione metropolitana";
 "type.railway.station.subway.palma" = "Stazione metropolitana";
@@ -1481,6 +1483,9 @@
 "type.amenity.ranger_station" = "Stazione delle guardie forestali";
 "type.amenity.bicycle_parking.covered" = "Parcheggio biciclette coperto";
 "type.post_office.post_partner" = "Partner Postale";
-"type.landuse.religious" = "Terreno Religioso";
+"type.landuse.religious" = "Terreno religioso";
 "type.barrier.wicket_gate" = "Cancello pedonale";
-"type.amenity.animal_shelter" = "Rifugio per Animali";
+"type.amenity.animal_shelter" = "Rifugio per animali";
+"type.office.security" = "Ufficio della sicurezza";
+"type.power.portal" = "Portale elettrico";
+"type.building.guardhouse" = "Guardiola";

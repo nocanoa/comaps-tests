@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Check AppStore/GooglePlay metadata
+# Check AppStore / GooglePlay / F-Droid metadata
 #
 
 import os
@@ -128,7 +128,9 @@ def check_raw(path, max_length, ignoreEmptyFilesAndNewLines=False):
                 text = text[:-1]
             else:
                 ok = error(path, "missing new line")
-        
+        else:
+            text = text.strip()
+
         cur_length = len(text)
         if cur_length > max_length:
             ok = error(path, "too long: got={}, expected={}", cur_length, max_length)
@@ -162,28 +164,28 @@ def check_exact(path, expected):
     return done(path, ok)
 
 
-def check_android():
+def check_android(is_gplay):
     ok = True
-    flavor = 'android/app/src/fdroid/play/'
+    flavor = "google" if is_gplay else "fdroid"
+    flavor = f'android/app/src/{flavor}/play/'
     ok = check_url(flavor + 'contact-website.txt') and ok
     ok = check_email(flavor + 'contact-email.txt') and ok
     ok = check_exact(flavor + 'default-language.txt', 'en-US') and ok
     for locale in glob.glob(flavor + 'listings/*/'):
-        if locale.split('/')[-2] not in GPLAY_LOCALES:
+        if is_gplay and locale.split('/')[-2] not in GPLAY_LOCALES:
             ok = error(locale, 'unsupported locale') and ok
             continue
-        ok = check_text(locale + 'title.txt', 50) and ok
-        ok = check_text(locale + 'title-google.txt', 30) and ok
+        ok = check_text(locale + 'title.txt', 30 if is_gplay else 50) and ok
         ok = check_text(locale + 'short-description.txt', 80) and ok
-        ok = check_text(locale + 'short-description-google.txt', 80, True) and ok
         ok = check_text(locale + 'full-description.txt', 4000) and ok
-        ok = check_text(locale + 'full-description-google.txt', 4000, True) and ok
-        ok = check_text(locale + 'release-notes.txt', 499) and ok
+        ok = check_text(locale + 'release-notes.txt', 499, optional=True) and ok
+    ''' TODO: relnotes not necessary exist for all languages, but symlinks are made for all
     for locale in glob.glob(flavor + 'release-notes/*/'):
         if locale.split('/')[-2] not in GPLAY_LOCALES:
             ok = error(locale, 'unsupported locale') and ok
             continue
         ok = check_text(locale + 'default.txt', 499) and ok
+    '''
     return ok
 
 
@@ -193,13 +195,13 @@ def check_ios():
         if locale.split('/')[-2] not in APPSTORE_LOCALES:
             ok = error(locale, "unsupported locale") and ok
             continue
-        
+
         locale_complete = True
         for name in ["description.txt", "keywords.txt", "marketing_url.txt", "privacy_url.txt", "subtitle.txt", "support_url.txt"]:
             name_path = os.path.join(locale, name)
             if not os.path.exists(name_path):
                 locale_complete = False
-        
+
         if locale_complete:
             ok = check_text(locale + "subtitle.txt", 30, False, True) and ok
             ok = check_text(locale + "description.txt", 4000, False, True) and ok
@@ -208,13 +210,17 @@ def check_ios():
             ok = check_url(locale + "support_url.txt", True) and ok
             ok = check_url(locale + "marketing_url.txt", True) and ok
             ok = check_url(locale + "privacy_url.txt", True) and ok
-        
+
     return ok
 
 if __name__ == "__main__":
     ok = True
-    if len(sys.argv) == 2 and sys.argv[1] == 'android':
-        if check_android():
+    if len(sys.argv) == 2 and sys.argv[1] == 'gplay':
+        if check_android(is_gplay=True):
+            sys.exit(0)
+        sys.exit(2)
+    if len(sys.argv) == 2 and sys.argv[1] == 'fdroid':
+        if check_android(is_gplay=False):
             sys.exit(0)
         sys.exit(2)
     elif len(sys.argv) == 2 and sys.argv[1] == "ios":
@@ -222,5 +228,5 @@ if __name__ == "__main__":
             sys.exit(0)
         sys.exit(2)
     else:
-       print("Usage:", sys.argv[0], "android|ios", file=sys.stderr)  
+       print("Usage:", sys.argv[0], "gplay|fdroid|ios", file=sys.stderr)
        sys.exit(1)

@@ -36,6 +36,9 @@ data/patterns.txt*
 # data/colors_design.txt
 # data/patterns_design.txt
 
+# Auto-generated from data/categories-strings/* by tools/unix/generate_categories.sh
+data/categories.txt
+
 # Compiled Python
 *.pyc
 

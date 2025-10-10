@@ -1,9 +1,10 @@
-• OpenStreetMap data as of August 22
-• New current speed indicator, display track info
-• Improved dark map style, added coloured labels
-• Display when places & opening hours were last checked
-• Routing now considers turns, stop signs, lights & conditional restrictions
-• Prefer GPS bearing over compass and increase location poll rate
-• Enable adding standalone addresses & notes in the editor
-• Various UI element & map style improvements
+• OpenStreetMap data as of September 6
+• Turn penalties for bicycle routing
+• Colored POI labels for car navigation map style
+• Search POIs by branch name
+• Added power portals, security booths and offices
+• Update icons for towers, nightclubs, chemists, flagpoles
+• Save bookmark color to GPX exports
+• Color fill pedestrian parts of squares
+• Android Auto: display roundabout exit numbers
 Check our Codeberg release notes for more changes!

@@ -9,7 +9,7 @@
   android:padding="@dimen/margin_base"
   tools:background="#20FF0000">
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
       android:id="@+id/title"
       android:textAlignment="viewStart"
       android:layout_width="match_parent"
@@ -20,7 +20,7 @@
       android:maxLines="2"
       tools:text="Long long title that wraps to multiple lines"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
       android:id="@+id/description"
       android:textAlignment="viewStart"
       android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
       android:ellipsize="end"
       tools:text="Hotel \u2022 \u2605\u2605\u2605\u2605\u2605"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
       android:id="@+id/open"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
       android:text="@string/closed"
       android:textAppearance="@style/MwmTextAppearance.Body3" />
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
       android:id="@+id/region"
       android:textAlignment="viewStart"
       android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
       android:ellipsize="end"
       tools:text="Russia, Moscow &amp; Central, Moscow"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/distance"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

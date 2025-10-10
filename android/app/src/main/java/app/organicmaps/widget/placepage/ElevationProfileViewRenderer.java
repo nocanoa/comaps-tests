@@ -3,10 +3,12 @@ package app.organicmaps.widget.placepage;
 import android.content.Context;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
+
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.ChartController;
 import app.organicmaps.R;
 import app.organicmaps.sdk.Framework;
@@ -29,22 +31,22 @@ public class ElevationProfileViewRenderer implements PlacePageStateListener
   private NestedScrollView mScrollView;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mTitle;
+  private MaterialTextView mTitle;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mAscent;
+  private MaterialTextView mAscent;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mDescent;
+  private MaterialTextView mDescent;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mMaxAltitude;
+  private MaterialTextView mMaxAltitude;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mMinAltitude;
+  private MaterialTextView mMinAltitude;
   @SuppressWarnings("NullableProblems")
   @NonNull
-  private TextView mTime;
+  private MaterialTextView mTime;
   @SuppressWarnings("NullableProblems")
   @NonNull
   private ChartController mChartController;

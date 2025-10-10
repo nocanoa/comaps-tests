@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
@@ -27,6 +26,7 @@ import app.organicmaps.util.UiUtils;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.divider.MaterialDividerItemDecoration;
 import java.util.ArrayList;
 
@@ -42,10 +42,10 @@ public class ManageRouteBottomSheet
   {
     View v = inflater.inflate(R.layout.manage_route_bottom_sheet, container, false);
 
-    Button cancelButton = v.findViewById(R.id.btn__cancel);
+    MaterialButton cancelButton = v.findViewById(R.id.btn__cancel);
     cancelButton.setOnClickListener(this);
 
-    Button planButton = v.findViewById(R.id.btn__plan);
+    MaterialButton planButton = v.findViewById(R.id.btn__plan);
     planButton.setOnClickListener(this);
 
     mMyLocationImageView = v.findViewById(R.id.image_my_location);

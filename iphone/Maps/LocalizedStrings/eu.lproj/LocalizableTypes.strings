@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Oinezkoen zubia";
+"type.highway.pedestrian.square" = "Plaza";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Oinezkoen tunela";
@@ -1482,5 +1483,8 @@
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Txirrinduen aparkaleku estalia";
 "type.post_office.post_partner" = "Post Partner";
-"type.amenity.animal_shelter" = "Animal Shelter";
+"type.amenity.animal_shelter" = "Animalien babeslekua";
 "type.barrier.wicket_gate" = "Wicket gate";
+"type.office.security" = "Security Guards Office";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Security Booth";

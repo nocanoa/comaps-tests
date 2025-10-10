@@ -305,7 +305,7 @@ railway-preserved-tunnel                            # line z13-
 === 160
 
 highway-footway-bridge                              # line z11- (also has line::bridgeblack z17-, line::bridgewhite z15-, pathtext z13-)
-highway-footway-sidewalk                            # line z16-
+highway-footway-sidewalk                            # line z13-
 highway-footway-tunnel                              # line z11- (also has line::tunnelBackground z17-, line::tunnelCasing z17-, pathtext z13-)
 highway-path-bridge                                 # line z11- (also has line::bridgeblack z17-, line::bridgewhite z15-, pathtext z13-)
 highway-path-horse                                  # line z11- (also has pathtext z13-)
@@ -400,6 +400,7 @@ railway-subway-bridge::bridgeblack                  # line::bridgeblack z16- (al
 
 building                                            # area z14- (also has caption z16-)
 building-garage                                     # area z14- (also has caption z16-)
+building-guardhouse                                 # area z14- (also has icon z16-, caption(optional) z18-)
 building-has_parts                                  # area z14- (also has caption z16-)
 building-train_station                              # area z14- (also has caption z16-)
 === 130
@@ -454,12 +455,14 @@ man_made-pier                                       # line z14- and area z12- (a
 waterway-dam                                        # line z14- and area z14- (also has pathtext z15-)
 === 30
 
-amenity-prison                                      # area z12- (also has icon z17-, caption(optional) z17-)
-boundary-aboriginal_lands                           # area z10-16 (also has caption z10-16)
-boundary-national_park                              # area z10-17 (also has icon z10-17, caption(optional) z11-17)
-boundary-protected_area-1                           # area z10-17 (also has icon z10-17, caption(optional) z11-17)
 landuse-military                                    # area z12- (also has icon z16-, caption(optional) z17-)
 landuse-military-danger_area                        # area z10- (also has icon z16-, caption(optional) z17-)
+=== 25
+
+amenity-prison                                      # area z12- (also has icon z17-, caption(optional) z17-)
+boundary-aboriginal_lands                           # line z10- and area z10-16 (also has caption z10-16)
+boundary-national_park                              # line z10- and area z10-17 (also has icon z10-17, caption(optional) z11-17)
+boundary-protected_area-1                           # line z10- and area z10-17 (also has icon z10-17, caption(optional) z11-17)
 leisure-nature_reserve                              # area z10-17 (also has icon z10-17, caption(optional) z11-17, caption z18-)
 === 20
 

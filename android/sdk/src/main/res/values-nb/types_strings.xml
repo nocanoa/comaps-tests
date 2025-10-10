@@ -387,6 +387,8 @@
     <string name="type.highway.pedestrian.area">Gågate</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Bru</string>
+
+    <string name="type.highway.pedestrian.square">Torg</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Tunnel</string>
     <string name="type.highway.primary">Hovedvei</string>
@@ -1195,4 +1197,10 @@
     <string name="type.leisure.hackerspace">Skaperverksted</string>
     <string name="type.man_made.silo">Silo</string>
     <string name="type.aeroway">Luftromsinfrastruktur</string>
+    <string name="type.aeroway.apron">Oppstillingsplass</string>
+    <string name="type.aeroway.gate">Gate</string>
+    <string name="type.aeroway.helipad">Helipad</string>
+    <string name="type.aeroway.runway">Rullebane</string>
+    <string name="type.aeroway.taxiway">Taxibane</string>
+    <string name="type.aeroway.terminal">Terminal</string>
 </resources>

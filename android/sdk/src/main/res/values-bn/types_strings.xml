@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="type.addr_interpolation">ঠিকানা/ব্লক</string>
+    <string name="type.amenity.fast_food">ফাস্ট ফুড</string>
+    <string name="type.office.security">সিকিউরিটি গার্ড অফিস</string>
+    <string name="type.building.guardhouse">সিকিউরিটি বুথ</string>
+    <string name="type.power.portal">পাওয়ার পোর্টাল</string>
+    <string name="type.amenity.ferry_terminal">ফেরি</string>
+    <string name="type.amenity.fire_station">দমকল স্টেশন</string>
+    <string name="type.amenity.food_court">ফুড কোর্ট</string>
+    <string name="type.amenity.fountain">ফাউন্টেন</string>
+    <string name="type.amenity.fuel">গ্যাস স্টেশন</string>
+    <string name="type.amenity.grave_yard">কবরস্থান</string>
+    <string name="type.amenity.grave_yard.christian">খ্রিস্টান কবরস্থান</string>
+    <string name="type.amenity.hospital">হাসপাতাল</string>
+    <string name="type.amenity.ice_cream">আইসক্রিম</string>
+    <string name="type.amenity.internet_cafe">ইন্টারনেট ক্যাফে</string>
+    <string name="type.amenity.kindergarten">কিন্ডারগার্টেন</string>
+    <string name="type.amenity.library">গ্রন্থাগার</string>
+    <string name="type.amenity.marketplace">মার্কেটপ্লেস</string>
+    <string name="type.amenity.motorcycle_parking">বাইক পার্কিং</string>
+    <string name="type.amenity.nightclub">নাইটক্লাব</string>
+    <string name="type.amenity.nursing_home">নার্সিংহোম</string>
+    <string name="type.amenity.parking">পার্কিং</string>
+    <string name="type.amenity.parking.fee">পার্কিং</string>
+    <string name="type.amenity.parking.multi.storey">বহুতল পার্কিং</string>
+    <string name="type.amenity.parking.multi.storey.fee">বহুতল পার্কিং</string>
+    <string name="type.amenity.parking.no.access">ব্যক্তিগত পার্কিং</string>
+    <string name="type.amenity.parking.permissive">প্রাইভেট পার্কিং</string>
+    <string name="type.amenity.parking.private">প্রাইভেট পার্কিং</string>
+    <string name="type.amenity.parking.underground">আন্ডারগ্রাউন্ড পার্কিং</string>
+    <string name="type.amenity.parking.underground.fee">আন্ডারগ্রাউন্ড পার্কিং</string>
+    <string name="type.amenity.parking.street_side">রোড-পার্শ্ববর্তী পার্কিং</string>
+    <string name="type.amenity.parking.street_side.private">ব্যক্তিগত সড়ক-পার্শ্ববর্তী পার্কিং</string>
+    <string name="type.amenity.parking.lane">লেন পার্কিং</string>
+    <string name="type.amenity.parking.underground.private">ব্যক্তিগত আন্ডারগ্রাউন্ড পার্কিং</string>
 </resources>

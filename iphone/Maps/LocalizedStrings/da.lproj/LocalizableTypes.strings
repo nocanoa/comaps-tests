@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Bro";
+"type.highway.pedestrian.square" = "Torv";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Tunnel";
@@ -1475,12 +1476,16 @@
 "type.natural.wetland.mangrove" = "Mangrove";
 "type.natural.wetland.fen" = "Fen";
 "type.natural.wetland.saltmarsh.tidal" = "Tidevandspåvirket strandeng";
-"type.natural.wetland.reedbed" = "Reed Bed";
+"type.natural.wetland.reedbed" = "Rørskov";
 "type.railway.station.subway.qingdao" = "Undergrundsstation";
 "type.leisure.escape_game" = "Escape Room";
 "type.amenity.luggage_locker" = "Bagageboks";
 "type.post_office.post_partner" = "Postpartner";
 "type.amenity.ranger_station" = "Ranger Station";
 "type.amenity.bicycle_parking.covered" = "Overdækket cykelparkering";
-"type.barrier.wicket_gate" = "Wicket gate";
-"type.amenity.animal_shelter" = "Animal Shelter";
+"type.barrier.wicket_gate" = "Portlåge";
+"type.amenity.animal_shelter" = "Dyreinternat";
+"type.office.security" = "Sikkerhedsvagtkontor";
+"type.power.portal" = "Power Portal";
+"type.building.guardhouse" = "Sikkerhedsbås";
+"type.shop.lighting" = "Lysbutik";

@@ -27,7 +27,7 @@
     <!-- A dialog title, that warns a user that Precise Location is disabled and suggests to turn it on -->
     <string name="limited_accuracy">Sınırlı Doğruluk</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">Doğru navigasyon sağlamak için ayarlardan Hassas Konum\'u etkinleştirin.</string>
+    <string name="precise_location_is_disabled_long_text">Doğru navigasyon sağlamak için ayarlardan Hassas Konum\'u etkinleştirin</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Haritada göster</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
@@ -165,7 +165,7 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">Konumunuz henüz belirlenmedi</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Üzgünüz, Harita Depolama ayarları şu anda devre dışı.</string>
+    <string name="cant_change_this_setting">Üzgünüz, harita depolama ayarları şu anda devre dışı</string>
     <!-- Alert message that downloading is in progress. -->
     <string name="downloading_is_active">Harita indiriliyor</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
@@ -246,7 +246,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Bağış yap</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Bu projeyi destekleyin</string>
+    <string name="how_to_support_us">Gönüllü olun ve CoMaps\'i iyileştirin</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Telif hakkı</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -423,8 +423,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Giriş yapılmadı</string>
     <string name="login_osm">OpenStreetMap\'e giriş yap</string>
-    <string name="password">Şifre</string>
-    <string name="forgot_password">Şifrenizi mi unuttunuz?</string>
     <string name="logout">Oturumu kapat</string>
     <string name="edit_place">Yeri Düzenle</string>
     <string name="add_language">Dil ekle</string>
@@ -443,7 +441,6 @@
     <string name="cuisine">Mutfak</string>
     <string name="select_cuisine">Mutfak Seç</string>
     <!-- login text field -->
-    <string name="email_or_username">E-posta veya kullanıcı adı</string>
     <string name="editor_add_phone">Telefon Ekle</string>
     <string name="level">Kat</string>
     <!-- Building level -->
@@ -826,32 +823,20 @@
     <string name="uri_open_location_failed">Konumu açabilecek kurulu uygulama yok</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Navigasyonda kendiliğinden</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="facebook">Facebook</string>
-    <string name="instagram">Instagram</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="menu">Menü</string>
-    <string name="telegram">Telegram</string>
-    <string name="github">GitHub</string>
-    <string name="mastodon">Mastodon</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="vk">VK</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="app_site_url">https://comaps.app/tr/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="telegram_url">https://t.me/CoMaps_TR</string>
     <string name="pref_left_button_title">Sol alt tuş ataması</string>
     <string name="pref_left_button_disable">Devre dışı</string>
     <string name="error_enter_correct_fediverse_page">Gireceğiniz Mastodon kullanıcı adı ve adresi halihazırda mevcut olmalı</string>
     <string name="saved">Kaydedildi</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Gireceğiniz Bluesky kullanıcı adı ve adresi halihazırda mevcut olmalı</string>
     <string name="editor_building_levels">Katlar (zemin kat dahil, çatı hariç)</string>
-    <string name="editor_level">Giriş (0 zemin kattır)</string>
+    <string name="editor_level">Kat Sayısı (zemin kat 0\'dır)</string>
     <string name="error_enter_correct_level">Geçerli kat numarası girin</string>
     <string name="about_help">Hakkında ve Yardım</string>
     <string name="panoramax">Panoramax Görseli</string>
@@ -886,4 +871,6 @@
     <string name="dialog_report_error_missing_folder">Seçilen yedekleme konumu kullanılamıyor veya yazılabilir değil. Lütfen farklı bir konum seçin.</string>
     <string name="osm_note_hint">Veya alternatif olarak, OpenStreetMap topluluğuna bir not bırakın, böylece başka biri buraya ekleme yapabilir veya hatayı düzeltebilir.</string>
     <string name="osm_note_toast">Notunuz OpenStreetMap\'e gönderilecektir</string>
+    <string name="hours_confirmed_time_ago">%s onaylandı</string>
+    <string name="existence_confirmed_time_ago">%s varlığı onaylandı</string>
 </resources>

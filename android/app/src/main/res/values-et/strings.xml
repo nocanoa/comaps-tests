@@ -419,8 +419,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Pole sisse logitud</string>
     <string name="login_osm">Logi sisse OpenStreetMappi</string>
-    <string name="password">Salasõna</string>
-    <string name="forgot_password">Unustasid oma salasõna?</string>
     <string name="logout">Logi välja</string>
     <string name="edit_place">Muuda kohta</string>
     <string name="add_language">Lisa keel</string>
@@ -439,7 +437,6 @@
     <string name="cuisine">Köök</string>
     <string name="select_cuisine">Vali köök</string>
     <!-- login text field -->
-    <string name="email_or_username">E-post või kasutajanimi</string>
     <string name="editor_add_phone">Lisa telefon</string>
     <string name="level">Korrus</string>
     <string name="downloader_delete_map_dialog">Kõik sinu kaardimuudatused kustutatakse koos kaardiga</string>
@@ -816,19 +813,9 @@
     <string name="nav_auto">Automaatne tee juhatamine</string>
     <string name="about_headline">Avatud projekt, mida toetab toimekas kogukond</string>
     <string name="about_proposition_1">• Viimistletud ja lihtsaltkasutatav</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="matrix">[Matrix]</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="instagram">Instagram</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="github">GitHub</string>
     <string name="level_value_generic">Korrus: %s</string>
     <string name="menu">Menüü</string>
-    <string name="telegram">Telegram</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="vk">VK</string>
-    <string name="facebook">Facebook</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="translated_om_site_url">https://comaps.app/et/</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
@@ -837,9 +824,7 @@
     <string name="app_site_url">https://comaps.app/et/</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="error_enter_correct_fediverse_page">Sisesta korrektne Mastodoni kasutajanimi või veebiaadress</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Sisesta korrektne Bluesky kasutajanimi või veebiaadress</string>
     <string name="saved">Salvestatud</string>
     <string name="pref_left_button_disable">Keela</string>

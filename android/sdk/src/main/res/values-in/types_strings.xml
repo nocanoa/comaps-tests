@@ -371,6 +371,8 @@
     <string name="type.highway.pedestrian.area">Jalan</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Menjembatani</string>
+
+    <string name="type.highway.pedestrian.square">Lapangan kota</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Terowongan</string>
     <string name="type.highway.primary">Jalan</string>

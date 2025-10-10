@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
       android:id="@+id/title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -48,13 +48,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
           android:layout_width="@dimen/margin_base_plus_quarter"
           android:layout_height="wrap_content"
           android:layout_marginEnd="@dimen/margin_quarter"
           app:srcCompat="@drawable/ic_ascent"
           app:tint="?elevationProfilePropIconTint" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/ascent"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
           android:textAppearance="@style/MwmTextAppearance.Body3"
           tools:text="10000 m" />
       </LinearLayout>
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ascent_container"
@@ -85,13 +85,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
           android:layout_width="@dimen/margin_base_plus_quarter"
           android:layout_height="wrap_content"
           android:layout_marginEnd="@dimen/margin_quarter"
           app:srcCompat="@drawable/ic_descent"
           app:tint="?elevationProfilePropIconTint" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/descent"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
           android:textAppearance="@style/MwmTextAppearance.Body3"
           tools:text="10000 m" />
       </LinearLayout>
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/descent_container"
@@ -123,13 +123,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginEnd="@dimen/margin_quarter"
           app:srcCompat="@drawable/ic_maxalt"
           app:tint="?elevationProfilePropIconTint" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/max_altitude"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
           android:textAppearance="@style/MwmTextAppearance.Body3"
           tools:text="10000 m" />
       </LinearLayout>
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/max_height_container"
@@ -161,13 +161,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginEnd="@dimen/margin_half"
           app:srcCompat="@drawable/ic_minalt"
           app:tint="?elevationProfilePropIconTint" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/min_altitude"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
           android:textAppearance="@style/MwmTextAppearance.Body3"
           tools:text="10000 m" />
       </LinearLayout>
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/min_elevation_container"
@@ -208,7 +208,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="bottom"
       android:orientation="horizontal">
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/elevation_profile_difficulty"
@@ -220,13 +220,13 @@
         android:layout_marginStart="@dimen/margin_half_plus_eight"
         android:layout_marginBottom="@dimen/elevation_profile_dot_levels_margin"
         android:orientation="horizontal">
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/difficulty_level_1"
           android:layout_width="@dimen/elevation_profile_difficulty_dot_size"
           android:layout_height="@dimen/elevation_profile_difficulty_dot_size"
           android:background="@drawable/dot_elevation_difficulty"
           android:enabled="false" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/difficulty_level_2"
           android:layout_width="@dimen/elevation_profile_difficulty_dot_size"
           android:layout_height="@dimen/elevation_profile_difficulty_dot_size"
@@ -234,7 +234,7 @@
           android:layout_marginEnd="@dimen/margin_quarter"
           android:background="@drawable/dot_elevation_difficulty"
           android:enabled="false" />
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
           android:id="@+id/difficulty_level_3"
           android:layout_width="@dimen/elevation_profile_difficulty_dot_size"
           android:layout_height="@dimen/elevation_profile_difficulty_dot_size"
@@ -250,7 +250,7 @@
       android:layout_toEndOf="@id/difficulty_container"
       android:gravity="end"
       android:orientation="horizontal">
-      <TextView
+      <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/elevation_profile_time"

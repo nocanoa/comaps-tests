@@ -31,7 +31,6 @@ import app.organicmaps.widget.LanesView;
 import app.organicmaps.widget.SpeedLimitView;
 import app.organicmaps.widget.menu.NavMenu;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
 public class NavigationController implements TrafficManager.TrafficCallback, NavMenu.NavMenuListener

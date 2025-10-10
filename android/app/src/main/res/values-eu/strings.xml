@@ -425,8 +425,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Saioa hasi gabe</string>
     <string name="login_osm">Hasi saioa OpenStreetMap-en</string>
-    <string name="password">Pasahitza</string>
-    <string name="forgot_password">Pasahitza ahaztu duzu?</string>
     <string name="logout">Saioa itxi</string>
     <string name="edit_place">Editatu tokia</string>
     <string name="add_language">Gehitu hizkuntza bat</string>
@@ -445,7 +443,6 @@
     <string name="cuisine">Sukaldea</string>
     <string name="select_cuisine">Aukeratu sukaldea</string>
     <!-- login text field -->
-    <string name="email_or_username">Posta elektronikoa edo erabiltzailea</string>
     <string name="editor_add_phone">Gehitu telefonoa</string>
     <string name="level">Solairua</string>
     <string name="downloader_delete_map_dialog">Mapan egin dituzun aldaketa guztiak maparekin batera ezabatuko dira</string>
@@ -822,22 +819,12 @@
     <string name="uri_open_location_failed">Ez dago kokapena ireki dezakeen aplikaziorik instalatuta</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Nabigazioan automatikoa</string>
-    <string name="telegram">Telegram</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
-    <string name="vk">VK</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="read_in_wikipedia">Wikipedia</string>
     <string name="level_value_generic">Maila: %s</string>
-    <string name="github">GitHub</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
     <string name="osm_wiki_about_url">https://wiki.openstreetmap.org/wiki/About_OpenStreetMap</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="saved">Gordeta</string>
@@ -846,7 +833,6 @@
     <string name="pref_left_button_title">Ezkerreko botoiaren ezarpena</string>
     <string name="about_help">Honi buruz eta Laguntza</string>
     <string name="bookmark_color">Laster-markaren kolorea</string>
-    <string name="bluesky">Bluesky</string>
     <string name="error_enter_correct_bluesky_page">Sartu baliozko Blueskyko erabiltzaile-izena edo web helbidea</string>
     <string name="error_enter_correct_fediverse_page">Sartu baliozko Mastodoneko erabiltzaile-izena edo web helbidea</string>
     <string name="route_type">Ibilbide mota</string>
@@ -856,7 +842,6 @@
     <string name="ruler">Erregela</string>
     <string name="clear">Garbitu</string>
     <string name="panoramax">Panoramax Irudia</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_backup_now_title">Babeskopia egin orain</string>
     <string name="pref_backup_now_summary">Sortu babeskopia berehala</string>
     <string name="pref_backup_now_summary_ok">Babeskopia behar bezala egin da</string>

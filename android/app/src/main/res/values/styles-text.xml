@@ -101,7 +101,6 @@
   <style name="MwmTextAppearance.Button">
     <item name="android:textSize">@dimen/text_size_button</item>
     <item name="android:textColor">?colorSecondary</item>
-    <item name="android:textAllCaps">true</item>
   </style>
 
   <style name="MwmTextAppearance.Button.Red">

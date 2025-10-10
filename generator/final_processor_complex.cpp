@@ -63,6 +63,8 @@ void ComplexFinalProcessor::UseBuildingPartsInfo(std::string const & filename)
 
 void ComplexFinalProcessor::Process()
 {
+  LOG(LINFO, ("Processing complex features..."));
+
   if (!m_buildingPartsFilename.empty())
     m_buildingToParts = std::make_unique<BuildingToBuildingPartsMap>(m_buildingPartsFilename);
 

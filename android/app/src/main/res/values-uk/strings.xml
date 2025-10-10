@@ -427,8 +427,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Не ввійшли</string>
     <string name="login_osm">Увійдіть до OpenStreetMap</string>
-    <string name="password">Пароль</string>
-    <string name="forgot_password">Забули пароль?</string>
     <string name="logout">Вийти</string>
     <string name="edit_place">Редагувати місце</string>
     <string name="add_language">Додати мову</string>
@@ -447,7 +445,6 @@
     <string name="cuisine">Кухня</string>
     <string name="select_cuisine">Вибрати кухню</string>
     <!-- login text field -->
-    <string name="email_or_username">Ел. пошта або ім\'я користувача</string>
     <string name="level">Поверх</string>
     <string name="downloader_delete_map_dialog">Разом з мапою будуть видалені й внесені Вами правки на цій мапі.</string>
     <string name="downloader_update_maps">Оновити мапи</string>
@@ -831,16 +828,6 @@
     <string name="uri_open_location_failed">Не встановлено застосунок, який може відкрити розташування</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Авто в навігації</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="github">GitHub</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="telegram">Telegram</string>
-    <string name="vk">VK</string>
-    <string name="instagram">Instagram</string>
     <string name="level_value_generic">Поверх: %s</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
     <string name="wikimedia_commons">Вікісховище</string>

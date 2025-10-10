@@ -433,6 +433,8 @@
     <string name="type.highway.pedestrian.area">אזור הולכי רגל</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">גשר הולכי רגל</string>
+
+    <string name="type.highway.pedestrian.square">כיכר עירונית</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">מנהרה להולכי רגל</string>
     <string name="type.highway.primary">כביש ראשי</string>

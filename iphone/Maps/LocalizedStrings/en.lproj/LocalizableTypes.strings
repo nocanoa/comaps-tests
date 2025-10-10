@@ -69,6 +69,9 @@
 "type.amenity.music_school" = "Music School";
 "type.amenity.language_school" = "Language School";
 "type.office.diplomatic" = "Embassy";
+"type.office.security" = "Security Guards Office";
+"type.building.guardhouse" = "Security Booth";
+"type.power.portal" = "Power Portal";
 "type.amenity.fast_food" = "Fast Food";
 "type.amenity.ferry_terminal" = "Ferry";
 "type.amenity.fire_station" = "Fire Station";
@@ -485,6 +488,8 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Pedestrian Bridge";
+
+"type.highway.pedestrian.square" = "Square";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Pedestrian Tunnel";
@@ -1342,6 +1347,7 @@
 "type.shop.trade" = "Trade Supplies";
 "type.shop.watches" = "Watch Store";
 "type.shop.wholesale" = "Wholesale Store";
+"type.shop.lighting" = "Lighting Shop";
 "type.sport" = "Sport";
 "type.sport.american_football" = "American Football";
 "type.sport.archery" = "Archery";

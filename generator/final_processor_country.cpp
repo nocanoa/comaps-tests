@@ -46,24 +46,30 @@ void CountryFinalProcessor::Process()
   /// @todo Make "straight-way" processing. There is no need to make many functions and
   /// many read-write FeatureBuilder ops here.
 
+  LOG(LINFO, ("Processing coastline..."));
   if (!m_coastlineGeomFilename.empty())
     ProcessCoastline();
 
   // 1. Process roundabouts and addr:interpolation first.
+  LOG(LINFO, ("Processing roundabouts..."));
   if (!m_miniRoundaboutsFilename.empty() || !m_addrInterpolFilename.empty())
     ProcessRoundabouts();
 
   // 2. Process additional addresses then.
+  LOG(LINFO, ("Adding addresses..."));
   if (!m_addressPath.empty())
     AddAddresses();
 
+  LOG(LINFO, ("Adding fake nodes..."));
   if (!m_fakeNodesFilename.empty())
     AddFakeNodes();
 
+  LOG(LINFO, ("Adding isolines..."));
   if (!m_isolinesPath.empty())
     AddIsolines();
 
   // DropProhibitedSpeedCameras();
+  LOG(LINFO, ("Processing building parts..."));
   ProcessBuildingParts();
 
   // Finish();

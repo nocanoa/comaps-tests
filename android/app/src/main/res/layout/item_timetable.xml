@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   style="@style/MwmWidget.Editor.CardView"
   android:layout_marginBottom="@dimen/margin_half"
   android:layout_marginTop="@dimen/margin_half">
@@ -267,29 +268,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"/>
 
-      <com.google.android.material.textview.MaterialTextView
+      <com.google.android.material.button.MaterialButton
         android:id="@+id/tv__add_closed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?clickableBackground"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:textColor="?colorSecondary"
         android:padding="@dimen/margin_half_plus"
         android:text="@string/editor_time_add_closed"
-        android:textAllCaps="true"
-        android:textAppearance="@style/MwmTextAppearance.Body1"
-        android:textColor="?colorSecondary"/>
+        android:textAppearance="@style/MwmTextAppearance.Body1" />
 
     </LinearLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.button.MaterialButton
       android:id="@+id/tv__remove_timetable"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:background="?clickableBackground"
+      style="@style/Widget.Material3.Button.TextButton"
       android:padding="@dimen/margin_half_plus"
       android:text="@string/editor_time_delete"
-      android:textAllCaps="true"
       android:textAppearance="@style/MwmTextAppearance.Body1"
-      android:textColor="@color/base_red"/>
+      android:textColor="@color/base_red"
+      app:rippleColor="@android:color/transparent"/>
 
   </LinearLayout>
 

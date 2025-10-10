@@ -13,7 +13,6 @@
     <string name="limited_accuracy">Cywirdeb Cyfyngedig</string>
     <string name="downloader_status_maps">Mapiau</string>
     <string name="category_fuel">Nwy</string>
-    <string name="bluesky">Bluesky</string>
     <string name="building">Adeilad</string>
     <string name="level">Llawr</string>
     <string name="downloading">Wrthi\'n lawrlwytho…</string>
@@ -68,15 +67,6 @@
     <string name="menu">Dewislen</string>
     <string name="website">Gwefan</string>
     <string name="news">Newyddion</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="feedback">Adborth</string>
     <string name="help">Help</string>
     <string name="donate">Rhoi arian</string>
@@ -112,7 +102,6 @@
     <string name="day_off">Ar gau</string>
     <string name="closed">Ar gau</string>
     <string name="login">Mewngofnodi</string>
-    <string name="password">Cyfrinair</string>
     <string name="street">Stryd</string>
     <string name="details">Manylion</string>
     <string name="cuisine">Bwyd</string>
@@ -166,7 +155,6 @@
     <string name="volume">Sain</string>
     <string name="drive_through">Gyrru trwodd</string>
     <string name="self_service">Hunanwasanaeth</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_disable">Analluogi</string>
     <string name="backup_interval_every_day">Dyddiol</string>
     <string name="backup_interval_every_week">Wythnosol</string>
@@ -191,7 +179,6 @@
     <string name="pref_tts_language_title">Iaith Lais</string>
     <string name="pref_tts_unavailable">Ddim Ar Gael</string>
     <string name="pref_map_auto_zoom">Awtochwyddo</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="panoramax">Llun Panoramax</string>
     <string name="downloader_update_all_button">Diweddaru Popeth</string>
     <string name="downloader_cancel_all">Canslo Popeth</string>

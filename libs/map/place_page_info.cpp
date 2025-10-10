@@ -97,6 +97,10 @@ void Info::SetFromFeatureType(FeatureType & ft)
 
   m_uiSubtitle = FormatSubtitle(IsFeature() /* withTypes */, !emptyTitle /* withMainType */);
 
+  auto const branch = GetMetadata(feature::Metadata::FMD_BRANCH);
+  if (!branch.empty())
+    m_uiBranch = std::string(branch);
+
   // apply to all types after checks
   m_isHotel = ftypes::IsHotelChecker::Instance()(ft);
 }

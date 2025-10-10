@@ -90,7 +90,7 @@
 "category_eat" = "Dónde comer";
 
 /* Search category for grocery stores; any changes should be duplicated in categories.txt @category_food! */
-"category_food" = "Provisiones";
+"category_food" = "Tienda de comestibles";
 
 /* Search category for public transport; any changes should be duplicated in categories.txt @category_transport! */
 "category_transport" = "Transporte";
@@ -325,7 +325,7 @@
 "report_incorrect_map_bug" = "Informar o corregir datos de mapa incorrectos";
 
 /* Button in the About screen */
-"volunteer" = "Voluntariado";
+"volunteer" = "Hazte voluntario y mejora CoMaps";
 
 /* "Social media" section header in the About screen */
 "follow_us" = "Conecta con nosotros";
@@ -1095,5 +1095,5 @@
 "pref_maplanguage_title" = "Idioma del mapa";
 "transliteration_title_disabled_summary" = "Deshabilitado cuando siempre se usa el idioma local para el mapa";
 "pref_maplanguage_local" = "Idioma local";
-"existence_confirmed_time_ago" = "Existence confirmed %@";
-"hours_confirmed_time_ago" = "Confirmed %@";
+"existence_confirmed_time_ago" = "Existencia confirmada %@";
+"hours_confirmed_time_ago" = "Confirmado %@";

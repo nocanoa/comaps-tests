@@ -17,11 +17,7 @@ static CGFloat const kButtonExtraWidth = 16.0;
 
 - (UIBarButtonItem *)buttonWithImage:(UIImage *)image action:(SEL)action
 {
-  UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width + kButtonExtraWidth, image.size.height)];
-  [button setImage:image forState:UIControlStateNormal];
-  [button matchInterfaceOrientation];
-  [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-  return [[UIBarButtonItem alloc] initWithCustomView:button];
+  return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:action];
 }
 
 - (NSArray<UIBarButtonItem *> *)alignedNavBarButtonItems:(NSArray<UIBarButtonItem *> *)items

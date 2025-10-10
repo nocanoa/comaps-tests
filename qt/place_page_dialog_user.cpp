@@ -161,6 +161,26 @@ PlacePageDialogUser::PlacePageDialogUser(QWidget * parent, place_page::Info cons
     if (auto cuisines = info.FormatCuisines(); !cuisines.empty())
       addEntry("Cuisine", cuisines);
 
+    // Capacity fragment
+    if (auto capacity = info.GetCapacity(); !capacity.empty())
+      addEntry("Capacity", capacity);
+
+    // Sockets fragment
+    if (auto sockets = info.GetChargeSockets(); !sockets.empty())
+    {
+      std::ostringstream oss;
+      for (auto s : sockets)
+      {
+        oss << s.type;
+        if (s.power > 0)
+          oss << " (" << s.power << "kW)";
+        if (s.count > 0)
+          oss << " × " << s.count;
+        oss << "\n";
+      }
+      addEntry("Charging sockets", oss.str());
+    }
+
     // Entrance fragment
     // TODO
 

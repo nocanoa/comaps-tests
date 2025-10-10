@@ -430,6 +430,8 @@
     <string name="type.highway.pedestrian.area">路</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">橋</string>
+
+    <string name="type.highway.pedestrian.square">廣場</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">隧道</string>
     <string name="type.highway.primary">主要道路</string>
@@ -1159,7 +1161,7 @@
     <string name="type.shop.tobacco">煙草</string>
     <string name="type.shop.trade">貿易用品</string>
     <string name="type.shop.watches">手錶</string>
-    <string name="type.shop.wholesale">批髮店</string>
+    <string name="type.shop.wholesale">批發店</string>
     <string name="type.sport">體育運動</string>
     <string name="type.sport.american_football">美式足球</string>
     <string name="type.sport.archery">射箭</string>

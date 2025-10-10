@@ -153,11 +153,11 @@ final class MapTemplateBuilder {
     let button = CPMapButton(handler: action)
     switch type {
     case .startPanning:
-      button.image = UIImage(named: "btn_carplay_pan_light")
+      button.image = UIImage(systemName: "arrow.up.and.down.and.arrow.left.and.right")
     case .zoomIn:
-      button.image = UIImage(named: "btn_zoom_in_light")
+      button.image = UIImage(systemName: "plus")
     case .zoomOut:
-      button.image = UIImage(named: "btn_zoom_out_light")
+      button.image = UIImage(systemName: "minus")
     }
     return button
   }
@@ -174,9 +174,9 @@ final class MapTemplateBuilder {
     case .settings:
       return CPBarButton(image: UIImage(systemName: "gearshape.fill")!, handler: action)
     case .mute:
-      return CPBarButton(image: UIImage(named: "ic_carplay_unmuted")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "speaker.wave.3")!, handler: action)
     case .unmute:
-      return CPBarButton(image: UIImage(named: "ic_carplay_muted")!, handler: action)
+      return CPBarButton(image: UIImage(systemName: "speaker.slash")!, handler: action)
     case .redirectRoute:
       return CPBarButton(image: UIImage(named: "ic_carplay_redirect_route")!, handler: action)
     case .endRoute:

@@ -9,7 +9,7 @@
     <string name="delete">Usuń</string>
     <string name="download_maps">Pobierz mapy</string>
     <!-- Settings/Downloader - info for country when download fails -->
-    <string name="download_has_failed">Nie udało się pobrać. Proszę nacisnąć, aby spróbować ponownie.</string>
+    <string name="download_has_failed">Nie udało się pobrać. Naciśnij, aby spróbować ponownie</string>
     <!-- Settings/Downloader - info for country which started downloading -->
     <string name="downloading">Pobieranie…</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
@@ -84,7 +84,7 @@
     <!-- Header of settings activity where user defines storage path -->
     <string name="maps_storage">Zapisz mapy do</string>
     <!-- Detailed description of Maps Storage settings button -->
-    <string name="maps_storage_summary">Wybierz folder, do którego pobrać mapy.</string>
+    <string name="maps_storage_summary">Wybierz folder, do którego pobrać mapy</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Mapy</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
@@ -167,7 +167,7 @@
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
     <string name="cant_change_this_setting">Przepraszamy, ustawienia pamięci mapy są aktualnie wyłączone.</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">Trwa pobieranie mapy kraju.</string>
+    <string name="downloading_is_active">Trwa pobieranie mapy</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
     <string name="my_position_share_sms">Hej, spójrz na moją aktualną lokalizację w CoMaps! %1$s lub %2$s Nie masz map offline? Pobierz tutaj: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
@@ -223,7 +223,7 @@
     <!-- Settings «Route» category: «Tts language» title -->
     <string name="pref_tts_language_title">Język komunikatów</string>
     <!-- Settings «Route» category: «Test Voice Directions» title -->
-    <string name="pref_tts_test_voice_title">Testuj wskazówki głosowe (TTS, Text-To-Speech)</string>
+    <string name="pref_tts_test_voice_title">Testuj wskazówki głosowe</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
     <string name="pref_tts_playing_test_voice">Jeśli nie słyszysz głosu, sprawdź głośność lub systemowe ustawienia zamiany tekstu na mowę.</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
@@ -248,7 +248,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Wspomóż</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Wesprzyj projekt</string>
+    <string name="how_to_support_us">Wspomóż i ulepsz CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Prawa autorskie</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -372,7 +372,7 @@
     <string name="history">Historia</string>
     <string name="search_not_found">Przepraszamy, nic nie znaleziono.</string>
     <!-- The message when user did not find anything in the search. -->
-    <string name="search_not_found_query">Proszę pobrać region, w którym Państwo szukają lub spróbować dodać nazwę pobliskiego miasta/wsi.</string>
+    <string name="search_not_found_query">Pobierz region, w którym szukasz lub spróbuj dodać nazwę pobliskiego miasta/wsi.</string>
     <string name="search_history_title">Historia wyszukiwania</string>
     <string name="search_history_text">Uzyskaj szybki dostęp do ostatniego hasła wyszukiwania.</string>
     <string name="clear_search">Wyczyść historię wyszukiwania</string>
@@ -393,17 +393,17 @@
     <string name="editor_time_add">Dodaj harmonogram</string>
     <string name="editor_time_delete">Usuń harmonogram</string>
     <!-- Text for allday switch. -->
-    <string name="editor_time_allday">Całą dobę (24 godziny)</string>
-    <string name="editor_time_open">Otwarte</string>
-    <string name="editor_time_close">Zamknięte</string>
-    <string name="editor_time_add_closed">Dodaj godziny zamknięcia</string>
+    <string name="editor_time_allday">Całodobowo (24 godziny)</string>
+    <string name="editor_time_open">Otwarcie</string>
+    <string name="editor_time_close">Zamknięcie</string>
+    <string name="editor_time_add_closed">Dodaj przerwę w godzinach otwarcia</string>
     <string name="editor_time_title">Godziny pracy</string>
     <string name="editor_time_advanced">Tryb zaawansowany</string>
     <string name="editor_time_simple">Tryb prosty</string>
-    <string name="editor_hours_closed">Godziny zamknięcia</string>
+    <string name="editor_hours_closed">Przerwa w godzinach otwarcia</string>
     <string name="editor_example_values">Przykładowe wartości</string>
     <string name="editor_correct_mistake">Popraw błąd</string>
-    <string name="editor_add_select_location">Proszę wybrać lokalizację</string>
+    <string name="editor_add_select_location">Wybierz lokalizację</string>
     <string name="editor_report_problem_desription_1">Prosimy o szczegółowe opisanie problemu, aby użytkownicy OpenStreetMap mogli naprawić błąd.</string>
     <string name="editor_report_problem_desription_2">Albo zrób to sam na https://www.openstreetmap.org/</string>
     <string name="editor_report_problem_send_button">Wyślij</string>
@@ -427,8 +427,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">Nie zalogowano</string>
     <string name="login_osm">Zaloguj się do OpenStreetMap</string>
-    <string name="password">Hasło</string>
-    <string name="forgot_password">Nie pamiętasz hasła?</string>
     <string name="logout">Wyloguj</string>
     <string name="edit_place">Edytuj miejsce</string>
     <string name="add_language">Dodaj język</string>
@@ -447,7 +445,6 @@
     <string name="cuisine">Kuchnia</string>
     <string name="select_cuisine">Wybierz kuchnię</string>
     <!-- login text field -->
-    <string name="email_or_username">Email lub nazwa użytkownika</string>
     <string name="editor_add_phone">Dodaj numer telefonu</string>
     <string name="level">Kondygnacja</string>
     <string name="downloader_delete_map_dialog">Wszystkie zmiany dotyczące mapy zostaną usunięte wraz z nią.</string>
@@ -459,7 +456,7 @@
     <string name="downloader_no_space_message">Usuń niepotrzebne dane</string>
     <string name="editor_login_error_dialog">Błąd logowania.</string>
     <string name="editor_profile_changes">Zmiany zweryfikowane</string>
-    <string name="editor_focus_map_on_location">Proszę przeciągnąć mapę, aby umieścić krzyżyk w miejscu lokalizacji miejsca lub firmy.</string>
+    <string name="editor_focus_map_on_location">Przeciągnij mapę, aby umieścić krzyżyk w miejscu lokalizacji miejsca lub firmy.</string>
     <string name="editor_edit_place_title">Edycja</string>
     <string name="editor_add_place_title">Dodawanie</string>
     <string name="editor_edit_place_name_hint">Nazwa miejsca</string>
@@ -628,7 +625,7 @@
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
     <string name="notification_channel_downloader">Pobieranie map</string>
     <!-- "Speed cameras" settings menu option (should be short! no more than 47-50 chars) to warn a driver if there is a risk of exceeding the speed limit -->
-    <string name="pref_tts_speedcams_auto">Aby ostrzec Cię przed przekroczeniem prędkości</string>
+    <string name="pref_tts_speedcams_auto">Ostrzegaj przy przekraczaniu prędkości</string>
     <!-- Speed camera settings menu option - Always warn (about speedcams) -->
     <string name="pref_tts_speedcams_always">Zawsze ostrzegaj</string>
     <!-- Speed camera settings menu option - Never warn (about speedcams) -->
@@ -754,7 +751,7 @@
     <!-- App tip #03 -->
     <string name="app_tip_03">Jeśli znasz programistę, możesz poprosić go o wdrożenie potrzebnej funkcji.</string>
     <!-- App tip #04 -->
-    <string name="app_tip_04">Proszę dotknąć dowolnego miejsca na mapie, aby wybrać cokolwiek. Długie dotknięcie pozwala ukryć i wyświetlić interfejs.</string>
+    <string name="app_tip_04">Dotknij dowolnego miejsca na mapie, aby wybrać cokolwiek. Długie dotknięcie pozwala ukryć i wyświetlić interfejs.</string>
     <!-- App tip #05 -->
     <string name="app_tip_05">Czy wiesz, że możesz wybrać swoją aktualną lokalizację na mapie?</string>
     <!-- App tip #06 -->
@@ -832,31 +829,19 @@
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Automatyczna nawigacja</string>
     <string name="level_value_generic">Piętro: %s</string>
-    <string name="github">GitHub</string>
-    <string name="editor_line_social_network">LINE</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
-    <string name="openstreetmap">OpenStreetMap</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="comma_separated_pair">%1$s, %2$s</string>
     <string name="wikimedia_commons">Wikimedia Commons</string>
     <string name="telegram_url">https://t.me/CoMapsApp/</string>
-    <string name="matrix">[Matrix]</string>
-    <string name="telegram">Telegram</string>
     <string name="tts_info_link">https://www.comaps.app/support/tts-configuration-guide-for-android/</string>
-    <string name="twitter">X (Twitter)</string>
     <string name="navigation_stop_button">Stop</string>
     <string name="panoramax">Obraz Panoramax</string>
     <string name="saved">Zapisano</string>
     <string name="app_site_url">https://comaps.app/pl/</string>
-    <string name="codeberg">Codeberg</string>
     <string name="pref_left_button_disable">Wyłącz</string>
     <string name="vehicle">Pojazd</string>
     <string name="bicycle">Rower</string>
     <string name="clear">Wyczyść</string>
-    <string name="bluesky">Bluesky</string>
     <string name="bookmark_color">Kolor zakładki</string>
     <string name="route_type">Typ trasy</string>
     <string name="backup_interval_every_day">Codziennie</string>
@@ -890,4 +875,10 @@
     <string name="dialog_report_error_missing_folder">Wybrana lokalizacja kopii zapasowej jest niedostępna lub nie można do niej zapisywać. Proszę wybierz inną lokalizację.</string>
     <string name="closed_now">Zamknięte teraz</string>
     <string name="at">o %s</string>
+    <string name="delete_track_dialog_title">Usunąć %s?</string>
+    <string name="share_track">Udostępnij trasę</string>
+    <string name="hours_confirmed_time_ago">Potwierdzone %s</string>
+    <string name="existence_confirmed_time_ago">Istnienie potwierdzone %s</string>
+    <string name="osm_note_hint">Ewentualnie zostaw notatkę dla społeczności OpenStreetMap, żeby ktoś inny mógł dodać lub poprawić to miejsce.</string>
+    <string name="osm_note_toast">Notatka zostanie wysłana do OpenStreetMap</string>
 </resources>

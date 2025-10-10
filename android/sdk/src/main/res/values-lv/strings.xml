@@ -35,4 +35,12 @@
     <string name="gb">GB</string>
     <string name="mb">MB</string>
     <string name="today">Šodien</string>
+    <string name="yesterday">Vakar</string>
+    <string name="days_ago">Pirms %s dienām</string>
+    <string name="week_ago">Pirms %s nedēļas</string>
+    <string name="weeks_ago">Pirms %s nedēļām</string>
+    <string name="month_ago">Pirms %s mēneša</string>
+    <string name="months_ago">Pirms %s mēnešiem</string>
+    <string name="year_ago">Pirms %s gada</string>
+    <string name="years_ago">Pirms %s gadiem</string>
 </resources>

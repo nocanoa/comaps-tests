@@ -33,7 +33,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Znaleziono %d plików. Zobaczysz je po konwersji.</string>
+			<string>Znaleziono %d plików.</string>
 			<key>one</key>
 			<string>Znaleziono %d plik. Zobaczysz go po konwersji.</string>
 			<key>few</key>

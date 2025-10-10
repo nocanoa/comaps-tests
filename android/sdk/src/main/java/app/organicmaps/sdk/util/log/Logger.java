@@ -131,12 +131,12 @@ public final class Logger
 
       final String threadName = "(" + Thread.currentThread().getName() + ") ";
       if (logsFolder == null || BuildConfig.DEBUG)
-        Log.println(level, tag, threadName + sb.toString());
+        Log.println(level, tag, threadName + sb);
 
       if (logsFolder != null)
       {
         sb.insert(0, String.valueOf(getLevelChar(level)) + '/' + tag + ": ");
-        LogsManager.EXECUTOR.execute(new WriteTask(logsFolder + File.separator + FILENAME, threadName + sb.toString()));
+        LogsManager.EXECUTOR.execute(new WriteTask(logsFolder + File.separator + FILENAME, threadName + sb));
       }
     }
   }

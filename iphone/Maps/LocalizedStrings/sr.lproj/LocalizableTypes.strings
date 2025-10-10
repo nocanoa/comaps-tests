@@ -465,6 +465,7 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.pedestrian.bridge" = "Пешачки мост";
+"type.highway.pedestrian.square" = "Трг";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.pedestrian.tunnel" = "Пешачки тунел";
@@ -714,7 +715,7 @@
 "type.leisure.sauna" = "Сауна";
 "type.leisure.slipway" = "Навоз";
 "type.leisure.sports_centre" = "Спортски центар";
-"type.sport.climbing" = "Зид за пењање";
+"type.sport.climbing" = "Вештачка стена";
 "type.sport.yoga" = "Јога студио";
 "type.leisure.stadium" = "Стадион";
 "type.leisure.swimming_pool" = "Базен";
@@ -747,7 +748,7 @@
 "type.man_made.tower.communication" = "Телекомуникациони торањ";
 
 /* A deep hole drilled into the earth to extract oil or gas. */
-"type.man_made.petroleum_well" = "Naftna ili gasna bušotina";
+"type.man_made.petroleum_well" = "Нафтна или гасна бушотина";
 
 /* A tower/mast constructed to burn off excess gas. */
 "type.man_made.flare" = "Газни факел";
@@ -1461,9 +1462,9 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Спортска хала";
-"type.amenity.love_hotel" = "Ljubavni hotel";
-"type.leisure.firepit" = "Ognjište";
-"type.highway.ladder" = "Merdevine";
+"type.amenity.love_hotel" = "Љубавни хотел";
+"type.leisure.firepit" = "Огњиште";
+"type.highway.ladder" = "Мердевине";
 "type.landuse.plant_nursery" = "Расадник";
 "type.sport.diving" = "Слободни скокови";
 "type.amenity.studio" = "Студио";
@@ -1477,10 +1478,14 @@
 "type.natural.wetland.saltmarsh.tidal" = "Слана мочвара у зони плиме";
 "type.natural.wetland.saltmarsh" = "Приморска слана мочвара";
 "type.railway.station.subway.qingdao" = "Метро станица";
-"type.leisure.escape_game" = "Escape Room";
+"type.leisure.escape_game" = "Соба за бекство (Escape Room)";
 "type.amenity.luggage_locker" = "Ормар за пртљаг";
 "type.amenity.ranger_station" = "Станица за ренџер";
 "type.amenity.bicycle_parking.covered" = "Покривени паркинг за бицикле";
 "type.post_office.post_partner" = "Поштански партнер";
 "type.barrier.wicket_gate" = "Вратница";
 "type.amenity.animal_shelter" = "Волонтирајте и побољшајте CoMaps";
+"type.office.security" = "Канцеларија обезбеђења";
+"type.power.portal" = "Носач електричних водова";
+"type.building.guardhouse" = "Кућица обезбеђења";
+"type.shop.lighting" = "Продавница расвете";

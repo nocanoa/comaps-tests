@@ -16,18 +16,18 @@
     <string name="type.amenity.bench">نیمکت</string>
     <string name="type.amenity.bicycle_parking">ایستگاه دوچرخه</string>
     <string name="type.amenity.bicycle_rental">جایگاه کرایه دوچرخه</string>
-    <string name="type.amenity.bicycle_repair_station">ایستگاه تعمیر دوچرخه</string>
+    <string name="type.amenity.bicycle_repair_station">ایستگاه نوسازی دوچرخه</string>
     <string name="type.amenity.biergarten">غذا</string>
-    <string name="type.amenity.brothel">فاحشه خانه</string>
+    <string name="type.amenity.brothel">جه‌خانه</string>
     <string name="type.amenity.bureau_de_change">صرافی</string>
-    <string name="type.amenity.bus_station">حمل و نقل</string>
-    <string name="type.amenity.cafe">کافه</string>
+    <string name="type.amenity.bus_station">ایستگاه اتوبوس</string>
+    <string name="type.amenity.cafe">قهوه‌خانه</string>
     <string name="type.amenity.car_rental">مکان اجاره ماشین</string>
     <string name="type.amenity.motorcycle_rental">اجاره موتور سیکلت</string>
     <string name="type.amenity.car_wash">کارواش</string>
     <string name="type.amenity.casino">قمارخانه</string>
     <string name="type.amenity.gambling">قمار</string>
-    <string name="type.leisure.adult_gaming_centre">مرکز بازی بزرگسالان</string>
+    <string name="type.leisure.adult_gaming_centre">کانون بازی بزرگسالان</string>
     <string name="type.leisure.amusement_arcade">گذرگاه طاقدار</string>
     <string name="type.amenity.charging_station">ایستگاه شارژ</string>
     <string name="type.amenity.charging_station.bicycle">ایستگاه شارژ دوچرخه</string>
@@ -42,27 +42,27 @@
     <string name="type.amenity.conference_centre">مرکز کنفرانس</string>
     <string name="type.amenity.courthouse">دادگاه</string>
     <string name="type.amenity.dentist">دندان پزشکی</string>
-    <string name="type.amenity.doctors">کلینیک</string>
-    <string name="type.amenity.drinking_water">اب اشامیدنی</string>
-    <string name="type.drinking_water.yes">اب اشامیدنی</string>
-    <string name="type.amenity.driving_school">اموزشگاه رانندگی</string>
+    <string name="type.amenity.doctors">پزشک</string>
+    <string name="type.amenity.drinking_water">آب آشامیدنی</string>
+    <string name="type.drinking_water.yes">آب آشامیدنی</string>
+    <string name="type.amenity.driving_school">آموزشگاه رانندگی</string>
     <string name="type.amenity.exhibition_centre">مرکز نمایشگاه</string>
     <string name="type.amenity.money_transfer">انتقال پول</string>
-    <string name="type.amenity.music_school">ﯽﻘﯿﺳﻮﻣ ﻩﺎﮕﺷﺯﻮﻣﺁ</string>
-    <string name="type.amenity.language_school">ﻥﺎﺑﺯ ﻪﺳﺭﺪﻣ</string>
+    <string name="type.amenity.music_school">آموزشگاه هونا</string>
+    <string name="type.amenity.language_school">آموزشگاه زبان</string>
     <string name="type.office.diplomatic">سفارت</string>
     <string name="type.amenity.fast_food">فست فود</string>
     <string name="type.amenity.ferry_terminal">حمل و نقل</string>
-    <string name="type.amenity.fire_station">ایستگاه اتش نشانی</string>
+    <string name="type.amenity.fire_station">ایستگاه آتش‌نشانی</string>
     <string name="type.amenity.fountain">فواره</string>
     <string name="type.amenity.fuel">سوخت</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
-    <string name="type.amenity.grave_yard">قبرستان</string>
+    <string name="type.amenity.grave_yard">گورستان</string>
     <!-- In most (European) countries, сemeteries are usually independent of places of worship (e.g. military cemeteries), while grave yards are usually the yard of a place of worship. -->
-    <string name="type.amenity.grave_yard.christian">قبرستان</string>
+    <string name="type.amenity.grave_yard.christian">گورستان مسیحیان</string>
     <string name="type.amenity.hospital">بیمارستان</string>
     <string name="type.amenity.hunting_stand">شکارگاه</string>
-    <string name="type.amenity.ice_cream">غذا</string>
+    <string name="type.amenity.ice_cream">بستنی</string>
     <string name="type.amenity.internet_cafe">کافی نت</string>
     <string name="type.amenity.kindergarten">مهدکودک</string>
     <string name="type.amenity.library">کتابخانه</string>
@@ -291,6 +291,7 @@
     <string name="type.highway.pedestrian.area">جاده</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">پل</string>
+    <string name="type.highway.pedestrian.square">میدان</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">تونل</string>
     <string name="type.highway.primary">جاده</string>
@@ -943,7 +944,7 @@
     <string name="type.shop.stationery">لوازم التحریر</string>
     <string name="type.shop.supermarket">فروشگاه</string>
     <string name="type.shop.tattoo">سالن خالکوبی</string>
-    <string name="type.shop.tea">فروشگاه</string>
+    <string name="type.shop.tea">چای‌خانه</string>
     <string name="type.shop.ticket">فروشگاه</string>
     <string name="type.shop.toys">فروشگاه</string>
     <string name="type.shop.travel_agency">اژانس مسافرتی</string>
@@ -958,23 +959,23 @@
     <!-- maybe change to Art Gallery for en-US when supported -->
     <string name="type.shop.art">ﺮﻨﻫ ﻩﺎﮕﺷﻭﺮﻓ</string>
     <string name="type.shop.baby_goods">ﻥﺎﮐﺩﻮﮐ ﻩﺎﮕﺷﻭﺮﻓ</string>
-    <string name="type.shop.bag">ﻒﯿﮐ ﻩﺎﮕﺷﻭﺮﻓ</string>
+    <string name="type.shop.bag">کیف فروشی</string>
     <string name="type.shop.bed">فروشگاه تخت</string>
     <string name="type.shop.boutique">ﮏﯿﺗﻮﺑ</string>
     <string name="type.shop.charity">ﻪﯾﺮﯿﺧ ﻩﺎﮕﺷﻭﺮﻓ</string>
-    <string name="type.shop.cheese">ﺮﯿﻨﭘ ﻩﺎﮕﺷﻭﺮﻓ</string>
+    <string name="type.shop.cheese">پنیر فروشی</string>
     <string name="type.shop.craft">ﯽﺘﺳﺩ ﻊﯾﺎﻨﺻ ﻭ ﺮﻨﻫ</string>
     <string name="type.shop.dairy">ﯽﻨﺒﻟ ﺕﻻﻮﺼﺤﻣ</string>
     <string name="type.shop.electrical">ﯽﮑﯾﺮﺘﮑﻟﺍ ﻡﺯﺍﻮﻟ ﻩﺯﺎﻐﻣ</string>
-    <string name="type.shop.fishing">ﯼﺮﯿﮕﯿﻫﺎﻣ ﻩﺎﮕﺷﻭﺮﻓ</string>
+    <string name="type.shop.fishing">فروشگاه ماهی‌گیری</string>
     <string name="type.shop.interior_decoration">ﯽﻠﺧﺍﺩ ﻥﻮﯿﺳﺍﺭﻮﮐﺩ</string>
     <string name="type.shop.lottery">ﯽﯾﺎﻣﺯﺁ ﺖﺨﺑ ﻂﯿﻠﺑ</string>
-    <string name="type.shop.medical_supply">ﯽﮑﺷﺰﭘ ﻡﺯﺍﻮﻟ</string>
+    <string name="type.shop.medical_supply">فروشگاه ابزار پزشکی</string>
     <string name="type.shop.nutrition_supplements">ﯽﯾﺍﺬﻏ ﯼﺎﻫ ﻞﻤﮑﻣ</string>
     <string name="type.shop.paint">ﺪﻨﮐ ﯽﻣ ﮓﻧﺭ</string>
-    <string name="type.shop.perfumery">ﯼﺯﺎﺳﺮﻄﻋ</string>
+    <string name="type.shop.perfumery">مشگ فروشی</string>
     <string name="type.shop.sewing">ﯽﻃﺎﯿﺧ ﻡﺯﺍﻮﻟ</string>
-    <string name="type.shop.storage_rental">ﺭﺎﺒﻧﺍ ﻩﺭﺎﺟﺍ</string>
+    <string name="type.shop.storage_rental">انباری کرایه‌ای</string>
     <string name="type.shop.tobacco">ﻮﮐﺎﺒﻨﺗ</string>
     <string name="type.shop.trade">ﻡﺯﺍﻮﻟ ﺕﺭﺎﺠﺗ</string>
     <string name="type.shop.watches">ﺖﻋﺎﺳ</string>
@@ -1052,13 +1053,13 @@
     <string name="type.tourism.theme_park">گردشگری</string>
     <string name="type.tourism.viewpoint">گردشگری</string>
     <!-- Typically more basic, not staffed and free (compared to alpine_hut). -->
-    <string name="type.tourism.wilderness_hut">کلبه‌ی صحرایی</string>
-    <string name="type.tourism.zoo">گردشگری</string>
-    <string name="type.tourism.zoo.petting">باغ وحش پتینگ</string>
+    <string name="type.tourism.wilderness_hut">کلبه‌ی بِیدایی</string>
+    <string name="type.tourism.zoo">جانورگاه</string>
+    <string name="type.tourism.zoo.petting">جانورگاه اهلی</string>
     <string name="type.waterway.canal">کانال اب</string>
     <string name="type.waterway.canal.tunnel">کانال اب</string>
     <string name="type.waterway.fish_pass">نردبان ماهی</string>
-    <string name="type.natural.water.ditch">خندق زهکشی</string>
+    <string name="type.natural.water.ditch">جوی زهکش</string>
     <string name="type.waterway.ditch.tunnel">کولورت</string>
     <string name="type.waterway.drain.tunnel">کولورت</string>
     <string name="type.waterway.river">رودخانه</string>
@@ -1067,8 +1068,8 @@
     <string name="type.waterway.stream.ephemeral">رودخانه</string>
     <string name="type.waterway.stream.intermittent">رودخانه</string>
     <string name="type.waterway.stream.tunnel">رودخانه</string>
-    <string name="type.waterway.waterfall">گردشگری</string>
-    <string name="type.wheelchair.limited">دسترسی محدود با صندلی چرخ دار</string>
+    <string name="type.waterway.waterfall">آبشار</string>
+    <string name="type.wheelchair.limited">دسترسی کرانمند با رواگ‌صندلی</string>
     <string name="type.wheelchair.no">بدون دسترسی با صندلی چرخ دار</string>
     <string name="type.wheelchair.yes">دسترسی کامل با صندلی چرخ دار</string>
     <string name="type.piste_type.snow_park">پارک برفی</string>
@@ -1089,10 +1090,10 @@
     <!-- https://wiki.openstreetmap.org/wiki/Tag:amenity=dojo -->
     <string name="type.amenity.dojo">دوجو</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
-    <string name="type.leisure.sports_hall">سالن ورزشی</string>
+    <string name="type.leisure.sports_hall">سرای ورزش</string>
     <string name="type.man_made.silo">سیلو</string>
     <string name="type.man_made.storage_tank">مخازن سیال</string>
-    <string name="type.aerialway.cable_car">خودردو کابلی</string>
+    <string name="type.aerialway.cable_car">رَسَن‌رو</string>
     <string name="type.aerialway.station">ایستگاه راه‌هوایی</string>
     <string name="type.aeroway">زیرساخت مرز‌هوایی</string>
     <string name="type.aerialway">راه هوایی</string>
@@ -1101,4 +1102,16 @@
     <string name="type.aeroway.gate">دروازه</string>
     <string name="type.aeroway.taxiway">رج وزیگ</string>
     <string name="type.aeroway.terminal">پایانه</string>
+    <string name="type.aerialway.chair_lift">تختِ وَزان</string>
+    <string name="type.aerialway.drag_lift">اَهرامَنده</string>
+    <string name="type.aerialway.gondola">کَدیزگوار</string>
+    <string name="type.aerialway.mixed_lift">بالابر گُمیخته</string>
+    <string name="type.aeroway.runway">نوار فرودگاه</string>
+    <string name="type.tourism">گردشگری</string>
+    <string name="type.waterway.dam">آب‌بند</string>
+    <string name="type.barrier.ditch">جوی</string>
+    <string name="type.waterway.drain">زهکش</string>
+    <string name="type.natural.water.drain">زهکش</string>
+    <string name="type.waterway.weir">سرریز</string>
+    <string name="type.wheelchair">رواگ‌صندلی</string>
 </resources>

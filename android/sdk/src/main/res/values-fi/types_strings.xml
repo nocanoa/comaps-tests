@@ -425,6 +425,7 @@
     <string name="type.highway.pedestrian.area">Jalankulkualue</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Jalankulkusilta</string>
+    <string name="type.highway.pedestrian.square">Tori</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Jalankulkutunneli</string>
     <string name="type.highway.primary">Pääkatu</string>
@@ -1392,4 +1393,7 @@
     <string name="type.amenity.ranger_station">Vartioasema</string>
     <string name="type.amenity.animal_shelter">Eläinsuoja</string>
     <string name="type.barrier.wicket_gate">Käyntiportti</string>
+    <string name="type.office.security">Vartijoiden toimisto</string>
+    <string name="type.building.guardhouse">Vartijankoppi</string>
+    <string name="type.power.portal">Sähköportaali</string>
 </resources>

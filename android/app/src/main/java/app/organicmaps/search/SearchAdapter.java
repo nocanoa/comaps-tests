@@ -5,12 +5,14 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textview.MaterialTextView;
+
 import app.organicmaps.R;
 import app.organicmaps.sdk.search.SearchResult;
 import app.organicmaps.util.Graphics;
@@ -42,11 +44,11 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     BaseResultViewHolder(@NonNull View view)
     {
       super(view);
-      if (view instanceof TextView)
+      if (view instanceof MaterialTextView)
       {
         int tintAttr = getTintAttr();
         if (tintAttr != 0)
-          Graphics.tint((TextView) view, tintAttr);
+          Graphics.tint((MaterialTextView) view, tintAttr);
       }
       view.setOnClickListener(v -> processClick(mResult, mOrder));
     }
@@ -56,7 +58,7 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     {
       mResult = result;
       mOrder = order;
-      final TextView titleView = getTitleView();
+      final MaterialTextView titleView = getTitleView();
 
       if (titleView != null)
         titleView.setText(mResult.getFormattedTitle(titleView.getContext()));
@@ -68,7 +70,7 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
       return androidx.appcompat.R.attr.colorAccent;
     }
 
-    abstract TextView getTitleView();
+    abstract MaterialTextView getTitleView();
 
     abstract void processClick(SearchResult result, int order);
   }
@@ -81,9 +83,9 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     }
 
     @Override
-    TextView getTitleView()
+    MaterialTextView getTitleView()
     {
-      return (TextView) itemView;
+      return (MaterialTextView) itemView;
     }
 
     @Override
@@ -98,15 +100,15 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     @NonNull
     final View mFrame;
     @NonNull
-    final TextView mName;
+    final MaterialTextView mName;
     @NonNull
-    final TextView mOpen;
+    final MaterialTextView mOpen;
     @NonNull
-    final TextView mDescription;
+    final MaterialTextView mDescription;
     @NonNull
-    final TextView mRegion;
+    final MaterialTextView mRegion;
     @NonNull
-    final TextView mDistance;
+    final MaterialTextView mDistance;
 
     @Override
     int getTintAttr()
@@ -126,7 +128,7 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchDataViewHol
     }
 
     @Override
-    TextView getTitleView()
+    MaterialTextView getTitleView()
     {
       return mName;
     }

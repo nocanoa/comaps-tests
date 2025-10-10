@@ -4,10 +4,10 @@
     <!-- Button text (should be short) -->
     <string name="back">بازگشت</string>
     <!-- Button text (should be short) -->
-    <string name="cancel">لغو</string>
+    <string name="cancel">وازدن</string>
     <!-- Button which deletes downloaded country -->
-    <string name="delete">حذف</string>
-    <string name="download_maps">دانلود نقشه‌ها</string>
+    <string name="delete">سِتُردن</string>
+    <string name="download_maps">بارگیری نقشه‌ها</string>
     <!-- Settings/Downloader - info for country when download fails -->
     <string name="download_has_failed">دانلود ناموفق بود، برای تلاش مجدد لمس کنید</string>
     <!-- Settings/Downloader - info for country which started downloading -->
@@ -402,8 +402,6 @@
     <!-- Status message indicating that user did not login to OSM profile yet. -->
     <string name="not_signed_in">وارد نشده‌اید</string>
     <string name="login_osm">شوید OpenStreetMap وارد</string>
-    <string name="password">رمز عبور</string>
-    <string name="forgot_password">رمز عبور خود را فراموش کردید؟</string>
     <string name="logout">خروج از حساب</string>
     <string name="edit_place">ویرایش مکان</string>
     <string name="add_language">افزودن یک زبان</string>
@@ -422,7 +420,6 @@
     <string name="cuisine">غذا‌خوری</string>
     <string name="select_cuisine">انتخاب غذاخوری</string>
     <!-- login text field -->
-    <string name="email_or_username">ایمیل یا نام کاربری</string>
     <string name="level">طبقه</string>
     <string name="downloader_delete_map_dialog">تمام ویرایش‌های که بر روی نقشه انجام داده اید به همراه نقشه حذف شد</string>
     <string name="downloader_update_maps">بروزرسانی نقشه‌ها</string>
@@ -783,9 +780,7 @@
     <string name="instagram_url">https://www.instagram.com/comaps.app</string>
     <string name="wikimedia_commons">ویکی‌انبار</string>
     <string name="panoramax">تصویر Panoramax</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="app_site_url">https://comaps.app</string>
     <string name="saved">ذخیره شد</string>
-    <string name="bluesky">بلواسکای</string>
     <string name="about_headline">رایگان برای همه، ساخته شده با عشق</string>
 </resources>

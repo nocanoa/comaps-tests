@@ -2973,6 +2973,8 @@ UNIT_CLASS_TEST(TestWithClassificator, OsmType_ComplexTypesSmoke)
       {{"tourism", "artwork", "sculpture"}, {{"tourism", "artwork"}, {"type", "sculpture"}}},
       {{"tourism", "artwork", "statue"}, {{"tourism", "artwork"}, {"artwork_type", "statue"}}},
       {{"tourism", "artwork", "statue"}, {{"tourism", "artwork"}, {"type", "statue"}}},
+      {{"tourism", "caravan_site"}, {{"tourism", "camp_site"}, {"caravans", "yes"}}},
+      {{"tourism", "caravan_site"}, {{"tourism", "camp_site"}, {"motorhome", "yes"}}},
       {{"attraction", "animal"}, {{"attraction", "animal"}}},
       {{"tourism", "information", "board"}, {{"tourism", "information"}, {"information", "board"}}},
       {{"tourism", "information", "guidepost"}, {{"tourism", "information"}, {"information", "guidepost"}}},

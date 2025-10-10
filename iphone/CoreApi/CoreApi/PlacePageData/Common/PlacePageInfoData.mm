@@ -116,6 +116,7 @@ NSDate * _Nullable ParseDateString(NSString * _Nullable dateString) {
         case MetadataID::FMD_CONTACT_BLUESKY: _bluesky = ToNSString(value); break;
         case MetadataID::FMD_PANORAMAX: _panoramax = ToNSString(value); break;
         case MetadataID::FMD_OPERATOR: _ppOperator = [NSString stringWithFormat:NSLocalizedString(@"operator", nil), ToNSString(value)]; break;
+        case MetadataID::FMD_BRANCH: _branch = ToNSString(value); break;
         case MetadataID::FMD_INTERNET:
           _wifiAvailable = (rawData.GetInternet() == feature::Internet::No)
               ? NSLocalizedString(@"no_available", nil) : NSLocalizedString(@"yes_available", nil);

@@ -10,7 +10,7 @@
   android:baselineAligned="false"
   android:gravity="center_vertical">
 
-  <ImageView
+  <com.google.android.material.imageview.ShapeableImageView
     android:id="@+id/back"
     android:layout_width="?attr/actionBarSize"
     android:layout_height="?attr/actionBarSize"
@@ -46,7 +46,7 @@
     android:minHeight="@dimen/search_progress_size"
     android:minWidth="@dimen/search_progress_size"/>
 
-  <ImageView
+  <com.google.android.material.imageview.ShapeableImageView
     android:id="@+id/clear"
     android:layout_width="?actionBarSize"
     android:layout_height="?actionBarSize"
@@ -57,7 +57,7 @@
     android:scaleType="center"
     app:srcCompat="@drawable/ic_cancel"/>
 
-  <ImageView
+  <com.google.android.material.imageview.ShapeableImageView
     android:id="@+id/voice_input"
     android:layout_width="?actionBarSize"
     android:layout_height="?actionBarSize"

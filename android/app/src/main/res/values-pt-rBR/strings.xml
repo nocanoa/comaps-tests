@@ -384,8 +384,6 @@
     <string name="register_at_openstreetmap">Abra uma conta no OpenStreetMap</string>
     <string name="login">Login</string>
     <string name="login_osm">Entrar no OpenStreetMap</string>
-    <string name="password">Senha</string>
-    <string name="forgot_password">Esqueceu sua senha?</string>
     <string name="logout">Encerrar sessão</string>
     <string name="edit_place">Editar o local</string>
     <string name="add_language">Adicionar um idioma</string>
@@ -402,7 +400,6 @@
     <string name="cuisine">Culinária</string>
     <string name="select_cuisine">Selecione a culinária</string>
     <!-- login text field -->
-    <string name="email_or_username">Email ou nome de usuário</string>
     <string name="downloader_delete_map_dialog">Todas as suas edições no mapa serão excluídas juntamente com o mapa</string>
     <string name="downloader_update_maps">Atualizar mapas</string>
     <string name="downloader_mwm_migration_dialog">Para criar um itinerário é necessário atualizar todos os mapas e, em seguida, planejá-lo novamente.</string>
@@ -744,26 +741,15 @@
     <string name="about_proposition_3">• Não precisa de conexão à internet, rápido e leve</string>
     <string name="drive_through">Drive-through</string>
     <string name="editor_operator">Operador</string>
-    <string name="editor_line_social_network">LINE</string>
     <string name="pref_map_style_title">Modo noturno</string>
     <string name="off">Desativado</string>
     <string name="on">Ativado</string>
     <string name="menu">Menu</string>
     <string name="news">Notícias</string>
-    <string name="github">GitHub</string>
-    <string name="telegram">Telegram</string>
-    <string name="matrix">[Matrix]</string>
     <string name="about_developed_by_enthusiasts">Totalmente de código aberto, sem fins lucrativos, com processos de tomada de decisões e finanças transparentes.</string>
     <string name="limited_accuracy">Precisão limitada</string>
     <string name="pref_tts_street_names_title">Anunciar nomes de ruas</string>
     <string name="faq">Perguntas frequentes</string>
-    <string name="bluesky">Bluesky</string>
-    <string name="openstreetmap">OpenStreetMap</string>
-    <string name="mastodon">Mastodon</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">X (Twitter)</string>
-    <string name="instagram">Instagram</string>
-    <string name="vk">VK</string>
     <string name="app_site_url">https://comaps.app/pt-BR/</string>
     <string name="dialog_routing_change_intermediate">Não foi possível localizar o ponto intermediário</string>
     <string name="editor_time_from">De</string>
@@ -823,7 +809,6 @@
     <string name="error_enter_correct_fediverse_page">Digite um nome de usuário ou endereço da web válido do Mastodon</string>
     <string name="error_enter_correct_bluesky_page">Digite um nome de usuário ou endereço da web válido do Bluesky</string>
     <string name="prefs_languages_information_off">Para alguns idiomas, você precisará instalar um sintetizador de voz ou um pacote de idiomas adicional da loja de aplicativos (Google Play, Galaxy Store, App Gallery, FDroid).\nAbra as configurações do seu dispositivo → Idioma e entrada → Fala → Saída de texto para fala.\nAqui, você pode gerenciar as configurações de síntese de voz (por exemplo, baixar o pacote de idiomas para uso offline) e selecionar outro mecanismo de conversão de texto para fala.</string>
-    <string name="codeberg">Codeberg</string>
     <string name="instagram_url">https://www.instagram.com/comaps.app/</string>
     <string name="editor_building_levels">Andares (incl. térreo, excl. sótão)</string>
     <string name="error_enter_correct_level">Digite um número de andares válido</string>

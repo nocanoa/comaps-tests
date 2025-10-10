@@ -220,6 +220,8 @@ void RoadPenaltyCollector::Save()
       routing::Save(writer, entry.type);
     }
   }
+
+  LOG(LINFO, ("Finished saving road penalty values"));
 }
 
 bool BuildRoadPenalty(string const & dataFilePath, string const & roadPenaltyPath,

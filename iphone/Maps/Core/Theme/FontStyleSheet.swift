@@ -60,6 +60,7 @@ enum FontStyleSheet: String, CaseIterable {
   case semibold15
   case semibold16
   case semibold18
+  case semibold20
 }
 
 extension FontStyleSheet: IStyleSheet {
@@ -127,6 +128,7 @@ extension FontStyleSheet: IStyleSheet {
       case .semibold15: return fonts.semibold15
       case .semibold16: return fonts.semibold16
       case .semibold18: return fonts.semibold18
+      case .semibold20: return fonts.semibold20
       }
     }()
     return .add { s in s.font = font }

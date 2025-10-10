@@ -339,6 +339,11 @@ public:
           brand, [this](BrandsHolder::Brand::Name const & name) { m_inserter(name.m_locale, name.m_name); });
     }
 
+    // Index branch to support searching by branch name like "McDonald's Downtown" for objects with branch=Downtown.
+    auto const branch = f.GetMetadata(feature::Metadata::FMD_BRANCH);
+    if (!branch.empty())
+      m_inserter(StringUtf8Multilang::kDefaultCode, branch);
+
     // Check for empty name just before categories indexing. After postcodes, and other meta ..
     if (!f.HasName())
       m_skipIndex.SkipEmptyNameTypes(types);

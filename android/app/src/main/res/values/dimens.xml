@@ -179,4 +179,8 @@
 
   <!--About Fragment -->
   <dimen name="about_max_button_width">310dp</dimen>
+
+  <!--App Icons -->
+  <dimen name="app_icon_border_width">0.8</dimen>
+
 </resources>
