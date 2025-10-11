@@ -449,15 +449,24 @@ void TrafficModel::OnItemSelected(QItemSelection const & selected, QItemSelectio
 
   auto const row = selected.front().top();
 
-  CHECK_LESS(static_cast<size_t>(row), m_messages.size(), ());
+  auto editSession = m_framework.GetBookmarkManager().GetEditSession();
+  editSession.ClearGroup(UserMark::Type::COLORED);
+
+  if (static_cast<size_t>(row) >= m_messages.size())
+  {
+    editSession.SetIsVisible(UserMark::Type::COLORED, false);
+    return;
+  }
+
   auto message = &m_messages[row];
   if (!message->m_location)
+  {
+    editSession.SetIsVisible(UserMark::Type::COLORED, false);
     return;
+  }
 
   m2::RectD rect;
 
-  auto editSession = m_framework.GetBookmarkManager().GetEditSession();
-  editSession.ClearGroup(UserMark::Type::COLORED);
   editSession.SetIsVisible(UserMark::Type::COLORED, true);
 
   for (auto & [coords, color] : {
