@@ -273,6 +273,8 @@ MainWindow::MainWindow(Framework & framework)
 
   fileMenu->addSeparator();
 
+  m_framework.GetTrafficManager().SetEnabled(true);
+
 #ifdef openlr_obsolete
   m_goldifyMatchedPathAction = fileMenu->addAction("Goldify", QKeySequence("Ctrl+G"), [this] { m_trafficModel->GoldifyMatchedPath(); });
   m_startEditingAction = fileMenu->addAction("Edit", QKeySequence("Ctrl+E"),
