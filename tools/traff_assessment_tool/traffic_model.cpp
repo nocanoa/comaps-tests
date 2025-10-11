@@ -325,6 +325,11 @@ TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
 
       endResetModel();
 
+      // clear markers
+      auto editSession = m_framework.GetBookmarkManager().GetEditSession();
+      editSession.ClearGroup(UserMark::Type::COLORED);
+      editSession.SetIsVisible(UserMark::Type::COLORED, false);
+
       LOG(LINFO, ("Messages:", m_messages.size()));
     });
   });
