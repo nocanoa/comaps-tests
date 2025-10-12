@@ -210,29 +210,43 @@ void TraffDecoder::DecodeMessage(traffxml::TraffMessage & message)
     return;
 
   traffxml::MultiMwmColoring decoded;
+  bool isDecoded = false;
 
-  auto it = m_messageCache.find(message.m_id);
-  if ((it != m_messageCache.end())
-      && !it->second.m_decoded.empty()
-      && (it->second.m_location == message.m_location))
+  std::vector<std::string> ids = message.m_replaces;
+  ids.insert(ids.begin(), message.m_id);
+
+  for (auto & id : ids)
   {
-    // cache already has a message with reusable location
-
-    LOG(LINFO, ("    Location for message", message.m_id, "can be reused from cache"));
-
-    std::optional<traffxml::TrafficImpact> cachedImpact = it->second.GetTrafficImpact();
-    if (cachedImpact.has_value() && cachedImpact.value() == impact.value())
+    auto it = m_messageCache.find(id);
+    if ((it != m_messageCache.end())
+        && !it->second.m_decoded.empty()
+        && (it->second.m_location == message.m_location))
     {
-      LOG(LINFO, ("    Impact for message", message.m_id, "unchanged, reusing cached coloring"));
+      // cache already has a message with reusable location
 
-      // same impact, m_decoded can be reused altogether
-      message.m_decoded = it->second.m_decoded;
-      return;
+      LOG(LINFO, ("    Location for message", message.m_id, "can be reused from cache"));
+
+      std::optional<traffxml::TrafficImpact> cachedImpact = it->second.GetTrafficImpact();
+      if (cachedImpact.has_value() && cachedImpact.value() == impact.value())
+      {
+        LOG(LINFO, ("    Impact for message", message.m_id, "unchanged, reusing cached coloring"));
+
+        // same impact, m_decoded can be reused altogether
+        message.m_decoded = it->second.m_decoded;
+        return;
+      }
+      else if (!isDecoded)
+      {
+        /*
+         * populate only on first occurrence but continue searching, we might find a matching
+         * location with matching impact
+         */
+        decoded = it->second.m_decoded;
+        isDecoded = true;
+      }
     }
-    else
-      decoded = it->second.m_decoded;
   }
-  else
+  if (!isDecoded)
     DecodeLocation(message, decoded);
 
   if (impact)

@@ -639,6 +639,13 @@ void TrafficManager::DecodeFirstMessage()
 
     // store message in cache
     m_messageCache.insert_or_assign(message.m_id, message);
+
+    for (auto & replaced : message.m_replaces)
+    {
+      auto it = m_messageCache.find(replaced);
+      if (it != m_messageCache.cend())
+        m_messageCache.erase(it);
+    }
   }
   /*
    * TODO detect if we can do a quick update:
