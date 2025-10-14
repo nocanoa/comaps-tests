@@ -565,14 +565,9 @@ double RoutingTraffDecoder::TraffEstimator::GetTurnPenalty(Purpose /* purpose */
   return 0.0;
 }
 
-double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose purpose) const
+double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose /* purpose */) const
 {
-  switch (purpose)
-  {
-  case Purpose::Weight: return 20 * 60;   // seconds
-  case Purpose::ETA: return 20 * 60;      // seconds
-  }
-  UNREACHABLE();
+  return 20 * 60;   // seconds
 }
 
 double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from, ms::LatLon const & to,
