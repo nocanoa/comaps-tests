@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,24 +81,33 @@
                         <rect key="frame" x="16" y="58" width="308" height="64"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g13-pK-Eig" userLabel="Outdoor Button" customClass="BottomMenuLayerButton" customModule="CoMaps" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="onOutdoorButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UQ2-jj-fPc"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edA-Mo-3Vx" customClass="BottomMenuLayerButton" customModule="CoMaps" customModuleProvider="target">
-                                <rect key="frame" x="102.5" y="0.0" width="103" height="64"/>
+                                <rect key="frame" x="1024" y="0.0" width="1024" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="onIsoLinesButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3LS-C2-2Mc"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4US-fZ-cyg" customClass="BottomMenuLayerButton" customModule="CoMaps" customModuleProvider="target">
-                                <rect key="frame" x="205.5" y="0.0" width="102.5" height="64"/>
+                                <rect key="frame" x="2048" y="0.0" width="1024" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="onSubwayButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xxM-kP-gT1"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" id="95L-lU-yCQ" customClass="BottomMenuLayerButton" customModule="CoMaps" customModuleProvider="target">
+                                <rect key="frame" x="-358" y="-352" width="1024" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="safeArea" id="ZQs-ua-gDZ"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="onTrafficButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tie-i7-JaB"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -144,6 +153,7 @@
                 <outlet property="isoLinesButton" destination="edA-Mo-3Vx" id="qoC-8w-EqY"/>
                 <outlet property="outdoorButton" destination="g13-pK-Eig" id="ib1-aw-Qv9"/>
                 <outlet property="subwayButton" destination="4US-fZ-cyg" id="eQB-HR-Wgl"/>
+                <outlet property="trafficButton" destination="95L-lU-yCQ" id="O9W-En-8Rc"/>
             </connections>
             <point key="canvasLocation" x="137.6953125" y="201.953125"/>
         </tableViewCell>

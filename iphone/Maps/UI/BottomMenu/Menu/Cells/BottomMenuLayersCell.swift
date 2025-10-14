@@ -18,6 +18,11 @@ class BottomMenuLayersCell: UITableViewCell {
       updateOutdoorButton()
     }
   }
+  @IBOutlet private var trafficButton: BottomMenuLayerButton! {
+    didSet {
+      updateTrafficButton()
+    }
+  }
 
   var onClose: (()->())?
   
@@ -32,6 +37,7 @@ class BottomMenuLayersCell: UITableViewCell {
     outdoorButton.setupWith(image: UIImage(resource: .btnMenuOutdoors), text: L("button_layer_outdoor"))
     isoLinesButton.setupWith(image: UIImage(resource: .btnMenuIsomaps), text: L("button_layer_isolines"))
     subwayButton.setupWith(image: UIImage(resource: .btnMenuSubway), text: L("button_layer_subway"))
+    trafficButton.setupWith(image: UIImage(resource: .btnMenuTraffic), text: L("button_layer_traffic"))
   }
 
   deinit {
@@ -56,6 +62,11 @@ class BottomMenuLayersCell: UITableViewCell {
     let enabled = MapOverlayManager.outdoorEnabled()
     outdoorButton.setStyleAndApply(styleFor(enabled))
   }
+    
+  private func updateTrafficButton() {
+    let enabled = MapOverlayManager.trafficEnabled()
+    trafficButton.setStyleAndApply(styleFor(enabled))
+  }
   
   @IBAction func onCloseButtonPressed(_ sender: Any) {
     onClose?()
@@ -75,6 +86,11 @@ class BottomMenuLayersCell: UITableViewCell {
     let enable = !MapOverlayManager.outdoorEnabled()
     MapOverlayManager.setOutdoorEnabled(enable)
   }
+    
+  @IBAction func onTrafficButton(_ sender: Any) {
+    let enable = !MapOverlayManager.trafficEnabled()
+    MapOverlayManager.setTrafficEnabled(enable)
+  }
 }
 
 extension BottomMenuLayersCell: MapOverlayManagerObserver {
@@ -88,6 +104,10 @@ extension BottomMenuLayersCell: MapOverlayManagerObserver {
     
   func onOutdoorStateUpdated() {
     updateOutdoorButton()
+  }
+    
+  func onTrafficStateUpdated() {
+    updateTrafficButton()
   }
 }
 

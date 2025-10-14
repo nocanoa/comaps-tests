@@ -811,6 +811,7 @@
 "privacy_policy" = "Privacy policy";
 "terms_of_use" = "Terms of use";
 "button_layer_subway" = "Metro";
+"button_layer_traffic" = "Traffic";
 "layers_title" = "Map Styles and Layers";
 "subway_data_unavailable" = "Metro map is unavailable";
 "title_error_downloading_bookmarks" = "An error occurred";

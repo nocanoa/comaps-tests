@@ -93,7 +93,7 @@
 				274720472E439DDE00C516DF /* traff_storage.cpp */,
 			);
 			name = traffxml;
-			path = ../../traffxml;
+			path = ../../libs/traffxml;
 			sourceTree = "<group>";
 		};
 		67BECB831DDA474400FC4E99 /* Frameworks */ = {
