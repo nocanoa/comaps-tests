@@ -483,6 +483,9 @@ area|z13-[leisure=stadium],
 area|z13-[leisure=sports_centre],
 {fill-color: @sport0; fill-opacity: 1;}
 
+area|z16-[leisure=fitness_centre][sport=yoga],
+{fill-color: @sport0; fill-opacity: 0.1;}
+
 area|z14-[piste:type=snow_park],
 {fill-color: @piste; fill-opacity: 0.2;}
 

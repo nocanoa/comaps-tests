@@ -174,6 +174,9 @@ amenity-charging_station-motorcar                   # icon z14- (also has captio
 amenity-fuel                                        # icon z12- (also has caption(optional) z12-, area z15-)
 === 3200
 
+amenity-charging_station-motorcar-small             # icon z16- (also has caption(optional) z16-, area z15-)
+=== 3190
+
 amenity-charging_station                            # icon z16- (also has caption(optional) z16-)
 amenity-vending_machine-fuel                        # icon z17- (also has caption(optional) z17-)
 === 3150
@@ -772,6 +775,9 @@ entrance-main                                       # icon z18- (also has captio
 # amenity-charging_station-motorcar                 # caption(optional) z14- (also has icon z14-, area z15-)
 # amenity-fuel                                      # caption(optional) z12- (also has icon z12-, area z15-)
 # === -6800
+
+# amenity-charging_station-motorcar-small           # caption(optional) z16- (also has icon z16-, area z15-)
+# === -6810
 
 # amenity-charging_station                          # caption(optional) z16- (also has icon z16-)
 # amenity-vending_machine-fuel                      # caption(optional) z17- (also has icon z17-)
