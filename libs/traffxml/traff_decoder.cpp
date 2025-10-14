@@ -6,6 +6,7 @@
 #include "geometry/mercator.hpp"
 
 #include "indexer/feature.hpp"
+#include "indexer/road_shields_parser.hpp"
 
 // Only needed for OpenlrTraffDecoder, see below
 #if 0
@@ -27,8 +28,17 @@
 
 #include "traffic/traffic_cache.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 namespace traffxml
 {
+enum class RefParserState
+{
+  Whitespace,
+  Alpha,
+  Numeric
+};
+
 // Only needed for OpenlrTraffDecoder, see below
 #if 0
 // Number of worker threads for the OpenLR decoder
@@ -54,13 +64,13 @@ auto constexpr kOneMpSInKmpH = 3.6;
 
 /*
  * Penalty factor for using a fake segment to get to a nearby road.
- * Maximum penalty for roads is currently 16 (4 for ramps * 4 for road type), offroad penalty is
- * twice the maximum road penalty. We might need to increase that, since offroad penalty applies to
- * direct distance whereas road penalty applies to roads, which can be up to around 3 times the
- * direct distance (theoretically unlimited). That would imply multiplying maximum road penalty by
- * more than 3 (e.g. 4).
+ * Maximum penalty for roads is currently 64 (4 for ramps * 4 for road type * 4 for ref), offroad
+ * penalty is twice the maximum road penalty. We might need to increase that, since offroad penalty
+ * applies to direct distance whereas road penalty applies to roads, which can be up to around 3
+ * times the direct distance (theoretically unlimited). That would imply multiplying maximum road
+ * penalty by more than 3 (e.g. 4).
  */
-auto constexpr kOffroadPenalty = 32;
+auto constexpr kOffroadPenalty = 128;
 
 /*
  * Penalty factor for non-matching attributes
@@ -475,6 +485,67 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
 }
 #endif
 
+double RoutingTraffDecoder::TraffEstimator::GetRoadRefPenalty(std::string & ref) const
+{
+  // skip parsing if ref is empty
+  if (ref.empty())
+  {
+    if (m_decoder.m_roadRef.empty())
+      return 1;
+    else if (!m_decoder.m_roadRef.empty())
+      return kAttributePenalty;
+  }
+
+  // TODO does caching results per ref improve performance?
+
+  std::vector<std::string> r = ParseRef(ref);
+
+  size_t matches = 0;
+
+  if (m_decoder.m_roadRef.empty() && r.empty())
+    return 1;
+  else if (m_decoder.m_roadRef.empty() || r.empty())
+    return kAttributePenalty;
+
+  // work on a copy of `m_decoder.m_roadRef`
+  std::vector<std::string> l = m_decoder.m_roadRef;
+
+  if ((l.size() > 1) && (r.size() > 1) && (l.front() == r.front()))
+  {
+    /*
+     * Discard generic prefixes, which are often used to denote the road class.
+     * This will turn `A1` and `A2` into `1` and `2`, causing them to be treated as a mismatch,
+     * not a partial match.
+     */
+    l.erase(l.begin());
+    r.erase(r.begin());
+  }
+
+  // for both sides, count items matched by the other side
+  for (auto & litem : l)
+    for (auto ritem : r)
+      if (litem == ritem)
+      {
+        matches++;
+        break;
+      }
+
+  for (auto ritem : r)
+    for (auto & litem : l)
+      if (litem == ritem)
+      {
+        matches++;
+        break;
+      }
+
+  if (matches == 0)
+    return kAttributePenalty;
+  else if (matches == (l.size() + r.size()))
+    return 1;
+  else
+    return kReducedAttributePenalty;
+}
+
 double RoutingTraffDecoder::TraffEstimator::GetUTurnPenalty(Purpose /* purpose */) const
 {
   // Adds 2 minutes penalty for U-turn. The value is quite arbitrary
@@ -517,6 +588,13 @@ double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from,
   return result;
 }
 
+/*
+ * Currently, the attribute penalty (kAttributePenalty or kReducedAttributePenalty) can be applied
+ * up to 3 times:
+ * - ramp attribute mismatch
+ * - road class mismatch
+ * - road ref mismatch
+ */
 double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const
 {
   double result = road.GetDistance(segment.GetSegmentIdx());
@@ -543,6 +621,28 @@ double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment c
     if (m_decoder.m_message.value().m_location.value().m_roadClass)
       // we can’t determine if the road matches the required road class, treat it as mismatch
       result *= kAttributePenalty;
+  }
+
+  if (!m_decoder.m_roadRef.empty())
+  {
+    auto const countryFile = m_decoder.m_numMwmIds->GetFile(segment.GetMwmId());
+    auto const mwmId = m_decoder.m_dataSource.GetMwmIdByCountryFile(countryFile);
+    FeaturesLoaderGuard g(m_decoder.m_dataSource, mwmId);
+    auto f = g.GetOriginalFeatureByIndex(segment.GetFeatureId());
+    auto refs = ftypes::GetRoadShieldsNames(*f);
+
+    auto penalty = kAttributePenalty;
+
+    for (auto & ref : refs)
+    {
+      auto newPenalty = GetRoadRefPenalty(ref);
+      if (newPenalty < penalty)
+        penalty = newPenalty;
+      if (penalty == 1)
+        break;
+    }
+
+    result *= penalty;
   }
 
   return result;
@@ -865,6 +965,11 @@ void RoutingTraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traff
 
   m_message = message;
 
+  if (m_message.value().m_location.value().m_roadRef)
+    m_roadRef = ParseRef(m_message.value().m_location.value().m_roadRef.value());
+  else
+    m_roadRef.clear();
+
   int dirs = (message.m_location.value().m_directionality == Directionality::BothDirections) ? 2 : 1;
   for (int dir = 0; dir < dirs; dir++)
     DecodeLocationDirection(message, decoded, dir == 0 ? false : true /* backwards */);
@@ -965,5 +1070,62 @@ bool IsRamp(routing::HighwayType highwayType)
   default:
     return false;
   }
+}
+
+std::vector<std::string> ParseRef(std::string & ref)
+{
+  std::vector<std::string> res;
+  std::string curr = "";
+  RefParserState state = RefParserState::Whitespace;
+
+  for (size_t i = 0; i < ref.size(); i++)
+  {
+    // TODO this list of delimiters might not be exhaustive
+    if ((ref[i] <= 0x20) || (ref[i] == ',') || (ref[i] == '-') || (ref[i] == '.') || (ref[i] == '/'))
+    {
+      // whitespace
+      if (state != RefParserState::Whitespace)
+      {
+        if (state == RefParserState::Alpha)
+          boost::to_lower(curr);
+        res.push_back(curr);
+        curr = "";
+      }
+      state = RefParserState::Whitespace;
+    }
+    /*
+     * TODO adapt this to other number systems as well.
+     * Roman numerals (or any use of letters as numbers) are a stupid idea. If they are at least
+     * properly delimited, they are treated as a letter group, which sort of works for comparison.
+     * However, `IVbis` will be treated as one group, whereas `IV bis` will be treated as two.
+     */
+    else if ((ref[i] >= '0') && (ref[i] <= '9'))
+    {
+      // numeric
+      if (state == RefParserState::Alpha)
+      {
+        boost::to_lower(curr);
+        res.push_back(curr);
+        curr = "";
+      }
+      curr += ref[i];
+      state = RefParserState::Numeric;
+    }
+    // anything that is not a delimiter or a digit (as per the above rules) is considered a letter
+    else
+    {
+      // alpha
+      if (state == RefParserState::Numeric)
+      {
+        res.push_back(curr);
+        curr = "";
+      }
+      curr += ref[i];
+      state = RefParserState::Alpha;
+    }
+  }
+  if (!curr.empty())
+    res.push_back(curr);
+  return res;
 }
 }  // namespace traffxml

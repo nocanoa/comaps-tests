@@ -295,6 +295,20 @@ public:
      */
     double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const override;
     double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
+
+    /**
+     * @brief Determines the penalty factor based on how two reference numbers match.
+     *
+     * Rules are subject to change.
+     *
+     * @param ref The reference number of the current segment, compared against `m_roadRef`.
+     *
+     * @return 1 for a perfect match (refs are assumed to refer to the same object), `kAttributePenalty`
+     * for a mismatch (refs are assumed to refer to different objects) or`kReducedAttributePenalty` for
+     * a partial match (unclear whether both refs refer to the same object).
+     */
+    double GetRoadRefPenalty(std::string & ref) const;
+
     double GetUTurnPenalty(Purpose /* purpose */) const override;
     double GetTurnPenalty(Purpose purpose, double angle, routing::RoadGeometry const & from_road,
                           routing::RoadGeometry const & to_road, bool is_left_hand_traffic = false) const override;
@@ -378,6 +392,11 @@ private:
   std::shared_ptr<routing::NumMwmIds> m_numMwmIds = std::make_shared<routing::NumMwmIds>();
   std::unique_ptr<routing::IRouter> m_router;
   std::optional<traffxml::TraffMessage> m_message = std::nullopt;
+
+  /**
+   * @brief The road ref of `m_message`, parsed with `ParseRef()`
+   */
+  std::vector<std::string> m_roadRef;
 };
 
 /**
@@ -389,4 +408,22 @@ using DefaultTraffDecoder = RoutingTraffDecoder;
 traffxml::RoadClass GetRoadClass(routing::HighwayType highwayType);
 double GetRoadClassPenalty(traffxml::RoadClass lhs, traffxml::RoadClass rhs);
 bool IsRamp(routing::HighwayType highwayType);
+
+/**
+ * @brief Breaks down a ref into groups for comparison.
+ *
+ * The result of this function can be used to determine if two reference numbers match partially
+ * (such as `A4`, `A4bis` and `A4.1`).
+ *
+ * Implementation details may change; currently the following applies:
+ *
+ * A whitespace character (or sequence of whitespace characters), or a switch between letters and
+ * digits, starts a new group.
+ *
+ * Letters are converted to lowercase.
+ *
+ * For example, each of `A42`, `A 42` and `-a42` would be broken down into `a, 42`, whereas `A4.2`
+ * would be broken down into `a, 4, 2`.
+ */
+std::vector<std::string> ParseRef(std::string & ref);
 }  // namespace traffxml
