@@ -17,6 +17,10 @@ set -e
 #UK_POSTCODES_URL:/home/planet/postcodes/gb-postcode-data/gb_postcodes.csv
 #US_POSTCODES_URL:/home/planet/postcodes/us-postcodes/uszips.csv
 
+echo "<$(date +%T)> Setting git as safe dir..."
+
+git config --global --add safe.directory /root/OM/organicmaps
+
 echo "<$(date +%T)> Starting..."
 
 # Prepare paths
