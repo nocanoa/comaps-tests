@@ -9,7 +9,8 @@ RUN apt-get update -qq \
     curl \
     osmctools \
     rclone \
-    sftp \
+    openssh-client \
+    git \
     sshpass \
     vim \
     wget \
@@ -38,6 +39,10 @@ RUN apt-get update -qq \
     libxi-dev \
     zlib1g-dev \
     && rm -rf /var/cache/apt/* /var/lib/apt/lists/*;
+
+# Allow pip to install system-wide in the container
+RUN rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+RUN pip3 install "protobuf<4"
 
 RUN mkdir /root/OM
 # When running, bind mount the repo here
