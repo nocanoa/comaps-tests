@@ -64,13 +64,22 @@ auto constexpr kOneMpSInKmpH = 3.6;
 
 /*
  * Penalty factor for using a fake segment to get to a nearby road.
- * Maximum penalty for roads is currently 64 (4 for ramps * 4 for road type * 4 for ref), offroad
- * penalty is twice the maximum road penalty. We might need to increase that, since offroad penalty
- * applies to direct distance whereas road penalty applies to roads, which can be up to around 3
- * times the direct distance (theoretically unlimited). That would imply multiplying maximum road
- * penalty by more than 3 (e.g. 4).
+ * Offroad penalty applies to direct distance whereas road penalty applies to roads, which can be up
+ * to around 3 times the direct distance (theoretically unlimited). Therefore, a factor of 3–4 times
+ * the penalty of a well-matched road may be needed to avoid competing with the correct route.
+ * On the other hand, a very high offroad penalty would give preference to a poorly matched route
+ * over a well-matched one if it is closer to the reference points.
+ * Maximum penalty for roads is currently 64 (4 for ramps * 4 for road type * 4 for ref).
+ * A well-matched road may still have a penalty of around 4 (twice the reduced attribute penalty, or
+ * once the full attribute penalty).
+ * A “wrong” road may also just have a penalty of 4 (e.g. road name mismatch, but road class and
+ * ramp type match).
+ * A value of 16 has worked well for the DE-B2R-SendlingSued-Passauerstrasse test case. The
+ * DE-A10-Werder-GrossKreutz or DE-A115-PotsdamDrewitz-Nuthetal test cases still resolve incorrectly
+ * with an offroad penalty of 8 and even 2, presumably because the correct endpoints are not
+ * connected by fake segments.
  */
-auto constexpr kOffroadPenalty = 128;
+auto constexpr kOffroadPenalty = 16;
 
 /*
  * Penalty factor for non-matching attributes
