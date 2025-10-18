@@ -38,6 +38,9 @@ data/patterns.txt*
 # Auto-generated from data/categories-strings/* by tools/unix/generate_categories.sh
 data/categories.txt
 
+# Auto-generated from data/cuisines-strings/* by tools/unix/generate_cuisines.sh
+data/categories_cuisines.txt
+
 # Compiled Python
 *.pyc
 

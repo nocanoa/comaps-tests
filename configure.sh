@@ -115,6 +115,7 @@ fi
 
 echo "Generating search categories / synonyms..."
 ./tools/unix/generate_categories.sh
+./tools/unix/generate_cuisines.sh
 
 if [ -z "$SKIP_GENERATE_SYMBOLS" ]; then
   if Diff data/symbols_hash data/styles/*/*/symbols/* || [ ! -z "$SYMBOLS_NOT_GENERATED" ]; then
