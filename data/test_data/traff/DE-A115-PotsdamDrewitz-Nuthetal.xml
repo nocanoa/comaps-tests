@@ -1,0 +1,17 @@
+<!-- From DE-RealWorldLargeFeed. -->
+<!--
+    The route ends at a large junction, proceeds past the reference point, then
+    goes back down the wrong carriageway of the motorway.
+-->
+<feed>
+  <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.7:d.1.10292.p.1" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">
+    <location directionality="ONE_DIRECTION" fuzziness="LOW_RES" road_class="MOTORWAY" road_name="Autobahnzubringer Magdeburg" road_ref="A115">
+      <from junction_name="Potsdam-Drewitz" junction_ref="5a">+52.352650 +13.140700</from>
+      <to junction_name="Nuthetal" junction_ref="7">+52.300201 +13.083500</to>
+    </location>
+    <events>
+      <event class="CONGESTION" type="CONGESTION_STATIONARY_TRAFFIC">
+      </event>
+    </events>
+  </message>
+</feed>

@@ -1,0 +1,18 @@
+<!-- From DE-realworld5. -->
+<!--
+     A combination of reference points on the opposite carriageway, high offroad cost,
+     allowing any road to be used and a low penalty results in a completely incorrect
+     location (through a residential area rather than along the opposite carriageway).
+-->
+<feed>
+  <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.15:d.1.22689.p.1" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">
+    <location directionality="ONE_DIRECTION" fuzziness="LOW_RES" road_name="Mittlerer Ring" road_ref="B2R">
+      <from junction_name="München-Sendling-Süd">+48.110901 +11.518500</from>
+      <to junction_name="Passauerstraße">+48.110649 +11.534150</to>
+    </location>
+    <events>
+      <event class="CONGESTION" type="CONGESTION_QUEUE">
+      </event>
+    </events>
+  </message>
+</feed>

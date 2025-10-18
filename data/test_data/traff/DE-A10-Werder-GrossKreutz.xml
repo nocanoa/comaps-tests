@@ -1,0 +1,17 @@
+<!-- From DE-RealWorldLargeFeed. -->
+<!--
+    The route starts at a large junction, goes down the wrong carriageway of the motorway,
+    changes direction at the next junction, then back.
+-->
+<feed>
+  <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.7:d.1.10209.n.1" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">
+    <location directionality="ONE_DIRECTION" fuzziness="LOW_RES" road_class="MOTORWAY" road_name="Westlicher Berliner Ring" road_ref="A10">
+      <from junction_name="Werder" junction_ref="21">+52.334801 +12.814650</from>
+      <to junction_name="Groß Kreutz" junction_ref="22">+52.393700 +12.835000</to>
+    </location>
+    <events>
+      <event class="CONGESTION" type="CONGESTION_STATIONARY_TRAFFIC">
+      </event>
+    </events>
+  </message>
+</feed>
