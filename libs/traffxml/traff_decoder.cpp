@@ -674,6 +674,11 @@ RoutingTraffDecoder::DecoderRouter::DecoderRouter(CountryParentNameGetterFn cons
   //, m_directionsEngine(CreateDirectionsEngine(m_vehicleType, m_numMwmIds, m_dataSource)) // TODO we don’t need directions, can we disable that?
 {}
 
+routing::RoutingOptions RoutingTraffDecoder::DecoderRouter::GetRoutingOptions()
+{
+  return routing::RoutingOptions();
+}
+
 RoutingTraffDecoder::RoutingTraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                                          const CountryParentNameGetterFn & countryParentNameGetter,
                                          std::map<std::string, TraffMessage> & messageCache)

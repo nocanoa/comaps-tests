@@ -1091,10 +1091,15 @@ RouterResultCode IndexRouter::AdjustRoute(Checkpoints const & checkpoints, m2::P
   return RouterResultCode::NoError;
 }
 
+RoutingOptions IndexRouter::GetRoutingOptions()
+{
+  return RoutingOptions::LoadCarOptionsFromSettings();
+}
+
 unique_ptr<WorldGraph> IndexRouter::MakeWorldGraph()
 {
   // Use saved routing options for all types (car, bicycle, pedestrian).
-  RoutingOptions const routingOptions = RoutingOptions::LoadCarOptionsFromSettings();
+  RoutingOptions const routingOptions = GetRoutingOptions();
   /// @DebugNote
   // Add avoid roads here for debug purpose.
   // routingOptions.Add(RoutingOptions::Road::Motorway);

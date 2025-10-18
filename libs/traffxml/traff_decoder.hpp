@@ -266,6 +266,13 @@ public:
      */
     IndexRouter::Mode GetMode() { return IndexRouter::Mode::Decoding; }
 
+    /**
+     * @brief Returns current routing options.
+     *
+     * For traffic decoding purposes, all roads are allowed.
+     */
+    routing::RoutingOptions GetRoutingOptions() override;
+
   private:
   };
 

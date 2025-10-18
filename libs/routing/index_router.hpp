@@ -175,6 +175,14 @@ protected:
    */
   virtual Mode GetMode() { return Mode::Navigation; }
 
+  /**
+   * @brief Returns current routing options.
+   *
+   * In this class, the routing options are the one set in the GUI. Subclasses may override this
+   * method to provide different routing options.
+   */
+  virtual RoutingOptions GetRoutingOptions();
+
 private:
   RouterResultCode CalculateSubrouteJointsMode(IndexGraphStarter & starter, RouterDelegate const & delegate,
                                                std::shared_ptr<AStarProgress> const & progress,
