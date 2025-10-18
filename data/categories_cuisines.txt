@@ -2931,3 +2931,174 @@ sr:Веганска|Вегетаријанска|Вегетаријанци|Ве
 # el:Βιετναμέζικη κουζίνα
 # he:מטבח וייטנאמי
 # sk:Vietnamská kuchyňa
+
+cuisine-juice
+en:Juice
+
+cuisine-wings
+en:Wings
+
+# cuisine-dessert
+# en:Dessert
+
+cuisine-frozen_yogurt
+en:Frozen Yogurt
+
+cuisine-tacos
+en:Tacos
+
+cuisine-dumplings
+en:Dumplings
+
+# cuisine-taiwanese
+# en:Taiwanese cuisine
+
+# cuisine-british
+# en:British cuisine
+
+# cuisine-middle_eastern
+# en:Middle Eastern cuisine
+
+cuisine-shawarma
+en:Shawarma
+
+cuisine-pretzel
+en:Pretzel
+
+# cuisine-bistro
+# en:Bistro
+
+cuisine-poke
+en:Poke
+
+cuisine-hotpot
+en:Hotpot
+
+# cuisine-latin_american
+# en:Latin American cuisine
+
+# cuisine-hawaiian
+# en:Hawaiian cuisine
+
+cuisine-churro
+en:Churro
+
+# cuisine-western
+# en:Western cuisine
+
+cuisine-french_fries
+en:French Fries
+
+cuisine-fried_food
+en:Fried Food
+
+cuisine-empanada
+en:Empanada
+
+cuisine-piadina
+en:Piadina
+
+# cuisine-buffet
+# en:Buffet
+
+# cuisine-european
+# en:European cuisine
+
+# cuisine-bar_and_grill
+# en:Bar and Grill
+
+# cuisine-jamaican
+# en:Jamaican cuisine
+
+cuisine-waffle
+en:Waffle
+
+# cuisine-potato
+# en:Potato
+
+# cuisine-meat
+# en:Meat
+
+# cuisine-nepalese
+# en:Nepalese cuisine
+
+cuisine-brunch
+en:Brunch
+
+# cuisine-ukrainian
+# en:Ukrainian cuisine
+
+# cuisine-cuban
+# en:Cuban cuisine
+
+# cuisine-uzbek
+# en:Uzbek cuisine
+
+# cuisine-bolivian
+# en:Bolivian cuisine
+
+cuisine-yakiniku
+en:Yakiniku
+
+# cuisine-afghan
+# en:Afghan cuisine
+
+# cuisine-syrian
+# en:Syrian cuisine
+
+# cuisine-cantonese
+# en:Cantonese cuisine
+
+cuisine-french_tacos
+en:French Tacos
+
+# cuisine-snack
+# en:Snack
+
+# cuisine-danish
+# en:Danish cuisine
+
+cuisine-soup
+en:Soup
+
+# cuisine-swedish
+# en:Swedish cuisine
+
+cuisine-falafel
+en:Falafel
+
+cuisine-rice_noodle
+en:Rice Noodle
+
+# cuisine-czech
+# en:Czech cuisine
+
+cuisine-teppanyaki
+en:Teppanyaki
+
+# cuisine-pakistani
+# en:Pakistani cuisine
+
+# cuisine-colombian
+# en:Colombian cuisine
+
+# cuisine-cajun
+# en:Cajun cuisine
+
+cuisine-takoyaki
+en:Takoyaki
+
+# cuisine-mongolian_grill
+# en:Mongolian Grill
+
+cuisine-yakitori
+en:Yakitori
+
+# cuisine-southern
+# en:Southern cuisine
+
+cuisine-pie_and_mash
+en:Pie and Mash
+
+# cuisine-venezuelan
+# en:Venezuelan cuisine
