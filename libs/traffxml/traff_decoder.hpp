@@ -301,7 +301,7 @@ public:
      * @return Travel time in seconds.
      */
     double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const override;
-    double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose purpose) const override;
+    double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose /* purpose */) const override;
 
     /**
      * @brief Determines the penalty factor based on how two reference numbers match.
@@ -317,9 +317,9 @@ public:
     double GetRoadRefPenalty(std::string & ref) const;
 
     double GetUTurnPenalty(Purpose /* purpose */) const override;
-    double GetTurnPenalty(Purpose purpose, double angle, routing::RoadGeometry const & from_road,
+    double GetTurnPenalty(Purpose /* purpose */, double angle, routing::RoadGeometry const & from_road,
                           routing::RoadGeometry const & to_road, bool is_left_hand_traffic = false) const override;
-    double GetFerryLandingPenalty(Purpose purpose) const override;
+    double GetFerryLandingPenalty(Purpose /* purpose */) const override;
 
   private:
     RoutingTraffDecoder & m_decoder;
