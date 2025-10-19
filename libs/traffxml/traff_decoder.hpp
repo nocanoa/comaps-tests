@@ -382,6 +382,30 @@ protected:
    */
   void DecodeLocation(traffxml::TraffMessage & message, traffxml::MultiMwmColoring & decoded) override;
 
+  /**
+   * @brief Truncates the route so its endpoints best match the reference points.
+   *
+   * Leading and trailing fake segments are discarded.
+   *
+   * When building the graph, the router creates fake segments to the nearest roads. These are not
+   * necessarily the best for location decoding, which may result in “heads” or “tails” being added
+   * to the decoded location. This function attempts to detect and remove them.
+   *
+   * To do this, it iterates over the nodes (taken from `rsegments`) and determines if any of them
+   * is a better start/end candidate. This is done by calculating the cost of leaping between the
+   * node and the corresponding checkpoint; if this is cheaper than the stretch of route bypassed
+   * in this way, the node becomes a candidate for the corresponding endpoint. The higher the cost
+   * saving, the better the candidate.
+   *
+   * After identifying the best candidate for each endpoint, segments outside these nodes are
+   * discarded.
+   *
+   * @param rsegments The segments of the route
+   * @param checkpoints The reference points (at least two)
+   */
+  void TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
+                     routing::Checkpoints const & checkpoints);
+
 private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
 
@@ -433,4 +457,39 @@ bool IsRamp(routing::HighwayType highwayType);
  * would be broken down into `a, 4, 2`.
  */
 std::vector<std::string> ParseRef(std::string & ref);
+
+/**
+ * @brief Calculates the segments to truncate at the start of the route.
+ *
+ * The route is not actually truncated by this function.
+ *
+ * `start` and `startSaving` should be 0 when calling this function. After it returns, these values
+ * will indicate the first segment to keep and the cost saved by truncating everything before.
+ *
+ * @param rsegments The segments of the route
+ * @param checkpoints The reference points (at least two)
+ * @param start Index of the first segment to keep
+ * @param startSaving Cost saved by truncating
+ */
+void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
+                   routing::Checkpoints const & checkpoints,
+                   size_t & start, double & startSaving);
+
+/**
+ * @brief Calculates the segments to truncate at the start of the route.
+ *
+ * The route is not actually truncated by this function.
+ *
+ * `end` should be `rsegments.size() - 1` and `endSaving` should be 0 when calling this function.
+ * After it returns, these values will indicate the last segment to keep and the cost saved by
+ * truncating everything after.
+ *
+ * @param rsegments The segments of the route
+ * @param checkpoints The reference points (at least two)
+ * @param end Index of the last segment to keep
+ * @param endSaving Cost saved by truncating
+ */
+void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
+                 routing::Checkpoints const & checkpoints,
+                 size_t & end, double & endSaving, double const endWeight);
 }  // namespace traffxml

@@ -1,0 +1,23 @@
+<!--
+    This is a 140 m location. Reference points are almost exactly on the opposite
+    carriageway; since this is inside a junction, there is a wider gap between
+    the two carriageways than there would be on a normal stretch of expressway.
+    Without truncation, the decoded location starts approximately in the right
+    spot but overshoots the end point, going to the nearest junction, then back
+    in the opposite direction and to the end point on the opposite carriageway,
+    ending within 5 m of the end point.
+-->
+<feed>
+   <message id="lt.eismoinfo.restrictions:4249b6510b73750684ca94de5fe8cf32,eastbound" receive_time="2025-01-21T12:33:06Z" update_time="2025-01-21T12:33:06Z" expiration_time="2025-12-31T21:00:00Z" cancellation="false" forecast="false" urgency="NORMAL">
+      <merge/>
+      <location country="LT" origin="Suvalkai*" directionality="ONE_DIRECTION" destination="Kaunas" road_class="TRUNK" road_ref="A5">
+         <from distance="0.14">54.939945 23.879789</from>
+         <to distance="0.0" junction_name="Kaunas">54.940094 23.881950</to>
+      </location>
+      <events>
+         <event class="RESTRICTION" type="RESTRICTION_MAX_WIDTH" q_dimension="3.5"/>
+         <event class="CONSTRUCTION" type="CONSTRUCTION_ROADWORKS"/>
+         <event class="RESTRICTION" type="RESTRICTION_SPEED_LIMIT" speed="50"/>
+      </events>
+   </message>
+</feed>

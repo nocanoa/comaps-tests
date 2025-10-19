@@ -815,6 +815,63 @@ void RoutingTraffDecoder::AddDecodedSegment(traffxml::MultiMwmColoring & decoded
   decoded[mwmId][traffic::TrafficInfo::RoadSegmentId(fid, sid, direction)] = traffic::SpeedGroup::Unknown;
 }
 
+void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
+                                        routing::Checkpoints const & checkpoints)
+{
+  double const endWeight = rsegments.back().GetTimeFromBeginningSec();
+
+  // erase leading and trailing fake segments
+  while(!rsegments.empty() && rsegments.front().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
+    rsegments.erase(rsegments.begin());
+  while(!rsegments.empty() && rsegments.back().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
+    rsegments.pop_back();
+
+  if (rsegments.size() < 2)
+    return;
+
+  // Index of first segment to keep, or number of segments to truncate at start.
+  size_t start = 0;
+  // Cost saved by omitting all segments prior to `start`.
+  double startSaving = 0;
+
+  // Index of last segment to keep.
+  size_t end = rsegments.size() - 1;
+  // Cost saved by omitting the last `end` segments.
+  double endSaving = 0;
+
+  TruncateStart(rsegments, checkpoints, start, startSaving);
+  TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight);
+
+  /*
+   * If start <= end, we can truncate both ends at the same time.
+   * Else, the segments to truncate overlap. In this case, first truncate where the saving is bigger,
+   * then recalculate the other end and truncate it as well.
+   */
+  if (start <= end)
+  {
+    rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
+    rsegments.erase(rsegments.begin(), rsegments.begin() + start);
+  }
+  else if (startSaving > endSaving)
+  {
+    // truncate start, then recalculate and truncate end
+    rsegments.erase(rsegments.begin(), rsegments.begin() + start);
+    end = rsegments.size() - 1;
+    endSaving = 0;
+    TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight);
+    rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
+  }
+  else
+  {
+    // truncate end, then recalculate and truncate start
+    rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
+    start = 0;
+    startSaving = 0;
+    TruncateStart(rsegments, checkpoints, start, startSaving);
+    rsegments.erase(rsegments.begin(), rsegments.begin() + start);
+  }
+}
+
 void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & message,
                                                   traffxml::MultiMwmColoring & decoded, bool backwards)
 {
@@ -909,11 +966,7 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
   {
     std::vector<routing::RouteSegment> rsegments(route->GetRouteSegments());
 
-    // erase leading and trailing fake segments
-    while(!rsegments.empty() && rsegments.front().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
-      rsegments.erase(rsegments.begin());
-    while(!rsegments.empty() && rsegments.back().GetSegment().GetMwmId() == routing::kFakeNumMwmId)
-      rsegments.pop_back();
+    TruncateRoute(rsegments, checkpoints);
 
     if (!backwards && message.m_location.value().m_at && !message.m_location.value().m_to)
       // from–at in forward direction, add last segment
@@ -1133,5 +1186,39 @@ std::vector<std::string> ParseRef(std::string & ref)
   if (!curr.empty())
     res.push_back(curr);
   return res;
+}
+
+void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
+                   routing::Checkpoints const & checkpoints,
+                   size_t & start, double & startSaving)
+{
+  for (size_t i = 0; i < rsegments.size(); i++)
+  {
+    double newStartSaving = rsegments[i].GetTimeFromBeginningSec()
+        - (mercator::DistanceOnEarth(checkpoints.GetStart(), rsegments[i].GetJunction().GetPoint())
+            * kOffroadPenalty);
+    if (newStartSaving > startSaving)
+    {
+      start = i + 1; // add 1 because we are ditching this segment and keeping the next one
+      startSaving = newStartSaving;
+    }
+  }
+}
+
+void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
+                 routing::Checkpoints const & checkpoints,
+                 size_t & end, double & endSaving, double const endWeight)
+{
+  for (size_t i = 0; i < rsegments.size(); i++)
+  {
+    double newEndSaving = endWeight - rsegments[i].GetTimeFromBeginningSec()
+        - (mercator::DistanceOnEarth(rsegments[i].GetJunction().GetPoint(), checkpoints.GetFinish())
+            * kOffroadPenalty);
+    if (newEndSaving > endSaving)
+    {
+      end = i;
+      endSaving = newEndSaving;
+    }
+  }
 }
 }  // namespace traffxml
