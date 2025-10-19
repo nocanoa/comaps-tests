@@ -152,7 +152,7 @@ public class PlacePageView extends Fragment
   private View mEditTopSpace;
   private ShapeableImageView mColorIcon;
   private MaterialTextView mTvCategory;
-  private ShapeableImageView mEditBookmark;
+  private MaterialButton mEditBookmark;
 
   // Data
   private CoordinatesFormat mCoordsFormat = CoordinatesFormat.LatLonDecimal;
