@@ -580,11 +580,8 @@ double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose /* pu
 }
 
 double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from, ms::LatLon const & to,
-                                  Purpose purpose) const
+                                  Purpose /* purpose */) const
 {
-  if (purpose == Purpose::ETA)
-    return 0.0;
-
   double result = ms::DistanceOnEarth(from, to);
 
   result *= kOffroadPenalty;

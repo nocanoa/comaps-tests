@@ -300,7 +300,7 @@ public:
      * @param purpose The purpose for which the result is to be used.
      * @return Travel time in seconds.
      */
-    double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose purpose) const override;
+    double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose /* purpose */) const override;
     double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose /* purpose */) const override;
 
     /**
