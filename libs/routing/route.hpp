@@ -171,8 +171,23 @@ public:
   turns::TurnItem const & GetTurn() const { return m_turn; }
   void ClearTurnLanes() { m_turn.m_lanes.clear(); }
 
+  /**
+   * @brief Returns distance from the beginning of the route in meters.
+   *
+   * Distance is measured up to the end of the current segment, i.e. including the segment. For the
+   * first segment, this is identical to the length of the segment; for the last segment, it is
+   * identical to the length of the entire route.
+   */
   double GetDistFromBeginningMeters() const { return m_distFromBeginningMeters; }
   double GetDistFromBeginningMerc() const { return m_distFromBeginningMerc; }
+
+  /**
+   * @brief Returns travel time from the beginning of the route.
+   *
+   * Travel time is the ETA from the beginning of the route to the end of the current segment, i.e.
+   * including the segment. For the first segment, this is identical to the travel time along the
+   * segment; for the last segment, it is identical to the travel time along the entire route.
+   */
   double GetTimeFromBeginningSec() const { return m_timeFromBeginningS; }
 
   bool HasTransitInfo() const { return m_transitInfo.HasTransitInfo(); }
