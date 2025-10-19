@@ -39,8 +39,21 @@ namespace routing
 using SubrouteUid = uint64_t;
 SubrouteUid constexpr kInvalidSubrouteId = std::numeric_limits<uint64_t>::max();
 
-/// \brief The route is composed of one or several subroutes. Every subroute is composed of segments.
-/// For every Segment is kept some attributes in the structure SegmentInfo.
+/**
+ * @brief A segment of the route.
+ *
+ * The route is composed of one or several subroutes. Every subroute is composed of segments.
+ *
+ * For every Segment, some attributes are kept in the `SegmentInfo` structure.
+ *
+ * @todo the statement regarding `SegmentInfo` seems to be outdated, is `SegmentInfo` a prececessor
+ * of `RouteSegment`?
+ *
+ * Segment data which is actually related to a point, such as junction, distance and time, refer to
+ * the end which is closer to the end of the route. For the first segment, distance and time are the
+ * length and travel time of the segment itself. For the last segment, distance and time are the
+ * length and travel time of the entore route, and the junction is the finish point.
+ */
 class RouteSegment final
 {
 public:
