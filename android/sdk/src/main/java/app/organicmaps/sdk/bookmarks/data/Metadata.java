@@ -88,7 +88,7 @@ public class Metadata implements Parcelable
         if (type.mMetaType == metaType)
           return type;
 
-      throw new IllegalArgumentException("Illegal metaType: " + metaType);
+      return -1;
     }
 
     public int toInt()
@@ -102,6 +102,9 @@ public class Metadata implements Parcelable
   public void addMetadata(int metaType, String metaValue)
   {
     final MetadataType type = MetadataType.fromInt(metaType);
+    if (type == -1)
+      return;
+
     mMetadataMap.put(type, metaValue);
   }
 
