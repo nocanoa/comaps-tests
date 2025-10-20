@@ -3,6 +3,7 @@
      A combination of reference points on the opposite carriageway, high offroad cost,
      allowing any road to be used and a low penalty results in a completely incorrect
      location (through a residential area rather than along the opposite carriageway).
+     Test case for turn penalty (eastern end) if the above is resolved.
 -->
 <feed>
   <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.15:d.1.22689.p.1" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">

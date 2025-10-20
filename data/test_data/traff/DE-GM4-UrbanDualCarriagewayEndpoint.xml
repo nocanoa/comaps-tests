@@ -1,0 +1,22 @@
+<!--
+     Subset of realworld5.
+     Test case for turn penalty (both ends).
+     Junction names are the names of the crossing roads.
+     No segments of the crossing roads should be among the matched segments.
+-->
+<feed>
+  <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.15:d.1.46572.p.1,14" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">
+    <location directionality="ONE_DIRECTION" fuzziness="LOW_RES" road_name="Leopoldstraße" road_ref="GM4">
+      <from junction_name="Potsdamer Straße">+48.167301 +11.586200</from>
+      <to junction_name="Ungererstraße">+48.164200 +11.586500</to>
+    </location>
+    <events>
+      <event class="INCIDENT" type="INCIDENT_ACCIDENT">
+      </event>
+      <event class="CONGESTION" type="CONGESTION_STATIONARY_TRAFFIC">
+      </event>
+      <event class="HAZARD" type="HAZARD_PASSABLE_WITH_CARE_BELOW_ELEVATION">
+      </event>
+    </events>
+  </message>
+</feed>

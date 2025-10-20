@@ -92,6 +92,21 @@ auto constexpr kAttributePenalty = 4;
 auto constexpr kReducedAttributePenalty = 2;
 
 /*
+ * Maximum distance in meters from location endpoint at which a turn penalty is applied
+ */
+auto constexpr kTurnPenaltyMaxDist = 100.0;
+
+/*
+ * Minimum angle in degrees at which turn penalty is applied
+ */
+auto constexpr kTurnPenaltyMinAngle = 65.0;
+
+/*
+ * Minimum angle in degrees at which the full turn penalty is applied
+ */
+auto constexpr kTurnPenaltyFullAngle = 90.0;
+
+/*
  * Invalid feature ID.
  * Borrowed from indexer/feature_decl.hpp.
  */
@@ -563,15 +578,67 @@ double RoutingTraffDecoder::TraffEstimator::GetUTurnPenalty(Purpose /* purpose *
   return 2 * 60;  // seconds
 }
 
-double RoutingTraffDecoder::TraffEstimator::GetTurnPenalty(Purpose /* purpose */, double /* angle */,
-                                                             routing::RoadGeometry const & /* from_road */,
-                                                             routing::RoadGeometry const & /* to_road */,
-                                                             bool /* is_left_hand_traffic */) const
+double RoutingTraffDecoder::TraffEstimator::GetTurnPenalty(Purpose /* purpose */, double angle,
+                                                             routing::RoadGeometry const & from_road,
+                                                             routing::RoadGeometry const & to_road,
+                                                             bool is_left_hand_traffic) const
 {
   /*
    * TODO determine if turn penalties make sense for the traffic decoder, else leave them out.
+   * `angle` seems to be in degrees, right is negative
+   * Turn is at the first or last point of the roads involved, compare points to find out.
    */
-  return 0.0;
+  // Flip sign for left-hand traffic, so a positive angle always means a turn across traffic
+  if (is_left_hand_traffic)
+    angle *= -1;
+
+  // We only penalize sharp turns (above kTurnPenaltyMinAngle) across traffic
+  if (angle < kTurnPenaltyMinAngle)
+    return 0.0;
+
+  /*
+   * Identify coordinates of location endpoints and of the turn, and establish distance between the
+   * turn and the nearest endpoint.
+   */
+  ms::LatLon from = m_decoder.m_message.value().m_location.value().m_from
+      ? m_decoder.m_message.value().m_location.value().m_from.value().m_coordinates
+          : m_decoder.m_message.value().m_location.value().m_at.value().m_coordinates;
+  ms::LatLon to = m_decoder.m_message.value().m_location.value().m_to
+      ? m_decoder.m_message.value().m_location.value().m_to.value().m_coordinates
+          : m_decoder.m_message.value().m_location.value().m_at.value().m_coordinates;
+
+  // Upper boundary for distance (approximately earth circumference)
+  double dist = 4.0e+7;
+
+  for (auto & fromPoint : { from_road.GetPoint(0), from_road.GetPoint(from_road.GetPointsCount() - 1) })
+    for (auto & toPoint : { to_road.GetPoint(0), to_road.GetPoint(to_road.GetPointsCount() - 1) })
+      if (fromPoint == toPoint)
+        for (auto & endpoint : { from, to })
+        {
+          auto newdist = ms::DistanceOnEarth(fromPoint, endpoint);
+          if (newdist < dist)
+            dist = newdist;
+        }
+
+  // We only penalize turns close to an endpoint
+  if (dist > kTurnPenaltyMaxDist)
+    return 0.0;
+
+  /*
+   * The penalty depends on the distance between the turn point and the nearest endpoint: the
+   * shorter the distance, the greater the penalty. This is obtained by subtracting the distance
+   * from `kTurnPenaltyMaxDist`.
+   *
+   * Above `kTurnPenaltyFullAngle`, the full turn penalty applies, i.e. the distance-based value is
+   * multiplied with `kAttributePenalty`.
+   *
+   * Between `kTurnPenaltyMinAngle` and `kTurnPenaltyFullAngle`, the penalty proportionally
+   * increases from 0 to the full value.
+   */
+  double result = (kTurnPenaltyMaxDist - dist) * kAttributePenalty;
+  if (angle < kTurnPenaltyFullAngle)
+    result *= (angle - kTurnPenaltyMinAngle) / (kTurnPenaltyFullAngle - kTurnPenaltyMinAngle);
+  return result;
 }
 
 double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose /* purpose */) const

@@ -1,0 +1,16 @@
+<!--
+    From DE-realworld5.
+    Test case for turn penalty (eastern end).
+-->
+<feed>
+  <message expiration_time="2025-10-09T21:37:08+03:00" id="tmc:d.1.15:d.1.29829.n.1" receive_time="2025-10-09T21:17:08+03:00" update_time="2025-10-09T21:17:08+03:00">
+    <location directionality="ONE_DIRECTION" fuzziness="LOW_RES" road_name="Mittlerer Ring" road_ref="B2R">
+      <from junction_name="Lerchenauer Straße">+48.176102 +11.558100</from>
+      <to junction_name="Petueltunnel">+48.178001 +11.572800</to>
+    </location>
+    <events>
+      <event class="CONGESTION" type="CONGESTION_QUEUE">
+      </event>
+    </events>
+  </message>
+</feed>
