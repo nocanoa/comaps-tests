@@ -317,10 +317,11 @@ void MainWindow::CreateTrafficPanel()
 {
   if (!m_trafficModel)
   {
-    // TODO simplify the call, everything depends on m_framework
+    // TODO simplify the call, almost everything depends on m_framework
     m_trafficModel = new TrafficModel(m_framework, m_framework.GetDataSource(),
                                       std::make_unique<TrafficDrawerDelegate>(m_framework),
-                                      std::make_unique<PointsControllerDelegate>(m_framework));
+                                      std::make_unique<PointsControllerDelegate>(m_framework),
+                                      *this);
 
     connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
             m_trafficModel, &TrafficModel::OnClick);
@@ -339,7 +340,13 @@ void MainWindow::CreateTrafficPanel()
 
     m_dockWidget->adjustSize();
     m_dockWidget->setMinimumWidth(400);
+
+    m_progressBar = new QProgressBar(m_dockWidget);
+    m_progressBar->setMinimum(0);
+    m_progressBar->setMaximum(0);
+
   }
+  m_dockWidget->setTitleBarWidget(m_progressBar);
   m_dockWidget->show();
 }
 
@@ -349,6 +356,9 @@ void MainWindow::DestroyTrafficPanel()
   removeDockWidget(m_dockWidget);
   delete m_dockWidget;
   m_dockWidget = nullptr;
+
+  delete m_progressBar;
+  m_progressBar = nullptr;
 
   delete m_trafficModel;
   m_trafficModel = nullptr;

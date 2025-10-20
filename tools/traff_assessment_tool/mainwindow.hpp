@@ -5,6 +5,7 @@
 #include <string>
 
 #include <QMainWindow>
+#include <QProgressBar>
 
 class Framework;
 class QHBoxLayout;
@@ -31,6 +32,7 @@ class MainWindow : public QMainWindow
 
 public:
   explicit MainWindow(Framework & framework);
+  QDockWidget * GetDockWidget() { return m_dockWidget; }
 
 private:
   void CreateTrafficPanel();
@@ -58,6 +60,7 @@ private:
 
   traffxml::TrafficModel * m_trafficModel = nullptr;
   QDockWidget * m_dockWidget = nullptr;
+  QProgressBar * m_progressBar = nullptr;
 
 #ifdef openlr_obsolete
   QAction * m_goldifyMatchedPathAction = nullptr;

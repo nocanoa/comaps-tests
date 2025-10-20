@@ -13,6 +13,7 @@
 #include "base/assert.hpp"
 #include "base/scope_guard.hpp"
 
+#include <QDockWidget>
 #include <QItemSelection>
 #include <QMessageBox>
 
@@ -300,12 +301,14 @@ QVariant GetDescription(TraffMessage const & message)
 TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
                          std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,    // TODO do we need that?
                          std::unique_ptr<PointsControllerDelegateBase> pointsDelegate, // TODO do we need that?
+                         MainWindow & mainWindow,
                          QObject * parent)
   : QAbstractTableModel(parent)
   , m_framework(framework)
   , m_dataSource(dataSource)
   , m_drawerDelegate(std::move(drawerDelegate))
   , m_pointsDelegate(std::move(pointsDelegate))
+  , m_mainWindow(mainWindow)
 {
   framework.GetTrafficManager().SetTrafficUpdateCallbackFn([this, &framework](bool final) {
     /*
@@ -329,6 +332,10 @@ TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
       auto editSession = m_framework.GetBookmarkManager().GetEditSession();
       editSession.ClearGroup(UserMark::Type::COLORED);
       editSession.SetIsVisible(UserMark::Type::COLORED, false);
+
+      // restore QDockWidget title
+      if (m_mainWindow.GetDockWidget())
+        m_mainWindow.GetDockWidget()->setTitleBarWidget(nullptr);
 
       LOG(LINFO, ("Messages:", m_messages.size()));
     });

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "mainwindow.hpp"
 #include "points_controller_delegate_base.hpp"
 #ifdef openlr_obsolete
 #include "segment_correspondence.hpp"
@@ -72,6 +73,7 @@ public:
   TrafficModel(Framework & framework, DataSource const & dataSource,
               std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
               std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
+              MainWindow & mainWindow,
               QObject * parent = Q_NULLPTR);
 
   bool SaveSampleAs(std::string const & fileName) const;
@@ -123,6 +125,7 @@ private:
 
   Framework & m_framework;
   DataSource const & m_dataSource;
+  MainWindow & m_mainWindow;
 #ifdef openlr_obsolete
   std::vector<SegmentCorrespondence> m_segments;
   // Non-owning pointer to an element of m_segments.
