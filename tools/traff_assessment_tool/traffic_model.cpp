@@ -298,16 +298,14 @@ QVariant GetDescription(TraffMessage const & message)
 }
 
 // TrafficModel -------------------------------------------------------------------------------------
-TrafficModel::TrafficModel(Framework & framework, DataSource const & dataSource,
-                         std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,    // TODO do we need that?
-                         std::unique_ptr<PointsControllerDelegateBase> pointsDelegate, // TODO do we need that?
+TrafficModel::TrafficModel(Framework & framework,
                          MainWindow & mainWindow,
                          QObject * parent)
   : QAbstractTableModel(parent)
   , m_framework(framework)
-  , m_dataSource(dataSource)
-  , m_drawerDelegate(std::move(drawerDelegate))
-  , m_pointsDelegate(std::move(pointsDelegate))
+  , m_dataSource(framework.GetDataSource())
+  , m_drawerDelegate(std::make_unique<TrafficDrawerDelegate>(framework))
+  , m_pointsDelegate(std::make_unique<PointsControllerDelegate>(framework))
   , m_mainWindow(mainWindow)
 {
   framework.GetTrafficManager().SetTrafficUpdateCallbackFn([this, &framework](bool final) {

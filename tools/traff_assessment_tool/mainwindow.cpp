@@ -317,11 +317,7 @@ void MainWindow::CreateTrafficPanel()
 {
   if (!m_trafficModel)
   {
-    // TODO simplify the call, almost everything depends on m_framework
-    m_trafficModel = new TrafficModel(m_framework, m_framework.GetDataSource(),
-                                      std::make_unique<TrafficDrawerDelegate>(m_framework),
-                                      std::make_unique<PointsControllerDelegate>(m_framework),
-                                      *this);
+    m_trafficModel = new TrafficModel(m_framework, *this);
 
     connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
             m_trafficModel, &TrafficModel::OnClick);

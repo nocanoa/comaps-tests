@@ -70,9 +70,7 @@ class TrafficModel : public QAbstractTableModel
 
 public:
   // TODO(mgsergio): Check we are on the right mwm. I.e. right mwm version and everything.
-  TrafficModel(Framework & framework, DataSource const & dataSource,
-              std::unique_ptr<TrafficDrawerDelegateBase> drawerDelegate,
-              std::unique_ptr<PointsControllerDelegateBase> pointsDelegate,
+  TrafficModel(Framework & framework,
               MainWindow & mainWindow,
               QObject * parent = Q_NULLPTR);
 
