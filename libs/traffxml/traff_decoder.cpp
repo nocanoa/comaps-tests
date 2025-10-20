@@ -583,11 +583,6 @@ double RoutingTraffDecoder::TraffEstimator::GetTurnPenalty(Purpose /* purpose */
                                                              routing::RoadGeometry const & to_road,
                                                              bool is_left_hand_traffic) const
 {
-  /*
-   * TODO determine if turn penalties make sense for the traffic decoder, else leave them out.
-   * `angle` seems to be in degrees, right is negative
-   * Turn is at the first or last point of the roads involved, compare points to find out.
-   */
   // Flip sign for left-hand traffic, so a positive angle always means a turn across traffic
   if (is_left_hand_traffic)
     angle *= -1;

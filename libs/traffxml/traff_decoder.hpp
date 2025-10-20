@@ -317,6 +317,19 @@ public:
     double GetRoadRefPenalty(std::string & ref) const;
 
     double GetUTurnPenalty(Purpose /* purpose */) const override;
+
+    /**
+     * @brief Determines the penalty factor for making a turn.
+     *
+     * The turn is at the first or last points of `from_road` and `to_road` and can be determined
+     * by comparing the endpoints of `from_road` and `to_road` for a match.
+     *
+     * @param purpose The purpose for which the penalty is calculated, ignored by this implementation
+     * @param angle The angle in degrees (negative values indicate a right turn)
+     * @param from_road The road (segment between two junctions) before the turn
+     * @param to_road The road (segment between two junctions) after the turn
+     * @param is_left_hand_traffic True for left-hand traffic, false for right-hand traffic
+     */
     double GetTurnPenalty(Purpose /* purpose */, double angle, routing::RoadGeometry const & from_road,
                           routing::RoadGeometry const & to_road, bool is_left_hand_traffic = false) const override;
     double GetFerryLandingPenalty(Purpose /* purpose */) const override;
