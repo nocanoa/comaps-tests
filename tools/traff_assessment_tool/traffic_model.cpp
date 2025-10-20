@@ -314,7 +314,7 @@ TrafficModel::TrafficModel(Framework & framework,
      * imminent. Such updates should always be processed. If final is false, we can optimize by
      * selectively skipping updates.
      */
-    GetPlatform().RunTask(Platform::Thread::Gui, [this, &framework]()
+    GetPlatform().RunTask(Platform::Thread::Gui, [this, &framework, final]()
     {
       beginResetModel();
       auto const messageCache = framework.GetTrafficManager().GetMessageCache();
@@ -332,7 +332,7 @@ TrafficModel::TrafficModel(Framework & framework,
       editSession.SetIsVisible(UserMark::Type::COLORED, false);
 
       // restore QDockWidget title
-      if (m_mainWindow.GetDockWidget())
+      if (final && m_mainWindow.GetDockWidget())
         m_mainWindow.GetDockWidget()->setTitleBarWidget(nullptr);
 
       LOG(LINFO, ("Messages:", m_messages.size()));
