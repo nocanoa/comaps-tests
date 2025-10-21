@@ -92,7 +92,7 @@ public:
           {0, 0, 7, 0},     // LargeCalming
           {10, 10, 30, 0},  // Gate
           {0, 10, 5, 0},    // Uncontrolled Junction
-          {0, 15, 10, 0},   // Controlled Junction
+          {10, 15, 10, 0},  // Controlled Junction
       };
 
       if (type >= Type::Count || vehicleType >= VehicleType::Count)

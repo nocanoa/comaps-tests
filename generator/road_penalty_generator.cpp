@@ -31,7 +31,7 @@ using std::string, std::vector;
 namespace
 {
 // Unified penalty mapping for all OSM tags that create road penalties
-std::map<OsmElement::Tag, RoadPenalty::Type> const kUnifiedPenaltyMapping = {
+static std::map<OsmElement::Tag, RoadPenalty::Type> const kUnifiedPenaltyMapping = {
     // Traffic calming measures
 
     {OsmElement::Tag("traffic_calming", "rumble_strip"), RoadPenalty::Type::SmallCalming},
