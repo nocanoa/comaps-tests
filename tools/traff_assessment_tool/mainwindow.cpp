@@ -3,6 +3,7 @@
 #include "traff_assessment_tool/map_widget.hpp"
 #include "traff_assessment_tool/points_controller_delegate_base.hpp"
 #include "traff_assessment_tool/traffic_drawer_delegate_base.hpp"
+#include "traff_assessment_tool/traffic_model.hpp"
 #include "traff_assessment_tool/traffic_panel.hpp"
 #include "traff_assessment_tool/trafficmodeinitdlg.h"
 
@@ -317,7 +318,7 @@ void MainWindow::CreateTrafficPanel()
 {
   if (!m_trafficModel)
   {
-    m_trafficModel = new TrafficModel(m_framework, *this);
+    m_trafficModel = new TrafficModel(m_framework);
 
     connect(m_mapWidget, &MapWidget::TrafficMarkupClick,
             m_trafficModel, &TrafficModel::OnClick);
@@ -332,17 +333,14 @@ void MainWindow::CreateTrafficPanel()
     m_dockWidget = new QDockWidget(tr("Messages"), this);
     addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, m_dockWidget);
 
-    m_dockWidget->setWidget(new TrafficPanel(m_trafficModel, m_dockWidget));
+    m_trafficPanel = new TrafficPanel(m_trafficModel, m_dockWidget);
+    m_dockWidget->setWidget(m_trafficPanel);
+    m_trafficModel->SetTrafficPanel(m_trafficPanel);
 
     m_dockWidget->adjustSize();
     m_dockWidget->setMinimumWidth(400);
-
-    m_progressBar = new QProgressBar(m_dockWidget);
-    m_progressBar->setMinimum(0);
-    m_progressBar->setMaximum(0);
-
   }
-  m_dockWidget->setTitleBarWidget(m_progressBar);
+  m_trafficPanel->SetStatus(true);
   m_dockWidget->show();
 }
 
@@ -352,9 +350,6 @@ void MainWindow::DestroyTrafficPanel()
   removeDockWidget(m_dockWidget);
   delete m_dockWidget;
   m_dockWidget = nullptr;
-
-  delete m_progressBar;
-  m_progressBar = nullptr;
 
   delete m_trafficModel;
   m_trafficModel = nullptr;

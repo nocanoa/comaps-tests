@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QLabel>
+#include <QProgressBar>
 #include <QtWidgets/QStyledItemDelegate>
 
 class QAbstractItemModel;
@@ -34,6 +36,7 @@ class TrafficPanel : public QWidget
 
 public:
   explicit TrafficPanel(QAbstractItemModel * trafficModel, QWidget * parent);
+  void SetStatus(bool inProgress, std::optional<size_t> messageCount = std::nullopt);
 
 private:
   void CreateTable(QAbstractItemModel * trafficModel);
@@ -46,5 +49,7 @@ public slots:
 
 private:
   QTableView * m_table = Q_NULLPTR;
+  QProgressBar * m_progressBar = Q_NULLPTR;
+  QLabel * m_status = Q_NULLPTR;
 };
 }  // namespace traffxml

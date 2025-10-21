@@ -52,11 +52,34 @@ TrafficPanel::TrafficPanel(QAbstractItemModel * trafficModel, QWidget * parent)
 
   auto * layout = new QVBoxLayout();
   layout->addWidget(m_table);
+  m_progressBar = new QProgressBar();
+  m_progressBar->setMinimum(0);
+  m_progressBar->setMaximum(0);
+  layout->addWidget(m_progressBar);
+  m_status = new QLabel("0 messages");
+  layout->addWidget(m_status);
+  m_progressBar->hide();
   setLayout(layout);
 
   // Select first segment by default;
   auto const & index = m_table->model()->index(0, 0);
   m_table->selectionModel()->select(index, QItemSelectionModel::Select);
+}
+
+void TrafficPanel::SetStatus(bool inProgress, std::optional<size_t> messageCount)
+{
+  if (inProgress)
+  {
+    m_status->hide();
+    m_progressBar->show();
+  }
+  else
+  {
+    if (messageCount)
+      m_status->setText(QString("Messages: %1").arg(messageCount.value()));
+    m_progressBar->hide();
+    m_status->show();
+  }
 }
 
 void TrafficPanel::CreateTable(QAbstractItemModel * trafficModel)

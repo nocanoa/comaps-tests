@@ -6,6 +6,7 @@
 #include "segment_correspondence.hpp"
 #endif
 #include "traffic_drawer_delegate_base.hpp"
+#include "traffic_panel.hpp"
 
 #ifdef openlr_obsolete
 #include "openlr/decoded_path.hpp"
@@ -71,10 +72,10 @@ class TrafficModel : public QAbstractTableModel
 public:
   // TODO(mgsergio): Check we are on the right mwm. I.e. right mwm version and everything.
   TrafficModel(Framework & framework,
-              MainWindow & mainWindow,
-              QObject * parent = Q_NULLPTR);
+               QObject * parent = Q_NULLPTR);
 
   bool SaveSampleAs(std::string const & fileName) const;
+  void SetTrafficPanel(TrafficPanel * panel) { m_trafficPanel = panel; }
 
   int rowCount(const QModelIndex & parent = QModelIndex()) const Q_DECL_OVERRIDE;
   int columnCount(const QModelIndex & parent = QModelIndex()) const Q_DECL_OVERRIDE;
@@ -123,7 +124,7 @@ private:
 
   Framework & m_framework;
   DataSource const & m_dataSource;
-  MainWindow & m_mainWindow;
+  TrafficPanel * m_trafficPanel = nullptr;
 #ifdef openlr_obsolete
   std::vector<SegmentCorrespondence> m_segments;
   // Non-owning pointer to an element of m_segments.

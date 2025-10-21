@@ -2,10 +2,11 @@
 
 #include "base/string_utils.hpp"
 
+#include "traff_assessment_tool/traffic_panel.hpp"
+
 #include <string>
 
 #include <QMainWindow>
-#include <QProgressBar>
 
 class Framework;
 class QHBoxLayout;
@@ -32,7 +33,6 @@ class MainWindow : public QMainWindow
 
 public:
   explicit MainWindow(Framework & framework);
-  QDockWidget * GetDockWidget() { return m_dockWidget; }
 
 private:
   void CreateTrafficPanel();
@@ -60,7 +60,7 @@ private:
 
   traffxml::TrafficModel * m_trafficModel = nullptr;
   QDockWidget * m_dockWidget = nullptr;
-  QProgressBar * m_progressBar = nullptr;
+  TrafficPanel * m_trafficPanel = nullptr;
 
 #ifdef openlr_obsolete
   QAction * m_goldifyMatchedPathAction = nullptr;
