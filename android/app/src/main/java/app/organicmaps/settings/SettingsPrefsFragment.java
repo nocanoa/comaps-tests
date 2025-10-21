@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -73,6 +74,7 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     initScreenSleepEnabledPrefsCallbacks();
     initShowOnLockScreenPrefsCallbacks();
     initLeftButtonPrefs();
+    initLocationSharingPrefsCallbacks();
   }
 
   private void initLeftButtonPrefs()
@@ -540,6 +542,29 @@ public class SettingsPrefsFragment extends BaseXmlSettingsFragment implements La
     final PreferenceCategory category = getPreference(categoryKey);
 
     category.removePreference(preference);
+  }
+
+  private void initLocationSharingPrefsCallbacks()
+  {
+    // Server URL preference
+    final EditTextPreference serverUrlPref = getPreference(getString(R.string.pref_location_sharing_server_url));
+    serverUrlPref.setText(Config.LocationSharing.getServerUrl());
+    serverUrlPref.setSummary(Config.LocationSharing.getServerUrl());
+    serverUrlPref.setOnPreferenceChangeListener((preference, newValue) -> {
+      String url = (String) newValue;
+      Config.LocationSharing.setServerUrl(url);
+      serverUrlPref.setSummary(url);
+      return true;
+    });
+
+    // Update interval preference
+    final ListPreference intervalPref = getPreference(getString(R.string.pref_location_sharing_update_interval));
+    intervalPref.setValue(String.valueOf(Config.LocationSharing.getUpdateInterval()));
+    intervalPref.setOnPreferenceChangeListener((preference, newValue) -> {
+      int seconds = Integer.parseInt((String) newValue);
+      Config.LocationSharing.setUpdateInterval(seconds);
+      return true;
+    });
   }
 
   @Override
