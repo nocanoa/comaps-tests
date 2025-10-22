@@ -84,7 +84,7 @@ static std::unordered_map<std::string, routing::SpeedInUnits> const kRoadCategor
     {"PL:living_street", {20, Units::Metric}},
     {"PL:urban", {50, Units::Metric}},
     {"PL:rural", {90, Units::Metric}},
-    {"PL:trunk", {100, Units::Metric}},
+    {"PL:expressway", {120, Units::Metric}},
     {"PL:motorway", {140, Units::Metric}},
     {"PT:motorway", {120, Units::Metric}},
     {"PT:rural", {90, Units::Metric}},
