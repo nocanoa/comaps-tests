@@ -341,6 +341,7 @@ void MainWindow::CreateTrafficPanel()
     m_dockWidget->setMinimumWidth(400);
   }
   m_trafficPanel->SetStatus(true);
+  m_trafficPanel->GetTimer().Resume();
   m_dockWidget->show();
 }
 
@@ -423,6 +424,7 @@ void MainWindow::OnPurgeExpiredMessages()
 
 void MainWindow::OnClearCache()
 {
+  m_trafficPanel->GetTimer().Reset();
   m_framework.GetTrafficManager().Clear();
 }
 

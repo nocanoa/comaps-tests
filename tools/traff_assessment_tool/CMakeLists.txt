@@ -7,6 +7,8 @@ set(SRC
   map_widget.cpp
   map_widget.hpp
   points_controller_delegate_base.hpp
+  resumable_timer.cpp
+  resumable_timer.hpp
   traffic_drawer_delegate_base.hpp
   traffic_model.cpp
   traffic_model.hpp

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "traff_assessment_tool/resumable_timer.hpp"
+
 #include <QLabel>
 #include <QProgressBar>
 #include <QtWidgets/QStyledItemDelegate>
@@ -36,6 +38,7 @@ class TrafficPanel : public QWidget
 
 public:
   explicit TrafficPanel(QAbstractItemModel * trafficModel, QWidget * parent);
+  base::ResumableTimer & GetTimer() { return m_timer; }
   void SetStatus(bool inProgress, std::optional<size_t> messageCount = std::nullopt);
 
 private:
@@ -50,6 +53,7 @@ public slots:
 private:
   QTableView * m_table = Q_NULLPTR;
   QProgressBar * m_progressBar = Q_NULLPTR;
+  base::ResumableTimer m_timer;
   QLabel * m_status = Q_NULLPTR;
 };
 }  // namespace traffxml

@@ -75,8 +75,9 @@ void TrafficPanel::SetStatus(bool inProgress, std::optional<size_t> messageCount
   }
   else
   {
+    GetTimer().Pause();
     if (messageCount)
-      m_status->setText(QString("Messages: %1").arg(messageCount.value()));
+      m_status->setText(QString("Messages: %1\tDecoded in %2 s").arg(messageCount.value()).arg(GetTimer().ElapsedSeconds()));
     m_progressBar->hide();
     m_status->show();
   }
