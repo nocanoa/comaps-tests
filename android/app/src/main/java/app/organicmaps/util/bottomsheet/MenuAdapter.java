@@ -68,6 +68,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
       badge.setBackgroundResource(R.drawable.track_recorder_badge);
       badge.setVisibility(View.VISIBLE);
     }
+
+    if (item.iconRes == R.drawable.ic_share && app.organicmaps.location.LocationSharingManager.getInstance().isSharing())
+    {
+      // Set icon tint to orange
+      iv.setImageTintList(android.content.res.ColorStateList.valueOf(
+          androidx.core.content.ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.active_location_sharing)));
+      // Show badge
+      badge.setBackgroundResource(R.drawable.location_sharing_badge);
+      badge.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override
