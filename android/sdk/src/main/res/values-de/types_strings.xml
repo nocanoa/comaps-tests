@@ -610,6 +610,7 @@
     <string name="type.landuse.village_green">Grünfläche</string>
     <string name="type.landuse.vineyard">Weinberg</string>
     <string name="type.leisure">Freizeit</string>
+    <string name="type.leisure.bandstand">Musikpavillon</string>
     <string name="type.leisure.common">Öffentliche Grünfläche</string>
     <string name="type.leisure.dog_park">Hundeauslauffläche</string>
     <string name="type.leisure.fitness_centre">Fitnessstudio</string>

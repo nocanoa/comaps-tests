@@ -1059,6 +1059,7 @@ tourism-artwork-painting                            # icon z15- (also has captio
 amenity-shelter                                     # icon z12- (also has caption(optional) z13-)
 amenity-shelter-public_transport                    # icon z14- (also has caption(optional) z14-)
 emergency-lifeguard                                 # icon z14- (also has caption(optional) z18-)
+leisure-bandstand                                   # icon z17- (also has caption(optional) z17-)
 leisure-fitness_station                             # icon z17- (also has caption(optional) z17-, area z15-)
 leisure-playground                                  # icon z17- (also has caption(optional) z17-, area z15-)
 natural-cliff                                       # pathtext z14- (also has line z12-)
@@ -2069,6 +2070,7 @@ leisure-swimming_pool-private                       # icon z17- (also has captio
 # amenity-shelter                                   # caption(optional) z13- (also has icon z12-)
 # amenity-shelter-public_transport                  # caption(optional) z14- (also has icon z14-)
 # emergency-lifeguard                               # caption(optional) z18- (also has icon z14-)
+# leisure-bandstand                                 # caption(optional) z17- (also has icon z17-)
 # leisure-fitness_station                           # caption(optional) z17- (also has icon z17-, area z15-)
 # leisure-playground                                # caption(optional) z17- (also has icon z17-, area z15-)
 # === -8500

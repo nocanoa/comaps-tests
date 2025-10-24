@@ -722,6 +722,7 @@
 "type.landuse.vineyard" = "Vineyard";
 "type.landuse.plant_nursery" = "Plant Nursery";
 "type.leisure" = "Leisure";
+"type.leisure.bandstand" = "Bandstand";
 "type.leisure.common" = "Public Land";
 "type.leisure.dog_park" = "Dog Park";
 "type.leisure.escape_game" = "Escape Room";

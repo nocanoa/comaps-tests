@@ -643,6 +643,7 @@
     <string name="type.landuse.vineyard">Vineyard</string>
     <string name="type.landuse.plant_nursery">Plant Nursery</string>
     <string name="type.leisure">Leisure</string>
+    <string name="type.leisure.bandstand">Bandstand</string>
     <string name="type.leisure.common">Public Land</string>
     <string name="type.leisure.dog_park">Dog Park</string>
     <string name="type.leisure.escape_game">Escape Room</string>

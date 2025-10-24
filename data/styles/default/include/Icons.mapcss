@@ -655,6 +655,7 @@ node|z16-[tourism=camp_site],
 node|z16-[tourism=picnic_site],
 node|z18-[leisure=picnic_table],
 node|z17-[amenity=shelter],
+node|z17-[leisure=bandstand],
 node|z16-[amenity=shelter][shelter_type=basic_hut],
 node|z16-[amenity=shelter][shelter_type=lean_to],
 node|z16-[tourism=caravan_site],
@@ -707,6 +708,8 @@ node|z17-[leisure=outdoor_seating],
 node|z18-[leisure=outdoor_seating],
 {icon-image: outdoor_seating-m.svg;}
 
+node|z17-[leisure=bandstand],
+{icon-image: bandstand-m.svg;}
 node|z17-[amenity=shelter],
 node|z16-[amenity=shelter][shelter_type=lean_to],
 {icon-image: shelter-m.svg;}

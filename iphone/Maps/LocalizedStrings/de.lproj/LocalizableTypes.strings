@@ -692,6 +692,7 @@
 "type.landuse.village_green" = "Grünfläche";
 "type.landuse.vineyard" = "Weinberg";
 "type.leisure" = "Freizeit";
+"type.leisure.bandstand" = "Musikpavillon";
 "type.leisure.common" = "Öffentliche Grünfläche";
 "type.leisure.dog_park" = "Hundeauslauffläche";
 "type.leisure.fitness_centre" = "Fitnessstudio";

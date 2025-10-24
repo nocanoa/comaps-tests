@@ -693,6 +693,7 @@
 "type.landuse.village_green" = "Land";
 "type.landuse.vineyard" = "Vineyard";
 "type.leisure" = "Leisure";
+"type.leisure.bandstand" = "Bandstand";
 "type.leisure.common" = "Common Land";
 "type.leisure.dog_park" = "Dog Park";
 "type.leisure.fitness_centre" = "Fitness Centre";

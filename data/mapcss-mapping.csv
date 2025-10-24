@@ -1000,7 +1000,7 @@ deprecated|deprecated;872;x
 area:highway|pedestrian;873;
 area:highway|unclassified;874;
 highway|pedestrian|square;[highway=pedestrian][place=square];;;;875;
-deprecated|deprecated;876;x
+leisure|bandstand;876;
 area:highway|cycleway;877;
 entrance|exit;878;
 area:highway|motorway;879;
