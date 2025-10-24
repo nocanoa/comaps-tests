@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginBottom="@dimen/margin_half"
-        android:selectAllOnFocus="true"
         android:textAppearance="@style/MwmTextAppearance.Body3"
         android:textIsSelectable="true"
         tools:text="2025.04.16-FDroid" />

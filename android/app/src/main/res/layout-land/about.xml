@@ -37,7 +37,6 @@
             android:id="@+id/version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:selectAllOnFocus="true"
             android:textAlignment="center"
             android:textAppearance="@style/MwmTextAppearance.Body3"
             android:textIsSelectable="true"
