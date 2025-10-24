@@ -224,7 +224,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_base"
         android:text="@string/edit"
-        app:icon="@drawable/ic_edit" />
+        app:icon="@drawable/ic_edit"
+        app:iconTint="?colorSecondary" />
     </LinearLayout>
     <androidx.fragment.app.FragmentContainerView
       android:id="@+id/place_page_bookmark_fragment"
