@@ -2,6 +2,8 @@
 
 # Upload new maps version to all CDN nodes (in parallel).
 
+# TODO: implement removing old versions
+
 # Use following commands for deleting older maps:
 #
 # ru1 - keep max 3 maps versions
@@ -56,5 +58,19 @@ rclone copy -v --include "*.{mwm,txt}" $DIR de1:/var/www/html/comaps-cdn/maps/$M
 # rclone lsd us1:/home/dh_zzxxrk/cdn-us-1.comaps.app/maps
 
 wait
+
+echo "Running once more without parallelization to output status:"
+
+echo "us2 status:"
+rclone copy -v --include "*.{mwm,txt}" $DIR us2:comaps-map-files/maps/$MAPS
+
+echo "ru1 status:"
+rclone copy -v --include "*.{mwm,txt}" $DIR ru1:comaps-maps/maps/$MAPS
+
+echo "fi1 status:"
+rclone copy -v --include "*.{mwm,txt}" $DIR fi1:/var/www/html/maps/$MAPS
+
+echo "de1 status:"
+rclone copy -v --include "*.{mwm,txt}" $DIR de1:/var/www/html/comaps-cdn/maps/$MAPS
 
 echo "Upload complete"
