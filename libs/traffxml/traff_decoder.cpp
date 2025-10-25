@@ -1075,7 +1075,7 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
       routing::RouteSegment & closestRSegment = rsegments.front();
       double closestDist = ms::DistanceOnEarth(at, mercator::ToLatLon(closestRSegment.GetJunction().GetPoint()));
 
-      for (auto rsegment : rsegments)
+      for (auto & rsegment : rsegments)
       {
         // If we have more than two checkpoints, fake segments can occur in the middle, skip them.
         if (rsegment.GetSegment().GetMwmId() == routing::kFakeNumMwmId)
@@ -1092,7 +1092,7 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
     }
     else
       // from–[via]–to, add all real segments
-      for (auto rsegment : rsegments)
+      for (auto & rsegment : rsegments)
       {
         routing::Segment & segment = rsegment.GetSegment();
 
