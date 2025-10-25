@@ -16,18 +16,14 @@ on:
           - subways
           - tiger
           - maps
+          - upload
+
+## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
 env:
   WIKIMEDIA_USERNAME: ${{ secrets.WIKIMEDIA_USERNAME }}
   WIKIMEDIA_PASSWORD: ${{ secrets.WIKIMEDIA_PASSWORD }}
-  S3_KEY_ID: ${{ secrets.S3_KEY_ID }}
-  S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
-  S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
-  S3_BUCKET: ${{ secrets.S3_BUCKET }}
-  SFTP_USER: ${{ secrets.SFTP_USER }}
-  SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-  SFTP_HOST: ${{ secrets.SFTP_HOST }}
-  SFTP_PATH: ${{ secrets.SFTP_PATH }}
+  RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
   DEBIAN_FRONTEND: noninteractive
   TZ: Etc/UTC 
 
@@ -68,7 +64,7 @@ jobs:
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y pyosmium osmium-tool python3-venv python3-pip wget2
+          apt-get install -y pyosmium osmium-tool osmctools python3-venv python3-pip wget2
           rm -f /usr/lib/python*/EXTERNALLY-MANAGED
           pip3 install "protobuf<4"
       - name: Download Planet File if Absent
@@ -79,7 +75,7 @@ jobs:
           fi
           if [ ! -f /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf ]; then
           cd /media/4tbexternal/osm-planet/planet/
-          wget2 --verbose --progress=bar --continue --debug https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
+          wget2 --verbose --progress=bar --continue https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
           fi
       - name: Update Planet
         shell: bash
@@ -88,7 +84,7 @@ jobs:
           pyosmium-up-to-date planet-latest.osm.pbf -o planet-latest-new.osm.pbf -vv --size 16384
           mv planet-latest-new.osm.pbf planet-latest.osm.pbf
       - name: Converting planet-latest.osm.pbf to planet.o5m
-        run: /root/OM/osmctools/osmconvert planet-latest.osm.pbf -o=planet.o5m
+        run: osmconvert planet-latest.osm.pbf -o=planet.o5m
 
   wiki-update:
     if: inputs.jobs == 'wiki' || inputs.jobs == 'all'
@@ -106,7 +102,7 @@ jobs:
         shell: bash
         run: |
           apt-get update -y
-          apt-get install -y jq curl wget2 rustc cargo git ca-certificates
+          apt-get install -y jq curl wget wget2 rustc cargo git ca-certificates
       - name: Clone wikiparser if necessary
         shell: bash
         run: |
@@ -380,3 +376,41 @@ jobs:
         run: |
           cd /root/OM/organicmaps
           ./tools/unix/docker_maps_generator.sh
+
+
+  upload-maps:
+    if: inputs.jobs == 'upload' || inputs.jobs == 'all'
+    name: Upload Maps
+    runs-on: mapfilemaker
+    container:
+      image: ubuntu:latest
+      volumes:
+        - /media/4tbexternal:/media/4tbexternal
+      options: --ulimit nofile=262144:262144
+    concurrency:
+      group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Write config file
+        run: |
+          mkdir -p ~/.config/rclone/
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+          head -n3 ~/.config/rclone/rclone.conf
+      - name: Upload map files to CDNs
+        run: |
+          shopt -s nullglob
+          buildfolder=$(find /media/4tbexternal/osm-maps/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
+          builddate=$(find /media/4tbexternal/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
+          mwmfiles=( /media/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm )
+
+          if (( ${#mwmfiles[@]} )); then
+            echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
+            cd /tools/unix/maps
+            ./upload_to_cdn.sh /media/4tbexternal/osm-maps/$buildfolder/$builddate
+          else
+            echo "<$(date +%T)> No MWM files in /media/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+            echo "<$(date +%T)> Found top level: $(ls -alt /media/4tbexternal/osm-maps/*)"
+            echo "<$(date +%T)> Found second level: $(ls -alt /media/4tbexternal/osm-maps/$buildfolder/*)"
+          fi
+
+          
