@@ -82,16 +82,44 @@ public:
     uint8_t m_maxSpeedKmPH = 0;
   };
 
+  /**
+   * @brief Holds structured information about a road.
+   *
+   * `m_ref` and `m_name` refer to the road itself.
+   *
+   * This structure is fully populated only for the first segment after a junction. For other
+   * segments, members may be left at their default values (empty string or false).
+   */
   struct RoadNameInfo
   {
-    // This is for street/road. |m_ref| |m_name|.
-    std::string m_name;             // E.g "Johnson Ave.".
-    std::string m_destination_ref;  // Number of next road, e.g. "CA 85", Sometimes "CA 85 South". Usually match |m_ref|
-                                    // of next main road.
-    // This is for 1st segment of link after junction. Exit |junction_ref| to |m_destination_ref| for |m_destination|.
-    std::string m_junction_ref;  // Number of junction e.g. "398B".
-    std::string m_destination;   // E.g. "Cupertino".
-    std::string m_ref;           // Number of street/road e.g. "CA 85".
+    /**
+     * @brief The name of the road, e.g. “Johnson Ave”.
+     */
+    std::string m_name;
+    /**
+     * @brief The number of the next road.
+     *
+     * This usually matches `m_ref` of the naxt main road, e.g. “CA 85”, sometimes “CA 85 South”.
+     */
+    std::string m_destination_ref;
+    /**
+     * @brief The junction number, e.g. “398B”.
+     *
+     * This is used for the first link segment after a junction (exit `junction_ref` to
+     * `m_destination_ref` for `m_destination`).
+     */
+    std::string m_junction_ref;
+    /**
+     * @brief The destination of the road, e.g. “Cupertino”.
+     */
+    std::string m_destination;
+    /**
+     * @brief The number of the road, e.g. “CA85”.
+     */
+    std::string m_ref;
+    /**
+     * @brief Whether the road is of a link type.
+     */
     bool m_isLink = false;
 
     RoadNameInfo() = default;
