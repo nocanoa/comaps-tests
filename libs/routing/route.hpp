@@ -121,6 +121,10 @@ public:
      * @brief Whether the road is of a link type.
      */
     bool m_isLink = false;
+    /**
+     * @brief Whether the road is part of a roundabout.
+     */
+    bool m_onRoundabout = false;
 
     RoadNameInfo() = default;
     RoadNameInfo(std::string name) : m_name(std::move(name)) {}

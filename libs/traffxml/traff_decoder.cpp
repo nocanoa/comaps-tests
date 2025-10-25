@@ -1030,6 +1030,32 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
 
     TruncateRoute(rsegments, checkpoints);
 
+    /*
+     * `m_onRoundabout` is set only for the first segment after the junction. In order to identify
+     * all roundabout segments, cache the last segment with `m_onRoundabout` set. Any subsequent
+     * segment with the same MWM and feature ID is also a roundabout segment.
+     */
+    routing::Segment lastRoundaboutSegment;
+
+    /*
+     * We usually discard roundabouts, unless the location is a point (`at` point set) or the entire
+     * decoded location is a roundabout.
+     */
+    bool keepRoundabouts = true;
+
+    if (!message.m_location.value().m_at)
+      for (auto & rsegment : rsegments)
+      {
+        if (rsegment.GetRoadNameInfo().m_onRoundabout)
+          lastRoundaboutSegment = rsegment.GetSegment();
+        else if ((rsegment.GetSegment().GetMwmId() != lastRoundaboutSegment.GetMwmId())
+            || (rsegment.GetSegment().GetFeatureId() != lastRoundaboutSegment.GetFeatureId()))
+        {
+          keepRoundabouts = false;
+          break;
+        }
+      }
+
     if (!backwards && message.m_location.value().m_at && !message.m_location.value().m_to)
       // from–at in forward direction, add last segment
       AddDecodedSegment(decoded, rsegments.back().GetSegment());
@@ -1069,6 +1095,19 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
       for (auto rsegment : rsegments)
       {
         routing::Segment & segment = rsegment.GetSegment();
+
+        // Skip roundabouts to avoid side effects on crossing roads
+        if (!keepRoundabouts)
+        {
+          if (rsegment.GetRoadNameInfo().m_onRoundabout)
+          {
+            lastRoundaboutSegment = segment;
+            continue;
+          }
+          else if ((segment.GetMwmId() == lastRoundaboutSegment.GetMwmId())
+              && (segment.GetFeatureId() == lastRoundaboutSegment.GetFeatureId()))
+            continue;
+        }
 
         // If we have more than two checkpoints, fake segments can occur in the middle, skip them.
         if (segment.GetMwmId() == routing::kFakeNumMwmId)

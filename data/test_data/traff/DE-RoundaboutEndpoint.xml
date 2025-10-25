@@ -1,0 +1,58 @@
+<!--
+    Test cases for reference points inside a roundabout.
+    If the roundabout itself is included in the decoded location, the message would
+    affect all roads which connect to it, resulting in incorrect routing, especially
+    in the case of closure events. For this reason, we must truncate roundabouts if
+    they occur at the start or end of the decoded location.
+-->
+<feed>
+  <message id="tmc:d.1.12:d.1.13962.p.5,11" receive_time="2018-07-27T10:22:22+02:00" update_time="2018-07-27T08:43:15Z" expiration_time="2018-07-27T09:43:15Z" urgency="URGENT">
+    <location fuzziness="LOW_RES" directionality="BOTH_DIRECTIONS" road_class="SECONDARY" road_ref="L87">
+      <from junction_name="Rheinau-Freistett/B36">+48.661098 +7.936800</from>
+      <to junction_name="Gambsheim (F)">+48.683701 +7.916600</to>
+    </location>
+    <events>
+      <event class="CONSTRUCTION" type="CONSTRUCTION_CONSTRUCTION_WORK">
+      </event>
+      <event class="RESTRICTION" type="RESTRICTION_CLOSED">
+      </event>
+    </events>
+  </message>
+  <message id="tmc:d.1.12:d.1.26212.p.5,11" receive_time="2018-07-27T10:21:49+02:00" update_time="2018-07-27T08:42:41Z" expiration_time="2018-07-27T09:42:41Z" urgency="URGENT">
+    <location fuzziness="LOW_RES" directionality="BOTH_DIRECTIONS" road_class="PRIMARY" road_ref="B428">
+      <from junction_name="Hackenheim">+49.822948 +7.906900</from>
+      <to junction_name="Frei-Laubersheim">+49.803650 +7.901450</to>
+    </location>
+    <events>
+      <event class="CONSTRUCTION" type="CONSTRUCTION_LONGTERM_ROADWORKS">
+      </event>
+      <event class="RESTRICTION" type="RESTRICTION_CLOSED">
+      </event>
+    </events>
+  </message>
+  <message id="tmc:d.1.12:d.1.48638.n.9,11" receive_time="2018-07-27T10:11:06+02:00" update_time="2018-07-27T08:31:43Z" expiration_time="2018-07-27T09:31:43Z" urgency="URGENT">
+    <location fuzziness="LOW_RES" directionality="BOTH_DIRECTIONS" road_class="PRIMARY" road_ref="B272">
+      <from junction_name="Hochstadt">+49.239750 +8.222300</from>
+      <to junction_name="Weingarten">+49.253448 +8.268100</to>
+    </location>
+    <events>
+      <event class="CONSTRUCTION" type="CONSTRUCTION_ROADWORKS">
+      </event>
+      <event class="RESTRICTION" type="RESTRICTION_CLOSED_AHEAD">
+      </event>
+    </events>
+  </message>
+  <message id="tmc:d.1.12:d.1.56576.n.9,11" receive_time="2018-07-27T10:22:53+02:00" update_time="2018-07-27T08:43:45Z" expiration_time="2018-07-27T09:43:45Z" urgency="URGENT">
+    <location fuzziness="LOW_RES" directionality="ONE_DIRECTION" road_class="PRIMARY" road_ref="B417">
+      <from junction_name="Diez">+50.372398 +8.038500</from>
+      <to junction_name="Diez">+50.370850 +8.004050</to>
+    </location>
+    <events>
+      <event class="CONSTRUCTION" type="CONSTRUCTION_RESURFACING_WORK">
+      </event>
+      <event class="RESTRICTION" type="RESTRICTION_CLOSED">
+        <supplementary_info class="VEHICLE" type="S_VEHICLE_THROUGH_TRAFFIC"/>
+      </event>
+    </events>
+  </message>
+</feed>
