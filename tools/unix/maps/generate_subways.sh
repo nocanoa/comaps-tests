@@ -30,26 +30,22 @@ export DUMP="$SUBWAYS_VALIDATOR_PATH"
 export GEOJSON="$SUBWAYS_VALIDATOR_PATH"
 export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 
-# cd to subways repo so relative paths work in the script
-echo "dir is $(pwd)"
+export CITIES_INFO_FILE="$SUBWAYS_REPO_PATH/source_data/Rapid.csv"
+ls -al "$SUBWAYS_REPO_PATH/source_data"
 pushd "$SUBWAYS_REPO_PATH"
-echo "dir is now $(pwd)"
-ls -al
-ls -al source_data
-
-sed -i 's/# Updating the planet-metro file/pwd && ls -al/g' ./scripts/process_subways.sh
-echo "disabled!"
-#./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
+#2>&1 | tee "$SUBWAYS_LOG"
+./scripts/process_subways.sh
 popd
-
+echo "3"
 # Make render.html available for map visualization on the web
 cp -r "$SUBWAYS_REPO_PATH"/render/* "$SUBWAYS_VALIDATOR_PATH/"
 
 TRANSIT_TOOL_PATH="$REPO_PATH/tools/python/transit"
-SUBWAYS_GRAPH_FILE="$SUBWAYS_PATH/subway.transit.json"
-
+SUBWAYS_GRAPH_FILE="$SUBWAYS_PATH/subways.transit.json"
+echo "4"
 activate_venv_at_path "$TRANSIT_TOOL_PATH"
-"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE" 2>&1 | tee -a "$SUBWAYS_LOG"
+"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE"
+# 2>&1 | tee -a "$SUBWAYS_LOG"
 deactivate
 
 echo "Generated subways transit graph file:"
