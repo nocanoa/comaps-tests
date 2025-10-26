@@ -251,7 +251,6 @@ jobs:
         run: |
           cd /media/4tbexternal/comaps-init/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
-          echo "hi"
           ./tools/unix/maps/generate_subways.sh
 
   update-tiger:
@@ -315,9 +314,12 @@ jobs:
       - name: Update TIGER from Nominatim
         shell: bash
         run: |
+          # TODO: maybe remove old osm-planet/tiger first?
           cd /media/4tbexternal/osm-planet/
+          mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
-          tar -xOzf tiger-nominatim-preprocessed-latest.csv.tar.gz | /media/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=./tiger
+          cd /media/4tbexternal/comaps-init
+          tar -xOzf /media/4tbexternal/osm-planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /media/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=/media/4tbexternal/osm-planet/tiger
 
   generate-maps:
     if: inputs.jobs == 'maps' || inputs.jobs == 'all'
