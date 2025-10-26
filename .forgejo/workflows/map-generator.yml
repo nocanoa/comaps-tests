@@ -125,12 +125,14 @@ jobs:
       - name: Update Wikipedia from Enterprise API
         shell: bash
         run: |
+          #todo: curl in download.sh can fail when rate limited and even save error messages to the output. need to validate.
           mkdir -p /media/4tbexternal/osm-planet/wikipedia/dumps
           mkdir -p /media/4tbexternal/osm-planet/wikipedia/build
           cd /media/4tbexternal/wikiparser
           ls -al
           echo "Downloading ..."
           ./download.sh /media/4tbexternal/osm-planet/wikipedia/dumps
+          ls -al /media/4tbexternal/osm-planet/wikipedia/dumps/*
           echo "Running ..."
           ./run.sh /media/4tbexternal/osm-planet/wikipedia/build \
           /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf \
@@ -272,6 +274,11 @@ jobs:
           cmake \
           ninja-build \
           ca-certificates \
+          qt6-base-dev \
+          qt6-positioning-dev \
+          libqt6svg6-dev \
+          libqt6positioning6-plugins \
+          libqt6positioning6 \
           python3 \
           python3-pip \
           git \
