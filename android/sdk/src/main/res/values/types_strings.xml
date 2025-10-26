@@ -52,7 +52,7 @@
     <string name="type.amenity.charging_station.motorcar.small">Car Charging Point</string>
     <string name="type.amenity.childcare">Nursery</string>
     <string name="type.amenity.cinema">Cinema</string>
-    <string name="type.amenity.studio">Studio</string>
+    <string name="type.amenity.studio">Media Studio</string>
     <string name="type.leisure.bowling_alley">Bowling Alley</string>
     <string name="type.amenity.clinic">Clinic</string>
     <string name="type.amenity.college">College</string>
@@ -1187,7 +1187,7 @@
     <string name="type.shop.chemist">Chemist</string>
     <string name="type.shop.chocolate">Chocolate Shop</string>
     <string name="type.shop.clothes">Clothes Shop</string>
-    <string name="type.shop.coffee">Coffee Shop</string>
+    <string name="type.shop.coffee">Coffee Retailer</string>
     <string name="type.shop.computer">Computer Store</string>
     <string name="type.shop.confectionery">Candy Shop</string>
     <string name="type.shop.convenience">Convenience Store</string>

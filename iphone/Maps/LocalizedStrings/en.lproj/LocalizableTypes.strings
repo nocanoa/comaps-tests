@@ -45,7 +45,7 @@
 "type.amenity.car_wash" = "Car Wash";
 "type.amenity.casino" = "Casino";
 "type.amenity.gambling" = "Gambling";
-"type.amenity.studio" = "Studio";
+"type.amenity.studio" = "Media Studio";
 "type.leisure.adult_gaming_centre" = "Adult Gaming Centre";
 "type.leisure.amusement_arcade" = "Arcade";
 "type.amenity.charging_station" = "Charging Station";
@@ -1282,7 +1282,7 @@
 "type.shop.chemist" = "Chemist";
 "type.shop.chocolate" = "Chocolate Shop";
 "type.shop.clothes" = "Clothes Shop";
-"type.shop.coffee" = "Coffee Shop";
+"type.shop.coffee" = "Coffee Retailer";
 "type.shop.computer" = "Computer Store";
 "type.shop.confectionery" = "Candy Shop";
 "type.shop.convenience" = "Convenience Store";
