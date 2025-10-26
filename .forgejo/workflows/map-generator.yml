@@ -85,8 +85,10 @@ jobs:
           mv planet-latest-new.osm.pbf planet-latest.osm.pbf
       - name: Converting planet-latest.osm.pbf to planet.o5m
         run: |
+          echo "Starting..."
           cd /media/4tbexternal/osm-planet/planet/
           osmconvert planet-latest.osm.pbf -o=planet.o5m
+          echo "Done."
 
   wiki-update:
     if: inputs.jobs == 'wiki' || inputs.jobs == 'all'
