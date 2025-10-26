@@ -31,7 +31,14 @@ export GEOJSON="$SUBWAYS_VALIDATOR_PATH"
 export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 
 # cd to subways repo so relative paths work in the script
+echo "dir is $(pwd)"
 pushd "$SUBWAYS_REPO_PATH"
+echo "dir is now $(pwd)"
+ls -al
+ls -al source_data
+
+sed -i 's/# Updating the planet-metro file/pwd && ls -al/g' ./scripts/process_subways.sh
+
 ./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
 popd
 
