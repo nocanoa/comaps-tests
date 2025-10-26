@@ -74,10 +74,10 @@ auto constexpr kOneMpSInKmpH = 3.6;
  * once the full attribute penalty).
  * A “wrong” road may also just have a penalty of 4 (e.g. road name mismatch, but road class and
  * ramp type match).
- * A value of 16 has worked well for the DE-B2R-SendlingSued-Passauerstrasse test case. The
- * DE-A10-Werder-GrossKreutz or DE-A115-PotsdamDrewitz-Nuthetal test cases still resolve incorrectly
- * with an offroad penalty of 8 and even 2, presumably because the correct endpoints are not
- * connected by fake segments.
+ * A value of 16 has worked well for the DE-B2R-SendlingSued-Passauerstrasse test case. (The
+ * DE-A10-Werder-GrossKreutz or DE-A115-PotsdamDrewitz-Nuthetal test cases gave incorrect results
+ * due to lack of fake segments, which was fixed through truncation and now works correctly even
+ * with an offroad penalty of 128.)
  */
 auto constexpr kOffroadPenalty = 16;
 
