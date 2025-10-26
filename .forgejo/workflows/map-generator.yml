@@ -272,8 +272,12 @@ jobs:
           cmake \
           ninja-build \
           ca-certificates \
+          python3 \
+          python3-pip \
           git \
           wget2
+          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+          pip3 install "protobuf<4"
       - name: Clone main repo if necessary
         shell: bash
         run: |
