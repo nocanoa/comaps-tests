@@ -105,12 +105,14 @@ jobs:
         run: |
           apt-get update -y
           apt-get install -y jq curl wget wget2 rustc cargo git ca-certificates
-      - name: Clone wikiparser if necessary
+      - name: Clone/update wikiparser if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/wikiparser ]; then
           cd /media/4tbexternal
           git clone https://codeberg.org/comaps/wikiparser.git
+          else
+          cd wikiparser && git pull origin main
           fi
       - name: Check for planet file
         shell: bash
@@ -190,13 +192,15 @@ jobs:
           zlib1g-dev
           rm -f /usr/lib/python*/EXTERNALLY-MANAGED
           pip3 install "protobuf<4"
-      - name: Clone main repo if necessary
+      - name: Clone or update main repo if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/comaps-init ]; then
           apt-get update -qq && apt-get install -y --no-install-recommends git
           cd /media/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          else
+          cd comaps-init && git pull origin rebase-generator-pastk-wb251014
           fi
       - name: Update Isolines
         shell: bash
@@ -232,19 +236,23 @@ jobs:
           apt-get update -qq && apt-get install -y --no-install-recommends curl osmctools osmium-tool python3-venv ca-certificates git python3-pip
           rm -f /usr/lib/python*/EXTERNALLY-MANAGED
           pip3 install "protobuf<4"
-      - name: Clone subways if necessary
+      - name: Clone/update subways repo if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/subways ]; then
           cd /media/4tbexternal
           git clone https://codeberg.org/comaps/subways.git
+          else
+          cd subways && git pull origin master
           fi
-      - name: Clone main repo if necessary
+      - name: Clone or update main repo if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/comaps-init ]; then
           cd /media/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          else
+          cd comaps-init && git pull origin rebase-generator-pastk-wb251014
           fi
       - name: Update Subways
         shell: bash
@@ -297,12 +305,14 @@ jobs:
           wget2
           rm -f /usr/lib/python*/EXTERNALLY-MANAGED
           pip3 install "protobuf<4"
-      - name: Clone main repo if necessary
+      - name: Clone or update main repo if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/comaps-init ]; then
           cd /media/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          else
+          cd comaps-init && git pull origin rebase-generator-pastk-wb251014
           fi
       - name: Build address_parser
         shell: bash
@@ -372,12 +382,14 @@ jobs:
           libxcursor-dev \
           libxi-dev \
           zlib1g-dev
-      - name: Clone repo if necessary
+      - name: Clone or update main repo if necessary
         shell: bash
         run: |
           if [ ! -d /media/4tbexternal/comaps-init ]; then
           cd /media/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          else
+          cd comaps-init && git pull origin rebase-generator-pastk-wb251014
           fi
       - name: Make output folders if necessary
         shell: bash

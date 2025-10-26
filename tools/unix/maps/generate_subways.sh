@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e -u -o pipefail
-echo "1"
+
 # Generate subways.transit.json file consumed by the maps generator.
 # Inputs:
 # - OSM planet in pbf format
@@ -11,7 +11,7 @@ echo "1"
 
 source "$(dirname "$0")/helper_settings.sh"
 source "$REPO_PATH/tools/unix/helper_python.sh"
-echo "2"
+
 # Parameters for the process_subways.sh script:
 export PLANET="$PLANET_PBF"
 export SKIP_PLANET_UPDATE="1"
@@ -30,22 +30,19 @@ export DUMP="$SUBWAYS_VALIDATOR_PATH"
 export GEOJSON="$SUBWAYS_VALIDATOR_PATH"
 export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 
-export CITIES_INFO_FILE="$SUBWAYS_REPO_PATH/source_data/Rapid.csv"
-ls -al "$SUBWAYS_REPO_PATH/source_data"
+# cd to subways repo so relative paths work in the script
 pushd "$SUBWAYS_REPO_PATH"
-#2>&1 | tee "$SUBWAYS_LOG"
-./scripts/process_subways.sh
+./scripts/process_subways.sh # 2>&1 | tee "$SUBWAYS_LOG"
 popd
-echo "3"
+
 # Make render.html available for map visualization on the web
 cp -r "$SUBWAYS_REPO_PATH"/render/* "$SUBWAYS_VALIDATOR_PATH/"
 
 TRANSIT_TOOL_PATH="$REPO_PATH/tools/python/transit"
 SUBWAYS_GRAPH_FILE="$SUBWAYS_PATH/subways.transit.json"
-echo "4"
+
 activate_venv_at_path "$TRANSIT_TOOL_PATH"
-"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE"
-# 2>&1 | tee -a "$SUBWAYS_LOG"
+"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE" # 2>&1 | tee -a "$SUBWAYS_LOG"
 deactivate
 
 echo "Generated subways transit graph file:"
