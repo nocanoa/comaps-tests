@@ -251,6 +251,7 @@ jobs:
         run: |
           cd /media/4tbexternal/comaps-init/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
+          echo "hi"
           ./tools/unix/maps/generate_subways.sh
 
   update-tiger:
@@ -276,9 +277,21 @@ jobs:
           ca-certificates \
           qt6-base-dev \
           qt6-positioning-dev \
+          libc++-dev \
+          libfreetype-dev \
+          libglvnd-dev \
+          libgl1-mesa-dev \
+          libharfbuzz-dev \
+          libicu-dev \
           libqt6svg6-dev \
           libqt6positioning6-plugins \
           libqt6positioning6 \
+          libsqlite3-dev \
+          libxrandr-dev \
+          libxinerama-dev \
+          libxcursor-dev \
+          libxi-dev \
+          zlib1g-dev \
           python3 \
           python3-pip \
           git \
