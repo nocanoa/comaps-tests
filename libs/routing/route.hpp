@@ -87,8 +87,9 @@ public:
    *
    * `m_ref` and `m_name` refer to the road itself.
    *
-   * This structure is fully populated only for the first segment after a junction. For other
-   * segments, members may be left at their default values (empty string or false).
+   * This structure is only populated for the first segment of a feature (segment index is either 0,
+   * or one less than the segment count of the feature, or the segment is the first segment of the
+   * route which is not a fake segment). For subsequent segments of the same feature, it is empty.
    */
   struct RoadNameInfo
   {
