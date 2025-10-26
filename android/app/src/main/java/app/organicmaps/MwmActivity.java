@@ -425,15 +425,6 @@ public class MwmActivity extends BaseMwmFragmentActivity
 
   private void shareMyLocation()
   {
-    // Check if location sharing is already active
-    if (app.organicmaps.location.LocationSharingManager.getInstance().isSharing())
-    {
-      // Stop sharing
-      app.organicmaps.location.LocationSharingManager.getInstance().stopSharing();
-      mMapButtonsViewModel.setLocationSharingState(false);
-      return;
-    }
-
     final Location loc = MwmApplication.from(this).getLocationHelper().getSavedLocation();
     if (loc == null)
     {
@@ -447,26 +438,7 @@ public class MwmActivity extends BaseMwmFragmentActivity
       return;
     }
 
-    // Show dialog with two options: share current coordinates or start live sharing
-    new MaterialAlertDialogBuilder(this, R.style.MwmTheme_AlertDialog)
-        .setTitle(R.string.share_my_location)
-        .setItems(new CharSequence[] {
-            getString(R.string.share_location_coordinates),
-            getString(R.string.share_location_live)
-        }, (dialog, which) -> {
-          if (which == 0)
-          {
-            // Share current coordinates
-            SharingUtils.shareLocation(this, loc);
-          }
-          else
-          {
-            // Start live location sharing
-            app.organicmaps.location.LocationSharingDialog.show(getSupportFragmentManager());
-          }
-        })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
+    SharingUtils.shareLocation(this, loc);
   }
 
   public void onLocationSharingStateChanged(boolean isSharing)
@@ -1724,6 +1696,13 @@ public class MwmActivity extends BaseMwmFragmentActivity
     mMapButtonsViewModel.setLayoutMode(MapButtonsController.LayoutMode.regular);
     refreshLightStatusBar();
     Utils.keepScreenOn(Config.isKeepScreenOnEnabled(), getWindow());
+
+    // Stop location sharing when navigation ends
+    if (app.organicmaps.location.LocationSharingManager.getInstance().isSharing())
+    {
+      app.organicmaps.location.LocationSharingManager.getInstance().stopSharing();
+      onLocationSharingStateChanged(false);
+    }
   }
 
   @Override
@@ -2537,10 +2516,7 @@ public class MwmActivity extends BaseMwmFragmentActivity
         items.add(new MenuBottomSheetItem(R.string.start_track_recording, R.drawable.ic_track_recording_off, -1,
                                           this::onTrackRecordingOptionSelected));
 
-      final boolean isLocationSharingActive = app.organicmaps.location.LocationSharingManager.getInstance().isSharing();
-      final int locationSharingTitleRes = isLocationSharingActive ? R.string.stop_sharing_my_location : R.string.share_my_location;
-      final int locationSharingBadge = isLocationSharingActive ? -1 : 0;
-      items.add(new MenuBottomSheetItem(locationSharingTitleRes, R.drawable.ic_share, locationSharingBadge,
+      items.add(new MenuBottomSheetItem(R.string.share_my_location, R.drawable.ic_share,
                                         this::onShareLocationOptionSelected));
 
       if (!BUTTON_HELP_CODE.equals(activeLeftButton))
