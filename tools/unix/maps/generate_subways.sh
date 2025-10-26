@@ -30,7 +30,10 @@ export DUMP="$SUBWAYS_VALIDATOR_PATH"
 export GEOJSON="$SUBWAYS_VALIDATOR_PATH"
 export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 
-"$SUBWAYS_REPO_PATH/scripts/process_subways.sh" 2>&1 | tee "$SUBWAYS_LOG"
+# cd to subways repo so relative paths work in the script
+pushd "$SUBWAYS_REPO_PATH"
+./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
+popd
 
 # Make render.html available for map visualization on the web
 cp -r "$SUBWAYS_REPO_PATH"/render/* "$SUBWAYS_VALIDATOR_PATH/"
