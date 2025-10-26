@@ -451,27 +451,43 @@ node|z16[historic=castle],
 node|z17-[historic=fort],
 node|z17-[historic=castle],
 {icon-image: remains-m.svg;}
-node|z17-[historic=ruins][name],
-{icon-image: remains-m.svg;}
 
-node|z12-14[historic=castle][castle_type=castrum]
-node|z12-14[historic=castle][castle_type=defensive]
-node|z12-14[historic=castle][castle_type=fortified_church]
-node|z12-14[historic=castle][castle_type=fortress]
-node|z12-14[historic=castle][castle_type=hillfort]
-node|z12-14[historic=castle][castle_type=kremlin]
-node|z12-14[historic=castle][castle_type=shiro]
-node|z12-14[historic=fort]
+node|z12-14[historic=castle][castle_type=castrum],
+node|z12-14[historic=castle][castle_type=defensive],
+node|z12-14[historic=castle][castle_type=fortified_church],
+node|z12-14[historic=castle][castle_type=fortress],
+node|z12-14[historic=castle][castle_type=hillfort],
+node|z12-14[historic=castle][castle_type=kremlin],
+node|z12-14[historic=castle][castle_type=shiro],
+node|z12-14[historic=fort],
 {icon-image: castle-s.svg;}
-node|z15-[historic=castle][castle_type=castrum]
-node|z15-[historic=castle][castle_type=defensive]
-node|z15-[historic=castle][castle_type=fortified_church]
-node|z15-[historic=castle][castle_type=fortress]
-node|z15-[historic=castle][castle_type=hillfort]
-node|z15-[historic=castle][castle_type=kremlin]
-node|z15-[historic=castle][castle_type=shiro]
+node|z15-[historic=castle][castle_type=castrum],
+node|z15-[historic=castle][castle_type=defensive],
+node|z15-[historic=castle][castle_type=fortified_church],
+node|z15-[historic=castle][castle_type=fortress],
+node|z15-[historic=castle][castle_type=hillfort],
+node|z15-[historic=castle][castle_type=kremlin],
+node|z15-[historic=castle][castle_type=shiro],
 node|z15-[historic=fort]
 {icon-image: castle-m.svg;}
+
+node|z12-14[historic=ruins][castle_type=castrum],
+node|z12-14[historic=ruins][castle_type=defensive],
+node|z12-14[historic=ruins][castle_type=fortified_church],
+node|z12-14[historic=ruins][castle_type=fortress],
+node|z12-14[historic=ruins][castle_type=hillfort],
+node|z12-14[historic=ruins][castle_type=kremlin],
+node|z12-14[historic=ruins][castle_type=shiro],
+{icon-image: remains-s.svg;}
+node|z15-[historic=ruins][castle_type=castrum],
+node|z15-[historic=ruins][castle_type=defensive],
+node|z15-[historic=ruins][castle_type=fortified_church],
+node|z15-[historic=ruins][castle_type=fortress],
+node|z15-[historic=ruins][castle_type=hillfort],
+node|z15-[historic=ruins][castle_type=kremlin],
+node|z15-[historic=ruins][castle_type=shiro],
+node|z17-[historic=ruins][name],
+{icon-image: remains-m.svg;}
 
 node|z17-[historic=archaeological_site],
 {icon-image: archaeological-site-m.svg;}
