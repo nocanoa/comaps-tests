@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e -u -o pipefail
-
+echo "1"
 # Generate subways.transit.json file consumed by the maps generator.
 # Inputs:
 # - OSM planet in pbf format
@@ -11,7 +11,7 @@ set -e -u -o pipefail
 
 source "$(dirname "$0")/helper_settings.sh"
 source "$REPO_PATH/tools/unix/helper_python.sh"
-
+echo "2"
 # Parameters for the process_subways.sh script:
 export PLANET="$PLANET_PBF"
 export SKIP_PLANET_UPDATE="1"
@@ -38,8 +38,8 @@ ls -al
 ls -al source_data
 
 sed -i 's/# Updating the planet-metro file/pwd && ls -al/g' ./scripts/process_subways.sh
-
-./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
+echo "disabled!"
+#./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
 popd
 
 # Make render.html available for map visualization on the web
