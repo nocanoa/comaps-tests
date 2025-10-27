@@ -153,6 +153,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private final Map<Metadata.MetadataType, View> mDetailsBlocks = new HashMap<>();
   private final Map<Metadata.MetadataType, View> mSocialMediaBlocks = new HashMap<>();
   private MaterialButton mReset;
+  private MaterialButton mDisused;
 
   private EditorHostFragment mParent;
 
@@ -826,6 +827,8 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     osmInfo.setMovementMethod(LinkMovementMethod.getInstance());
     mReset = view.findViewById(R.id.reset);
     mReset.setOnClickListener(this);
+    mDisused = view.findViewById(R.id.disused);
+    mDisused.setOnClickListener(this);
 
     mDetailsBlocks.put(Metadata.MetadataType.FMD_OPEN_HOURS, blockOpeningHours);
     mDetailsBlocks.put(Metadata.MetadataType.FMD_PHONE_NUMBER, blockPhone);
@@ -893,6 +896,8 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
       mParent.addLanguage();
     else if (id == R.id.reset)
       reset();
+    else if (id == R.id.disused)
+      placeDisused();
     else if (id == R.id.block_outdoor_seating)
       mOutdoorSeating.toggle();
   }
@@ -938,6 +943,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     if (mParent.addingNewObject())
     {
       UiUtils.hide(mReset);
+      UiUtils.hide(mDisused);
       return;
     }
 
@@ -1011,6 +1017,20 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
         getString(R.string.editor_report_problem_send_button), getString(R.string.cancel), this,
         getDeleteCommentValidator());
     dialogFragment.setTextSaveListener(this::commitPlaceDoesntExists);
+  }
+
+  private void placeDisused()
+  {
+    new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
+      .setTitle("Mark business as vacant")
+      .setMessage("Use this option when when a business moved out and empty rooms are still there " +
+        "for a new business to move in. Don't use when place is razed entirely.")
+      .setPositiveButton("Submit", (dlg, which) -> {
+        Editor.nativeMarkPlaceAsDisused();
+        mParent.processEditedFeatures();
+      })
+      .setNegativeButton(android.R.string.cancel, null)
+      .show();
   }
 
   private void commitPlaceDoesntExists(@NonNull String text)

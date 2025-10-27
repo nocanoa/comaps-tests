@@ -1,4 +1,4 @@
-#include <jni.h>
+﻿#include <jni.h>
 
 #include "app/organicmaps/sdk/Framework.hpp"
 #include "app/organicmaps/sdk/core/jni_helper.hpp"
@@ -432,6 +432,11 @@ JNIEXPORT void JNICALL Java_app_organicmaps_sdk_editor_Editor_nativePlaceDoesNot
 JNIEXPORT void JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeRollbackMapObject(JNIEnv * env, jclass clazz)
 {
   g_framework->NativeFramework()->RollBackChanges(g_editableMapObject.GetID());
+}
+
+JNIEXPORT void JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeMarkPlaceAsDisused(JNIEnv * env, jclass clazz)
+{
+  g_framework->NativeFramework()->MarkPlaceAsDisused(g_editableMapObject);
 }
 
 JNIEXPORT jobjectArray JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeGetAllCreatableFeatureTypes(JNIEnv * env,

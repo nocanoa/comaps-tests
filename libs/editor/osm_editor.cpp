@@ -1334,6 +1334,12 @@ void Editor::UpdateXMLFeatureTags(editor::XMLFeature & feature, std::list<Journa
     }
     case JournalEntryType::ObjectCreated: break;
     case JournalEntryType::LegacyObject: ASSERT_FAIL(("Legacy Objects can not be edited with the new editor")); break;
+    case JournalEntryType::BusinessReplacement:
+    {
+      BusinessReplacementData const & businessReplacementData = std::get<BusinessReplacementData>(entry.data);
+      feature.OSMBusinessReplacement(businessReplacementData.old_type, businessReplacementData.new_type);
+      break;
+    }
     }
   }
 }

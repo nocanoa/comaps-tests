@@ -3091,6 +3091,13 @@ void Framework::DeleteFeature(FeatureID const & fid)
   UpdatePlacePageInfoForCurrentSelection();
 }
 
+void Framework::MarkPlaceAsDisused(osm::EditableMapObject emo)
+{
+  emo.MarkAsDisused();
+  osm::Editor::Instance().SaveEditedFeature(emo);
+  UpdatePlacePageInfoForCurrentSelection();
+}
+
 osm::NewFeatureCategories Framework::GetEditorCategories() const
 {
   return osm::Editor::Instance().GetNewFeatureCategories();
