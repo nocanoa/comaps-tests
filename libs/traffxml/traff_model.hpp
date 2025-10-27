@@ -100,7 +100,14 @@ enum class Directionality
   BothDirections
 };
 
-// TODO enum fuzziness
+enum class Fuzziness
+{
+  LowRes,
+  MediumRes,
+  EndUnknown,
+  StartUnknown,
+  ExtentUnknown
+};
 
 enum class Ramps
 {
@@ -383,7 +390,7 @@ struct TraffLocation
   std::optional<std::string> m_destination;
   std::optional<std::string> m_direction;
   Directionality m_directionality = Directionality::BothDirections;
-  // TODO std::optional<Fuzziness> m_fuzziness;
+  std::optional<Fuzziness> m_fuzziness;
   std::optional<std::string> m_origin;
   Ramps m_ramps = Ramps::None;
   std::optional<RoadClass> m_roadClass;

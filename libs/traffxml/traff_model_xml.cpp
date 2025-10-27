@@ -36,6 +36,14 @@ const boost::bimap<std::string, Directionality> kDirectionalityMap = MakeBimap<s
   {"BOTH_DIRECTIONS", Directionality::BothDirections}
 });
 
+const boost::bimap<std::string, Fuzziness> kFuzzinessMap = MakeBimap<std::string, Fuzziness>({
+  {"LOW_RES", Fuzziness::LowRes},
+  {"MEDIUM_RES", Fuzziness::MediumRes},
+  {"END_UNKNOWN", Fuzziness::EndUnknown},
+  {"START_UNKNOWN", Fuzziness::StartUnknown},
+  {"EXTENT_UNKNOWN", Fuzziness::ExtentUnknown}
+});
+
 const boost::bimap<std::string, Ramps> kRampsMap = MakeBimap<std::string, Ramps>({
   {"ALL_RAMPS", Ramps::All},
   {"ENTRY_RAMP", Ramps::Entry},
@@ -597,9 +605,7 @@ bool LocationFromXml(pugi::xml_node const & node, TraffLocation & location)
   location.m_direction = OptionalStringFromXml(node.attribute("direction"));
 
   EnumFromXml(node.attribute("directionality"), location.m_directionality, kDirectionalityMap);
-
-  // TODO fuzziness (not yet implemented in struct)
-
+  location.m_fuzziness = OptionalEnumFromXml(node.attribute("fuzziness"), kFuzzinessMap);
   location.m_origin = OptionalStringFromXml(node.attribute("origin"));
   EnumFromXml(node.attribute("ramps"), location.m_ramps, kRampsMap);
   location.m_roadClass = OptionalEnumFromXml(node.attribute("road_class"), kRoadClassMap);
@@ -628,9 +634,8 @@ void LocationToXml(TraffLocation const & location, pugi::xml_node & node)
   if (location.m_direction)
     node.append_attribute("direction").set_value(location.m_direction.value());
   EnumToXml(location.m_directionality, "directionality", node, kDirectionalityMap);
-
-  // TODO fuzziness (not yet implemented in struct)
-
+  if (location.m_fuzziness)
+    EnumToXml(location.m_fuzziness.value(), "fuzziness", node, kFuzzinessMap);
   if (location.m_origin)
     node.append_attribute("origin").set_value(location.m_origin.value());
   EnumToXml(location.m_ramps, "ramps", node, kRampsMap);

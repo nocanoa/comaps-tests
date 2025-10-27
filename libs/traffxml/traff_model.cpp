@@ -370,6 +370,19 @@ std::string DebugPrint(Directionality directionality)
   UNREACHABLE();
 }
 
+std::string DebugPrint(Fuzziness fuzziness)
+{
+  switch (fuzziness)
+  {
+  case Fuzziness::LowRes: return "LowRes";
+  case Fuzziness::MediumRes: return "MediumRes";
+  case Fuzziness::EndUnknown: return "EndUnknown";
+  case Fuzziness::StartUnknown: return "StartUnknown";
+  case Fuzziness::ExtentUnknown: return "ExtentUnknown";
+  }
+  UNREACHABLE();
+}
+
 std::string DebugPrint(Ramps ramps)
 {
   switch (ramps)
@@ -526,7 +539,7 @@ std::string DebugPrint(TraffLocation location)
   os << "via: " << (location.m_via ? DebugPrint(location.m_via.value()) : "nullopt") << ", ";
   os << "to: " << (location.m_to ? DebugPrint(location.m_to.value()) : "nullopt") << ", ";
   os << "notVia: " << (location.m_notVia ? DebugPrint(location.m_notVia.value()) : "nullopt") << ", ";
-  // TODO fuzziness (not yet implemented in struct)
+  os << "fuzziness: " << (location.m_fuzziness ? DebugPrint(location.m_fuzziness.value()) : "nullopt") << ", ";
   os << "country: " << location.m_country.value_or("nullopt") << ", ";
   os << "territory: " << location.m_territory.value_or("nullopt") << ", ";
   os << "town: " << location.m_town.value_or("nullopt") << ", ";
