@@ -413,6 +413,7 @@ jobs:
         run: |
           mkdir -p /root/OM
           ln -s /media/4tbexternal/comaps-init /root/OM/organicmaps
+          ln -s /media/4tbexternal/comaps-init /root/OM/comaps-init
           ln -s /media/4tbexternal/osm-planet /home/planet
           ln -s /media/4tbexternal/osm-maps /root/OM/maps_build
       - name: Run docker_maps_generator.sh
