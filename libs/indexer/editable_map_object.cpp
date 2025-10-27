@@ -87,6 +87,29 @@ vector<MapObject::MetadataID> EditableMapObject::GetEditableProperties() const
   return props;
 }
 
+bool EditableMapObject::CanMarkPlaceAsDisused() const
+{
+  auto types = GetTypes();
+  types.SortBySpec();
+  uint32_t mainType = *types.begin();
+  std::string mainTypeStr = classif().GetReadableObjectName(mainType);
+
+  std::vector<string_view> typePrefixes = {
+      "shop",
+      "amenity-restaurant",
+      "amenity-fast_food",
+      "amenity-cafe",
+      "amenity-pub",
+      "amenity-bar",
+  };
+
+  for (auto const & typePrefix : typePrefixes)
+    if (mainTypeStr.starts_with(typePrefix))
+      return true;
+
+  return false;
+}
+
 NamesDataSource EditableMapObject::GetNamesDataSource()
 {
   auto const mwmInfo = GetID().m_mwmId.GetInfo();

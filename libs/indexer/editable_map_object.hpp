@@ -78,6 +78,8 @@ public:
   /// All store/load/valid operations will be via MetadataEntryIFace interface instead of switch-case.
   std::vector<MetadataID> GetEditableProperties() const;
 
+  bool CanMarkPlaceAsDisused() const;
+
   /// See comment for NamesDataSource class.
   NamesDataSource GetNamesDataSource();
   LocalizedStreet const & GetStreet() const;

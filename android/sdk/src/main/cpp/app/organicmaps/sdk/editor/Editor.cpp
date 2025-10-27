@@ -277,6 +277,11 @@ JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeIsNameEd
   return g_editableMapObject.IsNameEditable();
 }
 
+JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeCanMarkPlaceAsDisused(JNIEnv * env, jclass clazz)
+{
+  return g_editableMapObject.CanMarkPlaceAsDisused();
+}
+
 JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeIsPointType(JNIEnv * env, jclass clazz)
 {
   return g_editableMapObject.IsPointType();
