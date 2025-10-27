@@ -19,7 +19,7 @@ set -e
 
 echo "<$(date +%T)> Setting git as safe dir..."
 
-git config --global --add safe.directory /root/OM/organicmaps
+git config --global --add safe.directory /root/OM/comaps-init
 
 echo "<$(date +%T)> Starting..."
 
@@ -27,8 +27,9 @@ echo "<$(date +%T)> Starting..."
 #
 # Already created by Dockerfile or CI/CD:
 #   /root/OM
-#   /root/OM/organicmaps
+#   /root/OM/comaps-init
 #   /root/OM/omim-build-release
+#   /root/OM/omim-build-relwithdebinfo
 #   /root/OM/maps_build
 #   /home/planet
 #
@@ -43,22 +44,22 @@ mkdir -p /home/planet/postcodes/us-postcodes/
 mkdir -p /home/planet/SRTM-patched-europe/
 mkdir -p /home/planet/subway
 
-echo "Writing rclone config..."
-echo "[r2]" > ~/.config/rclone/rclone.conf
-echo "type = s3" >> ~/.config/rclone/rclone.conf
-echo "provider = Cloudflare" >> ~/.config/rclone/rclone.conf
-echo "access_key_id = $S3_KEY_ID" >> ~/.config/rclone/rclone.conf
-echo "secret_access_key = $S3_SECRET_KEY" >> ~/.config/rclone/rclone.conf
-echo "region = auto" >> ~/.config/rclone/rclone.conf
-echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
-# S3_BUCKET is used below during uploading
+# echo "Writing rclone config..."
+# echo "[r2]" > ~/.config/rclone/rclone.conf
+# echo "type = s3" >> ~/.config/rclone/rclone.conf
+# echo "provider = Cloudflare" >> ~/.config/rclone/rclone.conf
+# echo "access_key_id = $S3_KEY_ID" >> ~/.config/rclone/rclone.conf
+# echo "secret_access_key = $S3_SECRET_KEY" >> ~/.config/rclone/rclone.conf
+# echo "region = auto" >> ~/.config/rclone/rclone.conf
+# echo "endpoint = $S3_ENDPOINT" >> ~/.config/rclone/rclone.conf
+# # S3_BUCKET is used below during uploading
 
 echo "<$(date +%T)> Running ./configure.sh ..."
-cd ~/OM/organicmaps
+cd /root/OM/comaps-init
 ./configure.sh --skip-map-download --skip-generate-symbols
 
 echo "<$(date +%T)> Compiling tools..."
-cd ~/OM/organicmaps
+cd /root/OM/comaps-init
 ./tools/unix/build_omim.sh -R generator_tool
 ./tools/unix/build_omim.sh -R world_roads_builder_tool
 ./tools/unix/build_omim.sh -R mwm_diff_tool
@@ -71,7 +72,7 @@ cp var/etc/map_generator.ini.prod var/etc/map_generator.ini
 
 #TODO: may be duplicated by maps_generator at "osmctools are not found, building from the sources"
 #echo "<$(date +%T)> Prebuild some tools so we can make an o5m file or run update_planet..."
-#cd ~/OM/organicmaps/tools/osmctools
+#cd /root/OM/comaps-init/tools/osmctools
 #gcc osmupdate.c -l z -o ~/OM/osmctools/osmupdate
 #gcc osmconvert.c -l z -o ~/OM/osmctools/osmconvert
 
@@ -99,11 +100,11 @@ if [ ! -f planet.o5m ]; then
 else
   echo "<$(date +%T)> planet.o5m exists, not converting..."
 fi
-# (currently unused:) ~/OM/organicmaps/tools/unix/update_planet.sh planet.o5m
+# (currently unused:) /root/OM/comaps-init/tools/unix/update_planet.sh planet.o5m
 
 
 echo "<$(date +%T)> Generating maps..."
-cd ~/OM/organicmaps/tools/python
+cd /root/OM/comaps-init/tools/python
 /tmp/venv/bin/python -m maps_generator --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
 
@@ -112,44 +113,44 @@ cd ~/OM/organicmaps/tools/python
 #/tmp/venv/bin/python -m maps_generator --countries="US_Oregon_Portland" --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --countries="Macedonia" --skip="MwmDiffs"
 
-shopt -s nullglob
-buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
-builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
-mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
+# shopt -s nullglob
+# buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
+# builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
+# mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
 
-if (( ${#mwmfiles[@]} )); then
-  echo "<$(date +%T)> Uploading maps to sftp..."
-  # upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
-  # Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
-sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST:$SFTP_PATH <<EOF
-  lcd ~/OM/maps_build/$buildfolder/$builddate
-  mkdir maps/$builddate
-  cd maps/$builddate
-  put countries.txt
-  put World.mwm
-  put WorldCoasts.mwm
-  cd ..
-  rm latest
-  ln -s $builddate latest
-  cd ..
-  lcd /home/planet/subway/
-  put subway.json
-  put subway.log
-  put subway.transit.json
-  lcd /home/planet/subway/subway/validator
-  rm subway/js/*
-  rmdir subway/js
-  rm subway/*
-  rmdir subway
-  mkdir subway
-  cd subway
-  put *
-  exit
-EOF
+# if (( ${#mwmfiles[@]} )); then
+#   echo "<$(date +%T)> Uploading maps to sftp..."
+#   # upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
+#   # Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
+# sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST:$SFTP_PATH <<EOF
+#   lcd ~/OM/maps_build/$buildfolder/$builddate
+#   mkdir maps/$builddate
+#   cd maps/$builddate
+#   put countries.txt
+#   put World.mwm
+#   put WorldCoasts.mwm
+#   cd ..
+#   rm latest
+#   ln -s $builddate latest
+#   cd ..
+#   lcd /home/planet/subway/
+#   put subway.json
+#   put subway.log
+#   put subway.transit.json
+#   lcd /home/planet/subway/subway/validator
+#   rm subway/js/*
+#   rmdir subway/js
+#   rm subway/*
+#   rmdir subway
+#   mkdir subway
+#   cd subway
+#   put *
+#   exit
+# EOF
 
   # upload all files via rclone to Cloudflare (R2)
-  echo "<$(date +%T)> Uploading maps to cloudflare..."
-  rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
+  # echo "<$(date +%T)> Uploading maps to cloudflare..."
+  # rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
 
 else
   echo "<$(date +%T)> No MWM files in ~/OM/maps_build/$buildfolder/$builddate/*.mwm, not uploading maps."

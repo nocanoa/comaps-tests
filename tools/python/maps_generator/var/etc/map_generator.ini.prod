@@ -1,6 +1,6 @@
 [Developer]
-# Path to the `organicmaps` source code repository:
-OMIM_PATH: ~/OM/organicmaps
+# Path to the `comaps` source code repository:
+OMIM_PATH: /root/OM/comaps-init
 # A path with the generator_tool binary:
 BUILD_PATH: /root/OM/omim-build-relwithdebinfo
 #${Developer:OMIM_PATH}/../omim-build-release

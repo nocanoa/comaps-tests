@@ -46,17 +46,18 @@ RUN pip3 install "protobuf<4"
 
 RUN mkdir /root/OM
 # When running, bind mount the repo here
-RUN mkdir /root/OM/organicmaps
+RUN mkdir /root/OM/comaps-init
 # And a volume to store the large output/temp files here
 RUN mkdir /root/OM/maps_build
 # And the output of the app build
 RUN mkdir /root/OM/omim-build-release
+RUN mkdir /root/OM/omim-build-relwithdebinfo
 # And a volume to store >10gb files for the planet here
 RUN mkdir /home/planet
 
-WORKDIR /root/OM/organicmaps
+WORKDIR /root/OM/comaps-init
 
 # For debugging
 #CMD /bin/bash 
 
-CMD /root/OM/organicmaps/tools/unix/docker_maps_generator.sh
+CMD /root/OM/comaps-init/tools/unix/docker_maps_generator.sh

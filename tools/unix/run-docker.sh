@@ -24,7 +24,7 @@
 #TODO: isolines, postcodes, subways, wiki
 
 # In tools/unix/maps, copy settings.sh.dist to settings.sh and modify if needed
-# In tools/python/maps_generator, copy map_generator.ini.prod to map_generator.ini and modify if needed
+# In tools/python/maps_generator/var/etc, copy map_generator.ini.prod to map_generator.ini and modify if needed
 
 #cd /media/4tbexternal/comaps-init/tools/unix
 # Build with: docker build . -t maps_generator
@@ -58,7 +58,7 @@ docker run \
   -e SFTP_HOST=changeme.dreamhost.com \
   -e SFTP_PATH=cdn-us-1.comaps.app \
   --ulimit nofile=262144:262144 \
-  -v /media/4tbexternal/comaps-init:/root/OM/organicmaps \
+  -v /media/4tbexternal/comaps-init:/root/OM/comaps-init \
   -v /media/4tbexternal/osm-planet:/home/planet \
   -v /media/4tbexternal/osm-maps:/root/OM/maps_build \
   -it maps_generator \
