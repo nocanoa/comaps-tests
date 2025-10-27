@@ -25,18 +25,16 @@ echo "<$(date +%T)> Starting..."
 
 # Prepare paths
 #
-# Already created by Dockerfile:
+# Already created by Dockerfile or CI/CD:
 #   /root/OM
 #   /root/OM/organicmaps
+#   /root/OM/omim-build-release
 #   /root/OM/maps_build
 #   /home/planet
 #
 mkdir -p /root/.config/CoMaps # Odd mkdir permission errors in generator_tool in Docker without these
 chmod -R 777 /root/.config
 mkdir -p ~/.config/rclone
-mkdir -p ~/OM/maps_build
-mkdir -p ~/OM/omim-build-release
-mkdir -p ~/OM/osmctools
 mkdir -p /home/planet/planet/isolines/
 mkdir -p /home/planet/planet/kayak/
 mkdir -p /home/planet/planet/tiger/

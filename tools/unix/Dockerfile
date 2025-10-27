@@ -49,6 +49,8 @@ RUN mkdir /root/OM
 RUN mkdir /root/OM/organicmaps
 # And a volume to store the large output/temp files here
 RUN mkdir /root/OM/maps_build
+# And the output of the app build
+RUN mkdir /root/OM/omim-build-release
 # And a volume to store >10gb files for the planet here
 RUN mkdir /home/planet
 
