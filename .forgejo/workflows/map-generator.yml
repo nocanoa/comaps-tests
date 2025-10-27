@@ -384,6 +384,8 @@ jobs:
           libxcursor-dev \
           libxi-dev \
           zlib1g-dev
+          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+          pip3 install "protobuf<4"
       - name: Clone or update main repo if necessary
         shell: bash
         run: |
