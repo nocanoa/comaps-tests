@@ -661,8 +661,7 @@ void EditableMapObject::MarkAsDisused()
   auto types = GetTypes();
   types.SortBySpec();
   uint32_t old_type = *types.begin();
-  // TODO(map-per): Replace with disused category (e.g. disused:shop)
-  uint32_t new_type = classif().GetTypeByReadableObjectName("shop-gift");
+  uint32_t new_type = classif().GetTypeByReadableObjectName("disusedbusiness");
   ApplyBusinessReplacement(new_type);
   m_journal.AddBusinessReplacement(old_type, new_type);
 }

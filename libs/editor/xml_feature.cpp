@@ -725,8 +725,7 @@ void XMLFeature::OSMBusinessReplacement(uint32_t old_type, uint32_t new_type)
   for(auto const & key : keysToRemove)
     RemoveTag(key);
 
-  // TODO(map-per) Change disused category
-  if (classif().GetReadableObjectName(new_type) == "shop-gift")
+  if (classif().GetReadableObjectName(new_type) == "disusedbusiness")
   {
     // Mark as 'disused'
     string const strOldType = classif().GetReadableObjectName(old_type);
