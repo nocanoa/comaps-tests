@@ -1,5 +1,5 @@
 # See run-docker.sh for cloning, building, and running the maps generator Docker routine
-FROM ubuntu:noble
+FROM debian:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC 
