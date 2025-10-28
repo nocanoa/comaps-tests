@@ -1,4 +1,5 @@
 #include "editor/xml_feature.hpp"
+#include "editor/keys_to_remove.hpp"
 
 #include "indexer/classificator.hpp"
 #include "indexer/editable_map_object.hpp"
@@ -710,31 +711,10 @@ void XMLFeature::OSMBusinessReplacement(uint32_t old_type, uint32_t new_type)
 {
   std::string name = GetTagValue("name");
 
-  // TODO(map-per): Expand list
-  constexpr std::string_view keysToRemove[] = {
-      "shop_?[1-9]?(:.*)?",
-      "craft_?[1-9]?",
-      "amenity_?[1-9]?",
-      "club_?[1-9]?",
-      "old_amenity",
-      "old_shop",
-      "information",
-      "leisure",
-      "office_?[1-9]?",
-      "tourism",
-
-      "name",
-      "opening_hours",
-      "cuisine",
-      "phone",
-      "contact:phone",
-      "website",
-      "contact:website",
-  };
-
+  // Remove OSM tags using the list from keys_to_remove.hpp
   std::string regexPattern;
 
-  for (auto const & key : keysToRemove)
+  for (auto const & key : kKeysToRemove)
   {
     if (!regexPattern.empty())
       regexPattern.append("|");
