@@ -1,4 +1,4 @@
-﻿#include <jni.h>
+#include <jni.h>
 
 #include "app/organicmaps/sdk/Framework.hpp"
 #include "app/organicmaps/sdk/core/jni_helper.hpp"
