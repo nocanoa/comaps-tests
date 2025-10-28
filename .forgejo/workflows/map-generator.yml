@@ -9,6 +9,7 @@ on:
         type: choice
         options:
           - all
+          - clone-repos
           - copy-coasts
           - planet
           - wiki
@@ -28,14 +29,58 @@ env:
   TZ: Etc/UTC 
 
 jobs:
+  clone-repos:
+    if: inputs.jobs == 'clone-repos' || inputs.jobs == 'all'
+    name: Clone Git Repos
+    runs-on: mapfilemaker
+    container:
+      image: codeberg.org/comaps/maps_generator:latest
+      volumes:
+        - /mnt/4tbexternal:/mnt/4tbexternal
+    concurrency:
+      group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Clone or update main repo if necessary
+        shell: bash
+        run: |
+          if [ ! -d /mnt/4tbexternal/comaps-init ]; then
+          cd /mnt/4tbexternal
+          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          else
+          cd /mnt/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251027
+          fi
+      - name: Clone or update wikiparser repo if necessary
+        shell: bash
+        run: |
+          if [ ! -d /mnt/4tbexternal/wikiparser ]; then
+          cd /mnt/4tbexternal
+          git clone https://codeberg.org/comaps/wikiparser.git
+          else
+          cd /mnt/4tbexternal/wikiparser && git pull origin main
+          fi
+      - name: Clone or update subways repo if necessary
+        shell: bash
+        run: |
+          if [ ! -d /mnt/4tbexternal/subways ]; then
+          cd /mnt/4tbexternal
+          git clone https://codeberg.org/comaps/subways.git
+          else
+          cd /mnt/4tbexternal/subways && git pull origin master
+          fi
+
   copy-coasts:
     if: inputs.jobs == 'copy-coasts' || inputs.jobs == 'all'
     name: Copy Previously Generated Coasts
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -43,9 +88,9 @@ jobs:
       - name: Copy Coasts
         shell: bash
         run: |
-          if [ -f /media/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
-          cp /media/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom /media/4tbexternal/osm-planet/latest_coasts.geom
-          cp /media/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /media/4tbexternal/osm-planet/latest_coasts.rawgeom
+          if [ -f /root/OM/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
+          cp /root/OM/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
+          cp /root/OM/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
           fi
 
   update-planet:
@@ -53,40 +98,44 @@ jobs:
     name: Update Planet
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -y
-          apt-get install -y pyosmium osmium-tool osmctools python3-venv python3-pip wget2
-          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-          pip3 install "protobuf<4"
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -y
+      #     apt-get install -y pyosmium osmium-tool osmctools python3-venv python3-pip wget2
+      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+      #     pip3 install "protobuf<4"
       - name: Download Planet File if Absent
         shell: bash
         run: |
-          if [ ! -d /media/4tbexternal/osm-planet/planet/ ]; then
-          mkdir -p /media/4tbexternal/osm-planet/planet/
+          if [ ! -d /home/planet/planet/ ]; then
+          mkdir -p /home/planet/planet/
           fi
-          if [ ! -f /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf ]; then
-          cd /media/4tbexternal/osm-planet/planet/
+          if [ ! -f /home/planet/planet/planet-latest.osm.pbf ]; then
+          cd /home/planet/planet/
           wget2 --verbose --progress=bar --continue https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
           fi
       - name: Update Planet
         shell: bash
         run: |
-          cd /media/4tbexternal/osm-planet/planet/
+          cd /home/planet/planet/
           pyosmium-up-to-date planet-latest.osm.pbf -o planet-latest-new.osm.pbf -vv --size 16384
           mv planet-latest-new.osm.pbf planet-latest.osm.pbf
       - name: Converting planet-latest.osm.pbf to planet.o5m
         run: |
           echo "Starting..."
-          cd /media/4tbexternal/osm-planet/planet/
+          cd /home/planet/planet/
           osmconvert planet-latest.osm.pbf -o=planet.o5m
           echo "Done."
 
@@ -95,52 +144,46 @@ jobs:
     name: Update Wikipedia
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -y
-          apt-get install -y jq curl wget wget2 rustc cargo git ca-certificates
-      - name: Clone/update wikiparser if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/wikiparser ]; then
-          cd /media/4tbexternal
-          git clone https://codeberg.org/comaps/wikiparser.git
-          else
-          cd /media/4tbexternal/wikiparser && git pull origin main
-          fi
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -y
+      #     apt-get install -y jq curl wget wget2 rustc cargo git ca-certificates
       - name: Check for planet file
         shell: bash
         run: |
-          if [ ! -f /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf ]; then
-          echo "ERROR: No file at /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf"
-          ls -al /media/4tbexternal/
-          ls -al /media/4tbexternal/osm-planet/
-          ls -al /media/4tbexternal/osm-planet/planet/
+          if [ ! -f /home/planet/planet/planet-latest.osm.pbf ]; then
+          echo "ERROR: No file at /home/planet/planet/planet-latest.osm.pbf"
+          ls -al /home/planet/
+          ls -al /home/planet/planet/
           exit 1
           fi
       - name: Update Wikipedia from Enterprise API
         shell: bash
         run: |
           #todo: curl in download.sh can fail when rate limited and even save error messages to the output. need to validate.
-          mkdir -p /media/4tbexternal/osm-planet/wikipedia/dumps
-          mkdir -p /media/4tbexternal/osm-planet/wikipedia/build
-          cd /media/4tbexternal/wikiparser
+          mkdir -p /home/planet/wikipedia/dumps
+          mkdir -p /home/planet/wikipedia/build
+          cd /root/OM/wikiparser
           ls -al
           echo "Downloading ..."
-          ./download.sh /media/4tbexternal/osm-planet/wikipedia/dumps
-          ls -al /media/4tbexternal/osm-planet/wikipedia/dumps/*
+          ./download.sh /home/planet/wikipedia/dumps
+          ls -al /home/planet/wikipedia/dumps/*
           echo "Running ..."
-          ./run.sh /media/4tbexternal/osm-planet/wikipedia/build \
-          /media/4tbexternal/osm-planet/planet/planet-latest.osm.pbf \
-          /media/4tbexternal/osm-planet/wikipedia/dumps/latest/*.tar.gz
+          ./run.sh /home/planet/wikipedia/build \
+          /home/planet/planet/planet-latest.osm.pbf \
+          /home/planet/wikipedia/dumps/latest/*.tar.gz
           echo "DONE"
 
   update-isolines:
@@ -148,66 +191,60 @@ jobs:
     name: Update Isolines
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -qq \
-          && apt-get install -y --no-install-recommends \
-          curl \
-          osmctools \
-          rclone \
-          git \
-          ca-certificates \
-          openssh-client \
-          sshpass \
-          vim \
-          wget \
-          build-essential \
-          clang \
-          cmake \
-          python3 \
-          python3-pip \
-          python3.12-venv \
-          qt6-base-dev \
-          qt6-positioning-dev \
-          libc++-dev \
-          libfreetype-dev \
-          libglvnd-dev \
-          libgl1-mesa-dev \
-          libharfbuzz-dev \
-          libicu-dev \
-          libqt6svg6-dev \
-          libqt6positioning6-plugins \
-          libqt6positioning6 \
-          libsqlite3-dev \
-          libxrandr-dev \
-          libxinerama-dev \
-          libxcursor-dev \
-          libxi-dev \
-          zlib1g-dev
-          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-          pip3 install "protobuf<4"
-      - name: Clone or update main repo if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/comaps-init ]; then
-          apt-get update -qq && apt-get install -y --no-install-recommends git
-          cd /media/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
-          else
-          cd /media/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251014
-          fi
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -qq \
+      #     && apt-get install -y --no-install-recommends \
+      #     curl \
+      #     osmctools \
+      #     rclone \
+      #     git \
+      #     ca-certificates \
+      #     openssh-client \
+      #     sshpass \
+      #     vim \
+      #     wget \
+      #     build-essential \
+      #     clang \
+      #     cmake \
+      #     python3 \
+      #     python3-pip \
+      #     python3.12-venv \
+      #     qt6-base-dev \
+      #     qt6-positioning-dev \
+      #     libc++-dev \
+      #     libfreetype-dev \
+      #     libglvnd-dev \
+      #     libgl1-mesa-dev \
+      #     libharfbuzz-dev \
+      #     libicu-dev \
+      #     libqt6svg6-dev \
+      #     libqt6positioning6-plugins \
+      #     libqt6positioning6 \
+      #     libsqlite3-dev \
+      #     libxrandr-dev \
+      #     libxinerama-dev \
+      #     libxcursor-dev \
+      #     libxi-dev \
+      #     zlib1g-dev
+      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+      #     pip3 install "protobuf<4"
       - name: Update Isolines
         shell: bash
         run: |
-          cd /media/4tbexternal/comaps-init/
+          cd /root/OM/comaps-init/
           ./tools/unix/build_omim.sh -R topography_generator_tool
           rm -rf ../osm-planet/isolines/
           mkdir ../osm-planet/isolines/
@@ -225,41 +262,27 @@ jobs:
     name: Update Subways
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -qq && apt-get install -y --no-install-recommends curl osmctools osmium-tool python3-venv ca-certificates git python3-pip
-          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-          pip3 install "protobuf<4"
-      - name: Clone/update subways repo if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/subways ]; then
-          cd /media/4tbexternal
-          git clone https://codeberg.org/comaps/subways.git
-          else
-          cd /media/4tbexternal/subways && git pull origin master
-          fi
-      - name: Clone or update main repo if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/comaps-init ]; then
-          cd /media/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
-          else
-          cd /media/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251014
-          fi
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -qq && apt-get install -y --no-install-recommends curl osmctools osmium-tool python3-venv ca-certificates git python3-pip
+      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+      #     pip3 install "protobuf<4"
       - name: Update Subways
         shell: bash
         run: |
-          cd /media/4tbexternal/comaps-init/
+          cd /root/OM/comaps-init/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
           ./tools/unix/maps/generate_subways.sh
 
@@ -268,58 +291,54 @@ jobs:
     name: Update TIGER
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -qq && apt-get install -y --no-install-recommends \
-          build-essential \
-          clang \
-          cmake \
-          ninja-build \
-          ca-certificates \
-          qt6-base-dev \
-          qt6-positioning-dev \
-          libc++-dev \
-          libfreetype-dev \
-          libglvnd-dev \
-          libgl1-mesa-dev \
-          libharfbuzz-dev \
-          libicu-dev \
-          libqt6svg6-dev \
-          libqt6positioning6-plugins \
-          libqt6positioning6 \
-          libsqlite3-dev \
-          libxrandr-dev \
-          libxinerama-dev \
-          libxcursor-dev \
-          libxi-dev \
-          zlib1g-dev \
-          python3 \
-          python3-pip \
-          git \
-          wget2
-          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-          pip3 install "protobuf<4"
-      - name: Clone or update main repo if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/comaps-init ]; then
-          cd /media/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
-          else
-          cd /media/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251014
-          fi
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -qq && apt-get install -y --no-install-recommends \
+      #     build-essential \
+      #     clang \
+      #     cmake \
+      #     ninja-build \
+      #     ca-certificates \
+      #     qt6-base-dev \
+      #     qt6-positioning-dev \
+      #     libc++-dev \
+      #     libfreetype-dev \
+      #     libglvnd-dev \
+      #     libgl1-mesa-dev \
+      #     libharfbuzz-dev \
+      #     libicu-dev \
+      #     libqt6svg6-dev \
+      #     libqt6positioning6-plugins \
+      #     libqt6positioning6 \
+      #     libsqlite3-dev \
+      #     libxrandr-dev \
+      #     libxinerama-dev \
+      #     libxcursor-dev \
+      #     libxi-dev \
+      #     zlib1g-dev \
+      #     python3 \
+      #     python3-pip \
+      #     git \
+      #     wget2
+      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+      #     pip3 install "protobuf<4"
       - name: Build address_parser
         shell: bash
         run: |
-          cd /media/4tbexternal/comaps-init
+          cd /root/OM/comaps-init
           rm -rf ../omim-build-relwithdebinfo/CMakeCache.txt
           rm -rf ../omim-build-relwithdebinfo/CMakeFiles
           ./tools/unix/build_omim.sh -R address_parser_tool
@@ -327,95 +346,91 @@ jobs:
         shell: bash
         run: |
           # TODO: maybe remove old osm-planet/tiger first?
-          cd /media/4tbexternal/osm-planet/
+          cd /home/planet/
           mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
-          cd /media/4tbexternal/comaps-init
-          tar -xOzf /media/4tbexternal/osm-planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /media/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=/media/4tbexternal/osm-planet/tiger
+          cd /root/OM/comaps-init
+          tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /root/OM/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
 
   generate-maps:
     if: inputs.jobs == 'maps' || inputs.jobs == 'all'
     name: Generate Maps
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
       options: --ulimit nofile=262144:262144
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Install dependencies
-        shell: bash
-        run: |
-          apt-get update -qq \
-          && apt-get install -y --no-install-recommends \
-          curl \
-          osmctools \
-          rclone \
-          git \
-          ca-certificates \
-          openssh-client \
-          sshpass \
-          vim \
-          wget \
-          build-essential \
-          clang \
-          cmake \
-          ninja-build \
-          python3 \
-          python3-pip \
-          python3.12-venv \
-          qt6-base-dev \
-          qt6-positioning-dev \
-          libc++-dev \
-          libfreetype-dev \
-          libglvnd-dev \
-          libgl1-mesa-dev \
-          libharfbuzz-dev \
-          libicu-dev \
-          libqt6svg6-dev \
-          libqt6positioning6-plugins \
-          libqt6positioning6 \
-          libsqlite3-dev \
-          libxrandr-dev \
-          libxinerama-dev \
-          libxcursor-dev \
-          libxi-dev \
-          zlib1g-dev
-          rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-          pip3 install "protobuf<4"
-      - name: Clone or update main repo if necessary
-        shell: bash
-        run: |
-          if [ ! -d /media/4tbexternal/comaps-init ]; then
-          cd /media/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251014 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
-          else
-          cd /media/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251014
-          fi
+      # - name: Install dependencies
+      #   shell: bash
+      #   run: |
+      #     apt-get update -qq \
+      #     && apt-get install -y --no-install-recommends \
+      #     curl \
+      #     osmctools \
+      #     rclone \
+      #     git \
+      #     ca-certificates \
+      #     openssh-client \
+      #     sshpass \
+      #     vim \
+      #     wget \
+      #     build-essential \
+      #     clang \
+      #     cmake \
+      #     ninja-build \
+      #     python3 \
+      #     python3-pip \
+      #     python3.12-venv \
+      #     qt6-base-dev \
+      #     qt6-positioning-dev \
+      #     libc++-dev \
+      #     libfreetype-dev \
+      #     libglvnd-dev \
+      #     libgl1-mesa-dev \
+      #     libharfbuzz-dev \
+      #     libicu-dev \
+      #     libqt6svg6-dev \
+      #     libqt6positioning6-plugins \
+      #     libqt6positioning6 \
+      #     libsqlite3-dev \
+      #     libxrandr-dev \
+      #     libxinerama-dev \
+      #     libxcursor-dev \
+      #     libxi-dev \
+      #     zlib1g-dev
+      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+      #     pip3 install "protobuf<4"
       - name: Make output folders if necessary
         shell: bash
         run: |
-          if [ ! -d /media/4tbexternal/osm-maps ]; then
-          mkdir -p /media/4tbexternal/osm-maps
+          if [ ! -d /root/OM/osm-maps ]; then
+          mkdir -p /root/OM/osm-maps
           fi
       - name: Get SRTM if necessary
         shell: bash
         run: |
-          if [ ! -d /media/4tbexternal/osm-planet/SRTM-patched-europe/ ]; then
+          if [ ! -d /home/planet/SRTM-patched-europe/ ]; then
           echo "ERROR: NO SRTM"
           exit 1
           fi
-      - name: Symlink paths for repo scripts
-        shell: bash
-        run: |
-          mkdir -p /root/OM
-          ln -s /media/4tbexternal/comaps-init /root/OM/organicmaps
-          ln -s /media/4tbexternal/comaps-init /root/OM/comaps-init
-          ln -s /media/4tbexternal/osm-planet /home/planet
-          ln -s /media/4tbexternal/osm-maps /root/OM/maps_build
+      # - name: Symlink paths for repo scripts
+      #   shell: bash
+      #   run: |
+      #     mkdir -p /root/OM
+      #     ln -s /media/4tbexternal/omim-build-release /root/OM/omim-build-release
+      #     ln -s /root/OM/comaps-init /root/OM/organicmaps
+      #     ln -s /root/OM/comaps-init /root/OM/comaps-init
+      #     ln -s /home/planet /home/planet
+      #     ln -s /root/OM/osm-maps /root/OM/maps_build
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
@@ -428,9 +443,13 @@ jobs:
     name: Upload Maps
     runs-on: mapfilemaker
     container:
-      image: ubuntu:latest
+      image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /media/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal:/media/4tbexternal
+        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
+        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/osm-planet:/home/planet
+        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
       options: --ulimit nofile=262144:262144
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
@@ -444,18 +463,18 @@ jobs:
       - name: Upload map files to CDNs
         run: |
           shopt -s nullglob
-          buildfolder=$(find /media/4tbexternal/osm-maps/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
-          builddate=$(find /media/4tbexternal/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
-          mwmfiles=( /media/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm )
+          buildfolder=$(find /root/OM/osm-maps/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
+          builddate=$(find /root/OM/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
+          mwmfiles=( /root/OM/osm-maps/$buildfolder/$builddate/*.mwm )
 
           if (( ${#mwmfiles[@]} )); then
             echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
             cd /tools/unix/maps
-            ./upload_to_cdn.sh /media/4tbexternal/osm-maps/$buildfolder/$builddate
+            ./upload_to_cdn.sh /root/OM/osm-maps/$buildfolder/$builddate
           else
-            echo "<$(date +%T)> No MWM files in /media/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
-            echo "<$(date +%T)> Found top level: $(ls -alt /media/4tbexternal/osm-maps/*)"
-            echo "<$(date +%T)> Found second level: $(ls -alt /media/4tbexternal/osm-maps/$buildfolder/*)"
+            echo "<$(date +%T)> No MWM files in /root/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+            echo "<$(date +%T)> Found top level: $(ls -alt /root/OM/osm-maps/*)"
+            echo "<$(date +%T)> Found second level: $(ls -alt /root/OM/osm-maps/$buildfolder/*)"
           fi
 
           
