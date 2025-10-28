@@ -442,8 +442,7 @@
         app:backgroundTint="?cardBackground"
         android:textColor="@color/base_red"
         app:strokeColor="@color/base_red"
-        android:text="Business is vacant"
-        tools:text="Business is vacant"/>
+        android:text="@string/editor_business_vacant_button"/>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/reset"
         style="@style/MwmWidget.M3.Button.Secondary"

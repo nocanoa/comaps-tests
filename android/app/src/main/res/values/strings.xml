@@ -543,6 +543,14 @@
     <string name="editor_place_doesnt_exist_description">Describe what the place looks like now to send an error note to the OpenStreetMap community</string>
     <!-- Error message for "Place doesn't exist" dialog when comment is empty -->
     <string name="delete_place_empty_comment_error">Please indicate the reason for deleting the place</string>
+    <!-- Button in the editor to mark business as vacant -->
+    <string name="editor_business_vacant_button">Business is vacant</string>
+    <!-- Title of confirmation dialog before marking business as vacant -->
+    <string name="editor_mark_business_vacant_title">Mark business as vacant</string>
+    <!-- Description in confirmation dialog before marking business as vacant -->
+    <string name="editor_mark_business_vacant_description">Use this if the business has moved out and the space is empty and ready for a new tenant.</string>
+    <!-- Submit change to OSM in the editor -->
+    <string name="editor_submit">Submit</string>
     <!-- Phone number error message -->
     <string name="error_enter_correct_phone">Enter a valid phone number</string>
     <string name="error_enter_correct_web">Enter a valid web address</string>

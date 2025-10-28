@@ -1024,10 +1024,9 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private void placeDisused()
   {
     new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
-      .setTitle("Mark business as vacant")
-      .setMessage("Use this option when when a business moved out and empty rooms are still there " +
-        "for a new business to move in. Don't use when place is razed entirely.")
-      .setPositiveButton("Submit", (dlg, which) -> {
+      .setTitle(R.string.editor_mark_business_vacant_title)
+      .setMessage(R.string.editor_mark_business_vacant_description)
+      .setPositiveButton(R.string.editor_submit, (dlg, which) -> {
         Editor.nativeMarkPlaceAsDisused();
         mParent.processEditedFeatures();
       })
