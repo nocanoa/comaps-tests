@@ -2366,7 +2366,6 @@ node[leisure=beach_resort],
 node[leisure=marina],
 node[leisure=sports_centre][sport=scuba_diving],
 node[leisure=sports_centre][sport=swimming],
-node[shop=massage],
 {text-color: @water_label;text-halo-radius: 0.1;text-halo-opacity: 0.7;text-halo-color: @label_halo_light;}
 
 area[amenity=university][name]
