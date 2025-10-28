@@ -15,6 +15,7 @@
 #include "base/timer.hpp"
 
 #include <array>
+#include <regex>
 #include <sstream>
 #include <string>
 
@@ -710,9 +711,18 @@ void XMLFeature::OSMBusinessReplacement(uint32_t old_type, uint32_t new_type)
   std::string name = GetTagValue("name");
 
   // TODO(map-per): Expand list
-  std::vector<string_view> keysToRemove = {
-      "shop",
-      "amenity",
+  constexpr std::string_view keysToRemove[] = {
+      "shop_?[1-9]?(:.*)?",
+      "craft_?[1-9]?",
+      "amenity_?[1-9]?",
+      "club_?[1-9]?",
+      "old_amenity",
+      "old_shop",
+      "information",
+      "leisure",
+      "office_?[1-9]?",
+      "tourism",
+
       "name",
       "opening_hours",
       "cuisine",
@@ -722,8 +732,22 @@ void XMLFeature::OSMBusinessReplacement(uint32_t old_type, uint32_t new_type)
       "contact:website",
   };
 
-  for(auto const & key : keysToRemove)
-    RemoveTag(key);
+  std::string regexPattern;
+
+  for (auto const & key : keysToRemove)
+  {
+    if (!regexPattern.empty())
+      regexPattern.append("|");
+    regexPattern.append(key);
+  }
+
+  std::regex regex(regexPattern);
+
+  ForEachTag([& regex, this](std::string_view key, std::string_view /*value*/)
+  {
+    if (std::regex_search(key.begin(), key.end(), regex))
+      RemoveTag(key);
+  });
 
   if (classif().GetReadableObjectName(new_type) == "disusedbusiness")
   {
