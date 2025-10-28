@@ -1095,5 +1095,9 @@
 "hours_confirmed_time_ago" = "Apstiprināts %@";
 "offline_explanation_text" = "Ir nepieciešams lejupielādēt karti, lai apskatītu un pārvietotos apgabalā.\nJālejupielādē apgabalu, kuros vēlies ceļot, kartes.";
 "offline_explanation_title" = "Bezsaistes kartes";
-"avoid_steps" = "Izvairīties no pakāpieniem";
+"avoid_steps" = "Izvairīties no kāpnēm";
 "editor_place_doesnt_exist_description" = "Jāapraksta, kā vieta tagad izskatās, lai nosūtītu kļūdas piezīmi OpenStreetMap kopienai";
+"voice" = "Balss";
+"unknown" = "Nezināms";
+"voice_explanation_before_version26" = "Sistēmas iestatījumos ir iespējams izvēlēties labāku balsi: *Piekļūstamība*, *Runātais saturs*, *Balsis*.";
+"voice_explanation" = "Sistēmas iestatījumos ir iespējams izvēlēties labāku balsi: *Piekļūstamība*, *Lasīt un runāt*, *Balsis*.";

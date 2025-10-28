@@ -237,7 +237,6 @@
 "sport-tennis": "Tenis",
 "sport-padel": "Padel",
 "sport-volleyball": "Volejbal",
-"sport-9pin|sport-10pin": "Kuželky|Bowling",
 "building": "Stavba",
 "building-address": "Adresa",
 "@category_police": "4Policie",
@@ -449,5 +448,6 @@
 "shop-health_food|@category_food|@shop": "Zdravá výživa",
 "healthcare-blood_donation": "Darování krve",
 "healthcare-sample_collection": "Odběr vzorků",
-"amenity-parking|amenity-parking_entrance|@category_parking": "U+1F697|U+1F17F|U+1F698|U+1F699"
+"amenity-parking|amenity-parking_entrance|@category_parking": "U+1F697|U+1F17F|U+1F698|U+1F699",
+"amenity-studio": "Mediální studio"
 }

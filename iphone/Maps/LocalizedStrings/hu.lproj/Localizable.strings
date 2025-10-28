@@ -1097,3 +1097,7 @@
 "offline_explanation_title" = "Offline térképek";
 "avoid_steps" = "Lépcsők elkerülése";
 "editor_place_doesnt_exist_description" = "Írja le, hogy jelenleg hogyan néz ki a hely, a hibaüzenet elküldéséhez az OpenStreetMap közösségnek";
+"voice" = "Hang";
+"unknown" = "Ismeretlen";
+"voice_explanation_before_version26" = "A rendszerbeállítások *Kisegítő lehetőségek*, *Hangos tartalom*, *Hangok* menüpontjában lehet jobb hangot választani.";
+"voice_explanation" = "A rendszerbeállítások *Kisegítő lehetőségek*, *Olvasás és beszéd*, *Hangok* menüpontjában lehet jobb hangot választani.";

@@ -890,4 +890,6 @@
     <string name="editor_socket">Muokkaa pistoketta</string>
     <string name="error_value_must_be_positive">Arvon on oltava positiivinen</string>
     <string name="offline_explanation_text">Alueen katseluun ja navigointiin tarvitaan kartta.\nLataa karttoja alueille, joille haluat matkustaa.</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
 </resources>

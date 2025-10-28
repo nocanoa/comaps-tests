@@ -44,7 +44,7 @@
     <!-- Text in About screen -->
     <string name="about_proposition_3">• Offline, rask og kompakt</string>
     <!-- Text in About screen -->
-    <string name="about_developed_by_enthusiasts">Fullstendig åpen kildekode, ikke for profitt, gjennomsiktige beslutningsprosesser og finanser.</string>
+    <string name="about_developed_by_enthusiasts">Fullstendig åpen kildekode, ikke for profitt, åpne beslutningsprosesser og økonomi.</string>
     <!-- The button that opens system location settings -->
     <string name="location_settings">Posisjonsinnstillinger</string>
     <string name="close">Lukk</string>
@@ -72,7 +72,7 @@
     <!-- Should be used in the bookmarks-only context, see bookmarks_and_tracks if tracks are also implied. -->
     <string name="bookmarks">Bokmerker</string>
     <!-- "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt -->
-    <string name="bookmarks_and_tracks">Bokmerker og ruter</string>
+    <string name="bookmarks_and_tracks">Bokmerker og spor</string>
     <!-- Add bookmark dialog - bookmark name -->
     <string name="name">Navn</string>
     <!-- Editor title above street and house number, duplicates [type.building.address] in types_strings.txt -->
@@ -187,7 +187,7 @@
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap-data: %s</string>
     <!-- Title for tracks category in bookmarks manager -->
-    <string name="tracks_title">Ruter</string>
+    <string name="tracks_title">Spor</string>
     <!-- Length of track in cell that describes route -->
     <string name="length">Lengde</string>
     <string name="share_my_location">Del posisjonen min</string>
@@ -435,7 +435,7 @@
     <!-- Text field to enter non-existing street name, below list of known streets around -->
     <string name="add_street">Legg til en gate</string>
     <!-- Error to display when a new street name is not entered in the New street dialog -->
-    <string name="empty_street_name_error">Legg til en gateadresse</string>
+    <string name="empty_street_name_error">Angi en gateadresse</string>
     <string name="choose_language">Velg et språk</string>
     <string name="choose_street">Velg en gate</string>
     <string name="cuisine">Kjøkken</string>
@@ -635,11 +635,11 @@
     <string name="avoid_motorways">Unngå motorveier</string>
     <string name="unable_to_calc_alert_title">Kan ikke beregne rute</string>
     <string name="unable_to_calc_alert_subtitle">Kan ikke finne en rute. Dette kan skyldes dine rutealternativer eller ufullstendige OpenStreetMap-data. Endre dine rutealternativer og prøv igjen.</string>
-    <string name="define_to_avoid_btn">Definer veier som skal unngås</string>
+    <string name="define_to_avoid_btn">Velg veier som skal unngås</string>
     <string name="change_driving_options_btn">Rutingalternativer aktivert</string>
     <string name="toll_road">Bompengevei</string>
     <string name="unpaved_road">Uasfaltert vei</string>
-    <string name="ferry_crossing">Fergeovergang</string>
+    <string name="ferry_crossing">Ferge</string>
     <!-- A generic "Yes" button in dialogs -->
     <string name="yes">Ja</string>
     <!-- A generic "No" button in dialogs -->
@@ -795,21 +795,21 @@
     <!-- Disclaimer summary shown when Power Saving Mode is enabled -->
     <string name="power_save_dialog_summary">For å få mest mulig nøyaktig navigering anbefaler vi at du deaktiverer strømsparingsmodus i telefonens batteriinnstillinger.</string>
     <!-- Prompt to start recording a track. -->
-    <string name="start_track_recording">Ta opp rute</string>
+    <string name="start_track_recording">Ta opp spor</string>
     <!-- Prompt for stopping a track recording. -->
-    <string name="stop_track_recording">Stopp opptak av rute</string>
+    <string name="stop_track_recording">Stopp sporopptak</string>
     <!-- Title for the "Stop Without Saving" action for the alert when saving a track recording. -->
     <string name="stop_without_saving">Stopp uten å lagre</string>
     <!-- Title for the "Stop Without Saving" action for the alert when saving a track recording. -->
     <string name="continue_recording">Fortsett opptak</string>
     <!-- Title for the alert when saving a track recording. -->
-    <string name="track_recording_alert_title">Lagre i bokmerker og ruter?</string>
+    <string name="track_recording_alert_title">Lagre i bokmerker og spor?</string>
     <!-- Message for the toast when saving the track recording is finished but nothing to save. -->
-    <string name="track_recording_toast_nothing_to_save">Ruten er tom - ingenting å lagre</string>
+    <string name="track_recording_toast_nothing_to_save">Sporet er tomt - ingenting å lagre</string>
     <!-- Error message when there are no File Manager apps installed to select a folder when importing Bookmarks and Tracks -->
     <string name="error_no_file_manager_app">Kan ikke vise dialogboksen for mappevalg fordi ingen egnet app er installert på enheten din. Installer en filbehandler-app og prøv på nytt.</string>
     <string name="choose_color">Velg farge</string>
-    <string name="edit_track">Rediger ruten</string>
+    <string name="edit_track">Rediger spor</string>
     <string name="uri_open_location_failed">Ingen app installert som kan åpne stedet</string>
     <!-- preference string for using auto theme only in navigation mode -->
     <string name="nav_auto">Auto i navigasjon</string>
@@ -865,7 +865,7 @@
     <string name="editor_place_doesnt_exist_description">Beskriv hvordan stedet ser ut nå for å sende en feilmelding til OpenStreetMap-fellesskapet</string>
     <string name="avoid_steps">Unngå trapper</string>
     <string name="offline_explanation_title">Offline-kart</string>
-    <string name="offline_explanation_text">Et kart må lastes ned for å vise og navigere i området.\nLast ned kart for områdene du vil reise til.</string>
+    <string name="offline_explanation_text">Et kart må lastes ned for å vise og navigere i området.\nLast ned kartene for områdene du vil reise til.</string>
     <string name="error_invalid_number">Ugyldig tall</string>
     <string name="error_value_must_be_positive">Verdien må være positiv</string>
     <string name="unknown_power_output">ukjent</string>
@@ -873,4 +873,5 @@
     <string name="unknown_count">ukjent</string>
     <string name="error_enter_correct_fediverse_page">Angi et gyldig Mastodon-brukernavn eller nettadresse</string>
     <string name="error_enter_correct_bluesky_page">Angi et gyldig Bluesky-brukernavn eller nettadresse</string>
+    <string name="list_description_empty">Rediger listen for å legge til en beskrivelse</string>
 </resources>

@@ -11,7 +11,7 @@
 "@category_nightlife": "Нощен живот|С приятели",
 "@category_children": "Семейна почивка",
 "@category_atm": "3Банкомат",
-"@category_rv": "За RV",
+"@category_rv": "кемпери|каравани|къщи на колела",
 "amenity-atm|@category_atm": "пари",
 "@category_bank": "3Банка",
 "@category_secondhand": "Втора употреба",
@@ -226,7 +226,6 @@
 "sport-table_tennis": "Тенис на маса",
 "sport-padel": "Падел",
 "sport-volleyball": "Волейбол",
-"sport-9pin|sport-10pin": "Skittles|Боулинг",
 "building": "Сграда",
 "building-address": "Адрес",
 "@category_police": "4Полиция",
@@ -461,8 +460,10 @@
 "shop-farm|@category_food|@shop": "Фермерски магазин|фермерски продукти",
 "shop-health_food|@category_food|@shop": "Магазин за здравословни храни|здравословно хранене",
 "shop-alcohol|@category_food|@shop": "Магазин за алкохол|4алкохол|5спиртни напитки|U+1F377",
-"shop-caravan|@category_rv|@shop": "Автокъща за кемпери|кемпери|каравани|къщи на колела",
+"shop-caravan|@category_rv|@shop": "Автокъща за кемпери",
 "leisure-dance|@category_entertainment": "Зала за танци|Танцово училище|Танцова школа|танци",
 "leisure-firepit": "4Огнище",
-"amenity-arts_centre|@category_tourism": "3Арт център|Център за изкуства"
+"amenity-arts_centre|@category_tourism": "3Арт център|Център за изкуства",
+"amenity-love_hotel": "5Любовен хотел",
+"healthcare-blood_donation": "4Кръводаряване"
 }

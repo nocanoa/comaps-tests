@@ -868,7 +868,7 @@
 "dialog_routing_rebuild_for_vehicle_carplay" = "路线将转换为汽车路线";
 "not_all_shown_bookmarks_carplay" = "未显示所有书签";
 "switch_to_phone_bookmarks_carplay" = "切换到手机以查看所有书签";
-"ok" = "好的";
+"ok" = "确定";
 "speedcams_alert_title_carplay_1" = "限速拍照";
 "speedcams_alert_title_carplay_2" = "超速警告";
 "download_map_carplay" = "将 CoMaps 应用程序中的地图下载至个人设备中";
@@ -1101,3 +1101,7 @@
 "offline_explanation_title" = "离线地图";
 "avoid_steps" = "避开台阶";
 "editor_place_doesnt_exist_description" = "描述该地点的现状，以便向 OpenStreetMap 社区发送错误注记";
+"voice" = "声音";
+"unknown" = "未知";
+"voice_explanation_before_version26" = "可以在系统设置中的 *辅助功能*、*朗读内容*、*声音*下选择更好的声音。";
+"voice_explanation" = "可以在系统设置中的 *辅助功能*、*阅读与朗读*、*声音*下选择更好的声音。";

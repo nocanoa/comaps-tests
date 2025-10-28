@@ -1462,7 +1462,7 @@
 
 /* https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall */
 "type.leisure.sports_hall" = "Sportovní hala";
-"type.amenity.studio" = "Studio";
+"type.amenity.studio" = "Mediální studio";
 "type.amenity.love_hotel" = "Hodinový hotel";
 "type.highway.ladder" = "Žebřík";
 "type.barrier.guard_rail" = "Svodidla";
@@ -1489,3 +1489,5 @@
 "type.power.portal" = "Portál el. vedení";
 "type.building.guardhouse" = "Vrátnice";
 "type.shop.lighting" = "Obchod s osvětlením";
+"type.amenity.charging_station.motorcar.small" = "Nabíjecí stanice aut";
+"type.amenity.bench.backless" = "Lavička bez opěradla";

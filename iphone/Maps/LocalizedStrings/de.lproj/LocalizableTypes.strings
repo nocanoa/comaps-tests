@@ -44,7 +44,7 @@
 "type.amenity.charging_station" = "Ladestation";
 "type.amenity.charging_station.bicycle" = "Fahrrad-Ladestation";
 "type.amenity.charging_station.motorcar" = "Kfz-Ladestation";
-"type.amenity.charging_station.motorcar.small" = "Kfz-Ladepunkt";
+"type.amenity.charging_station.motorcar.small" = "Kfz-Ladestation";
 "type.amenity.childcare" = "Kindertagesstätte";
 "type.amenity.cinema" = "Kino";
 "type.leisure.bowling_alley" = "Bowlingbahn";
@@ -722,7 +722,7 @@
 "type.leisure.sports_centre.sport.multi" = "Sportzentrum";
 "type.leisure.sports_centre.sport.american_football" = "Sportzentrum";
 "type.leisure.sports_centre.sport.archery" = "Sportzentrum";
-"type.leisure.sports_centre.sport.athletics" = "Sportzentrume";
+"type.leisure.sports_centre.sport.athletics" = "Sportzentrum";
 "type.leisure.sports_centre.sport.australian_football" = "Sportzentrum";
 "type.leisure.sports_centre.sport.badminton" = "Sportzentrum";
 "type.leisure.sports_centre.sport.baseball" = "Sportzentrum";
@@ -1503,7 +1503,7 @@
 "type.highway.ladder" = "Leiter";
 "type.landuse.plant_nursery" = "Gärtnerei";
 "type.leisure.firepit" = "Feuerstelle";
-"type.amenity.studio" = "Studio";
+"type.amenity.studio" = "Medienstudio";
 "type.man_made.crane" = "Kran";
 "type.railway.station.subway.qingdao" = "U-Bahn-Station";
 "type.natural.wetland.saltmarsh" = "Salzmarsch";
@@ -1524,3 +1524,4 @@
 "type.power.portal" = "Abspannportal";
 "type.building.guardhouse" = "Pförtnerhäuschen";
 "type.shop.lighting" = "Lampenladen";
+"type.disusedbusiness" = "Leerstehendes Geschäft";

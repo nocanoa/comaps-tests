@@ -23,7 +23,7 @@
 "type.amenity.bank" = "Bancă";
 "type.amenity.bar" = "Bar";
 "type.amenity.bbq" = "Grătar";
-"type.amenity.bench" = "Banchetă";
+"type.amenity.bench" = "Bancă";
 "type.amenity.bicycle_parking" = "Parcare biciclete";
 "type.amenity.bicycle_rental" = "Închiriere biciclete";
 "type.amenity.bicycle_repair_station" = "Stație de Reparații Biciclete";
@@ -81,7 +81,7 @@
 "type.amenity.kindergarten" = "Grădiniță";
 "type.amenity.library" = "Bibliotecă";
 "type.amenity.loading_dock" = "Încărcare doc";
-"type.amenity.marketplace" = "Magazin";
+"type.amenity.marketplace" = "Piață";
 "type.amenity.motorcycle_parking" = "Parcare de motociclete";
 "type.amenity.nightclub" = "Club de noapte";
 "type.amenity.nursing_home" = "Centru de îngrijire";
@@ -211,7 +211,7 @@
 "type.barrier.turnstile" = "Turnichet";
 "type.barrier.swing_gate" = "Barieră cu braț";
 "type.barrier.toll_booth" = "Cabină de taxare";
-"type.barrier.wall" = "Perete";
+"type.barrier.wall" = "Zid";
 "type.boundary" = "Graniță";
 "type.boundary.administrative" = "Frontieră";
 
@@ -281,7 +281,7 @@
 "type.cuisine.beef_bowl" = "Gyudon";
 "type.cuisine.brazilian" = "Bucătărie braziliană";
 "type.cuisine.breakfast" = "Mic dejun";
-"type.cuisine.bubble_tea" = "Ceai cu perle";
+"type.cuisine.bubble_tea" = "Bubble Tea";
 "type.cuisine.burger" = "Burger";
 "type.cuisine.buschenschank" = "Tavernă";
 "type.cuisine.cake" = "Tort";
@@ -661,7 +661,7 @@
 "type.landuse.cemetery.christian" = "Cimitir";
 "type.landuse.religious" = "Teren religios";
 "type.landuse.commercial" = "Zonă Comercială";
-"type.landuse.construction" = "Șantier de construcții";
+"type.landuse.construction" = "Șantier";
 "type.landuse.education" = "Instituție de învățământ";
 "type.landuse.farmland" = "Teren arabil";
 "type.landuse.farmyard" = "Fermă";
@@ -672,7 +672,7 @@
 "type.landuse.forest.deciduous" = "Pădure";
 "type.landuse.forest.mixed" = "Pădure";
 "type.landuse.garages" = "Garaje";
-"type.landuse.grass" = "Gazon";
+"type.landuse.grass" = "Iarbă";
 "type.landuse.greenfield" = "Teren viran";
 "type.landuse.greenhouse_horticulture" = "Seră";
 "type.landuse.industrial" = "Zonă Industrială";
@@ -683,7 +683,7 @@
 "type.landuse.quarry" = "Carieră";
 "type.landuse.railway" = "Domeniul feroviar";
 "type.landuse.recreation_ground" = "Teren de recreere";
-"type.landuse.reservoir" = "Bazin de acumulare";
+"type.landuse.reservoir" = "Lac de acumulare";
 "type.landuse.residential" = "Zonă Rezidențială";
 "type.landuse.retail" = "Zonă Comercială";
 "type.landuse.salt_pond" = "Bazin de sare";
@@ -695,8 +695,8 @@
 "type.leisure.fitness_centre" = "Centru fitness";
 "type.leisure.fitness_station" = "Sală de fitness";
 "type.leisure.dance" = "Sala de dans";
-"type.leisure.garden" = "Sit arheologic";
-"type.leisure.garden.residential" = "Sit arheologic";
+"type.leisure.garden" = "Grădină";
+"type.leisure.garden.residential" = "Grădină rezidențială";
 "type.leisure.golf_course" = "Teren de golf";
 "type.leisure.miniature_golf" = "Minigolf";
 "type.leisure.hackerspace" = "Atelier Comunitar";
@@ -792,7 +792,7 @@
 "type.natural.water.lake" = "Lac";
 "type.natural.water.lock" = "Camera de blocare";
 "type.natural.water.pond" = "Heleșteu";
-"type.natural.water.reservoir" = "Rezervor";
+"type.natural.water.reservoir" = "Lac de acumulare";
 "type.natural.water.basin" = "Bazin de apă";
 "type.natural.water.river" = "Râu";
 "type.natural.land" = "Teren";
@@ -876,7 +876,7 @@
 "type.power.plant.hydro" = "Centrală hidroelectrică";
 "type.power.plant.solar" = "Centrală solară";
 "type.power.plant.wind" = "Centrală eoliană";
-"type.power.substation" = "Stație subterană";
+"type.power.substation" = "Substație";
 
 /* A tower or pylon carrying high voltage electricity cables. */
 "type.power.tower" = "Turn de linie electrică";
@@ -1312,7 +1312,7 @@
 "type.sport.athletics" = "Atletica ușoară";
 "type.sport.australian_football" = "Fotbal australian";
 "type.sport.baseball" = "Baseball";
-"type.sport.basketball" = "Baschetbal";
+"type.sport.basketball" = "Baschet";
 "type.sport.beachvolleyball" = "Volei de plajă";
 "type.sport.bowls" = "Bowling";
 "type.sport.chess" = "Șah";
@@ -1489,3 +1489,4 @@
 "type.power.portal" = "Stație de distribuție";
 "type.building.guardhouse" = "Cabină de pază";
 "type.shop.lighting" = "Magazin de corpuri de iluminat";
+"type.amenity.bench.backless" = "Bancă fără spătar";

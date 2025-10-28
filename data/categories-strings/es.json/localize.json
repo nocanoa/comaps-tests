@@ -259,7 +259,6 @@
 "sport-tennis": "3Tenis",
 "sport-padel": "Pádel",
 "sport-volleyball": "Voleibol|Voleibol|Volibol|Balonvolea|Vóley|Volleyball",
-"sport-9pin|sport-10pin": "Bolos de nueve bolas|Bowling|Bolos",
 "building": "Edificio",
 "building-address": "Dirección",
 "@category_police": "4Policía",
@@ -334,7 +333,6 @@
 "amenity-animal_shelter": "Refugio de animales",
 "@charging_station": "Estación de carga|punto de carga|punto de recarga|Cargador",
 "amenity-charging_station-bicycle|@charging_station": "4Carga de bicicletas|Carga de bicis|Bicicletas|Bicis",
-"amenity-charging_station-motorcar|@charging_station": "4Carga de vehículos|Carga de coches|Punto de carga|Punto de recarga",
 "amenity-childcare": "Guardería",
 "amenity-bicycle_parking": "5Aparcamiento de bicicletas|5Estacionamiento de bicicletas|4Parking de bicicletas|Aparcamiento de bicis|Estacionamiento de bicis|Parking de bicis|4bicicleta",
 "amenity-waste_basket": "3Papelera|Cubo de basura",
@@ -496,5 +494,9 @@
 "amenity-luggage_locker": "4Consigna|Consigna de equipajes|Guardaequipaje|Casillero|Locker|Lockers|Equipaje",
 "office-security": "Oficina de seguridad",
 "building-guardhouse": "Garita|Puesto de guardia|Puesto de vigilancia|Vigilancia",
-"tourism-picnic_site|amenity-bbq|leisure-picnic_table": "3Pícnic|4Barbacoa|BBQ|Parrilla|Parrillera|Asador|Mesa de pícnic"
+"tourism-picnic_site|amenity-bbq|leisure-picnic_table": "3Pícnic|4Barbacoa|BBQ|Parrilla|Parrillera|Asador|Mesa de pícnic",
+"sport-9pin": "Bolos",
+"sport-10pin": "Bolos",
+"shop-bookmaker|@gambling": "Corredor de apuestas",
+"leisure-fitness_centre-sport-yoga": "Estudio de yoga"
 }

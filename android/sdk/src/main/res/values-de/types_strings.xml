@@ -44,7 +44,7 @@
     <string name="type.amenity.charging_station">Ladestation</string>
     <string name="type.amenity.charging_station.bicycle">Fahrrad-Ladestation</string>
     <string name="type.amenity.charging_station.motorcar">Kfz-Ladestation</string>
-    <string name="type.amenity.charging_station.motorcar.small">Kfz-Ladepunkt</string>
+    <string name="type.amenity.charging_station.motorcar.small">Kfz-Ladestation</string>
     <string name="type.amenity.childcare">Kindertagesstätte</string>
     <string name="type.amenity.cinema">Kino</string>
     <string name="type.leisure.bowling_alley">Bowlingbahn</string>
@@ -639,7 +639,7 @@
     <string name="type.leisure.sports_centre.sport.multi">Sportzentrum</string>
     <string name="type.leisure.sports_centre.sport.american_football">Sportzentrum</string>
     <string name="type.leisure.sports_centre.sport.archery">Sportzentrum</string>
-    <string name="type.leisure.sports_centre.sport.athletics">Sportzentrume</string>
+    <string name="type.leisure.sports_centre.sport.athletics">Sportzentrum</string>
     <string name="type.leisure.sports_centre.sport.australian_football">Sportzentrum</string>
     <string name="type.leisure.sports_centre.sport.badminton">Sportzentrum</string>
     <string name="type.leisure.sports_centre.sport.baseball">Sportzentrum</string>
@@ -1414,7 +1414,7 @@
     <string name="type.leisure.firepit">Feuerstelle</string>
     <string name="type.barrier.guard_rail">Leitplanke</string>
     <string name="type.highway.ladder">Leiter</string>
-    <string name="type.amenity.studio">Studio</string>
+    <string name="type.amenity.studio">Medienstudio</string>
     <string name="type.man_made.crane">Kran</string>
     <string name="type.railway.station.subway.qingdao">U-Bahn-Station</string>
     <string name="type.landuse.religious">Religiöses Gelände</string>
@@ -1436,4 +1436,5 @@
     <string name="type.building.guardhouse">Pförtnerhäuschen</string>
     <string name="type.power.portal">Abspannportal</string>
     <string name="type.shop.lighting">Lampenladen</string>
+    <string name="type.disusedbusiness">Leerstehendes Geschäft</string>
 </resources>

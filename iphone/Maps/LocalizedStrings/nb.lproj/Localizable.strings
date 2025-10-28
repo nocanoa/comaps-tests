@@ -69,7 +69,7 @@
 "bookmarks" = "Bokmerker";
 
 /* "Bookmarks and Tracks" dialog title, also sync it with iphone/plist.txt */
-"bookmarks_and_tracks" = "Bokmerker og ruter";
+"bookmarks_and_tracks" = "Bokmerker og spor";
 
 /* Default bookmark list name */
 "core_my_places" = "Mine steder";
@@ -195,7 +195,7 @@
 "version: %@ (%@)\nmap data: %@" = "Versjon: %@ (%@)\nKartdata: %@";
 
 /* Title for tracks category in bookmarks manager */
-"tracks_title" = "Ruter";
+"tracks_title" = "Spor";
 
 /* Length of track in cell that describes route */
 "length" = "Lengde";
@@ -824,11 +824,11 @@
 "avoid_motorways" = "Unngå motorveier";
 "unable_to_calc_alert_title" = "Kan ikke beregne rute";
 "unable_to_calc_alert_subtitle" = "Kan ikke finne en rute. Dette kan skyldes dine rutealternativer eller ufullstendige OpenStreetMap-data. Endre dine rutealternativer og prøv igjen.";
-"define_to_avoid_btn" = "Definer veier som skal unngås";
+"define_to_avoid_btn" = "Velg veier som skal unngås";
 "change_driving_options_btn" = "Rutingalternativer aktivert";
 "toll_road" = "Bompengevei";
 "unpaved_road" = "Uasfaltert vei";
-"ferry_crossing" = "Fergeovergang";
+"ferry_crossing" = "Ferge";
 "trip_start" = "La oss begynne";
 "pick_destination" = "Destinasjon";
 "follow_my_position" = "Sentrer";
@@ -933,7 +933,7 @@
 "whats_new_auto_update_button_later" = "Oppdater manuelt senere";
 
 /* Delete track button on track edit screen */
-"placepage_delete_track_button" = "Slett rute";
+"placepage_delete_track_button" = "Slett spor";
 
 /* The track deletion confirmaion alert message. */
 "placepage_delete_track_confirmation_alert_message" = "Er du sikker på at du vil slette dette sporet?";
@@ -1069,10 +1069,10 @@
 "recover_all" = "Gjenopprett alt";
 
 /* Prompt to start recording a track. */
-"start_track_recording" = "Ta opp rute";
+"start_track_recording" = "Ta opp spor";
 
 /* Prompt for stopping a track recording. */
-"stop_track_recording" = "Stopp opptak av rute";
+"stop_track_recording" = "Stopp sporopptak";
 
 /* Title for the "Stop Without Saving" action for the alert when saving a track recording. */
 "stop_without_saving" = "Stopp uten å lagre";
@@ -1081,11 +1081,11 @@
 "continue_recording" = "Fortsett opptak";
 
 /* Title for the alert when saving a track recording. */
-"track_recording_alert_title" = "Lagre i bokmerker og ruter?";
+"track_recording_alert_title" = "Lagre i bokmerker og spor?";
 
 /* Message for the toast when saving the track recording is finished but nothing to save. */
-"track_recording_toast_nothing_to_save" = "Ruten er tom - ingenting å lagre";
-"edit_track" = "Rediger ruten";
+"track_recording_toast_nothing_to_save" = "Sporet er tomt - ingenting å lagre";
+"edit_track" = "Rediger spor";
 "osm_profile_view_edit_history" = "Vis redigeringshistorikk";
 "osm_profile_view_notes" = "Vis merknader";
 "about_proposition_3" = "Transparent og ikke for profitt";
@@ -1095,7 +1095,7 @@
 "pref_maplanguage_local" = "Lokalt Språk";
 "existence_confirmed_time_ago" = "Existence confirmed %@";
 "hours_confirmed_time_ago" = "Confirmed %@";
-"offline_explanation_text" = "Et kart må lastes ned for å vise og navigere i området.\nLast ned kart for områdene du vil reise til.";
+"offline_explanation_text" = "Et kart må lastes ned for å vise og navigere i området.\nLast ned kartene for områdene du vil reise til.";
 "offline_explanation_title" = "Offline-kart";
 "avoid_steps" = "Unngå trapper";
 "editor_place_doesnt_exist_description" = "Beskriv hvordan stedet ser ut nå for å sende en feilmelding til OpenStreetMap-fellesskapet";

@@ -320,13 +320,13 @@
     <string name="downloader_no_downloaded_maps_message">Prenesite zemljevide, da jih lahko uporabite tudi brez internetne povezave</string>
     <string name="current_location_unknown_error_title">Trenutna lokacija ni znana</string>
     <string name="kilometers_per_hour">km/h</string>
-    <string name="miles_per_hour">mph</string>
+    <string name="miles_per_hour">milj/h</string>
     <string name="hour">h</string>
     <string name="minute">min</string>
-    <string name="day">d</string>
+    <string name="day">dni</string>
     <string name="placepage_more_button">Več</string>
     <string name="placepage_edit_bookmark_button">Uredi zaznamek</string>
-    <string name="placepage_personal_notes_hint">Zasebne beležke (besedilo ali HTML)</string>
+    <string name="placepage_personal_notes_hint">Osebne opombe (golo besedilo ali HTML)</string>
     <string name="editor_reset_edits_message">Naj zavržem vse krajevne spremembe?</string>
     <string name="editor_reset_edits_button">Zavrzi</string>
     <string name="editor_remove_place_message">Naj izbrišem dodane kraje?</string>
