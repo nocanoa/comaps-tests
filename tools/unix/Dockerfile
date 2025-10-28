@@ -6,37 +6,44 @@ ENV TZ=Etc/UTC
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    cargo \
+    clang \
+    cmake \
     curl \
-    osmctools \
-    rclone \
-    openssh-client \
     git \
+    jq \
+    libc++-dev \
+    libfreetype-dev \
+    libgl1-mesa-dev \
+    libglvnd-dev \
+    libharfbuzz-dev \
+    libicu-dev \
+    libqt6positioning6 \
+    libqt6positioning6-plugins \
+    libqt6svg6-dev \
+    libsqlite3-dev \
+    libxcursor-dev \
+    libxi-dev \
+    libxinerama-dev \
+    libxrandr-dev \
+    ninja-build \
+    openssh-client \
+    osmctools \
+    osmium-tool \
+    pyosmium \
+    python3 \
+    python3-pip \
+    python3-venv \
+    qt6-base-dev \
+    qt6-positioning-dev \
+    rclone \
+    rustc \
     sshpass \
     vim \
     wget \
-    build-essential \
-    clang \
-    cmake \
-    ninja-build \
-    python3 \
-    python3-pip \
-    python3.12-venv \
-    qt6-base-dev \
-    qt6-positioning-dev \
-    libc++-dev \
-    libfreetype-dev \
-    libglvnd-dev \
-    libgl1-mesa-dev \
-    libharfbuzz-dev \
-    libicu-dev \
-    libqt6svg6-dev \
-    libqt6positioning6-plugins \
-    libqt6positioning6 \
-    libsqlite3-dev \
-    libxrandr-dev \
-    libxinerama-dev \
-    libxcursor-dev \
-    libxi-dev \
+    wget2 \
     zlib1g-dev \
     && rm -rf /var/cache/apt/* /var/lib/apt/lists/*;
 
