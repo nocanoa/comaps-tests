@@ -11,7 +11,7 @@ BUILD_PATH: /root/OM/omim-build-relwithdebinfo
 DEBUG: 0
 # A main working directory. There is a subdirectory created for each generator run
 # which contains the planet and other downloads, temporary build files, logs and completed MWMs.
-MAIN_OUT_PATH: ${Developer:OMIM_PATH}/../maps_build
+MAIN_OUT_PATH: /root/OM/osm-maps
 # Path for storing caches for nodes, ways, relations.
 # If it's not set then caches are stored inside the directory of the current build.
 # CACHE_PATH: ${Main:MAIN_OUT_PATH}/cache
