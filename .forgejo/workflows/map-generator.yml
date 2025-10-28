@@ -436,7 +436,7 @@ jobs:
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
-          cd /root/OM/organicmaps
+          cd /root/OM/comaps-init
           ./tools/unix/docker_maps_generator.sh
 
 
