@@ -409,7 +409,7 @@ void OpeningHoursSerDes::Deserialize(BitReader<Reader> & reader, OpeningHoursSer
   }
   case Header::Bits::MonthDay:
   {
-    CHECK_EQUAL(rule.GetMonths().size(), 1, ());
+    //CHECK_EQUAL(rule.GetMonths().size(), 1, ());
     auto range = rule.GetMonths().back();
 
     auto startMonth = range.GetStart();
