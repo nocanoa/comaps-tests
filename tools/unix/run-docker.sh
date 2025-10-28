@@ -60,6 +60,6 @@ docker run \
   --ulimit nofile=262144:262144 \
   -v /media/4tbexternal/comaps-init:/root/OM/comaps-init \
   -v /media/4tbexternal/osm-planet:/home/planet \
-  -v /media/4tbexternal/osm-maps:/root/OM/maps_build \
+  -v /media/4tbexternal/osm-maps:/root/OM/osm-maps \
   -it maps_generator \
   /root/OM/organicmaps/tools/unix/docker_maps_generator.sh

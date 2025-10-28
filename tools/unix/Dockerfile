@@ -48,7 +48,7 @@ RUN mkdir /root/OM
 # When running, bind mount the repo here
 RUN mkdir /root/OM/comaps-init
 # And a volume to store the large output/temp files here
-RUN mkdir /root/OM/maps_build
+RUN mkdir /root/OM/osm-maps
 # And the output of the app build
 RUN mkdir /root/OM/omim-build-release
 RUN mkdir /root/OM/omim-build-relwithdebinfo

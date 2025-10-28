@@ -30,7 +30,7 @@ echo "<$(date +%T)> Starting..."
 #   /root/OM/comaps-init
 #   /root/OM/omim-build-release
 #   /root/OM/omim-build-relwithdebinfo
-#   /root/OM/maps_build
+#   /root/OM/osm-maps
 #   /home/planet
 #
 mkdir -p /root/.config/CoMaps # Odd mkdir permission errors in generator_tool in Docker without these
@@ -153,12 +153,12 @@ cd /root/OM/comaps-init/tools/python
   # rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
 
 else
-  echo "<$(date +%T)> No MWM files in ~/OM/maps_build/$buildfolder/$builddate/*.mwm, not uploading maps."
-  echo "<$(date +%T)> Found: $(ls -alt ~/OM/maps_build/*)"
+  echo "<$(date +%T)> No MWM files in ~/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+  echo "<$(date +%T)> Found: $(ls -alt ~/OM/osm-maps/*)"
 fi
 
 echo "<$(date +%T)> Temporarily NOT Removing intermediate data..."
-#rm -rf ~/OM/maps_build/*/intermediate_data
+#rm -rf ~/OM/osm-maps/*/intermediate_data
 
 echo "<$(date +%T)> DONE"
 
