@@ -44,6 +44,8 @@ jobs:
       - name: Clone or update main repo if necessary
         shell: bash
         run: |
+          ls -al /mnt
+          ls -al /mnt/4tbexternal
           if [ ! -d /mnt/4tbexternal/comaps-init ]; then
           cd /mnt/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
