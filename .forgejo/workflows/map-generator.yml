@@ -358,6 +358,7 @@ jobs:
     if: inputs.jobs == 'maps' || inputs.jobs == 'all'
     name: Generate Maps
     runs-on: mapfilemaker
+    timeout-minutes: 40320
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
