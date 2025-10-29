@@ -922,7 +922,7 @@ void EditableMapObject::ApplyBusinessReplacement(uint32_t new_type)
   // Metadata
   feature::Metadata new_metadata;
 
-  std::vector<MetadataID> metadataToKeep = {
+  constexpr MetadataID metadataToKeep[] = {
       MetadataID::FMD_WHEELCHAIR,
       MetadataID::FMD_POSTCODE,
       MetadataID::FMD_LEVEL,
