@@ -415,9 +415,10 @@ protected:
    *
    * @param rsegments The segments of the route
    * @param checkpoints The reference points (at least two)
+   * @param toJunctions Whether the truncated route should begin and end at a junction
    */
   void TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
-                     routing::Checkpoints const & checkpoints);
+                     routing::Checkpoints const & checkpoints, bool toJunctions);
 
 private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
@@ -483,10 +484,11 @@ std::vector<std::string> ParseRef(std::string & ref);
  * @param checkpoints The reference points (at least two)
  * @param start Index of the first segment to keep
  * @param startSaving Cost saved by truncating
+ * @param toJunction Whether the truncated route should start at a junction
  */
 void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
                    routing::Checkpoints const & checkpoints,
-                   size_t & start, double & startSaving);
+                   size_t & start, double & startSaving, bool toJunction);
 
 /**
  * @brief Calculates the segments to truncate at the start of the route.
@@ -501,8 +503,9 @@ void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
  * @param checkpoints The reference points (at least two)
  * @param end Index of the last segment to keep
  * @param endSaving Cost saved by truncating
+ * @param toJunction Whether the truncated route should end at a junction
  */
 void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
                  routing::Checkpoints const & checkpoints,
-                 size_t & end, double & endSaving, double const endWeight);
+                 size_t & end, double & endSaving, double const endWeight, bool ToJunction);
 }  // namespace traffxml

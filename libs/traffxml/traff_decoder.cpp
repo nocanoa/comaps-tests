@@ -878,7 +878,7 @@ void RoutingTraffDecoder::AddDecodedSegment(traffxml::MultiMwmColoring & decoded
 }
 
 void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
-                                        routing::Checkpoints const & checkpoints)
+                                        routing::Checkpoints const & checkpoints, bool toJunctions)
 {
   double const endWeight = rsegments.back().GetTimeFromBeginningSec();
 
@@ -901,8 +901,8 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
   // Cost saved by omitting the last `end` segments.
   double endSaving = 0;
 
-  TruncateStart(rsegments, checkpoints, start, startSaving);
-  TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight);
+  TruncateStart(rsegments, checkpoints, start, startSaving, toJunctions);
+  TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight, toJunctions);
 
   /*
    * If start <= end, we can truncate both ends at the same time.
@@ -920,7 +920,7 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
     rsegments.erase(rsegments.begin(), rsegments.begin() + start);
     end = rsegments.size() - 1;
     endSaving = 0;
-    TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight);
+    TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight, toJunctions);
     rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
   }
   else
@@ -929,7 +929,7 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
     rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
     start = 0;
     startSaving = 0;
-    TruncateStart(rsegments, checkpoints, start, startSaving);
+    TruncateStart(rsegments, checkpoints, start, startSaving, toJunctions);
     rsegments.erase(rsegments.begin(), rsegments.begin() + start);
   }
 }
@@ -1028,7 +1028,9 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
   {
     std::vector<routing::RouteSegment> rsegments(route->GetRouteSegments());
 
-    TruncateRoute(rsegments, checkpoints);
+    TruncateRoute(rsegments, checkpoints,
+                  message.m_location.value().m_fuzziness
+                  && (message.m_location.value().m_fuzziness.value() == traffxml::Fuzziness::LowRes));
 
     /*
      * `m_onRoundabout` is set only for the first segment after the junction. In order to identify
@@ -1291,7 +1293,7 @@ std::vector<std::string> ParseRef(std::string & ref)
 
 void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
                    routing::Checkpoints const & checkpoints,
-                   size_t & start, double & startSaving)
+                   size_t & start, double & startSaving, bool toJunction)
 {
   for (size_t i = 0; i < rsegments.size(); i++)
   {
@@ -1308,7 +1310,7 @@ void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
 
 void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
                  routing::Checkpoints const & checkpoints,
-                 size_t & end, double & endSaving, double const endWeight)
+                 size_t & end, double & endSaving, double const endWeight, bool toJunction)
 {
   for (size_t i = 0; i < rsegments.size(); i++)
   {
