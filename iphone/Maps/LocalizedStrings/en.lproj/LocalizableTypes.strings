@@ -96,6 +96,7 @@
 "type.amenity.lounger" = "Lounger";
 "type.amenity.luggage_locker" = "Luggage Locker";
 "type.amenity.marketplace" = "Marketplace";
+"type.amenity.mobile_money_agent" = "Mobile Money Agent";
 "type.amenity.motorcycle_parking" = "Motorcycle Parking";
 "type.amenity.nightclub" = "Nightclub";
 "type.amenity.nursing_home" = "Nursing Home";

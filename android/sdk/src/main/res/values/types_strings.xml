@@ -92,6 +92,7 @@
     <string name="type.amenity.loading_dock">Loading Dock</string>
     <string name="type.amenity.lounger">Lounger</string>
     <string name="type.amenity.luggage_locker">Luggage Locker</string>
+    <string name="type.amenity.mobile_money_agent">Mobile Money Agent</string>
     <string name="type.amenity.marketplace">Marketplace</string>
     <string name="type.amenity.motorcycle_parking">Motorcycle Parking</string>
     <string name="type.amenity.nightclub">Nightclub</string>

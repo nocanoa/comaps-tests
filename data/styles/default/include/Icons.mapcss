@@ -921,6 +921,7 @@ node|z18-[amenity=toilets],
 node|z18-[amenity=atm],
 node|z18-[amenity=bureau_de_change],
 node|z18-[amenity=money_transfer],
+node|z18-[amenity=mobile_money_agent],
 node|z18-[amenity=waste_disposal],
 node|z18-[amenity=recycling],
 node|z16-[amenity=recycling][recycling_type=centre],
@@ -1562,6 +1563,7 @@ node|z17-[aeroway=gate],
 
 node|z17-[amenity=bureau_de_change],
 node|z17-[amenity=money_transfer],
+node|z17-[amenity=mobile_money_agent],
 {icon-image: banknote-m.svg;font-size: 11;}
 
 node|z16-[amenity=fire_station],

@@ -980,8 +980,7 @@ railway|rail|tourism|bridge;[railway=rail][usage=tourism][!service][bridge?];;na
 railway|rail|highspeed|tunnel;[railway=rail][highspeed?][!service][tunnel?];;name;int_name;854;
 railway|rail|tourism|tunnel;[railway=rail][usage=tourism][!service][tunnel?];;name;int_name;855;
 mapswithme|grid;856;
-# service=bus/busway is deprecated in OSM
-deprecated:highway|service|busway:10.2023;[highway=service][service=busway];x;name;int_name;857;highway|busway
+amenity|mobile_money_agent;857;
 highway|busway;[highway=busway],[highway=service][service=busway],[highway=service][service=bus];;name;int_name;858;
 highway|busway|bridge;[highway=busway][bridge?];;name;int_name;859;
 highway|busway|tunnel;[highway=busway][tunnel?];;name;int_name;860;

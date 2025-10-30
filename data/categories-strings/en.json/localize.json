@@ -62,6 +62,7 @@
 "shop-laundry": "4Laundry|Laundrette|laundromat",
 "shop-toys|@category_children|@shop": "Toy|toyshop|kids|toys|kids toys",
 "amenity-marketplace|@category_food": "3Marketplace|market",
+"amenity-mobile_money_agent": "Mobile Money Agent|mobile money",
 "amenity-money_transfer": "Money Transfer",
 "shop-clothes|@category_shopping|@shop": "3Clothes|U+1F45A|U+1F457|U+1F456|U+1F455|clothing|wear",
 "shop-caravan|@category_rv|@shop": "2RV dealership|4Caravan dealership|Motorhome dealership",
