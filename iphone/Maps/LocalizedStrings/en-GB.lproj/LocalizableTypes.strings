@@ -709,6 +709,7 @@
 "type.leisure.miniature_golf" = "Minigolf";
 "type.leisure.hackerspace" = "Hackerspace";
 "type.leisure.ice_rink" = "Ice Rink";
+"type.leisure.indoor_play" = "Indoor Play Centre";
 "type.leisure.marina" = "Marina";
 "type.leisure.nature_reserve" = "Nature Reserve";
 "type.leisure.outdoor_seating" = "Outdoor Seating";

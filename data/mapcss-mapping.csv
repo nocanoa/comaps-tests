@@ -663,7 +663,7 @@ deprecated|deprecated;538;x
 railway|funicular|tunnel;[railway=funicular][tunnel?];;name;int_name;539;
 barrier|cycle_barrier;540;
 addr:interpolation;[addr:interpolation];;addr:housenumber;name;541;
-deprecated:amenity|speed_trap:10.2021;542;highway|speed_camera
+leisure|indoor_play;542;
 area:highway|track;543;
 area:highway|primary;544;
 deprecated|deprecated;545;x
