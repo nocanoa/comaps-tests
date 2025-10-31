@@ -152,12 +152,12 @@ cd /root/OM/comaps-init/tools/python
   # echo "<$(date +%T)> Uploading maps to cloudflare..."
   # rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
 
-else
-  echo "<$(date +%T)> No MWM files in ~/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
-  echo "<$(date +%T)> Found: $(ls -alt ~/OM/osm-maps/*)"
-fi
+# else
+#   echo "<$(date +%T)> No MWM files in ~/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+#   echo "<$(date +%T)> Found: $(ls -alt ~/OM/osm-maps/*)"
+# fi
 
-echo "<$(date +%T)> Temporarily NOT Removing intermediate data..."
+# echo "<$(date +%T)> Temporarily NOT Removing intermediate data..."
 #rm -rf ~/OM/osm-maps/*/intermediate_data
 
 echo "<$(date +%T)> DONE"
