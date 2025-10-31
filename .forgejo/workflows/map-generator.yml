@@ -463,8 +463,22 @@ jobs:
           mkdir -p ~/.config/rclone/
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
           head -n3 ~/.config/rclone/rclone.conf
-      - name: Upload map files to CDNs via RClone
+      - name: Upload map files to CDNs
         shell: bash
         run: |
-          cd /root/OM/comaps-init
-          ./tools/unix/maps/upload_to_cdn.sh
+          shopt -s nullglob
+          buildfolder=$(find /root/OM/osm-maps/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f5)
+          builddate=$(find /root/OM/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f6)
+          mwmfiles=( /root/OM/osm-maps/$buildfolder/$builddate/*.mwm )
+
+          if (( ${#mwmfiles[@]} )); then
+            echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
+            cd /root/OM/comaps-init/tools/unix/maps
+            ./upload_to_cdn.sh /root/OM/osm-maps/$buildfolder/$builddate
+          else
+            echo "<$(date +%T)> No MWM files in /root/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+            echo "<$(date +%T)> Found top level: $(ls -alt /root/OM/osm-maps/*)"
+            echo "<$(date +%T)> Found second level: $(ls -alt /root/OM/osm-maps/$buildfolder/*)"
+          fi
+
+          
