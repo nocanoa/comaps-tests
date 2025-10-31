@@ -463,6 +463,7 @@ jobs:
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
           head -n3 ~/.config/rclone/rclone.conf
       - name: Upload map files to CDNs
+        shell: bash
         run: |
           shopt -s nullglob
           buildfolder=$(find /root/OM/osm-maps/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
