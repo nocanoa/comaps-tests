@@ -41,6 +41,44 @@ DIR=$(dirname $1)/$MAPS
 
 echo "Uploading maps folder $DIR to $MAPS"
 
+# Remove old versions before uploading new ones
+echo "Checking for old versions to remove..."
+
+# ru1 - keep max 3 versions
+echo "Cleaning ru1 (keeping 3 newest versions)..."
+OLD_VERSIONS_RU1=$(rclone lsd ru1:comaps-maps/maps --max-depth 1 | awk '{print $5}' | sort -r | tail -n +4)
+for version in $OLD_VERSIONS_RU1; do
+  if [ -n "$version" ]; then
+    echo "  Deleting ru1:comaps-maps/maps/$version"
+    rclone purge -v ru1:comaps-maps/maps/$version
+  fi
+done
+
+# fi1 - keep max 3 versions
+echo "Cleaning fi1 (keeping 3 newest versions)..."
+OLD_VERSIONS_FI1=$(rclone lsd fi1:/var/www/html/maps --max-depth 1 | awk '{print $5}' | sort -r | tail -n +4)
+for version in $OLD_VERSIONS_FI1; do
+  if [ -n "$version" ]; then
+    echo "  Deleting fi1:/var/www/html/maps/$version"
+    rclone purge -v fi1:/var/www/html/maps/$version
+  fi
+done
+
+# de1 - keep max 6 versions
+echo "Cleaning de1 (keeping 6 newest versions)..."
+OLD_VERSIONS_DE1=$(rclone lsd de1:/var/www/html/comaps-cdn/maps --max-depth 1 | awk '{print $5}' | sort -r | tail -n +7)
+for version in $OLD_VERSIONS_DE1; do
+  if [ -n "$version" ]; then
+    echo "  Deleting de1:/var/www/html/comaps-cdn/maps/$version"
+    rclone purge -v de1:/var/www/html/comaps-cdn/maps/$version
+  fi
+done
+
+# us2 - keep all versions (no cleanup)
+echo "Skipping us2 cleanup (keeping all versions)"
+
+echo "Old version cleanup complete"
+
 echo "Uploading to us2"
 # An explicit mwm/txt filter is used to skip temp files when run for an unfinished generation
 rclone copy -v --include "*.{mwm,txt}" $DIR us2:comaps-map-files/maps/$MAPS &
