@@ -21,8 +21,8 @@ public:
 
   bool GetPivot(size_t textIndex, m2::PointD & pivot, m2::Spline::iterator & centerPointIter) const;
 
-  void BeforeUpdate();
-  void Update(ScreenBase const & screen);
+  inline void BeforeUpdate();
+  inline void Update(ScreenBase const & screen);
 
   std::vector<double> const & GetOffsets() const;
 

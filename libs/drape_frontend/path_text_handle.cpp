@@ -11,8 +11,8 @@ namespace df
 namespace
 {
 double constexpr kValidPathSplineTurn = 15 * math::pi / 180;
-double constexpr kCosTurn = 0.999989561; // cos(kValidPathSplineTurn)
-double constexpr kSinTurn = 0.004569245; // sin(kValidPathSplineTurn)
+double constexpr kCosTurn = 0.999989561;  // cos(kValidPathSplineTurn)
+double constexpr kSinTurn = 0.004569245;  // sin(kValidPathSplineTurn)
 double constexpr kRoundStep = 23;
 int constexpr kMaxStepsCount = 7;
 
@@ -122,7 +122,7 @@ ref_ptr<PathTextLayout> const PathTextContext::GetLayout() const
   return make_ref(m_layout);
 }
 
-void PathTextContext::BeforeUpdate()
+inline void PathTextContext::BeforeUpdate()
 {
   m_updated = false;
 }
@@ -273,7 +273,7 @@ bool PathTextHandle::Update(ScreenBase const & screen)
   return m_context->GetLayout()->CacheDynamicGeometry(centerPointIter, m_depth, m_globalPivot, m_buffer);
 }
 
-void PathTextHandle::BeforeUpdate()
+inline void PathTextHandle::BeforeUpdate()
 {
   m_context->BeforeUpdate();
 }
