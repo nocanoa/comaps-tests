@@ -509,67 +509,6 @@ void OpenLrV3TraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traf
 }
 #endif
 
-double RoutingTraffDecoder::TraffEstimator::GetRoadRefPenalty(std::string & ref) const
-{
-  // skip parsing if ref is empty
-  if (ref.empty())
-  {
-    if (m_decoder.m_roadRef.empty())
-      return 1;
-    else if (!m_decoder.m_roadRef.empty())
-      return kAttributePenalty;
-  }
-
-  // TODO does caching results per ref improve performance?
-
-  std::vector<std::string> r = ParseRef(ref);
-
-  size_t matches = 0;
-
-  if (m_decoder.m_roadRef.empty() && r.empty())
-    return 1;
-  else if (m_decoder.m_roadRef.empty() || r.empty())
-    return kAttributePenalty;
-
-  // work on a copy of `m_decoder.m_roadRef`
-  std::vector<std::string> l = m_decoder.m_roadRef;
-
-  if ((l.size() > 1) && (r.size() > 1) && (l.front() == r.front()))
-  {
-    /*
-     * Discard generic prefixes, which are often used to denote the road class.
-     * This will turn `A1` and `A2` into `1` and `2`, causing them to be treated as a mismatch,
-     * not a partial match.
-     */
-    l.erase(l.begin());
-    r.erase(r.begin());
-  }
-
-  // for both sides, count items matched by the other side
-  for (auto & litem : l)
-    for (auto ritem : r)
-      if (litem == ritem)
-      {
-        matches++;
-        break;
-      }
-
-  for (auto ritem : r)
-    for (auto & litem : l)
-      if (litem == ritem)
-      {
-        matches++;
-        break;
-      }
-
-  if (matches == 0)
-    return kAttributePenalty;
-  else if (matches == (l.size() + r.size()))
-    return 1;
-  else
-    return kReducedAttributePenalty;
-}
-
 double RoutingTraffDecoder::TraffEstimator::GetUTurnPenalty(Purpose /* purpose */) const
 {
   // Adds 2 minutes penalty for U-turn. The value is quite arbitrary
@@ -665,26 +604,9 @@ double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment c
   if (!m_decoder.m_message || !m_decoder.m_message.value().m_location.value().m_roadClass)
     return result;
 
-  std::optional<routing::HighwayType> highwayType = road.GetHighwayType();
-
-  if (highwayType)
-  {
-    if (IsRamp(highwayType.value()) != (m_decoder.m_message.value().m_location.value().m_ramps != Ramps::None))
-      // if one is a ramp and the other is not, treat it as a mismatch
-      result *= kAttributePenalty;
-    if (m_decoder.m_message.value().m_location.value().m_roadClass)
-      // if the message specifies a road class, penalize mismatches
-      result *= GetRoadClassPenalty(m_decoder.m_message.value().m_location.value().m_roadClass.value(),
-                                    GetRoadClass(highwayType.value()));
-  }
-  else // road has no highway class
-  {
-    // we can’t determine if it is a ramp, penalize for mismatch
-    result *= kAttributePenalty;
-    if (m_decoder.m_message.value().m_location.value().m_roadClass)
-      // we can’t determine if the road matches the required road class, treat it as mismatch
-      result *= kAttributePenalty;
-  }
+  result *= GetHighwayTypePenalty(road.GetHighwayType(),
+                                  m_decoder.m_message.value().m_location.value().m_roadClass,
+                                  m_decoder.m_message.value().m_location.value().m_ramps);
 
   if (!m_decoder.m_roadRef.empty())
   {
@@ -694,18 +616,7 @@ double RoutingTraffDecoder::TraffEstimator::CalcSegmentWeight(routing::Segment c
     auto f = g.GetOriginalFeatureByIndex(segment.GetFeatureId());
     auto refs = ftypes::GetRoadShieldsNames(*f);
 
-    auto penalty = kAttributePenalty;
-
-    for (auto & ref : refs)
-    {
-      auto newPenalty = GetRoadRefPenalty(ref);
-      if (newPenalty < penalty)
-        penalty = newPenalty;
-      if (penalty == 1)
-        break;
-    }
-
-    result *= penalty;
+    result *= m_decoder.GetRoadRefPenalty(refs);
   }
 
   return result;
@@ -745,6 +656,108 @@ RoutingTraffDecoder::RoutingTraffDecoder(DataSource & dataSource, CountryInfoGet
 {
   m_dataSource.AddObserver(*this);
   InitRouter();
+}
+
+double RoutingTraffDecoder::GetHighwayTypePenalty(std::optional<routing::HighwayType> highwayType,
+                                                  std::optional<RoadClass> roadClass,
+                                                  Ramps ramps)
+{
+  double result = 1.0;
+  if (highwayType)
+  {
+    if (IsRamp(highwayType.value()) != (ramps != Ramps::None))
+      // if one is a ramp and the other is not, treat it as a mismatch
+      result *= kAttributePenalty;
+    if (roadClass)
+      // if the message specifies a road class, penalize mismatches
+      result *= GetRoadClassPenalty(roadClass.value(), GetRoadClass(highwayType.value()));
+  }
+  else // road has no highway class
+  {
+    // we can’t determine if it is a ramp, penalize for mismatch
+    result *= kAttributePenalty;
+    if (roadClass)
+      // we can’t determine if the road matches the required road class, treat it as mismatch
+      result *= kAttributePenalty;
+  }
+  return result;
+}
+
+double RoutingTraffDecoder::GetRoadRefPenalty(std::vector<std::string> & refs) const
+{
+  double result = kAttributePenalty;
+
+  for (auto & ref : refs)
+  {
+    auto newResult = GetRoadRefPenalty(ref);
+    if (newResult < result)
+      result = newResult;
+    if (result == 1)
+      break;
+  }
+
+  return result;
+}
+
+double RoutingTraffDecoder::GetRoadRefPenalty(std::string const & ref) const
+{
+  // skip parsing if ref is empty
+  if (ref.empty())
+  {
+    if (m_roadRef.empty())
+      return 1;
+    else if (!m_roadRef.empty())
+      return kAttributePenalty;
+  }
+
+  // TODO does caching results per ref improve performance?
+
+  std::vector<std::string> r = ParseRef(ref);
+
+  size_t matches = 0;
+
+  if (m_roadRef.empty() && r.empty())
+    return 1;
+  else if (m_roadRef.empty() || r.empty())
+    return kAttributePenalty;
+
+  // work on a copy of `m_decoder.m_roadRef`
+  std::vector<std::string> l = m_roadRef;
+
+  if ((l.size() > 1) && (r.size() > 1) && (l.front() == r.front()))
+  {
+    /*
+     * Discard generic prefixes, which are often used to denote the road class.
+     * This will turn `A1` and `A2` into `1` and `2`, causing them to be treated as a mismatch,
+     * not a partial match.
+     */
+    l.erase(l.begin());
+    r.erase(r.begin());
+  }
+
+  // for both sides, count items matched by the other side
+  for (auto & litem : l)
+    for (auto ritem : r)
+      if (litem == ritem)
+      {
+        matches++;
+        break;
+      }
+
+  for (auto ritem : r)
+    for (auto & litem : l)
+      if (litem == ritem)
+      {
+        matches++;
+        break;
+      }
+
+  if (matches == 0)
+    return kAttributePenalty;
+  else if (matches == (l.size() + r.size()))
+    return 1;
+  else
+    return kReducedAttributePenalty;
 }
 
 void RoutingTraffDecoder::OnMapRegistered(platform::LocalCountryFile const & localFile)
@@ -1234,7 +1247,7 @@ bool IsRamp(routing::HighwayType highwayType)
   }
 }
 
-std::vector<std::string> ParseRef(std::string & ref)
+std::vector<std::string> ParseRef(std::string const & ref)
 {
   std::vector<std::string> res;
   std::string curr = "";

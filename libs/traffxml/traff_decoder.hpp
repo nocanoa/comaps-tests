@@ -303,19 +303,6 @@ public:
     double CalcOffroad(ms::LatLon const & from, ms::LatLon const & to, Purpose /* purpose */) const override;
     double CalcSegmentWeight(routing::Segment const & segment, routing::RoadGeometry const & road, Purpose /* purpose */) const override;
 
-    /**
-     * @brief Determines the penalty factor based on how two reference numbers match.
-     *
-     * Rules are subject to change.
-     *
-     * @param ref The reference number of the current segment, compared against `m_roadRef`.
-     *
-     * @return 1 for a perfect match (refs are assumed to refer to the same object), `kAttributePenalty`
-     * for a mismatch (refs are assumed to refer to different objects) or`kReducedAttributePenalty` for
-     * a partial match (unclear whether both refs refer to the same object).
-     */
-    double GetRoadRefPenalty(std::string & ref) const;
-
     double GetUTurnPenalty(Purpose /* purpose */) const override;
 
     /**
@@ -353,6 +340,63 @@ public:
    * This implementation does nothing, as `NumMwmIds` does not support removal.
    */
   virtual void OnMapDeregistered(platform::LocalCountryFile const & /* localFile */) override {}
+
+  /**
+   * @brief Determines the penalty factor bases on how highway attributes match.
+   *
+   * This compares the highway type of the candidate feature (as retrieved from OSM) against the
+   * road class and ramps attributes of the location.
+   *
+   * Rules are subject to change but principles are:
+   *
+   * Penalties for ramp mismatch and road class mismatch are applied consecutively, thus the maximum
+   * penalty is `kAttributePenalty ^ 2`.
+   *
+   * If ramps mismatch (location specifies a ramp but candidate is not a ramp, or vice versa), the
+   * penalty is `kAttributePenalty`.
+   *
+   * If road classes are similar, the penalty is `kReducedAttributePenalty`. For a complete
+   * mismatch, the penalty is `kAttributePenalty`.
+   *
+   * @param highwayType The OSM highway type of the candidate feature.
+   * @param roadClass The TraFF road class of the location.
+   * @param ramps The ramps atribute of the TraFF location.
+   *
+   * @return 1 for a perfect match (same road class and ramp type), up to `kAttributePenalty ^ 2`
+   * for a mismatch.
+   */
+  static double GetHighwayTypePenalty(std::optional<routing::HighwayType> highwayType,
+                                      std::optional<RoadClass> roadClass,
+                                      Ramps ramps);
+
+  /**
+   * @brief Determines the penalty factor based on how two reference numbers match.
+   *
+   * Rules are subject to change.
+   *
+   * This method takes a vector as an argument, compares each element and returns the penalty for
+   * the best match.
+   *
+   * @param refs A vector of reference numbers of the current segment, compared against `m_roadRef`.
+   *
+   * @return 1 for a perfect match (refs are assumed to refer to the same object), `kAttributePenalty`
+   * for a mismatch (refs are assumed to refer to different objects) or`kReducedAttributePenalty` for
+   * a partial match (unclear whether both refs refer to the same object).
+   */
+  double GetRoadRefPenalty(std::vector<std::string> & refs) const;
+
+  /**
+   * @brief Determines the penalty factor based on how two reference numbers match.
+   *
+   * Rules are subject to change.
+   *
+   * @param ref The reference number of the current segment, compared against `m_roadRef`.
+   *
+   * @return 1 for a perfect match (refs are assumed to refer to the same object), `kAttributePenalty`
+   * for a mismatch (refs are assumed to refer to different objects) or`kReducedAttributePenalty` for
+   * a partial match (unclear whether both refs refer to the same object).
+   */
+  double GetRoadRefPenalty(std::string const & ref) const;
 
 protected:
   /**
@@ -470,7 +514,7 @@ bool IsRamp(routing::HighwayType highwayType);
  * For example, each of `A42`, `A 42` and `-a42` would be broken down into `a, 42`, whereas `A4.2`
  * would be broken down into `a, 4, 2`.
  */
-std::vector<std::string> ParseRef(std::string & ref);
+std::vector<std::string> ParseRef(std::string const & ref);
 
 /**
  * @brief Calculates the segments to truncate at the start of the route.
