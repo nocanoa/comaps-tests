@@ -392,11 +392,11 @@
     <string name="editor_time_allday">Hele dagen (24 timer)</string>
     <string name="editor_time_open">Åpen</string>
     <string name="editor_time_close">Stengt</string>
-    <string name="editor_time_add_closed">Legg til stengt tid</string>
+    <string name="editor_time_add_closed">Legg til ikke-åpningstid</string>
     <string name="editor_time_title">Åpningstider</string>
     <string name="editor_time_advanced">Avansert modus</string>
     <string name="editor_time_simple">Enkel modus</string>
-    <string name="editor_hours_closed">Stengt</string>
+    <string name="editor_hours_closed">Ikke-åpningstid</string>
     <string name="editor_example_values">Eksempelverdier</string>
     <string name="editor_correct_mistake">Rett feil</string>
     <string name="editor_add_select_location">Velg sted</string>
@@ -446,7 +446,7 @@
     <string name="downloader_delete_map_dialog">Alle dine kartredigeringer vil slettes sammen med kartet</string>
     <string name="downloader_update_maps">Oppdater kart</string>
     <string name="downloader_mwm_migration_dialog">For å opprette en rute må du oppdatere alle kartene og deretter planlegge ruten på nytt.</string>
-    <string name="downloader_search_field_hint">Finn kartet</string>
+    <string name="downloader_search_field_hint">Finn kart</string>
     <string name="common_check_internet_connection_dialog">Sørg for at enheten din er koblet til Internett</string>
     <string name="downloader_no_space_title">Ikke nok plass</string>
     <string name="downloader_no_space_message">Fjern unødvendig data</string>
@@ -762,7 +762,7 @@
     <!-- Notification title for permission request from AA. -->
     <string name="aa_request_permission_notification">Denne appen trenger din tillatelse</string>
     <!-- The text in the activity for location permission request. -->
-    <string name="aa_request_permission_activity_text">CoMaps i Android Auto trenger en posisjonstillatelse for å fungere effektivt</string>
+    <string name="aa_request_permission_activity_text">CoMaps i Android Auto trenger posisjonstillatelse for å fungere effektivt</string>
     <!-- Grant Permissions button. -->
     <string name="aa_grant_permissions">Gi tillatelser</string>
     <!-- Outdoors/hiking map style (activity) name in the Styles and Layers dialog -->
@@ -845,7 +845,7 @@
     <string name="vehicle">Kjøretøy</string>
     <string name="pedestrian">Fotgjenger</string>
     <string name="bicycle">Sykkel</string>
-    <string name="closed_now">Lukket nå</string>
+    <string name="closed_now">Stengt nå</string>
     <string name="level_value_generic">Nivå: %s</string>
     <string name="editor_building_levels">Etasjer (inkl. bakkeplan, ekskl. tak)</string>
     <string name="at">kl. %s</string>
@@ -874,4 +874,15 @@
     <string name="error_enter_correct_fediverse_page">Angi et gyldig Mastodon-brukernavn eller nettadresse</string>
     <string name="error_enter_correct_bluesky_page">Angi et gyldig Bluesky-brukernavn eller nettadresse</string>
     <string name="list_description_empty">Rediger listen for å legge til en beskrivelse</string>
+    <string name="charge_socket_type2_cable">Type 2 (m/ kabel)</string>
+    <string name="charge_socket_type2">Type 2 (ingen kabel)</string>
+    <string name="charge_socket_power">Effekt (kW)</string>
+    <string name="ruler">Linjal</string>
+    <string name="unknown_socket_type">ukjent kontakt</string>
+    <string name="unknow_socket_type">ukjent kontakt</string>
+    <string name="charging_station_available_sockets">Tilgjengelige kontakter</string>
+    <string name="charge_socket_unknown_other">Annen eller ukjent</string>
+    <string name="editor_socket">Rediger kontakt</string>
+    <string name="charge_socket_type1">Type 1</string>
+    <string name="edit_socket_info_tooltip">Opprett nye kontakter eller rediger eksisterende.</string>
 </resources>

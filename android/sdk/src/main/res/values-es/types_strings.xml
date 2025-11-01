@@ -1436,4 +1436,5 @@
     <string name="type.leisure.sports_centre.sport.yoga">Centro deportivo</string>
     <string name="type.leisure.fitness_centre.sport.yoga">Estudio de yoga</string>
     <string name="type.disusedbusiness">Local comercial vacante</string>
+    <string name="type.amenity.lounger">Tumbona</string>
 </resources>

@@ -508,11 +508,11 @@
 "editor_time_allday" = "Hele dagen (24 timer)";
 "editor_time_open" = "Åpen";
 "editor_time_close" = "Stengt";
-"editor_time_add_closed" = "Legg til stengt tid";
+"editor_time_add_closed" = "Legg til ikke-åpningstid";
 "editor_time_title" = "Åpningstider";
 "editor_time_advanced" = "Avansert modus";
 "editor_time_simple" = "Enkel modus";
-"editor_hours_closed" = "Stengt";
+"editor_hours_closed" = "Ikke-åpningstid";
 "editor_example_values" = "Eksempelverdier";
 "editor_add_select_location" = "Velg sted";
 "editor_done_dialog_1" = "Du har endret verdenskartet. Ikke skjul denne! Fortell vennene dine, og rediger det sammen.";
@@ -521,7 +521,7 @@
 "autodownload" = "Last ned kart automatisk";
 
 /* Place Page opening hours text */
-"closed_now" = "Lukket nå";
+"closed_now" = "Stengt nå";
 
 /* Place Page opening hours text */
 "daily" = "Daglig";
@@ -585,7 +585,7 @@
 "please_note" = "Vær oppmerksom på at";
 "downloader_delete_map_dialog" = "Alle endringer i kartet vil slettes sammen med kartet.";
 "downloader_update_maps" = "Oppdater kart";
-"downloader_search_field_hint" = "Finn kartet";
+"downloader_search_field_hint" = "Finn kart";
 "migration_download_error_dialog" = "Nedlastningsfeil";
 "common_check_internet_connection_dialog" = "Kontroller innstillingene dine og sørg for at enheten din er koblet til Internett.";
 "downloader_no_space_title" = "Ikke nok plass";

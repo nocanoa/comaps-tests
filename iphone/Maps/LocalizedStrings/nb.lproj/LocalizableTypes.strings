@@ -49,7 +49,7 @@
 "type.amenity.clinic" = "Klinikk";
 "type.amenity.college" = "Høyskole";
 "type.amenity.community_centre" = "Samfunnshus";
-"type.amenity.compressed_air" = "Komprimert luft";
+"type.amenity.compressed_air" = "Trykkluft";
 "type.amenity.conference_centre" = "Konferansesenter";
 "type.amenity.courthouse" = "Domstol";
 "type.amenity.dentist" = "Tannlege";
@@ -169,7 +169,7 @@
 "type.toilets.yes" = "Toalett";
 "type.amenity.townhall" = "Rådhus";
 "type.amenity.university" = "Universitet";
-"type.amenity.vending_machine" = "Vending Machine";
+"type.amenity.vending_machine" = "Automat";
 "type.amenity.vending_machine.cigarettes" = "Sigarettautomat";
 "type.amenity.vending_machine.coffee" = "Kaffeautomat";
 "type.amenity.vending_machine.condoms" = "Condoms Dispenser";
@@ -417,10 +417,10 @@
 "type.highway.footway.area" = "Fotgjengerområde";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.footway.bridge" = "Bru";
+"type.highway.footway.bridge" = "Gangbru";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.footway.tunnel" = "Tunnel";
+"type.highway.footway.tunnel" = "Fotgjengertunnel";
 "type.highway.ford" = "Vadested";
 "type.highway.living_street" = "Gate";
 
@@ -432,10 +432,10 @@
 "type.highway.motorway" = "Motorvei";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.motorway.bridge" = "Bru";
+"type.highway.motorway.bridge" = "Motorveibru";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.motorway.tunnel" = "Tunnel";
+"type.highway.motorway.tunnel" = "Motorveitunnel";
 "type.highway.motorway_junction" = "Avkjørsel";
 "type.highway.motorway_link" = "Motorveirampe";
 
@@ -451,12 +451,12 @@
 
 /* Hiking trail tagged as sac_scale=alpine_hiking (4+ of 6) or trail_visibility=horrible or more extreme. */
 "type.highway.path.expert" = "Svært vanskelig eller umulig å skille ut stien";
-"type.highway.path.bicycle" = "Sti";
-"type.highway.footway.bicycle" = "Sti";
+"type.highway.path.bicycle" = "Gang- og sykkelvei";
+"type.highway.footway.bicycle" = "Gang- og sykkelvei";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.path.bridge" = "Bru";
-"type.highway.path.horse" = "Sti";
+"type.highway.path.horse" = "Ridevei";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.path.tunnel" = "Tunnel";
@@ -464,11 +464,11 @@
 "type.highway.pedestrian.area" = "Gågateområde";
 
 /* These translations are used for all type.highway.*.bridge. */
-"type.highway.pedestrian.bridge" = "Bru";
+"type.highway.pedestrian.bridge" = "Gangbru";
 "type.highway.pedestrian.square" = "Torg";
 
 /* These translations are used for all type.highway.*.tunnel. */
-"type.highway.pedestrian.tunnel" = "Tunnel";
+"type.highway.pedestrian.tunnel" = "Fotgjengertunnel";
 "type.highway.primary" = "Hovedvei";
 
 /* These translations are used for all type.highway.*.bridge. */
@@ -476,7 +476,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.primary.tunnel" = "Tunnel";
-"type.highway.primary_link" = "Hovedvei";
+"type.highway.primary_link" = "Hovedveirampe";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.primary_link.bridge" = "Bru";
@@ -484,8 +484,8 @@
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.primary_link.tunnel" = "Tunnel";
 "type.highway.raceway" = "Racerbane";
-"type.highway.residential" = "Gate";
-"type.highway.residential.area" = "Gate";
+"type.highway.residential" = "Boliggate";
+"type.highway.residential.area" = "Boliggate";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.residential.bridge" = "Bru";
@@ -510,7 +510,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.secondary.tunnel" = "Tunnel";
-"type.highway.secondary_link" = "Sekundærvei";
+"type.highway.secondary_link" = "Sekundærveirampe";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.secondary_link.bridge" = "Bru";
@@ -522,12 +522,12 @@
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.service.bridge" = "Bru";
-"type.highway.service.driveway" = "Service-vei";
+"type.highway.service.driveway" = "Innkjørsel";
 "type.highway.service.parking_aisle" = "Service-vei";
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.service.tunnel" = "Tunnel";
-"type.highway.services" = "Service Area";
+"type.highway.services" = "Service-område";
 "type.highway.speed_camera" = "Fotoboks";
 "type.highway.steps" = "Trapper";
 
@@ -543,7 +543,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.tertiary.tunnel" = "Tunnel";
-"type.highway.tertiary_link" = "Tertiærvei";
+"type.highway.tertiary_link" = "Tertiærveirampe";
 
 /* These translations are used for all type.highway.*.bridge. */
 "type.highway.tertiary_link.bridge" = "Bru";
@@ -679,7 +679,7 @@
 "type.landuse.landfill" = "Land-deponi";
 "type.landuse.meadow" = "Eng";
 "type.landuse.military" = "Militært område";
-"type.landuse.orchard" = "Orchard";
+"type.landuse.orchard" = "Frukthage";
 "type.landuse.quarry" = "Steinbrudd";
 "type.landuse.railway" = "Jernbaneområde";
 "type.landuse.recreation_ground" = "Rekreasjonsområde";
@@ -713,7 +713,7 @@
 "type.leisure.playground" = "Lekeplass";
 "type.leisure.recreation_ground" = "Rekreasjonsområde";
 "type.leisure.sauna" = "Badstue";
-"type.leisure.slipway" = "Slipway";
+"type.leisure.slipway" = "Slipp";
 "type.leisure.sports_centre" = "Sportssenter";
 "type.sport.climbing" = "Klatring";
 "type.sport.yoga" = "Yoga";
@@ -907,8 +907,8 @@
 "type.railway.monorail.bridge" = "Monorail Bridge";
 "type.railway.monorail.tunnel" = "Monorail Tunnel";
 "type.railway.narrow_gauge" = "Smalsporet jernbane";
-"type.railway.narrow_gauge.bridge" = "Narrow Gauge Rail Bridge";
-"type.railway.narrow_gauge.tunnel" = "Narrow Gauge Rail Tunnel";
+"type.railway.narrow_gauge.bridge" = "Smalsporet jernbanebru";
+"type.railway.narrow_gauge.tunnel" = "Smalsporet jernbanetunnel";
 "type.railway.platform" = "Jernbaneplattform";
 "type.railway.preserved" = "Museumsjernbane";
 "type.railway.preserved.bridge" = "Preserved Rail Bridge";
@@ -1484,7 +1484,7 @@
 "type.amenity.bicycle_parking.covered" = "Overbygd sykkelparkering";
 "type.post_office.post_partner" = "Post Partner";
 "type.barrier.wicket_gate" = "Wicket gate";
-"type.amenity.animal_shelter" = "Animal Shelter";
+"type.amenity.animal_shelter" = "Dyrehjem";
 "type.office.security" = "Security Guards Office";
 "type.power.portal" = "Power Portal";
 "type.building.guardhouse" = "Security Booth";

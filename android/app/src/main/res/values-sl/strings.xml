@@ -6,7 +6,7 @@
     <string name="back">Nazaj</string>
     <string name="download_maps">Prenesi zemljevide</string>
     <string name="download_has_failed">Prenos ni uspel, pritisnite za ponovni poskus</string>
-    <string name="downloading">Prenašam …</string>
+    <string name="downloading">Poteka prenos …</string>
     <string name="kilometres">Kilometri</string>
     <string name="miles">Milje</string>
     <string name="later">Kasneje</string>
@@ -535,7 +535,7 @@
     <string name="car_used_on_the_phone_screen">CoMaps zdaj uporabljate na zaslonu telefona</string>
     <string name="error_invalid_number">Neveljavno število</string>
     <string name="offline_explanation_title">Zemljevidi brez povezave</string>
-    <string name="offline_explanation_text">Zemljevid morate prenesti, da ga lahko ogledujete in se po njem usmerjate.\nPrenesite zemljevide za območja, kjer želite potovati.</string>
+    <string name="offline_explanation_text">Zemljevid morate prenesti, da siga lahko ogledujete in se po njem usmerjate.\nPrenesite zemljevide za območja, kjer nameravate potovati.</string>
     <string name="google_play_services">Googleova združena lokacijska storitev</string>
     <string name="create">ustvari</string>
     <string name="editor_place_doesnt_exist_description">Opišite, kako to mesto izgleda sedaj, da pošljete obvestilo skupnosti OpenStreetMap</string>

@@ -531,7 +531,7 @@
     <string name="type.landuse.landfill">Groapă de gunoi</string>
     <string name="type.landuse.railway">Domeniul feroviar</string>
     <string name="type.landuse.reservoir">Lac de acumulare</string>
-    <string name="type.leisure.dog_park">Loc de plimbare a câinilor</string>
+    <string name="type.leisure.dog_park">Parc pentru câini</string>
     <string name="type.leisure.fitness_centre">Centru fitness</string>
     <string name="type.leisure.fitness_station">Sală de fitness</string>
     <string name="type.leisure.dance">Sala de dans</string>
@@ -606,7 +606,7 @@
     <string name="type.natural.land">Teren</string>
     <string name="type.natural.meadow">Fâneață</string>
     <string name="type.natural.orchard">Livadă</string>
-    <string name="type.natural.peak">Munte</string>
+    <string name="type.natural.peak">Vârf</string>
     <string name="type.natural.saddle">Sela da Montanha</string>
     <string name="type.natural.rock">Rocă</string>
     <string name="type.natural.scrub">Boschet</string>
@@ -1181,7 +1181,7 @@
     <string name="type.amenity.bicycle_parking.covered">Parcare acoperită pentru biciclete</string>
     <string name="type.amenity.love_hotel">Hotel cu ora</string>
     <string name="type.amenity.studio">Garsonieră</string>
-    <string name="type.amenity.bicycle_repair_station">Stație de Reparații Biciclete</string>
+    <string name="type.amenity.bicycle_repair_station">Stație Reparații Biciclete</string>
     <string name="type.amenity.car_sharing">Utilizare comună a mașinii</string>
     <string name="type.amenity.dentist">Dentist</string>
     <string name="type.office.security">Biroul agenților de securitate</string>
@@ -1386,4 +1386,11 @@
     <string name="type.tourism.hotel">Hotel</string>
     <string name="type.shop.supermarket">Supermarket</string>
     <string name="type.amenity.bench.backless">Bancă fără spătar</string>
+    <string name="type.amenity.doctors">Doctor</string>
+    <string name="type.amenity.restaurant">Restaurant</string>
+    <string name="type.highway.services">Spațiu Servicii</string>
+    <string name="type.internet_access">Internet</string>
+    <string name="type.landuse.vineyard">Podgorie</string>
+    <string name="type.route">Rută</string>
+    <string name="type.disusedbusiness">Magazin vacant</string>
 </resources>

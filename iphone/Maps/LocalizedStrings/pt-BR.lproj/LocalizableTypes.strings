@@ -1526,3 +1526,4 @@
 "type.amenity.bench.backless" = "Banco sem encosto";
 "type.leisure.bandstand" = "Coreto";
 "type.disusedbusiness" = "Estabelecimento vazio";
+"type.amenity.lounger" = "Espreguiçadeira";

@@ -879,4 +879,5 @@
     <string name="error_invalid_number">Ugyldigt nummer</string>
     <string name="offline_explanation_title">Offline kort</string>
     <string name="offline_explanation_text">Der skal downloades et kort for at kunne se og navigere i området.\nDownload kort over de områder, du ønsker at rejse i.</string>
+    <string name="list_description_empty">Rediger listen for at tilføje en beskrivelse</string>
 </resources>

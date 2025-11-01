@@ -615,7 +615,7 @@
     <string name="export_file_gpx">导出为 GPX</string>
     <string name="delete_list">删除列表</string>
     <string name="speedcams_alert_title">限速拍照</string>
-    <string name="place_description_title">地点说明</string>
+    <string name="place_description_title">地点描述</string>
     <!-- this text will be shown in application notification preferences opposite checkbox which enable/disable downloader notifications. Devices on Android 8+ are affected. -->
     <string name="notification_channel_downloader">加载地图</string>
     <!-- "Speed cameras" settings menu option (should be short! no more than 47-50 chars) to warn a driver if there is a risk of exceeding the speed limit -->
@@ -895,4 +895,5 @@
     <string name="avoid_steps">避开台阶</string>
     <string name="offline_explanation_title">离线地图</string>
     <string name="offline_explanation_text">需要下载地图才能查看并在该区域内导航。\n请为您计划前往的区域下载地图。</string>
+    <string name="list_description_empty">编辑列表以添加描述</string>
 </resources>

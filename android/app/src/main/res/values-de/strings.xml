@@ -892,4 +892,5 @@
     <string name="charge_socket_count">Anzahl</string>
     <string name="unknown_count">unbekannt</string>
     <string name="error_invalid_number">ungültige Zahl</string>
+    <string name="list_description_empty">Liste bearbeiten, um eine Beschreibung hinzuzufügen</string>
 </resources>

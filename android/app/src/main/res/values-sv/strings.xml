@@ -829,4 +829,8 @@
     <string name="delete_track_dialog_title">Ta bort %s?</string>
     <string name="existence_confirmed_time_ago">Existens bekräftad %s</string>
     <string name="hours_confirmed_time_ago">Bekräftat %s</string>
+    <string name="editor_building_levels">Våningar (inkl. bottenplan, exkl. takvåningar)</string>
+    <string name="editor_level">Våningsplan (0 är bottenplan)</string>
+    <string name="error_enter_correct_level">Ange ett giltigt nummer för våningsplan</string>
+    <string name="avoid_steps">Undvik trappor</string>
 </resources>

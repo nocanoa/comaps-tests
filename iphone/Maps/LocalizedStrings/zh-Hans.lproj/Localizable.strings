@@ -798,7 +798,7 @@
 "tags_loading_error_subtitle" = "加载标签时出错，请重试";
 "download_button" = "下载";
 "speedcams_alert_title" = "限速拍照";
-"place_description_title" = "地点说明";
+"place_description_title" = "地点描述";
 
 /* "Speed cameras" settings menu option (should be short! no more than 47-50 chars) to warn a driver if there is a risk of exceeding the speed limit */
 "pref_tts_speedcams_auto" = "超速行驶时发出警告";

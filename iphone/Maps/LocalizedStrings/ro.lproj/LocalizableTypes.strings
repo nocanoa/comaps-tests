@@ -26,7 +26,7 @@
 "type.amenity.bench" = "Bancă";
 "type.amenity.bicycle_parking" = "Parcare biciclete";
 "type.amenity.bicycle_rental" = "Închiriere biciclete";
-"type.amenity.bicycle_repair_station" = "Stație de Reparații Biciclete";
+"type.amenity.bicycle_repair_station" = "Stație Reparații Biciclete";
 "type.amenity.biergarten" = "Berărie";
 "type.amenity.brothel" = "Bordel";
 "type.amenity.bureau_de_change" = "Schimb valutar";
@@ -527,7 +527,7 @@
 
 /* These translations are used for all type.highway.*.tunnel. */
 "type.highway.service.tunnel" = "Tunel";
-"type.highway.services" = "Service Area";
+"type.highway.services" = "Spațiu Servicii";
 "type.highway.speed_camera" = "Detector de viteză";
 "type.highway.steps" = "Cale";
 
@@ -688,10 +688,10 @@
 "type.landuse.retail" = "Zonă Comercială";
 "type.landuse.salt_pond" = "Bazin de sare";
 "type.landuse.village_green" = "Pământ";
-"type.landuse.vineyard" = "Vineyard";
+"type.landuse.vineyard" = "Podgorie";
 "type.leisure" = "Timp liber";
 "type.leisure.common" = "Domeniu public";
-"type.leisure.dog_park" = "Loc de plimbare a câinilor";
+"type.leisure.dog_park" = "Parc pentru câini";
 "type.leisure.fitness_centre" = "Centru fitness";
 "type.leisure.fitness_station" = "Sală de fitness";
 "type.leisure.dance" = "Sala de dans";
@@ -798,7 +798,7 @@
 "type.natural.land" = "Teren";
 "type.natural.meadow" = "Fâneață";
 "type.natural.orchard" = "Livadă";
-"type.natural.peak" = "Munte";
+"type.natural.peak" = "Vârf";
 "type.natural.saddle" = "Sela da Montanha";
 "type.natural.rock" = "Rocă";
 "type.natural.scrub" = "Boschet";
@@ -1185,7 +1185,7 @@
 "type.railway.tram.bridge" = "Pod Linie de Tramvai";
 "type.railway.tram.tunnel" = "Tunel Linie de Tramvai";
 "type.railway.tram_stop" = "Stație de tramvai";
-"type.route" = "Route";
+"type.route" = "Rută";
 "type.route.ferry" = "Feribot";
 "type.shop" = "Magazin";
 "type.shop.alcohol" = "Băuturi alcoolice";
@@ -1490,3 +1490,4 @@
 "type.building.guardhouse" = "Cabină de pază";
 "type.shop.lighting" = "Magazin de corpuri de iluminat";
 "type.amenity.bench.backless" = "Bancă fără spătar";
+"type.disusedbusiness" = "Magazin vacant";

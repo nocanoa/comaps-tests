@@ -133,4 +133,24 @@
     <string name="type.waterway.fish_pass">Ribja steza</string>
     <string name="type.waterway.dam">Jez</string>
     <string name="type.barrier.ditch">Jarek</string>
+    <string name="type.natural.water.ditch">Odvodni jarek</string>
+    <string name="type.waterway.ditch.tunnel">Prepust</string>
+    <string name="type.waterway.stream.ephemeral">Sezonski potok</string>
+    <string name="type.waterway.stream.intermittent">Občasni potok</string>
+    <string name="type.waterway.stream.tunnel">Potok</string>
+    <string name="type.waterway.waterfall">Slap</string>
+    <string name="type.waterway.weir">Rečni prag</string>
+    <string name="type.wheelchair">Invalidski voziček</string>
+    <string name="type.waterway.river">Reka</string>
+    <string name="type.waterway.river.tunnel">Reka</string>
+    <string name="type.waterway.stream">Potok</string>
+    <string name="type.waterway.drain.tunnel">Prepust</string>
+    <string name="type.aerialway.mixed_lift">Kombinirana žičnica</string>
+    <string name="type.aeroway">Infrastruktura zračnega prostora</string>
+    <string name="type.amenity">Infrastrukturni element</string>
+    <string name="type.amenity.love_hotel">Hotel za zaljubljence</string>
+    <string name="type.amenity.studio">Medijski studio</string>
+    <string name="type.leisure.amusement_arcade">Arkadne igre</string>
+    <string name="type.amenity.charging_station.motorcar.small">Polnilno mesto za avtomobile</string>
+    <string name="type.amenity.childcare">Vrtec</string>
 </resources>

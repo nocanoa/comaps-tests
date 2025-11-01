@@ -1424,4 +1424,5 @@
     <string name="type.leisure.sports_centre.sport.yoga">Centro esportivo</string>
     <string name="type.leisure.fitness_centre.sport.yoga">Academia de ioga</string>
     <string name="type.disusedbusiness">Estabelecimento vazio</string>
+    <string name="type.amenity.lounger">Espreguiçadeira</string>
 </resources>

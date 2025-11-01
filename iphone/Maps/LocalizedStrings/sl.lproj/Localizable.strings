@@ -4,7 +4,7 @@
 "core_my_places" = "Moji kraji";
 "core_my_position" = "Moj položaj";
 "kilometres" = "Kilometri";
-"downloading" = "Prenašam …";
+"downloading" = "Poteka prenos …";
 "miles" = "Milje";
 "download_maps" = "Prenesi zemljevide";
 "later" = "Kasneje";
@@ -331,7 +331,7 @@
 "app_tip_04" = "S kratkim pritiskom na zemljevid lahko izberete kateri koli element. Z dolgim pritiskom lahko skrijete ali pokažete vmesnik.";
 "app_tip_01" = "Z vašo podporo lahko ustvarimo najboljše zemljevide na svetu!";
 "app_tip_00" = "Hvala, ker uporabljate naše javno narejene zemljevide!";
-"offline_explanation_text" = "Zemljevid morate prenesti, da ga lahko ogledujete in se po njem usmerjate.\nPrenesite zemljevide za območja, kjer želite potovati.";
+"offline_explanation_text" = "Zemljevid morate prenesti, da siga lahko ogledujete in se po njem usmerjate.\nPrenesite zemljevide za območja, kjer nameravate potovati.";
 "offline_explanation_title" = "Zemljevidi brez povezave";
 "create" = "ustvari";
 "track_recording_alert_title" = "Shrani med Zaznamke in sledi?";
@@ -356,7 +356,7 @@
 "cancel_download" = "Prekliči prenos";
 "clear" = "Počisti";
 "closed_now" = "Trenutno zaprto";
-"leave_a_review" = "Pusti oceno";
+"leave_a_review" = "Podaj oceno";
 "about_proposition_2" = "Osredotočeno na zasebnosti in brez oglasov";
 "about_proposition_1" = "Na voljo brez povezave, hiter, in enostaven za uporabo";
 "use_cellular_data" = "Da";
@@ -376,3 +376,4 @@
 "placepage_delete_bookmark_button" = "Izbriši zaznamek";
 "placepage_call_button" = "Klic";
 "today" = "Danes";
+"bookmark_sets" = "Seznami zaznamkov";

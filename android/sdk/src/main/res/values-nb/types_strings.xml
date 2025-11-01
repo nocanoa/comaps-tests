@@ -43,7 +43,7 @@
     <string name="type.amenity.clinic">Klinikk</string>
     <string name="type.amenity.college">Høyskole</string>
     <string name="type.amenity.community_centre">Samfunnshus</string>
-    <string name="type.amenity.compressed_air">Komprimert luft</string>
+    <string name="type.amenity.compressed_air">Trykkluft</string>
     <string name="type.amenity.conference_centre">Konferansesenter</string>
     <string name="type.amenity.courthouse">Domstol</string>
     <string name="type.amenity.dentist">Tannlege</string>
@@ -351,9 +351,9 @@
     <string name="type.highway.footway.crossing">Fotgjengerovergang</string>
     <string name="type.highway.footway.area">Fotgjengerområde</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
-    <string name="type.highway.footway.bridge">Bru</string>
+    <string name="type.highway.footway.bridge">Gangbru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
-    <string name="type.highway.footway.tunnel">Tunnel</string>
+    <string name="type.highway.footway.tunnel">Fotgjengertunnel</string>
     <string name="type.highway.ford">Vadested</string>
     <string name="type.highway.living_street">Gate</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
@@ -362,9 +362,9 @@
     <string name="type.highway.living_street.tunnel">Tunnel</string>
     <string name="type.highway.motorway">Motorvei</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
-    <string name="type.highway.motorway.bridge">Bru</string>
+    <string name="type.highway.motorway.bridge">Motorveibru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
-    <string name="type.highway.motorway.tunnel">Tunnel</string>
+    <string name="type.highway.motorway.tunnel">Motorveitunnel</string>
     <string name="type.highway.motorway_junction">Avkjørsel</string>
     <string name="type.highway.motorway_link">Motorveirampe</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
@@ -376,33 +376,33 @@
     <string name="type.highway.path.difficult">Vanskelig eller dårlig synlig sti</string>
     <!-- Hiking trail tagged as sac_scale=alpine_hiking (4+ of 6) or trail_visibility=horrible or more extreme. -->
     <string name="type.highway.path.expert">Svært vanskelig eller umulig å skille ut stien</string>
-    <string name="type.highway.path.bicycle">Sti</string>
-    <string name="type.highway.footway.bicycle">Sti</string>
+    <string name="type.highway.path.bicycle">Gang- og sykkelvei</string>
+    <string name="type.highway.footway.bicycle">Gang- og sykkelvei</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.path.bridge">Bru</string>
-    <string name="type.highway.path.horse">Sti</string>
+    <string name="type.highway.path.horse">Ridevei</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.path.tunnel">Tunnel</string>
     <string name="type.highway.pedestrian">Gågate</string>
     <string name="type.highway.pedestrian.area">Gågateområde</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
-    <string name="type.highway.pedestrian.bridge">Bru</string>
+    <string name="type.highway.pedestrian.bridge">Gangbru</string>
     <string name="type.highway.pedestrian.square">Torg</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
-    <string name="type.highway.pedestrian.tunnel">Tunnel</string>
+    <string name="type.highway.pedestrian.tunnel">Fotgjengertunnel</string>
     <string name="type.highway.primary">Hovedvei</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.primary.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.primary.tunnel">Tunnel</string>
-    <string name="type.highway.primary_link">Hovedvei</string>
+    <string name="type.highway.primary_link">Hovedveirampe</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.primary_link.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.primary_link.tunnel">Tunnel</string>
     <string name="type.highway.raceway">Racerbane</string>
-    <string name="type.highway.residential">Gate</string>
-    <string name="type.highway.residential.area">Gate</string>
+    <string name="type.highway.residential">Boliggate</string>
+    <string name="type.highway.residential.area">Boliggate</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.residential.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
@@ -420,7 +420,7 @@
     <string name="type.highway.secondary.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.secondary.tunnel">Tunnel</string>
-    <string name="type.highway.secondary_link">Sekundærvei</string>
+    <string name="type.highway.secondary_link">Sekundærveirampe</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.secondary_link.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
@@ -429,7 +429,7 @@
     <string name="type.highway.service.area">Service-vei</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.service.bridge">Bru</string>
-    <string name="type.highway.service.driveway">Service-vei</string>
+    <string name="type.highway.service.driveway">Innkjørsel</string>
     <string name="type.highway.service.parking_aisle">Service-vei</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.service.tunnel">Tunnel</string>
@@ -444,7 +444,7 @@
     <string name="type.highway.tertiary.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.tertiary.tunnel">Tunnel</string>
-    <string name="type.highway.tertiary_link">Tertiærvei</string>
+    <string name="type.highway.tertiary_link">Tertiærveirampe</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.tertiary_link.bridge">Bru</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
@@ -1346,4 +1346,11 @@
     <string name="type.railway.tram">Trikk</string>
     <string name="type.railway.tram.bridge">Trikkebru</string>
     <string name="type.railway.tram.tunnel">Trikketunnel</string>
+    <string name="type.amenity.animal_shelter">Dyrehjem</string>
+    <string name="type.amenity.vending_machine">Automat</string>
+    <string name="type.landuse.orchard">Frukthage</string>
+    <string name="type.highway.services">Service-område</string>
+    <string name="type.railway.narrow_gauge.bridge">Smalsporet jernbanebru</string>
+    <string name="type.railway.narrow_gauge.tunnel">Smalsporet jernbanetunnel</string>
+    <string name="type.leisure.slipway">Slipp</string>
 </resources>
