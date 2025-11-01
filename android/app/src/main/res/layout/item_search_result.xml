@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
+  android:orientation="vertical">
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
   android:background="?selectableItemBackground"
   android:minHeight="@dimen/search_item_height"
-  android:padding="@dimen/margin_base"
+  android:padding="@dimen/margin_half_double_plus"
   tools:background="#20FF0000">
 
   <com.google.android.material.textview.MaterialTextView
@@ -71,3 +75,5 @@
     android:textColor="?colorSecondary"
     tools:text="500 km"/>
 </RelativeLayout>
+    <include layout="@layout/item_divider" />
+</LinearLayout>
