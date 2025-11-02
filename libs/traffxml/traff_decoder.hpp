@@ -325,6 +325,18 @@ public:
     RoutingTraffDecoder & m_decoder;
   };
 
+  struct JunctionCandidateInfo
+  {
+    JunctionCandidateInfo(double weight)
+      : m_weight(weight)
+    {}
+
+    double m_weight;
+    size_t m_segmentsIn = 0;
+    size_t m_segmentsOut = 0;
+    size_t m_twoWaySegments = 0;
+  };
+
   RoutingTraffDecoder(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
                       const CountryParentNameGetterFn & countryParentNameGetter,
                       std::map<std::string, traffxml::TraffMessage> & messageCache);
@@ -468,6 +480,36 @@ private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
 
   /**
+   * @brief Populates the list of candidates for junction points.
+   *
+   * If the location has a fuzziness of `LowRes`, the map is searched for candidates around the
+   * `from` and `to` points, which are taken from the `m_location` member of `m_message`. The weight
+   * for each candidate is calculated based on its distance from the reference point and the match
+   * between the attributes of the segment and the location. Since junction points are part of
+   * multiple segments, the best match wins. Candidates and their weight are stored in
+   * `m_startJunctions` and `m_endJunctions`.
+   *
+   * If the location’s fuzziness attribute is empty or does not equal `LowRes`, `m_startJunctions`
+   * and `m_endJunctions` are cleared.
+   */
+  void GetJunctionPointCandidates();
+
+  /**
+   * @brief Populates a list of candidates for junction points.
+   *
+   * Implementation for `GetJunctionPointCandidates()`. The map is searched for candidates around
+   * `point`. The weight for each candidate is calculated based on its distance from `point` and
+   * the match between the attributes of the segment and the location of `m_message`. Since junction
+   * points are part of multiple segments, the best match wins. Candidates and their weight are
+   * stored in `junctions`.
+   *
+   * @param point The reference point
+   * @param junctions Receives a list of junction candidates with their weight
+   */
+  void GetJunctionPointCandidates(Point const & point,
+                                  std::map<m2::PointD, double> & junctions);
+
+  /**
    * @brief Mutex for access to shared members.
    *
    * This is to prevent adding newly-registered maps while the router is in use.
@@ -481,6 +523,22 @@ private:
   std::shared_ptr<routing::NumMwmIds> m_numMwmIds = std::make_shared<routing::NumMwmIds>();
   std::unique_ptr<routing::IRouter> m_router;
   std::optional<traffxml::TraffMessage> m_message = std::nullopt;
+
+  /**
+   * @brief Junction points near start of location, with their associated offroad weight.
+   *
+   * If the list is empty, no junction alignment at the `from` point will be done and decoding
+   * relies solely on point coordinates.
+   */
+  std::map<m2::PointD, double> m_startJunctions;
+
+  /**
+   * @brief Junction points near end of location, with their associated offroad weight.
+   *
+   * If the list is empty, no junction alignment at the `to` point will be done and decoding
+   * relies solely on point coordinates.
+   */
+  std::map<m2::PointD, double> m_endJunctions;
 
   /**
    * @brief The road ref of `m_message`, parsed with `ParseRef()`

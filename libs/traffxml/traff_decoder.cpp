@@ -21,7 +21,9 @@
 #include "routing/maxspeeds.hpp"
 #include "routing/route.hpp"
 #include "routing/router_delegate.hpp"
+#include "routing/routing_helpers.hpp"
 
+#include "routing_common/car_model.hpp"
 #include "routing_common/maxspeed_conversion.hpp"
 
 #include "storage/routing_helpers.hpp"
@@ -90,6 +92,11 @@ auto constexpr kAttributePenalty = 4;
  * Penalty factor for partially matching attributes
  */
 auto constexpr kReducedAttributePenalty = 2;
+
+/*
+ * Radius around reference point in which to search for junctions
+ */
+auto constexpr kJunctionPointRadius = 500.0;
 
 /*
  * Maximum distance in meters from location endpoint at which a turn penalty is applied
@@ -583,11 +590,65 @@ double RoutingTraffDecoder::TraffEstimator::GetFerryLandingPenalty(Purpose /* pu
 double RoutingTraffDecoder::TraffEstimator::CalcOffroad(ms::LatLon const & from, ms::LatLon const & to,
                                   Purpose /* purpose */) const
 {
-  double result = ms::DistanceOnEarth(from, to);
+  /*
+   * Usage of this method is not quite clear. For some locations this method never gets called.
+   * There is also no clear pattern in which of the two arguments is the reference point and which
+   * is part of a segment. Either reference point can appear as either argument for either direction,
+   * nothing to infer from a particular reference point appearing in a particular argument.
+   */
 
-  result *= kOffroadPenalty;
+  double defaultWeight = ms::DistanceOnEarth(from, to) * kOffroadPenalty;
 
-  return result;
+  /*
+   * Retrieves offroad weight from the junctions map supplied, if found, or default.
+   *
+   * Bugs: Due to back-and-forth conversion of `roadPoint` from Mercator to WGS84 and back, it may
+   * no longer match its counterpart in `junctions` (near-miss).
+   *
+   * Tests showed very few actual matches. Extending this logic to return near-matches did return
+   * some more, but still relatively few. This may be due to the way fake segments are chosen.
+   *
+   * refPoint: point from TraFF location
+   * roadPoint: point on segment
+   * junctions: known junctions for `refPoint`
+   *
+   * Returns: reduced offroad weight from table, or default offroad weight if not found
+   */
+  auto const getOffroadFromJunction = [defaultWeight](ms::LatLon const & refPoint,
+      ms::LatLon const & roadPoint,
+      std::map<m2::PointD, double> const & junctions)
+  {
+    m2::PointD m2RoadPoint = mercator::FromLatLon(roadPoint);
+    auto it = junctions.find(m2RoadPoint);
+    if (it != junctions.end())
+      return it->second;
+    // TODO this is likely an inefficient way to return near-matches
+    for (auto & [point, weight] : junctions)
+      if (m2RoadPoint.EqualDxDy(point, kMwmPointAccuracy))
+        return weight;
+    return defaultWeight;
+  };
+
+  /*
+   * If one of from/to is a reference point and the other is in the corresponding junction map,
+   * return the weight from the map
+   */
+  if (m_decoder.m_message.value().m_location.value().m_from)
+  {
+    if (m_decoder.m_message.value().m_location.value().m_from.value().m_coordinates == from)
+      return getOffroadFromJunction(from, to, m_decoder.m_startJunctions);
+    else if (m_decoder.m_message.value().m_location.value().m_from.value().m_coordinates == to)
+      return getOffroadFromJunction(to, from, m_decoder.m_startJunctions);
+  }
+  if (m_decoder.m_message.value().m_location.value().m_to)
+  {
+    if (m_decoder.m_message.value().m_location.value().m_to.value().m_coordinates == from)
+      return getOffroadFromJunction(from, to, m_decoder.m_endJunctions);
+    else if (m_decoder.m_message.value().m_location.value().m_to.value().m_coordinates == to)
+      return getOffroadFromJunction(to, from, m_decoder.m_endJunctions);
+  }
+
+  return defaultWeight;
 }
 
 /*
@@ -1145,11 +1206,106 @@ void RoutingTraffDecoder::DecodeLocation(traffxml::TraffMessage & message, traff
   else
     m_roadRef.clear();
 
+  GetJunctionPointCandidates();
+
   int dirs = (message.m_location.value().m_directionality == Directionality::BothDirections) ? 2 : 1;
   for (int dir = 0; dir < dirs; dir++)
     DecodeLocationDirection(message, decoded, dir == 0 ? false : true /* backwards */);
 
   m_message = std::nullopt;
+  m_roadRef.clear();
+}
+
+void RoutingTraffDecoder::GetJunctionPointCandidates()
+{
+  m_startJunctions.clear();
+  m_endJunctions.clear();
+
+  if (m_message.value().m_location.value().m_fuzziness
+      && (m_message.value().m_location.value().m_fuzziness.value() == traffxml::Fuzziness::LowRes))
+  {
+    if (m_message.value().m_location.value().m_from)
+      GetJunctionPointCandidates(m_message.value().m_location.value().m_from.value(), m_startJunctions);
+    if (m_message.value().m_location.value().m_to)
+      GetJunctionPointCandidates(m_message.value().m_location.value().m_to.value(), m_endJunctions);
+  }
+}
+
+void RoutingTraffDecoder::GetJunctionPointCandidates(Point const & point,
+                                                     std::map<m2::PointD, double> & junctions)
+{
+  m2::PointD const m2Point = mercator::FromLatLon(point.m_coordinates);
+  std::map<m2::PointD, JunctionCandidateInfo> pointCandidates;
+  auto const selectCandidates = [&m2Point, &pointCandidates, this](FeatureType & ft)
+  {
+    ft.ParseGeometry(FeatureType::BEST_GEOMETRY);
+    if (ft.GetGeomType() != feature::GeomType::Line || !routing::IsRoad(feature::TypesHolder(ft)))
+      return;
+
+    for (auto i : {size_t(0), ft.GetPointsCount() - 1})
+    {
+      double weight = mercator::DistanceOnEarth(m2Point, ft.GetPoint(i));
+
+      // TODO make junction point radius dependent on distance between reference points
+      if (weight > kJunctionPointRadius)
+        continue;
+
+      weight *= GetHighwayTypePenalty(routing::CarModel::AllLimitsInstance().GetHighwayType(feature::TypesHolder(ft)),
+                                      m_message.value().m_location.value().m_roadClass,
+                                      m_message.value().m_location.value().m_ramps);
+
+      auto refs = ftypes::GetRoadShieldsNames(ft);
+      weight *= GetRoadRefPenalty(refs);
+
+      /*
+       * Store candidate point and weight (unless we already have a lower weight).
+       * These are points read directly from the map, so we should be able to work with true matches
+       * (according to tests, near-matches are rare and the one we examined was close to the
+       * tolerance limit, so it could have been accidental).
+       */
+      auto it = pointCandidates.find(ft.GetPoint(i));
+      if (it == pointCandidates.end())
+        it = pointCandidates.insert(std::make_pair(ft.GetPoint(i), JunctionCandidateInfo(weight))).first;
+      else if (weight < it->second.m_weight)
+        it->second.m_weight = weight;
+
+      // check oneway attribute and increase appropriate segment count
+      if (!ftypes::IsOneWayChecker::Instance()(ft))
+        it->second.m_twoWaySegments++;
+      else if (i == 0)
+        it->second.m_segmentsOut++;
+      else
+        it->second.m_segmentsIn++;
+    }
+  };
+
+  m_dataSource.ForEachInRect(selectCandidates, mercator::RectByCenterXYAndSizeInMeters(m2Point, kJunctionPointRadius),
+                             scales::GetUpperScale());
+
+  /*
+   * Cycle through point candidates and see if they are really junctions. A point is a junction if
+   * it can be left through more than one segment, other than the one through which it was reached,
+   * or reached through more than one segment, other than the one through which it will be left.
+   * Junctions are added to `junctions`, other points are skipped.
+   * Bug: may fail to catch duplicate ways at MWM boundaries
+   */
+  for (auto & [candidatePoint, candidateInfo] : pointCandidates)
+  {
+    if (candidateInfo.m_segmentsIn > 0)
+      candidateInfo.m_segmentsIn--;
+    else if (candidateInfo.m_twoWaySegments > 0)
+      candidateInfo.m_twoWaySegments--;
+
+    if (candidateInfo.m_segmentsOut > 0)
+      candidateInfo.m_segmentsOut--;
+    else if (candidateInfo.m_twoWaySegments > 0)
+      candidateInfo.m_twoWaySegments--;
+
+    if ((candidateInfo.m_segmentsIn > 0)
+        || (candidateInfo.m_segmentsOut > 0)
+        || (candidateInfo.m_twoWaySegments > 0))
+      junctions.insert(std::make_pair(candidatePoint, candidateInfo.m_weight));
+  }
 }
 
 traffxml::RoadClass GetRoadClass(routing::HighwayType highwayType)
