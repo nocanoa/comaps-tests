@@ -94,9 +94,15 @@ auto constexpr kAttributePenalty = 4;
 auto constexpr kReducedAttributePenalty = 2;
 
 /*
- * Radius around reference point in which to search for junctions
+ * Lower boundary for radius around endpoint in which to search for junctions, in meters
+ * (unless the lower boundary exceeds half the distance between endpoints)
  */
-auto constexpr kJunctionPointRadius = 500.0;
+auto constexpr kJunctionRadiusMin = 300.0;
+
+/*
+ * Upper boundary for radius around endpoint in which to search for junctions, in meters
+ */
+auto constexpr kJunctionRadiusMax = 500.0;
 
 /*
  * Maximum distance in meters from location endpoint at which a turn penalty is applied
@@ -1224,6 +1230,28 @@ void RoutingTraffDecoder::GetJunctionPointCandidates()
   if (m_message.value().m_location.value().m_fuzziness
       && (m_message.value().m_location.value().m_fuzziness.value() == traffxml::Fuzziness::LowRes))
   {
+    /*
+     * Identify coordinates of location endpoints and of the turn, and determine distance.
+     */
+    ms::LatLon from = m_message.value().m_location.value().m_from
+        ? m_message.value().m_location.value().m_from.value().m_coordinates
+            : m_message.value().m_location.value().m_at.value().m_coordinates;
+    ms::LatLon to = m_message.value().m_location.value().m_to
+        ? m_message.value().m_location.value().m_to.value().m_coordinates
+            : m_message.value().m_location.value().m_at.value().m_coordinates;
+
+    auto dist = ms::DistanceOnEarth(from, to);
+
+    m_junctionRadius = dist / 3.0f;
+    if (m_junctionRadius > kJunctionRadiusMax)
+      m_junctionRadius = kJunctionRadiusMax;
+    else if (m_junctionRadius < kJunctionRadiusMin)
+    {
+      m_junctionRadius = dist / 2.0f;
+      if (m_junctionRadius > kJunctionRadiusMin)
+        m_junctionRadius = kJunctionRadiusMin;
+    }
+
     if (m_message.value().m_location.value().m_from)
       GetJunctionPointCandidates(m_message.value().m_location.value().m_from.value(), m_startJunctions);
     if (m_message.value().m_location.value().m_to)
@@ -1246,8 +1274,7 @@ void RoutingTraffDecoder::GetJunctionPointCandidates(Point const & point,
     {
       double weight = mercator::DistanceOnEarth(m2Point, ft.GetPoint(i));
 
-      // TODO make junction point radius dependent on distance between reference points
-      if (weight > kJunctionPointRadius)
+      if (weight > m_junctionRadius)
         continue;
 
       weight *= GetHighwayTypePenalty(routing::CarModel::AllLimitsInstance().GetHighwayType(feature::TypesHolder(ft)),
@@ -1279,7 +1306,7 @@ void RoutingTraffDecoder::GetJunctionPointCandidates(Point const & point,
     }
   };
 
-  m_dataSource.ForEachInRect(selectCandidates, mercator::RectByCenterXYAndSizeInMeters(m2Point, kJunctionPointRadius),
+  m_dataSource.ForEachInRect(selectCandidates, mercator::RectByCenterXYAndSizeInMeters(m2Point, m_junctionRadius),
                              scales::GetUpperScale());
 
   /*

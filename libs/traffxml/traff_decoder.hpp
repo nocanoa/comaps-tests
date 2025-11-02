@@ -541,6 +541,16 @@ private:
   std::map<m2::PointD, double> m_endJunctions;
 
   /**
+   * @brief Radius around reference points in which to search for junctions.
+   *
+   * Determined dynamically, based on distance between reference points.
+   * Maximum distance is never more than half the distance between endpoints.
+   * It should be between `kJunctionRadiusMin` and `kJunctionRadiusMax`, and as close as possible to
+   * 1/3 the distance.
+   */
+  double m_junctionRadius;
+
+  /**
    * @brief The road ref of `m_message`, parsed with `ParseRef()`
    */
   std::vector<std::string> m_roadRef;
