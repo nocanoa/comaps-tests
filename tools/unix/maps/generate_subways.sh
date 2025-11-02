@@ -32,6 +32,8 @@ export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 
 # cd to subways repo so relative paths work in the script
 pushd "$SUBWAYS_REPO_PATH"
+echo "Running process_subways.sh:"
+ls -al
 ./scripts/process_subways.sh # 2>&1 | tee "$SUBWAYS_LOG"
 popd
 

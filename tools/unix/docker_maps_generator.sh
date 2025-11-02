@@ -70,12 +70,6 @@ python3 -m venv /tmp/venv
 echo "<$(date +%T)> Copying map generator INI..."
 cp var/etc/map_generator.ini.prod var/etc/map_generator.ini
 
-#TODO: may be duplicated by maps_generator at "osmctools are not found, building from the sources"
-#echo "<$(date +%T)> Prebuild some tools so we can make an o5m file or run update_planet..."
-#cd /root/OM/comaps-init/tools/osmctools
-#gcc osmupdate.c -l z -o ~/OM/osmctools/osmupdate
-#gcc osmconvert.c -l z -o ~/OM/osmctools/osmconvert
-
 # May be unnecessary when running world
 # /tmp/venv/bin/python -m maps_generator --coasts
 # save to /path/to/coasts WorldCoasts.geom as latest_coasts.geom and WorldCoasts.rawgeom latest_coasts.rawgeom
@@ -96,7 +90,7 @@ fi
 # (rename us-west-latest to planet-latest and edit the md5 file accordingly)
 if [ ! -f planet.o5m ]; then
   echo "<$(date +%T)> Converting planet-latest.osm.pbf to planet.o5m..."
-  ~/OM/osmctools/osmconvert planet-latest.osm.pbf -o=planet.o5m
+  osmconvert planet-latest.osm.pbf -o=planet.o5m
 else
   echo "<$(date +%T)> planet.o5m exists, not converting..."
 fi
@@ -112,53 +106,6 @@ cd /root/OM/comaps-init/tools/python
 #/tmp/venv/bin/python -m maps_generator --countries="World, WorldCoasts, US_Oregon_*, US_California_*, US_Washington_*" --production
 #/tmp/venv/bin/python -m maps_generator --countries="US_Oregon_Portland" --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --countries="Macedonia" --skip="MwmDiffs"
-
-# shopt -s nullglob
-# buildfolder=$(find ~/OM/maps_build/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f5)
-# builddate=$(find ~/OM/maps_build/*/ -mindepth 1 -maxdepth 1 -iname 2* -type d | sort -n -r | head -1 | cut -d/ -f6)
-# mwmfiles=( ~/OM/maps_build/$buildfolder/$builddate/*.mwm )
-
-# if (( ${#mwmfiles[@]} )); then
-#   echo "<$(date +%T)> Uploading maps to sftp..."
-#   # upload limited files via SFTP to Dreamhost (cdn-us-1.comaps.app)
-#   # Needs StrictHostKeyChecking=no otherwise new containers/SFTP_HOSTs will require a manual ssh attempt
-# sshpass -p $SFTP_PASSWORD sftp -o StrictHostKeyChecking=no $SFTP_USER@$SFTP_HOST:$SFTP_PATH <<EOF
-#   lcd ~/OM/maps_build/$buildfolder/$builddate
-#   mkdir maps/$builddate
-#   cd maps/$builddate
-#   put countries.txt
-#   put World.mwm
-#   put WorldCoasts.mwm
-#   cd ..
-#   rm latest
-#   ln -s $builddate latest
-#   cd ..
-#   lcd /home/planet/subway/
-#   put subway.json
-#   put subway.log
-#   put subway.transit.json
-#   lcd /home/planet/subway/subway/validator
-#   rm subway/js/*
-#   rmdir subway/js
-#   rm subway/*
-#   rmdir subway
-#   mkdir subway
-#   cd subway
-#   put *
-#   exit
-# EOF
-
-  # upload all files via rclone to Cloudflare (R2)
-  # echo "<$(date +%T)> Uploading maps to cloudflare..."
-  # rclone --progress copy ~/OM/maps_build/$buildfolder/$builddate r2:$S3_BUCKET/maps/$builddate/
-
-# else
-#   echo "<$(date +%T)> No MWM files in ~/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
-#   echo "<$(date +%T)> Found: $(ls -alt ~/OM/osm-maps/*)"
-# fi
-
-# echo "<$(date +%T)> Temporarily NOT Removing intermediate data..."
-#rm -rf ~/OM/osm-maps/*/intermediate_data
 
 echo "<$(date +%T)> DONE"
 

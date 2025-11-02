@@ -78,11 +78,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -102,11 +103,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -148,11 +150,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -195,11 +198,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -248,15 +252,15 @@ jobs:
         run: |
           cd /root/OM/comaps-init/
           ./tools/unix/build_omim.sh -R topography_generator_tool
-          rm -rf ../osm-planet/isolines/
-          mkdir ../osm-planet/isolines/
+          rm -rf /home/planet/isolines/
+          mkdir /home/planet/isolines/
           ../omim-build-relwithdebinfo/topography_generator_tool \
           --profiles_path=./data/conf/isolines/isolines-profiles.json \
           --countries_to_generate_path=./data/conf/isolines/countries-to-generate.json \
-          --tiles_isolines_out_dir=../osm-planet/isolines/tmp-tiles/ \
-          --countries_isolines_out_dir=../osm-planet/isolines/ \
+          --tiles_isolines_out_dir=/home/planet/isolines/tmp-tiles/ \
+          --countries_isolines_out_dir=/home/planet/isolines/ \
           --data_dir=./data/ \
-          --srtm_path=../osm-planet/SRTM-patched-europe/ \
+          --srtm_path=/home/planet/SRTM-patched-europe/ \
           --threads=22
 
   update-subways:
@@ -266,11 +270,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -295,11 +300,11 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
         - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
@@ -362,11 +367,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
       options: --ulimit nofile=262144:262144
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
@@ -428,8 +434,7 @@ jobs:
       # - name: Symlink paths for repo scripts
       #   shell: bash
       #   run: |
-      #     mkdir -p /root/OM
-      #     ln -s /media/4tbexternal/omim-build-release /root/OM/omim-build-release
+      #     mkdir -p /root/OM/omim-build-release /root/OM/omim-build-release
       #     ln -s /root/OM/comaps-init /root/OM/organicmaps
       #     ln -s /root/OM/comaps-init /root/OM/comaps-init
       #     ln -s /home/planet /home/planet
@@ -448,12 +453,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:latest
       volumes:
-        - /mnt/4tbexternal:/media/4tbexternal
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-      options: --ulimit nofile=262144:262144
+        - /mnt/4tbexternal/subways:/root/OM/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
