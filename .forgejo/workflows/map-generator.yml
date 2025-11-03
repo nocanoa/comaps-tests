@@ -34,7 +34,7 @@ jobs:
     name: Clone Git Repos
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal:/mnt/4tbexternal
     concurrency:
@@ -76,7 +76,7 @@ jobs:
     name: Copy Previously Generated Coasts
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -101,7 +101,7 @@ jobs:
     name: Update Planet
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -148,7 +148,7 @@ jobs:
     name: Update Wikipedia
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -196,7 +196,7 @@ jobs:
     name: Update Isolines
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -268,7 +268,7 @@ jobs:
     name: Update Subways
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -298,7 +298,7 @@ jobs:
     name: Update TIGER
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -365,7 +365,7 @@ jobs:
     runs-on: mapfilemaker
     timeout-minutes: 40320
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
@@ -451,7 +451,7 @@ jobs:
     name: Upload Maps
     runs-on: mapfilemaker
     container:
-      image: codeberg.org/comaps/maps_generator:latest
+      image: codeberg.org/comaps/maps_generator:dd231b2b8703
       volumes:
         - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
         - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
