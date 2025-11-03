@@ -16,6 +16,7 @@ RUN apt-get update -qq \
     jq \
     libc++-dev \
     libfreetype-dev \
+    libgeos-dev \
     libgl1-mesa-dev \
     libglvnd-dev \
     libharfbuzz-dev \
