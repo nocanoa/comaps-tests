@@ -30,9 +30,11 @@ on:
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
 env:
+  RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
   WIKIMEDIA_USERNAME: ${{ secrets.WIKIMEDIA_USERNAME }}
   WIKIMEDIA_PASSWORD: ${{ secrets.WIKIMEDIA_PASSWORD }}
-  RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+  ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+  ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
   DEBIAN_FRONTEND: noninteractive
   TZ: Etc/UTC 
 
@@ -133,13 +135,6 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -y
-      #     apt-get install -y pyosmium osmium-tool osmctools python3-venv python3-pip wget2
-      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-      #     pip3 install "protobuf<4"
       - name: Download Planet File if Absent
         shell: bash
         run: |
@@ -162,6 +157,14 @@ jobs:
           cd /home/planet/planet/
           osmconvert planet-latest.osm.pbf -o=planet.o5m
           echo "Done."
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Planet update is done!'
 
   wiki-update:
     if: inputs.jobs == 'wiki' || inputs.jobs == 'all'
@@ -180,11 +183,6 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -y
-      #     apt-get install -y jq curl wget wget2 rustc cargo git ca-certificates
       - name: Check for planet file
         shell: bash
         run: |
@@ -266,12 +264,6 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -qq && apt-get install -y --no-install-recommends curl osmctools osmium-tool python3-venv ca-certificates git python3-pip
-      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-      #     pip3 install "protobuf<4"
       - name: Update Subways
         shell: bash
         run: |
@@ -296,38 +288,6 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -qq && apt-get install -y --no-install-recommends \
-      #     build-essential \
-      #     clang \
-      #     cmake \
-      #     ninja-build \
-      #     ca-certificates \
-      #     qt6-base-dev \
-      #     qt6-positioning-dev \
-      #     libc++-dev \
-      #     libfreetype-dev \
-      #     libglvnd-dev \
-      #     libgl1-mesa-dev \
-      #     libharfbuzz-dev \
-      #     libicu-dev \
-      #     libqt6svg6-dev \
-      #     libqt6positioning6-plugins \
-      #     libqt6positioning6 \
-      #     libsqlite3-dev \
-      #     libxrandr-dev \
-      #     libxinerama-dev \
-      #     libxcursor-dev \
-      #     libxi-dev \
-      #     zlib1g-dev \
-      #     python3 \
-      #     python3-pip \
-      #     git \
-      #     wget2
-      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-      #     pip3 install "protobuf<4"
       - name: Build address_parser
         shell: bash
         run: |
@@ -364,46 +324,6 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -qq \
-      #     && apt-get install -y --no-install-recommends \
-      #     curl \
-      #     osmctools \
-      #     rclone \
-      #     git \
-      #     ca-certificates \
-      #     openssh-client \
-      #     sshpass \
-      #     vim \
-      #     wget \
-      #     build-essential \
-      #     clang \
-      #     cmake \
-      #     ninja-build \
-      #     python3 \
-      #     python3-pip \
-      #     python3.12-venv \
-      #     qt6-base-dev \
-      #     qt6-positioning-dev \
-      #     libc++-dev \
-      #     libfreetype-dev \
-      #     libglvnd-dev \
-      #     libgl1-mesa-dev \
-      #     libharfbuzz-dev \
-      #     libicu-dev \
-      #     libqt6svg6-dev \
-      #     libqt6positioning6-plugins \
-      #     libqt6positioning6 \
-      #     libsqlite3-dev \
-      #     libxrandr-dev \
-      #     libxinerama-dev \
-      #     libxcursor-dev \
-      #     libxi-dev \
-      #     zlib1g-dev
-      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-      #     pip3 install "protobuf<4"
       - name: Make output folders if necessary
         shell: bash
         run: |
@@ -417,20 +337,19 @@ jobs:
           echo "ERROR: NO SRTM"
           exit 1
           fi
-      # - name: Symlink paths for repo scripts
-      #   shell: bash
-      #   run: |
-      #     mkdir -p /root/OM/omim-build-release /root/OM/omim-build-release
-      #     ln -s /root/OM/comaps-init /root/OM/organicmaps
-      #     ln -s /root/OM/comaps-init /root/OM/comaps-init
-      #     ln -s /home/planet /home/planet
-      #     ln -s /root/OM/osm-maps /root/OM/maps_build
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
           cd /root/OM/comaps-init
           ./tools/unix/docker_maps_generator.sh
-
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Generator is done!'
 
   upload-maps:
     if: inputs.jobs == 'upload' || inputs.jobs == 'all'
@@ -471,5 +390,13 @@ jobs:
             echo "<$(date +%T)> Found top level: $(ls -alt /root/OM/osm-maps/*)"
             echo "<$(date +%T)> Found second level: $(ls -alt /root/OM/osm-maps/$buildfolder/*)"
           fi
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Upload is done!'
 
           
