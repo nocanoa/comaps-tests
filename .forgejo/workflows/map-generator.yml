@@ -18,6 +18,14 @@ on:
           - tiger
           - maps
           - upload
+      reclone:
+        description: 'Force a re-clone of all git repos?'
+        required: false
+        default: 'no'
+        type: choice
+        options:
+          - 'no'
+          - force
 
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
@@ -46,6 +54,10 @@ jobs:
         run: |
           ls -al /mnt
           ls -al /mnt/4tbexternal
+          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          rm -rf /mnt/4tbexternal/comaps-init
+          fi
+
           if [ ! -d /mnt/4tbexternal/comaps-init ]; then
           cd /mnt/4tbexternal
           git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
@@ -55,6 +67,10 @@ jobs:
       - name: Clone or update wikiparser repo if necessary
         shell: bash
         run: |
+          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          rm -rf /mnt/4tbexternal/wikiparser
+          fi
+
           if [ ! -d /mnt/4tbexternal/wikiparser ]; then
           cd /mnt/4tbexternal
           git clone https://codeberg.org/comaps/wikiparser.git
@@ -64,6 +80,10 @@ jobs:
       - name: Clone or update subways repo if necessary
         shell: bash
         run: |
+          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          rm -rf /mnt/4tbexternal/subways
+          fi
+
           if [ ! -d /mnt/4tbexternal/subways ]; then
           cd /mnt/4tbexternal
           git clone https://codeberg.org/comaps/subways.git
