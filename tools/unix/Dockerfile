@@ -36,6 +36,8 @@ RUN apt-get update -qq \
     python3 \
     python3-pip \
     python3-venv \
+    python-is-python3 \
+    python3-dev \
     qt6-base-dev \
     qt6-positioning-dev \
     rclone \
