@@ -179,6 +179,8 @@ jobs:
         run: |
           #todo: curl in download.sh can fail when rate limited and even save error messages to the output. need to validate.
           #downloading all languages can also trigger rate limits or fail as well. needs work.
+          #also: a failure to download means a failure to build, and could result in no wiki descriptions etc.
+          #also-also: do we want to remove old wiki data in planet between builds?
           mkdir -p /home/planet/wikipedia/dumps
           mkdir -p /home/planet/wikipedia/build
           cd /root/OM/wikiparser
@@ -209,45 +211,8 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      # - name: Install dependencies
-      #   shell: bash
-      #   run: |
-      #     apt-get update -qq \
-      #     && apt-get install -y --no-install-recommends \
-      #     curl \
-      #     osmctools \
-      #     rclone \
-      #     git \
-      #     ca-certificates \
-      #     openssh-client \
-      #     sshpass \
-      #     vim \
-      #     wget \
-      #     build-essential \
-      #     clang \
-      #     cmake \
-      #     python3 \
-      #     python3-pip \
-      #     python3.12-venv \
-      #     qt6-base-dev \
-      #     qt6-positioning-dev \
-      #     libc++-dev \
-      #     libfreetype-dev \
-      #     libglvnd-dev \
-      #     libgl1-mesa-dev \
-      #     libharfbuzz-dev \
-      #     libicu-dev \
-      #     libqt6svg6-dev \
-      #     libqt6positioning6-plugins \
-      #     libqt6positioning6 \
-      #     libsqlite3-dev \
-      #     libxrandr-dev \
-      #     libxinerama-dev \
-      #     libxcursor-dev \
-      #     libxi-dev \
-      #     zlib1g-dev
-      #     rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-      #     pip3 install "protobuf<4"
+      # TODO: we only need to update these if our SRTM or countries change
+      # TODO: after update, verify that sizable files exist: /home/planet/isolines/*.isolines
       - name: Update Isolines
         shell: bash
         run: |
