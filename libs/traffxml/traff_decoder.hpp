@@ -471,10 +471,10 @@ protected:
    *
    * @param rsegments The segments of the route
    * @param checkpoints The reference points (at least two)
-   * @param toJunctions Whether the truncated route should begin and end at a junction
+   * @param backwards True when decoding the backward direction, false when decodign the forward direction.
    */
   void TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
-                     routing::Checkpoints const & checkpoints, bool toJunctions);
+                     routing::Checkpoints const & checkpoints, bool backwards);
 
 private:
   static void LogCode(routing::RouterResultCode code, double const elapsedSec);
@@ -596,11 +596,12 @@ std::vector<std::string> ParseRef(std::string const & ref);
  * @param checkpoints The reference points (at least two)
  * @param start Index of the first segment to keep
  * @param startSaving Cost saved by truncating
- * @param toJunction Whether the truncated route should start at a junction
+ * @param junctions Junctions with the weight of their leap segment
  */
 void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
                    routing::Checkpoints const & checkpoints,
-                   size_t & start, double & startSaving, bool toJunction);
+                   size_t & start, double & startSaving,
+                   std::map<m2::PointD, double> const & junctions);
 
 /**
  * @brief Calculates the segments to truncate at the start of the route.
@@ -615,9 +616,10 @@ void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
  * @param checkpoints The reference points (at least two)
  * @param end Index of the last segment to keep
  * @param endSaving Cost saved by truncating
- * @param toJunction Whether the truncated route should end at a junction
+ * @param junctions Junctions with the weight of their leap segment
  */
 void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
                  routing::Checkpoints const & checkpoints,
-                 size_t & end, double & endSaving, double const endWeight, bool ToJunction);
+                 size_t & end, double & endSaving, double const endWeight,
+                 std::map<m2::PointD, double> const & junctions);
 }  // namespace traffxml

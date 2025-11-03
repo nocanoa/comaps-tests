@@ -958,7 +958,7 @@ void RoutingTraffDecoder::AddDecodedSegment(traffxml::MultiMwmColoring & decoded
 }
 
 void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rsegments,
-                                        routing::Checkpoints const & checkpoints, bool toJunctions)
+                                        routing::Checkpoints const & checkpoints, bool backwards)
 {
   double const endWeight = rsegments.back().GetTimeFromBeginningSec();
 
@@ -981,8 +981,10 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
   // Cost saved by omitting the last `end` segments.
   double endSaving = 0;
 
-  TruncateStart(rsegments, checkpoints, start, startSaving, toJunctions);
-  TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight, toJunctions);
+  TruncateStart(rsegments, checkpoints, start, startSaving,
+                backwards ? m_endJunctions : m_startJunctions);
+  TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight,
+              backwards ? m_startJunctions : m_endJunctions);
 
   /*
    * If start <= end, we can truncate both ends at the same time.
@@ -1000,7 +1002,8 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
     rsegments.erase(rsegments.begin(), rsegments.begin() + start);
     end = rsegments.size() - 1;
     endSaving = 0;
-    TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight, toJunctions);
+    TruncateEnd(rsegments, checkpoints, end, endSaving, endWeight,
+                backwards ? m_startJunctions : m_endJunctions);
     rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
   }
   else
@@ -1009,7 +1012,8 @@ void RoutingTraffDecoder::TruncateRoute(std::vector<routing::RouteSegment> & rse
     rsegments.erase(rsegments.begin() + end + 1, rsegments.end());
     start = 0;
     startSaving = 0;
-    TruncateStart(rsegments, checkpoints, start, startSaving, toJunctions);
+    TruncateStart(rsegments, checkpoints, start, startSaving,
+                  backwards ? m_endJunctions : m_startJunctions);
     rsegments.erase(rsegments.begin(), rsegments.begin() + start);
   }
 }
@@ -1108,9 +1112,7 @@ void RoutingTraffDecoder::DecodeLocationDirection(traffxml::TraffMessage & messa
   {
     std::vector<routing::RouteSegment> rsegments(route->GetRouteSegments());
 
-    TruncateRoute(rsegments, checkpoints,
-                  message.m_location.value().m_fuzziness
-                  && (message.m_location.value().m_fuzziness.value() == traffxml::Fuzziness::LowRes));
+    TruncateRoute(rsegments, checkpoints, backwards);
 
     /*
      * `m_onRoundabout` is set only for the first segment after the junction. In order to identify
@@ -1489,13 +1491,38 @@ std::vector<std::string> ParseRef(std::string const & ref)
 
 void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
                    routing::Checkpoints const & checkpoints,
-                   size_t & start, double & startSaving, bool toJunction)
+                   size_t & start, double & startSaving,
+                   std::map<m2::PointD, double> const & junctions)
 {
+  if (rsegments.empty())
+    return;
+
   for (size_t i = 0; i < rsegments.size(); i++)
   {
-    double newStartSaving = rsegments[i].GetTimeFromBeginningSec()
-        - (mercator::DistanceOnEarth(checkpoints.GetStart(), rsegments[i].GetJunction().GetPoint())
-            * kOffroadPenalty);
+    double newStartSaving = 0;
+    /*
+     * Examine end point of segment: for a junction, take weight from table; else calculate it as
+     * direct distance multiplied with offroad penalty; calculate saving based on that.
+     */
+    auto it = junctions.find(rsegments[i].GetJunction().GetPoint());
+    if (it != junctions.end())
+      newStartSaving = rsegments[i].GetTimeFromBeginningSec() - it->second;
+    else
+    {
+      bool matched = false;
+      // TODO this is likely an inefficient way to return near-matches
+      for (auto & [point, weight] : junctions)
+        if (rsegments[i].GetJunction().GetPoint().EqualDxDy(point, kMwmPointAccuracy))
+        {
+          newStartSaving = rsegments[i].GetTimeFromBeginningSec() - weight;
+          matched = true;
+          break;
+        }
+      if (!matched)
+        newStartSaving = rsegments[i].GetTimeFromBeginningSec()
+            - (mercator::DistanceOnEarth(checkpoints.GetStart(), rsegments[i].GetJunction().GetPoint())
+                * kOffroadPenalty);
+    }
     if (newStartSaving > startSaving)
     {
       start = i + 1; // add 1 because we are ditching this segment and keeping the next one
@@ -1506,13 +1533,35 @@ void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
 
 void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
                  routing::Checkpoints const & checkpoints,
-                 size_t & end, double & endSaving, double const endWeight, bool toJunction)
+                 size_t & end, double & endSaving, double const endWeight,
+                 std::map<m2::PointD, double> const & junctions)
 {
   for (size_t i = 0; i < rsegments.size(); i++)
   {
-    double newEndSaving = endWeight - rsegments[i].GetTimeFromBeginningSec()
-        - (mercator::DistanceOnEarth(rsegments[i].GetJunction().GetPoint(), checkpoints.GetFinish())
-            * kOffroadPenalty);
+    double newEndSaving = 0;
+    /*
+     * Examine end point of segment: for a junction, take weight from table; else calculate it as
+     * direct distance multiplied with offroad penalty; calculate saving based on that.
+     */
+    auto it = junctions.find(rsegments[i].GetJunction().GetPoint());
+    if (it != junctions.end())
+      newEndSaving = endWeight - rsegments[i].GetTimeFromBeginningSec() - it->second;
+    else
+    {
+      bool matched = false;
+      // TODO this is likely an inefficient way to return near-matches
+      for (auto & [point, weight] : junctions)
+        if (rsegments[i].GetJunction().GetPoint().EqualDxDy(point, kMwmPointAccuracy))
+        {
+          newEndSaving = endWeight - rsegments[i].GetTimeFromBeginningSec() - weight;
+          matched = true;
+          break;
+        }
+      if (!matched)
+        newEndSaving = endWeight - rsegments[i].GetTimeFromBeginningSec()
+            - (mercator::DistanceOnEarth(rsegments[i].GetJunction().GetPoint(), checkpoints.GetFinish())
+                * kOffroadPenalty);
+    }
     if (newEndSaving > endSaving)
     {
       end = i;
