@@ -6,11 +6,11 @@
 #include <cstring>
 #include <iomanip>
 #include <optional>
-#include <regex>
 #include <type_traits>
 #include <utility>
 
 #include <boost/bimap.hpp>
+#include <boost/regex.hpp>
 
 #include <pugixml.hpp>
 
@@ -504,9 +504,9 @@ bool LatLonFromXml(pugi::xml_node const & node, ms::LatLon & latLon)
   std::string string;
   if (StringFromXml(node, string))
   {
-    std::regex latLonRegex("([+-]?[0-9]*\\.?[0-9]*)\\s+([+-]?[0-9]*\\.?[0-9]*)");
-    std::smatch latLonMatcher;
-    if (std::regex_search(string, latLonMatcher, latLonRegex) && latLonMatcher[1].matched && latLonMatcher[2].matched)
+    static boost::regex latLonRegex("([+-]?[0-9]*\\.?[0-9]*)\\s+([+-]?[0-9]*\\.?[0-9]*)");
+    boost::smatch latLonMatcher;
+    if (boost::regex_search(string, latLonMatcher, latLonRegex) && latLonMatcher[1].matched && latLonMatcher[2].matched)
     {
       try
       {
@@ -689,10 +689,10 @@ std::optional<uint16_t> OptionalDurationFromXml(pugi::xml_attribute const & attr
    * 1 h
    * 30 min
    */
-  std::regex durationRegex("(([0-9]+):([0-9]{2}))|(([0-9]+) *h)|(([0-9]+) *min)");
-  std::smatch durationMatcher;
+  static boost::regex durationRegex("(([0-9]+):([0-9]{2}))|(([0-9]+) *h)|(([0-9]+) *min)");
+  boost::smatch durationMatcher;
 
-  if (std::regex_search(durationString, durationMatcher, durationRegex))
+  if (boost::regex_search(durationString, durationMatcher, durationRegex))
   {
     if (!durationMatcher.str(2).empty() && !durationMatcher.str(3).empty())
       return std::stoi(durationMatcher[2]) * 60 + std::stoi(durationMatcher[3]);

@@ -3,13 +3,15 @@
 #include "base/logging.hpp"
 
 #include <iomanip>
-#include <regex>
+#include <unordered_map>
+
+#include <boost/regex.hpp>
 
 using namespace std;
 
 namespace traffxml
 {
-const std::map<EventType, traffic::SpeedGroup> kEventSpeedGroupMap{
+const std::unordered_map<EventType, traffic::SpeedGroup> kEventSpeedGroupMap{
   // TODO Activity*, Authority*, Carpool* (not in enum yet)
   {EventType::CongestionHeavyTraffic, traffic::SpeedGroup::G4},
   {EventType::CongestionLongQueue, traffic::SpeedGroup::G0},
@@ -54,7 +56,7 @@ const std::map<EventType, traffic::SpeedGroup> kEventSpeedGroupMap{
 
 // none of the currently define events imply an explicit maxspeed
 #if 0
-const std::map<EventType, uint8_t> kEventMaxspeedMap{
+const std::unordered_map<EventType, uint8_t> kEventMaxspeedMap{
   // TODO Activity*, Authority*, Carpool* (not in enum yet)
   // TODO Construction* (not in enum yet)
   // TODO Environment*, EquipmentStatus*, Hazard*, Incident* (not in enum yet)
@@ -63,7 +65,7 @@ const std::map<EventType, uint8_t> kEventMaxspeedMap{
 };
 #endif
 
-const std::map<EventType, uint16_t> kEventDelayMap{
+const std::unordered_map<EventType, uint16_t> kEventDelayMap{
   // TODO Activity*, Authority*, Carpool* (not in enum yet)
   // TODO Construction* (not in enum yet)
   //{EventType::DelayDelay, },             // mapped to speed group
@@ -121,10 +123,10 @@ std::optional<IsoTime> IsoTime::ParseIsoTime(std::string timeString)
    * 11: :00                        (UTC offset, minutes, prefixed with separator)
    * 12: 00                         (UTC offset, minutes, unsigned; blank for Z or if not specified)
    */
-  std::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(\\.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
+  static boost::regex iso8601Regex("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}(\\.[0-9]*)?)(Z|(([+-][0-9]{2})(:?([0-9]{2}))?))?");
 
-  std::smatch iso8601Matcher;
-  if (std::regex_search(timeString, iso8601Matcher, iso8601Regex))
+  boost::smatch iso8601Matcher;
+  if (boost::regex_search(timeString, iso8601Matcher, iso8601Regex))
   {
     int offset_h = iso8601Matcher[10].matched ? std::stoi(iso8601Matcher[10]) : 0;
     int offset_m = iso8601Matcher[12].matched ? std::stoi(iso8601Matcher[12]) : 0;
