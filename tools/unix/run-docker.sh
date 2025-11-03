@@ -29,7 +29,13 @@
 #cd /mnt/4tbexternal/comaps-init/tools/unix
 # Build with: docker build . -t maps_generator
 # (Good to rebuild each time just in case)
+# To push for ci/cd, tag for codeberg:
+#   docker login codeberg.org
+#   docker tag maps_generator codeberg.org/comaps/maps_generator:latest
+#   docker push codeberg.org/comaps/maps_generator:latest
+# You can also tag and push the image Id for posterity: codeberg.org/comaps/maps_generator:1234abcd
 # If you get a Dockerfile not found error especially on an XFS partition, try copying Dockerfile to an ext4 partition first.
+# Or use docker via apt instead of snap.
 #
 # Edit as appropriate and run with:
 # docker run \
