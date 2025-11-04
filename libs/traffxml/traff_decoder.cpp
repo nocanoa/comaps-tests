@@ -94,15 +94,19 @@ auto constexpr kAttributePenalty = 4;
 auto constexpr kReducedAttributePenalty = 2;
 
 /*
- * Lower boundary for radius around endpoint in which to search for junctions, in meters
- * (unless the lower boundary exceeds half the distance between endpoints)
+ * Lower and upper boundary for radius around endpoint in which to search for junctions, depending
+ * on the road class. Boundaries are in meters. If the lower boundary exceeds half the distance
+ * between endpoints, the latter is used instead.
  */
-auto constexpr kJunctionRadiusMin = 300.0;
-
-/*
- * Upper boundary for radius around endpoint in which to search for junctions, in meters
- */
-auto constexpr kJunctionRadiusMax = 500.0;
+const std::unordered_map<std::optional<RoadClass>, std::array<double, 2>> kJunctionRadiusBoundaries{
+  { RoadClass::Motorway, { {300.0, 500.0} } },
+  { RoadClass::Trunk, { {300.0, 500.0} } },
+  { RoadClass::Primary, { {200.0, 300.0} } },
+  { RoadClass::Secondary, { {200.0, 300.0} } },
+  { RoadClass::Tertiary, { {200.0, 300.0} } },
+  { RoadClass::Other, { {200.0, 300.0} } },
+  { std::nullopt, { {300.0, 500.0} } }
+};
 
 /*
  * Maximum distance in meters from location endpoint at which a turn penalty is applied
@@ -1244,14 +1248,16 @@ void RoutingTraffDecoder::GetJunctionPointCandidates()
 
     auto dist = ms::DistanceOnEarth(from, to);
 
+    auto bounds = kJunctionRadiusBoundaries.at(m_message.value().m_location.value().m_roadClass);
+
     m_junctionRadius = dist / 3.0f;
-    if (m_junctionRadius > kJunctionRadiusMax)
-      m_junctionRadius = kJunctionRadiusMax;
-    else if (m_junctionRadius < kJunctionRadiusMin)
+    if (m_junctionRadius > bounds[1])
+      m_junctionRadius = bounds[1];
+    else if (m_junctionRadius < bounds[0])
     {
       m_junctionRadius = dist / 2.0f;
-      if (m_junctionRadius > kJunctionRadiusMin)
-        m_junctionRadius = kJunctionRadiusMin;
+      if (m_junctionRadius > bounds[0])
+        m_junctionRadius = bounds[0];
     }
 
     if (m_message.value().m_location.value().m_from)
