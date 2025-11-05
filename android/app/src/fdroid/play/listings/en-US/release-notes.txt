@@ -1,7 +1,8 @@
+• OpenStreetMap data as of November 4
 • Recategorized map icons including some new colors for entertainment, sports and other businesses
 • Display info about available sockets on charging stations
-• Added icons for different sport centres, event venues, massage salons, guest houses and some disused businesses
-• Multiple search improvements
-• Fixed crash in search
-• Improved voice guidance during navigation (via OM project)
+• Added bandstands, backless benches and loungers
+• New icons for different sport centres, event venues, massage salons, guest houses and some disused businesses
+• Multiple search improvements and crash fix
+• Improved voice guidance during navigation
 Check our Codeberg release notes for more changes!

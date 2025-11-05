@@ -1,8 +1,8 @@
-• Données OpenStreetMap du 28 octobre
+• Données OpenStreetMap au 4 novembre
 • Recatégorisation des icônes sur la carte avec ajout de nouvelles couleurs pour certains types de lieux
 • Affichage des prises sur les bornes électriques
 • Ajout d'icônes pour les centres sportifs, salles d'événements, salon de massage et autres lieux
 • Multiple améliorations dans la recherche
 • Correction d'un plantage dans la recherche
-• Amélioration de la synthèse vocale durant la navigation (via le projet OM)
+• Amélioration de la synthèse vocale durant la navigation
 Plus d'informations sur notre Codeberg

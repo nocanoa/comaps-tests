@@ -1,7 +1,7 @@
-• Dados OSM de 28/10
+• Dados OSM de 04/11
 • Ícones do mapa recategorizados, incluindo novas cores
 • Exibição de informações sobre tomadas disponíveis em eletropostos
 • Adição de ícones para diferentes centros esportivos, locais de eventos, salões de massagem, pousadas e alguns estabelecimentos comerciais desativados
 • Diversas melhorias e correção de erro na busca
-• Melhoria na orientação por voz durante a navegação (via projeto OM)
+• Melhoria na orientação por voz durante a navegação
 Confira nossas notas de lançamento no Codeberg para mais detalhes!

@@ -1,7 +1,7 @@
-• Datos OSM del 28/10
+• Datos OSM del 04/11
 • Iconos del mapa recategorizados, incluyendo nuevos colores
 • Visualización de información sobre enchufes disponibles en estaciones de recarga
 • Adición de iconos para diferentes centros deportivos, lugares de eventos, salones de masajes, posadas y algunos establecimientos comerciales desactivados
 • Varias mejoras y correcciones de errores en la búsqueda
-• Mejora en la orientación por voz durante la navegación (via OM)
+• Mejora en la orientación por voz durante la navegación
 Más detalles en Codeberg

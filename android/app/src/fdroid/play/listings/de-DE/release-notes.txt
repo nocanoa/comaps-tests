@@ -1,8 +1,8 @@
-• OpenStreetMap-Daten vom 28. Oktober
+• OpenStreetMap-Daten vom 4. November
 • Aktualisierte Karten-Icons, inkl. Farben für Unterhaltungs-, Sport- & andere Unternehmen
 • Informationen zu Steckdosen an EV-Ladestationen
 • Symbole für Sportzentren, Veranstaltungsorte, Massagesalons, Gästehäuser und einige stillgelegte Unternehmen
 • Verbesserungen bei der Suche
 • Behebung eines Absturzes bei der Suche
-• Verbesserte Sprachführung während der Navigation (via OM)
+• Verbesserte Sprachführung während der Navigation
 Weitere Änderungen finden in unseren Codeberg-Versionshinweisen!
