@@ -1441,6 +1441,13 @@ line|z16[railway=tram]
 line|z17-[railway=tram]
 {width: 1; opacity: 1;}
 
+line|z15[railway=tram][tunnel?],
+{opacity:0.3}
+line|z16[railway=tram][tunnel?],
+{opacity:0.2}
+line|z17-[railway=tram][tunnel?],
+{opacity:0.1}
+
 /* 9.6 Funicular 12-22 ZOOM */
 
 line|z12[railway=funicular],
