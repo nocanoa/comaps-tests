@@ -23,6 +23,8 @@
   7.2 Residential, Road, Street tunnel 16-22 ZOOM
   7.3 Residential, Road, Street bridge 14-22 ZOOM
   7.4 Service 15-22 ZOOM
+  7.5 Service tunnel 16-22 ZOOM
+  7.6 Service bridge 15-22 ZOOM
 8.OTHERS ROADS 13-22 ZOOM
   8.1 Pedestrian & ford 13-22 ZOOM
   8.2 Pedestrian & ford tunnel 16-22 ZOOM
@@ -677,6 +679,41 @@ line|z19-[highway=service],
 line|z19-[highway=service][service=busway],
 line|z19-[highway=busway],
 {width: 4;}
+
+/* 7.5 Service tunnel 16-22 ZOOM */
+
+line|z15-[highway=service][tunnel?],
+line|z15-[highway=service][service=busway][tunnel?],
+line|z15-[highway=busway][tunnel?],
+{opacity: 0.7; casing-width: 1; casing-dashes: 5,5; color: @residential_tunnel; casing-linecap: butt; casing-color: @residential_tunnel_casing; casing-opacity: 0.7;}
+
+/* 7.6 Service bridge 15-22 ZOOM */
+
+line|z15-[highway=service][bridge?]::bridgewhite,
+line|z15-[highway=service][service=busway][bridge?]::bridgewhite,
+line|z15-[highway=busway][bridge?]::bridgewhite,
+{casing-width-add: 0;}
+line|z15-[highway=service][bridge?]::bridgewhite,
+line|z15-[highway=service][service=busway][bridge?]::bridgewhite,
+line|z15-[highway=busway][bridge?]::bridgewhite,
+{casing-width-add: 0.8;}
+line|z15-[highway=service][bridge?]::bridgewhite,
+line|z15-[highway=service][service=busway][bridge?]::bridgewhite,
+line|z15-[highway=busway][bridge?]::bridgewhite,
+{casing-width-add: 1;}
+
+line|z15-[highway=service][bridge?]::bridgeblack,
+line|z15-[highway=service][service=busway][bridge?]::bridgeblack,
+line|z15-[highway=busway][bridge?]::bridgeblack,
+{casing-width-add: 0.4;}
+line|z15-[highway=service][bridge?]::bridgeblack,
+line|z15-[highway=service][service=busway][bridge?]::bridgeblack,
+line|z15-[highway=busway][bridge?]::bridgeblack,
+{casing-width-add: 1.6;}
+line|z15-[highway=service][bridge?]::bridgeblack,
+line|z15-[highway=service][service=busway][bridge?]::bridgeblack,
+line|z15-[highway=busway][bridge?]::bridgeblack,
+{casing-width-add: 2;}
 
 /* 8.OTHERS ROADS 13-22 ZOOM */
 

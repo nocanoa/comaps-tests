@@ -736,10 +736,10 @@ highway-track-tunnel                                # pathtext z13- (also has li
 
 highway-service                                     # pathtext z16- (also has line z13-)
 highway-service-area                                # pathtext z16- (also has line z13-)
-highway-service-bridge                              # pathtext z16- (also has line z13-, line::bridgeblack z16-, line::bridgewhite z16-)
+highway-service-bridge                              # pathtext z16- (also has line z13-, line::bridgeblack z15-, line::bridgewhite z15-)
 highway-service-driveway                            # pathtext z16- (also has line z16-)
 highway-service-parking_aisle                       # pathtext z16- (also has line z15-)
-highway-service-tunnel                              # pathtext z16- (also has line z13-)
+highway-service-tunnel                              # pathtext z16- (also has line z13-, line(casing) z15-)
 piste:type-downhill                                 # pathtext z15- (also has line z12-)
 piste:type-downhill-advanced                        # pathtext z15- (also has line z12-)
 piste:type-downhill-easy                            # pathtext z15- (also has line z12-)
@@ -890,8 +890,8 @@ leisure-dog_park                                    # icon z16- (also has captio
 === 2300
 
 highway-busway                                      # pathtext z16- (also has line z15-)
-highway-busway-bridge                               # pathtext z16- (also has line z15-)
-highway-busway-tunnel                               # pathtext z16- (also has line z15-)
+highway-busway-bridge                               # pathtext z16- (also has line z15-, line::bridgeblack z15-, line::bridgewhite z15-)
+highway-busway-tunnel                               # pathtext z16- (also has line(casing) z15-, line z15-)
 === 2250
 
 amenity-clinic                                      # icon z17- (also has caption(optional) z17-, area z13-)
