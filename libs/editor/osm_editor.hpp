@@ -260,7 +260,7 @@ private:
 
   std::unique_ptr<editor::StorageBase> m_storage;
 
-  std::atomic<bool> m_isUploadingNow;
+  std::mutex m_uploadingEditsMutex;
 
   DECLARE_THREAD_CHECKER(MainThreadChecker);
 };  // class Editor
