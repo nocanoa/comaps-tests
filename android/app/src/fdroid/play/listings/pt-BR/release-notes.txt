@@ -1,10 +1,9 @@
-• Dados OSM de 6/09
-• Penalidades de conversão para bicicleta
-• Etiquetas de POI coloridas para o estilo do mapa de navegação de carros
-• Busca de POIs por nome de filial
-• Adição de portais de energia, guaritas e escritórios
-• Atualização de ícones para torres, discotecas, farmácias e mastros
-• Salva a cor dos favoritos nas exportações GPX
-• Preenchimento de praças pavimentadas
-• Android Auto: exibe números de saída de rotatória
-Confira nossas notas de lançamento do Codeberg para mais mudanças
+• Visibilidade e interface do usuário aprimoradas para instruções na navegação
+• Opção adicionada para evitar degraus
+• Busca aprimorada em vários idiomas
+• Adição de ícone específico para rodoviárias
+• Problemas corrigidos no Android Auto (via projeto OM)
+• Editor aprimorado e correção de problemas menores
+• Estilos de mapa aprimorados (via projeto OM)
+• Traduções aprimoradas
+Confira nossas notas de lançamento do Codeberg para mais mudanças!

@@ -102,7 +102,6 @@
     <string name="placepage_edit_bookmark_button">Editar marcador</string>
     <string name="editor_place_doesnt_exist">El llugar nun esiste</string>
     <string name="editor_remove_place_button">Desaniciar</string>
-    <string name="editor_comment_hint">Comentariu…</string>
     <string name="add_street">Amestar una cai</string>
     <string name="placepage_personal_notes_hint">Notes personales (testu o HTML)</string>
     <string name="download_maps">Baxar mapes</string>

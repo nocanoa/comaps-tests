@@ -1,2 +1,5 @@
 "type.aerialway" = "Žičnica";
 "type.addr_interpolation.odd" = "Naslov/blok";
+"type.addr_interpolation" = "Naslov/blok";
+"type.aerialway.cable_car" = "Žičnica";
+"type.cuisine.noodles" = "Nudli";

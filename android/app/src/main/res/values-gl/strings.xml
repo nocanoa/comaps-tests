@@ -136,7 +136,6 @@
     <string name="history">Historial</string>
     <string name="dialog_routing_location_turn_on">Activar servizos de localización</string>
     <string name="prefs_group_information">Información</string>
-    <string name="placepage_add_business_button">Engadir organización</string>
     <string name="category_atm">Caixeiro automático</string>
     <string name="prefs_group_route">Navegación</string>
     <string name="on">Activado</string>
@@ -200,7 +199,6 @@
     <string name="my_position_share_email">Ola: \n\nAgora estou aquí: %1$s. Fai clic nesta ligazón %2$s ou esta %3$s para velo no mapa. \n\nGrazas.</string>
     <string name="copied_to_clipboard">Copiado ao portarretallos: %s</string>
     <string name="data_version">Datos de OpenStreetMap: %s</string>
-    <string name="osm_log_out_confirmation">Quere saír da súa conta de OpenStreetMap?</string>
     <string name="share_my_location">Compartir a miña localización</string>
     <string name="prefs_group_general">Axustes xerais</string>
     <string name="pref_zoom_title">Botóns de zum</string>
@@ -344,7 +342,6 @@
     <string name="placepage_more_button">Más</string>
     <string name="placepage_edit_bookmark_button">Editar marcador</string>
     <string name="placepage_personal_notes_hint">Notas persoais (texto ou html)</string>
-    <string name="editor_comment_hint">Comentario…</string>
     <string name="editor_reset_edits_message">Restablecer todos os cambios locais?</string>
     <string name="editor_remove_place_message">Eliminar o lugar engadido?</string>
     <string name="editor_place_doesnt_exist">O lugar non existe</string>
@@ -607,4 +604,22 @@
     <string name="existence_confirmed_time_ago">Existencia confirmada %s</string>
     <string name="share_track">Compartir ruta</string>
     <string name="pref_tts_no_system_tts_short">Non se atopa un motor texto-a-fala, comproba os axustes da app</string>
+    <string name="unknown_power_output">descoñecida</string>
+    <string name="charge_socket_type2">Tipo 2 (sen cable)</string>
+    <string name="charge_socket_type2_cable">Tipo 2 (con cable)</string>
+    <string name="charge_socket_type2_combo">Tipo 2 combo</string>
+    <string name="charge_socket_type1">Tipo 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="unknown_socket_type">engache descoñecido</string>
+    <string name="charge_socket_count">Cantidade</string>
+    <string name="charge_socket_power">Potencia (kW)</string>
+    <string name="editor_socket">Editar enganche</string>
+    <string name="unknown_count">descoñecido</string>
+    <string name="error_value_must_be_positive">O valor ten que ser positivo</string>
+    <string name="error_invalid_number">Número non válido</string>
+    <string name="edit_socket_info_tooltip">Crear novos enganches ou editar os existentes.</string>
+    <string name="charging_station_available_sockets">Enganches dispoñibles</string>
+    <string name="charge_socket_unknown_other">Outro ou descoñecido</string>
+    <string name="unknow_socket_type">engache descoñecido</string>
 </resources>

@@ -184,8 +184,6 @@
     <string name="done">Pabeigts</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">„OpenStreetMap“ dati: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Vai tiešām vēlaties izrakstīties no „OpenStreetMap“ konta?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Ceļi</string>
     <!-- Length of track in cell that describes route -->
@@ -465,7 +463,6 @@
     <string name="editor_edit_place_category_title">Kategorija</string>
     <string name="detailed_problem_description">Plašāks problēmas apraksts</string>
     <string name="editor_report_problem_other_title">Cita problēma</string>
-    <string name="placepage_add_business_button">Pievienot iestādi</string>
     <string name="message_invalid_feature_position">Šeit objekti nevar atrasties</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Kopienas veidotie OpenStreetMap dati, %s. Uzzināt vairāk par to, kā labot un atjaunināt karti, var OpenStreetMap.org</string>
@@ -501,7 +498,6 @@
     <string name="placepage_more_button">Vairāk</string>
     <string name="placepage_edit_bookmark_button">Rediģēt grāmatzīmi</string>
     <string name="placepage_personal_notes_hint">Personīgi pieraksti (teksts vai HTML)</string>
-    <string name="editor_comment_hint">Komentārs…</string>
     <string name="editor_reset_edits_message">Vai izmest visas lokāli saglabātās izmaiņas?</string>
     <string name="editor_reset_edits_button">Noraidīt</string>
     <string name="editor_remove_place_message">Vai dzēst pievienoto vietu?</string>
@@ -816,4 +812,16 @@
     <string name="app_site_url">https://comaps.app/</string>
     <string name="saved">Saglabāts</string>
     <string name="about_headline">Atvērts projekts, kuru darbina kopiena</string>
+    <string name="error_invalid_number">Nederīgs skaitlis</string>
+    <string name="hours_confirmed_time_ago">Apstiprināts %s</string>
+    <string name="existence_confirmed_time_ago">Esamība apstiprināta %s</string>
+    <string name="error_value_must_be_positive">Vērtībai jābūt pozitīvai</string>
+    <string name="editor_socket">Labot ligzdu</string>
+    <string name="charge_socket_power">Jauda (kW)</string>
+    <string name="charge_socket_count">Skaits</string>
+    <string name="charge_socket_unknown_other">Cits vai nezināms</string>
+    <string name="charging_station_available_sockets">Pieejamās ligzdas</string>
+    <string name="edit_socket_info_tooltip">Pievienot jaunas ligzdas vai labot esošās.</string>
+    <string name="unknow_socket_type">nezināma ligzda</string>
+    <string name="unknown_count">nezināms</string>
 </resources>

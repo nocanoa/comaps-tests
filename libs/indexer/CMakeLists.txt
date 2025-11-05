@@ -60,6 +60,8 @@ set(SRC
   feature_algo.cpp
   feature_algo.hpp
   feature_altitude.hpp
+  feature_charge_sockets.cpp
+  feature_charge_sockets.hpp
   feature_covering.cpp
   feature_covering.hpp
   feature_data.cpp

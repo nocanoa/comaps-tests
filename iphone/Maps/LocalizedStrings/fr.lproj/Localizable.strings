@@ -1097,3 +1097,5 @@
 "pref_maplanguage_local" = "Langue locale";
 "existence_confirmed_time_ago" = "Existence confirmée %@";
 "hours_confirmed_time_ago" = "Confirmées %@";
+"offline_explanation_title" = "Cartes hors-ligne";
+"avoid_steps" = "Éviter les escaliers";

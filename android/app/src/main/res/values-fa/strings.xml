@@ -165,8 +165,6 @@
     <string name="done">انجام شد</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap: %s داده‌های</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">آیا مطمئن هستید که می خواهید از حساب OpenStreetMap خود خارج شوید؟</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">مسیر</string>
     <!-- Length of track in cell that describes route -->
@@ -439,7 +437,6 @@
     <string name="editor_edit_place_category_title">دسته بندی</string>
     <string name="detailed_problem_description">توضیح مفصل در مورد مشکل</string>
     <string name="editor_report_problem_other_title">مشکلی دیگر</string>
-    <string name="placepage_add_business_button">اضافه کردن یک تجارت</string>
     <string name="message_invalid_feature_position">نمی توان شی ای در این مکان باشد</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">داده های OpenStreetMap ایجاد شده توسط انجمن از %s. درباره نحوه ویرایش و به روز رسانی نقشه در OpenStreetMap.org بیشتر بیاموزید</string>
@@ -481,7 +478,6 @@
     <string name="placepage_more_button">بیشتر</string>
     <string name="placepage_edit_bookmark_button">ویرایش نشانه‌ها</string>
     <string name="placepage_personal_notes_hint">یادداشت های شخصی (متن یا html)</string>
-    <string name="editor_comment_hint">اظهار نظر</string>
     <string name="editor_reset_edits_message">آیا تغییرات محلی را نادیده می گیرید؟</string>
     <string name="editor_reset_edits_button">نادیده گرفتن</string>
     <string name="editor_remove_place_message">آیا مکان ثبت شده حذف شود؟</string>

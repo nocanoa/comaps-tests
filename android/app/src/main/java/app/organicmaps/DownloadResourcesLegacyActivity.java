@@ -24,7 +24,6 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.annotation.StyleRes;
 import androidx.core.view.ViewCompat;
 import app.organicmaps.base.BaseMwmFragmentActivity;
 import app.organicmaps.downloader.MapManagerHelper;
@@ -437,12 +436,5 @@ public class DownloadResourcesLegacyActivity extends BaseMwmFragmentActivity
                                               })
                            .setOnDismissListener(dialog -> mAlertDialog = null)
                            .show();
-  }
-
-  @Override
-  @StyleRes
-  public int getThemeResourceId(@NonNull String theme)
-  {
-    return R.style.MwmTheme_DownloadResourcesLegacy;
   }
 }

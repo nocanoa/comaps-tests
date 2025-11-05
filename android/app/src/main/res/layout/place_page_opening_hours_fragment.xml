@@ -12,8 +12,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/margin_base"
     android:layout_marginTop="@dimen/margin_quarter"
-    app:srcCompat="@drawable/ic_operating_hours"
-    app:tint="?iconTint"/>
+    app:srcCompat="@drawable/ic_opening_hours"
+    android:tint="?iconTint"/>
 
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/oh_today_label"

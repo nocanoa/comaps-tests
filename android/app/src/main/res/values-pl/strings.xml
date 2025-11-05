@@ -27,7 +27,7 @@
     <!-- A dialog title, that warns a user that Precise Location is disabled and suggests to turn it on -->
     <string name="limited_accuracy">Ograniczona dokładność</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">Aby zapewnić dokładną nawigację, proszę włączyć opcję Precyzyjna lokalizacja w ustawieniach.</string>
+    <string name="precise_location_is_disabled_long_text">Aby zapewnić dokładną nawigację, włącz opcję Dokładna lokalizacja w ustawieniach</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Wyświetl na mapie</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
@@ -186,8 +186,6 @@
     <string name="done">Gotowe</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Dane OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Czy na pewno chcesz się wylogować ze swojego konta OpenStreetMap?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Trasy</string>
     <!-- Length of track in cell that describes route -->
@@ -465,7 +463,6 @@
     <string name="editor_edit_place_category_title">Kategoria</string>
     <string name="detailed_problem_description">Szczegółowy opis problemu</string>
     <string name="editor_report_problem_other_title">Inny problem</string>
-    <string name="placepage_add_business_button">Dodaj organizację</string>
     <string name="message_invalid_feature_position">Obiekt nie może znajdować się tutaj</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Dane OpenStreetMap stworzone przez społeczność na dzień %s. Dowiedz się więcej o tym, jak edytować i aktualizować mapę na stronie OpenStreetMap.org</string>
@@ -507,7 +504,6 @@
     <string name="placepage_more_button">Więcej</string>
     <string name="placepage_edit_bookmark_button">Edytuj zakładkę</string>
     <string name="placepage_personal_notes_hint">Notatki osobiste (tekst lub html)</string>
-    <string name="editor_comment_hint">Komentarz…</string>
     <string name="editor_reset_edits_message">Usunąć wszystkie lokalne zmiany?</string>
     <string name="editor_reset_edits_button">Usuń</string>
     <string name="editor_remove_place_message">Usunąć dodane miejsce?</string>

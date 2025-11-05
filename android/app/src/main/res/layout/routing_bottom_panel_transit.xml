@@ -36,7 +36,7 @@
     app:srcCompat="@drawable/ic_20px_route_planning_walk"
     app:layout_constraintBottom_toBottomOf="@id/total_time"
     app:layout_constraintStart_toEndOf="@id/dot"
-    app:tint="?iconTint"/>
+    android:tint="?iconTint"/>
   <com.google.android.material.textview.MaterialTextView
     android:id="@+id/total_distance"
     style="@style/MwmWidget.TextView.PlanDetail.Number.Secondary"

@@ -68,6 +68,7 @@ final class SearchOnMapHeaderView: UIView {
     searchBar.searchTextField.clearButtonMode = .always
     searchBar.returnKeyType = .search
     searchBar.searchTextField.enablesReturnKeyAutomatically = true
+    searchBar.backgroundImage = UIImage()
   }
 
   private func setupCancelButton() {

@@ -180,8 +180,6 @@
     <string name="done">Valmis</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMapi andmed: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Kas oled kindel, et soovid oma OpenStreetMapi kontost välja logida?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Rajad</string>
     <!-- Length of track in cell that describes route -->
@@ -457,7 +455,6 @@
     <string name="editor_edit_place_category_title">Kategooria</string>
     <string name="detailed_problem_description">Probleemi üksikasjalik kirjeldus</string>
     <string name="editor_report_problem_other_title">Erinev probleem</string>
-    <string name="placepage_add_business_button">Lisa ettevõte või äri</string>
     <string name="message_invalid_feature_position">Ükski objekt ei saa siin asuda</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Kogukonna loodud OpenStreetMapi andmed seisuga %s. Lisateavet kaardi muutmise ja uuendamise kohta leiad OpenStreetMap.org saidist</string>
@@ -499,7 +496,6 @@
     <string name="placepage_more_button">Veel</string>
     <string name="placepage_edit_bookmark_button">Muuda järjehoidjat</string>
     <string name="placepage_personal_notes_hint">Isiklikud märkmed (tekst või html)</string>
-    <string name="editor_comment_hint">Kommenteeri…</string>
     <string name="editor_reset_edits_message">Kas loobud kõigist kohalikest muudatustest?</string>
     <string name="editor_reset_edits_button">Loobu</string>
     <string name="editor_remove_place_message">Kas kustutad lisatud koha?</string>
@@ -870,4 +866,22 @@
     <string name="existence_confirmed_time_ago">Olemasolu on kontrollitud %s</string>
     <string name="hours_confirmed_time_ago">Kontrollitud %s</string>
     <string name="pref_tts_no_system_tts_short">Ühtegi kõnesünteesimootorit ei leidu, palun kontrolli rakenduse seadistusi</string>
+    <string name="unknown_power_output">pole teada</string>
+    <string name="charge_socket_type2">Tüüp 2 (ilma kaablita)</string>
+    <string name="charge_socket_type2_cable">Tüüp 2 (kaabliga)</string>
+    <string name="charge_socket_type2_combo">Tüüp 2 kombo</string>
+    <string name="charge_socket_type1">Tüüp 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="unknown_socket_type">pistik pole teada</string>
+    <string name="unknow_socket_type">pistik pole teada</string>
+    <string name="charge_socket_count">Pistikuid</string>
+    <string name="edit_socket_info_tooltip">Lisa uusi pistikuid või muuda olemasolevaid.</string>
+    <string name="charging_station_available_sockets">Saadaval pistikud</string>
+    <string name="charge_socket_unknown_other">Muu või teadmata</string>
+    <string name="charge_socket_power">Võimsus (kW)</string>
+    <string name="editor_socket">Muuda pistikut</string>
+    <string name="error_value_must_be_positive">Sisestuse väärtus peab olema positiitve</string>
+    <string name="unknown_count">tundmatu</string>
+    <string name="error_invalid_number">Vigane number</string>
 </resources>

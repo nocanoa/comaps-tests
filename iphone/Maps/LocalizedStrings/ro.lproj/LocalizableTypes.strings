@@ -10,7 +10,7 @@
 "type.aerialway.station" = "Stație de teleferic";
 "type.aeroway" = "Infrastructura spațiului aerian";
 "type.aeroway.aerodrome" = "Aeroport";
-"type.aeroway.aerodrome.international" = "Aeroport";
+"type.aeroway.aerodrome.international" = "Aeroport Internațional";
 "type.aeroway.apron" = "Parcare aeronave";
 "type.aeroway.gate" = "Poartă";
 "type.aeroway.helipad" = "Heliport";
@@ -1397,7 +1397,7 @@
 "type.waterway.canal" = "Canal";
 "type.waterway.canal.tunnel" = "Tunel de canal";
 "type.waterway.fish_pass" = "Scară de pește";
-"type.waterway.dam" = "Dam";
+"type.waterway.dam" = "Baraj";
 "type.barrier.ditch" = "Șanț";
 "type.natural.water.ditch" = "Șanț de drenaj";
 "type.waterway.ditch.tunnel" = "Canal de scurgere";

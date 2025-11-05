@@ -5,7 +5,8 @@ typedef NS_ENUM(NSInteger, MWMRoadType) {
   MWMRoadTypeToll,
   MWMRoadTypeDirty,
   MWMRoadTypeFerry,
-  MWMRoadTypeMotorway
+  MWMRoadTypeMotorway,
+  MWMRoadTypeSteps
 };
 
 typedef void (^MWMImageHeightBlock)(UIImage *, NSString *, NSString *);

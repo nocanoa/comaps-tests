@@ -48,7 +48,6 @@
 #include "platform/distance.hpp"
 #include "platform/location.hpp"
 #include "platform/platform.hpp"
-#include "platform/products.hpp"
 
 #include "routing/router.hpp"
 
@@ -832,25 +831,4 @@ public:
   // PowerManager::Subscriber override.
   void OnPowerFacilityChanged(power_management::Facility const facility, bool enabled) override;
   void OnPowerSchemeChanged(power_management::Scheme const actualScheme) override;
-
-public:
-  bool ShouldShowProducts() const;
-  std::optional<products::ProductsConfig> GetProductsConfiguration() const;
-
-  enum class ProductsPopupCloseReason
-  {
-    Close,
-    SelectProduct,
-    AlreadyDonated,
-    RemindLater
-  };
-
-  ProductsPopupCloseReason FromString(std::string const & str) const;
-
-  void DidCloseProductsPopup(ProductsPopupCloseReason reason) const;
-  void DidSelectProduct(products::ProductsConfig::Product const & product) const;
-
-private:
-  uint32_t GetTimeoutForReason(ProductsPopupCloseReason reason) const;
-  std::string_view ToString(ProductsPopupCloseReason reason) const;
 };

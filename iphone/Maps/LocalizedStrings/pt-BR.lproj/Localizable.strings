@@ -1097,3 +1097,4 @@
 "pref_maplanguage_local" = "Idioma local";
 "existence_confirmed_time_ago" = "Existência confirmada %@";
 "hours_confirmed_time_ago" = "Confirmado %@";
+"avoid_steps" = "Evitar degraus";

@@ -178,8 +178,6 @@
     <string name="done">Baigta</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">„OpenStreetMap“ duomenys: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Ar tikrai norite atsijungti nuo „OpenStreetMap“ paskyros?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Trasos</string>
     <!-- Length of track in cell that describes route -->
@@ -451,7 +449,6 @@
     <string name="editor_edit_place_category_title">Kategorija</string>
     <string name="detailed_problem_description">Išsamus problemos aprašymas</string>
     <string name="editor_report_problem_other_title">Kita problema</string>
-    <string name="placepage_add_business_button">Pridėti verslą</string>
     <string name="message_invalid_feature_position">Čia negalima talpinti jokių objektų</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Bendruomenės surinkti „OpenStreetMap“ duomenys %s dienai. Sužinokite, kaip redaguoti ir atnaujinti žemėlapį, apsilankydami OpenStreetMap.org svetainėje</string>
@@ -493,7 +490,6 @@
     <string name="placepage_more_button">Išsamiau</string>
     <string name="placepage_edit_bookmark_button">Taisyti žymę</string>
     <string name="placepage_personal_notes_hint">Asmeninės pastabos (tekstas arba HTML)</string>
-    <string name="editor_comment_hint">Komentaras…</string>
     <string name="editor_reset_edits_message">Anuliuoti visus vietinius pakeitimus?</string>
     <string name="editor_reset_edits_button">Anuliuoti</string>
     <string name="editor_remove_place_message">Šalinti pridėtą vietą?</string>

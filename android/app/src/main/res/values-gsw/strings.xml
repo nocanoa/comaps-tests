@@ -204,7 +204,6 @@
     <string name="email">E-Mail</string>
     <string name="done">Fertig</string>
     <string name="data_version">OpenStreetMap-Date: %s</string>
-    <string name="osm_log_out_confirmation">Bisch du dir sicher, dass du dich vo dim OpenStreetMap-Konto möchtsch abmelde?</string>
     <string name="tracks_title">Tracks</string>
     <string name="length">Längi</string>
     <string name="share_my_location">Min Standort teile</string>
@@ -386,7 +385,6 @@
     <string name="editor_edit_place_category_title">Kategorie</string>
     <string name="detailed_problem_description">Detaillierti Beschriibig vom Problem</string>
     <string name="editor_report_problem_other_title">Es anders Problem</string>
-    <string name="placepage_add_business_button">Organisation hinzuefüege</string>
     <string name="message_invalid_feature_position">Es Objekt cha da nöd positioniert werde</string>
     <string name="login_to_make_edits_visible">Erstell es OpenStreetMap-Konto oder meld dich a, zum dini Chartebearbeitige weltwiit z veröffentliche</string>
     <string name="downloader_of">%1$d vo %2$d</string>
@@ -401,7 +399,6 @@
     <string name="day">d</string>
     <string name="placepage_edit_bookmark_button">Lesezeiche bearbeite</string>
     <string name="placepage_personal_notes_hint">Persönlichi Notize (Text oder HTML)</string>
-    <string name="editor_comment_hint">Kommentar…</string>
     <string name="editor_reset_edits_button">Verwerfe</string>
     <string name="editor_remove_place_message">Hinzuegfüegts Objekt lösche?</string>
     <string name="editor_remove_place_button">Lösche</string>

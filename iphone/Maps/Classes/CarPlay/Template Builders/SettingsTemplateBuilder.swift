@@ -15,6 +15,7 @@ final class SettingsTemplateBuilder {
     return [createUnpavedButton(options: options),
             createTollButton(options: options),
             createFerryButton(options: options),
+            createStepsButton(options: options),
             createSpeedcamButton()]
   }
   
@@ -71,6 +72,24 @@ final class SettingsTemplateBuilder {
                                     CarPlayService.shared.popTemplate(animated: true)
     }
     return ferryButton
+  }
+    
+  private class func createStepsButton(options: RoutingOptions) -> CPGridButton {
+    var stepsIconName = "options.steps"
+    if options.avoidSteps { stepsIconName += ".slash" }
+    let configuration = UIImage.SymbolConfiguration(textStyle: .title1)
+    var image = UIImage(named: stepsIconName, in: nil, with: configuration)!
+    if #unavailable(iOS 26) {
+      image = image.withTintColor(.white, renderingMode: .alwaysTemplate)
+      image = UIImage(data: image.pngData()!)!.withRenderingMode(.alwaysTemplate)
+    }
+    let stepsButton = CPGridButton(titleVariants: [L("avoid_steps")], image: image) { _ in
+                                    options.avoidSteps = !options.avoidSteps
+                                    options.save()
+                                    CarPlayService.shared.updateRouteAfterChangingSettings()
+                                    CarPlayService.shared.popTemplate(animated: true)
+    }
+    return stepsButton
   }
   
   private class func createSpeedcamButton() -> CPGridButton {

@@ -13,7 +13,7 @@ import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.R;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.util.UiHelpers;
 import app.organicmaps.sdk.bookmarks.data.BookmarkCategory;
@@ -31,7 +31,7 @@ public class BookmarksScreen extends BaseMapScreen
 
   private boolean mIsOnSortingScreen = false;
 
-  public BookmarksScreen(@NonNull CarContext carContext, @NonNull SurfaceRenderer surfaceRenderer,
+  public BookmarksScreen(@NonNull CarContext carContext, @NonNull Renderer surfaceRenderer,
                          @NonNull BookmarkCategory bookmarkCategory)
   {
     super(carContext, surfaceRenderer);
@@ -41,7 +41,7 @@ public class BookmarksScreen extends BaseMapScreen
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final MapWithContentTemplate.Builder builder = new MapWithContentTemplate.Builder();
     builder.setMapController(UiHelpers.createMapController(getCarContext(), getSurfaceRenderer()));
@@ -52,6 +52,7 @@ public class BookmarksScreen extends BaseMapScreen
   @Override
   public void onStop(@NonNull LifecycleOwner owner)
   {
+    super.onStop(owner);
     if (!mIsOnSortingScreen)
       mBookmarksLoader.cancel();
   }

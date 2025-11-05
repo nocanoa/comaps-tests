@@ -6,7 +6,6 @@
 #include "platform/http_client.hpp"
 #include "platform/locale.hpp"
 #include "platform/platform.hpp"
-#include "platform/products.hpp"
 #include "platform/servers_list.hpp"
 #include "platform/settings.hpp"
 
@@ -48,7 +47,6 @@ void MapFilesDownloader::RunMetaConfigAsync(std::function<void()> && callback)
     {
       m_serversList = metaConfig.m_serversList;
       settings::Update(metaConfig.m_settings);
-      products::Update(metaConfig.m_productsConfig);
       callback();
 
       // Reset flag to invoke servers list downloading next time if current request has failed.

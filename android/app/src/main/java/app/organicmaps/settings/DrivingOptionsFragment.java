@@ -107,6 +107,11 @@ public class DrivingOptionsFragment extends BaseMwmToolbarFragment
     dirtyRoadsBtn.setChecked(RoutingOptions.hasOption(RoadType.Dirty));
     CompoundButton.OnCheckedChangeListener dirtyBtnListener = new ToggleRoutingOptionListener(RoadType.Dirty);
     dirtyRoadsBtn.setOnCheckedChangeListener(dirtyBtnListener);
+
+    SwitchCompat stepsBtn = root.findViewById(R.id.avoid_steps_btn);
+    stepsBtn.setChecked(RoutingOptions.hasOption(RoadType.Steps));
+    CompoundButton.OnCheckedChangeListener stepsBtnListener = new ToggleRoutingOptionListener(RoadType.Steps);
+    stepsBtn.setOnCheckedChangeListener(stepsBtnListener);
   }
 
   private static class ToggleRoutingOptionListener implements CompoundButton.OnCheckedChangeListener

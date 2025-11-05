@@ -165,7 +165,7 @@
   <style name="MwmWidget.ToolbarTheme.Light" parent="MwmWidget.ToolbarTheme">
     <item name="android:gravity">center_vertical</item>
     <item name="colorAccent">@android:color/white</item>
-    <item name="colorSecondary">@color/bg_window_night</item>
+    <item name="colorSecondary">#FF32363A</item>
   </style>
 
   <style name="MwmWidget.ToolbarTheme.Transparent" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">

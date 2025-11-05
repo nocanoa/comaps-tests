@@ -16,8 +16,8 @@ The project consists of multiple components, each with its own translation files
 | [iOS Plurals][ios_plurals_weblate]                  | UI strings (plurals)                                       | [iphone/Maps/LocalizedStrings/\*.lproj/Localizable.stringsdict][ios_git] ([en][ios_plurals_git_en])      |
 | [iOS Plist][ios_plist_weblate]                      | UI strings (system-level)                                  | [iphone/Maps/LocalizedStrings/\*.lproj/InfoPlist.strings][ios_git] ([en][ios_plist_git_en])              |
 | [TTS][tts_weblate]                                  | Voice announcement strings for navigation directions (TTS) | [data/sound-strings/\*.json][tts_git] ([en][tts_git_en])                                                 |
-| [Countries][countries_weblate]                      | Country names for downloader                               | [data/country-strings/\*.json][countries_git] ([en][countries_git_en])                                   |
-| Search keywords                                     | Search keywords/aliases/synonyms                           | [data/categories.txt][categories_git]                                                                    |
+| [Countries][countries_weblate]                      | Country names for downloader                               | [data/countries-strings/\*.json][countries_git] ([en][countries_git_en])                                   |
+| [Search keywords](https://translate.codeberg.org/projects/comaps/search-synonyms-aliases/) | Search keywords/aliases/synonyms                           | [data/categories-strings/](https://codeberg.org/comaps/comaps/src/branch/main/data/categories-strings) |
 | Search keywords (cuisines)                          | Search keywords for cuisine types                          | [data/categories_cuisines.txt][categories_cuisines_git]                                                  |
 | [AppStore Descriptions][appstore_weblate]           | AppStore descriptions                                      | [iphone/metadata][appstore_git] ([en][appstore_git_en])                                                  |
 | [Android Stores Descriptions][googleplay_weblate]   | Google, Huawei store descriptions                          | [android/app/src/google/play/listings][googleplay_git] ([en][googleplay_git_en])                         |
@@ -38,9 +38,13 @@ Android and iOS share most of the strings. Codeberg Translate automatically sync
 
 ### Categories strings
 
+Search categories synonyms/aliases usually shouldn't be just direct translations from English, but rather adaptations - e.g. some specific terms could be used in your language to search for a certain feature and they might not have English equivalents.
+
+Some translations are borrowed from the common category (`@` in the key). Please do not duplicate translations if a category in the key already includes it.
+
 Syntax:
-|   - used to separate synonyms.
-1-9 - digits in front of a synonym indicate the number of symbols that need to be
+- |   - used to separate synonyms.
+- 1-9 - digits in front of a synonym indicate the number of symbols that need to be
        typed in a search query to make this synonym appear in the list of suggestions.
        Located immediately at the start of a synonym. At most one
        digit per synonym is allowed.
@@ -57,7 +61,6 @@ Searcing for "магазин мебели" will also match the category name (1 
 
 Exact treshold may be different for different languages. For Serbian, error correction
 kicks in only for 8-letter or longer words.
-
 
 ## Machine Translation
 

@@ -8,7 +8,7 @@
   android:background="?clickableBackground"
   android:minHeight="@dimen/editor_height_field"
   android:paddingEnd="@dimen/margin_quarter"
-  android:paddingStart="@dimen/margin_half_plus"
+  android:paddingStart="@dimen/margin_half_plus_eight"
   tools:ignore="RtlSymmetry">
 
   <com.google.android.material.imageview.ShapeableImageView
@@ -16,8 +16,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/margin_base_plus"
     android:layout_marginTop="@dimen/margin_base"
-    app:srcCompat="@drawable/ic_operating_hours"
-    app:tint="?iconTint" />
+    app:srcCompat="@drawable/ic_opening_hours"
+    android:tint="?iconTint"/>
 
   <LinearLayout
     android:id="@+id/empty_opening_hours"

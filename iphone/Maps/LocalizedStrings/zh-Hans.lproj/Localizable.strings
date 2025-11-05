@@ -205,7 +205,7 @@
 "share_my_location" = "分享我的位置";
 "prefs_group_route" = "导航";
 "pref_zoom_title" = "缩放按钮";
-"pref_left_button_type" = "Left Main Button";
+"pref_left_button_type" = "左侧主按钮";
 
 /* Settings «Map» category: «Appearance» title */
 "pref_appearance_title" = "外观";

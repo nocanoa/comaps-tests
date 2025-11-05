@@ -1,13 +1,19 @@
 package app.organicmaps.editor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.GridLayout;
+import android.widget.Toast;
 import androidx.annotation.CallSuper;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
@@ -22,6 +28,7 @@ import app.organicmaps.base.BaseMwmFragment;
 import app.organicmaps.dialog.EditTextDialogFragment;
 import app.organicmaps.editor.data.TimeFormatUtils;
 import app.organicmaps.sdk.Framework;
+import app.organicmaps.sdk.bookmarks.data.ChargeSocketDescriptor;
 import app.organicmaps.sdk.bookmarks.data.Metadata;
 import app.organicmaps.sdk.editor.Editor;
 import app.organicmaps.sdk.editor.OpeningHours;
@@ -30,26 +37,33 @@ import app.organicmaps.sdk.editor.data.LocalizedStreet;
 import app.organicmaps.sdk.editor.data.Timetable;
 import app.organicmaps.sdk.util.StringUtils;
 import app.organicmaps.sdk.util.Utils;
+import app.organicmaps.sdk.util.log.Logger;
 import app.organicmaps.util.Graphics;
 import app.organicmaps.util.InputUtils;
 import app.organicmaps.util.UiUtils;
-
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EditorFragment extends BaseMwmFragment implements View.OnClickListener
 {
   final static String LAST_INDEX_OF_NAMES_ARRAY = "LastIndexOfNamesArray";
+  private static final String CHARGE_SOCKETS_TAG = "CHARGE_SOCKETS_TAG";
 
   private MaterialTextView mCategory;
   private View mCardName;
   private View mCardAddress;
+  private View mCardChargingStation;
   private View mCardDetails;
   private View mCardSocialMedia;
   private View mCardBuilding;
@@ -130,6 +144,8 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private TextInputLayout mInputHouseNumber;
   private TextInputLayout mInputBuildingLevels;
 
+  private View mChargeSockets;
+
   private View mEmptyOpeningHours;
   private MaterialTextView mOpeningHours;
   private View mEditOpeningHours;
@@ -206,6 +222,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     mWifi.setChecked(Editor.nativeHasWifi());
     // TODO Reimplement this to avoid https://github.com/organicmaps/organicmaps/issues/9049
     // mOutdoorSeating.setChecked(Editor.nativeGetSwitchInput(Metadata.MetadataType.FMD_OUTDOOR_SEATING.toInt(),"yes"));
+    refreshChargeSockets();
     refreshOpeningTime();
     refreshEditableFields();
     refreshResetButton();
@@ -329,6 +346,14 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
 
     final int[] editableDetails = Editor.nativeGetEditableProperties();
 
+    // charge sockets have their own card; check whether we should display it.
+    boolean hasChargeSockets = false;
+    for (int type : editableDetails)
+    {
+      hasChargeSockets = hasChargeSockets || (type == Metadata.MetadataType.FMD_CHARGE_SOCKETS.toInt());
+    }
+    UiUtils.showIf(hasChargeSockets, mCardChargingStation);
+
     setCardVisibility(mCardDetails, mDetailsBlocks, editableDetails);
     setCardVisibility(mCardSocialMedia, mSocialMediaBlocks, editableDetails);
   }
@@ -349,6 +374,283 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
       UiUtils.show(blockElement);
     }
     UiUtils.showIf(anyBlockElement, card);
+  }
+
+  /**
+   * Builds a dialog for editing or adding a charge socket.
+   *
+   * @param socketIndex The index of the socket to edit, or -1 to add a new socket.
+   * @param type The current type of the socket (e.g., "type2", "type2_combo").
+   * @param count The current number of sockets of this type or 0 for new socket.
+   * @param power The current power output of the socket in kW or 0 for new socket.
+   * @return A MaterialAlertDialogBuilder instance for the configured dialog.
+   */
+  private MaterialAlertDialogBuilder buildChargeSocketDialog(int socketIndex, String type, int count, double power)
+  {
+    LayoutInflater inflater = LayoutInflater.from(getActivity());
+    View dialogView = inflater.inflate(R.layout.dialog_edit_socket, null);
+
+    GridLayout typeBtns = dialogView.findViewById(R.id.edit_socket_type_grid);
+    typeBtns.removeAllViews();
+
+    List<String> SOCKET_TYPES = Arrays.stream(getResources().getStringArray(R.array.charge_socket_types)).toList();
+    for (String socket : SOCKET_TYPES)
+    {
+      MaterialButton btn = (MaterialButton) inflater.inflate(R.layout.button_socket_type, typeBtns, false);
+
+      btn.setTag(R.id.socket_type, socket);
+
+      // load SVG icon converted into VectorDrawable in res/drawable
+      @SuppressLint("DiscouragedApi")
+      int resIconId =
+          getResources().getIdentifier("ic_charge_socket_" + socket, "drawable", requireContext().getPackageName());
+      if (resIconId != 0)
+      {
+        btn.setIcon(getResources().getDrawable(resIconId));
+      }
+
+      @SuppressLint("DiscouragedApi")
+      int resTypeId =
+          getResources().getIdentifier("charge_socket_" + socket, "string", requireContext().getPackageName());
+      if (resTypeId != 0)
+      {
+        btn.setText(getResources().getString(resTypeId));
+      }
+
+      if (socket.equals(type))
+      {
+        btn.setChecked(true);
+      }
+
+      typeBtns.addView(btn);
+    }
+
+    // manage the grid of socket type buttons as a single 'radio group'
+    // (this can not be done with a MaterialButtonToggleGroup because it does
+    // not support GridLayout)
+    List<MaterialButton> buttonList = new ArrayList<>();
+
+    for (int i = 0; i < typeBtns.getChildCount(); i++)
+    {
+      View child = typeBtns.getChildAt(i);
+      if (child instanceof MaterialButton button)
+      {
+        buttonList.add(button);
+
+        button.setOnClickListener(view -> {
+          // deselect all
+          for (MaterialButton b : buttonList)
+          {
+            b.setChecked(false);
+          }
+          // select clicked
+          button.setChecked(true);
+        });
+      }
+    }
+
+    TextInputLayout countInputLayout = dialogView.findViewById(R.id.edit_socket_count_layout);
+    AutoCompleteTextView countView = dialogView.findViewById(R.id.edit_socket_count);
+    if (count > 0)
+    {
+      countView.setText(String.valueOf(count));
+    }
+
+    // Add a TextWatcher to validate on text change
+    countView.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        validatePositiveField(s.toString(), countInputLayout);
+      }
+    });
+
+    TextInputLayout powerInputLayout = dialogView.findViewById(R.id.edit_socket_power_layout);
+    AutoCompleteTextView powerView = dialogView.findViewById(R.id.edit_socket_power);
+    if (power > 0)
+    {
+      powerView.setText(String.valueOf(power));
+    }
+
+    // Add a TextWatcher to validate on text change
+    powerView.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        validatePositiveField(s.toString(), powerInputLayout);
+      }
+    });
+
+    return new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
+        .setTitle(R.string.editor_socket)
+        .setView(dialogView)
+        .setPositiveButton(R.string.save,
+                (dialog, which) -> {
+                  String socketType = "";
+                  for (MaterialButton b : buttonList)
+                  {
+                    if (b.isChecked())
+                    {
+                      socketType = b.getTag(R.id.socket_type).toString();
+                      break;
+                    }
+                  }
+
+                  int countValue = 0; // 0 means 'unknown count'
+                  try
+                  {
+                    countValue = Integer.parseInt(countView.getText().toString());
+                  }
+                  catch (NumberFormatException ignored)
+                  {
+                    Logger.w(CHARGE_SOCKETS_TAG, "Invalid count value for socket:" + countView.getText().toString());
+                  }
+
+                  if (countValue < 0)
+                  {
+                    countValue = 0;
+                    Logger.w(CHARGE_SOCKETS_TAG, "Invalid count value for socket:" + countView.getText().toString());
+                  }
+
+                  double powerValue = 0; // 0 means 'unknown power'
+                  try
+                  {
+                    powerValue = Double.parseDouble(powerView.getText().toString());
+                  }
+                  catch (NumberFormatException ignored)
+                  {
+                    Logger.w(CHARGE_SOCKETS_TAG, "Invalid power value for socket:" + powerView.getText().toString());
+                  }
+
+                  if (powerValue < 0)
+                  {
+                    powerValue = 0;
+                    Logger.w(CHARGE_SOCKETS_TAG, "Invalid power value for socket:" + powerView.getText().toString());
+                  }
+
+                  ChargeSocketDescriptor socket =
+                          new ChargeSocketDescriptor(socketType, countValue, powerValue);
+
+                  updateChargeSockets(socketIndex, socket);
+                })
+        .setNegativeButton(R.string.cancel, (dialog, which) -> { dialog.dismiss(); });
+  }
+
+  // Helper method for validation logic
+  private boolean validatePositiveField(String text, TextInputLayout layout) {
+    if (text.isEmpty()) {
+      layout.setError(null); // No error if empty (assuming 0 is the default)
+      return true;
+    }
+    try {
+      double value = Double.parseDouble(text);
+      if (value < 0) {
+        layout.setError(getString(R.string.error_value_must_be_positive));
+        return false;
+      } else {
+          layout.setError(null);
+          return true;
+      }
+    } catch (NumberFormatException e) {
+      layout.setError(getString(R.string.error_invalid_number));
+      return false;
+    }
+  }
+  /**
+   * Updates the list of charge sockets.
+   * If socketIndex is >=0, it updates the socket at that index.
+   * Otherwise, it adds the new socket to the list.
+   *
+   * @param socketIndex The index of the socket to update, or -1 to add a new socket.
+   * @param socket The ChargeSocketDescriptor of the socket to add or update.
+   */
+  private void updateChargeSockets(int socketIndex, ChargeSocketDescriptor socket)
+  {
+    ChargeSocketDescriptor[] sockets = Editor.nativeGetChargeSockets();
+    if (socketIndex >= 0)
+    {
+      sockets[socketIndex] = socket;
+    }
+    else {
+      List<ChargeSocketDescriptor> list = new ArrayList<>(Arrays.asList(sockets));
+      list.add(socket);
+      sockets = list.toArray(new ChargeSocketDescriptor[0]);
+    }
+    Editor.nativeSetChargeSockets(sockets);
+
+    refreshChargeSockets();
+  }
+  private void refreshChargeSockets()
+  {
+    ChargeSocketDescriptor[] sockets = Editor.nativeGetChargeSockets();
+
+    LayoutInflater inflater = LayoutInflater.from(requireContext());
+
+    GridLayout socketsGrid = mChargeSockets.findViewById(R.id.socket_grid_editor);
+    socketsGrid.removeAllViews();
+
+    for (int i = 0; i < sockets.length; i++)
+    {
+      final int currentIndex = i;
+      ChargeSocketDescriptor socket = sockets[i];
+
+      View itemView = inflater.inflate(R.layout.item_charge_socket, socketsGrid, false);
+
+      MaterialTextView type = itemView.findViewById(R.id.socket_type);
+      ShapeableImageView icon = itemView.findViewById(R.id.socket_icon);
+      MaterialTextView power = itemView.findViewById(R.id.socket_power);
+      MaterialTextView count = itemView.findViewById(R.id.socket_count);
+
+      // load SVG icon converted into VectorDrawable in res/drawable
+      @SuppressLint("DiscouragedApi")
+      int resIconId = getResources().getIdentifier("ic_charge_socket_" + socket.type(), "drawable",
+                                                   requireContext().getPackageName());
+      if (resIconId != 0)
+      {
+        icon.setImageResource(resIconId);
+      }
+
+      @SuppressLint("DiscouragedApi")
+      int resTypeId =
+          getResources().getIdentifier("charge_socket_" + socket.type(), "string", requireContext().getPackageName());
+      if (resTypeId != 0)
+      {
+        type.setText(resTypeId);
+      }
+
+      if (socket.power() != 0)
+      {
+        DecimalFormat df = new DecimalFormat("#.##");
+        power.setText(getString(R.string.kw_label, df.format(socket.power())));
+      }
+
+      if (socket.count() != 0)
+      {
+        count.setText(getString(R.string.count_label, socket.count()));
+      }
+
+      itemView.setOnClickListener(v -> {
+        buildChargeSocketDialog(currentIndex, socket.type(), socket.count(), socket.power()).show();
+      });
+      socketsGrid.addView(itemView);
+    }
+
+    // add a 'new item' button at the end, to create new sockets
+    View btnNewItemView = inflater.inflate(R.layout.button_new_item, socketsGrid, false);
+    btnNewItemView.setOnClickListener(v -> {
+      buildChargeSocketDialog(-1, "unknown", -1, -1).show();
+    });
+    socketsGrid.addView(btnNewItemView);
   }
 
   private void refreshOpeningTime()
@@ -435,6 +737,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     mCategory = categoryBlock.findViewById(R.id.name);
     mCardName = view.findViewById(R.id.cv__name);
     mCardAddress = view.findViewById(R.id.cv__address);
+    mCardChargingStation = view.findViewById(R.id.cv__charging_station);
     mCardDetails = view.findViewById(R.id.cv__details);
     mCardSocialMedia = view.findViewById(R.id.cv__social_media);
     mCardBuilding = view.findViewById(R.id.cv__building);
@@ -507,6 +810,9 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
     View blockOutdoorSeating = view.findViewById(R.id.block_outdoor_seating);
     mOutdoorSeating = view.findViewById(R.id.sw__outdoor_seating);
     blockOutdoorSeating.setOnClickListener(this);
+
+    mChargeSockets = view.findViewById(R.id.block_charge_sockets);
+
     View blockOpeningHours = view.findViewById(R.id.block_opening_hours);
     mEditOpeningHours = blockOpeningHours.findViewById(R.id.edit_opening_hours);
     mEditOpeningHours.setOnClickListener(this);
@@ -701,7 +1007,7 @@ public class EditorFragment extends BaseMwmFragment implements View.OnClickListe
   private void placeDoesntExist()
   {
     EditTextDialogFragment dialogFragment = EditTextDialogFragment.show(
-        getString(R.string.editor_place_doesnt_exist), "", getString(R.string.editor_comment_hint),
+        getString(R.string.editor_place_doesnt_exist), "", getString(R.string.editor_place_doesnt_exist_description),
         getString(R.string.editor_report_problem_send_button), getString(R.string.cancel), this,
         getDeleteCommentValidator());
     dialogFragment.setTextSaveListener(this::commitPlaceDoesntExists);

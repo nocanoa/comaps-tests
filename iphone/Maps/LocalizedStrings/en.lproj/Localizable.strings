@@ -16,6 +16,12 @@
 /* Settings/Downloader - info for country which started downloading */
 "downloading" = "Downloading…";
 
+/* Title of offline maps explanation */
+"offline_explanation_title" = "Offline Maps";
+
+/* Text of offline maps explanation */
+"offline_explanation_text" = "A map needs to be downloaded to view and navigate the area.\nDownload maps for areas you want to travel.";
+
 /* Choose measurement on first launch alert - choose metric system button */
 "kilometres" = "Kilometers";
 
@@ -724,6 +730,7 @@
 "editor_remove_place_message" = "Delete added place?";
 "editor_remove_place_button" = "Delete";
 "editor_place_doesnt_exist" = "Place does not exist";
+"editor_place_doesnt_exist_description" = "Describe what the place looks like now to send an error note to the OpenStreetMap community";
 "text_more_button" = "…more";
 
 /* Live traffic data */
@@ -870,6 +877,7 @@
 "avoid_unpaved" = "Avoid unpaved roads";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
+"avoid_steps" = "Avoid steps";
 "avoid_ferry" = "Avoid ferries";
 "avoid_motorways" = "Avoid freeways";
 "unable_to_calc_alert_title" = "Unable to calculate route";

@@ -108,6 +108,7 @@ public:
   bool UpdateMetadataValue(std::string_view key, std::string value);
 
   void SetOpeningHours(std::string oh);
+  void SetChargeSockets(std::string sockets);
   void SetInternet(feature::Internet internet);
 
   /// @param[in] cuisine is a vector of osm cuisine ids.

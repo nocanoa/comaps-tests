@@ -103,4 +103,6 @@
   <string name="vk" translatable="false">VK</string>
   <string name="lemmy" translatable="false">Lemmy</string>
   <string name="pixelfed" translatable="false">Pixelfed</string>
+  <string name="count_label" translatable="false">× %d</string>
+  <string name="kw_label" translatable="false">%s kW</string>
 </resources>

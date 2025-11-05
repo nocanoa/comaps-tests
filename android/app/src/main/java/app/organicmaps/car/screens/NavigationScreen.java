@@ -20,7 +20,7 @@ import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
 import app.organicmaps.car.CarAppService;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.screens.settings.DrivingOptionsScreen;
 import app.organicmaps.car.util.Colors;
@@ -70,7 +70,7 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final NavigationTemplate.Builder builder = new NavigationTemplate.Builder();
     builder.setBackgroundColor(Colors.NAVIGATION_TEMPLATE_BACKGROUND);
@@ -104,7 +104,11 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
   public void onAutoDriveEnabled()
   {
     Logger.i(TAG);
-    final JunctionInfo[] points = Framework.nativeGetRouteJunctionPoints();
+
+    /// @todo Pass maxDistM from RouteSimulationProvider?
+    /// Result speed between points will be in range (25, 50] km/h (for 1 second update interval).
+    final double kMaxDistM = 13.9; // 13.9 m/s == 50 km/h
+    final JunctionInfo[] points = Framework.nativeGetRouteJunctionPoints(kMaxDistM);
     if (points == null)
     {
       Logger.e(TAG, "Navigation has not started yet");
@@ -121,6 +125,8 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
     if (!mNavigationCancelled)
       CarToast.makeText(getCarContext(), getCarContext().getString(R.string.trip_finished), CarToast.LENGTH_LONG)
           .show();
+    NavigationService.stopService(getCarContext());
+    ThemeUtils.update(getCarContext());
     finish();
     getScreenManager().popToRoot();
   }
@@ -128,7 +134,7 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
   @Override
   public void onCreate(@NonNull LifecycleOwner owner)
   {
-    Logger.d(TAG);
+    super.onCreate(owner);
     mRoutingController.attach(this);
     ThemeUtils.update(getCarContext());
     mNavigationManager.setNavigationManagerCallback(this);
@@ -144,20 +150,19 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
   @Override
   public void onResume(@NonNull LifecycleOwner owner)
   {
-    Logger.d(TAG);
+    super.onResume(owner);
     mRoutingController.attach(this);
   }
 
   @Override
   public void onDestroy(@NonNull LifecycleOwner owner)
   {
-    NavigationService.stopService(getCarContext());
+    super.onDestroy(owner);
     MwmApplication.from(getCarContext()).getLocationHelper().removeListener(mLocationListener);
 
     if (mRoutingController.isNavigating())
       mRoutingController.onSaveState();
     mRoutingController.detach();
-    ThemeUtils.update(getCarContext());
     mNavigationManager.navigationEnded();
     mNavigationManager.clearNavigationManagerCallback();
   }
@@ -257,9 +262,9 @@ public class NavigationScreen extends BaseMapScreen implements RoutingController
     @NonNull
     private final CarContext mCarContext;
     @NonNull
-    private final SurfaceRenderer mSurfaceRenderer;
+    private final Renderer mSurfaceRenderer;
 
-    public Builder(@NonNull final CarContext carContext, @NonNull final SurfaceRenderer surfaceRenderer)
+    public Builder(@NonNull final CarContext carContext, @NonNull final Renderer surfaceRenderer)
     {
       mCarContext = carContext;
       mSurfaceRenderer = surfaceRenderer;

@@ -114,10 +114,10 @@
         android:layout_height="wrap_content">
         <com.google.android.material.button.MaterialButton
           android:id="@+id/share_button"
-          style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+          style="@style/Widget.Material3.Button.UnelevatedButton"
           android:layout_width="@dimen/place_page_top_button"
           android:layout_height="@dimen/place_page_top_button"
-          android:background="?attr/selectableItemBackgroundBorderless"
+          android:background="?selectableItemBackgroundBorderless"
           android:contentDescription="@string/share"
           android:insetLeft="0dp"
           android:insetTop="0dp"
@@ -132,11 +132,11 @@
           app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Button.Round" />
         <com.google.android.material.button.MaterialButton
           android:id="@+id/close_button"
-          style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+          style="@style/Widget.Material3.Button.UnelevatedButton"
           android:layout_width="@dimen/place_page_top_button"
           android:layout_height="@dimen/place_page_top_button"
           android:layout_marginStart="@dimen/margin_quarter"
-          android:background="?attr/selectableItemBackgroundBorderless"
+          android:background="?selectableItemBackgroundBorderless"
           android:contentDescription="@string/close"
           android:insetLeft="0dp"
           android:insetTop="0dp"

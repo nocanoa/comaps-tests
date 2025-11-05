@@ -177,7 +177,6 @@
     <string name="editor_zip_code">Póstnúmer</string>
     <string name="error_enter_correct_zip_code">Settu inn gilt póstnúmer</string>
     <string name="operator">Rekstraraðili: %s</string>
-    <string name="editor_comment_hint">Athugasemd…</string>
     <string name="editor_reset_edits_button">Henda</string>
     <string name="mobile_data_option_always">Alltaf nota</string>
     <string name="bookmark_lists">Listar</string>
@@ -235,7 +234,6 @@
     <string name="religious_places">Trúarlegir staðir</string>
     <string name="download_map_title">Sækja heims-yfirlitskortið</string>
     <string name="how_to_support_us">Styddu við verkefnið</string>
-    <string name="osm_log_out_confirmation">Ertu viss um að þú viljir skrá þig út af OpenStreetMap-aðgangnum þínum?</string>
     <string name="faq">Algengar spurningar (FAQ)</string>
     <string name="donate">Styrkja</string>
     <string name="report_a_bug">Tilkynna um villu</string>
@@ -443,7 +441,6 @@
     <string name="editor_report_problem_desription_2">Eða gerðu það sjálf/ur á https://www.openstreetmap.org/</string>
     <string name="edit_opening_hours">Breyta opnunartímum</string>
     <string name="register_at_openstreetmap">Skráðu þig á OpenStreetMap</string>
-    <string name="placepage_add_business_button">Bæta við fyrirtæki</string>
     <string name="download_over_mobile_header">Sækja í gegnum gagnatengingu farsíma?</string>
     <string name="download_over_mobile_message">Þetta gæti verið dýrt á sumum tegundum áskrifta eða ef verið sé á reiki.</string>
     <string name="editor_osm_notes">Minnispunktar þínir við gögn korts</string>

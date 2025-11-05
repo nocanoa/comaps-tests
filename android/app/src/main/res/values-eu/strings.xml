@@ -186,8 +186,6 @@
     <string name="done">Eginda</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap datuak: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Ziur zure OpenStreetMap kontutik saioa amaitu nahi duzula?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Arrastoak</string>
     <!-- Length of track in cell that describes route -->
@@ -463,7 +461,6 @@
     <string name="editor_edit_place_category_title">Kategoria</string>
     <string name="detailed_problem_description">Arazoaren deskribapen zehatza</string>
     <string name="editor_report_problem_other_title">Beste arazo bat</string>
-    <string name="placepage_add_business_button">Gehitu aktibitatea</string>
     <string name="message_invalid_feature_position">Hemen ezin da objekturik jarri</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Komunitateak sortutako OpenStreetMap datuak %s-tik aurrera. Lortu informazio gehiago mapa editatu eta eguneratzeari buruz OpenStreetMap.org helbidean</string>
@@ -505,7 +502,6 @@
     <string name="placepage_more_button">Gehiago</string>
     <string name="placepage_edit_bookmark_button">Editatu markagailua</string>
     <string name="placepage_personal_notes_hint">Ohar pertsonalak (testua edo html)</string>
-    <string name="editor_comment_hint">Iruzkina…</string>
     <string name="editor_reset_edits_message">Tokiko aldaketa guztiak berrezarri nahi dituzu?</string>
     <string name="editor_reset_edits_button">Berreskuratu</string>
     <string name="editor_remove_place_message">Gehitutako tokia ezabatu?</string>

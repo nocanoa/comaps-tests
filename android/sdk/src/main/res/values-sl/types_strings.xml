@@ -2,4 +2,7 @@
 <resources>
     <string name="type.addr_interpolation.odd">Naslov/blok</string>
     <string name="type.aerialway">Žičnica</string>
+    <string name="type.addr_interpolation">Naslov/blok</string>
+    <string name="type.aerialway.cable_car">Žičnica</string>
+    <string name="type.cuisine.noodles">Nudli</string>
 </resources>

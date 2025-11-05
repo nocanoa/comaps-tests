@@ -78,7 +78,7 @@ RoutingSettings GetRoutingSettings(VehicleType vehicleType)
     return {true /* useDirectionForRouteBuilding */,
             true /* m_matchRoute */,
             true /* m_soundDirection */,
-            50.0 /* m_matchingThresholdM */,
+            30.0 /* m_matchingThresholdM */,
             true /* m_showTurnAfterNext */,
             measurement_utils::KmphToMps(3.0) /* m_minSpeedForRouteRebuildMpS */,
             20.0 /* m_finishToleranceM */,

@@ -184,8 +184,6 @@
     <string name="done">تم</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">بيانات خريطة الشارع المفتوحة: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">هل أنت متأكد أنك تريد تسجيل الخروج من حساب OpenStreetMap الخاص بك؟</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">المسارات</string>
     <!-- Length of track in cell that describes route -->
@@ -461,7 +459,6 @@
     <string name="editor_edit_place_category_title">الفئة</string>
     <string name="detailed_problem_description">وصف مفصّل للمشكلة</string>
     <string name="editor_report_problem_other_title">مشكلة أخرى</string>
-    <string name="placepage_add_business_button">إضافة مؤسسة</string>
     <string name="message_invalid_feature_position">لا يمكن تحديد موقع الكائن هنا</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">بيانات OpenStreetMap التي أنشأها المجتمع اعتبارًا من %s. تعرف على المزيد حول كيفية تعديل الخريطة وتحديثها على OpenStreetMap.org</string>
@@ -503,7 +500,6 @@
     <string name="placepage_more_button">المزيد</string>
     <string name="placepage_edit_bookmark_button">تحرير العلامة المرجعية</string>
     <string name="placepage_personal_notes_hint">ملاحظات شخصية (نص أو html)</string>
-    <string name="editor_comment_hint">تعليق…</string>
     <string name="editor_reset_edits_message">هل تريد مسح كافة التغييرات المحلية؟</string>
     <string name="editor_reset_edits_button">مسح</string>
     <string name="editor_remove_place_message">إزالة مكان الذي تمت إضافته؟</string>

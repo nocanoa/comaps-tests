@@ -1097,3 +1097,5 @@
 "pref_maplanguage_local" = "Místní jazyk";
 "existence_confirmed_time_ago" = "Existence potvrzena %@";
 "hours_confirmed_time_ago" = "Potvrzeno %@";
+"offline_explanation_text" = "Pro prohlížení a navigaci v dané oblasti je nutné stáhnout mapu.\nStáhnout mapy oblastí, které chcete navštívit.";
+"offline_explanation_title" = "Offline mapy";

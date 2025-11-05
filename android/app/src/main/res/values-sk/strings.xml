@@ -184,8 +184,6 @@
     <string name="done">Hotovo</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Údaje OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Ste si istí, že sa chcete odhlásiť zo svojho účtu OpenStreetMap?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Stopy</string>
     <!-- Length of track in cell that describes route -->
@@ -461,7 +459,6 @@
     <string name="editor_edit_place_category_title">Kategória</string>
     <string name="detailed_problem_description">Podrobný popis problému</string>
     <string name="editor_report_problem_other_title">Iný problém</string>
-    <string name="placepage_add_business_button">Pridať organizáciu</string>
     <string name="message_invalid_feature_position">Objekt sa tu nedá umiestniť</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Údaje OpenStreetMap vytvorené komunitou od %s. Viac informácií o tom, ako upravovať a aktualizovať mapu, nájdete na stránke OpenStreetMap.org</string>
@@ -503,7 +500,6 @@
     <string name="placepage_more_button">Viac</string>
     <string name="placepage_edit_bookmark_button">Upraviť záložku</string>
     <string name="placepage_personal_notes_hint">Osobné poznámky (text alebo html)</string>
-    <string name="editor_comment_hint">Poznámka…</string>
     <string name="editor_reset_edits_message">Resetovať všetky miestne časy?</string>
     <string name="editor_reset_edits_button">Resetovať</string>
     <string name="editor_remove_place_message">Odstrániť pridané miesto?</string>

@@ -443,5 +443,6 @@
 "shop-fashion_accessories|@shop": "Motetilbehør",
 "shop-carpet|@shop": "Tepper",
 "shop-pasta|@shop": "Pasta",
-"amenity-luggage_locker": "Bagasjeskap"
+"amenity-luggage_locker": "Bagasjeskap",
+"amenity-bank|@category_bank": "penger"
 }

@@ -10,7 +10,7 @@
 "download_maps" = "Karten herunterladen";
 
 /* Settings/Downloader - info for country which started downloading */
-"downloading" = "Wird heruntergeladen…";
+"downloading" = "Wird heruntergeladen …";
 
 /* Choose measurement on first launch alert - choose metric system button */
 "kilometres" = "Kilometer";
@@ -825,6 +825,7 @@
 "avoid_unpaved" = "Unbefest. Straßen vermeiden";
 
 /* Recommended length for CarPlay and Android Auto is around 25-27 characters */
+"avoid_steps" = "Treppen vermeiden";
 "avoid_ferry" = "Fähren vermeiden";
 "avoid_motorways" = "Autobahnen vermeiden";
 "unable_to_calc_alert_title" = "Route kann nicht berechnet werden";
@@ -1097,3 +1098,4 @@
 "pref_maplanguage_local" = "Lokale Sprache";
 "existence_confirmed_time_ago" = "Existenz bestätigt %@";
 "hours_confirmed_time_ago" = "Bestätigt %@";
+"offline_explanation_title" = "Offline Karten";

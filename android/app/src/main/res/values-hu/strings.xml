@@ -49,7 +49,7 @@
     <string name="unsupported_phone">Hardveres gyorsítású OpenGL szükséges. Sajnos az Ön eszköze nem támogatott.</string>
     <string name="download">Letöltés</string>
     <!-- Used in DownloadResources startup screen -->
-    <string name="disconnect_usb_cable">A CoMaps használatához válassza le az USB-kábelt, vagy helyezze be a memóriakártyát</string>
+    <string name="disconnect_usb_cable">A CoMaps használatához válassza le az USB-kábelt vagy helyezze be a memóriakártyát</string>
     <!-- Used in DownloadResources startup screen -->
     <string name="not_enough_free_space_on_sdcard">Az alkalmazás használatához először szabadítson fel némi helyet az SD-kártyán/USB-tárolón</string>
     <string name="download_resources">Mielőtt elkezdené használni az alkalmazást, töltse le az áttekintő világtérképet az eszközre. \nEz %s tárhelyet fog igénybe venni.</string>
@@ -183,8 +183,6 @@
     <string name="done">Kész</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap adatok: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Biztosan ki akar jelentkezni az OpenStreetMap fiókjából?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Nyomvonalak</string>
     <!-- Length of track in cell that describes route -->
@@ -451,7 +449,6 @@
     <string name="editor_edit_place_category_title">Kategória</string>
     <string name="detailed_problem_description">Probléma részletes leírása</string>
     <string name="editor_report_problem_other_title">Más jellegű probléma</string>
-    <string name="placepage_add_business_button">Vállalkozás hozzáadása</string>
     <string name="message_invalid_feature_position">Itt nem található objektum</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">A közösségi OpenStreetMap adatok frissítésének időpontja: %s. Tudjon meg többet a térkép szerkesztéséről és frissítéséről az OpenStreetMap.org oldalon</string>
@@ -492,7 +489,6 @@
     <string name="placepage_more_button">Tovább</string>
     <string name="placepage_edit_bookmark_button">Könyvjelző szerkesztése</string>
     <string name="placepage_personal_notes_hint">Személyes jegyzetek (szöveg vagy html)</string>
-    <string name="editor_comment_hint">Megjegyzés…</string>
     <string name="editor_reset_edits_message">Elveti az összes módosítást?</string>
     <string name="editor_reset_edits_button">Elvetés</string>
     <string name="editor_remove_place_message">Törli a hozzáadott helyet?</string>
@@ -866,4 +862,12 @@
     <string name="share_track">Nyomvonal megosztása</string>
     <string name="pref_tts_no_system_tts_short">Nem található szövegfelovasási szolgáltatás (TTS), ellenőrizze az alkalmazás beállításait a „Hangutasítások” müpontban</string>
     <string name="dialog_report_error_with_logs">Küldjön hibajelentést:\n - „Naplózás engedélyezése” a beállításokban\n - reprodukálja a hibát\n - A „Névjegy és súgó” képernyőn nyomja meg a „Hibajelentés” gombot, és küldje el e-mailben vagy csevegésben.\n - naplózás kikapcsolása</string>
+    <string name="charge_socket_type2">2. típus (nincs kábel)</string>
+    <string name="charge_socket_type2_cable">2. típus (kábel nélküli)</string>
+    <string name="charge_socket_type2_combo">2. típus kombinált</string>
+    <string name="charge_socket_type1">1. típus</string>
+    <string name="charge_socket_nacs">NACS (Észak-Amerikai töltőszabvány)</string>
+    <string name="charge_socket_chademo">Gyors töltési szabvány Japán autókhoz</string>
+    <string name="unknown_socket_type">ismeretlen aljzat</string>
+    <string name="unknown_power_output">ismeretlen áramkimenet</string>
 </resources>

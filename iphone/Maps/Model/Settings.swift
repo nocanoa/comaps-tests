@@ -407,6 +407,21 @@ import Combine
     }
     
     
+    /// If steps should be avoided during routing
+    @objc static var shouldAvoidStepsWhileRouting: Bool {
+        get {
+            return RoutingOptions().avoidSteps
+        }
+        set {
+            let routingOptions = RoutingOptions()
+            routingOptions.avoidSteps = newValue
+            routingOptions.save()
+            
+            NotificationCenter.default.post(name: routingOptionsChangedNotificationName, object: nil)
+        }
+    }
+    
+    
     /// If live traffic data should be used
     @objc static var hasLiveTraffic: Bool {
         get {

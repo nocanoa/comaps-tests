@@ -46,7 +46,12 @@ static std::unordered_map<std::string, EType> const kNamesToFMD = {
     {"drive_through", EType::FMD_DRIVE_THROUGH},
     {"website_menu", EType::FMD_WEBSITE_MENU},
     {"self_service", EType::FMD_SELF_SERVICE},
-    {"outdoor_seating", EType::FMD_OUTDOOR_SEATING}
+    {"outdoor_seating", EType::FMD_OUTDOOR_SEATING},
+    // TODO(skadge): this won't work, obv
+    {"socket_type1_count", EType::FMD_CHARGE_SOCKETS},
+    {"socket_type1_output", EType::FMD_CHARGE_SOCKETS},
+    {"socket_type2_count", EType::FMD_CHARGE_SOCKETS},
+    {"socket_type2_output", EType::FMD_CHARGE_SOCKETS},
     /// @todo Add description?
 };
 

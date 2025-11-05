@@ -1,5 +1,6 @@
 #pragma once
 
+#include "indexer/feature_charge_sockets.hpp"
 #include "indexer/feature_data.hpp"
 #include "indexer/validate_and_format_contacts.hpp"
 
@@ -9,23 +10,6 @@ struct MetadataTagProcessorImpl
 {
   MetadataTagProcessorImpl(FeatureBuilderParams & params) : m_params(params) {}
 
-  /** Parse OSM attributes for socket types and add them to m_chargeSockets.
-   *
-   * Examples of (k,v) pairs:
-   * ("socket:type2_combo", "2")
-   * ("socket:type2_combo:output", "150 kW")
-   * ("socket:chademo", "1")
-   * ("socket:chademo:output", "50") // assumes kW
-   */
-  void AggregateChargeSocket(std::string const & k, std::string const & v);
-
-  /** Output the list of all sockets for a given charging station in the format
-   * <type>|<nb>|[<power>];...
-   *
-   * For instance:
-   * "type2_combo|2|150;chademo|1|50;type2|2|"
-   */
-  std::string StringifyChargeSockets() const;
   std::string ValidateAndFormat_maxspeed(std::string const & v) const;
   static std::string ValidateAndFormat_stars(std::string const & v);
   std::string ValidateAndFormat_operator(std::string const & v) const;
@@ -62,20 +46,8 @@ struct MetadataTagProcessorImpl
   static std::string ValidateAndFormat_outdoor_seating(std::string v);
 
 protected:
-  // struct to store the representation of a charging station socket
-  struct ChargeSocketDescriptor
-  {
-    std::string type;       // https://wiki.openstreetmap.org/wiki/Key:socket:*
-                            // e.g. "type1"
-    std::string count;      // number of sockets or 'y' if OSM tag was set to 'yes'.
-			    // ("" if unknown)
-    std::string output_kW;  // optional power output, in kW ("" if unknown)
-  };
-  typedef std::vector<ChargeSocketDescriptor> ChargeSocketDescriptors;
-
   // stores information about charge sockets in charging stations.
-  // Incrementally completed in AggregateChargeSocket
-  ChargeSocketDescriptors m_chargeSockets;
+  ChargeSocketsHelper m_chargeSockets;
 
   FeatureBuilderParams & m_params;
 };

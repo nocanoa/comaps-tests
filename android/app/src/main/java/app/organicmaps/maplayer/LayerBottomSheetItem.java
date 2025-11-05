@@ -2,6 +2,7 @@ package app.organicmaps.maplayer;
 
 import android.content.Context;
 import android.view.View;
+import androidx.annotation.AttrRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -13,9 +14,7 @@ import app.organicmaps.util.ThemeUtils;
 public class LayerBottomSheetItem
 {
   @DrawableRes
-  private final int mEnabledStateDrawableResId;
-  @DrawableRes
-  private final int mDisabledStateDrawableResId;
+  private final int mDrawableResId;
   @StringRes
   private final int mTitleResId;
   @NonNull
@@ -23,12 +22,10 @@ public class LayerBottomSheetItem
   @NonNull
   private final OnItemClickListener<LayerBottomSheetItem> mItemClickListener;
 
-  LayerBottomSheetItem(@DrawableRes int enabledStateDrawableResId, @DrawableRes int disabledStateDrawableResId,
-                       @StringRes int titleResId, @NonNull Mode mode,
+  LayerBottomSheetItem(@DrawableRes int drawableResId, @StringRes int titleResId, @NonNull Mode mode,
                        @NonNull OnItemClickListener<LayerBottomSheetItem> itemClickListener)
   {
-    mEnabledStateDrawableResId = enabledStateDrawableResId;
-    mDisabledStateDrawableResId = disabledStateDrawableResId;
+    mDrawableResId = drawableResId;
     mTitleResId = titleResId;
     mMode = mode;
     mItemClickListener = itemClickListener;
@@ -37,35 +34,30 @@ public class LayerBottomSheetItem
   public static LayerBottomSheetItem create(@NonNull Context mContext, Mode mode,
                                             @NonNull OnItemClickListener<LayerBottomSheetItem> layerItemClickListener)
   {
-    int disabledResource = 0;
-    int enabledResource = 0;
+    @DrawableRes
+    int drawableResId = 0;
+    @StringRes
     int buttonTextResource = R.string.layers_title;
     switch (mode)
     {
     case OUTDOORS:
-      disabledResource = R.attr.outdoorsMenuDisabled;
-      enabledResource = R.attr.outdoorsMenuEnabled;
+      drawableResId = R.drawable.ic_layers_outdoors;
       buttonTextResource = R.string.button_layer_outdoor;
       break;
     case SUBWAY:
-      disabledResource = R.attr.subwayMenuDisabled;
-      enabledResource = R.attr.subwayMenuEnabled;
+      drawableResId = R.drawable.ic_layers_subway;
       buttonTextResource = R.string.subway;
       break;
     case ISOLINES:
-      disabledResource = R.attr.isoLinesMenuDisabled;
-      enabledResource = R.attr.isoLinesMenuEnabled;
+      drawableResId = R.drawable.ic_layers_isoline;
       buttonTextResource = R.string.button_layer_isolines;
       break;
     case TRAFFIC:
-      disabledResource = R.attr.trafficMenuDisabled;
-      enabledResource = R.attr.trafficMenuEnabled;
+      drawableResId = R.drawable.ic_layers_traffic;
       buttonTextResource = R.string.button_layer_traffic;
       break;
     }
-    int disabled = ThemeUtils.getResource(mContext, disabledResource);
-    int enabled = ThemeUtils.getResource(mContext, enabledResource);
-    return new LayerBottomSheetItem(enabled, disabled, buttonTextResource, mode, layerItemClickListener);
+    return new LayerBottomSheetItem(drawableResId, buttonTextResource, mode, layerItemClickListener);
   }
 
   @NonNull
@@ -75,15 +67,9 @@ public class LayerBottomSheetItem
   }
 
   @DrawableRes
-  public int getEnabledStateDrawable()
+  public int getDrawable()
   {
-    return mEnabledStateDrawableResId;
-  }
-
-  @DrawableRes
-  public int getDisabledStateDrawable()
-  {
-    return mDisabledStateDrawableResId;
+    return mDrawableResId;
   }
 
   @StringRes

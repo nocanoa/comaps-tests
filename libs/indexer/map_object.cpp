@@ -180,53 +180,8 @@ std::string_view MapObject::GetOpeningHours() const
 
 ChargeSocketDescriptors MapObject::GetChargeSockets() const
 {
-  ChargeSocketDescriptors sockets;
-
   auto s = std::string(m_metadata.Get(MetadataID::FMD_CHARGE_SOCKETS));
-  if (s.empty())
-    return sockets;
-
-  auto tokens = strings::Tokenize(s, ";");
-
-  for (auto token : tokens)
-  {
-    if (token.empty())
-      continue;
-
-    auto fields = strings::Tokenize(token, "|");
-
-    if (fields.size() < 3)
-      continue;  // invalid entry, skip
-
-    ChargeSocketDescriptor desc;
-    desc.type = fields[0];
-
-    try
-    {
-      desc.count = std::stoi(std::string(fields[1]));
-    }
-    catch (...)
-    {
-      desc.count = 0;
-    }
-
-    if (fields.size() >= 3)
-    {
-      try
-      {
-        desc.power = std::stod(std::string(fields[2]));
-      }
-      catch (...)
-      {
-        desc.power = 0;
-      }
-    }
-    else
-      desc.power = 0;
-
-    sockets.push_back(desc);
-  }
-  return sockets;
+  return ChargeSocketsHelper(s).GetSockets();
 }
 
 feature::Internet MapObject::GetInternet() const

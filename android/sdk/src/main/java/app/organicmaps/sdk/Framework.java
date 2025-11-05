@@ -8,6 +8,7 @@ import androidx.annotation.Size;
 import app.organicmaps.sdk.api.ParsedRoutingData;
 import app.organicmaps.sdk.api.ParsedSearchRequest;
 import app.organicmaps.sdk.api.RequestType;
+import app.organicmaps.sdk.bookmarks.data.ChargeSocketDescriptor;
 import app.organicmaps.sdk.bookmarks.data.DistanceAndAzimut;
 import app.organicmaps.sdk.bookmarks.data.FeatureId;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
@@ -200,7 +201,8 @@ public class Framework
   public static native RoutingInfo nativeGetRouteFollowingInfo();
 
   @Nullable
-  public static native JunctionInfo[] nativeGetRouteJunctionPoints();
+  /// @param[in] maxDistM Max distance between points in meters.
+  public static native JunctionInfo[] nativeGetRouteJunctionPoints(double maxDistM);
 
   @Nullable
   public static native final int[] nativeGenerateRouteAltitudeChartBits(int width, int height,
@@ -303,6 +305,8 @@ public class Framework
   public static native boolean nativeIsDownloadedMapAtScreenCenter();
 
   public static native String nativeGetActiveObjectFormattedCuisine();
+
+  public static native ChargeSocketDescriptor[] nativeGetActiveObjectChargeSockets();
 
   public static native void nativeSetVisibleRect(int left, int top, int right, int bottom);
 

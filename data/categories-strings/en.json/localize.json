@@ -133,7 +133,7 @@
 "amenity-car_sharing": "Car Share|3carsharing|car|sharing|U+1F697|U+1F698|U+1F699|carpool|carsharing services|car sharing|4rideshare",
 "amenity-car_rental": "3Car Rental|car|rental|U+1F697|U+1F698|U+1F699|car hire|rent a car|auto rental|vehicle rent",
 "amenity-motorcycle_rental": "4Motorcycle Rental|bike|hire|4scooter",
-"amenity-cinema|@category_entertainment": "3Cinema|Film|U+1F3A6|U+1F3AC|",
+"amenity-cinema|@category_entertainment": "3Cinema|3Movie Theatre|Film|Movies|U+1F3A6|U+1F3AC",
 "leisure-bowling_alley|@category_entertainment": "4Bowling Alley",
 "amenity-theatre|@category_entertainment": "4Theatre|U+1F3AD",
 "amenity-nightclub|@category_entertainment|@category_nightlife": "3Nightclub|night club|4disco|dance|U+1F378|U+1F379|U+1F46F|U+1F483|club|nightspot|night bar",

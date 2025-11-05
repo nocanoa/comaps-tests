@@ -1095,3 +1095,5 @@
 "pref_maplanguage_local" = "Kohalik keel";
 "existence_confirmed_time_ago" = "Olemasolu on kontrollitud %@";
 "hours_confirmed_time_ago" = "Kontrollitud %@";
+"offline_explanation_text" = "Selles piirkonnas liikumiseks ja teekonna juhatamiseks pead vajaliku kaardi alla laadima.\nVali allalaaditav kaart selle piirkonna kohta.";
+"offline_explanation_title" = "Ilma võrguühenduseta toimivad kaardid";

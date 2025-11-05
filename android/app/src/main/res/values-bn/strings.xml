@@ -98,7 +98,6 @@
     <string name="downloading_is_active">মানচিত্রটি এখন ডাউনলোডবিরত</string>
     <string name="load_kmz_successful">বুকমার্কগুলি লোড করা হয়ে গেছে! আপনি এগুলি মানচিত্রে অথবা বুকমার্ক পরিচালক স্ক্রিনে দেখতে পারেন।</string>
     <string name="wait_several_minutes">এটি হতে কিছুক্ষণ সময় লাগবে।\nঅনুগ্রহ করে প্রতীক্ষা করুন…</string>
-    <string name="osm_log_out_confirmation">আপনি কি আপনার ওপেনস্ট্রিটম্যাপ অ্যাকাউন্ট থেকে বের হতে চান?</string>
     <string name="download_resources">অ্যাপটি ব্যবহার করার আগে অনুগ্রহ করে বিশ্বের পরিদর্শনের মানচিত্রটি ডাউনলোড করুন।\nএটি আপনার স্টোরেজের %s ব্যবহার করবে।</string>
     <string name="category_transport">যানবাহন</string>
     <string name="unknown_current_position">আপনার অবস্থানটি এখনও অব্দি চিহ্নিত করা যায়নি</string>
@@ -286,7 +285,6 @@
     <string name="editor_add_place_title">যোগ করা হচ্ছে</string>
     <string name="editor_edit_place_name_hint">স্থানের নাম</string>
     <string name="editor_edit_place_title">সম্পাদনা</string>
-    <string name="placepage_add_business_button">ব্যবসা যোগ করুন</string>
     <string name="add_street">একটি রাস্তা অ্যাড করুন</string>
     <string name="empty_street_name_error">অনুগ্রহ করে রাস্তার নামটি লিখুন</string>
     <string name="choose_language">একটি ভাষা বেছে নিন</string>

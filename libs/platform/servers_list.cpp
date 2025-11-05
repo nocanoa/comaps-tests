@@ -16,7 +16,6 @@ std::optional<MetaConfig> ParseMetaConfig(std::string const & jsonStr)
 {
   char const kSettings[] = "settings";
   char const kServers[] = "servers";
-  char const kProductsConfig[] = "productsConfig";
 
   MetaConfig outMetaConfig;
   try
@@ -48,12 +47,6 @@ std::optional<MetaConfig> ParseMetaConfig(std::string const & jsonStr)
       }
 
       servers = json_object_get(root.get(), kServers);
-
-      auto const productsConfig = json_object_get(root.get(), kProductsConfig);
-      if (productsConfig)
-        outMetaConfig.m_productsConfig = json_dumps(productsConfig, JSON_ENCODE_ANY);
-      else
-        LOG(LINFO, ("No ProductsConfig in meta configuration"));
     }
     else
     {

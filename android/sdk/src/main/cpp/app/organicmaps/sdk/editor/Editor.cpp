@@ -7,6 +7,7 @@
 
 #include "indexer/cuisines.hpp"
 #include "indexer/editable_map_object.hpp"
+#include "indexer/feature_charge_sockets.hpp"
 #include "indexer/feature_utils.hpp"
 #include "indexer/validate_and_format_contacts.hpp"
 
@@ -94,6 +95,64 @@ JNIEXPORT void JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeSetOpeningHo
   g_editableMapObject.SetOpeningHours(jni::ToNativeString(env, value));
 }
 
+JNIEXPORT jobjectArray JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeGetChargeSockets(JNIEnv * env, jclass)
+{
+  auto sockets = g_editableMapObject.GetChargeSockets();
+
+  jclass descClass = env->FindClass("app/organicmaps/sdk/bookmarks/data/ChargeSocketDescriptor");
+  jmethodID ctor = env->GetMethodID(descClass, "<init>", "(Ljava/lang/String;ID)V");
+
+  // Create a Java array
+  jobjectArray result = env->NewObjectArray(sockets.size(), descClass, nullptr);
+
+  for (size_t i = 0; i < sockets.size(); ++i)
+  {
+    auto const & s = sockets[i];
+
+    jstring jType = env->NewStringUTF(s.type.c_str());
+    jobject jDesc = env->NewObject(descClass, ctor, jType, (jint)s.count, (jdouble)s.power);
+
+    env->SetObjectArrayElement(result, i, jDesc);
+
+    env->DeleteLocalRef(jType);
+    env->DeleteLocalRef(jDesc);
+  }
+
+  return result;
+}
+
+JNIEXPORT void JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeSetChargeSockets(JNIEnv * env, jclass,
+                                                                                     jobjectArray jSockets)
+{
+  ChargeSocketsHelper chargeSockets;
+
+  jsize len = env->GetArrayLength(jSockets);
+
+  jclass descClass = env->FindClass("app/organicmaps/sdk/bookmarks/data/ChargeSocketDescriptor");
+  jfieldID fidType = env->GetFieldID(descClass, "type", "Ljava/lang/String;");
+  jfieldID fidCount = env->GetFieldID(descClass, "count", "I");
+  jfieldID fidPower = env->GetFieldID(descClass, "power", "D");
+
+  for (jsize i = 0; i < len; ++i)
+  {
+    jobject jDesc = env->GetObjectArrayElement(jSockets, i);
+
+    jstring jType = (jstring)env->GetObjectField(jDesc, fidType);
+    char const * cType = env->GetStringUTFChars(jType, nullptr);
+
+    jint count = env->GetIntField(jDesc, fidCount);
+    jdouble power = env->GetDoubleField(jDesc, fidPower);
+
+    chargeSockets.AddSocket(cType, static_cast<unsigned int>(count), static_cast<double>(power));
+
+    env->ReleaseStringUTFChars(jType, cType);
+    env->DeleteLocalRef(jType);
+    env->DeleteLocalRef(jDesc);
+  }
+
+  g_editableMapObject.SetChargeSockets(chargeSockets.ToString());
+}
+
 JNIEXPORT jstring JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeGetMetadata(JNIEnv * env, jclass, jint id)
 {
   auto const metaID = static_cast<osm::MapObject::MetadataID>(id);
@@ -165,15 +224,6 @@ JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeShouldSh
     return static_cast<jboolean>(false);
 
   return g_framework->GetPlacePageInfo().ShouldShowEditPlace();
-}
-
-JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeShouldShowAddBusiness(JNIEnv *, jclass)
-{
-  ::Framework * frm = g_framework->NativeFramework();
-  if (!frm->HasPlacePageInfo())
-    return static_cast<jboolean>(false);
-
-  return g_framework->GetPlacePageInfo().ShouldShowAddBusiness();
 }
 
 JNIEXPORT jboolean JNICALL Java_app_organicmaps_sdk_editor_Editor_nativeShouldShowAddPlace(JNIEnv *, jclass)

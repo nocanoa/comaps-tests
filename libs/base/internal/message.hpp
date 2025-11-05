@@ -47,6 +47,8 @@ std::string DebugPrint(char32_t * t) = delete;
 
 template <typename U, typename V>
 inline std::string DebugPrint(std::pair<U, V> const & p);
+template <typename U, typename V, typename W>
+inline std::string DebugPrint(std::tuple<U, V, W> const & p);
 template <typename T>
 inline std::string DebugPrint(std::list<T> const & v);
 template <typename T>
@@ -133,6 +135,14 @@ std::string DebugPrint(std::pair<U, V> const & p)
 {
   std::ostringstream out;
   out << "(" << DebugPrint(p.first) << ", " << DebugPrint(p.second) << ")";
+  return out.str();
+}
+
+template <typename U, typename V, typename W>
+std::string DebugPrint(std::tuple<U, V, W> const & p)
+{
+  std::ostringstream out;
+  out << "(" << DebugPrint(get<0>(p)) << ", " << DebugPrint(get<1>(p)) << ", " << DebugPrint(get<2>(p)) << ")";
   return out.str();
 }
 

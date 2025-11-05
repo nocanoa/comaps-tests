@@ -404,5 +404,9 @@
 "shop-cannabis|@shop": "Cannabis|Maconha|Marijuana|THX|Haxixe|CBD",
 "shop-farm|@category_food|@shop": "Quitanda|Granja",
 "shop-grocery|@category_food|@shop": "Loja de comida|Armazém|Não-perecível",
-"shop-health_food|@category_food|@shop": "Alimentos saudáveis|Saudável"
+"shop-health_food|@category_food|@shop": "Alimentos saudáveis|Saudável",
+"shop-hearing_aids|@shop": "Aparelhos Auditivos",
+"railway-station-funicular": "Funicular",
+"historic-citywalls|@category_tourism": "Muralha da Cidade",
+"historic-fort|@category_tourism": "Fortaleza"
 }

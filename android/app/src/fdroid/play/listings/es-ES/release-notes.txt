@@ -1,10 +1,8 @@
-• Datos a 6 de septiembre
-• Penalizaciones de giros en rutas de bici
-• Etiquetas de puntos de interés en color en navegación
-• Buscar por nombre de sucursal
-• Añadir portales de energía, cabinas de seguridad y oficinas
-• Nuevos iconos: torres, discotecas, parafarmacias y mástiles
-• Guardar color en exportaciones GPX
-• Colorear áreas peatonales de plazas
-• Android Auto: mostrar números de salida de rotondas
+• Mejora de la visibilidad y la interfaz de usuario de las instrucciones de navegación
+• Se ha añadido la opción de evitar escaleras
+• Mejora de la búsqueda en varios idiomas como ES
+• Se ha añadido un icono específico para las estaciones de autobús
+• Se han solucionado los problemas de Android Auto (a través del proyecto OM)
+• Se ha mejorado el editor y se han solucionado pequeños problemas
+• Se han mejorado los estilos de los mapas (a través del proyecto OM)
 Más detalles en Codeberg

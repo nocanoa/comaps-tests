@@ -172,8 +172,6 @@
     <string name="done">झाले</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap डेटा: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">तुमची खात्री आहे की तुम्ही तुमच्या OpenStreetMap खात्यातून लॉग आउट करू इच्छिता?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">ट्रॅक</string>
     <!-- Length of track in cell that describes route -->
@@ -440,7 +438,6 @@
     <string name="editor_edit_place_category_title">प्रवर्ग</string>
     <string name="detailed_problem_description">समस्येचे तपशिलात वर्णन</string>
     <string name="editor_report_problem_other_title">वेगळी समस्या</string>
-    <string name="placepage_add_business_button">व्यवसाय जोडा</string>
     <string name="message_invalid_feature_position">इथे कोणतीही वस्तू ठेवू शकत नाही</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">समुदाय-निर्मित OpenStreetMap डेटा %s नुसार. OpenStreetMap.org वर नकाशा संपादित आणि अपडेट कसा करायचा याबद्दल अधिक जाणून घ्या</string>
@@ -482,7 +479,6 @@
     <string name="placepage_more_button">अधिक</string>
     <string name="placepage_edit_bookmark_button">खूणपत्र संपादित करा</string>
     <string name="placepage_personal_notes_hint">वैयक्तिक चिठ्ठ्या (मजकूर किंवा html)</string>
-    <string name="editor_comment_hint">टिप्पणी…</string>
     <string name="editor_reset_edits_message">सर्व स्थानिक बदल टाकून द्यायचे?</string>
     <string name="editor_reset_edits_button">टाकून द्या</string>
     <string name="editor_remove_place_message">जोडलेले ठिकाण पुसून टाकायचे?</string>

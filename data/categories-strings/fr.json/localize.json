@@ -492,5 +492,7 @@
 "building-guardhouse": "Garde",
 "leisure-dance|@category_entertainment": "4Danse|École de danse",
 "shop-money_lender": "Prêteur d'argent",
-"attraction-amusement_ride|attraction-carousel|attraction-roller_coaster|attraction-maze|attraction-historic|attraction-big_wheel|attraction-bumper_car|@category_children": "Attraction|Labyrinthe"
+"attraction-amusement_ride|attraction-carousel|attraction-roller_coaster|attraction-maze|attraction-historic|attraction-big_wheel|attraction-bumper_car|@category_children": "Attraction|Labyrinthe",
+"amenity-animal_shelter": "Refuge pour animaux",
+"amenity-vending_machine-fuel|@category_fuel": "Pompe à gaz"
 }

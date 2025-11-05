@@ -184,8 +184,6 @@
     <string name="done">Ολοκλήρωση</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Δεδομένα OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε από το λογαριασμό σας στο OpenStreetMap;</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Διαδρομές</string>
     <!-- Length of track in cell that describes route -->
@@ -463,7 +461,6 @@
     <string name="editor_edit_place_category_title">Κατηγορία</string>
     <string name="detailed_problem_description">Λεπτομερής περιγραφή του θέματος</string>
     <string name="editor_report_problem_other_title">Διαφορετικό πρόβλημα</string>
-    <string name="placepage_add_business_button">Προσθήκη επιχείρησης</string>
     <string name="message_invalid_feature_position">Δε μπορεί να τοποθετηθεί αντικείμενο εδώ</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Δεδομένα OpenStreetMap που δημιουργήθηκαν από την κοινότητα στις %s. Μάθετε περισσότερα για τον τρόπο επεξεργασίας και ενημέρωσης του χάρτη στο OpenStreetMap.org</string>
@@ -501,7 +498,6 @@
     <string name="placepage_more_button">Περισσότερα</string>
     <string name="placepage_edit_bookmark_button">Επεξεργασία αγαπημένου</string>
     <string name="placepage_personal_notes_hint">Προσωπικές σημειώσεις (κείμενο ή html)</string>
-    <string name="editor_comment_hint">Σχόλιο…</string>
     <string name="editor_reset_edits_message">Απόρριψη όλων των τοπικών αλλαγών;</string>
     <string name="editor_reset_edits_button">Απόρριψη</string>
     <string name="editor_remove_place_message">Διαγραφή της τοποθεσίας που προστέθηκε;</string>

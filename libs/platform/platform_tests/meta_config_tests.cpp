@@ -1,6 +1,5 @@
 #include "testing/testing.hpp"
 
-#include "platform/products.hpp"
 #include "platform/servers_list.hpp"
 
 #include "cppjansson/cppjansson.hpp"
@@ -17,7 +16,6 @@ UNIT_TEST(MetaConfig_JSONParser_OldFormat)
   TEST_EQUAL(result->m_serversList[1], "http://url2", ());
   TEST_EQUAL(result->m_serversList[2], "http://url3", ());
   TEST(result->m_settings.empty(), ());
-  TEST(result->m_productsConfig.empty(), ());
 }
 
 UNIT_TEST(MetaConfig_JSONParser_InvalidJSON)
@@ -50,49 +48,6 @@ UNIT_TEST(MetaConfig_JSONParser_NewFormatWithoutProducts)
   TEST_EQUAL(result->m_serversList[1], "http://url2", ());
   TEST_EQUAL(result->m_settings.size(), 1, ());
   TEST_EQUAL(result->m_settings["DonateUrl"], "value1", ());
-  TEST(result->m_productsConfig.empty(), ());
-}
-
-UNIT_TEST(MetaConfig_JSONParser_NewFormatWithProducts)
-{
-  std::string newFormatJson = R"({
-    "servers": ["http://url1", "http://url2"],
-    "settings": {
-      "DonateUrl": "value1",
-      "key2": "value2"
-    },
-    "productsConfig": {
-      "placePagePrompt": "prompt1",
-      "aboutScreenPrompt": "prompt2",
-      "products": [
-        {
-          "title": "Product 1",
-          "link": "http://product1"
-        },
-        {
-          "title": "Product 2",
-          "link": "http://product2"
-        }
-      ]
-    }
-  })";
-
-  auto result = ParseMetaConfig(newFormatJson);
-  TEST(result.has_value(), ());
-  TEST_EQUAL(result->m_serversList.size(), 2, ());
-  TEST_EQUAL(result->m_serversList[0], "http://url1", ());
-  TEST_EQUAL(result->m_serversList[1], "http://url2", ());
-  TEST_EQUAL(result->m_settings.size(), 1, ());
-  TEST_EQUAL(result->m_settings["DonateUrl"], "value1", ());
-
-  TEST(!result->m_productsConfig.empty(), ());
-  auto const productsConfigResult = products::ProductsConfig::Parse(result->m_productsConfig);
-  TEST(productsConfigResult.has_value(), ());
-  auto const productsConfig = productsConfigResult.value();
-  TEST_EQUAL(productsConfig.GetPlacePagePrompt(), "prompt1", ());
-  TEST(productsConfig.HasProducts(), ());
-  auto const products = productsConfig.GetProducts();
-  TEST_EQUAL(products.size(), 2, ());
 }
 
 UNIT_TEST(MetaConfig_JSONParser_MissingServersKey)

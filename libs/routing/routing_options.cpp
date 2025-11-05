@@ -65,7 +65,9 @@ RoutingOptionsClassifier::RoutingOptionsClassifier()
       {{"highway", "track"}, RoutingOptions::Road::Dirty},
       {{"highway", "road"}, RoutingOptions::Road::Dirty},
       {{"psurface", "unpaved_bad"}, RoutingOptions::Road::Dirty},
-      {{"psurface", "unpaved_good"}, RoutingOptions::Road::Dirty}};
+      {{"psurface", "unpaved_good"}, RoutingOptions::Road::Dirty},
+      {{"highway", "steps"}, RoutingOptions::Road::Steps},
+      {{"highway", "ladder"}, RoutingOptions::Road::Steps}};
 
   m_data.Reserve(std::size(types));
   for (auto const & data : types)
@@ -103,6 +105,9 @@ RoutingOptions::Road ChooseMainRoutingOptionRoad(RoutingOptions options, bool is
   if (options.Has(RoutingOptions::Road::Motorway))
     return RoutingOptions::Road::Motorway;
 
+  if (options.Has(RoutingOptions::Road::Steps))
+    return RoutingOptions::Road::Steps;
+
   return RoutingOptions::Road::Usual;
 }
 
@@ -126,6 +131,7 @@ string DebugPrint(RoutingOptions const & routingOptions)
   append(RoutingOptions::Road::Motorway);
   append(RoutingOptions::Road::Ferry);
   append(RoutingOptions::Road::Dirty);
+  append(RoutingOptions::Road::Steps);
 
   if (wasAppended)
     ss << " | ";
@@ -143,6 +149,7 @@ string DebugPrint(RoutingOptions::Road type)
   case RoutingOptions::Road::Motorway: return "motorway";
   case RoutingOptions::Road::Ferry: return "ferry";
   case RoutingOptions::Road::Dirty: return "dirty";
+  case RoutingOptions::Road::Steps: return "steps";
   case RoutingOptions::Road::Usual: return "usual";
   case RoutingOptions::Road::Max: return "max";
   }

@@ -184,8 +184,6 @@
     <string name="done">בוצע</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">נתוני OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">האם אתה בטוח שברצונך להתנתק מחשבון OpenStreetMap שלך?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">מסלולים</string>
     <!-- Length of track in cell that describes route -->
@@ -457,7 +455,6 @@
     <string name="editor_edit_place_category_title">קטגוריה</string>
     <string name="detailed_problem_description">תאור מפורט של הבעיה</string>
     <string name="editor_report_problem_other_title">בעיה אחרת</string>
-    <string name="placepage_add_business_button">הוסף בית עסק</string>
     <string name="message_invalid_feature_position">לא ניתן למקם כאן פריט</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">נתוני OpenStreetMap שנוצרו על ידי הקהילה החל מ-%s. למידע נוסף על איך לערוך ולעדכן את המפה ב-OpenStreetMap.org</string>
@@ -499,7 +496,6 @@
     <string name="placepage_more_button">עוד</string>
     <string name="placepage_edit_bookmark_button">ערוך סימניה</string>
     <string name="placepage_personal_notes_hint">הערות אישיות (טקסט או HTML)</string>
-    <string name="editor_comment_hint">תגובה…</string>
     <string name="editor_reset_edits_message">למחוק את כל השינויים המקומיים?</string>
     <string name="editor_reset_edits_button">מחק</string>
     <string name="editor_remove_place_message">למחוק את המקום שהוסף?</string>

@@ -186,8 +186,6 @@
     <string name="done">Fertig</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap-Daten: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Sind Sie sicher, dass Sie sich von Ihrem OpenStreetMap-Konto abmelden möchten?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Tracks</string>
     <!-- Length of track in cell that describes route -->
@@ -462,7 +460,6 @@
     <string name="editor_edit_place_category_title">Kategorie</string>
     <string name="detailed_problem_description">Detaillierte Beschreibung des Problems</string>
     <string name="editor_report_problem_other_title">Ein anderes Problem</string>
-    <string name="placepage_add_business_button">Organisation hinzufügen</string>
     <string name="message_invalid_feature_position">Ein Objekt kann hier nicht positioniert werden</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Von der Community erstellte OpenStreetMap-Daten (Stand: %s). Erfahre mehr darüber, wie du die Karte bearbeiten und aktualisieren kannst unter OpenStreetMap.org</string>
@@ -504,7 +501,6 @@
     <string name="placepage_more_button">Mehr</string>
     <string name="placepage_edit_bookmark_button">Lesezeichen bearbeiten</string>
     <string name="placepage_personal_notes_hint">Persönliche Notizen (Text oder html)</string>
-    <string name="editor_comment_hint">Kommentar…</string>
     <string name="editor_reset_edits_message">Alle lokalen Änderungen verwerfen?</string>
     <string name="editor_reset_edits_button">Verwerfen</string>
     <string name="editor_remove_place_message">Hinzugefügtes Objekt löschen?</string>
@@ -874,4 +870,5 @@
     <string name="existence_confirmed_time_ago">Existenz bestätigt %s</string>
     <string name="hours_confirmed_time_ago">Bestätigt %s</string>
     <string name="pref_tts_no_system_tts_short">Kein Text-zu-Sprache-Modul gefunden, überprüfe die App-Einstellungen</string>
+    <string name="avoid_steps">Treppen vermeiden</string>
 </resources>

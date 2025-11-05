@@ -17,20 +17,20 @@ using CountrySetT = std::unordered_set<std::string_view>;
 CountrySetT kEAEU = {"Armenia", "Belarus", "Kazakhstan", "Kyrgyzstan", "Russian Federation"};
 
 // The Schengen Area list of countries.
-CountrySetT kSchengenArea = {"Austria", "Belgium",       "Czech Republic", "Denmark",    "Estonia",  "Finland",
-                             "France",  "Germany",       "Greece",         "Hungary",    "Iceland",  "Italy",
-                             "Latvia",  "Liechtenstein", "Lithuania",      "Luxembourg", "Malta",    "Netherlands",
-                             "Norway",  "Poland",        "Portugal",       "Slovakia",   "Slovenia", "Spain",
-                             "Sweden",  "Switzerland",   "Croatia"};
+CountrySetT kSchengenArea = {"Austria",  "Belgium",     "Bulgaria", "Croatia",       "Czech Republic", "Denmark",
+                             "Estonia",  "Finland",     "France",   "Germany",       "Greece",         "Hungary",
+                             "Iceland",  "Italy",       "Latvia",   "Liechtenstein", "Lithuania",      "Luxembourg",
+                             "Malta",    "Netherlands", "Norway",   "Poland",        "Portugal",       "Romania",
+                             "Slovakia", "Slovenia",    "Spain",    "Sweden",        "Switzerland"};
 
-std::string_view kIreland = "Ireland";
-std::string_view kNorthernIrelandMwm = "UK_Northern Ireland";
+std::string_view constexpr kIreland = "Ireland";
+std::string_view constexpr kNorthernIrelandMwm = "UK_Northern Ireland";
 
 // In fact, there is no _total_ border control on major roads between Israel and Palestine (UN boundary), except:
 // - Gaza, strict access/barrier restrictions should be mapped, no transit traffic.
 // - West bank wall (https://www.openstreetmap.org/relation/1410327), access/barrier restrictions should be mapped.
 CountrySetT kIsraelAndPalestine = {"Israel Region", "Palestine Region"};
-std::string_view kJerusalemMwm = "Jerusalem";
+std::string_view constexpr kJerusalemMwm = "Jerusalem";
 
 bool IsInSet(CountrySetT const & theSet, std::string const & country)
 {

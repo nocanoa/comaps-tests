@@ -54,7 +54,6 @@ public class BookmarkCategorySettingsFragment extends BaseMwmToolbarFragment
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
   {
     View root = inflater.inflate(R.layout.fragment_bookmark_category_settings, container, false);
-    setHasOptionsMenu(true);
     initViews(root);
     return root;
   }
@@ -85,7 +84,7 @@ public class BookmarkCategorySettingsFragment extends BaseMwmToolbarFragment
     });
     mEditDescView = root.findViewById(R.id.edit_description);
     mEditDescView.setText(mCategory.getDescription());
-    mSaveView = root.findViewById(R.id.done);
+    mSaveView = root.findViewById(R.id.save);
     mSaveView.setOnClickListener(v -> onEditDoneClicked());
   }
 

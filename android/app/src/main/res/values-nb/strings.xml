@@ -9,7 +9,7 @@
     <string name="delete">Slett</string>
     <string name="download_maps">Last ned kart</string>
     <!-- Settings/Downloader - info for country when download fails -->
-    <string name="download_has_failed">Nedlastingen mislyktes. Trykk for å prøve igjen.</string>
+    <string name="download_has_failed">Nedlastingen mislyktes, trykk for å prøve igjen</string>
     <!-- Settings/Downloader - info for country which started downloading -->
     <string name="downloading">Laster ned …</string>
     <!-- Choose measurement on first launch alert - choose metric system button -->
@@ -27,7 +27,7 @@
     <!-- A dialog title, that warns a user that Precise Location is disabled and suggests to turn it on -->
     <string name="limited_accuracy">Begrenset nøyaktighet</string>
     <!-- A dialog text, that warns a user that Precise Location is disabled and suggests to turn it on -->
-    <string name="precise_location_is_disabled_long_text">For å sikre nøyaktig navigering aktiverer du Precise Location i innstillingene</string>
+    <string name="precise_location_is_disabled_long_text">For å sikre nøyaktig navigering aktiverer du nøyaktig posisjon i innstillingene</string>
     <!-- View and button titles for accessibility -->
     <string name="zoom_to_country">Vis på kartet</string>
     <!-- Message to display at the center of the screen when the country download has failed -->
@@ -84,7 +84,7 @@
     <!-- Header of settings activity where user defines storage path -->
     <string name="maps_storage">Lagre kart på</string>
     <!-- Detailed description of Maps Storage settings button -->
-    <string name="maps_storage_summary">Velg mappe for kartlagring</string>
+    <string name="maps_storage_summary">Velg lagringsmappe for de nedlastede kartene</string>
     <!-- E.g. "Downloaded maps: 500Mb" in Maps Storage settings -->
     <string name="maps_storage_downloaded">Kart</string>
     <!-- Free space out of total storage size in Maps Storage settings, e.g. "300 MB free of 2 GB" -->
@@ -165,17 +165,17 @@
     <!-- Warning message when doing search around current position -->
     <string name="unknown_current_position">Posisjonen din har ikke blitt fastslått enda</string>
     <!-- Alert message that we can't run Map Storage settings due to some reasons. -->
-    <string name="cant_change_this_setting">Beklager, innstillingene for kartlagring er for øyeblikket deaktivert.</string>
+    <string name="cant_change_this_setting">Beklager, innstillingene for kartlagring er for øyeblikket deaktivert</string>
     <!-- Alert message that downloading is in progress. -->
-    <string name="downloading_is_active">Nedlasting av kartdata pågår</string>
+    <string name="downloading_is_active">Nedlasting av kart er i gang nå</string>
     <!-- Share my position using SMS, %1$@ contains om:// and %2$@ https://comaps.app link WITHOUT NAME. @NOTE non-ascii symbols in the link will result in max 70 characters SMS instead of 140. -->
-    <string name="my_position_share_sms">Hei, se posisjonen min på CoMaps! %1$s eller %2$s Har du ikke offline-kart? Last dem ned her: https://www.comaps.app/download/</string>
+    <string name="my_position_share_sms">Se posisjonen min på CoMaps! %1$s eller %2$s Har du ikke offline-kart? Last ned her: https://www.comaps.app/download/</string>
     <!-- Subject for emailed bookmark -->
     <string name="bookmark_share_email_subject">Hei, se merket mitt på CoMaps-kartet</string>
     <!-- Subject for emailed position -->
     <string name="my_position_share_email_subject">Hei, se posisjonen min på CoMaps-kartet!</string>
     <!-- Share my position using EMail, %1$@ is om:// and %2$@ is https://comaps.app link WITHOUT NAME -->
-    <string name="my_position_share_email">Hei, \nJeg er her nå: %1$s. Klikk denne lenken %2$s eller denne %3$s for å se stedet på kartet. \n \nTakk.</string>
+    <string name="my_position_share_email">Hei, \n \nJeg er her nå: %1$s. Klikk denne lenken %2$s eller denne %3$s for å se stedet på kartet. \n \nTakk.</string>
     <!-- Share button text which opens menu with more buttons, like Message, EMail, Facebook etc. -->
     <string name="share">Del</string>
     <!-- Share by email button text, also used in editor and About. -->
@@ -186,8 +186,6 @@
     <string name="done">Ferdig</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap-data: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Er du sikker på at du vil logge ut av OpenStreetMap-kontoen din?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Ruter</string>
     <!-- Length of track in cell that describes route -->
@@ -223,9 +221,9 @@
     <!-- Settings «Route» category: «Tts language» title -->
     <string name="pref_tts_language_title">Talespråk</string>
     <!-- Settings «Route» category: «Test Voice Directions» title -->
-    <string name="pref_tts_test_voice_title">Test taleanvisninger (TTS, tekst-til-tale)</string>
+    <string name="pref_tts_test_voice_title">Test taleanvisninger</string>
     <!-- Settings «Route» category: Pop-up message when clicking «Test Voice Directions» -->
-    <string name="pref_tts_playing_test_voice">Kontroller volumet eller systeminnstillingene for tekst-til-tale hvis du ikke hører stemmen nå.</string>
+    <string name="pref_tts_playing_test_voice">Kontroller volumet eller systeminnstillingene for tekst-til-tale hvis du ikke hører tale nå</string>
     <!-- Settings «Route» category: «Tts unavailable» subtitle -->
     <string name="pref_tts_unavailable">Ikke tilgjengelig</string>
     <string name="pref_map_auto_zoom">Automatisk zooming</string>
@@ -248,7 +246,7 @@
     <!-- Button in the main menu -->
     <string name="donate">Donere</string>
     <!-- Button in the main Help dialog -->
-    <string name="how_to_support_us">Støtt prosjektet</string>
+    <string name="how_to_support_us">Bidra som frivillig og forbedre CoMaps</string>
     <!-- Button in the main Help dialog -->
     <string name="copyright">Opphavsrett</string>
     <!-- Text in menu + Button in the main Help dialog -->
@@ -273,7 +271,7 @@
     <string name="downloader_download_all_button">Last ned alle</string>
     <string name="downloader_downloading">Laster ned:</string>
     <!-- Displayed in a dialog that appears when a user tries to delete a map while the app is in the follow route mode -->
-    <string name="downloader_delete_map_while_routing_dialog">Stans navigeringen for å slette kartet.</string>
+    <string name="downloader_delete_map_while_routing_dialog">Stans navigeringen for å slette kartet</string>
     <!-- PointsInDifferentMWM -->
     <string name="routing_failed_cross_mwm_building">Det kan bare opprettes ruter som passer fullstendig innenfor ett enkelt kart.</string>
     <!-- Context menu item for downloader. -->
@@ -285,7 +283,7 @@
     <!-- Item in context menu. -->
     <string name="downloader_update_map">Oppdater kart</string>
     <!-- Preference title -->
-    <string name="google_play_services">Google Play Stedstjenester</string>
+    <string name="google_play_services">Google Fused-posisjonstjeneste</string>
     <!-- Preference text -->
     <string name="pref_use_google_play">Produsenteid tjeneste som kombinerer GPS, Wi-Fi, mobilnettverk etc. for å bestemme posisjonen din mer nøyaktig. Den kan koble til Google-servere.</string>
     <!-- Preference title -->
@@ -345,18 +343,18 @@
     <string name="dialog_routing_location_turn_on">Aktiver stedstjenester</string>
     <string name="dialog_routing_location_unknown_turn_on">Nåværende GPS-koordinater ble ikke funnet. Aktiver stedstjenester for å beregne en rute.</string>
     <string name="dialog_routing_unable_locate_route">Kunne ikke finne rute</string>
-    <string name="dialog_routing_cant_build_route">Kunne ikke finne rute.</string>
+    <string name="dialog_routing_cant_build_route">Kan ikke opprette rute</string>
     <string name="dialog_routing_change_start_or_end">Endre startpunkt eller bestemmelsessted.</string>
     <string name="dialog_routing_change_start">Endre startpunkt</string>
     <string name="dialog_routing_start_not_determined">Ingen rute ble opprettet. Startpunktet ble ikke funnet.</string>
     <string name="dialog_routing_select_closer_start">Velg et startpunkt som er i nærheten av en vei.</string>
     <string name="dialog_routing_change_end">Endre bestemmelsessted</string>
     <string name="dialog_routing_end_not_determined">Ingen rute ble opprettet. Bestemmelsesstedet ble ikke funnet.</string>
-    <string name="dialog_routing_select_closer_end">Velg et bestemmelsessted som er i nærheten av en vei.</string>
-    <string name="dialog_routing_change_intermediate">Kunne ikke finne mellomstopp.</string>
-    <string name="dialog_routing_intermediate_not_determined">Kontroller og juster mellomstopp.</string>
+    <string name="dialog_routing_select_closer_end">Velg et bestemmelsessted som er nærmere en vei</string>
+    <string name="dialog_routing_change_intermediate">Kan ikke finne det mellomliggende punktet</string>
+    <string name="dialog_routing_intermediate_not_determined">Juster ditt mellomliggende punkt</string>
     <string name="dialog_routing_system_error">Systemfeil</string>
-    <string name="dialog_routing_application_error">En applikasjonsfeil førte til at ruten ikke kunne opprettes.</string>
+    <string name="dialog_routing_application_error">Kan ikke opprette rute pga. en programfeil</string>
     <string name="dialog_routing_try_again">Vennligst prøv igjen</string>
     <string name="not_now">Ikke nå</string>
     <string name="dialog_routing_download_and_build_cross_route">Vil du laste ned kartet og lage en mer optimal rute som går over flere kart?</string>
@@ -370,17 +368,17 @@
     <string name="hide">Skjul</string>
     <string name="categories">Kategorier</string>
     <string name="history">Historikk</string>
-    <string name="search_not_found">Beklager, jeg fant ingenting.</string>
+    <string name="search_not_found">Ingen resultater funnet</string>
     <!-- The message when user did not find anything in the search. -->
     <string name="search_not_found_query">Last ned regionen du søker i, eller prøv å legge til et bynavn i nærheten.</string>
     <string name="search_history_title">Søkehistorikk</string>
-    <string name="search_history_text">Vis de siste søkene raskt.</string>
+    <string name="search_history_text">Vis de siste søkene dine</string>
     <string name="clear_search">Tøm søkehistorikk</string>
     <string name="p2p_your_location">Din beliggenhet</string>
     <string name="p2p_start">Start</string>
     <string name="p2p_from_here">Fra</string>
     <string name="p2p_to_here">Rute til</string>
-    <string name="p2p_only_from_current">Navigering er kun tilgjengelig fra din nåværende beliggenhet.</string>
+    <string name="p2p_only_from_current">Navigering er kun tilgjengelig fra din gjeldende posisjon</string>
     <string name="p2p_reroute_from_current">Vil du vi skal planlegge en rute fra din nåværende posisjon?</string>
     <!-- Edit open hours/set time and minutes dialog -->
     <string name="next_button">Neste</string>
@@ -430,7 +428,7 @@
     <string name="add_language">Legg til et språk</string>
     <string name="street">Gate</string>
     <!-- Editable House Number text field (in address block). -->
-    <string name="house_number">Et husnummer</string>
+    <string name="house_number">Husnummer</string>
     <string name="details">Detaljer</string>
     <string name="social_media">Sosiale medier</string>
     <string name="building">Bygning</string>
@@ -440,22 +438,22 @@
     <string name="empty_street_name_error">Legg til en gateadresse</string>
     <string name="choose_language">Velg et språk</string>
     <string name="choose_street">Velg en gate</string>
-    <string name="cuisine">Matrett</string>
-    <string name="select_cuisine">Velg matrett</string>
+    <string name="cuisine">Kjøkken</string>
+    <string name="select_cuisine">Velg kjøkken</string>
     <!-- login text field -->
     <string name="editor_add_phone">Legg til telefon</string>
     <string name="level">Gulv</string>
-    <string name="downloader_delete_map_dialog">Alle endringer i kartet vil slettes sammen med kartet.</string>
+    <string name="downloader_delete_map_dialog">Alle dine kartredigeringer vil slettes sammen med kartet</string>
     <string name="downloader_update_maps">Oppdater kart</string>
     <string name="downloader_mwm_migration_dialog">For å opprette en reiserute må du oppdatere alle kartene og deretter planlegge reiseruten på nytt.</string>
     <string name="downloader_search_field_hint">Finn kartet</string>
-    <string name="common_check_internet_connection_dialog">Kontroller innstillingene dine og sørg for at enheten din er koblet til Internett.</string>
+    <string name="common_check_internet_connection_dialog">Sørg for at enheten din er koblet til Internett</string>
     <string name="downloader_no_space_title">Ikke nok plass</string>
     <string name="downloader_no_space_message">Fjern unødvendig data</string>
-    <string name="editor_login_error_dialog">Innloggingsfeil.</string>
+    <string name="editor_login_error_dialog">Innloggingsfeil</string>
     <string name="editor_profile_changes">Bekreftede endringer</string>
     <string name="editor_focus_map_on_location">Dra kartet for å plassere korset der stedet eller virksomheten befinner seg.</string>
-    <string name="editor_edit_place_title">Redigerer</string>
+    <string name="editor_edit_place_title">Redigering</string>
     <string name="editor_add_place_title">Legger til</string>
     <string name="editor_edit_place_name_hint">Navn på stedet</string>
     <!-- The second part of the editor_edit_place_name_hint to explain that name should be entered in a local language, see https://wiki.openstreetmap.org/wiki/Key:name -->
@@ -463,17 +461,16 @@
     <string name="editor_edit_place_category_title">Kategori</string>
     <string name="detailed_problem_description">Detaljert beskrivelse av problemet</string>
     <string name="editor_report_problem_other_title">Et annet problem</string>
-    <string name="placepage_add_business_button">Legg til organisasjon</string>
     <string name="message_invalid_feature_position">Et objekt kan ikke plasseres her</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Fellesskapsopprettede OpenStreetMap-data fra %s. Les mer om hvordan du redigerer og oppdaterer kartet på OpenStreetMap.org.</string>
     <!-- OSM explanation on Android login screen -->
     <string name="login_osm_presentation">OpenStreetMap.org (OSM) er et fellesskapsprosjekt for å bygge et gratis og åpent kart. Det er hovedkilden til kartdata i CoMaps og fungerer på samme måte som Wikipedia. Du kan legge til eller redigere steder, og de blir tilgjengelige for millioner av brukere over hele verden. \nBli med i fellesskapet og bidra til å lage et bedre kart for alle!</string>
-    <string name="login_to_make_edits_visible">Opprett en OpenStreetMap-konto eller logg inn for å publisere kartredigeringene dine til hele verden.</string>
+    <string name="login_to_make_edits_visible">Opprett en OpenStreetMap-konto eller logg inn for å publisere kartredigeringene dine til hele verden</string>
     <!-- Downloaded 10 **of** 20 <- it is that "of" -->
     <string name="downloader_of">%1$d av %2$d</string>
     <string name="download_over_mobile_header">Last ned med mobildata?</string>
-    <string name="download_over_mobile_message">Dette kan medføre store kostnader med enkelte dataplaner eller om du roamer.</string>
+    <string name="download_over_mobile_message">Dette kan være veldig dyrt med enkelte abonnementer eller ved roaming</string>
     <string name="error_enter_correct_house_number">Skriv riktig husnummer</string>
     <!-- Error message in Editor when a user tries to set the number of floors for a building higher than %d floors -->
     <string name="error_enter_correct_storey_number">Rediger bygningen med maks. %d etasjer</string>
@@ -494,8 +491,8 @@
     <string name="editor_category_unsuitable_title">Finner du ikke en passende kategori?</string>
     <string name="editor_category_unsuitable_text">CoMaps tillater kun å legge til enkle punktkategorier, det vil si ingen byer, veier, innsjøer, bygningsomriss osv. Vennligst legg til slike kategorier direkte til <a href="https://www.openstreetmap.org">OpenStreetMap.org</a>. Sjekk vår <a href="https://www.comaps.app/support/advanced-map-editing/">guide</a> for detaljerte trinnvise instruksjoner.</string>
     <string name="downloader_no_downloaded_maps_title">Du har ikke lastet ned noen kart</string>
-    <string name="downloader_no_downloaded_maps_message">Last ned kart for å finne plasseringen og navigere frakoblet.</string>
-    <string name="current_location_unknown_error_title">Gjeldende plassering er ukjent.</string>
+    <string name="downloader_no_downloaded_maps_message">Last ned kart for å søke og navigere frakoblet</string>
+    <string name="current_location_unknown_error_title">Gjeldende posisjon er ukjent</string>
     <!-- abbreviation for kilometers per hour -->
     <string name="kilometers_per_hour">km/t</string>
     <string name="miles_per_hour">mph</string>
@@ -505,7 +502,6 @@
     <string name="placepage_more_button">Mer</string>
     <string name="placepage_edit_bookmark_button">Rediger bokmerke</string>
     <string name="placepage_personal_notes_hint">Personlige notater (text or html)</string>
-    <string name="editor_comment_hint">Kommentar…</string>
     <string name="editor_reset_edits_message">Nullstille alle lokale endringer?</string>
     <string name="editor_reset_edits_button">Nullstill</string>
     <string name="editor_remove_place_message">Fjerne et tilføyd sted?</string>
@@ -526,8 +522,8 @@
     <!-- Displayed when saving some edits to the map to warn against publishing personal data -->
     <string name="editor_share_to_all_dialog_title">Vil du sende det til alle brukere?</string>
     <!-- Dialog before publishing the modifications to the public map. -->
-    <string name="editor_share_to_all_dialog_message_1">Sørg for at du ikke har skrevet noe personlig informasjon.</string>
-    <string name="editor_share_to_all_dialog_message_2">OpenStreetMap-redaktører vil sjekke endringene og ta kontakt med deg hvis de har spørsmål.</string>
+    <string name="editor_share_to_all_dialog_message_1">Sørg for at du ikke har angitt noen private eller personlige data</string>
+    <string name="editor_share_to_all_dialog_message_2">OpenStreetMap-redaktører vil sjekke endringene og kontakte deg hvis de har spørsmål</string>
     <string name="navigation_stop_button">Stopp</string>
     <!-- Shown as toast when starting the recent track recording -->
     <string name="track_recording">Registrere sporet</string>
@@ -541,10 +537,10 @@
     <string name="mobile_data_option_not_today">Ikke bruk i dag</string>
     <string name="mobile_data">Mobilt Internett</string>
     <!-- NOTE to translators: please synchronize your translation with the English one. -->
-    <string name="mobile_data_description">Mobilt Internett er nødvendig for å vise detaljert informasjon om steder, for eksempel fotografier, priser og anmeldelser.</string>
+    <string name="mobile_data_description">Mobilt Internett kreves for kartoppdateringsvarslinger og laste opp redigeringer</string>
     <string name="mobile_data_option_never">Aldri bruk</string>
     <string name="mobile_data_option_ask">Alltid spør</string>
-    <string name="traffic_update_maps_text">For å vise trafikkdata må kartene i appen være oppdaterte.</string>
+    <string name="traffic_update_maps_text">For å vise trafikkdata må kartene være oppdaterte</string>
     <string name="big_font">Forstørr skriften på kartet</string>
     <string name="traffic_update_app">Vennligst oppdater CoMaps</string>
     <!-- "traffic" as in "road congestion" -->
@@ -554,7 +550,7 @@
     <string name="feedback_general">Generell tilbakemelding</string>
     <string name="prefs_languages_information">Vi bruker system TTS for stemmeveiledning. Mange Android-enheter bruker Google TTS, Du kan laste ned eller oppdatere via Google Play (https://play.google.com/store/apps/details?id=com.google.android.tts)</string>
     <string name="prefs_languages_information_off">For enkelte språk er det nødvendig å installere en annen talesyntese eller en ekstra språkpakke fra appbutikken (Google Play, Galaxy Store, App Gallery, FDroid). \nGå til enhetens innstillinger → Språk og input → Tale → Tekst til tale output. \nHer kan du administrere innstillingene for talesyntese (for eksempel laste ned språkpakke for offline bruk) og velge en annen tekst-til-tale-motor.</string>
-    <string name="prefs_languages_information_off_link">Les denne veiledningen for mer informasjon.</string>
+    <string name="prefs_languages_information_off_link">Les denne veiledningen for mer informasjon</string>
     <string name="transliteration_title">Omskrivning til latin</string>
     <string name="learn_more">Finn ut mer</string>
     <!-- User selected the destination by pressing Route To, but the current position is unknown. User needs to select a starting point of a route using search or by tapping on the map and then pressing "Route From". -->
@@ -624,7 +620,7 @@
     <!-- Speed camera settings menu option - Never warn (about speedcams) -->
     <string name="pref_tts_speedcams_never">Advar aldri</string>
     <string name="power_managment_title">Strømsparemodus</string>
-    <string name="power_managment_description">Når automatisk modus er valgt, begynner programmet å deaktivere batteridriftfunksjonene avhengig av det nåværende batterinivået</string>
+    <string name="power_managment_description">Prøv å redusere strømforbruket på bekostning av noen funksjoner</string>
     <string name="power_managment_setting_never">Aldri</string>
     <string name="power_managment_setting_auto">Automatisk</string>
     <string name="power_managment_setting_manual_max">Maksimum strømsparing</string>
@@ -638,7 +634,7 @@
     <string name="avoid_ferry">Unngå fergeoverganger</string>
     <string name="avoid_motorways">Unngå motorveien</string>
     <string name="unable_to_calc_alert_title">Kan ikke beregne rute</string>
-    <string name="unable_to_calc_alert_subtitle">Dessverre kunne vi ikke finne en rute sannsynligvis på grunn av dine definerte alternativer. Vennligst endre innstillingene og prøv igjen</string>
+    <string name="unable_to_calc_alert_subtitle">Kan ikke finne en rute. Dette kan skyldes dine rutealternativer eller ufullstendige OpenStreetMap-data. Endre dine rutealternativer og prøv igjen.</string>
     <string name="define_to_avoid_btn">Definer veier som skal unngås</string>
     <string name="change_driving_options_btn">Kjørealternativer aktivert</string>
     <string name="toll_road">Bompengevei</string>
@@ -699,8 +695,8 @@
     <string name="transit_not_found">T-bane navigasjon er ikke tilgjengelig i denne regionen ennå</string>
     <string name="dialog_pedestrian_route_is_long_header">T-bane rute ikke funnet</string>
     <string name="dialog_pedestrian_route_is_long_message">Velg utgangspunkt eller destinasjon som befinner seg nærmere en T-bane stasjon</string>
-    <string name="button_layer_isolines">Høyder</string>
-    <string name="isolines_activation_error_dialog">For å bruke høydekurver oppdater eller last opp kartet til nødvendig område</string>
+    <string name="button_layer_isolines">Høydekurver</string>
+    <string name="isolines_activation_error_dialog">Aktivering av høydekurver krever nedlasting av kartdata for dette området</string>
     <string name="isolines_location_error_dialog">Høydekurver er ikke tilgjengelige i dette området ennå</string>
     <string name="elevation_profile_ascent">Stigning</string>
     <string name="elevation_profile_descent">Nedstigning</string>
@@ -829,5 +825,41 @@
     <string name="panoramax">Panoramax-bilde</string>
     <string name="app_site_url">https://comaps.app/</string>
     <string name="hours_confirmed_time_ago">Bekreftet %s</string>
-    <string name="existence_confirmed_time_ago">Bekreftet eksisterer %s</string>
+    <string name="existence_confirmed_time_ago">Eksistens bekreftet %s</string>
+    <string name="comma_separated_pair">%1$s, %2$s</string>
+    <string name="pref_backup_now_summary_progress">Sikkerhetskopiering pågår…</string>
+    <string name="pref_backup_location_title">Sikkerhetskopiplassering</string>
+    <string name="pref_backup_interval_title">Automatisk sikkerhetskopiering</string>
+    <string name="backup_interval_manual_only">Av (kun manuelt)</string>
+    <string name="delete_track_dialog_title">Slette %s?</string>
+    <string name="bookmark_color">Bokmerkefarge</string>
+    <string name="about_help">Om &amp; Hjelp</string>
+    <string name="open_now">Åpen nå</string>
+    <string name="read_in_wikipedia">Wikipedia</string>
+    <string name="wikimedia_commons">Wikimedia Commons</string>
+    <string name="pref_backup_now_title">Sikkerhetskopier nå</string>
+    <string name="pref_backup_now_summary_failed">Sikkerhetskopiering feilet</string>
+    <string name="backup_interval_every_day">Daglig</string>
+    <string name="backup_interval_every_week">Ukentlig</string>
+    <string name="route_type">Rutetype</string>
+    <string name="vehicle">Kjøretøy</string>
+    <string name="pedestrian">Fotgjenger</string>
+    <string name="bicycle">Sykkel</string>
+    <string name="closed_now">Lukket nå</string>
+    <string name="level_value_generic">Nivå: %s</string>
+    <string name="editor_building_levels">Etasjer (inkl. bakkeplan, ekskl. tak)</string>
+    <string name="at">kl. %s</string>
+    <string name="pref_tts_no_system_tts_short">Ingen tekst-til-tale-motor funnet, sjekk appinnstillingene</string>
+    <string name="pref_left_button_title">Venstreknappoppsett</string>
+    <string name="pref_backup_title">Sikkerhetskopi av bokmerker og spor</string>
+    <string name="pref_backup_summary">Automatisk sikkerhetskopiering til en mappe på enheten din</string>
+    <string name="pref_backup_now_summary">Opprett en sikkerhetskopi med en gang</string>
+    <string name="pref_backup_now_summary_ok">Sikkerhetskopiering fullført</string>
+    <string name="pref_backup_now_summary_empty_lists">Ingen bokmerker og spor å sikkerhetskopiere</string>
+    <string name="pref_backup_now_summary_folder_unavailable">Sikkerhetskopimappen er ikke tilgjengelig</string>
+    <string name="pref_backup_status_summary_success">Siste vellykkede sikkerhetskopiering</string>
+    <string name="pref_backup_location_summary_initial">Velg en mappe først og gi tillatelse</string>
+    <string name="pref_backup_history_title">Antall sikkerhetskopier som skal beholdes</string>
+    <string name="dialog_report_error_missing_folder">Den valgte sikkerhetskopiplasseringen er ikke tilgjengelig eller skrivbar. Velg en annen plassering.</string>
+    <string name="share_track">Del spor</string>
 </resources>

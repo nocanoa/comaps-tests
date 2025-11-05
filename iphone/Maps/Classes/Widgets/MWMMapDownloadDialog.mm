@@ -37,11 +37,14 @@ BOOL canAutoDownload(storage::CountryId const &countryId) {
 using namespace storage;
 
 @interface MWMMapDownloadDialog () <MWMStorageObserver, MWMCircularProgressProtocol>
+@property(strong, nonatomic) IBOutlet UILabel *explanationTitle;
+@property(strong, nonatomic) IBOutlet UILabel *explanationText;
 @property(strong, nonatomic) IBOutlet UILabel *parentNode;
 @property(strong, nonatomic) IBOutlet UILabel *node;
 @property(strong, nonatomic) IBOutlet UILabel *nodeSize;
-@property(strong, nonatomic) IBOutlet NSLayoutConstraint *nodeTopOffset;
+@property(strong, nonatomic) IBOutlet NSLayoutConstraint *nodeTop;
 @property(strong, nonatomic) IBOutlet UIButton *downloadButton;
+@property(strong, nonatomic) IBOutlet NSLayoutConstraint *explanationHeight;
 @property(strong, nonatomic) IBOutlet UIView *progressWrapper;
 
 @property(weak, nonatomic) MapViewController *controller;
@@ -50,6 +53,8 @@ using namespace storage;
 @property(nonatomic) BOOL isAutoDownloadCancelled;
 
 @end
+
+NSString * const kOfflineMapsExplained = @"OfflineMapsExplained";
 
 @implementation MWMMapDownloadDialog {
   CountryId m_countryId;
@@ -75,8 +80,10 @@ using namespace storage;
     BOOL const noParrent = (nodeAttrs.m_parentInfo[0].m_id == s.GetRootId());
     BOOL const hideParent = (noParrent || isMultiParent);
     self.parentNode.hidden = hideParent;
-    self.nodeTopOffset.priority = hideParent ? UILayoutPriorityDefaultHigh : UILayoutPriorityDefaultLow;
-    if (!hideParent) {
+    if (hideParent) {
+      [NSLayoutConstraint activateConstraints:@[self.nodeTop]];
+    } else {
+      [NSLayoutConstraint deactivateConstraints:@[self.nodeTop]];
       self.parentNode.text = @(nodeAttrs.m_topmostParentInfo[0].m_localName.c_str());
       self.parentNode.textColor = [UIColor blackSecondaryText];
     }
@@ -86,6 +93,13 @@ using namespace storage;
     self.nodeSize.textColor = [UIColor blackSecondaryText];
     self.nodeSize.text = formattedSize(nodeAttrs.m_mwmSize);
     self.nodeSize.font = [UIFont medium14].monospaced;
+    if ([NSUserDefaults.standardUserDefaults integerForKey:kOfflineMapsExplained] > 1) {
+      [NSLayoutConstraint activateConstraints:@[self.explanationHeight]];
+    } else {
+      [NSLayoutConstraint deactivateConstraints:@[self.explanationHeight]];
+    }
+    self.explanationTitle.text = L(@"offline_explanation_title");
+    self.explanationText.text = L(@"offline_explanation_text");
 
     switch (nodeAttrs.m_status) {
       case NodeStatus::NotDownloaded:
@@ -93,6 +107,10 @@ using namespace storage;
         MapViewController *controller = self.controller;
         BOOL const isMapVisible = [controller.navigationController.topViewController isEqual:controller];
         if (isMapVisible && !self.isAutoDownloadCancelled && canAutoDownload(m_countryId)) {
+          NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+          NSInteger offlineMapsExplained = [userDefaults integerForKey:kOfflineMapsExplained] + 1;
+          [userDefaults setInteger:offlineMapsExplained forKey:kOfflineMapsExplained];
+          
           m_autoDownloadCountryId = m_countryId;
           [[MWMStorage sharedStorage] downloadNode:@(m_countryId.c_str())
                                          onSuccess:^{
@@ -254,6 +272,10 @@ using namespace storage;
 #pragma mark - Actions
 
 - (IBAction)downloadAction {
+  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  NSInteger offlineMapsExplained = [userDefaults integerForKey:kOfflineMapsExplained] + 1;
+  [userDefaults setInteger:offlineMapsExplained forKey:kOfflineMapsExplained];
+  
   [[MWMStorage sharedStorage] downloadNode:@(m_countryId.c_str())
                                  onSuccess:^{ [self showInQueue]; }];
 }

@@ -250,7 +250,7 @@
 "pref_tts_language_title" = "Talespråk";
 
 /* Settings «Route» category: «Test Voice Directions» title */
-"pref_tts_test_voice_title" = "Test taleanvisninger (TTS, tekst-til-tale)";
+"pref_tts_test_voice_title" = "Test taleanvisninger";
 
 /* Title for "Other" section in TTS settings. */
 "pref_tts_other_section_title" = "Andre";
@@ -567,7 +567,7 @@
 "add_language" = "Legg til et språk";
 
 /* Editable House Number text field (in address block). */
-"house_number" = "Et husnummer";
+"house_number" = "Husnummer";
 "details" = "Detaljer";
 
 /* Text field to enter non-existing street name, below list of known streets around */
@@ -575,8 +575,8 @@
 "choose_language" = "Velg et språk";
 "choose_street" = "Velg en gate";
 "postal_code" = "Postnummer";
-"cuisine" = "Matrett";
-"select_cuisine" = "Velg matrett";
+"cuisine" = "Kjøkken";
+"select_cuisine" = "Velg kjøkken";
 
 /* login text field */
 "email_or_username" = "E-postadresse eller brukernavn";
@@ -595,7 +595,7 @@
 "editor_add_select_category" = "Velg kategori";
 "editor_add_select_category_popular_subtitle" = "Populære";
 "editor_add_select_category_all_subtitle" = "Alle kategorier";
-"editor_edit_place_title" = "Redigerer";
+"editor_edit_place_title" = "Redigering";
 "editor_add_place_title" = "Legger til";
 "editor_edit_place_name_hint" = "Navn på stedet";
 
@@ -823,7 +823,7 @@
 "avoid_ferry" = "Unngå fergeoverganger";
 "avoid_motorways" = "Unngå motorveien";
 "unable_to_calc_alert_title" = "Kan ikke beregne rute";
-"unable_to_calc_alert_subtitle" = "Dessverre kunne vi ikke finne en rute sannsynligvis på grunn av dine definerte alternativer. Vennligst endre innstillingene og prøv igjen";
+"unable_to_calc_alert_subtitle" = "Kan ikke finne en rute. Dette kan skyldes dine rutealternativer eller ufullstendige OpenStreetMap-data. Endre dine rutealternativer og prøv igjen.";
 "define_to_avoid_btn" = "Definer veier som skal unngås";
 "change_driving_options_btn" = "Kjørealternativer aktivert";
 "toll_road" = "Bompengevei";
@@ -905,8 +905,8 @@
 "transit_not_found" = "T-bane navigasjon er ikke tilgjengelig i denne regionen ennå";
 "dialog_pedestrian_route_is_long_header" = "T-bane rute ikke funnet";
 "dialog_pedestrian_route_is_long_message" = "Velg utgangspunkt eller destinasjon som befinner seg nærmere en T-bane stasjon";
-"button_layer_isolines" = "Høyder";
-"isolines_activation_error_dialog" = "For å bruke høydekurver oppdater eller last opp kartet til nødvendig område";
+"button_layer_isolines" = "Høydekurver";
+"isolines_activation_error_dialog" = "Aktivering av høydekurver krever nedlasting av kartdata for dette området";
 "isolines_location_error_dialog" = "Høydekurver er ikke tilgjengelige i dette området ennå";
 "elevation_profile_diff_level" = "Vanskelighetsgrad";
 "elevation_profile_diff_level_easy" = "Lett";

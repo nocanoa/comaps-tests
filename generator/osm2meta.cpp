@@ -84,191 +84,6 @@ bool Prefix2Double(std::string const & str, double & d)
 }
 }  // namespace
 
-void MetadataTagProcessorImpl::AggregateChargeSocket(std::string const & k, std::string const & v)
-{
-  auto keys = strings::Tokenize(k, ":");
-  ASSERT(keys[0] == "socket", ());  // key must start with "socket:"
-  if (keys.size() < 2 || keys.size() > 3)
-  {
-    LOG(LWARNING, ("Invalid socket key:", k));
-    return;
-  }
-
-  std::string type(keys[1]);
-
-  bool isOutput = false;
-  if (keys.size() == 3)
-  {
-    if (keys[2] == "output")
-      isOutput = true;
-    else
-      return;  // ignore other suffixes
-  }
-
-  // normalize type if needed
-  // based on recommandations from https://wiki.openstreetmap.org/wiki/Key:socket:*
-  static std::unordered_map<std::string, std::string> const kTypeMap = {
-      {"tesla_supercharger", "nacs"},  // also used in EU for 'type2_combo' -> needs fix in OSM tagging
-      {"tesla_destination", "nacs"},
-      {"tesla_standard", "nacs"},
-      {"tesla", "nacs"},
-      {"tesla_supercharger_ccs", "type2_combo"},
-      {"ccs", "type2_combo"},
-      {"type1_cable", "type1"},
-  };
-
-  auto itMap = kTypeMap.find(type);
-  if (itMap != kTypeMap.end())
-    type = itMap->second;
-
-  // only store sockets type that are relevant to EV charging
-  static std::unordered_set<std::string> const SUPPORTED_TYPES = {
-      "type1", "type1_combo", "type2",  "type2_cable", "type2_combo", "chademo", "nacs",
-      "gb_ac", "gb_dc",       "chaoji", "type3a",      "type3c",      "mcs"};
-
-  if (SUPPORTED_TYPES.find(type) == SUPPORTED_TYPES.end())
-    return;  // unknown type -> ignore
-
-  // find or create descriptor
-  auto it = std::find_if(m_chargeSockets.begin(), m_chargeSockets.end(),
-                         [&](ChargeSocketDescriptor const & d) { return d.type == type; });
-
-  if (it == m_chargeSockets.end())
-  {
-    m_chargeSockets.push_back({type, "y", ""});
-    it = std::prev(m_chargeSockets.end());
-  }
-
-  ASSERT(v.size() > 0, ("empty value for socket key!"));
-
-  if (!isOutput)
-  {
-    if (v == "yes")
-    {
-      it->count = "y";
-    }
-    else
-    {
-      // try to parse count as a number
-      try
-      {
-        auto count = std::stoi(v);
-        if (count <= 0)
-        {
-          LOG(LWARNING, ("Invalid socket count. Removing this socket.", ""));
-          m_chargeSockets.pop_back();
-          return;
-        }
-      }
-      catch (...)
-      {
-        // ignore sockets with invalid counts (ie, can not be parsed to int)
-        // note that if a valid power output is later set for this socket,
-        // the socket will be re-created with a default count of 'y'
-        LOG(LWARNING, ("Invalid count of charging socket. Removing it.", v));
-        m_chargeSockets.pop_back();
-        return;
-      }
-      it->count = v;
-    }
-  }
-  else  // isOutput == true => parse output power
-  {
-    // example value string: "44;22kW;11kva;7400w"
-
-    std::string powerValues = strings::MakeLowerCase(v);
-
-    // replace all occurances of 'VA' by the more standard 'W' unit
-    size_t pos = powerValues.find("va");
-    while (pos != powerValues.npos)
-    {
-      powerValues.replace(pos, 2, "w");
-      pos = powerValues.find("va", pos + 1);
-    }
-
-    // if a given socket type is present several times in the same charging
-    // station with different power outputs, the power outputs would be concatenated
-    // with ';'
-    auto powerTokens = strings::Tokenize(powerValues, ";/");
-
-    // TODO: for now, we only handle the *first* provided
-    // power output.
-    std::string num(powerTokens[0]);
-    strings::Trim(num);
-
-    if (num == "unknown")
-    {
-      it->output_kW = "";
-      return;
-    }
-
-    enum PowerUnit
-    {
-      WATT,
-      KILOWATT,
-      MEGAWATT
-    };
-    PowerUnit unit = KILOWATT;  // if no unit, kW are assumed
-
-    if (num.size() > 2)
-    {
-      // do we have a unit?
-      if (num.back() == 'w')
-      {
-        unit = WATT;
-        num.pop_back();
-        if (num.back() == 'k')
-        {
-          unit = KILOWATT;
-          num.pop_back();
-        }
-        else if (num.back() == 'm')
-        {
-          unit = MEGAWATT;
-          num.pop_back();
-        }
-      }
-    }
-
-    strings::Trim(num);
-    try
-    {
-      double value = std::stod(num);
-      std::ostringstream oss;
-      switch (unit)
-      {
-      case WATT: oss << value / 1000.; break;
-      case MEGAWATT: oss << value * 1000; break;
-      case KILOWATT: oss << value; break;
-      }
-      num = oss.str();
-    }
-    catch (...)
-    {
-      LOG(LWARNING, ("Invalid charging socket power value:", v));
-      num = "";
-    }
-
-    it->output_kW = num;
-  }
-}
-
-std::string MetadataTagProcessorImpl::StringifyChargeSockets() const
-{
-  std::ostringstream oss;
-
-  for (size_t i = 0; i < m_chargeSockets.size(); ++i)
-  {
-    auto const & desc = m_chargeSockets[i];
-
-    oss << desc.type << "|" << desc.count << "|" << desc.output_kW;
-
-    if (i + 1 < m_chargeSockets.size())
-      oss << ";";
-  }
-  return oss.str();
-}
-
 std::string MetadataTagProcessorImpl::ValidateAndFormat_stars(std::string const & v)
 {
   if (v.empty())
@@ -709,9 +524,9 @@ MetadataTagProcessor::~MetadataTagProcessor()
   if (!m_description.IsEmpty())
     m_params.GetMetadata().Set(feature::Metadata::FMD_DESCRIPTION, m_description.GetBuffer());
 
-  if (!m_chargeSockets.empty())
+  if (!m_chargeSockets.GetSockets().empty())
   {
-    auto socketsList = StringifyChargeSockets();
+    auto socketsList = m_chargeSockets.ToString();
     m_params.GetMetadata().Set(feature::Metadata::FMD_CHARGE_SOCKETS, socketsList);
   }
 }
@@ -821,7 +636,7 @@ void MetadataTagProcessor::operator()(std::string const & k, std::string const &
   case Metadata::FMD_SELF_SERVICE: valid = ValidateAndFormat_self_service(v); break;
   case Metadata::FMD_OUTDOOR_SEATING: valid = ValidateAndFormat_outdoor_seating(v); break;
   case Metadata::FMD_NETWORK: valid = ValidateAndFormat_operator(v); break;
-  case Metadata::FMD_CHARGE_SOCKETS: AggregateChargeSocket(k, v); break;
+  case Metadata::FMD_CHARGE_SOCKETS: m_chargeSockets.AggregateChargeSocketKey(k, v); break;
 
   // Metadata types we do not get from OSM.
   case Metadata::FMD_CUISINE:

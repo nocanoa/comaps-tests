@@ -164,7 +164,6 @@
     <string name="type.highway.path.tunnel">Тунел</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.pedestrian.bridge">Мост</string>
-
     <string name="type.highway.pedestrian.square">Площад</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.pedestrian.tunnel">Тунел</string>
@@ -419,7 +418,7 @@
     <string name="type.shop.curtain">Пердета</string>
     <string name="type.shop.deli">Магазин за деликатеси</string>
     <string name="type.shop.doityourself">Строителен маркет</string>
-    <string name="type.shop.farm">Магазин за селскостопански храни</string>
+    <string name="type.shop.farm">Фермерски магазин</string>
     <string name="type.shop.fashion_accessories">Модни аксесоари</string>
     <string name="type.shop.gas">Магазин за газ</string>
     <string name="type.shop.grocery">Хранителни стоки</string>
@@ -1235,7 +1234,7 @@
     <string name="type.shop.alcohol">Магазин за алкохол</string>
     <string name="type.shop.bookmaker">Букмейкър</string>
     <string name="type.shop.books">Книжарница</string>
-    <string name="type.shop.caravan">Автокъща на домове на колела</string>
+    <string name="type.shop.caravan">Автокъща за кемпери</string>
     <string name="type.shop.chocolate">Магазин за шоколад</string>
     <string name="type.shop.coffee">Магазин за кафе</string>
     <string name="type.shop.computer">Магазин за компютри</string>
@@ -1374,4 +1373,7 @@
     <string name="type.piste_type.downhill.novice.area">Спускане със ски за начинаещи</string>
     <string name="type.highway.services">Обслужвана зона</string>
     <string name="type.landuse.forest">Гора</string>
+    <string name="type.amenity.animal_shelter">Приют за животни</string>
+    <string name="type.internet_access">Интернет</string>
+    <string name="type.internet_access.wlan">Интернет</string>
 </resources>

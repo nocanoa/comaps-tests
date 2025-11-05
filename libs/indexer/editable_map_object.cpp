@@ -2,6 +2,8 @@
 
 #include "indexer/classificator.hpp"
 #include "indexer/edit_journal.hpp"
+#include "indexer/feature_charge_sockets.hpp"
+#include "indexer/feature_meta.hpp"
 #include "indexer/ftypes_matcher.hpp"
 #include "indexer/postcodes_matcher.hpp"
 #include "indexer/validate_and_format_contacts.hpp"
@@ -158,6 +160,7 @@ void EditableMapObject::ForEachMetadataItem(function<void(string_view tag, strin
     case MetadataID::FMD_EXTERNAL_URI:
     case MetadataID::FMD_WHEELCHAIR:  // Value is runtime only, data is taken from the classificator types, should not
                                       // be used to update the OSM database
+    case MetadataID::FMD_CHARGE_SOCKETS:  // multiple keys; handled via the edit journal
       break;
     default: fn(ToString(type), value); break;
     }
@@ -323,6 +326,14 @@ bool EditableMapObject::UpdateMetadataValue(string_view key, string value)
 void EditableMapObject::SetOpeningHours(std::string oh)
 {
   m_metadata.Set(MetadataID::FMD_OPEN_HOURS, std::move(oh));
+}
+
+void EditableMapObject::SetChargeSockets(std::string sockets)
+{
+  // parse the list of sockets provided by the frontend, and re-generate the
+  // socket list, thus ensuring it is valid & sorted.
+  ChargeSocketsHelper helper(sockets);
+  m_metadata.Set(MetadataID::FMD_CHARGE_SOCKETS, helper.ToString());
 }
 
 void EditableMapObject::SetInternet(feature::Internet internet)
@@ -761,6 +772,10 @@ void EditableMapObject::LogDiffInJournal(EditableMapObject const & unedited_emo)
   for (uint8_t i = 0; i < static_cast<uint8_t>(feature::Metadata::FMD_COUNT); ++i)
   {
     auto const type = static_cast<feature::Metadata::EType>(i);
+
+    // CHARGE_SOCKETS have multiple keys/values; handled separately further down
+    if (type == feature::Metadata::FMD_CHARGE_SOCKETS)
+      continue;
     std::string_view const & value = GetMetadata(type);
     std::string_view const & old_value = unedited_emo.GetMetadata(type);
 
@@ -811,6 +826,15 @@ void EditableMapObject::LogDiffInJournal(EditableMapObject const & unedited_emo)
 
   if (cuisinesModified)
     m_journal.AddTagChange("cuisine", strings::JoinStrings(old_cuisines, ";"), strings::JoinStrings(new_cuisines, ";"));
+
+  // charge sockets
+  auto chargeSocketsDiff = ChargeSocketsHelper(GetChargeSockets()).Diff(unedited_emo.GetChargeSockets());
+  for (auto const & kvdiff : chargeSocketsDiff)
+  {
+    std::string key, old_value, new_value;
+    std::tie(key, old_value, new_value) = kvdiff;
+    m_journal.AddTagChange(key, old_value, new_value);
+  }
 }
 
 bool AreObjectsEqualIgnoringStreet(EditableMapObject const & lhs, EditableMapObject const & rhs)

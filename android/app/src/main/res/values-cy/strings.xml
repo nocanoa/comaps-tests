@@ -114,7 +114,6 @@
     <string name="minute">min</string>
     <string name="day">d</string>
     <string name="placepage_more_button">Rhagor</string>
-    <string name="editor_comment_hint">Sylw…</string>
     <string name="editor_reset_edits_button">Dileu</string>
     <string name="editor_remove_place_button">Dileu</string>
     <string name="navigation_stop_button">Stopio</string>
@@ -223,7 +222,6 @@
     <string name="editor_login_error_dialog">Gwall mewngofnodi</string>
     <string name="editor_profile_changes">Newidiadau wedi\'u Dilysu</string>
     <string name="editor_report_problem_other_title">Problem arall</string>
-    <string name="placepage_add_business_button">Ychwanegu busnes</string>
     <string name="editor_zip_code">Cod ZIP</string>
     <string name="operator">Gweithredwr: %s</string>
     <string name="placepage_edit_bookmark_button">Golygu Nod Tudalen</string>

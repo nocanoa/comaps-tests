@@ -53,8 +53,6 @@ set(SRC
   secure_storage.hpp
   servers_list.cpp
   servers_list.hpp
-  products.cpp
-  products.hpp
   settings.cpp
   settings.hpp
   socket.hpp

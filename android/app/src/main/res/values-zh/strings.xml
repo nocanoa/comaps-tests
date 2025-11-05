@@ -186,8 +186,6 @@
     <string name="done">完成</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap 数据：%s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">是否确定要登出您的 OpenStreetMap 账号？</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">轨迹</string>
     <!-- Length of track in cell that describes route -->
@@ -471,7 +469,6 @@
     <string name="editor_edit_place_category_title">类别</string>
     <string name="detailed_problem_description">问题的详细描述</string>
     <string name="editor_report_problem_other_title">不同的问题</string>
-    <string name="placepage_add_business_button">将地点添加到</string>
     <string name="message_invalid_feature_position">地点不能放置在这里</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">截至 %s 的社区创建的 OpenStreetMap 数据。请访问 OpenStreetMap.org 以了解有关如何编辑和更新地图的信息</string>
@@ -513,7 +510,6 @@
     <string name="placepage_more_button">更多</string>
     <string name="placepage_edit_bookmark_button">编辑书签</string>
     <string name="placepage_personal_notes_hint">个人备注（文字或 html）</string>
-    <string name="editor_comment_hint">备注…</string>
     <string name="editor_reset_edits_message">重置所有本地更改？</string>
     <string name="editor_reset_edits_button">重置</string>
     <string name="editor_remove_place_message">删除已添加的地点？</string>
@@ -877,4 +873,22 @@
     <string name="hours_confirmed_time_ago">已于%s确认</string>
     <string name="share_track">分享轨迹</string>
     <string name="pref_tts_no_system_tts_short">未找到文字转语音引擎，请检查应用设置</string>
+    <string name="unknown_power_output">未知</string>
+    <string name="charge_socket_type2">Type 2（无电缆）</string>
+    <string name="charge_socket_type2_cable">Type 2（带电缆）</string>
+    <string name="charge_socket_type2_combo">Type 2 Combo</string>
+    <string name="charge_socket_type1">Type 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="unknown_socket_type">未知充电接口</string>
+    <string name="unknow_socket_type">未知充电接口</string>
+    <string name="edit_socket_info_tooltip">创建新充电接口或编辑现有充电接口。</string>
+    <string name="charging_station_available_sockets">可用的充电接口</string>
+    <string name="charge_socket_unknown_other">其他或未知</string>
+    <string name="charge_socket_count">数量</string>
+    <string name="charge_socket_power">功率（千瓦）</string>
+    <string name="editor_socket">编辑充电接口</string>
+    <string name="unknown_count">未知</string>
+    <string name="error_value_must_be_positive">值必须为正数</string>
+    <string name="error_invalid_number">无效的数字</string>
 </resources>

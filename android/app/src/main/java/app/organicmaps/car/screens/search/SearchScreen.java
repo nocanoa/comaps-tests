@@ -16,7 +16,7 @@ import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.sdk.bookmarks.data.MapObject;
 import app.organicmaps.sdk.search.SearchEngine;
@@ -50,7 +50,7 @@ public class SearchScreen extends BaseMapScreen implements SearchTemplate.Search
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final SearchTemplate.Builder builder = new SearchTemplate.Builder(this);
     builder.setHeaderAction(Action.BACK);
@@ -106,12 +106,14 @@ public class SearchScreen extends BaseMapScreen implements SearchTemplate.Search
   @Override
   public void onStart(@NonNull LifecycleOwner owner)
   {
+    super.onStart(owner);
     SearchEngine.INSTANCE.addListener(this);
   }
 
   @Override
   public void onStop(@NonNull LifecycleOwner owner)
   {
+    super.onStop(owner);
     SearchEngine.INSTANCE.removeListener(this);
     SearchEngine.INSTANCE.cancel();
   }
@@ -209,14 +211,14 @@ public class SearchScreen extends BaseMapScreen implements SearchTemplate.Search
     @NonNull
     private final CarContext mCarContext;
     @NonNull
-    private final SurfaceRenderer mSurfaceRenderer;
+    private final Renderer mSurfaceRenderer;
 
     @NonNull
     private String mQuery = "";
     @NonNull
     private String mLocale;
 
-    public Builder(@NonNull CarContext carContext, @NonNull SurfaceRenderer surfaceRenderer)
+    public Builder(@NonNull CarContext carContext, @NonNull Renderer surfaceRenderer)
     {
       mCarContext = carContext;
       mSurfaceRenderer = surfaceRenderer;

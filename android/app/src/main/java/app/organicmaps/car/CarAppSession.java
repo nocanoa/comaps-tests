@@ -12,9 +12,12 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
+import app.organicmaps.car.renderer.Renderer;
+import app.organicmaps.car.renderer.RendererFactory;
 import app.organicmaps.car.screens.ErrorScreen;
 import app.organicmaps.car.screens.MapPlaceholderScreen;
 import app.organicmaps.car.screens.MapScreen;
+import app.organicmaps.car.screens.NavigationScreen;
 import app.organicmaps.car.screens.PlaceScreen;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.screens.download.DownloadMapsScreen;
@@ -49,8 +52,9 @@ public final class CarAppSession extends Session implements DefaultLifecycleObse
 
   @Nullable
   private final SessionInfo mSessionInfo;
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
-  private final SurfaceRenderer mSurfaceRenderer;
+  private Renderer mSurfaceRenderer;
   @NonNull
   private final ScreenManager mScreenManager;
   @SuppressWarnings("NotNullFieldNotInitialized")
@@ -67,7 +71,6 @@ public final class CarAppSession extends Session implements DefaultLifecycleObse
   {
     getLifecycle().addObserver(this);
     mSessionInfo = sessionInfo;
-    mSurfaceRenderer = new SurfaceRenderer(getCarContext(), getLifecycle());
     mScreenManager = getCarContext().getCarService(ScreenManager.class);
     mCurrentCountryChangedListener = new CurrentCountryChangedListener();
   }
@@ -114,6 +117,8 @@ public final class CarAppSession extends Session implements DefaultLifecycleObse
     mSensorsManager = new CarSensorsManager(getCarContext());
     mDisplayManager = MwmApplication.from(getCarContext()).getDisplayManager();
     mDisplayManager.addListener(DisplayType.Car, this);
+    mSurfaceRenderer = RendererFactory.create(getCarContext(), mDisplayManager,
+                                              MwmApplication.from(getCarContext()).getLocationHelper(), this);
     init();
   }
 
@@ -281,7 +286,19 @@ public final class CarAppSession extends Session implements DefaultLifecycleObse
   private void restoreRoute()
   {
     final RoutingController routingController = RoutingController.get();
-    if (routingController.isPlanning() || routingController.isNavigating() || routingController.hasSavedRoute())
+    final boolean isNavigating = routingController.isNavigating();
+    final boolean hasNavigatingScreen = hasNavigationScreenInStack();
+
+    if (!isNavigating && hasNavigatingScreen)
+      mScreenManager.popToRoot();
+
+    if (isNavigating && routingController.getLastRouterType() == PlaceScreen.ROUTER && hasNavigatingScreen)
+    {
+      mScreenManager.popTo(NavigationScreen.MARKER);
+      return;
+    }
+
+    if (routingController.isPlanning() || isNavigating || routingController.hasSavedRoute())
     {
       final PlaceScreen placeScreen = new PlaceScreen.Builder(getCarContext(), mSurfaceRenderer)
                                           .setMapObject(routingController.getEndPoint())
@@ -289,5 +306,15 @@ public final class CarAppSession extends Session implements DefaultLifecycleObse
       mScreenManager.popToRoot();
       mScreenManager.push(placeScreen);
     }
+  }
+
+  private boolean hasNavigationScreenInStack()
+  {
+    for (final Screen screen : mScreenManager.getScreenStack())
+    {
+      if (NavigationScreen.MARKER.equals(screen.getMarker()))
+        return true;
+    }
+    return false;
   }
 }

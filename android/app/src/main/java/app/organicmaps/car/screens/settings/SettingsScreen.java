@@ -13,7 +13,7 @@ import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapWithContentTemplate;
 import app.organicmaps.R;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.util.ThemeUtils;
 import app.organicmaps.car.util.Toggle;
@@ -33,14 +33,14 @@ public class SettingsScreen extends BaseMapScreen
     void set(boolean newValue);
   }
 
-  public SettingsScreen(@NonNull CarContext carContext, @NonNull SurfaceRenderer surfaceRenderer)
+  public SettingsScreen(@NonNull CarContext carContext, @NonNull Renderer surfaceRenderer)
   {
     super(carContext, surfaceRenderer);
   }
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final MapWithContentTemplate.Builder builder = new MapWithContentTemplate.Builder();
     builder.setMapController(UiHelpers.createMapController(getCarContext(), getSurfaceRenderer()));

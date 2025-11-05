@@ -296,6 +296,11 @@ public class MapObject implements PlacePageData
     mMetadata.addMetadata(type, value);
   }
 
+  public boolean hasChargeSockets()
+  {
+    return !TextUtils.isEmpty(getMetadata(Metadata.MetadataType.FMD_CHARGE_SOCKETS));
+  }
+
   public boolean hasPhoneNumber()
   {
     return !TextUtils.isEmpty(getMetadata(Metadata.MetadataType.FMD_PHONE_NUMBER));

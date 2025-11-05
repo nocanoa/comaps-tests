@@ -179,8 +179,6 @@
     <string name="done">완료</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap 데이터: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">OpenStreetMap 계정에서 로그아웃하시겠습니까?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">트랙</string>
     <!-- Length of track in cell that describes route -->
@@ -445,7 +443,6 @@
     <string name="editor_edit_place_category_title">범주</string>
     <string name="detailed_problem_description">문제에 대한 자세한 설명</string>
     <string name="editor_report_problem_other_title">다른 문제</string>
-    <string name="placepage_add_business_button">조직 추가</string>
     <string name="message_invalid_feature_position">목적지를 이곳에서 찾을 수 없습니다</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">커뮤니티에서 만든 OpenStreetMap 데이터(%s 기준). 지도를 편집하고 업데이트하는 방법에 대한 자세한 내용은 OpenStreetMap.org에서 확인하세요.</string>
@@ -487,7 +484,6 @@
     <string name="placepage_more_button">자세히</string>
     <string name="placepage_edit_bookmark_button">즐겨찾기 편집</string>
     <string name="placepage_personal_notes_hint">개인 메모 (글자 혹은 html)</string>
-    <string name="editor_comment_hint">설명…</string>
     <string name="editor_reset_edits_message">지역 변경 사항을 재설정하시겠습니까?</string>
     <string name="editor_reset_edits_button">재설정</string>
     <string name="editor_remove_place_message">추가한 장소를 삭제하시겠습니까?</string>

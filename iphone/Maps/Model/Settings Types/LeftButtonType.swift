@@ -39,7 +39,7 @@ extension Settings {
                 case .addPlace:
                     return UIImage(systemName: "plus", withConfiguration: configuration)!
                 case .recordTrack:
-                    return UIImage.MainButtons.LeftButton.recordTrack.withConfiguration(configuration)
+                    return UIImage(named: "track", in: nil, with: configuration)!
                 case .settings:
                     return UIImage(systemName: "gearshape.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .semibold))!
                 case .help:

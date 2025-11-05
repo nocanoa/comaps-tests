@@ -456,5 +456,12 @@
 "amenity-animal_shelter": "Подслон за животно",
 "shop-money_lender": "Кредитор",
 "shop-coffee|@category_food|@shop": "магазин за кафе|кафе",
-"shop-tea|@shop": "Чай"
+"shop-tea|@shop": "Чай",
+"shop-cannabis|@shop": "канабис|марихуана",
+"shop-farm|@category_food|@shop": "Фермерски магазин|фермерски продукти",
+"shop-health_food|@category_food|@shop": "Магазин за здравословни храни|здравословно хранене",
+"shop-alcohol|@category_food|@shop": "Магазин за алкохол|4алкохол|5спиртни напитки|U+1F377",
+"shop-caravan|@category_rv|@shop": "Автокъща за кемпери|кемпери|каравани|къщи на колела",
+"leisure-dance|@category_entertainment": "Зала за танци|Танцово училище|Танцова школа|танци",
+"leisure-firepit": "4Огнище"
 }

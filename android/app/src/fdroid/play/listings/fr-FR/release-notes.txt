@@ -1,9 +1,9 @@
-• Données OSM du 06 septembre
-• Pénalités dans les calculs d'itinéraires vélos
-• Ajout de labels colorés en mode navigation
-• Support du tag branch dans la recherche
-• Ajout des portiques électriques, postes de sécurité
-• Mise à jour des icônes de tours, boîtes de nuits, chimiste et mat
-• Enregistrement de la couleur des signets dans les exports GPX
-• Android Auto: Affichage du numéro de sortie des ronds-points
+• Interface utilisateur et visibilité des instructions en navigation améliorée
+• Option pour éviter les escaliers ajoutée
+• Recherche améliorée dans différents languages
+• Icône pour les gares routières ajoutée
+• Corrections de bugs liées à Android Auto (via OM)
+• Editeur amélioré et corrections de bugs
+• Style de la carte amélioré (via OM)
+• Traductions améliorées
 Plus d'informations sur notre Codeberg

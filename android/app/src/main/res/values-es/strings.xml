@@ -186,8 +186,6 @@
     <string name="done">Hecho</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Datos de OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">¿Quieres salir de tu cuenta de OpenStreetMap?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Trazas</string>
     <!-- Length of track in cell that describes route -->
@@ -465,7 +463,6 @@
     <string name="editor_edit_place_category_title">Categoría</string>
     <string name="detailed_problem_description">Descripción detallada del problema</string>
     <string name="editor_report_problem_other_title">Un problema diferente</string>
-    <string name="placepage_add_business_button">Añadir empresa</string>
     <string name="message_invalid_feature_position">No se puede ubicar ningún objeto aquí</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Datos de OpenStreetMap creados por la comunidad a partir de %s. Más información sobre cómo editar y actualizar el mapa en OpenStreetMap.org</string>
@@ -507,7 +504,6 @@
     <string name="placepage_more_button">Más</string>
     <string name="placepage_edit_bookmark_button">Editar marcador</string>
     <string name="placepage_personal_notes_hint">Notas personales (texto o html)</string>
-    <string name="editor_comment_hint">Comentario…</string>
     <string name="editor_reset_edits_message">¿Restablecer todos los cambios locales?</string>
     <string name="editor_reset_edits_button">Restablecer</string>
     <string name="editor_remove_place_message">¿Eliminar el lugar añadido?</string>
@@ -880,4 +876,14 @@
     <string name="hours_confirmed_time_ago">Confirmado %s</string>
     <string name="share_track">Compartir traza</string>
     <string name="pref_tts_no_system_tts_short">No se ha encontrado ningún motor de texto-a-voz, comprueba la configuración de la aplicación</string>
+    <string name="unknown_power_output">desconocida</string>
+    <string name="charge_socket_type2">Tipo 2 (sin cable)</string>
+    <string name="charge_socket_type2_cable">Tipo 2 (con cable)</string>
+    <string name="charge_socket_type2_combo">Tipo 2 combo</string>
+    <string name="charge_socket_type1">Tipo 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="charge_socket_count">Recuento</string>
+    <string name="charge_socket_power">Potencia (kW)</string>
+    <string name="unknown_count">desconocido</string>
 </resources>

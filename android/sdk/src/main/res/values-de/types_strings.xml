@@ -23,7 +23,7 @@
     <string name="type.amenity.arts_centre">Kunstzentrum</string>
     <string name="type.amenity.atm">Geldautomat</string>
     <string name="type.amenity.bank">Bankfiliale</string>
-    <string name="type.amenity.bbq">Grillplatz</string>
+    <string name="type.amenity.bbq">Grillstelle</string>
     <string name="type.amenity.bench">Sitzbank</string>
     <string name="type.amenity.bicycle_parking">Fahrradständer</string>
     <string name="type.amenity.bicycle_rental">Fahrradverleih</string>
@@ -38,8 +38,8 @@
     <string name="type.amenity.car_wash">Autowaschanlage</string>
     <string name="type.amenity.casino">Kasino</string>
     <string name="type.amenity.gambling">Glücksspiel</string>
-    <string name="type.leisure.adult_gaming_centre">Gaming-Zentrum für Erwachsene</string>
-    <string name="type.leisure.amusement_arcade">Arkade</string>
+    <string name="type.leisure.adult_gaming_centre">Spielhalle für Erwachsene</string>
+    <string name="type.leisure.amusement_arcade">Spielhalle für Unterhaltungsspiele</string>
     <string name="type.amenity.charging_station">Ladestation</string>
     <string name="type.amenity.charging_station.bicycle">Fahrrad-Ladestation</string>
     <string name="type.amenity.charging_station.motorcar">Kfz-Ladestation</string>
@@ -47,11 +47,11 @@
     <string name="type.amenity.cinema">Kino</string>
     <string name="type.leisure.bowling_alley">Bowlingbahn</string>
     <string name="type.amenity.clinic">Klinik</string>
-    <string name="type.amenity.college">Hochschule</string>
-    <string name="type.amenity.community_centre">Bürgerhaus</string>
+    <string name="type.amenity.college">Bildungseinrichtung</string>
+    <string name="type.amenity.community_centre">Gemeinschaftszentrum</string>
     <string name="type.amenity.compressed_air">Druckluft</string>
     <string name="type.amenity.conference_centre">Konferenzzentrum</string>
-    <string name="type.amenity.courthouse">Justizgebäude</string>
+    <string name="type.amenity.courthouse">Gericht</string>
     <string name="type.amenity.dentist">Zahnarzt</string>
     <string name="type.amenity.doctors">Arztpraxis</string>
     <string name="type.amenity.drinking_water">Trinkwasser</string>
@@ -95,9 +95,9 @@
     <string name="type.amenity.parking.street_side">Parkbucht</string>
     <string name="type.amenity.parking.street_side.fee">Parkbucht</string>
     <string name="type.amenity.parking.street_side.private">Private Parkbucht</string>
-    <string name="type.amenity.parking.lane">Fahrspur parken</string>
-    <string name="type.amenity.parking.lane.fee">Fahrspur parken</string>
-    <string name="type.amenity.parking.lane.private">Privatspur parken</string>
+    <string name="type.amenity.parking.lane">Parkstreifen</string>
+    <string name="type.amenity.parking.lane.fee">Parkstreifen</string>
+    <string name="type.amenity.parking.lane.private">Privater Parkstreifen</string>
     <string name="type.amenity.parking_entrance">Parkplatzeinfahrt</string>
     <string name="type.amenity.parking_entrance.private">Private Parkplatzeinfahrt</string>
     <string name="type.amenity.parking_entrance.permissive">Parkplatzeinfahrt</string>
@@ -116,8 +116,8 @@
     <string name="type.amenity.place_of_worship.hindu">Hinduistischer Tempel</string>
     <string name="type.amenity.place_of_worship.jewish">Synagoge</string>
     <string name="type.amenity.place_of_worship.muslim">Moschee</string>
-    <string name="type.amenity.place_of_worship.shinto">Schrein</string>
-    <string name="type.amenity.place_of_worship.taoist">Tempel</string>
+    <string name="type.amenity.place_of_worship.shinto">Shintō-Schrein</string>
+    <string name="type.amenity.place_of_worship.taoist">Daoistischer Tempel</string>
     <string name="type.amenity.police">Polizeistation</string>
     <string name="type.amenity.post_box">Briefkasten</string>
     <string name="type.amenity.post_office">Postfiliale</string>
@@ -130,7 +130,7 @@
     <string name="type.amenity.recycling.container">Wertstoffcontainer</string>
     <string name="type.recycling.batteries">Batterien</string>
     <string name="type.recycling.clothes">Altkleider</string>
-    <string name="type.recycling.glass_bottles">Glas</string>
+    <string name="type.recycling.glass_bottles">Glasflaschen</string>
     <string name="type.recycling.paper">Papier</string>
     <string name="type.recycling.plastic">Kunststoff</string>
     <string name="type.recycling.plastic_bottles">Plastikflaschen</string>
@@ -179,8 +179,8 @@
     <string name="type.amenity.waste_basket">Abfalleimer</string>
     <string name="type.amenity.waste_disposal">Müllcontainer</string>
     <string name="type.amenity.waste_transfer_station">Müllumladestation</string>
-    <string name="type.amenity.water_point">Wasseranschluss</string>
-    <string name="type.amenity.water_point.drinking_water_no">Wasseranschluss</string>
+    <string name="type.amenity.water_point">Wassertank-Auffüllstation</string>
+    <string name="type.amenity.water_point.drinking_water_no">Wassertank-Auffüllstation</string>
     <string name="type.barrier">Barriere</string>
     <string name="type.barrier.yes">Barriere</string>
     <string name="type.barrier.block">Block</string>
@@ -190,7 +190,7 @@
     <string name="type.barrier.city_wall">Stadtmauer</string>
     <string name="type.barrier.cycle_barrier">Umlaufschranke</string>
     <string name="type.waterway.ditch">Entwässerungsgraben</string>
-    <string name="type.natural.water.moat">Graben</string>
+    <string name="type.natural.water.moat">Verteidigungsgraben</string>
     <string name="type.natural.water.wastewater">Abwasser</string>
     <string name="type.barrier.entrance">Durchgang</string>
     <string name="type.barrier.fence">Zaun</string>
@@ -207,14 +207,14 @@
     <string name="type.boundary">Grenze</string>
     <string name="type.boundary.administrative">Verwaltungsgrenze</string>
     <string name="type.boundary.national_park">Nationalpark</string>
-    <string name="type.boundary.aboriginal_lands">Indigene länder</string>
-    <string name="type.boundary.protected_area">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.1">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.2">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.3">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.4">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.5">Geschützter Bereich</string>
-    <string name="type.boundary.protected_area.6">Geschützter Bereich</string>
+    <string name="type.boundary.aboriginal_lands">Indigenes Gebiet</string>
+    <string name="type.boundary.protected_area">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.1">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.2">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.3">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.4">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.5">Schutzgebiet</string>
+    <string name="type.boundary.protected_area.6">Schutzgebiet</string>
     <string name="type.building">Gebäude</string>
     <!-- Duplicates [address] in strings.txt -->
     <string name="type.building.address">Adresse</string>
@@ -227,9 +227,9 @@
     <string name="type.craft.beekeeper">Imker</string>
     <string name="type.craft.blacksmith">Schmied</string>
     <string name="type.craft.brewery">Brauerei</string>
-    <string name="type.craft.caterer">Partyservice</string>
+    <string name="type.craft.caterer">Caterer</string>
     <string name="type.craft.carpenter">Zimmermann</string>
-    <string name="type.craft.confectionery">Süßwarenladen</string>
+    <string name="type.craft.confectionery">Süßwaren-Manufaktur</string>
     <string name="type.craft.electrician">Elektriker</string>
     <string name="type.craft.electronics_repair">Elektrogerätereparatur</string>
     <string name="type.craft.gardener">Landschaftsgärtner</string>
@@ -293,7 +293,7 @@
     <string name="type.cuisine.international">International</string>
     <string name="type.cuisine.irish">Irisch</string>
     <string name="type.cuisine.italian">Italienisch</string>
-    <string name="type.cuisine.italian_pizza">Italienisch; Pizza</string>
+    <string name="type.cuisine.italian_pizza">Italienische Pizza</string>
     <string name="type.cuisine.japanese">Japanisch</string>
     <string name="type.cuisine.kebab">Kebap</string>
     <string name="type.cuisine.korean">Koreanisch</string>
@@ -365,7 +365,7 @@
     <string name="type.highway.bridleway.permissive">Reitweg</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.bridleway.tunnel">Tunnel</string>
-    <string name="type.highway.busway">Eigene Busstraße</string>
+    <string name="type.highway.busway">Busstraße</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
     <string name="type.highway.busway.bridge">Brücke</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
@@ -384,7 +384,7 @@
     <string name="type.highway.footway.crossing">Fußgängerübergang</string>
     <string name="type.highway.footway.area">Fußweg</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
-    <string name="type.highway.footway.bridge">Brücke</string>
+    <string name="type.highway.footway.bridge">Fußgängerbrücke</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.footway.tunnel">Fußgängertunnel</string>
     <string name="type.highway.ford">Furt</string>
@@ -433,7 +433,7 @@
     <string name="type.highway.primary_link.bridge">Brücke</string>
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.primary_link.tunnel">Tunnel</string>
-    <string name="type.highway.raceway">Rennbahn</string>
+    <string name="type.highway.raceway">Rennstrecke</string>
     <string name="type.highway.residential">Wohnstraße</string>
     <string name="type.highway.residential.area">Wohnstraße</string>
     <!-- These translations are used for all type.highway.*.bridge. -->
@@ -509,10 +509,10 @@
     <!-- These translations are used for all type.highway.*.tunnel. -->
     <string name="type.highway.unclassified.tunnel">Straßentunnel</string>
     <string name="type.area_highway.cycleway">Radweg</string>
-    <string name="type.area_highway.footway">Weg</string>
-    <string name="type.area_highway.living_street">Wohnstraße</string>
+    <string name="type.area_highway.footway">Fußweg</string>
+    <string name="type.area_highway.living_street">Spielstraße</string>
     <string name="type.area_highway.motorway">Autobahn</string>
-    <string name="type.area_highway.path">Weg</string>
+    <string name="type.area_highway.path">Pfad</string>
     <string name="type.area_highway.pedestrian">Fußgängerzone</string>
     <string name="type.area_highway.primary">Hauptstraße</string>
     <string name="type.area_highway.residential">Wohnstraße</string>
@@ -528,7 +528,7 @@
     <string name="type.historic.aircraft">Historisches Flugzeug</string>
     <string name="type.historic.anchor">Historischer Anker</string>
     <string name="type.historic.archaeological_site">Ausgrabungsstätte</string>
-    <string name="type.historic.battlefield">Schlachtfeld</string>
+    <string name="type.historic.battlefield">Historisches Schlachtfeld</string>
     <string name="type.historic.boundary_stone">Grenzstein</string>
     <string name="type.historic.cannon">Kanone</string>
     <string name="type.historic.castle">Burg</string>
@@ -591,7 +591,7 @@
     <string name="type.landuse.forest.mixed">Mischwald</string>
     <string name="type.landuse.garages">Garagen</string>
     <string name="type.landuse.grass">Wiese</string>
-    <string name="type.landuse.greenfield">Rohbauland</string>
+    <string name="type.landuse.greenfield">Bauland</string>
     <string name="type.landuse.greenhouse_horticulture">Gewächshaus-Fläche</string>
     <string name="type.landuse.industrial">Industriegebiet</string>
     <string name="type.landuse.landfill">Müllhalde</string>
@@ -605,10 +605,10 @@
     <string name="type.landuse.residential">Wohngebiet</string>
     <string name="type.landuse.retail">Einzelhandelsgebiet</string>
     <string name="type.landuse.salt_pond">Saline</string>
-    <string name="type.landuse.village_green">Dorfplatz</string>
+    <string name="type.landuse.village_green">Grünfläche</string>
     <string name="type.landuse.vineyard">Weinberg</string>
     <string name="type.leisure">Freizeit</string>
-    <string name="type.leisure.common">öffentliche Grünfläche</string>
+    <string name="type.leisure.common">Öffentliche Grünfläche</string>
     <string name="type.leisure.dog_park">Hundeauslauffläche</string>
     <string name="type.leisure.fitness_centre">Fitnessstudio</string>
     <string name="type.leisure.fitness_station">Fitnessstation</string>
@@ -620,11 +620,11 @@
     <string name="type.leisure.ice_rink">Eislaufplatz</string>
     <string name="type.leisure.marina">Jachthafen</string>
     <string name="type.leisure.nature_reserve">Naturschutzgebiet</string>
-    <string name="type.leisure.outdoor_seating">Außengastronomie</string>
+    <string name="type.leisure.outdoor_seating">Außenbestuhlung</string>
     <string name="type.leisure.park">Park</string>
-    <string name="type.leisure.park.no.access">Park</string>
+    <string name="type.leisure.park.no.access">Privater Park</string>
     <string name="type.leisure.park.permissive">Park</string>
-    <string name="type.leisure.park.private">Park</string>
+    <string name="type.leisure.park.private">Privater Park</string>
     <string name="type.leisure.picnic_table">Picknicktisch</string>
     <string name="type.leisure.pitch">Sportplatz</string>
     <string name="type.leisure.playground">Spielplatz</string>
@@ -639,7 +639,7 @@
     <string name="type.leisure.track">Laufbahn</string>
     <string name="type.leisure.track.area">Laufbahn</string>
     <string name="type.leisure.water_park">Aquapark</string>
-    <string name="type.man_made">künstliche Anlage</string>
+    <string name="type.man_made">Künstliche Anlage</string>
     <string name="type.man_made.breakwater">Wellenbrecher</string>
     <string name="type.man_made.cairn">Steinmännchen</string>
     <string name="type.man_made.chimney">Fabrikschornstein</string>
@@ -1120,7 +1120,7 @@
     <string name="type.shop.garden_centre">Gartencenter</string>
     <string name="type.shop.gas">Gas-Geschäft</string>
     <string name="type.shop.gift">Geschenkeladen</string>
-    <string name="type.shop.greengrocer">Gemüseladen</string>
+    <string name="type.shop.greengrocer">Obst- und Gemüseladen</string>
     <string name="type.shop.grocery">Lebensmittelkonserven</string>
     <string name="type.shop.hairdresser">Friseur</string>
     <string name="type.shop.hardware">Eisenwarengeschäft</string>
@@ -1268,7 +1268,7 @@
     <string name="type.tourism.motel">Motel</string>
     <string name="type.tourism.museum">Museum</string>
     <string name="type.tourism.picnic_site">Picknickplatz</string>
-    <string name="type.leisure.resort">Freizeitanlage</string>
+    <string name="type.leisure.resort">Resort</string>
     <string name="type.tourism.theme_park">Freizeitpark</string>
     <string name="type.tourism.viewpoint">Aussichtspunkt</string>
     <!-- Typically more basic, not staffed and free (compared to alpine_hut). -->
@@ -1276,11 +1276,11 @@
     <string name="type.tourism.zoo">Zoo</string>
     <string name="type.tourism.zoo.petting">Streichelzoo</string>
     <string name="type.traffic_calming">Verkehrsberuhigung</string>
-    <string name="type.traffic_calming.bump">kurze Bodenwelle</string>
-    <string name="type.traffic_calming.hump">lange Bodenwelle</string>
+    <string name="type.traffic_calming.bump">Kurze Bodenwelle</string>
+    <string name="type.traffic_calming.hump">Lange Bodenwelle</string>
     <string name="type.waterway">Wasserweg</string>
     <string name="type.waterway.canal">Kanal</string>
-    <string name="type.waterway.canal.tunnel">Kanal</string>
+    <string name="type.waterway.canal.tunnel">Kanal-Tunnel</string>
     <string name="type.waterway.fish_pass">Fischtreppe</string>
     <string name="type.waterway.dam">Staudamm</string>
     <string name="type.barrier.ditch">Graben</string>
@@ -1316,7 +1316,7 @@
     <string name="type.piste_type.downhill.easy.area">Leichte Ski-Abfahrt</string>
     <string name="type.piste_type.downhill.expert">Profi-Ski-Abfahrt</string>
     <string name="type.piste_type.downhill.expert.area">Profi-Ski-Abfahrt</string>
-    <string name="type.piste_type.downhill.freeride">Ski-Abfahrt</string>
+    <string name="type.piste_type.downhill.freeride">Freeride Ski-Abfahrt</string>
     <string name="type.piste_type.downhill.intermediate">Mittelschwere Ski-Abfahrt</string>
     <string name="type.piste_type.downhill.intermediate.area">Mittelschwere Ski-Abfahrt</string>
     <string name="type.piste_type.downhill.novice">Anfängerfreundliche Ski-Abfahrt</string>
@@ -1324,10 +1324,10 @@
     <string name="type.piste_type.nordic">Langlaufloipe</string>
     <string name="type.piste_type.sled">Rodelbahn</string>
     <string name="type.piste_type.sled.area">Rodelbahn</string>
-    <string name="type.piste_type.snow_park">Schneepark</string>
-    <string name="type.piste_type.hike">Schneewanderweg</string>
-    <string name="type.piste_type.connection">Pistenanschluss</string>
-    <string name="type.piste_type.skitour">Skitour Pfad</string>
+    <string name="type.piste_type.snow_park">Funpark</string>
+    <string name="type.piste_type.hike">Winterwanderweg</string>
+    <string name="type.piste_type.connection">Verbindungs Ski-Abfahrt</string>
+    <string name="type.piste_type.skitour">Skitouren-Route</string>
     <string name="type.amenity.events_venue">Veranstaltungszentrum</string>
     <string name="type.shop.auction">Auktion</string>
     <string name="type.shop.collector">Sammlerartikel</string>
@@ -1338,7 +1338,7 @@
     <!-- https://wiki.openstreetmap.org/wiki/Key:social_facility -->
     <string name="type.amenity.social_facility">Soziale Einrichtung</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:emergency=emergency_ward_entrance -->
-    <string name="type.emergency.emergency_ward_entrance">Eingang der Notfallstation</string>
+    <string name="type.emergency.emergency_ward_entrance">Notaufnahme</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:amenity=dojo -->
     <string name="type.amenity.dojo">Dojo</string>
     <!-- https://wiki.openstreetmap.org/wiki/Tag:leisure=sports_hall -->
@@ -1348,15 +1348,15 @@
     <string name="type.amenity.restaurant">Restaurant</string>
     <string name="type.internet_access">Internet</string>
     <string name="type.internet_access.wlan">Internet</string>
-    <string name="type.leisure.hackerspace">Hackerraum</string>
+    <string name="type.leisure.hackerspace">Hackerspace</string>
     <string name="type.sport.yoga">Yoga Studio</string>
     <string name="type.noexit">Sackgasse</string>
     <string name="type.shop.kiosk">Kiosk</string>
     <string name="type.boundary.administrative.2">Landesgrenze</string>
     <string name="type.building.garage">Garage</string>
-    <string name="type.cuisine.fish_and_chips">Fisch und Chips</string>
-    <string name="type.leisure.beach_resort">Badestrand</string>
-    <string name="type.amenity.food_court">Gastronomiebereich</string>
+    <string name="type.cuisine.fish_and_chips">Fish and Chips</string>
+    <string name="type.leisure.beach_resort">Strandbad</string>
+    <string name="type.amenity.food_court">Food Court</string>
     <string name="type.fee.yes">$</string>
     <string name="type.man_made.utility_pole">Versorgungsmast</string>
     <string name="type.cuisine.bubble_tea">Bubble Tea</string>
@@ -1377,13 +1377,13 @@
     <string name="type.amenity.studio">Studio</string>
     <string name="type.man_made.crane">Kran</string>
     <string name="type.railway.station.subway.qingdao">U-Bahn-Station</string>
-    <string name="type.landuse.religious">Religiöses Land</string>
+    <string name="type.landuse.religious">Religiöses Gelände</string>
     <string name="type.natural.wetland.saltmarsh">Salzmarsch</string>
     <string name="type.natural.wetland.saltmarsh.tidal">Gezeitenabhängige Salzmarsch</string>
     <string name="type.natural.wetland.fen">Fenn</string>
     <string name="type.natural.wetland.reedbed">Schilfgürtel</string>
     <string name="type.natural.wetland.swamp">Sumpf</string>
-    <string name="type.natural.wetland.mangrove">Mangrove</string>
+    <string name="type.natural.wetland.mangrove">Mangroven</string>
     <string name="type.natural.wetland.tidalflat">Watt</string>
     <string name="type.leisure.escape_game">Escape Room</string>
     <string name="type.amenity.luggage_locker">Gepäckschließfach</string>
@@ -1392,7 +1392,7 @@
     <string name="type.amenity.ranger_station">Försterstation</string>
     <string name="type.amenity.animal_shelter">Tierheim</string>
     <string name="type.barrier.wicket_gate">Schlupfpforte</string>
-    <string name="type.office.security">Büro des Sicherheitsdienstes</string>
+    <string name="type.office.security">Sicherheitsdienst</string>
     <string name="type.building.guardhouse">Pförtnerhäuschen</string>
     <string name="type.power.portal">Abspannportal</string>
     <string name="type.shop.lighting">Lampenladen</string>

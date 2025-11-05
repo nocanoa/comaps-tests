@@ -598,6 +598,9 @@ char const *kRenderAltitudeImagesQueueLabel = "mapsme.mwmrouter.renderAltitudeIm
     case MWMRoadTypeMotorway:
       options.avoidMotorway = YES;
       break;
+    case MWMRoadTypeSteps:
+      options.avoidSteps = YES;
+      break;
   }
   [options save];
   [self rebuildWithBestRouter:YES];

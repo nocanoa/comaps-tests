@@ -179,8 +179,6 @@
     <string name="done">Xong</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Dữ liệu OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Bạn có chắc chắn muốn đăng xuất khỏi tài khoản OpenStreetMap của mình không?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Dấu vết</string>
     <!-- Length of track in cell that describes route -->
@@ -445,7 +443,6 @@
     <string name="editor_edit_place_category_title">Thể loại</string>
     <string name="detailed_problem_description">Mô tả chi tiết của vấn đề</string>
     <string name="editor_report_problem_other_title">Một vấn đề khác</string>
-    <string name="placepage_add_business_button">Thêm tổ chức</string>
     <string name="message_invalid_feature_position">Một đối tượng không thể đặt được ở đây</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Dữ liệu OpenStreetMap do cộng đồng tạo ra kể từ %s. Tìm hiểu thêm về cách chỉnh sửa và cập nhật bản đồ tại OpenStreetMap.org</string>
@@ -487,7 +484,6 @@
     <string name="placepage_more_button">Bổ sung</string>
     <string name="placepage_edit_bookmark_button">Sửa Dấu Trang</string>
     <string name="placepage_personal_notes_hint">Ghi chú cá nhân (văn bản hoặc html)</string>
-    <string name="editor_comment_hint">Nhận xét…</string>
     <string name="editor_reset_edits_message">Cài đặt lại tất cả thay đổi cục bộ?</string>
     <string name="editor_reset_edits_button">Cài đặt lại</string>
     <string name="editor_remove_place_message">Xóa một địa điểm đã thêm?</string>

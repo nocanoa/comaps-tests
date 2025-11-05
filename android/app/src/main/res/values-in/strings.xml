@@ -179,8 +179,6 @@
     <string name="done">Selesai</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Data OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Apakah Anda yakin ingin keluar dari akun OpenStreetMap Anda?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Jalur</string>
     <!-- Length of track in cell that describes route -->
@@ -445,7 +443,6 @@
     <string name="editor_edit_place_category_title">Kategori</string>
     <string name="detailed_problem_description">Gambaran terperinci tentang masalah</string>
     <string name="editor_report_problem_other_title">Masalah yang berbeda</string>
-    <string name="placepage_add_business_button">Tambahkan organisasi</string>
     <string name="message_invalid_feature_position">Objek tidak dapat diletakkan di sini</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Data OpenStreetMap yang dibuat oleh komunitas pada tanggal %s. Pelajari lebih lanjut mengenai cara mengedit dan memperbarui peta di OpenStreetMap.org</string>
@@ -487,7 +484,6 @@
     <string name="placepage_more_button">Lainnya</string>
     <string name="placepage_edit_bookmark_button">Edit Bookmark</string>
     <string name="placepage_personal_notes_hint">Catatan pribadi (teks atau html)</string>
-    <string name="editor_comment_hint">Komentar…</string>
     <string name="editor_reset_edits_message">Atur ulang perubahan lokal?</string>
     <string name="editor_reset_edits_button">Atur Ulang</string>
     <string name="editor_remove_place_message">Hapus tempat yang ditambahkan?</string>

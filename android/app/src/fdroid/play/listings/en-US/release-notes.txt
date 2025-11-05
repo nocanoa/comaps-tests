@@ -1,10 +1,9 @@
-• OpenStreetMap data as of September 6
-• Turn penalties for bicycle routing
-• Colored POI labels for car navigation map style
-• Search POIs by branch name
-• Added power portals, security booths and offices
-• Update icons for towers, nightclubs, chemists, flagpoles
-• Save bookmark color to GPX exports
-• Color fill pedestrian parts of squares
-• Android Auto: display roundabout exit numbers
+• Improved visibility and UI of instructions in navigation
+• Added option to avoid steps
+• Improved search in multiple languages
+• Added specific icon for bus stations
+• Fixed Android Auto issues (via OM project)
+• Improved editor and fix minor issues
+• Improved map styles (via OM project)
+• Improved app translations
 Check our Codeberg release notes for more changes!

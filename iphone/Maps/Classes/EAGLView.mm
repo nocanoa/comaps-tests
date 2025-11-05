@@ -32,7 +32,6 @@ namespace dp
   // It's possible when we add/remove subviews (bookmark balloons) and it hangs the map without this check
   CGRect m_lastViewSize;
   bool m_presentAvailable;
-  double main_visualScale;
 }
 @property(nonatomic, readwrite) BOOL graphicContextInitialized;
 @end
@@ -221,13 +220,14 @@ double getExactDPI(double contentScaleFactor)
   return _widgetsManager;
 }
 
-- (void)updateVisualScaleTo:(CGFloat)visualScale {
-  main_visualScale = df::VisualParams::Instance().GetVisualScale();
+- (void)updateVisualScaleTo:(CGFloat)visualScale
+{
   GetFramework().UpdateVisualScale(visualScale);
 }
 
-- (void)updateVisualScaleToMain {
-  GetFramework().UpdateVisualScale(main_visualScale);
+- (void)updateVisualScaleToMain
+{
+  GetFramework().UpdateVisualScale(UIScreen.mainScreen.scale);
 }
 
 @end

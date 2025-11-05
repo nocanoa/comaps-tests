@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- dynamically filled with one button for each socket type -->
+    <GridLayout
+        android:id="@+id/edit_socket_type_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:padding="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_socket_power_layout"
+            android:layout_width="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/edit_socket_power"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:completionThreshold="1"
+                android:inputType="numberDecimal"
+                android:hint="@string/charge_socket_power"
+                app:simpleItems="@array/charge_sockets_common_powers"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_socket_count_layout"
+            android:layout_width="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/edit_socket_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:completionThreshold="1"
+                android:inputType="numberDecimal"
+                android:hint="@string/charge_socket_count"
+                app:simpleItems="@array/charge_sockets_common_counts"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+</LinearLayout>

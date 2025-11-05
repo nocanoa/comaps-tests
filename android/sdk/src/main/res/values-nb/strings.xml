@@ -37,4 +37,12 @@
     <string name="access_rules_author_only">Redigering på nett</string>
     <string name="gb">GB</string>
     <string name="today">I dag</string>
+    <string name="yesterday">I går</string>
+    <string name="days_ago">%s dager siden</string>
+    <string name="week_ago">%s uke siden</string>
+    <string name="weeks_ago">%s uker siden</string>
+    <string name="month_ago">%s måned siden</string>
+    <string name="months_ago">%s måneder siden</string>
+    <string name="year_ago">%s år siden</string>
+    <string name="years_ago">%s år siden</string>
 </resources>

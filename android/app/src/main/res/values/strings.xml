@@ -205,8 +205,6 @@
     <string name="done">Done</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">OpenStreetMap data: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Are you sure you want to log out of your OpenStreetMap account?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Tracks</string>
     <!-- Length of track in cell that describes route -->
@@ -495,7 +493,6 @@
     <string name="editor_edit_place_category_title">Category</string>
     <string name="detailed_problem_description">Detailed description of the issue</string>
     <string name="editor_report_problem_other_title">Different problem</string>
-    <string name="placepage_add_business_button">Add business</string>
     <string name="message_invalid_feature_position">No object can be located here</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Community-created OpenStreetMap data as of %s. Learn more about how to edit and update the map at OpenStreetMap.org</string>
@@ -539,12 +536,12 @@
     <string name="placepage_more_button">More</string>
     <string name="placepage_edit_bookmark_button">Edit Bookmark</string>
     <string name="placepage_personal_notes_hint">Personal notes (text or html)</string>
-    <string name="editor_comment_hint">Comment…</string>
     <string name="editor_reset_edits_message">Discard all local changes?</string>
     <string name="editor_reset_edits_button">Discard</string>
     <string name="editor_remove_place_message">Delete added place?</string>
     <string name="editor_remove_place_button">Delete</string>
     <string name="editor_place_doesnt_exist">Place does not exist</string>
+    <string name="editor_place_doesnt_exist_description">Describe what the place looks like now to send an error note to the OpenStreetMap community</string>
     <!-- Error message for "Place doesn't exist" dialog when comment is empty -->
     <string name="delete_place_empty_comment_error">Please indicate the reason for deleting the place</string>
     <!-- Phone number error message -->
@@ -680,6 +677,7 @@
     <!-- Recommended length for CarPlay and Android Auto is around 25-27 characters -->
     <string name="avoid_ferry">Avoid ferries</string>
     <string name="avoid_motorways">Avoid freeways</string>
+    <string name="avoid_steps">Avoid steps</string>
     <string name="unable_to_calc_alert_title">Unable to calculate route</string>
     <string name="unable_to_calc_alert_subtitle">A route could not be found. This may be caused by your routing options or incomplete OpenStreetMap data. Please change your routing options and retry.</string>
     <string name="define_to_avoid_btn">Define roads to avoid</string>
@@ -935,4 +933,24 @@
     <string name="share_track">Share Track</string>
     <string name="delete_track_dialog_title">Delete %s?</string>
     <string name="pref_tts_no_system_tts_short">No text-to-speech engine found, check the app settings</string>
+    <string name="unknown_power_output">unknown</string>
+    <string name="charge_socket_type2">Type 2 (no cable)</string>
+    <string name="charge_socket_type2_cable">Type 2 (w/ cable)</string>
+    <string name="charge_socket_type2_combo">Type 2 combo</string>
+    <string name="charge_socket_type1">Type 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="unknown_socket_type">unknown socket</string>
+    <string name="unknow_socket_type">unknown socket</string>
+    <string name="edit_socket_info_tooltip">Create new sockets or edit existing ones.</string>
+    <string name="charging_station_available_sockets">Available sockets</string>
+    <string name="charge_socket_unknown_other">Other or unknown</string>
+    <string name="charge_socket_count">Count</string>
+    <string name="charge_socket_power">Power (kW)</string>
+    <string name="editor_socket">Edit socket</string>
+    <string name="unknown_count">unknown</string>
+    <string name="error_value_must_be_positive">The value must be positive</string>
+    <string name="error_invalid_number">Invalid number</string>
+    <string name="offline_explanation_title">Offline Maps</string>
+    <string name="offline_explanation_text">A map needs to be downloaded to view and navigate the area.\nDownload maps for areas you want to travel.</string>
 </resources>

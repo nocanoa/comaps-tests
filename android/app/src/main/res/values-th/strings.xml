@@ -179,8 +179,6 @@
     <string name="done">เสร็จแล้ว</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">ข้อมูล OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบบัญชี OpenStreetMap ของคุณ?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">การติดตาม</string>
     <!-- Length of track in cell that describes route -->
@@ -445,7 +443,6 @@
     <string name="editor_edit_place_category_title">หมวดหมู่</string>
     <string name="detailed_problem_description">คำอธิบายปัญหาอย่างละเอียด</string>
     <string name="editor_report_problem_other_title">ปัญหาอีกอย่างหนึ่ง</string>
-    <string name="placepage_add_business_button">เพิ่มองค์กร</string>
     <string name="message_invalid_feature_position">ไม่สามารถตั้งวัตถุได้ที่นี่</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">ข้อมูล OpenStreetMap ที่สร้างโดยชุมชน ณ %s เรียนรู้เพิ่มเติมเกี่ยวกับวิธีแก้ไขและอัปเดตแผนที่ได้ที่ OpenStreetMap.org</string>
@@ -487,7 +484,6 @@
     <string name="placepage_more_button">เพิ่มเติม</string>
     <string name="placepage_edit_bookmark_button">แก้ไข Bookmark</string>
     <string name="placepage_personal_notes_hint">ข้อความส่วนตัว (ข้อความหรือ html)</string>
-    <string name="editor_comment_hint">ข้อคิดเห็น</string>
     <string name="editor_reset_edits_message">ตั้งค่าการเปลี่ยนแปลงท้องถิ่นทั้งหมด</string>
     <string name="editor_reset_edits_button">ตั้งค่าใหม่</string>
     <string name="editor_remove_place_message">ลบที่ที่เพิ่มออก</string>

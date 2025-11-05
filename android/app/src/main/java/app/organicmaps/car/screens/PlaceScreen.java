@@ -26,7 +26,7 @@ import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.MwmApplication;
 import app.organicmaps.R;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.screens.download.DownloadMapsScreenBuilder;
 import app.organicmaps.car.screens.settings.DrivingOptionsScreen;
@@ -46,7 +46,7 @@ import java.util.Objects;
 
 public class PlaceScreen extends BaseMapScreen implements OnBackPressedCallback.Callback, RoutingController.Container
 {
-  private static final Router ROUTER = Router.Vehicle;
+  public static final Router ROUTER = Router.Vehicle;
 
   @Nullable
   private MapObject mMapObject;
@@ -68,7 +68,7 @@ public class PlaceScreen extends BaseMapScreen implements OnBackPressedCallback.
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final MapWithContentTemplate.Builder builder = new MapWithContentTemplate.Builder();
     builder.setMapController(UiHelpers.createMapController(getCarContext(), getSurfaceRenderer()));
@@ -80,6 +80,7 @@ public class PlaceScreen extends BaseMapScreen implements OnBackPressedCallback.
   @Override
   public void onCreate(@NonNull LifecycleOwner owner)
   {
+    super.onCreate(owner);
     mRoutingController.restore();
     if (mRoutingController.isNavigating() && mRoutingController.getLastRouterType() == ROUTER)
     {
@@ -112,12 +113,14 @@ public class PlaceScreen extends BaseMapScreen implements OnBackPressedCallback.
   @Override
   public void onResume(@NonNull LifecycleOwner owner)
   {
+    super.onResume(owner);
     mRoutingController.attach(this);
   }
 
   @Override
   public void onDestroy(@NonNull LifecycleOwner owner)
   {
+    super.onDestroy(owner);
     if (mRoutingController.isPlanning())
       mRoutingController.onSaveState();
     if (!mRoutingController.isNavigating())
@@ -340,11 +343,11 @@ public class PlaceScreen extends BaseMapScreen implements OnBackPressedCallback.
     @NonNull
     private final CarContext mCarContext;
     @NonNull
-    private final SurfaceRenderer mSurfaceRenderer;
+    private final Renderer mSurfaceRenderer;
     @Nullable
     private MapObject mMapObject;
 
-    public Builder(@NonNull final CarContext carContext, @NonNull final SurfaceRenderer surfaceRenderer)
+    public Builder(@NonNull final CarContext carContext, @NonNull final Renderer surfaceRenderer)
     {
       mCarContext = carContext;
       mSurfaceRenderer = surfaceRenderer;

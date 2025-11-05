@@ -89,11 +89,9 @@ NSArray<UIImage *> *imagesWithName(NSString *name) {
     auto const fitInAvailableArea = CGRectGetMaxY(self.view.frame) < CGRectGetMaxY(availableArea) + kTopOffset;
     auto const shouldHide = self.hidden || !fitInAvailableArea;
     auto const leftOffset = shouldHide ? -self.view.width : availableArea.origin.x + kViewControlsOffsetToBounds;
-    [self.view.superview animateConstraintsWithAnimations:^{
-      self.topOffset.constant = availableArea.origin.y + kTopOffset;
-      self.leftOffset.constant = leftOffset;
-      self.view.alpha = shouldHide ? 0 : 1;
-    }];
+    self.topOffset.constant = availableArea.origin.y + kTopOffset;
+    self.leftOffset.constant = leftOffset;
+    self.view.alpha = shouldHide ? 0 : 1;
   });
 }
 

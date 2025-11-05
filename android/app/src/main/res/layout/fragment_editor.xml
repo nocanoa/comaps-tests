@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:clipToPadding="false"
-  tools:context=".editor.EditorActivity"
-  tools:ignore="DuplicateIds">
-  <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_half"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".editor.EditorActivity"
+    tools:ignore="DuplicateIds">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_half"
+      android:orientation="vertical">
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/osm_info"
         android:layout_width="match_parent"
@@ -22,131 +22,155 @@
         android:text="@string/editor_about_osm"
         android:textAppearance="@style/MwmTextAppearance.Body4"/>
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__category"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__category"
+        style="@style/MwmWidget.Editor.CardView">
       <RelativeLayout
-        android:id="@+id/category"
-        style="@style/MwmWidget.Editor.MetadataBlock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:padding="@dimen/margin_half_plus">
-        <com.google.android.material.imageview.ShapeableImageView
-          android:id="@+id/icon"
-          style="@style/MwmWidget.Editor.MetadataIcon"
-          android:layout_width="wrap_content"
+          android:id="@+id/category"
+          style="@style/MwmWidget.Editor.MetadataBlock"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_centerVertical="true"
-          android:layout_marginEnd="@dimen/margin_half_plus"
-          android:layout_marginStart="@dimen/margin_quarter"
-          tools:src="@drawable/ic_operator"
-          app:tint="?iconTint" />
+          android:layout_marginBottom="0dp"
+          android:padding="@dimen/margin_half_plus">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon"
+            style="@style/MwmWidget.Editor.MetadataIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin_half_plus"
+            android:layout_marginStart="@dimen/margin_quarter"
+            tools:src="@drawable/ic_operator"
+            app:tint="?iconTint" />
 
         <com.google.android.material.textview.MaterialTextView
-          android:id="@+id/title"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentTop="true"
-          android:layout_marginStart="@dimen/margin_quarter"
-          android:layout_toEndOf="@id/icon"
-          android:text="@string/editor_edit_place_category_title"
-          android:textAppearance="@style/MwmTextAppearance.Body4"
-          tools:text="Trololo"/>
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/margin_quarter"
+            android:layout_toEndOf="@id/icon"
+            android:text="@string/editor_edit_place_category_title"
+            android:textAppearance="@style/MwmTextAppearance.Body4"
+            tools:text="Trololo"/>
         <com.google.android.material.textview.MaterialTextView
-          android:id="@+id/name"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignStart="@id/title"
-          android:layout_below="@id/title"
-          android:textAppearance="@style/MwmTextAppearance.Body1"
-          tools:text="Ololo"/>
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/title"
+            android:layout_below="@id/title"
+            android:textAppearance="@style/MwmTextAppearance.Body1"
+            tools:text="Ololo"/>
       </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__name"
-      style="@style/MwmWidget.Editor.CardView">
-      <include layout="@layout/localized_name"/>
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__address"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__charging_station"
+        style="@style/MwmWidget.Editor.CardView"
+        android:visibility="gone">
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_base"
-        android:paddingStart="@dimen/margin_base">
-        <com.google.android.material.textview.MaterialTextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/margin_base"
-          android:fontFamily="@string/robotoMedium"
-          android:text="@string/address"
-          android:textAppearance="@style/MwmTextAppearance.Body3"
-          tools:ignore="UnusedAttribute"/>
-        <RelativeLayout
-          android:id="@+id/block_street"
-          style="@style/MwmWidget.Editor.MetadataBlock.Clickable"
-          android:paddingBottom="@dimen/margin_half"
-          android:paddingTop="@dimen/margin_half">
-          <com.google.android.material.imageview.ShapeableImageView
-            style="@style/MwmWidget.Editor.MetadataIcon"
-            app:srcCompat="@drawable/ic_street_address"
-            tools:ignore="ContentDescription" />
-          <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/street_title"
-            android:layout_width="match_parent"
+          android:orientation="vertical"
+          android:paddingEnd="@dimen/margin_base"
+          android:paddingStart="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/editor_margin_left"
-            android:text="@string/street"
-            android:textAppearance="@style/MwmTextAppearance.Body4"/>
-          <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/street"
-            style="@style/MwmWidget.Editor.FieldLayout"
-            android:layout_below="@id/street_title"
-            android:layout_marginTop="@dimen/margin_quarter"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/MwmTextAppearance.Body1"
-            tools:text="Red str."
-            app:drawableEndCompat="@drawable/ic_arrow_down" />
-          <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignStart="@id/street"
-            android:layout_below="@id/street"
-            android:layout_marginTop="@dimen/margin_quarter_plus"
-            android:background="?dividerHorizontal"/>
-        </RelativeLayout>
+            android:layout_marginTop="@dimen/margin_base"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/charging_station_available_sockets"
+            android:textAppearance="@style/MwmTextAppearance.Body3"
+            tools:ignore="UnusedAttribute"/>
         <include
-          android:id="@+id/block_building"
-          layout="@layout/item_editor_input"/>
-        <include
-          android:id="@+id/block_zipcode"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_charge_sockets"
+            layout="@layout/item_charging_sockets"/>
       </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__details"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__name"
+        style="@style/MwmWidget.Editor.CardView">
+      <include layout="@layout/localized_name"/>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv__address"
+        style="@style/MwmWidget.Editor.CardView">
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_base"
-        android:paddingStart="@dimen/margin_base">
-        <com.google.android.material.textview.MaterialTextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/margin_base"
-          android:paddingBottom="@dimen/margin_half"
-          android:fontFamily="@string/robotoMedium"
-          android:text="@string/details"
-          android:textAppearance="@style/MwmTextAppearance.Body3"
-          tools:ignore="UnusedAttribute"/>
+          android:orientation="vertical"
+          android:paddingEnd="@dimen/margin_base"
+          android:paddingStart="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_base"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/address"
+            android:textAppearance="@style/MwmTextAppearance.Body3"
+            tools:ignore="UnusedAttribute"/>
+        <RelativeLayout
+            android:id="@+id/block_street"
+            style="@style/MwmWidget.Editor.MetadataBlock.Clickable"
+            android:paddingBottom="@dimen/margin_half"
+            android:paddingTop="@dimen/margin_half">
+          <com.google.android.material.imageview.ShapeableImageView
+              style="@style/MwmWidget.Editor.MetadataIcon"
+              app:srcCompat="@drawable/ic_street_address"
+              tools:ignore="ContentDescription" />
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/street_title"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/editor_margin_left"
+              android:text="@string/street"
+              android:textAppearance="@style/MwmTextAppearance.Body4"/>
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/street"
+              style="@style/MwmWidget.Editor.FieldLayout"
+              android:layout_below="@id/street_title"
+              android:layout_marginTop="@dimen/margin_quarter"
+              android:gravity="center_vertical"
+              android:textAppearance="@style/MwmTextAppearance.Body1"
+              tools:text="Red str."
+              app:drawableEndCompat="@drawable/ic_arrow_down" />
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_alignStart="@id/street"
+              android:layout_below="@id/street"
+              android:layout_marginTop="@dimen/margin_quarter_plus"
+              android:background="?dividerHorizontal"/>
+        </RelativeLayout>
+        <include
+            android:id="@+id/block_building"
+            layout="@layout/item_editor_input"/>
+        <include
+            android:id="@+id/block_zipcode"
+            layout="@layout/item_editor_input"/>
+      </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv__details"
+        style="@style/MwmWidget.Editor.CardView">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:paddingEnd="@dimen/margin_base"
+          android:paddingStart="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_base"
+            android:paddingBottom="@dimen/margin_half"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/details"
+            android:textAppearance="@style/MwmTextAppearance.Body3"
+            tools:ignore="UnusedAttribute"/>
 
         <include
-          android:id="@+id/block_opening_hours"
-          layout="@layout/item_opening_hours"/>
+            android:id="@+id/block_opening_hours"
+            layout="@layout/item_opening_hours"/>
 
         <RelativeLayout
             android:id="@+id/block_cuisine"
@@ -183,12 +207,12 @@
         </RelativeLayout>
 
         <include
-          android:id="@+id/block_operator"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_operator"
+            layout="@layout/item_editor_input"/>
 
         <include
-          android:id="@+id/block_website"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_website"
+            layout="@layout/item_editor_input"/>
 
         <include
             android:id="@+id/block_website_menu"
@@ -219,16 +243,17 @@
               android:layout_height="match_parent"
               android:layout_alignParentEnd="true"
               android:layout_centerVertical="true"
+              android:textColor="?colorSecondary"
               android:textAppearance="@style/MwmTextAppearance.Body1" />
         </RelativeLayout>
 
         <include
-          android:id="@+id/block_email"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_email"
+            layout="@layout/item_editor_input"/>
 
         <include
-          android:id="@+id/block_level"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_level"
+            layout="@layout/item_editor_input"/>
 
         <RelativeLayout
             android:id="@+id/block_wifi"
@@ -313,42 +338,42 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__social_media"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__social_media"
+        style="@style/MwmWidget.Editor.CardView">
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_base"
-        android:paddingStart="@dimen/margin_base">
-        <com.google.android.material.textview.MaterialTextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/margin_base"
-          android:paddingBottom="@dimen/margin_half"
-          android:fontFamily="@string/robotoMedium"
-          android:text="@string/social_media"
-          android:textAppearance="@style/MwmTextAppearance.Body3"
-          tools:ignore="UnusedAttribute"/>
+          android:orientation="vertical"
+          android:paddingEnd="@dimen/margin_base"
+          android:paddingStart="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_base"
+            android:paddingBottom="@dimen/margin_half"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/social_media"
+            android:textAppearance="@style/MwmTextAppearance.Body3"
+            tools:ignore="UnusedAttribute"/>
 
         <include
             android:id="@+id/block_fediverse"
             layout="@layout/item_editor_input"/>
         <include
-          android:id="@+id/block_facebook"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_facebook"
+            layout="@layout/item_editor_input"/>
         <include
-          android:id="@+id/block_instagram"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_instagram"
+            layout="@layout/item_editor_input"/>
         <include
-          android:id="@+id/block_twitter"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_twitter"
+            layout="@layout/item_editor_input"/>
         <include
-          android:id="@+id/block_vk"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_vk"
+            layout="@layout/item_editor_input"/>
         <include
-          android:id="@+id/block_line"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_line"
+            layout="@layout/item_editor_input"/>
         <include
             android:id="@+id/block_bluesky"
             layout="@layout/item_editor_input"/>
@@ -356,61 +381,61 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__building"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__building"
+        style="@style/MwmWidget.Editor.CardView">
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_base"
-        android:paddingStart="@dimen/margin_base">
-        <com.google.android.material.textview.MaterialTextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/margin_base"
-          android:paddingBottom="@dimen/margin_half"
-          android:fontFamily="@string/robotoMedium"
-          android:text="@string/building"
-          android:textAppearance="@style/MwmTextAppearance.Body3"
-          tools:ignore="UnusedAttribute"/>
+          android:orientation="vertical"
+          android:paddingEnd="@dimen/margin_base"
+          android:paddingStart="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_base"
+            android:paddingBottom="@dimen/margin_half"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/building"
+            android:textAppearance="@style/MwmTextAppearance.Body3"
+            tools:ignore="UnusedAttribute"/>
 
         <include
-          android:id="@+id/block_levels"
-          layout="@layout/item_editor_input"/>
+            android:id="@+id/block_levels"
+            layout="@layout/item_editor_input"/>
 
       </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-      android:id="@+id/cv__more"
-      style="@style/MwmWidget.Editor.CardView">
+        android:id="@+id/cv__more"
+        style="@style/MwmWidget.Editor.CardView">
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_base">
-        <com.google.android.material.textview.MaterialTextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:fontFamily="@string/robotoMedium"
-          android:text="@string/editor_other_info"
-          android:textAppearance="@style/MwmTextAppearance.Body3"/>
+          android:orientation="vertical"
+          android:padding="@dimen/margin_base">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@string/robotoMedium"
+            android:text="@string/editor_other_info"
+            android:textAppearance="@style/MwmTextAppearance.Body3"/>
         <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/custom_input"
-          style="@style/MwmWidget.Editor.CustomTextInput"
-          android:gravity="center_vertical"
-          android:minHeight="74dp"
-          android:textColorHint="?android:textColorSecondary"
-          app:hintEnabled="false">
+            android:id="@+id/custom_input"
+            style="@style/MwmWidget.Editor.CustomTextInput"
+            android:gravity="center_vertical"
+            android:minHeight="74dp"
+            android:textColorHint="?android:textColorSecondary"
+            app:hintEnabled="false">
           <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input"
-            style="@style/MwmWidget.Editor.FieldLayout.EditText"
-            android:inputType="textMultiLine"
-            android:hint="@string/editor_note_hint"/>
+              android:id="@+id/input"
+              style="@style/MwmWidget.Editor.FieldLayout.EditText"
+              android:inputType="textMultiLine"
+              android:hint="@string/editor_note_hint"/>
         </com.google.android.material.textfield.TextInputLayout>
       </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-      <com.google.android.material.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/reset"
         style="@style/MwmWidget.M3.Button.Secondary"
         android:layout_width="match_parent"

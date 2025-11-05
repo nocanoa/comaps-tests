@@ -182,8 +182,6 @@
     <string name="done">Feito</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Dados do OpenStreetMap: %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Tem certeza de que deseja sair da sua conta do OpenStreetMap?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Trajetos</string>
     <!-- Length of track in cell that describes route -->
@@ -454,7 +452,6 @@
     <string name="editor_edit_place_category_title">Categoria</string>
     <string name="detailed_problem_description">Descrição detalhada do problema</string>
     <string name="editor_report_problem_other_title">Um problema diferente</string>
-    <string name="placepage_add_business_button">Adicionar uma organização</string>
     <string name="message_invalid_feature_position">Nenhum objeto pode ser posicionado aqui</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Dados do OpenStreetMap criados pela comunidade até %s. Sabe mais sobre como editar e atualizar o mapa em OpenStreetMap.org</string>
@@ -496,7 +493,6 @@
     <string name="placepage_more_button">Mais</string>
     <string name="placepage_edit_bookmark_button">Editar favorito</string>
     <string name="placepage_personal_notes_hint">Notas pessoais (texto ou html)</string>
-    <string name="editor_comment_hint">Comentário…</string>
     <string name="editor_reset_edits_message">Eliminar todas as alterações locais?</string>
     <string name="editor_reset_edits_button">Eliminar</string>
     <string name="editor_remove_place_message">Eliminar o local adicionado?</string>

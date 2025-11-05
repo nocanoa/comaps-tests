@@ -13,7 +13,7 @@ import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.lifecycle.LifecycleOwner;
 import app.organicmaps.R;
-import app.organicmaps.car.SurfaceRenderer;
+import app.organicmaps.car.renderer.Renderer;
 import app.organicmaps.car.screens.base.BaseMapScreen;
 import app.organicmaps.car.util.Toggle;
 import app.organicmaps.car.util.UiHelpers;
@@ -31,12 +31,13 @@ public class DrivingOptionsScreen extends BaseMapScreen
   private final DrivingOption[] mDrivingOptions = {new DrivingOption(RoadType.Toll, R.string.avoid_tolls),
                                                    new DrivingOption(RoadType.Dirty, R.string.avoid_unpaved),
                                                    new DrivingOption(RoadType.Ferry, R.string.avoid_ferry),
-                                                   new DrivingOption(RoadType.Motorway, R.string.avoid_motorways)};
+                                                   new DrivingOption(RoadType.Motorway, R.string.avoid_motorways),
+                                                   new DrivingOption(RoadType.Steps, R.string.avoid_steps)};
 
   @NonNull
   private final Map<RoadType, Boolean> mInitialDrivingOptionsState = new HashMap<>();
 
-  public DrivingOptionsScreen(@NonNull CarContext carContext, @NonNull SurfaceRenderer surfaceRenderer)
+  public DrivingOptionsScreen(@NonNull CarContext carContext, @NonNull Renderer surfaceRenderer)
   {
     super(carContext, surfaceRenderer);
 
@@ -45,7 +46,7 @@ public class DrivingOptionsScreen extends BaseMapScreen
 
   @NonNull
   @Override
-  public Template onGetTemplate()
+  protected Template onGetTemplateImpl()
   {
     final MapWithContentTemplate.Builder builder = new MapWithContentTemplate.Builder();
     builder.setMapController(UiHelpers.createMapController(getCarContext(), getSurfaceRenderer()));
@@ -56,6 +57,7 @@ public class DrivingOptionsScreen extends BaseMapScreen
   @Override
   public void onStop(@NonNull LifecycleOwner owner)
   {
+    super.onStop(owner);
     for (final DrivingOption drivingOption : mDrivingOptions)
     {
       if (Boolean.TRUE.equals(mInitialDrivingOptionsState.get(drivingOption.roadType))

@@ -186,8 +186,6 @@
     <string name="done">Terminé</string>
     <!-- Data version in «About» screen, %@ is replaced by a local, human readable date. -->
     <string name="data_version">Données OpenStreetMap : %s</string>
-    <!-- Confirmation for OpenStreetMap log out. -->
-    <string name="osm_log_out_confirmation">Voulez-vous vraiment vous déconnecter de votre compte OpenStreetMap ?</string>
     <!-- Title for tracks category in bookmarks manager -->
     <string name="tracks_title">Traces</string>
     <!-- Length of track in cell that describes route -->
@@ -466,7 +464,6 @@
     <string name="editor_edit_place_category_title">Catégorie</string>
     <string name="detailed_problem_description">Description détaillée du problème</string>
     <string name="editor_report_problem_other_title">Autre problème</string>
-    <string name="placepage_add_business_button">Ajouter une entreprise</string>
     <string name="message_invalid_feature_position">Aucun objet ne peut être localisé ici</string>
     <!-- Text in About and OSM Login screens. First %@ is replaced by a local, human readable date. -->
     <string name="osm_presentation">Données OpenStreetMap créées par la communauté en date du %s. Pour en savoir plus sur la façon de modifier et de mettre à jour la carte, consultez le site OpenStreetMap.org</string>
@@ -508,7 +505,6 @@
     <string name="placepage_more_button">Plus</string>
     <string name="placepage_edit_bookmark_button">Modifier le signet</string>
     <string name="placepage_personal_notes_hint">Notes personnelles (texte ou html)</string>
-    <string name="editor_comment_hint">Commentaire…</string>
     <string name="editor_reset_edits_message">Abandonner toutes les modifications locales ?</string>
     <string name="editor_reset_edits_button">Ignorer</string>
     <string name="editor_remove_place_message">Supprimer le lieu ajouté ?</string>
@@ -879,4 +875,24 @@
     <string name="existence_confirmed_time_ago">Existence confirmée %s</string>
     <string name="hours_confirmed_time_ago">Confirmé %s</string>
     <string name="pref_tts_no_system_tts_short">Impossible de lire ce texte à voix haute, vérifiez les paramètres de l’application</string>
+    <string name="unknown_power_output">inconnue</string>
+    <string name="charge_socket_type2">Type 2 (sans câble)</string>
+    <string name="charge_socket_type2_cable">Type 2 (avec câble)</string>
+    <string name="charge_socket_type2_combo">Type 2 combo</string>
+    <string name="charge_socket_type1">Type 1</string>
+    <string name="charge_socket_nacs">NACS</string>
+    <string name="charge_socket_chademo">CHAdeMO</string>
+    <string name="charge_socket_count">Quantité</string>
+    <string name="charge_socket_power">Puissance (kW)</string>
+    <string name="unknown_count">inconnue</string>
+    <string name="edit_socket_info_tooltip">Créer de nouvelles prises ou modifier celles existantes.</string>
+    <string name="charge_socket_unknown_other">Autre ou inconnue</string>
+    <string name="editor_socket">Modifier la prise</string>
+    <string name="error_value_must_be_positive">La valeur doit être positive</string>
+    <string name="error_invalid_number">Nombre incorrect</string>
+    <string name="unknown_socket_type">type de prise inconnu</string>
+    <string name="unknow_socket_type">prise inconnue</string>
+    <string name="charging_station_available_sockets">Prises libres</string>
+    <string name="avoid_steps">Éviter les escaliers</string>
+    <string name="offline_explanation_title">Cartes hors-ligne</string>
 </resources>

@@ -558,7 +558,7 @@
 "osm_profile_remove" = "Убрать аккаунт OpenStreetMap";
 "osm_profile_register_promt" = "Не зарегистрированы в OpenStreetMap?";
 "osm_profile_register" = "Зарегистрироваться";
-"osm_profile_verfied_changes" = "Учтённые правки";
+"osm_profile_verfied_changes" = "Учтенные правки";
 "osm_profile_logout" = "Выйти из аккаунта OpenStreetMap";
 "osm_profile_delete" = "Удалить аккаунт OpenStreetMap";
 
@@ -593,7 +593,7 @@
 "common_check_internet_connection_dialog" = "Проверьте настройки и убедитесь, что устройство подключено к интернету.";
 "downloader_no_space_title" = "Недостаточно места";
 "downloader_no_space_message" = "Удалите ненужные данные";
-"editor_profile_changes" = "Учтённые правки";
+"editor_profile_changes" = "Учтенные правки";
 "editor_focus_map_on_location" = "Перетащите карту, чтобы поместить крестик на место расположения добавляемого объекта или заведения.";
 "editor_add_select_category" = "Выбрать категорию";
 "editor_add_select_category_popular_subtitle" = "Популярные";

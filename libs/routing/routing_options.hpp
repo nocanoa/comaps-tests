@@ -18,8 +18,9 @@ public:
     Motorway = 1u << 2,
     Ferry = 1u << 3,
     Dirty = 1u << 4,
+    Steps = 1u << 5,
 
-    Max = (1u << 4) + 1
+    Max = (1u << 5) + 1
   };
 
   using RoadType = std::underlying_type_t<Road>;

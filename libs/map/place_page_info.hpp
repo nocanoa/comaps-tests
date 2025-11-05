@@ -105,7 +105,6 @@ public:
 
   /// Edit and add
   bool ShouldShowAddPlace() const;
-  bool ShouldShowAddBusiness() const { return IsBuilding(); }
   bool ShouldShowEditPlace() const;
 
   bool ShouldEnableAddPlace() const { return m_canEditOrAdd; }

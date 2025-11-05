@@ -1,10 +1,9 @@
-• Karten-Daten vom 6. September
-• Zeitstrafen für Radrouting
-• Farbige POI-Beschriftungen in Autonavigation
-• POI-Suche nach Filialnamen
-• Abspannportale, Sicherheitskabinen & Büros hinzugefügt
-• Aktualisierte Symbole für Türme, Nachtclubs, Apotheken und Fahnenmasten
-• Lesezeichen-Farbe in GPX-Exporten
-• Farbfüllung von Fußgängerbereiche auf Plätzen
-• Android Auto: Anzeige Ausfahrtsnummern in Kreisverkehren
-Weitere Änderungen in Codeberg-Versionshinweisen!
+• Verbesserte Sichtbarkeit & Benutzeroberfläche für Navigationsanweisungen
+• Option um Treppen zu vermeiden
+• Verbesserte Suche in mehreren Sprachen
+• Spezifisches Symbol für Busbahnöfe hinzugefügt
+• Probleme mit Android Auto behoben (via OM)
+• Verbesserter Editor mit kleinere Bugfixes
+• Kartenstile verbessert (via OM)
+• Verbesserte Übersetzungen
+Für weitere Änderungen siehe Codeberg-Versionshinweise

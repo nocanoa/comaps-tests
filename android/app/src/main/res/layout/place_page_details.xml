@@ -17,6 +17,12 @@
     android:orientation="vertical">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/place_page_charge_sockets_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/place_page_charge_sockets_fragment" />
+
+    <androidx.fragment.app.FragmentContainerView
       android:id="@+id/place_page_wikipedia_fragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -84,8 +90,6 @@
     tools:text="Existence confirmed 1 month ago"/>
 
   <include android:visibility="gone" layout="@layout/place_page_editor"/>
-
-  <include android:visibility="gone" layout="@layout/place_page_add_business"/>
 
   <include android:visibility="gone" layout="@layout/place_page_add"/>
 

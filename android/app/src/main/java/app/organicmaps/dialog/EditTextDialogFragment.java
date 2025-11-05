@@ -40,7 +40,6 @@ public class EditTextDialogFragment extends BaseMwmDialogFragment
   private String mHint;
   private TextInputEditText mEtInput;
   private TextInputLayout mEtInputLayout;
-  private Button mPositiveButton;
   private Validator mInputValidator;
   private OnTextSaveListener mTextSaveListener;
 
@@ -117,21 +116,20 @@ public class EditTextDialogFragment extends BaseMwmDialogFragment
     AlertDialog editTextDialog = new MaterialAlertDialogBuilder(requireActivity(), R.style.MwmTheme_AlertDialog)
                                      .setView(buildView())
                                      .setNegativeButton(negativeButtonText, null)
-                                     .setPositiveButton(positiveButtonText,
-                                                        (dialog, which) -> {
-                                                          final String result = mEtInput.getText().toString();
-                                                          processInput(result);
-                                                          dismiss();
-                                                        })
+                                     .setPositiveButton(positiveButtonText, null)
                                      .create();
 
-    // Wait till alert is shown to get mPositiveButton.
+    // Set up onClick listener for mPositiveButton.
     editTextDialog.setOnShowListener((dialog) -> {
-      mPositiveButton = editTextDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-      final FragmentActivity activity = getActivity();
-      if (activity == null)
-        return;
-      this.validateInput(activity, mInitialText);
+      Button positiveButton = editTextDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+
+      positiveButton.setOnClickListener(view -> {
+        final String result = mEtInput.getText().toString();
+        if (validateInput(requireActivity(), result)) {
+          processInput(result);
+          editTextDialog.dismiss();
+        }
+      });
     });
 
     // Setup validation on input edit.
@@ -149,14 +147,16 @@ public class EditTextDialogFragment extends BaseMwmDialogFragment
     return editTextDialog;
   }
 
-  private void validateInput(@NonNull FragmentActivity activity, @Nullable String input)
+  private boolean validateInput(@NonNull FragmentActivity activity, @Nullable String input)
   {
-    if (mPositiveButton != null && mInputValidator != null)
+    if (mInputValidator != null)
     {
       final String maybeError = mInputValidator.validate(activity, input);
-      mPositiveButton.setEnabled(maybeError == null);
       mEtInputLayout.getEditText().setError(maybeError);
+      mEtInputLayout.requestFocus();
+      return maybeError == null;
     }
+    return false;
   }
 
   private void processInput(@Nullable String text)

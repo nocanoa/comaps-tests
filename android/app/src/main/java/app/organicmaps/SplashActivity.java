@@ -56,15 +56,6 @@ public class SplashActivity extends AppCompatActivity
   protected void onCreate(@Nullable Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-
-    final String theme = Config.UiTheme.getCurrent();
-    if (Config.UiTheme.isDefault(theme))
-      setTheme(R.style.MwmTheme_Splash);
-    else if (Config.UiTheme.isNight(theme))
-      setTheme(R.style.MwmTheme_Night_Splash);
-    else
-      throw new IllegalArgumentException("Attempt to apply unsupported theme: " + theme);
-
     UiThread.cancelDelayedTasks(mInitCoreDelayedTask);
     setContentView(R.layout.activity_splash);
 

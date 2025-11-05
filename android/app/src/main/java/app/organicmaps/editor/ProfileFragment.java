@@ -22,7 +22,6 @@ import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.util.WindowInsetUtils;
 import app.organicmaps.widget.StackedButtonDialogFragment;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import java.text.NumberFormat;
@@ -135,14 +134,7 @@ public class ProfileFragment extends BaseMwmToolbarFragment
 
   private void logout()
   {
-    new MaterialAlertDialogBuilder(requireContext(), R.style.MwmTheme_AlertDialog)
-        .setMessage(R.string.osm_log_out_confirmation)
-        .setPositiveButton(R.string.yes,
-                           (dialog, which) -> {
-                             OsmOAuth.clearAuthorization();
-                             refreshViews();
-                           })
-        .setNegativeButton(R.string.no, null)
-        .show();
+    OsmOAuth.clearAuthorization();
+    refreshViews();
   }
 }

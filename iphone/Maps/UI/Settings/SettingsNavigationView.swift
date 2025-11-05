@@ -44,6 +44,10 @@ struct SettingsNavigationView: View {
     @State var shouldAvoidMotorwaysWhileRouting: Bool = false
     
     
+    /// If steps should be avoided during routing
+    @State var shouldAvoidStepsWhileRouting: Bool = false
+    
+    
     /// If live traffic data should be used
     @State var hasLiveTraffic: Bool = false
     
@@ -128,6 +132,9 @@ struct SettingsNavigationView: View {
                 
                 Toggle("avoid_motorways", isOn: $shouldAvoidMotorwaysWhileRouting)
                     .tint(.accent)
+                
+                Toggle("avoid_steps", isOn: $shouldAvoidStepsWhileRouting)
+                    .tint(.accent)
             } header: {
                 Text("driving_options_title")
             }
@@ -164,6 +171,7 @@ struct SettingsNavigationView: View {
             shouldAvoidUnpavedRoadsWhileRouting = Settings.shouldAvoidUnpavedRoadsWhileRouting
             shouldAvoidFerriesWhileRouting = Settings.shouldAvoidFerriesWhileRouting
             shouldAvoidMotorwaysWhileRouting = Settings.shouldAvoidMotorwaysWhileRouting
+            shouldAvoidStepsWhileRouting = Settings.shouldAvoidStepsWhileRouting
             hasLiveTraffic = Settings.hasLiveTraffic
             liveTrafficServerUrlString = Settings.liveTrafficServerUrl?.absoluteString ?? ""
         }
@@ -202,6 +210,8 @@ struct SettingsNavigationView: View {
         .onChange(of: shouldAvoidMotorwaysWhileRouting) { changedShouldAvoidMotorwaysWhileRouting in
             Settings.shouldAvoidMotorwaysWhileRouting = changedShouldAvoidMotorwaysWhileRouting
         }
+        .onChange(of: shouldAvoidStepsWhileRouting) { changedShouldAvoidStepsWhileRouting in
+            Settings.shouldAvoidStepsWhileRouting = changedShouldAvoidStepsWhileRouting
         .onChange(of: hasLiveTraffic) { changedHasLiveTraffic in
             Settings.hasLiveTraffic = changedHasLiveTraffic
         }

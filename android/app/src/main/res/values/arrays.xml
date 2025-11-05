@@ -22,4 +22,32 @@
     <item>@drawable/route_point_19</item>
     <item>@drawable/route_point_20</item>
   </integer-array>
+
+  <string-array name="charge_socket_types">
+    <item>type2_combo</item>
+    <item>nacs</item>
+    <item>chademo</item>
+    <item>type1</item>
+    <item>type2_cable</item>
+    <item>type2</item>
+    <item>unknown</item>
+  </string-array>
+
+  <string-array name="charge_sockets_common_powers">
+    <item>22</item>
+    <item>43</item>
+    <item>50</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>350</item>
+  </string-array>
+
+  <string-array name="charge_sockets_common_counts">
+    <item>1</item>
+    <item>2</item>
+    <item>4</item>
+    <item>8</item>
+    <item>10</item>
+  </string-array>
 </resources>

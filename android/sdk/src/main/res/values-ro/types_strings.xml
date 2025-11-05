@@ -6,7 +6,7 @@
     <string name="type.addr_interpolation.odd">Adresă/Bloc</string>
     <string name="type.aerialway.station">Stație de teleferic</string>
     <string name="type.aeroway.aerodrome">Aeroport</string>
-    <string name="type.aeroway.aerodrome.international">Aeroport</string>
+    <string name="type.aeroway.aerodrome.international">Aeroport Internațional</string>
     <string name="type.aeroway.helipad">Heliport</string>
     <string name="type.amenity">Obiecte ale infrastructurii</string>
     <string name="type.amenity.arts_centre">Centru de artă</string>
@@ -1381,4 +1381,8 @@
     <string name="type.tourism.camp_site">Loc de campare</string>
     <string name="type.shop.lighting">Magazin de corpuri de iluminat</string>
     <string name="type.tourism.hostel">Hostel</string>
+    <string name="type.waterway.dam">Baraj</string>
+    <string name="type.tourism.motel">Motel</string>
+    <string name="type.tourism.hotel">Hotel</string>
+    <string name="type.shop.supermarket">Supermarket</string>
 </resources>
