@@ -264,7 +264,7 @@ public:
      * but tries to find a route with the existing maps, or exits without a route. When snapping
      * endpoints to edges, it considers all edges within the given radius, fenced off or not.
      */
-    IndexRouter::Mode GetMode() { return IndexRouter::Mode::Decoding; }
+    IndexRouter::Mode GetMode() override { return IndexRouter::Mode::Decoding; }
 
     /**
      * @brief Returns current routing options.
