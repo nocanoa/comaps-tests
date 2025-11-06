@@ -28,3 +28,8 @@
 # R8 crypts the source line numbers in all log messages.
 # https://github.com/organicmaps/organicmaps/issues/6559#issuecomment-1812039926
 -dontoptimize
+
+# Keep classes for Android TraFF support
+-keep class app.organicmaps.sdk.traffxml.SourceImplV0_7 { *; }
+-keep class app.organicmaps.sdk.traffxml.SourceImplV0_8 { *; }
+
