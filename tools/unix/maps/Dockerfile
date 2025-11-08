@@ -2,7 +2,7 @@
 FROM debian:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC 
+ENV TZ=Etc/UTC
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
@@ -56,7 +56,7 @@ RUN pip3 install "protobuf<4"
 
 RUN mkdir /mnt/4tbexternal
 # When running, bind mount the repo here
-RUN mkdir /mnt/4tbexternal/comaps-init
+RUN mkdir /mnt/4tbexternal/comaps
 # And a volume to store the large output/temp files here
 RUN mkdir /mnt/4tbexternal/osm-maps
 # And the output of the app build
@@ -68,6 +68,6 @@ RUN mkdir /home/planet
 WORKDIR /mnt/4tbexternal/comaps
 
 # For debugging
-#CMD /bin/bash 
+#CMD /bin/bash
 
-CMD /mnt/4tbexternal/comaps-init/tools/unix/docker_maps_generator.sh
+CMD /mnt/4tbexternal/comaps/tools/unix/maps/docker_maps_generator.sh
