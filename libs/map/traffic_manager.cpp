@@ -654,6 +654,8 @@ void TrafficManager::DecodeFirstMessage()
         // cancellations before others
         if (a.m_cancellation)
           return !b.m_cancellation;
+        else if (b.m_cancellation)
+          return false;
         // sort by shortest distance between reference point and position/viewport
         std::vector<ms::LatLon> locations;
         if (m_currentPositionLazy.second)
