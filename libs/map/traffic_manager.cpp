@@ -651,10 +651,16 @@ void TrafficManager::DecodeFirstMessage()
       std::sort(m_feedQueue.front().begin(), m_feedQueue.front().end(),
                 [this](const traffxml::TraffMessage & a, const traffxml::TraffMessage & b){
         // return a < b
-        // cancellations before others
+        // put messages first which decode quickly: cancellations, and updates with same location
         if (a.m_cancellation)
           return !b.m_cancellation;
         else if (b.m_cancellation)
+          return false;
+        auto aIt = m_messageCache.find(a.m_id);
+        auto bIt = m_messageCache.find(b.m_id);
+        if ((aIt != m_messageCache.end()) && (aIt->second.m_location == a.m_location))
+          return !((bIt != m_messageCache.end()) && (bIt->second.m_location == b.m_location));
+        else if ((bIt != m_messageCache.end()) && (bIt->second.m_location == b.m_location))
           return false;
         // sort by shortest distance between reference point and position/viewport
         std::vector<ms::LatLon> locations;
