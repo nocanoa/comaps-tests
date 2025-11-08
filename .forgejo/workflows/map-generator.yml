@@ -100,12 +100,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -113,9 +113,9 @@ jobs:
       - name: Copy Coasts
         shell: bash
         run: |
-          if [ -f /root/OM/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
-          cp /root/OM/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
-          cp /root/OM/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
+          if [ -f /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
+          cp /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
+          cp /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
           fi
 
   update-planet:
@@ -125,12 +125,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -173,12 +173,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -201,7 +201,7 @@ jobs:
           #also-also: do we want to remove old wiki data in planet between builds?
           mkdir -p /home/planet/wikipedia/dumps
           mkdir -p /home/planet/wikipedia/build
-          cd /root/OM/wikiparser
+          cd /mnt/4tbexternal/wikiparser
           ls -al
           echo "Downloading ..."
           ./download.sh /home/planet/wikipedia/dumps
@@ -219,12 +219,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -234,7 +234,7 @@ jobs:
       - name: Update Isolines
         shell: bash
         run: |
-          cd /root/OM/comaps-init/
+          cd /mnt/4tbexternal/comaps-init/
           ./tools/unix/build_omim.sh -R topography_generator_tool
           rm -rf /home/planet/isolines/
           mkdir /home/planet/isolines/
@@ -254,12 +254,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -267,7 +267,7 @@ jobs:
       - name: Update Subways
         shell: bash
         run: |
-          cd /root/OM/comaps-init/
+          cd /mnt/4tbexternal/comaps-init/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
           ./tools/unix/maps/generate_subways.sh
 
@@ -278,12 +278,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -291,7 +291,7 @@ jobs:
       - name: Build address_parser
         shell: bash
         run: |
-          cd /root/OM/comaps-init
+          cd /mnt/4tbexternal/comaps-init
           rm -rf ../omim-build-relwithdebinfo/CMakeCache.txt
           rm -rf ../omim-build-relwithdebinfo/CMakeFiles
           ./tools/unix/build_omim.sh -R address_parser_tool
@@ -302,8 +302,8 @@ jobs:
           cd /home/planet/
           mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
-          cd /root/OM/comaps-init
-          tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /root/OM/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
+          cd /mnt/4tbexternal/comaps-init
+          tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /mnt/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
 
   generate-maps:
     if: inputs.jobs == 'maps' || inputs.jobs == 'all'
@@ -313,12 +313,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
       options: --ulimit nofile=262144:262144
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
@@ -327,8 +327,8 @@ jobs:
       - name: Make output folders if necessary
         shell: bash
         run: |
-          if [ ! -d /root/OM/osm-maps ]; then
-          mkdir -p /root/OM/osm-maps
+          if [ ! -d /mnt/4tbexternal/osm-maps ]; then
+          mkdir -p /mnt/4tbexternal/osm-maps
           fi
       - name: Get SRTM if necessary
         shell: bash
@@ -340,7 +340,7 @@ jobs:
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
-          cd /root/OM/comaps-init
+          cd /mnt/4tbexternal/comaps-init
           ./tools/unix/docker_maps_generator.sh
       - name: Notify Zulip
         run: |
@@ -358,12 +358,12 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/root/OM/comaps-init
-        - /mnt/4tbexternal/wikiparser:/root/OM/wikiparser
+        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/root/OM/osm-maps
-        - /mnt/4tbexternal/subways:/root/OM/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo
+        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
+        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
+        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -377,18 +377,18 @@ jobs:
         shell: bash
         run: |
           shopt -s nullglob
-          buildfolder=$(find /root/OM/osm-maps/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f5)
-          builddate=$(find /root/OM/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f6)
-          mwmfiles=( /root/OM/osm-maps/$buildfolder/$builddate/*.mwm )
+          buildfolder=$(find /mnt/4tbexternal/osm-maps/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f5)
+          builddate=$(find /mnt/4tbexternal/osm-maps/*/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 | cut -d/ -f6)
+          mwmfiles=( /mnt/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm )
 
           if (( ${#mwmfiles[@]} )); then
             echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
-            cd /root/OM/comaps-init/tools/unix/maps
-            ./upload_to_cdn.sh /root/OM/osm-maps/$buildfolder/$builddate
+            cd /mnt/4tbexternal/comaps-init/tools/unix/maps
+            ./upload_to_cdn.sh /mnt/4tbexternal/osm-maps/$buildfolder/$builddate
           else
-            echo "<$(date +%T)> No MWM files in /root/OM/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
-            echo "<$(date +%T)> Found top level: $(ls -alt /root/OM/osm-maps/*)"
-            echo "<$(date +%T)> Found second level: $(ls -alt /root/OM/osm-maps/$buildfolder/*)"
+            echo "<$(date +%T)> No MWM files in /mnt/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
+            echo "<$(date +%T)> Found top level: $(ls -alt /mnt/4tbexternal/osm-maps/*)"
+            echo "<$(date +%T)> Found second level: $(ls -alt /mnt/4tbexternal/osm-maps/$buildfolder/*)"
           fi
       - name: Notify Zulip
         run: |

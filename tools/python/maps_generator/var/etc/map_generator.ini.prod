@@ -1,8 +1,8 @@
 [Developer]
 # Path to the `comaps` source code repository:
-OMIM_PATH: /root/OM/comaps-init
+OMIM_PATH: /mnt/4tbexternal/comaps-init
 # A path with the generator_tool binary:
-BUILD_PATH: /root/OM/omim-build-relwithdebinfo
+BUILD_PATH: /mnt/4tbexternal/omim-build-relwithdebinfo
 #${Developer:OMIM_PATH}/../omim-build-release
 
 
@@ -11,7 +11,7 @@ BUILD_PATH: /root/OM/omim-build-relwithdebinfo
 DEBUG: 0
 # A main working directory. There is a subdirectory created for each generator run
 # which contains the planet and other downloads, temporary build files, logs and completed MWMs.
-MAIN_OUT_PATH: /root/OM/osm-maps
+MAIN_OUT_PATH: /mnt/4tbexternal/osm-maps
 # Path for storing caches for nodes, ways, relations.
 # If it's not set then caches are stored inside the directory of the current build.
 # CACHE_PATH: ${Main:MAIN_OUT_PATH}/cache

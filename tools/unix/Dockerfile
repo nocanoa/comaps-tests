@@ -54,20 +54,20 @@ RUN apt-get update -qq \
 RUN rm -f /usr/lib/python*/EXTERNALLY-MANAGED
 RUN pip3 install "protobuf<4"
 
-RUN mkdir /root/OM
+RUN mkdir /mnt/4tbexternal
 # When running, bind mount the repo here
-RUN mkdir /root/OM/comaps-init
+RUN mkdir /mnt/4tbexternal/comaps-init
 # And a volume to store the large output/temp files here
-RUN mkdir /root/OM/osm-maps
+RUN mkdir /mnt/4tbexternal/osm-maps
 # And the output of the app build
-RUN mkdir /root/OM/omim-build-release
-RUN mkdir /root/OM/omim-build-relwithdebinfo
+RUN mkdir /mnt/4tbexternal/omim-build-release
+RUN mkdir /mnt/4tbexternal/omim-build-relwithdebinfo
 # And a volume to store >10gb files for the planet here
 RUN mkdir /home/planet
 
-WORKDIR /root/OM/comaps-init
+WORKDIR /mnt/4tbexternal/comaps-init
 
 # For debugging
 #CMD /bin/bash 
 
-CMD /root/OM/comaps-init/tools/unix/docker_maps_generator.sh
+CMD /mnt/4tbexternal/comaps-init/tools/unix/docker_maps_generator.sh

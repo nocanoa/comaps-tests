@@ -19,18 +19,18 @@ set -e
 
 echo "<$(date +%T)> Setting git as safe dir..."
 
-git config --global --add safe.directory /root/OM/comaps-init
+git config --global --add safe.directory /mnt/4tbexternal/comaps-init
 
 echo "<$(date +%T)> Starting..."
 
 # Prepare paths
 #
 # Already created by Dockerfile or CI/CD:
-#   /root/OM
-#   /root/OM/comaps-init
-#   /root/OM/omim-build-release
-#   /root/OM/omim-build-relwithdebinfo
-#   /root/OM/osm-maps
+#   /mnt/4tbexternal
+#   /mnt/4tbexternal/comaps-init
+#   /mnt/4tbexternal/omim-build-release
+#   /mnt/4tbexternal/omim-build-relwithdebinfo
+#   /mnt/4tbexternal/osm-maps
 #   /home/planet
 #
 mkdir -p /root/.config/CoMaps # Odd mkdir permission errors in generator_tool in Docker without these
@@ -55,11 +55,11 @@ mkdir -p /home/planet/subway
 # # S3_BUCKET is used below during uploading
 
 echo "<$(date +%T)> Running ./configure.sh ..."
-cd /root/OM/comaps-init
+cd /mnt/4tbexternal/comaps-init
 ./configure.sh --skip-map-download --skip-generate-symbols
 
 echo "<$(date +%T)> Compiling tools..."
-cd /root/OM/comaps-init
+cd /mnt/4tbexternal/comaps-init
 ./tools/unix/build_omim.sh -R generator_tool
 ./tools/unix/build_omim.sh -R world_roads_builder_tool
 ./tools/unix/build_omim.sh -R mwm_diff_tool
@@ -94,11 +94,11 @@ if [ ! -f planet.o5m ]; then
 else
   echo "<$(date +%T)> planet.o5m exists, not converting..."
 fi
-# (currently unused:) /root/OM/comaps-init/tools/unix/update_planet.sh planet.o5m
+# (currently unused:) /mnt/4tbexternal/comaps-init/tools/unix/update_planet.sh planet.o5m
 
 
 echo "<$(date +%T)> Generating maps..."
-cd /root/OM/comaps-init/tools/python
+cd /mnt/4tbexternal/comaps-init/tools/python
 /tmp/venv/bin/python -m maps_generator --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
 

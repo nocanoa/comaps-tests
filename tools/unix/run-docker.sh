@@ -48,20 +48,20 @@
 #   -e SFTP_HOST=changeme.dreamhost.com \
 #   -e SFTP_PATH=cdn-us-1.comaps.app \
 #   --ulimit nofile=262144:262144 \
-#   -v /mnt/4tbexternal/comaps-init:/root/OM/comaps-init \
+#   -v /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init \
 #   -v /mnt/4tbexternal/osm-planet:/home/planet \
-#   -v /mnt/4tbexternal/osm-maps:/root/OM/osm-maps \
+#   -v /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps \
 #   -it maps_generator \
-#   /root/OM/comaps-init/tools/unix/docker_maps_generator.sh
+#   /mnt/4tbexternal/comaps-init/tools/unix/docker_maps_generator.sh
  
 docker run \
   -e S3_KEY_ID=changeme \
   --ulimit nofile=262144:262144 \
-  -v /mnt/4tbexternal/comaps-init:/root/OM/comaps-init \
-  -v /mnt/4tbexternal/wikiparser:/root/OM/wikiparser \
+  -v /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init \
+  -v /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser \
   -v /mnt/4tbexternal/osm-planet:/home/planet \
-  -v /mnt/4tbexternal/osm-maps:/root/OM/osm-maps \
-  -v /mnt/4tbexternal/subways:/root/OM/subways \
-  -v /mnt/4tbexternal/omim-build-relwithdebinfo:/root/OM/omim-build-relwithdebinfo \
+  -v /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps \
+  -v /mnt/4tbexternal/subways:/mnt/4tbexternal/subways \
+  -v /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo \
   -it codeberg.org/comaps/maps_generator:latest \
-  /root/OM/comaps-init/tools/unix/docker_maps_generator.sh
+  /mnt/4tbexternal/comaps-init/tools/unix/docker_maps_generator.sh
