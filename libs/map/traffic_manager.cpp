@@ -206,8 +206,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
   LOG(LINFO, ("Routing session state changed from", previous, "to", current));
   LOG(LINFO, ("Running on thread", std::this_thread::get_id()));
 
-  m_observerInhibited = ((current == routing::SessionState::RouteBuilding)
-                         || (current == routing::SessionState::RouteRebuilding));
+  m_routingSessionState = current;
 
   /*
    * Filter based on session state (see routing_callbacks.hpp for states and transitions).
@@ -806,7 +805,7 @@ void TrafficManager::OnTrafficDataUpdate()
     auto const storageAge = currentTime - m_lastStorageUpdate;
     notifyDrape = (drapeAge >= kDrapeUpdateInterval);
     updateStorage = (storageAge >= kStorageUpdateInterval);
-    if (!m_observerInhibited)
+    if (!IsObserverInhibited())
     {
       /*
        * To avoid resetting the route over and over again while building, inhibit periodic updates

@@ -533,6 +533,20 @@ private:
     std::for_each(activeMwms.begin(), activeMwms.end(), std::forward<F>(f));
   }
 
+  /**
+   * @brief Whether updates to the observer are currently inhibited.
+   *
+   * Updates are inhibited while a route calculation is in progress. In this state, the observer
+   * receives traffic updates only if the queue has run empty, not if nore locations are waiting
+   * to be decoded.
+   *
+   * Inhibtiting the observer is necessary as traffic updates during route calculation will cause
+   * it to restart from scratch. Once the route has been calculated, updates will trigger a
+   * recalculation, which is much faster (seconds or less).
+   */
+  bool IsObserverInhibited() const { return (m_routingSessionState == routing::SessionState::RouteBuilding)
+      || (m_routingSessionState == routing::SessionState::RouteRebuilding); }
+
   DataSource & m_dataSource;
   CountryInfoGetterFn m_countryInfoGetterFn;
   CountryParentNameGetterFn m_countryParentNameGetterFn;
@@ -545,6 +559,14 @@ private:
    * renamed to reflect that.
    */
   routing::RoutingSession & m_routingSession;
+
+  /**
+   * @brief Cached state of the routing session.
+   *
+   * `m_routingSession` methods which query the state may only be called from the GUI thread,
+   * therefore we are caching this value when we get notified of a change.
+   */
+  routing::SessionState m_routingSessionState = routing::SessionState::NoValidRoute;
 
   df::DrapeEngineSafePtr m_drapeEngine;
   std::atomic<int64_t> m_currentDataVersion;
@@ -650,19 +672,6 @@ private:
    * @brief When the last update notification to the traffic observer was posted.
    */
   std::chrono::time_point<std::chrono::steady_clock> m_lastObserverUpdate;
-
-  /**
-   * @brief Whether updates to the observer are currently inhibited.
-   *
-   * Updates are inhibited while a route calculation is in progress. In this state, the observer
-   * receives traffic updates only if the queue has run empty, not if nore locations are waiting
-   * to be decoded.
-   *
-   * Inhibtiting the observer is necessary as traffic updates during route calculation will cause
-   * it to restart from scratch. Once the route has been calculated, updates will trigger a
-   * recalculation, which is much faster (seconds or less).
-   */
-  bool m_observerInhibited = false;
 
   /**
    * @brief When the cache file was last updated.
