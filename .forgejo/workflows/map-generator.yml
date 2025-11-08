@@ -118,8 +118,8 @@ jobs:
         shell: bash
         run: |
           if [ -f /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
-          cp /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
-          cp /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
+          cp -p /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
+          cp -p /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
           fi
 
   update-planet:
