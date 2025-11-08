@@ -857,6 +857,9 @@ node|z16-[amenity=school],
 node|z17-[amenity=driving_school],
 node|z17-[amenity=language_school],
 node|z17-[amenity=music_school],
+node|z17-[amenity=sailing_school],
+node|z17-[amenity=flight_school],
+node|z17-[amenity=prep_school],
 node|z17-[amenity=cinema],
 node|z17-[amenity=ice_cream],
 node|z17-[leisure=bowling_alley],
@@ -1087,6 +1090,12 @@ node|z17-[amenity=driving_school],
 {icon-image: driving_school-m.svg;}
 node|z17-[amenity=language_school],
 {icon-image: language_school-m.svg;}
+node|z17-[amenity=sailing_school],
+{icon-image: boating_school-m.svg;}
+node|z17-[amenity=flight_school],
+{icon-image: flying_school-m.svg;}
+node|z17-[amenity=prep_school],
+{icon-image: prep_school-m.svg;}
 node|z17-[leisure=hackerspace],
 {icon-image: hackerspace-m.svg;}
 node|z17-[leisure=escape_game]

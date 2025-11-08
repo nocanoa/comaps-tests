@@ -625,9 +625,9 @@ toilets|yes;502;
 highway|trunk_link|tunnel;[highway=trunk_link][tunnel?];;name;int_name;503;
 drinking_water|yes;[drinking_water=yes],[drinking_water=treated],[drinking_water:refill=yes];;;;504;
 drinking_water|no;505;
-deprecated|deprecated;506;x
-deprecated|deprecated;507;x
-deprecated|deprecated;508;x
+amenity|sailing_school;[amenity=sailing_school],[education=sailing_school];;name;int_name;506;
+amenity|flight_school;[amenity=sailing_school],[education=flight_school];;name;int_name;507;
+amenity|prep_school;[amenity=prep_school],[education=prep_school];;name;int_name;508;
 amenity|car_pooling;509;
 social_facility|soup_kitchen;510;
 social_facility|food_bank;511;
