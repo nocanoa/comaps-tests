@@ -123,6 +123,32 @@ QVariant GetCountryAndRoadRef(TraffMessage const & message)
         result += '\n';
       result += message.m_location.value().m_roadRef.value();
     }
+    if (message.m_location.value().m_fuzziness)
+    {
+      if (!result.empty())
+        result += '\n';
+      switch (message.m_location.value().m_fuzziness.value())
+      {
+        case traffxml::Fuzziness::LowRes:
+          result += "LowRes";
+          break;
+        case traffxml::Fuzziness::MediumRes:
+          result += "MediumRes";
+          break;
+        case traffxml::Fuzziness::EndUnknown:
+          result += "EndUnknown";
+          break;
+        case traffxml::Fuzziness::StartUnknown:
+          result += "StartUnknown";
+          break;
+        case traffxml::Fuzziness::ExtentUnknown:
+          result += "ExtentUnknown";
+          break;
+        default:
+          result += "(invalid)";
+          break;
+      }
+    }
   }
   return QString::fromStdString(result);
 }
