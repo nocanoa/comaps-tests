@@ -54,6 +54,9 @@ jobs:
     steps:
       - name: Clone or update main repo if necessary
         shell: bash
+        # TODO: remove debug output
+        # TODO: force-reset to user-selected generation branch and force update submodules
+        # TODO: or consider checking out to the docker space (not mapped volume) so that the code is reliably frozen during mapgen run
         run: |
           ls -al /mnt
           ls -al /mnt/4tbexternal
