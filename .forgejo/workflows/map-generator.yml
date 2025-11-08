@@ -36,7 +36,7 @@ env:
   ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
   ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
   DEBIAN_FRONTEND: noninteractive
-  TZ: Etc/UTC 
+  TZ: Etc/UTC
 
 jobs:
   clone-repos:
@@ -149,13 +149,14 @@ jobs:
         shell: bash
         run: |
           cd /home/planet/planet/
-          pyosmium-up-to-date planet-latest.osm.pbf -o planet-latest-new.osm.pbf -vv --size 16384
+          pyosmium-up-to-date planet-latest.osm.pbf -o planet-latest-new.osm.pbf -v --size 16384
           mv planet-latest-new.osm.pbf planet-latest.osm.pbf
       - name: Converting planet-latest.osm.pbf to planet.o5m
+        # TODO: better to run osmupdate (not convert) just before starting the maps jobs - for max fresh data.
         run: |
           echo "Starting..."
           cd /home/planet/planet/
-          osmconvert planet-latest.osm.pbf -o=planet.o5m
+          osmconvert -v --drop-author --drop-version --hash-memory=4000 planet-latest.osm.pbf -o=planet.o5m
           echo "Done."
       - name: Notify Zulip
         run: |
@@ -399,4 +400,3 @@ jobs:
             --data-urlencode topic=codeberg-bot \
             --data-urlencode 'content=Upload is done!'
 
-          
