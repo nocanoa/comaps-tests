@@ -44,7 +44,7 @@ RUN apt-get update -qq \
     rclone \
     rustc \
     sshpass \
-    vim \
+    vim-tiny \
     wget \
     wget2 \
     zlib1g-dev \
@@ -65,7 +65,7 @@ RUN mkdir /mnt/4tbexternal/omim-build-relwithdebinfo
 # And a volume to store >10gb files for the planet here
 RUN mkdir /home/planet
 
-WORKDIR /mnt/4tbexternal/comaps-init
+WORKDIR /mnt/4tbexternal/comaps
 
 # For debugging
 #CMD /bin/bash 

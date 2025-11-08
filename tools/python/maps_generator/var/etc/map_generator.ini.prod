@@ -1,6 +1,6 @@
 [Developer]
 # Path to the `comaps` source code repository:
-OMIM_PATH: /mnt/4tbexternal/comaps-init
+OMIM_PATH: /mnt/4tbexternal/comaps
 # A path with the generator_tool binary:
 BUILD_PATH: /mnt/4tbexternal/omim-build-relwithdebinfo
 #${Developer:OMIM_PATH}/../omim-build-release

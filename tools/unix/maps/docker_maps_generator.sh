@@ -19,7 +19,7 @@ set -e
 
 echo "<$(date +%T)> Setting git as safe dir..."
 
-git config --global --add safe.directory /mnt/4tbexternal/comaps-init
+git config --global --add safe.directory /mnt/4tbexternal/comaps
 
 echo "<$(date +%T)> Starting..."
 
@@ -27,7 +27,7 @@ echo "<$(date +%T)> Starting..."
 #
 # Already created by Dockerfile or CI/CD:
 #   /mnt/4tbexternal
-#   /mnt/4tbexternal/comaps-init
+#   /mnt/4tbexternal/comaps
 #   /mnt/4tbexternal/omim-build-release
 #   /mnt/4tbexternal/omim-build-relwithdebinfo
 #   /mnt/4tbexternal/osm-maps
@@ -55,11 +55,11 @@ mkdir -p /home/planet/subway
 # # S3_BUCKET is used below during uploading
 
 echo "<$(date +%T)> Running ./configure.sh ..."
-cd /mnt/4tbexternal/comaps-init
+cd /mnt/4tbexternal/comaps
 ./configure.sh --skip-map-download --skip-generate-symbols
 
 echo "<$(date +%T)> Compiling tools..."
-cd /mnt/4tbexternal/comaps-init
+cd /mnt/4tbexternal/comaps
 ./tools/unix/build_omim.sh -R generator_tool
 ./tools/unix/build_omim.sh -R world_roads_builder_tool
 ./tools/unix/build_omim.sh -R mwm_diff_tool
@@ -94,11 +94,11 @@ if [ ! -f planet.o5m ]; then
 else
   echo "<$(date +%T)> planet.o5m exists, not converting..."
 fi
-# (currently unused:) /mnt/4tbexternal/comaps-init/tools/unix/update_planet.sh planet.o5m
+# (currently unused:) /mnt/4tbexternal/comaps/tools/unix/update_planet.sh planet.o5m
 
 
 echo "<$(date +%T)> Generating maps..."
-cd /mnt/4tbexternal/comaps-init/tools/python
+cd /mnt/4tbexternal/comaps/tools/python
 /tmp/venv/bin/python -m maps_generator --skip="MwmDiffs"
 #/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
 

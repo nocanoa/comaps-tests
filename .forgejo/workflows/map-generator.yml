@@ -57,14 +57,14 @@ jobs:
           ls -al /mnt
           ls -al /mnt/4tbexternal
           if [[ '${{ inputs.reclone }}' == 'force' ]]; then
-          rm -rf /mnt/4tbexternal/comaps-init
+          rm -rf /mnt/4tbexternal/comaps
           fi
 
-          if [ ! -d /mnt/4tbexternal/comaps-init ]; then
+          if [ ! -d /mnt/4tbexternal/comaps ]; then
           cd /mnt/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps-init
+          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps
           else
-          cd /mnt/4tbexternal/comaps-init && git pull origin rebase-generator-pastk-wb251027
+          cd /mnt/4tbexternal/comaps && git pull origin rebase-generator-pastk-wb251027
           fi
       - name: Clone or update wikiparser repo if necessary
         shell: bash
@@ -100,7 +100,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -125,7 +125,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -173,7 +173,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -219,7 +219,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -234,7 +234,7 @@ jobs:
       - name: Update Isolines
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps-init/
+          cd /mnt/4tbexternal/comaps/
           ./tools/unix/build_omim.sh -R topography_generator_tool
           rm -rf /home/planet/isolines/
           mkdir /home/planet/isolines/
@@ -254,7 +254,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -267,7 +267,7 @@ jobs:
       - name: Update Subways
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps-init/
+          cd /mnt/4tbexternal/comaps/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
           ./tools/unix/maps/generate_subways.sh
 
@@ -278,7 +278,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -291,7 +291,7 @@ jobs:
       - name: Build address_parser
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps-init
+          cd /mnt/4tbexternal/comaps
           rm -rf ../omim-build-relwithdebinfo/CMakeCache.txt
           rm -rf ../omim-build-relwithdebinfo/CMakeFiles
           ./tools/unix/build_omim.sh -R address_parser_tool
@@ -302,7 +302,7 @@ jobs:
           cd /home/planet/
           mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
-          cd /mnt/4tbexternal/comaps-init
+          cd /mnt/4tbexternal/comaps
           tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /mnt/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
 
   generate-maps:
@@ -313,7 +313,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -340,8 +340,8 @@ jobs:
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps-init
-          ./tools/unix/docker_maps_generator.sh
+          cd /mnt/4tbexternal/comaps
+          ./tools/unix/maps/docker_maps_generator.sh
       - name: Notify Zulip
         run: |
           curl -X POST https://comaps.zulipchat.com/api/v1/messages \
@@ -358,7 +358,7 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps-init:/mnt/4tbexternal/comaps-init
+        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
         - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
         - /mnt/4tbexternal/osm-planet:/home/planet
         - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
@@ -383,7 +383,7 @@ jobs:
 
           if (( ${#mwmfiles[@]} )); then
             echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
-            cd /mnt/4tbexternal/comaps-init/tools/unix/maps
+            cd /mnt/4tbexternal/comaps/tools/unix/maps
             ./upload_to_cdn.sh /mnt/4tbexternal/osm-maps/$buildfolder/$builddate
           else
             echo "<$(date +%T)> No MWM files in /mnt/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
