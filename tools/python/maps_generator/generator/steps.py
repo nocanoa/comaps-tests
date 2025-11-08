@@ -37,7 +37,7 @@ def multithread_run_if_one_country(func):
         if len(env.countries) == 1:
             kwargs.update({"threads_count": settings.THREADS_COUNT})
         elif country == 'Taiwan_North':
-            kwargs.update({"threads_count": 16})
+            kwargs.update({"threads_count": 4})
         func(env, country, **kwargs)
 
     return wrap
