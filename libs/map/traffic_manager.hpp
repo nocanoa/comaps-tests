@@ -586,8 +586,14 @@ private:
   std::atomic<int64_t> m_currentDataVersion;
 
   // These fields have a flag of their initialization.
+  /*
+   * The lazy ones get updated only if they are not initialized, or if their new position is more
+   * than a certain distance from the previously stored one.
+   */
   std::pair<MyPosition, bool> m_currentPosition = {MyPosition(), false};
+  std::pair<MyPosition, bool> m_currentPositionLazy = m_currentPosition;
   std::pair<ScreenBase, bool> m_currentModelView = {ScreenBase(), false};
+  std::pair<ScreenBase, bool> m_currentModelViewLazy = m_currentModelView;
 
   /**
    * The mode in which the traffic manager is running.
@@ -707,6 +713,14 @@ private:
    * on multiple threads.
    */
   std::vector<traffxml::TraffFeed> m_feedQueue;
+
+  /**
+   * @brief Whether the feed queue needs to be resorted.
+   *
+   * Resorting is needed when a new feed is added, or the current position or the viewport center
+   * has changed by more than a certain threshold.
+   */
+  std::atomic<bool> m_isFeedQueueSortInvalid = false;
 
   /**
    * @brief Cache of all currently active TraFF messages.

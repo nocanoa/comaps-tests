@@ -8,6 +8,7 @@
 #include "indexer/ftypes_matcher.hpp"
 #include "indexer/scales.hpp"
 
+#include "geometry/distance_on_sphere.hpp"
 #include "geometry/mercator.hpp"
 
 #include "platform/platform.hpp"
@@ -52,6 +53,12 @@ auto constexpr kStorageUpdateInterval = minutes(1);
  * File name at which traffic data is persisted.
  */
 auto constexpr kTrafficXMLFileName = "traffic.xml";
+
+/**
+ * Threshold by which viewport or user position can change without requiring the nessage queue to
+ * be resorted.
+ */
+auto constexpr kPositionThreshold = 1000.0;
 }  // namespace
 
 TrafficManager::TrafficManager(DataSource & dataSource, CountryInfoGetterFn countryInfoGetter,
@@ -381,6 +388,13 @@ void TrafficManager::UpdateMyPosition(MyPosition const & myPosition)
   double const kSquareSideM = 5000.0;
   m_currentPosition = {myPosition, true /* initialized */};
 
+  if (!m_currentPositionLazy.second
+      || (mercator::DistanceOnEarth(m_currentPositionLazy.first.m_position, myPosition.m_position) > kPositionThreshold))
+  {
+    m_isFeedQueueSortInvalid = true;
+    m_currentPositionLazy = m_currentPosition;
+  }
+
   if (!IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
     return;
 
@@ -392,6 +406,13 @@ void TrafficManager::UpdateMyPosition(MyPosition const & myPosition)
 void TrafficManager::UpdateViewport(ScreenBase const & screen)
 {
   m_currentModelView = {screen, true /* initialized */};
+
+  if (!m_currentModelViewLazy.second
+      || (mercator::DistanceOnEarth(m_currentModelViewLazy.first.ClipRect().Center(), screen.ClipRect().Center()) > kPositionThreshold))
+  {
+    m_isFeedQueueSortInvalid = true;
+    m_currentModelViewLazy = m_currentModelView;
+  }
 
   if (!IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
     return;
@@ -493,6 +514,7 @@ void TrafficManager::ReceiveFeed(traffxml::TraffFeed feed)
   {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_feedQueue.push_back(feed);
+    m_isFeedQueueSortInvalid = true;
   }
   m_condition.notify_one();
 }
@@ -588,12 +610,27 @@ void TrafficManager::ConsolidateFeedQueue()
             }
           }
     }
-  // remove empty feeds
-  for (auto it = m_feedQueue.begin(); it != m_feedQueue.end(); )
-    if (it->empty())
-      it = m_feedQueue.erase(it);
+  // remove empty feeds from the beginning of the queue
+  while (!m_feedQueue.empty() && m_feedQueue.front().empty())
+    m_feedQueue.erase(m_feedQueue.begin());
+  // merge everything into the first vector
+  for (size_t i = 1; i < m_feedQueue.size(); i++)
+  {
+    if (m_feedQueue[i].empty())
+      continue;
+    m_feedQueue[0].insert(m_feedQueue[0].end(),
+              std::make_move_iterator(m_feedQueue[i].begin()),
+              std::make_move_iterator(m_feedQueue[i].end()));
+    m_feedQueue[i].clear();
+  }
+  // remove empty feeds (any feeds after the first one are empty at this point)
+  if (!m_feedQueue.empty())
+  {
+    if (!m_feedQueue.front().empty())
+      m_feedQueue.resize(1);
     else
-      ++it;
+      m_feedQueue.clear();
+  }
 }
 
 void TrafficManager::DecodeFirstMessage()
@@ -608,6 +645,50 @@ void TrafficManager::DecodeFirstMessage()
     // if we have no more feeds, return (nothing to do)
     if (m_feedQueue.empty())
       return;
+    if (m_isFeedQueueSortInvalid
+        && (m_currentPositionLazy.second || m_currentModelViewLazy.second))
+    {
+      std::sort(m_feedQueue.front().begin(), m_feedQueue.front().end(),
+                [this](const traffxml::TraffMessage & a, const traffxml::TraffMessage & b){
+        // return a < b
+        // cancellations before others
+        if (a.m_cancellation)
+          return !b.m_cancellation;
+        // sort by shortest distance between reference point and position/viewport
+        std::vector<ms::LatLon> locations;
+        if (m_currentPositionLazy.second)
+          locations.push_back(mercator::ToLatLon(m_currentPositionLazy.first.m_position));
+        if (m_currentModelViewLazy.second)
+          locations.push_back(mercator::ToLatLon(m_currentModelViewLazy.first.ClipRect().Center()));
+        double aDist = 4.5e+7;
+        double bDist = 4.5e+7;
+        for (auto const & [message, dist] : { std::pair{a, std::ref(aDist)}, {b, std::ref(bDist)} })
+        {
+          // messages without location first
+          if (!message.m_location)
+          {
+            dist.get() = 0;
+            continue;
+          }
+          // for simplification, we are skipping the via point
+          for (auto const & point : { message.m_location.value().m_from,
+              message.m_location.value().m_at,
+              message.m_location.value().m_to })
+          {
+            if (!point)
+              continue;
+            for (auto const & location : locations)
+            {
+              auto newdist = ms::DistanceOnEarth(point.value().m_coordinates, location);
+              if (newdist < dist.get())
+                dist.get() = newdist;
+            }
+          }
+        }
+        return aDist < bDist;
+      });
+      m_isFeedQueueSortInvalid = false;
+    }
     // retrieve the first message from the first feed, remove it from the feed
     std::swap(message, m_feedQueue.front().front());
     m_feedQueue.front().erase(m_feedQueue.front().begin());
