@@ -507,7 +507,7 @@ private:
    * @param junctions Receives a list of junction candidates with their weight
    */
   void GetJunctionPointCandidates(Point const & point,
-                                  std::map<m2::PointD, double> & junctions);
+                                  std::map<m2::PointF, double> & junctions);
 
   /**
    * @brief Mutex for access to shared members.
@@ -530,7 +530,7 @@ private:
    * If the list is empty, no junction alignment at the `from` point will be done and decoding
    * relies solely on point coordinates.
    */
-  std::map<m2::PointD, double> m_startJunctions;
+  std::map<m2::PointF, double> m_startJunctions;
 
   /**
    * @brief Junction points near end of location, with their associated offroad weight.
@@ -538,7 +538,7 @@ private:
    * If the list is empty, no junction alignment at the `to` point will be done and decoding
    * relies solely on point coordinates.
    */
-  std::map<m2::PointD, double> m_endJunctions;
+  std::map<m2::PointF, double> m_endJunctions;
 
   /**
    * @brief Radius around reference points in which to search for junctions.
@@ -601,7 +601,7 @@ std::vector<std::string> ParseRef(std::string const & ref);
 void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
                    routing::Checkpoints const & checkpoints,
                    size_t & start, double & startSaving,
-                   std::map<m2::PointD, double> const & junctions);
+                   std::map<m2::PointF, double> const & junctions);
 
 /**
  * @brief Calculates the segments to truncate at the start of the route.
@@ -621,5 +621,5 @@ void TruncateStart(std::vector<routing::RouteSegment> & rsegments,
 void TruncateEnd(std::vector<routing::RouteSegment> & rsegments,
                  routing::Checkpoints const & checkpoints,
                  size_t & end, double & endSaving, double const endWeight,
-                 std::map<m2::PointD, double> const & junctions);
+                 std::map<m2::PointF, double> const & junctions);
 }  // namespace traffxml

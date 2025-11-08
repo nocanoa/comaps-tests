@@ -150,6 +150,12 @@ public:
   {
     size_t operator()(Point const & p) const { return math::Hash(p.x, p.y); }
   };
+
+  template <typename U>
+  operator Point<U>() const
+  {
+    return Point<U>(x, y);
+  }
 };
 
 using PointF = Point<float>;
