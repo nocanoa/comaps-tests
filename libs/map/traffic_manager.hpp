@@ -492,13 +492,14 @@ private:
    *
    * Upon creation, the traffic manager is not paused.
    *
-   * While paused, the traffic manager will not update its subscription area (upon being enabled
-   * again, it will do so if necessary). It will not poll any sources or process any messages. Feeds
-   * added via `ReceiveFeed()` will be added to the queue but will not be processed until the
-   * traffic manager is resumed.
+   * While the traffic manager is paused and no route is active, the traffic manager will not update
+   * its subscription area (upon resuming, it will do so if necessary). It will not poll any sources
+   * or process any messages. Feeds added via `ReceiveFeed()` will be added to the queue but will
+   * not be processed until the traffic manager is resumed.
    *
    * Pausing and resuming is similar in effect to disabling and enabling the traffic manager, except
-   * it does not change the external state. It is intended for internal use by the framework.
+   * it does not change the external state, and an active route effectively overrides the paused
+   * state. It is intended for internal use by the framework.
    */
   void Pause();
 
@@ -513,7 +514,8 @@ private:
    * received before or while the traffic manager was paused.
    *
    * Pausing and resuming is similar in effect to disabling and enabling the traffic manager, except
-   * it does not change the external state. It is intended for internal use by the framework.
+   * it does not change the external state, and an active route effectively overrides the paused
+   * state. It is intended for internal use by the framework.
    */
   void Resume();
 
@@ -546,6 +548,18 @@ private:
    */
   bool IsObserverInhibited() const { return (m_routingSessionState == routing::SessionState::RouteBuilding)
       || (m_routingSessionState == routing::SessionState::RouteRebuilding); }
+
+  /**
+   * @brief Whether we are currently routing.
+   */
+  bool IsRouting() const { return m_routingSessionState != routing::SessionState::NoValidRoute; }
+
+  /**
+   * @brief Whether the traffic manager is paused and not routing.
+   *
+   * This is used to inhibit polling and message decoding.
+   */
+  bool IsPausedAndNotRouting() const { return m_isPaused && !IsRouting(); }
 
   DataSource & m_dataSource;
   CountryInfoGetterFn m_countryInfoGetterFn;

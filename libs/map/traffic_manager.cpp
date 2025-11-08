@@ -259,7 +259,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
       std::swap(mwms, m_activeRoutingMwms);
 
       if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
-          || !IsEnabled() || IsInvalidState() || m_isPaused)
+          || !IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
         return;
 
       m_condition.notify_one();
@@ -269,7 +269,7 @@ void TrafficManager::OnChangeRoutingSessionState(routing::SessionState previous,
 
 void TrafficManager::RecalculateSubscription(bool forceRenewal)
 {
-  if (!IsEnabled() || m_isPaused)
+  if (!IsEnabled() || IsPausedAndNotRouting())
     return;
 
   if (m_currentModelView.second)
@@ -367,7 +367,7 @@ void TrafficManager::UpdateActiveMwms(m2::RectD const & rect, std::vector<MwmSet
         activeMwms.insert(mwm);
 
     if ((m_activeDrapeMwms.empty() && m_activePositionMwms.empty() && m_activeRoutingMwms.empty())
-        || !IsEnabled() || IsInvalidState() || m_isPaused)
+        || !IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
       return;
 
     m_condition.notify_one();
@@ -381,7 +381,7 @@ void TrafficManager::UpdateMyPosition(MyPosition const & myPosition)
   double const kSquareSideM = 5000.0;
   m_currentPosition = {myPosition, true /* initialized */};
 
-  if (!IsEnabled() || IsInvalidState() || m_isPaused)
+  if (!IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
     return;
 
   m2::RectD const rect = mercator::RectByCenterXYAndSizeInMeters(myPosition.m_position, kSquareSideM / 2.0);
@@ -393,7 +393,7 @@ void TrafficManager::UpdateViewport(ScreenBase const & screen)
 {
   m_currentModelView = {screen, true /* initialized */};
 
-  if (!IsEnabled() || IsInvalidState() || m_isPaused)
+  if (!IsEnabled() || IsInvalidState() || IsPausedAndNotRouting())
     return;
 
   if (df::GetZoomLevel(screen.GetScale()) < df::kRoadClass0ZoomLevel)
@@ -669,7 +669,7 @@ void TrafficManager::ThreadRoutine()
 
   while (WaitForRequest())
   {
-    if (!IsEnabled() || m_isPaused)
+    if (!IsEnabled() || IsPausedAndNotRouting())
       continue;
 
     /*
@@ -733,7 +733,7 @@ bool TrafficManager::WaitForRequest()
   if (!m_isRunning)
     return false;
 
-  if (IsEnabled() && !m_isPaused)
+  if (IsEnabled() && !IsPausedAndNotRouting())
   {
     // if we have feeds in the queue, return immediately
     if (!m_feedQueue.empty())
