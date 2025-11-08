@@ -18,14 +18,15 @@ on:
           - tiger
           - maps
           - upload
-      reclone:
-        description: 'Force a re-clone of all git repos?'
+      reset:
+        description: 'Reset some aspect of the system?'
         required: false
         default: 'no'
         type: choice
         options:
           - 'no'
-          - force
+          - reclone
+          - cache
 
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
@@ -56,7 +57,7 @@ jobs:
         run: |
           ls -al /mnt
           ls -al /mnt/4tbexternal
-          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
           rm -rf /mnt/4tbexternal/comaps
           fi
 
@@ -69,7 +70,7 @@ jobs:
       - name: Clone or update wikiparser repo if necessary
         shell: bash
         run: |
-          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
           rm -rf /mnt/4tbexternal/wikiparser
           fi
 
@@ -82,7 +83,7 @@ jobs:
       - name: Clone or update subways repo if necessary
         shell: bash
         run: |
-          if [[ '${{ inputs.reclone }}' == 'force' ]]; then
+          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
           rm -rf /mnt/4tbexternal/subways
           fi
 
@@ -234,6 +235,10 @@ jobs:
       - name: Update Isolines
         shell: bash
         run: |
+          if [[ '${{ inputs.reset }}' == 'cache' ]]; then
+          rm /mnt/4tbexternal/omim-build-relwithdebinfo/CMakeCache.txt
+          fi
+
           cd /mnt/4tbexternal/comaps/
           ./tools/unix/build_omim.sh -R topography_generator_tool
           rm -rf /home/planet/isolines/
@@ -246,6 +251,15 @@ jobs:
           --data_dir=./data/ \
           --srtm_path=/home/planet/SRTM-patched-europe/ \
           --threads=22
+      - name: Check isolines
+        shell: bash
+        run: |
+          NUMISO=$(ls -al /home/planet/isolines/*.isolines | wc -al)
+          echo "Found $NUMISO isolines"
+          if [ $NUMISO -lt 10 ]; then
+          echo "Did generation fail?"
+          exit 1
+          fi
 
   update-subways:
     if: inputs.jobs == 'subways' || inputs.jobs == 'all'
@@ -352,7 +366,7 @@ jobs:
             --data-urlencode 'content=Generator is done!'
 
   upload-maps:
-    if: inputs.jobs == 'upload' || inputs.jobs == 'all'
+    if: inputs.jobs == 'upload'
     name: Upload Maps
     runs-on: mapfilemaker
     container:
