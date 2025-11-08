@@ -45,16 +45,49 @@ enum class RouterResultCode
 
 enum class SessionState
 {
-  NoValidRoute,      // No valid route: no route after application launching or the route was removed.
-  RouteBuilding,     // We requested a route and wait when it will be built. User may be following
-                     // the previous route.
-  RouteNotStarted,   // Route is built but the user isn't on it.
-  OnRoute,           // User follows the route.
-  RouteNeedRebuild,  // User left the route.
-  RouteFinished,     // Destination point is reached but the session isn't closed.
-  RouteNoFollowing,  // Route is built but following mode has been disabled.
-  RouteRebuilding,   // We requested a route rebuild and wait when it will be rebuilt.
-                     // User may following the previous route.
+  /**
+   * No valid route: no route after application launching, or the route was removed.
+   *
+   * This is the initial state at launch; in order to get out of it, a destination must be set AND
+   * the current location must be obtained.
+   */
+  NoValidRoute,
+
+  /**
+   * We have requested a route and are waiting for it to be built. User may be following the previous route.
+   */
+  RouteBuilding,
+
+  /**
+   * Route is built but the user isn't on it.
+   */
+  RouteNotStarted,
+
+  /**
+   * User is following the route.
+   */
+  OnRoute,
+
+  /**
+   * User has left the route.
+   */
+  RouteNeedRebuild,
+
+  /**
+   * Destination point has been reached but the session isn’t closed yet.
+   */
+  RouteFinished,
+
+  /**
+   * Route has been built but following mode has been disabled.
+   */
+  RouteNoFollowing,
+
+  /**
+   * We have requested a route rebuild and are waiting for it to be rebuilt. User may be following
+   * the previous route.
+   */
+  RouteRebuilding,
 };
 
 /*
