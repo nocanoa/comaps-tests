@@ -141,6 +141,7 @@ jobs:
     steps:
       - name: Download Planet File if Absent
         shell: bash
+        # TODO: replace wget2 with curl -Z
         run: |
           if [ ! -d /home/planet/planet/ ]; then
           mkdir -p /home/planet/planet/
@@ -190,6 +191,7 @@ jobs:
     steps:
       - name: Check for planet file
         shell: bash
+        # TODO: remove debug output
         run: |
           if [ ! -f /home/planet/planet/planet-latest.osm.pbf ]; then
           echo "ERROR: No file at /home/planet/planet/planet-latest.osm.pbf"
@@ -203,7 +205,7 @@ jobs:
           #todo: curl in download.sh can fail when rate limited and even save error messages to the output. need to validate.
           #downloading all languages can also trigger rate limits or fail as well. needs work.
           #also: a failure to download means a failure to build, and could result in no wiki descriptions etc.
-          #also-also: do we want to remove old wiki data in planet between builds?
+          #also-also: do we want to remove old wiki data in planet between builds? pastk: no need, its being updated / augmented
           mkdir -p /home/planet/wikipedia/dumps
           mkdir -p /home/planet/wikipedia/build
           cd /mnt/4tbexternal/wikiparser
@@ -238,6 +240,10 @@ jobs:
       # TODO: after update, verify that sizable files exist: /home/planet/isolines/*.isolines
       - name: Update Isolines
         shell: bash
+        # TODO: use -c "clear" flag for build_omim.sh instead of manual CMakeCache.txt deletion
+        #       or even better build inside the container (not to the mounted volume)
+        # TODO: preserve previous isolines version?
+        # TODO: cleanup the tmp-tiles dir after completion
         run: |
           if [[ '${{ inputs.reset }}' == 'cache' ]]; then
           rm /mnt/4tbexternal/omim-build-relwithdebinfo/CMakeCache.txt
@@ -254,7 +260,7 @@ jobs:
           --countries_isolines_out_dir=/home/planet/isolines/ \
           --data_dir=./data/ \
           --srtm_path=/home/planet/SRTM-patched-europe/ \
-          --threads=22
+          --threads=96
       - name: Check isolines
         shell: bash
         run: |
@@ -308,6 +314,7 @@ jobs:
     steps:
       - name: Build address_parser
         shell: bash
+        # TODO: build inside the container (not to the mounted volume)
         run: |
           cd /mnt/4tbexternal/comaps
           rm -rf ../omim-build-relwithdebinfo/CMakeCache.txt
@@ -315,6 +322,7 @@ jobs:
           ./tools/unix/build_omim.sh -R address_parser_tool
       - name: Update TIGER from Nominatim
         shell: bash
+        # TODO: use curl instead of wget2
         run: |
           # TODO: maybe remove old osm-planet/tiger first?
           cd /home/planet/
@@ -349,6 +357,7 @@ jobs:
           mkdir -p /mnt/4tbexternal/osm-maps
           fi
       - name: Get SRTM if necessary
+        # TODO: it should be a separate step like Wiki or isolines
         shell: bash
         run: |
           if [ ! -d /home/planet/SRTM-patched-europe/ ]; then
@@ -387,6 +396,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Write config file
+        # TODO: remove debug output potentially revealing secrets in the conf!
         run: |
           mkdir -p ~/.config/rclone/
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
