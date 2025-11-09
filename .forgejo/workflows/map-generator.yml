@@ -285,6 +285,14 @@ jobs:
           done
 
           exit $FAILCHECK
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Wiki update is done!'
 
   update-isolines:
     if: inputs.jobs == 'isolines' || inputs.jobs == 'all'
@@ -327,6 +335,14 @@ jobs:
           echo "ERROR: Did generation fail?"
           exit 1
           fi
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Isolines are done!'
 
   update-subways:
     if: inputs.jobs == 'subways' || inputs.jobs == 'all'
@@ -347,6 +363,14 @@ jobs:
           cd /mnt/4tbexternal/comaps/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
           ./tools/unix/maps/generate_subways.sh
+      - name: Notify Zulip
+        run: |
+          curl -X POST https://comaps.zulipchat.com/api/v1/messages \
+            -u $ZULIP_BOT_EMAIL:$ZULIP_API_KEY \
+            --data-urlencode type=stream \
+            --data-urlencode 'to="DevOps"' \
+            --data-urlencode topic=codeberg-bot \
+            --data-urlencode 'content=Subways are done!'
 
   update-tiger:
     if: inputs.jobs == 'tiger' || inputs.jobs == 'all'
