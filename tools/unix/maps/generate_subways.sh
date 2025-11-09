@@ -33,8 +33,7 @@ export DUMP_CITY_LIST="$SUBWAYS_VALIDATOR_PATH/cities.txt"
 # cd to subways repo so relative paths work in the script
 pushd "$SUBWAYS_REPO_PATH"
 echo "Running process_subways.sh:"
-ls -al
-./scripts/process_subways.sh # 2>&1 | tee "$SUBWAYS_LOG"
+./scripts/process_subways.sh 2>&1 | tee "$SUBWAYS_LOG"
 popd
 
 # Make render.html available for map visualization on the web
@@ -44,7 +43,7 @@ TRANSIT_TOOL_PATH="$REPO_PATH/tools/python/transit"
 SUBWAYS_GRAPH_FILE="$SUBWAYS_PATH/subways.transit.json"
 
 activate_venv_at_path "$TRANSIT_TOOL_PATH"
-"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE" # 2>&1 | tee -a "$SUBWAYS_LOG"
+"$PYTHON" "$TRANSIT_TOOL_PATH/transit_graph_generator.py" "$MAPSME" "$SUBWAYS_GRAPH_FILE" 2>&1 | tee -a "$SUBWAYS_LOG"
 deactivate
 
 echo "Generated subways transit graph file:"

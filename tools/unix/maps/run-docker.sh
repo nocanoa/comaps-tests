@@ -16,18 +16,19 @@
 # If you get a Dockerfile not found error especially on an XFS partition, try copying Dockerfile to an ext4 partition first.
 # Or use docker via apt instead of snap.
 
-# We assume a number of files/folders/repos are pre-set-up before this step:
+# We assume that the following will be cloned into the container itself at runtime:
+# ~/comaps (comaps main app repo)
+# ~/subways (repo for processing OSM subway/transit info)
+# ~/wikiparser (repo for processing Wikipedia data)
+
+# We also assume a number of files/folders/repos are pre-set-up before mounting via volumes below:
 # /mnt/4tbexternal (base folder for directory traversal)
-# /mnt/4tbexternal/comaps (comaps main app repo)
 # /mnt/4tbexternal/osm-maps (folder for holding generated map data output)
-# /mnt/4tbexternal/subways (repo for processing OSM subway/transit info)
-# /mnt/4tbexternal/wikiparser (repo for processing Wikipedia data)
 # /home/planet (folder for holding required input dumps)
 
 docker run \
-  -e S3_KEY_ID=changeme \
   --ulimit nofile=262144:262144 \
   -v /mnt/4tbexternal/:/mnt/4tbexternal/ \
   -v /mnt/4tbexternal/osm-planet:/home/planet \
   -it codeberg.org/comaps/maps_generator:latest \
-  /mnt/4tbexternal/comaps/tools/unix/docker_maps_generator.sh
+  ~/comaps/tools/unix/docker_maps_generator.sh

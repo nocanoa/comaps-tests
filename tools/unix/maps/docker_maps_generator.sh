@@ -2,11 +2,6 @@
 
 set -e
 
-echo "<$(date +%T)> Setting git as safe dir..."
-
-# TODO: is it needed still? why?
-#git config --global --add safe.directory /mnt/4tbexternal/comaps
-
 echo "<$(date +%T)> Starting..."
 
 # Prepare paths
@@ -20,11 +15,11 @@ mkdir -p /home/planet/SRTM-patched-europe/
 mkdir -p /home/planet/subway
 
 echo "<$(date +%T)> Running ./configure.sh ..."
-cd /mnt/4tbexternal/comaps
+cd ~/comaps
 ./configure.sh --skip-map-download --skip-generate-symbols
 
 echo "<$(date +%T)> Compiling tools..."
-cd /mnt/4tbexternal/comaps
+cd ~/comaps
 ./tools/unix/build_omim.sh -p ~ -R generator_tool
 ./tools/unix/build_omim.sh -p ~ -R world_roads_builder_tool
 ./tools/unix/build_omim.sh -p ~ -R mwm_diff_tool
@@ -36,7 +31,7 @@ echo "<$(date +%T)> Copying map generator INI..."
 cp var/etc/map_generator.ini.prod var/etc/map_generator.ini
 
 
-cd /mnt/4tbexternal/comaps/tools/python
+cd ~/comaps/tools/python
 if [ $MWMCONTINUE -gt 0 ]; then
 
 echo "<$(date +%T)> Continuing from preexisting generator run..."

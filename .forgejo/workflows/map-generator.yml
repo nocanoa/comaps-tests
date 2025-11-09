@@ -24,7 +24,7 @@ on:
         default: false
         type: boolean
       map-generator-countries:
-        description: 'Generate only specific countries? (i.e. "Macedonia, US_New_York_*")'
+        description: 'Generate only specific countries? (i.e. "Macedonia, US_New York_*")'
         required: false
         type: string
       reset:
@@ -63,50 +63,24 @@ jobs:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Clone or update main repo if necessary
-        shell: bash
-        # TODO: remove debug output
-        # TODO: force-reset to user-selected generation branch and force update submodules
-        # TODO: or consider checking out to the docker space (not mapped volume) so that the code is reliably frozen during mapgen run
-        run: |
-          ls -al /mnt
-          ls -al /mnt/4tbexternal
-          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
-          rm -rf /mnt/4tbexternal/comaps
-          fi
-
-          if [ ! -d /mnt/4tbexternal/comaps ]; then
-          cd /mnt/4tbexternal
-          git clone --recurse-submodules --shallow-submodules -b rebase-generator-pastk-wb251027 --single-branch https://codeberg.org/comaps/comaps.git comaps
-          else
-          cd /mnt/4tbexternal/comaps && git pull origin rebase-generator-pastk-wb251027
-          fi
-      - name: Clone or update wikiparser repo if necessary
+      - name: Checkout main repo
         shell: bash
         run: |
-          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
-          rm -rf /mnt/4tbexternal/wikiparser
-          fi
-
-          if [ ! -d /mnt/4tbexternal/wikiparser ]; then
-          cd /mnt/4tbexternal
+          cd ~
+          git clone --recurse-submodules --shallow-submodules -b $FORGEJO_REF_NAME --single-branch https://codeberg.org/comaps/comaps.git comaps
+          cd comaps
+          echo "Cloned https://codeberg.org/comaps/comaps branch $FORGEJO_REF_NAME"
+          git log | head -n10
+      - name: Checkout wikiparser repo
+        shell: bash
+        run: |
+          cd ~
           git clone https://codeberg.org/comaps/wikiparser.git
-          else
-          cd /mnt/4tbexternal/wikiparser && git pull origin main
-          fi
-      - name: Clone or update subways repo if necessary
+      - name: Checkout subways repo
         shell: bash
         run: |
-          if [[ '${{ inputs.reset }}' == 'reclone' ]]; then
-          rm -rf /mnt/4tbexternal/subways
-          fi
-
-          if [ ! -d /mnt/4tbexternal/subways ]; then
-          cd /mnt/4tbexternal
+          cd ~
           git clone https://codeberg.org/comaps/subways.git
-          else
-          cd /mnt/4tbexternal/subways && git pull origin master
-          fi
 
   copy-coasts:
     if: inputs.jobs == 'copy-coasts' || inputs.jobs == 'all'
@@ -125,7 +99,7 @@ jobs:
         shell: bash
         run: |
           echo "WorldCoasts available:"
-          ls -al /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom
+          ls -al /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.*
 
           if [ -f /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
 
@@ -314,7 +288,7 @@ jobs:
         # TODO: preserve previous isolines version?
         # TODO: cleanup the tmp-tiles dir after completion
         run: |
-          cd /mnt/4tbexternal/comaps/
+          cd ~/comaps/
           ./tools/unix/build_omim.sh -p ~ -R topography_generator_tool
           rm -rf /home/planet/isolines/
           mkdir /home/planet/isolines/
@@ -360,7 +334,7 @@ jobs:
       - name: Update Subways
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps/
+          cd ~/comaps/
           cp tools/unix/maps/settings.sh.prod tools/unix/maps/settings.sh
           ./tools/unix/maps/generate_subways.sh
       - name: Notify Zulip
@@ -388,7 +362,7 @@ jobs:
       - name: Build address_parser
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps
+          cd ~/comaps
           #rm -rf ~/omim-build-relwithdebinfo/CMakeCache.txt
           #rm -rf ~/omim-build-relwithdebinfo/CMakeFiles
           ./tools/unix/build_omim.sh -p ~ -R address_parser_tool
@@ -400,7 +374,7 @@ jobs:
           cd /home/planet/
           mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
-          cd /mnt/4tbexternal/comaps
+          cd ~/comaps
           tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | ~/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
 
   generate-maps:
@@ -435,7 +409,7 @@ jobs:
       - name: Run docker_maps_generator.sh
         shell: bash
         run: |
-          cd /mnt/4tbexternal/comaps
+          cd ~/comaps
           bash ./tools/unix/maps/docker_maps_generator.sh
       - name: Notify Zulip
         run: |
@@ -473,7 +447,7 @@ jobs:
 
           if (( ${#mwmfiles[@]} )); then
             echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
-            cd /mnt/4tbexternal/comaps/tools/unix/maps
+            cd ~/comaps/tools/unix/maps
             ./upload_to_cdn.sh /mnt/4tbexternal/osm-maps/$buildfolder/$builddate
             echo "<$(date +%T)> Finished uploading maps from $buildfolder/$builddate."
           else

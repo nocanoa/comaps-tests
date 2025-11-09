@@ -1,9 +1,8 @@
 [Developer]
 # Path to the `comaps` source code repository:
-OMIM_PATH: /mnt/4tbexternal/comaps
+OMIM_PATH: ~/comaps
 # A path with the generator_tool binary:
 BUILD_PATH: ~/omim-build-relwithdebinfo
-#${Developer:OMIM_PATH}/../omim-build-release
 
 
 [Main]
@@ -29,7 +28,6 @@ NODE_STORAGE: mem
 [Osm tools]
 # Path to osmctools binaries:
 OSM_TOOLS_PATH: /usr/bin/
-#${Developer:OMIM_PATH}/../osmctools
 # If the binaries are not found neither in the configured path nor system-wide,
 # then the tools are built from the sources:
 OSM_TOOLS_SRC_PATH: ${Developer:OMIM_PATH}/tools/osmctools
