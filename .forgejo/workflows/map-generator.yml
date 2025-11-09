@@ -18,6 +18,15 @@ on:
           - tiger
           - maps
           - upload
+      map-generator-continue:
+        description: 'Continue previous map generation?'
+        required: false
+        default: false
+        type: boolean
+      map-generator-countries:
+        description: 'Generate only specific countries?'
+        required: false
+        type: string
       reset:
         description: 'Reset some aspect of the system?'
         required: false
@@ -36,6 +45,8 @@ env:
   WIKIMEDIA_PASSWORD: ${{ secrets.WIKIMEDIA_PASSWORD }}
   ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
   ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
+  MWMCONTINUE: ${{ inputs.map-generator-continue }}
+  MWMCOUNTRIES: ${{ inputs.map-generator-countries }}
   DEBIAN_FRONTEND: noninteractive
   TZ: Etc/UTC
 

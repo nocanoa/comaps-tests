@@ -35,14 +35,26 @@ python3 -m venv /tmp/venv
 echo "<$(date +%T)> Copying map generator INI..."
 cp var/etc/map_generator.ini.prod var/etc/map_generator.ini
 
-echo "<$(date +%T)> Generating maps..."
+
 cd /mnt/4tbexternal/comaps/tools/python
+if [ $MWMCONTINUE -gt 0 ]; then
+
+echo "<$(date +%T)> Continuing from preexisting generator run..."
+/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
+
+else
+
+if [[ -n $MWMCOUNTRIES ]]; then
+
+echo "<$(date +%T)> Generating only specific maps [$MWMCOUNTRIES]..."
+/tmp/venv/bin/python -m maps_generator --countries=$MWMCOUNTRIES --skip="MwmDiffs"
+
+else
+
+echo "<$(date +%T)> Generating maps..."
 /tmp/venv/bin/python -m maps_generator --skip="MwmDiffs"
 
-# To continue from previous successfully accomplished stage:
-#/tmp/venv/bin/python -m maps_generator --skip="MwmDiffs" --continue
-
-# To generate only certain MWMs:
-#/tmp/venv/bin/python -m maps_generator --countries="Macedonia, US_Oregon_*" --skip="MwmDiffs"
+fi
+fi
 
 echo "<$(date +%T)> DONE"
