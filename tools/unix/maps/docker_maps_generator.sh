@@ -5,22 +5,12 @@ set -e
 echo "<$(date +%T)> Setting git as safe dir..."
 
 # TODO: is it needed still? why?
-git config --global --add safe.directory /mnt/4tbexternal/comaps
+#git config --global --add safe.directory /mnt/4tbexternal/comaps
 
 echo "<$(date +%T)> Starting..."
 
 # Prepare paths
-#
-# Already created by Dockerfile or CI/CD:
-#   /mnt/4tbexternal
-#   /mnt/4tbexternal/comaps
-#   /mnt/4tbexternal/omim-build-release
-#   /mnt/4tbexternal/omim-build-relwithdebinfo
-#   /mnt/4tbexternal/osm-maps
-#   /home/planet
-#   /home/planet/isolines
-#   /home/planet/wikipedia
-#   /home/planet/tiger
+# Most other paths in /mnt/4tbexternal or /home/planet are already created by Dockerfile or CI/CD.
 #
 mkdir -p /root/.config/CoMaps # Odd mkdir permission errors in generator_tool in Docker without these
 chmod -R 777 /root/.config
@@ -33,12 +23,11 @@ echo "<$(date +%T)> Running ./configure.sh ..."
 cd /mnt/4tbexternal/comaps
 ./configure.sh --skip-map-download --skip-generate-symbols
 
-# TODO: output to the container, not to the mounted volume
 echo "<$(date +%T)> Compiling tools..."
 cd /mnt/4tbexternal/comaps
-./tools/unix/build_omim.sh -R generator_tool
-./tools/unix/build_omim.sh -R world_roads_builder_tool
-./tools/unix/build_omim.sh -R mwm_diff_tool
+./tools/unix/build_omim.sh -p ~ -R generator_tool
+./tools/unix/build_omim.sh -p ~ -R world_roads_builder_tool
+./tools/unix/build_omim.sh -p ~ -R mwm_diff_tool
 cd tools/python/maps_generator
 python3 -m venv /tmp/venv
 /tmp/venv/bin/pip3 install -r requirements_dev.txt

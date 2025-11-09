@@ -60,8 +60,7 @@ RUN mkdir /mnt/4tbexternal/comaps
 # And a volume to store the large output/temp files here
 RUN mkdir /mnt/4tbexternal/osm-maps
 # And the output of the app build
-RUN mkdir /mnt/4tbexternal/omim-build-release
-RUN mkdir /mnt/4tbexternal/omim-build-relwithdebinfo
+RUN mkdir ~/omim-build-relwithdebinfo
 # And a volume to store >10gb files for the planet here
 RUN mkdir /home/planet
 

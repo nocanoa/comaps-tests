@@ -3,7 +3,7 @@ on:
   workflow_dispatch: # Manual trigger
     inputs:
       jobs:
-        description: 'Which job(s) to run right now?'
+        description: 'Which job(s) to run right now? (All means all except upload)'
         required: true
         default: 'all'
         type: choice
@@ -104,12 +104,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -129,12 +125,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -179,12 +171,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -226,12 +214,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -240,20 +224,14 @@ jobs:
       # TODO: after update, verify that sizable files exist: /home/planet/isolines/*.isolines
       - name: Update Isolines
         shell: bash
-        # TODO: use -c "clear" flag for build_omim.sh instead of manual CMakeCache.txt deletion
-        #       or even better build inside the container (not to the mounted volume)
         # TODO: preserve previous isolines version?
         # TODO: cleanup the tmp-tiles dir after completion
         run: |
-          if [[ '${{ inputs.reset }}' == 'cache' ]]; then
-          rm /mnt/4tbexternal/omim-build-relwithdebinfo/CMakeCache.txt
-          fi
-
           cd /mnt/4tbexternal/comaps/
-          ./tools/unix/build_omim.sh -R topography_generator_tool
+          ./tools/unix/build_omim.sh -p ~ -R topography_generator_tool
           rm -rf /home/planet/isolines/
           mkdir /home/planet/isolines/
-          ../omim-build-relwithdebinfo/topography_generator_tool \
+          ~/omim-build-relwithdebinfo/topography_generator_tool \
           --profiles_path=./data/conf/isolines/isolines-profiles.json \
           --countries_to_generate_path=./data/conf/isolines/countries-to-generate.json \
           --tiles_isolines_out_dir=/home/planet/isolines/tmp-tiles/ \
@@ -278,12 +256,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -302,24 +276,19 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
       - name: Build address_parser
         shell: bash
-        # TODO: build inside the container (not to the mounted volume)
         run: |
           cd /mnt/4tbexternal/comaps
-          rm -rf ../omim-build-relwithdebinfo/CMakeCache.txt
-          rm -rf ../omim-build-relwithdebinfo/CMakeFiles
-          ./tools/unix/build_omim.sh -R address_parser_tool
+          #rm -rf ~/omim-build-relwithdebinfo/CMakeCache.txt
+          #rm -rf ~/omim-build-relwithdebinfo/CMakeFiles
+          ./tools/unix/build_omim.sh -p ~ -R address_parser_tool
       - name: Update TIGER from Nominatim
         shell: bash
         # TODO: use curl instead of wget2
@@ -329,7 +298,7 @@ jobs:
           mkdir -p tiger
           wget2 https://nominatim.org/data/tiger-nominatim-preprocessed-latest.csv.tar.gz
           cd /mnt/4tbexternal/comaps
-          tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | /mnt/4tbexternal/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
+          tar -xOzf /home/planet/tiger-nominatim-preprocessed-latest.csv.tar.gz | ~/omim-build-relwithdebinfo/address_parser_tool --output_path=/home/planet/tiger
 
   generate-maps:
     if: inputs.jobs == 'maps' || inputs.jobs == 'all'
@@ -339,12 +308,8 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
       options: --ulimit nofile=262144:262144
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
@@ -385,22 +350,16 @@ jobs:
     container:
       image: codeberg.org/comaps/maps_generator:96d2a38aa23d
       volumes:
-        - /mnt/4tbexternal/comaps:/mnt/4tbexternal/comaps
-        - /mnt/4tbexternal/wikiparser:/mnt/4tbexternal/wikiparser
+        - /mnt/4tbexternal/:/mnt/4tbexternal/
         - /mnt/4tbexternal/osm-planet:/home/planet
-        - /mnt/4tbexternal/osm-maps:/mnt/4tbexternal/osm-maps
-        - /mnt/4tbexternal/subways:/mnt/4tbexternal/subways
-        - /mnt/4tbexternal/omim-build-relwithdebinfo:/mnt/4tbexternal/omim-build-relwithdebinfo
     concurrency:
       group: ${{ github.workflow }}-map-generator-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
       - name: Write config file
-        # TODO: remove debug output potentially revealing secrets in the conf!
         run: |
           mkdir -p ~/.config/rclone/
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
-          head -n3 ~/.config/rclone/rclone.conf
       - name: Upload map files to CDNs
         shell: bash
         run: |
