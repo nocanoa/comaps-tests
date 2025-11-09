@@ -26,7 +26,7 @@ on:
         options:
           - 'no'
           - reclone
-          - cache
+          - wiki-limit
 
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
@@ -187,6 +187,28 @@ jobs:
           ls -al /home/planet/planet/
           exit 1
           fi
+      - name: Only get new dumps once per 30 days
+        shell: bash
+        run: |
+          if [[ '${{ inputs.reset }}' == 'wiki-limit' ]]; then
+          echo "Bypassing wiki rate limit upon request."
+          exit 0
+          fi
+
+          datediff() {
+            d1=$(date -d "$1" +%s)
+            d2=$(date -d "$2" +%s)
+            echo $(( (d1 - d2) / 86400 ))
+          }
+          RECENTDUMPDATE=$(find /home/planet/wikipedia/dumps/ -mindepth 1 -maxdepth 1 -iname "2*" -type d | sort -n -r | head -1 |  cut -d/ -f6)
+          TODAY=$(date +%Y%m%d)
+          DATEDIFF=$(datediff $TODAY $RECENTDUMPDATE)
+          if [ $DATEDIFF -lt 30 ]; then
+          echo "ERROR: The most recent wiki dump is from $RECENTDUMPDATE, $DATEDIFF days ago. Wikimedia limits users to 15 snapshot requests per month."
+          echo "Set the 'reset' option to 'wiki-limit' to bypass this."
+          ls -al /home/planet/wikipedia/dumps/
+          exit 1
+          fi
       - name: Update Wikipedia from Enterprise API
         shell: bash
         run: |
@@ -206,6 +228,35 @@ jobs:
           /home/planet/planet/planet-latest.osm.pbf \
           /home/planet/wikipedia/dumps/latest/*.tar.gz
           echo "DONE"
+      - name: Check that the latest dumps are present, recent, and not super tiny
+        shell: bash
+        run: |
+          FAILCHECK=0
+
+          # Check all .tar.gz files in /home/planet/wikipedia/dumps/latest/
+          for file in /home/planet/wikipedia/dumps/latest/*.tar.gz; do
+              # Check if file exists (handles case where glob doesn't match)
+              [ -e "$file" ] || continue
+
+              # Get file size in MB and modification time in days
+              size_mb=$(stat -f%z "$file" 2>/dev/null | awk '{print int($1/1024/1024)}' || stat -c%s "$file" | awk
+           '{print int($1/1024/1024)}')
+              days_old=$(find "$file" -mtime -7 | wc -l)
+
+              # Verify conditions
+              if [ "$size_mb" -lt 100 ]; then
+                  echo "FAIL: $file is only ${size_mb}MB (< 100MB)"
+                  FAILCHECK=1
+              elif [ "$days_old" -eq 0 ]; then
+                  echo "FAIL: $file is older than 7 days"
+                  ls -al $file
+                  FAILCHECK=1
+              else
+                  echo "PASS: $file (${size_mb}MB, modified within 7 days)"
+              fi
+          done
+
+          exit $FAILCHECK
 
   update-isolines:
     if: inputs.jobs == 'isolines' || inputs.jobs == 'all'
@@ -245,7 +296,7 @@ jobs:
           NUMISO=$(ls -al /home/planet/isolines/*.isolines | wc -al)
           echo "Found $NUMISO isolines"
           if [ $NUMISO -lt 10 ]; then
-          echo "Did generation fail?"
+          echo "ERROR: Did generation fail?"
           exit 1
           fi
 
@@ -372,6 +423,7 @@ jobs:
             echo "<$(date +%T)> Uploading maps from $buildfolder/$builddate..."
             cd /mnt/4tbexternal/comaps/tools/unix/maps
             ./upload_to_cdn.sh /mnt/4tbexternal/osm-maps/$buildfolder/$builddate
+            echo "<$(date +%T)> Finished uploading maps from $buildfolder/$builddate."
           else
             echo "<$(date +%T)> No MWM files in /mnt/4tbexternal/osm-maps/$buildfolder/$builddate/*.mwm, not uploading maps."
             echo "<$(date +%T)> Found top level: $(ls -alt /mnt/4tbexternal/osm-maps/*)"
