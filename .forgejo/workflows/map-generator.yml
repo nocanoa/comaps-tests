@@ -113,9 +113,24 @@ jobs:
       - name: Copy Coasts
         shell: bash
         run: |
+          echo "WorldCoasts available:"
+          ls -al /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom
+
           if [ -f /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom ]; then
+
+          echo "Before:"
+          ls -al /home/planet/latest_coasts*
+
           cp -p /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.geom /home/planet/latest_coasts.geom
           cp -p /mnt/4tbexternal/osm-maps/*/intermediate_data/WorldCoasts.rawgeom /home/planet/latest_coasts.rawgeom
+
+          echo "After:"
+          ls -al /home/planet/latest_coasts*
+
+          else
+
+          echo "No WorldCoasts found."
+
           fi
 
   update-planet:
@@ -141,6 +156,8 @@ jobs:
           if [ ! -f /home/planet/planet/planet-latest.osm.pbf ]; then
           cd /home/planet/planet/
           wget2 --verbose --progress=bar --continue https://ftpmirror.your.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
+          else
+          echo "planet-latest.osm.pbf was found, raw download not required."
           fi
       - name: Update Planet
         shell: bash
@@ -293,7 +310,7 @@ jobs:
       - name: Check isolines
         shell: bash
         run: |
-          NUMISO=$(ls -al /home/planet/isolines/*.isolines | wc -al)
+          NUMISO=$(ls -al /home/planet/isolines/*.isolines | wc -l)
           echo "Found $NUMISO isolines"
           if [ $NUMISO -lt 10 ]; then
           echo "ERROR: Did generation fail?"
@@ -384,7 +401,7 @@ jobs:
         shell: bash
         run: |
           cd /mnt/4tbexternal/comaps
-          ./tools/unix/maps/docker_maps_generator.sh
+          bash ./tools/unix/maps/docker_maps_generator.sh
       - name: Notify Zulip
         run: |
           curl -X POST https://comaps.zulipchat.com/api/v1/messages \
