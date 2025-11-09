@@ -34,7 +34,6 @@ on:
         type: choice
         options:
           - 'no'
-          - reclone
           - wiki-ratelimit
 
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
