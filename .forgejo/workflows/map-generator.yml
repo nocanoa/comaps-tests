@@ -24,7 +24,7 @@ on:
         default: false
         type: boolean
       map-generator-countries:
-        description: 'Generate only specific countries?'
+        description: 'Generate only specific countries? (i.e. "Macedonia, US_New_York_*")'
         required: false
         type: string
       reset:
@@ -35,7 +35,7 @@ on:
         options:
           - 'no'
           - reclone
-          - wiki-limit
+          - wiki-ratelimit
 
 ## RCLONE_CONF is multi-line text containing keys and credentials for us2,ru1,fi1,de1 servers
 
@@ -218,7 +218,7 @@ jobs:
       - name: Only get new dumps once per 30 days
         shell: bash
         run: |
-          if [[ '${{ inputs.reset }}' == 'wiki-limit' ]]; then
+          if [[ '${{ inputs.reset }}' == 'wiki-ratelimit' ]]; then
           echo "Bypassing wiki rate limit upon request."
           exit 0
           fi
@@ -233,7 +233,7 @@ jobs:
           DATEDIFF=$(datediff $TODAY $RECENTDUMPDATE)
           if [ $DATEDIFF -lt 30 ]; then
           echo "ERROR: The most recent wiki dump is from $RECENTDUMPDATE, $DATEDIFF days ago. Wikimedia limits users to 15 snapshot requests per month."
-          echo "Set the 'reset' option to 'wiki-limit' to bypass this."
+          echo "Set the 'reset' option to 'wiki-ratelimit' to bypass this."
           ls -al /home/planet/wikipedia/dumps/
           exit 1
           fi
