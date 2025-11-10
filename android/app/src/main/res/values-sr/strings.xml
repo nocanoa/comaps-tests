@@ -890,4 +890,6 @@
     <string name="offline_explanation_title">Офлајн мапе</string>
     <string name="editor_place_doesnt_exist_description">Опишите како место сада изгледа та бисте послали поруку о грешци OpenStreetMap заједници</string>
     <string name="avoid_steps">Избегавај степенице</string>
+    <string name="avoid_paved">Избегавај асфалтиране путеве</string>
+    <string name="list_description_empty">Промените листу да бисте додали опис</string>
 </resources>
