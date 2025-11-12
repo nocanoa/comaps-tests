@@ -1101,3 +1101,4 @@
 "unknown" = "Nezināms";
 "voice_explanation_before_version26" = "Sistēmas iestatījumos ir iespējams izvēlēties labāku balsi: *Piekļūstamība*, *Runātais saturs*, *Balsis*.";
 "voice_explanation" = "Sistēmas iestatījumos ir iespējams izvēlēties labāku balsi: *Piekļūstamība*, *Lasīt un runāt*, *Balsis*.";
+"avoid_paved" = "Izvairīties no ceļiem ar cietu mākslīgo segumu";

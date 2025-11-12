@@ -1529,3 +1529,10 @@
 "type.shop.telecommunication" = "Tālsaziņas preču veikals";
 "type.amenity.payment_centre" = "Maksājumu centrs";
 "type.amenity.boat_rental" = "Laivu noma";
+"type.man_made.observatory" = "Observatorija";
+"type.man_made.telescope.optical" = "Teleskops (optiskais)";
+"type.man_made.telescope.radio" = "Teleskops (radio)";
+"type.amenity.food_sharing" = "Ēdiena kopīgošana";
+"type.amenity.soup_kitchen" = "Zupas virtuve";
+"type.man_made.telescope" = "Teleskops";
+"type.man_made.telescope.gamma" = "Teleskops (Gamma)";

@@ -844,4 +844,5 @@
     <string name="backup_interval_every_day">Ik dienu</string>
     <string name="clear">Notīrīt</string>
     <string name="closed_now">Šobrīd slēgts</string>
+    <string name="avoid_paved">Izvairīties no ceļiem ar cietu mākslīgo segumu</string>
 </resources>

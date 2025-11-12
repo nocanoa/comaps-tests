@@ -1441,4 +1441,14 @@
     <string name="type.amenity.mobile_money_agent">Agent d\'argent liquide</string>
     <string name="type.leisure.indoor_play">Complexe de jeux intérieurs</string>
     <string name="type.shop.telecommunication">Boutique télécom</string>
+    <string name="type.man_made.telescope.optical">Télescope (optique)</string>
+    <string name="type.man_made.telescope.radio">Télescope (radio)</string>
+    <string name="type.man_made.observatory">Observatoire</string>
+    <string name="type.amenity.food_bank">Banque alimentaire</string>
+    <string name="type.amenity.food_sharing">Repas partagé</string>
+    <string name="type.man_made.telescope.gamma">Télescope (Gamma)</string>
+    <string name="type.amenity.car_pooling">Covoiturage</string>
+    <string name="type.amenity.soup_kitchen">Soupe populaire</string>
+    <string name="type.amenity.give_box">Boîte à don</string>
+    <string name="type.man_made.telescope">Télescope</string>
 </resources>

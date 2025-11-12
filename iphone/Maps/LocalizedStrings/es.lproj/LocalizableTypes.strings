@@ -1527,3 +1527,12 @@
 "type.leisure.bandstand" = "Templete";
 "type.disusedbusiness" = "Local comercial vacante";
 "type.amenity.lounger" = "Tumbona";
+"type.man_made.observatory" = "Observatorio";
+"type.man_made.telescope.optical" = "Telescopio (óptico)";
+"type.man_made.telescope.radio" = "Radiotelescopio";
+"type.man_made.telescope" = "Telescopio";
+"type.man_made.telescope.gamma" = "Telescopio Fermi";
+"type.amenity.boat_rental" = "Alquiler de botes";
+"type.amenity.mobile_money_agent" = "Agencia de efectivo móvil";
+"type.amenity.car_pooling" = "Punto de Vehículo Compartido";
+"type.amenity.payment_centre" = "Centro de pagos";

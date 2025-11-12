@@ -1436,4 +1436,19 @@
     <string name="type.leisure.sports_centre.sport.yoga">Joogakeskus</string>
     <string name="type.disusedbusiness">Vaba äripind</string>
     <string name="type.amenity.lounger">Rannatool</string>
+    <string name="type.amenity.boat_rental">Paadirent</string>
+    <string name="type.man_made.telescope">Teleskoop</string>
+    <string name="type.man_made.telescope.optical">Optiline teleskoop</string>
+    <string name="type.man_made.telescope.radio">Raadioteleskoop</string>
+    <string name="type.man_made.telescope.gamma">Gammateleskoop</string>
+    <string name="type.man_made.observatory">Observatoorium</string>
+    <string name="type.amenity.mobile_money_agent">Nutiraha müüja</string>
+    <string name="type.amenity.car_pooling">Ühiskasutusautode peatus</string>
+    <string name="type.amenity.payment_centre">Maksekeskus</string>
+    <string name="type.leisure.indoor_play">Mängusaal/Mängutuba</string>
+    <string name="type.shop.telecommunication">Sideteenuste pood</string>
+    <string name="type.amenity.soup_kitchen">Supiköök</string>
+    <string name="type.amenity.food_bank">Toidupank</string>
+    <string name="type.amenity.food_sharing">Toidujagamine</string>
+    <string name="type.amenity.give_box">Annetuskast</string>
 </resources>

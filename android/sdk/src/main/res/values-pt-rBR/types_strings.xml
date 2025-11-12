@@ -1425,4 +1425,19 @@
     <string name="type.leisure.fitness_centre.sport.yoga">Academia de ioga</string>
     <string name="type.disusedbusiness">Estabelecimento vazio</string>
     <string name="type.amenity.lounger">Espreguiçadeira</string>
+    <string name="type.amenity.boat_rental">Aluguel de barco</string>
+    <string name="type.man_made.telescope">Telescópio</string>
+    <string name="type.man_made.telescope.optical">Telescópio (óptico)</string>
+    <string name="type.man_made.telescope.radio">Telescópio (rádio)</string>
+    <string name="type.man_made.telescope.gamma">Telescópio (gama)</string>
+    <string name="type.man_made.observatory">Observatório</string>
+    <string name="type.amenity.mobile_money_agent">Agente de Mobile Money</string>
+    <string name="type.amenity.car_pooling">Carona</string>
+    <string name="type.amenity.payment_centre">Centro de pagamentos</string>
+    <string name="type.leisure.indoor_play">Centro de recreação interno</string>
+    <string name="type.shop.telecommunication">Loja de Telecomunicação</string>
+    <string name="type.amenity.soup_kitchen">Restaurante popular</string>
+    <string name="type.amenity.food_bank">Banco de alimentos</string>
+    <string name="type.amenity.food_sharing">Compartilhamento de alimentos</string>
+    <string name="type.amenity.give_box">Caixa de doação</string>
 </resources>

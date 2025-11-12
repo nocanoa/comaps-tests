@@ -1532,3 +1532,13 @@
 "type.amenity.mobile_money_agent" = "Agent d'argent liquide";
 "type.amenity.boat_rental" = "Vente de bateau";
 "type.leisure.indoor_play" = "Complexe de jeux intérieurs";
+"type.man_made.observatory" = "Observatoire";
+"type.man_made.telescope.optical" = "Télescope (optique)";
+"type.man_made.telescope.radio" = "Télescope (radio)";
+"type.amenity.food_sharing" = "Repas partagé";
+"type.amenity.food_bank" = "Banque alimentaire";
+"type.amenity.soup_kitchen" = "Soupe populaire";
+"type.man_made.telescope" = "Télescope";
+"type.amenity.give_box" = "Boîte à don";
+"type.man_made.telescope.gamma" = "Télescope (Gamma)";
+"type.amenity.car_pooling" = "Covoiturage";

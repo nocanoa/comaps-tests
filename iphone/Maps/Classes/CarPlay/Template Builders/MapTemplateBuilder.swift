@@ -167,6 +167,17 @@ final class MapTemplateBuilder {
     case .zoomOut:
       button.image = UIImage(systemName: "minus")
     }
+    // Remove code below once Apple has fixed its issue with the button background
+    if #unavailable(iOS 26) {
+      switch type {
+      case .startPanning:
+        button.focusedImage = UIImage(systemName: "smallcircle.filled.circle.fill")
+      case .zoomIn:
+        button.focusedImage = UIImage(systemName: "plus.circle.fill")
+      case .zoomOut:
+        button.focusedImage = UIImage(systemName: "minus.circle.fill")
+      }
+    }
     return button
   }
   

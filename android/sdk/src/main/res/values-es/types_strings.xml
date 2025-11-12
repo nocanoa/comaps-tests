@@ -1437,4 +1437,13 @@
     <string name="type.leisure.fitness_centre.sport.yoga">Estudio de yoga</string>
     <string name="type.disusedbusiness">Local comercial vacante</string>
     <string name="type.amenity.lounger">Tumbona</string>
+    <string name="type.amenity.boat_rental">Alquiler de botes</string>
+    <string name="type.man_made.telescope">Telescopio</string>
+    <string name="type.man_made.telescope.optical">Telescopio (óptico)</string>
+    <string name="type.man_made.telescope.radio">Radiotelescopio</string>
+    <string name="type.man_made.telescope.gamma">Telescopio Fermi</string>
+    <string name="type.man_made.observatory">Observatorio</string>
+    <string name="type.amenity.mobile_money_agent">Agencia de efectivo móvil</string>
+    <string name="type.amenity.car_pooling">Punto de Vehículo Compartido</string>
+    <string name="type.amenity.payment_centre">Centro de pagos</string>
 </resources>

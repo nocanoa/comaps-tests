@@ -148,4 +148,11 @@
     <string name="type.amenity.place_of_worship.christian">Baznīca</string>
     <string name="type.amenity.boat_rental">Laivu noma</string>
     <string name="type.amenity.bicycle_repair_station">Divriteņu darbnīca</string>
+    <string name="type.man_made.telescope.gamma">Teleskops (Gamma)</string>
+    <string name="type.man_made.observatory">Observatorija</string>
+    <string name="type.man_made.telescope">Teleskops</string>
+    <string name="type.man_made.telescope.optical">Teleskops (optiskais)</string>
+    <string name="type.man_made.telescope.radio">Teleskops (radio)</string>
+    <string name="type.amenity.soup_kitchen">Zupas virtuve</string>
+    <string name="type.amenity.food_sharing">Ēdiena kopīgošana</string>
 </resources>

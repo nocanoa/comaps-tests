@@ -43,7 +43,7 @@
 "country_status_download_failed" = "下载失败";
 
 /* Text in About screen */
-"about_headline" = "由社区推动的开放项目";
+"about_headline" = "由社区驱动的开源项目";
 
 /* Text in About screen */
 "about_proposition_1" = "离线、快速、易用";

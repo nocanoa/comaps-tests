@@ -898,4 +898,5 @@
     <string name="offline_explanation_title">Mapas sin conexión</string>
     <string name="offline_explanation_text">Se debe descargar un mapa para ver y navegar el área\nDescarga mapas de las áreas que quieras navegar.</string>
     <string name="editor_place_doesnt_exist_description">Describe la situación actual del lugar para enviar una nota de error a la comunidad de OpenStreetMap</string>
+    <string name="avoid_paved">Evitar caminos pavimentados</string>
 </resources>

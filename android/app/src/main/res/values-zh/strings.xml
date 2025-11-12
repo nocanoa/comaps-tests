@@ -36,13 +36,13 @@
     <string name="try_again">再试一次</string>
     <string name="about_menu_title">关于 CoMaps</string>
     <!-- Text in About screen -->
-    <string name="about_headline">由社区推动的开放项目</string>
+    <string name="about_headline">由社区驱动的开源项目</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_1">• 使用方便，外观精美</string>
+    <string name="about_proposition_1">• 简单易用，精工细作</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_2">•注重隐私，毫无广告</string>
+    <string name="about_proposition_2">• 专注隐私，绝无广告</string>
     <!-- Text in About screen -->
-    <string name="about_proposition_3">• 离线、快速、精简</string>
+    <string name="about_proposition_3">• 离线、迅捷、轻量</string>
     <!-- Text in About screen -->
     <string name="about_developed_by_enthusiasts">完全开源、决策问责、财务透明的非营利应用。</string>
     <!-- The button that opens system location settings -->
